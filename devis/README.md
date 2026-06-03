@@ -6,65 +6,24 @@ de WordPress (wizard de demande de devis en plusieurs étapes).
 C'est un bloc **autonome** : tout le HTML, le CSS et le JavaScript sont inclus.
 Aucune dépendance hormis Google Fonts (chargé automatiquement).
 
----
-
-## ✨ Nouveauté V4 — Cartes de prestation avec photos
-
-Chaque carte de prestation affiche désormais une **photo** (style élégant et pro) :
-
-- Photo en haut de la carte + léger **zoom au survol**
-- **Badge d'icône** en surimpression (effet verre dépoli)
-- **État sélectionné** raffiné : anneau teal + pastille ✓, la photo reste visible
-- **Fallback élégant** : si une image ne charge pas, un dégradé + icône s'affiche
-  automatiquement (jamais d'image cassée)
+> **Version : V3** — design épuré fidèle à la charte teal d'origine (#0FA7A5),
+> cartes blanches avec badge d'icône vert clair, **sans photos**.
 
 ---
 
-## 🖼️ Changer les photos des cartes (le plus important)
+## 🎨 Charte & style
 
-Les photos sont **centralisées** en haut du `<script>`, dans l'objet
-`KC_PRESTA_IMAGES`. **Une seule ligne à modifier par prestation.**
+- Couleur principale **teal `#0FA7A5`** (+ variantes `--teal-dark`, `--teal-deep`,
+  `--teal-light`, `--teal-soft`), définies en variables CSS sur `.kc-devis`.
+- Typographies : **Montserrat** (titres), **Inter** (texte), **Roboto** (boutons).
+- Cartes de prestation : fond blanc, **badge d'icône en carré arrondi vert clair**,
+  accent teal sur le mot clé du titre.
 
-```js
-const KC_PRESTA_IMAGES = {
-  'bureaux':          'https://….jpg',
-  'parties-communes': 'https://….jpg',
-  'commerces':        'https://….jpg',
-  'sensibles':        'https://….jpg',
-  'fin-chantier':     'https://….jpg',
-  'demenagement':     'https://….jpg',
-  'remise-etat':      'https://….jpg',
-  'decapage':         'https://….jpg',
-  'vitres':           'https://….jpg',
-  'airbnb':           'https://….jpg'
-};
-```
-
-### Méthode recommandée — tes propres photos (idéal)
-
-1. WordPress → **Médias** → **Ajouter** → téléverse ta photo.
-2. Ouvre l'image → bouton **« Copier l'URL du fichier »**.
-3. Colle l'URL à la place de l'exemple, pour la prestation concernée.
-
-> 💡 **Conseils photos** : format paysage **~800×500 px**, fichier optimisé
-> (JPG ou WebP, < 200 Ko). Des visuels cohérents (même ambiance/lumière)
-> rendent la page beaucoup plus pro.
-
-### Pas encore de photo pour une prestation ?
-
-Mets une chaîne vide : `'vitres': ''`
-→ la carte affiche automatiquement l'**icône stylée** sur un dégradé (élégant, jamais vide).
-
-### ⚠️ À propos des photos par défaut
-
-Les URLs livrées sont des **photos d'exemple Unsplash** (libres de droits), choisies
-pour correspondre à peu près à chaque prestation. **Remplace-les par tes propres
-visuels** dès que possible — c'est ce qui fera vraiment la différence côté image de marque.
-Si une URL d'exemple ne se charge pas, le fallback icône + dégradé prend le relais.
+Tout est encapsulé sous `.kc-devis` pour ne pas entrer en conflit avec le thème.
 
 ---
 
-## ⚙️ Autres réglages (objet `KC_CONFIG`)
+## ⚙️ Réglages (objet `KC_CONFIG`, en haut du `<script>`)
 
 | Clé              | Rôle                                                        |
 |------------------|-------------------------------------------------------------|
@@ -88,3 +47,14 @@ L'envoi du formulaire fonctionne via **WordPress AJAX** si `window.kcDevis`
 
 Le bas du fichier contient un complément qui masque le logo en double et cale
 le bloc juste sous l'en-tête du thème — à garder tel quel.
+
+---
+
+## ✅ Fonctionnalités
+
+- Parcours en **8 étapes** adapté à chacune des 10 prestations
+- Validation des champs (email, téléphone FR, code postal Île-de-France)
+- **Sauvegarde automatique** (sessionStorage) qui survit aux rafraîchissements
+- Estimation de prix détaillée + CTA (email / Acuity / Stripe selon la prestation)
+- **Accessibilité** WCAG AA (ARIA, focus trap, navigation clavier)
+- Honeypot anti-spam, `prefers-reduced-motion`, styles d'impression
