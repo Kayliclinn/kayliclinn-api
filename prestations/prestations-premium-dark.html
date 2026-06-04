@@ -1,0 +1,390 @@
+<!-- ╔══════════════════════════════════════════════════════════════╗
+   ║  KAYLI CLINN — PAGE « PRESTATIONS » · VERSION BLEU NUIT       ║
+   ║  Premium néo-tech · fond bleu nuit + accents teal #0FA7A5     ║
+   ║  Autonome · scopé sous .kc-presta · à coller dans un widget   ║
+   ║  « Code HTML » Elementor (pas de <html>/<head>/<body>).       ║
+   ║  Sections : Héro (photo) · Grille 18 prestations · Pourquoi · ║
+   ║  Zones · FAQ · CTA.  Animations : scroll-reveal en cascade,   ║
+   ║  hover zoom+glow, micro-interactions. (Aucun wizard/devis.)   ║
+   ╚══════════════════════════════════════════════════════════════╝ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ===== TOKENS & BASE (scopés .kc-presta) ===== */
+.kc-presta{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076E6D;
+  --ease:cubic-bezier(.16,1,.3,1);
+  --glow-teal:0 0 0 1.5px rgba(15,167,165,.6),0 12px 30px rgba(15,167,165,.32),0 0 46px rgba(15,167,165,.24);
+  --glass:rgba(255,255,255,.05); --border:rgba(255,255,255,.10);
+  --ink:#E6EDF7; --ink-soft:#A9BCD6;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 6px 16px rgba(0,0,0,.28);
+  --shadow-md:0 4px 14px rgba(0,0,0,.35),0 22px 48px rgba(0,0,0,.40);
+  --shadow-lg:0 16px 40px rgba(0,0,0,.45),0 40px 80px rgba(0,0,0,.50);
+  position:relative; color:var(--ink); line-height:1.6; -webkit-font-smoothing:antialiased;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  /* Fond bleu nuit + halos teal subtils (aucun motif/grille) */
+  background:
+    radial-gradient(1200px 640px at 10% -8%, rgba(15,167,165,.20), transparent 60%),
+    radial-gradient(1100px 600px at 102% 4%, rgba(15,167,165,.12), transparent 56%),
+    radial-gradient(1000px 800px at 50% 122%, rgba(15,167,165,.08), transparent 60%),
+    linear-gradient(180deg,#0B1C34 0%,#081428 100%);
+}
+.kc-presta *,.kc-presta *::before,.kc-presta *::after{box-sizing:border-box}
+.kc-presta a{text-decoration:none;color:inherit}
+.kc-presta img{max-width:100%;display:block}
+.kc-presta svg{display:block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kc-presta :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:10px}
+
+/* ===== HELPERS COMMUNS ===== */
+.kc-presta .kcp-wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.kc-presta .kcp-sec{padding:clamp(56px,8vw,104px) 0}
+.kc-presta .kcp-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:100px;background:rgba(15,167,165,.12);border:1px solid rgba(15,167,165,.3);color:#79E7D2;font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.kc-presta .kcp-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(15,167,165,.9);animation:kcp-pulse 2.4s ease-in-out infinite}
+@keyframes kcp-pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.kc-presta .kcp-h2{font-family:'Montserrat',sans-serif;font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-1px;line-height:1.12;color:#fff;margin:16px 0 0}
+.kc-presta .kcp-grad{background:linear-gradient(100deg,#2EE6C6,#0FA7A5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kc-presta .kcp-head{max-width:720px;margin:0 auto clamp(32px,5vw,52px);text-align:center}
+.kc-presta .kcp-head p{margin:14px 0 0;font-size:16.5px;color:var(--ink-soft)}
+.kc-presta .kcp-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;cursor:pointer;border:1px solid transparent;transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s,background .26s}
+.kc-presta .kcp-btn svg{width:18px;height:18px;stroke-width:2}
+.kc-presta .kcp-btn-primary{background:linear-gradient(135deg,#2EE6C6,#0FA7A5);color:#04231F;box-shadow:0 0 0 1px rgba(46,230,198,.4),0 12px 34px rgba(15,167,165,.4)}
+.kc-presta .kcp-btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(46,230,198,.6),0 18px 48px rgba(15,167,165,.55)}
+.kc-presta .kcp-btn-ghost{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.18);color:#fff;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.kc-presta .kcp-btn-ghost:hover{transform:translateY(-3px);border-color:rgba(46,230,198,.55);box-shadow:0 0 26px rgba(15,167,165,.3)}
+.kc-presta .kcp-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+
+/* ===== HÉRO — photo en fond + overlay nuit ===== */
+.kc-presta .kcp-hero{position:relative;overflow:hidden;text-align:center;padding:clamp(84px,12vw,156px) 22px clamp(64px,9vw,112px);background:linear-gradient(180deg,rgba(8,20,40,.82),rgba(8,20,40,.93)),url('https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp') center/cover no-repeat}
+.kc-presta .kcp-hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(820px 360px at 50% 0%,rgba(15,167,165,.22),transparent 70%)}
+.kc-presta .kcp-hero-in{position:relative;z-index:1;max-width:900px;margin:0 auto}
+.kc-presta .kcp-h1{font-family:'Montserrat',sans-serif;font-size:clamp(2.1rem,5.6vw,3.9rem);font-weight:800;letter-spacing:-1.5px;line-height:1.05;color:#fff;margin:20px auto 0;max-width:18ch}
+.kc-presta .kcp-sub{font-size:clamp(15px,2.1vw,18.5px);line-height:1.65;color:#C9D6E8;max-width:62ch;margin:20px auto 0}
+.kc-presta .kcp-trust{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:38px}
+.kc-presta .kcp-trust span{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:100px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:12.5px;font-weight:600;color:#C9D6E8;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.kc-presta .kcp-trust svg{width:15px;height:15px;color:var(--teal)}
+
+/* ===== GRILLE 18 — cards photo premium (verre nuit) ===== */
+.kc-presta .kcp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(248px,1fr));gap:18px}
+.kc-presta .kcp-pcard{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:var(--glass);border:1px solid var(--border);box-shadow:var(--shadow-md);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;color:inherit}
+.kc-presta .kcp-pcard::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(135deg,#2EE6C6,#0FA7A5);opacity:0;transition:opacity .3s;pointer-events:none;z-index:3;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.kc-presta .kcp-pcard:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg),0 0 44px rgba(15,167,165,.25);border-color:transparent}
+@supports ((-webkit-mask-composite:xor) or (mask-composite:exclude)){.kc-presta .kcp-pcard:hover::before{opacity:.95}}
+.kc-presta .kcp-pcard-ph{position:relative;display:block;aspect-ratio:16/11;overflow:hidden;background:linear-gradient(135deg,var(--teal-deep),var(--teal-dark))}
+.kc-presta .kcp-pcard-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.kc-presta .kcp-pcard:hover .kcp-pcard-ph img{transform:scale(1.07)}
+.kc-presta .kcp-pcard-ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,20,40,0) 38%,rgba(8,20,40,.74) 100%)}
+.kc-presta .kcp-pcard-ic{position:absolute;top:12px;left:12px;z-index:2;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(10,26,48,.55);border:1px solid rgba(46,230,198,.45);color:#7CE7D4;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.kc-presta .kcp-pcard-ic svg{width:22px;height:22px}
+.kc-presta .kcp-pcard-bd{display:flex;flex-direction:column;gap:9px;padding:16px 18px 18px}
+.kc-presta .kcp-pcard-t{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;letter-spacing:-.3px;color:#fff;line-height:1.25}
+.kc-presta .kcp-pcard-go{display:inline-flex;align-items:center;gap:7px;font-family:'Roboto',sans-serif;font-size:13.5px;font-weight:700;color:#7CE7D4}
+.kc-presta .kcp-pcard-go svg{width:15px;height:15px;stroke-width:2;transition:transform .25s var(--ease)}
+.kc-presta .kcp-pcard:hover .kcp-pcard-go svg{transform:translateX(4px)}
+
+/* ===== POURQUOI ===== */
+.kc-presta .kcp-why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.kc-presta .kcp-why-card{padding:30px 28px;border-radius:20px;background:var(--glass);border:1px solid var(--border);box-shadow:var(--shadow-md);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:transform .3s var(--ease),box-shadow .3s}
+.kc-presta .kcp-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 0 40px rgba(15,167,165,.18)}
+.kc-presta .kcp-why-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.kc-presta .kcp-num{font-family:'Montserrat',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1px;line-height:1;background:linear-gradient(135deg,#2EE6C6,#0FA7A5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kc-presta .kcp-why-ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:rgba(15,167,165,.14);border:1px solid rgba(15,167,165,.3);color:#7CE7D4}
+.kc-presta .kcp-why-ic svg{width:22px;height:22px}
+.kc-presta .kcp-why-card h3{font-family:'Montserrat',sans-serif;font-size:18.5px;font-weight:700;color:#fff;letter-spacing:-.3px;margin:0 0 8px}
+.kc-presta .kcp-why-card p{font-size:14.5px;color:var(--ink-soft);margin:0}
+
+/* ===== ZONES ===== */
+.kc-presta .kcp-zones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:0 auto}
+.kc-presta .kcp-zone{display:flex;align-items:center;gap:13px;padding:13px 20px 13px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--border);box-shadow:var(--shadow-sm);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:transform .26s var(--ease),box-shadow .26s,border-color .26s}
+.kc-presta .kcp-zone:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--glow-teal)}
+.kc-presta .kcp-zone b{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,#2EE6C6,#0FA7A5);color:#04231F;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800}
+.kc-presta .kcp-zone span{font-size:14.5px;font-weight:600;color:#E6EDF7}
+
+/* ===== FAQ ===== */
+.kc-presta .kcp-faq{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.kc-presta .kcp-faq details{background:var(--glass);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow-sm);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);overflow:hidden;transition:border-color .26s,box-shadow .26s}
+.kc-presta .kcp-faq details[open]{border-color:rgba(15,167,165,.45)}
+.kc-presta .kcp-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 22px;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:#fff}
+.kc-presta .kcp-faq summary::-webkit-details-marker{display:none}
+.kc-presta .kcp-faq summary:hover{color:#7CE7D4}
+.kc-presta .kcp-faq .chev{flex-shrink:0;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(15,167,165,.14);color:#7CE7D4;transition:transform .3s var(--ease),background .3s}
+.kc-presta .kcp-faq .chev svg{width:17px;height:17px;stroke-width:2.2}
+.kc-presta .kcp-faq details[open] .chev{transform:rotate(180deg);background:var(--teal);color:#04231F}
+.kc-presta .kcp-faq .kcp-a{padding:0 22px 20px;color:var(--ink-soft);font-size:14.5px;line-height:1.7}
+.kc-presta .kcp-faq details[open] .kcp-a{animation:kcp-fade .42s var(--ease)}
+@keyframes kcp-fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+
+/* ===== CTA FINAL ===== */
+.kc-presta .kcp-cta{position:relative;overflow:hidden;max-width:1100px;margin:0 auto;border-radius:28px;padding:clamp(42px,6vw,68px) clamp(24px,5vw,56px);text-align:center;background:linear-gradient(135deg,#0E2A48,#0A1F39);border:1px solid rgba(15,167,165,.3);box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 60px rgba(15,167,165,.12)}
+.kc-presta .kcp-cta::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;top:-260px;right:-160px;background:radial-gradient(circle,rgba(15,167,165,.3),transparent 70%);pointer-events:none}
+.kc-presta .kcp-cta h2{position:relative;color:#fff;font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:800;letter-spacing:-1px;margin:18px 0 0}
+.kc-presta .kcp-cta p{position:relative;color:#C9D6E8;font-size:17px;max-width:60ch;margin:14px auto 0}
+.kc-presta .kcp-cta .kcp-actions{margin-top:28px}
+
+/* ===== SCROLL REVEAL (flash-free via .kcp-anim) ===== */
+@media (prefers-reduced-motion:no-preference){
+  .kc-presta.kcp-anim [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease) var(--d,0ms),transform .6s var(--ease) var(--d,0ms)}
+  .kc-presta.kcp-anim [data-reveal].in{opacity:1;transform:none}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:860px){.kc-presta .kcp-why{grid-template-columns:1fr}}
+@media(max-width:560px){.kc-presta .kcp-actions{flex-direction:column}.kc-presta .kcp-btn{justify-content:center}}
+</style>
+
+<div class="kc-presta">
+  <script>/* flag d'animation posé AVANT le rendu → reveal sans flash */(function(){var s=document.currentScript;if(s&&s.parentElement)s.parentElement.classList.add('kcp-anim');})();</script>
+
+  <!-- ✦✦✦ HÉRO (photo en fond + overlay bleu nuit) ✦✦✦ -->
+  <section class="kcp-hero">
+    <div class="kcp-wrap kcp-hero-in">
+      <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Nettoyage professionnel · Île-de-France</span>
+      <h1 class="kcp-h1" data-reveal>Toutes nos prestations,<br><span class="kcp-grad">un seul interlocuteur.</span></h1>
+      <p class="kcp-sub" data-reveal>Particuliers, commerces, syndics, Airbnb, BTP, sites sensibles. Une équipe formée et assurée, un devis sous 24h, une intervention rapide 7j/7 partout en Île-de-France.</p>
+      <div class="kcp-actions" data-reveal>
+        <a href="/devis/" class="kcp-btn kcp-btn-primary">Demander un devis gratuit
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a href="tel:0670012061" class="kcp-btn kcp-btn-ghost">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          06 70 01 20 61</a>
+      </div>
+      <div class="kcp-trust" data-reveal>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>RC Pro AXA · 5M€</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>Devis sous 24h</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Équipe attitrée</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>Sans engagement long</span>
+        <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>7j/7</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦✦✦ GRILLE DES 18 PRESTATIONS (à plat, sans catégories) ✦✦✦ -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Nos prestations</span>
+        <h2 class="kcp-h2" data-reveal>Tout ce que nous <span class="kcp-grad">nettoyons</span></h2>
+        <p data-reveal>Un seul interlocuteur pour l'ensemble de vos besoins de propreté, en Île-de-France.</p>
+      </div>
+      <div class="kcp-grid">
+
+        <a class="kcp-pcard" href="/entretien-de-bureaux/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Entretien de bureaux</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/coproprietes-syndics/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Parties communes immeubles</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/commerces-retail/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Commerces &amp; Retail</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/etablissements-sensibles/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v6M9 11h6"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Établissements sensibles</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <!-- TODO: lien de la page prestation à compléter -->
+        <a class="kcp-pcard" href="#" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Vitres classique</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/airbnb-conciergeries/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Turnover Airbnb</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/nettoyage-fin-de-chantier-paris/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Nettoyage fin de chantier</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <!-- TODO: lien de la page prestation à compléter -->
+        <a class="kcp-pcard" href="#" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Remise en état logement / bureaux</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/nettoyage-apres-demenagement-etat-des-lieux/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Après déménagement / état des lieux</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <!-- TODO: lien de la page prestation à compléter -->
+        <a class="kcp-pcard" href="#" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1180236492-612x612-1.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.1 5.4L20 10l-5.9 1.6L12 17l-2.1-5.4L4 10l5.9-1.6z"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Décapage / cristallisation sols</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <!-- TODO: lien de la page prestation à compléter -->
+        <a class="kcp-pcard" href="#" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1180236492-612x612-1.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M12 2.7C12 2.7 5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.7 12 2.7z"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Shampouinage moquettes</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <!-- TODO: lien de la page prestation à compléter -->
+        <a class="kcp-pcard" href="#" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/><path d="M17.7 7.7A2.5 2.5 0 1 1 19.5 12H2"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Nettoyage haute pression</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/urgences/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Syndrome de Diogène</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/urgences/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Scènes sensibles</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/3d-nuisibles/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Dératisation</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/3d-nuisibles/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M12 20a6 6 0 0 0 6-6v-2a6 6 0 0 0-12 0v2a6 6 0 0 0 6 6z"/><path d="M12 9v11M5 13H3M21 13h-2M5 8 3 7M21 7l-2 1M5 18l-2 1M21 19l-2-1"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Désinsectisation</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <a class="kcp-pcard" href="/3d-nuisibles/" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M2 4v16M2 9h18a2 2 0 0 1 2 2v9M2 17h20"/><path d="M6 9V7a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v2"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Punaises de lit</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+        <!-- TODO: lien de la page prestation à compléter -->
+        <a class="kcp-pcard" href="#" data-reveal>
+          <span class="kcp-pcard-ph"><img src="https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg" alt="" loading="lazy" decoding="async"><span class="kcp-pcard-ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></span></span>
+          <span class="kcp-pcard-bd"><span class="kcp-pcard-t">Pièces blanches</span><span class="kcp-pcard-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦✦✦ POURQUOI KAYLI CLINN ✦✦✦ -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Pourquoi nous choisir</span>
+        <h2 class="kcp-h2" data-reveal>Ce qui fait la <span class="kcp-grad">différence</span></h2>
+      </div>
+      <div class="kcp-why">
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top"><span class="kcp-num">01</span><span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
+          <h3>Équipe attitrée &amp; formée</h3>
+          <p>Les mêmes agents, formés à vos exigences, pour une qualité constante dans le temps.</p>
+        </div>
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top"><span class="kcp-num">02</span><span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span></div>
+          <h3>Réactivité 7j/7</h3>
+          <p>Devis sous 24h, week-end inclus, et une réponse à vos demandes sous 2h ouvrées.</p>
+        </div>
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top"><span class="kcp-num">03</span><span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span></div>
+          <h3>Assurance &amp; traçabilité</h3>
+          <p>RC Pro AXA 5M€, reporting photos après intervention, et sans engagement long.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦✦✦ ZONES D'INTERVENTION ✦✦✦ -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Zones d'intervention</span>
+        <h2 class="kcp-h2" data-reveal>Présents partout en <span class="kcp-grad">Île-de-France</span></h2>
+        <p data-reveal>Nos équipes interviennent dans les 8 départements franciliens.</p>
+      </div>
+      <div class="kcp-zones">
+        <div class="kcp-zone" data-reveal><b>75</b><span>Paris</span></div>
+        <div class="kcp-zone" data-reveal><b>77</b><span>Seine-et-Marne</span></div>
+        <div class="kcp-zone" data-reveal><b>78</b><span>Yvelines</span></div>
+        <div class="kcp-zone" data-reveal><b>91</b><span>Essonne</span></div>
+        <div class="kcp-zone" data-reveal><b>92</b><span>Hauts-de-Seine</span></div>
+        <div class="kcp-zone" data-reveal><b>93</b><span>Seine-Saint-Denis</span></div>
+        <div class="kcp-zone" data-reveal><b>94</b><span>Val-de-Marne</span></div>
+        <div class="kcp-zone" data-reveal><b>95</b><span>Val-d'Oise</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦✦✦ FAQ ✦✦✦ -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Questions fréquentes</span>
+        <h2 class="kcp-h2" data-reveal>Vos questions, nos <span class="kcp-grad">réponses</span></h2>
+      </div>
+      <div class="kcp-faq">
+        <details data-reveal>
+          <summary>Sous quel délai puis-je avoir un devis ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Nous vous transmettons un devis <strong>sous 24h</strong>. Pour les besoins qui le nécessitent, une <strong>visite gratuite</strong> sur site est possible afin d'établir un chiffrage au plus juste.</div>
+        </details>
+        <details data-reveal>
+          <summary>Êtes-vous assurés ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Oui. Kayli Clinn est couverte par une <strong>RC Pro AXA jusqu'à 5M€</strong>, et chaque intervenant dispose d'un <strong>badge nominatif</strong> pour une traçabilité totale.</div>
+        </details>
+        <details data-reveal>
+          <summary>Y a-t-il un engagement de durée ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Non, <strong>pas d'engagement long</strong>. Nos contrats récurrents sont résiliables avec un simple <strong>préavis d'un mois, sans pénalité</strong>.</div>
+        </details>
+        <details data-reveal>
+          <summary>Intervenez-vous en urgence ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Oui, <strong>7j/7, week-end inclus</strong>. Nous mobilisons une équipe rapidement selon la nature de l'intervention (réponse sous 2h ouvrées).</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✦✦✦ CTA FINAL ✦✦✦ -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-cta" data-reveal>
+        <span class="kcp-eyebrow"><span class="dot"></span>Devis sous 24h · Intervention rapide 7j/7</span>
+        <h2>Un besoin de propreté ? Parlons-en.</h2>
+        <p>Obtenez un devis gratuit et personnalisé sous 24h. Équipe formée et assurée, sans engagement long.</p>
+        <div class="kcp-actions">
+          <a href="/devis/" class="kcp-btn kcp-btn-primary">Demander un devis gratuit
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="tel:0670012061" class="kcp-btn kcp-btn-ghost">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Nous appeler — 06 70 01 20 61</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============================================================
+   KAYLI CLINN · Prestations (bleu nuit) — scroll reveal en cascade
+   Aucune dépendance · respecte prefers-reduced-motion · sans flash
+   ============================================================ */
+(function(){
+  var root = document.querySelector('.kc-presta');
+  if(!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;   // contenu déjà visible
+  root.querySelectorAll('[data-reveal]').forEach(function(el){
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function(c){ return c.hasAttribute('data-reveal'); });
+    el.style.setProperty('--d', (Math.min(sibs.indexOf(el),7)*60) + 'ms');
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+  root.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+  /* filet de sécurité : tout révéler après 2,6s quoi qu'il arrive */
+  setTimeout(function(){ root.querySelectorAll('[data-reveal]:not(.in)').forEach(function(el){ el.classList.add('in'); }); }, 2600);
+})();
+</script>
