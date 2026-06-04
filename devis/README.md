@@ -6,8 +6,12 @@ de WordPress (wizard de demande de devis en plusieurs étapes).
 C'est un bloc **autonome** : tout le HTML, le CSS et le JavaScript sont inclus.
 Aucune dépendance hormis Google Fonts (chargé automatiquement).
 
-> **Version : V3** — design épuré fidèle à la charte teal d'origine (#0FA7A5),
-> cartes blanches avec badge d'icône vert clair, **sans photos**.
+> **Version : V4** — design haut de gamme fidèle à la charte teal (#0FA7A5),
+> fond clair : glassmorphism subtil, ombres douces multi-couches, accents
+> dégradés teal, glow sur la carte sélectionnée, scroll reveal, barre de
+> progression animée, soulignement animé du titre. **Photos sur les cartes
+> de prestation** (Médiathèque WordPress). `prefers-reduced-motion` et
+> fallbacks `@supports` (backdrop-filter) gérés.
 
 ---
 
@@ -16,10 +20,24 @@ Aucune dépendance hormis Google Fonts (chargé automatiquement).
 - Couleur principale **teal `#0FA7A5`** (+ variantes `--teal-dark`, `--teal-deep`,
   `--teal-light`, `--teal-soft`), définies en variables CSS sur `.kc-devis`.
 - Typographies : **Montserrat** (titres), **Inter** (texte), **Roboto** (boutons).
-- Cartes de prestation : fond blanc, **badge d'icône en carré arrondi vert clair**,
-  accent teal sur le mot clé du titre.
+- Cartes de prestation : **photo en haut** + badge d'icône teal frosté, corps en
+  verre dépoli, accent teal sur le mot clé du titre, glow teal sur la sélection.
 
 Tout est encapsulé sous `.kc-devis` pour ne pas entrer en conflit avec le thème.
+
+---
+
+## 🖼️ Photos des cartes (objet `KC_PRESTA_IMAGES`, en haut du `<script>`)
+
+Une ligne par prestation. Les URLs pointent vers la **Médiathèque WordPress**
+(`kayliclinn.fr`) → même origine, donc fiables (pas de blocage externe).
+
+- **Changer une photo** : Médias → ouvre l'image → « Copier l'URL du fichier » →
+  colle-la à la place de l'ancienne.
+- **Pas de photo** : laisse `''` (vide) → la carte affiche l'icône stylée sur un
+  dégradé teal (fallback élégant). Idem si une image ne charge pas.
+- À compléter : **`commerces`** est en fallback (vide) — ajoute son URL quand prête.
+- Format conseillé : paysage, ~800×550 px, JPG/WebP optimisé.
 
 ---
 
