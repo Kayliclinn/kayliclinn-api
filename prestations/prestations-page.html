@@ -1,157 +1,464 @@
 <!-- ╔══════════════════════════════════════════════════════════════╗
-     ║  KAYLI CLINN — PAGE « PRESTATIONS »                           ║
-     ║  Style futuriste néo-tech · fond sombre + néon cyan-vert      ║
+     ║  KAYLI CLINN — PAGE « PRESTATIONS »  (complète, 1 seul bloc)  ║
+     ║  Premium futuriste · FOND CLAIR UNI · signature teal #0FA7A5 ║
      ║  100% autonome · tout scopé sous .kc-presta · AUCUNE          ║
      ║  dépendance (pas de CDN ni Google Fonts) · icônes SVG inline  ║
      ║  ──────────────────────────────────────────────────────────  ║
-     ║  SECTION 1/6 : HÉRO  (à valider avant d'enchaîner le reste)   ║
+     ║  Sections : 1 Héro · 2 Grille des 13 prestations ·           ║
+     ║  3 Pourquoi Kayli Clinn · 4 Zones · 5 FAQ · 6 CTA final       ║
+     ║  Animations : reveal au scroll (IntersectionObserver, stagger)║
+     ║  + barre de progression + micro-interactions (mêmes courbes). ║
      ╚══════════════════════════════════════════════════════════════╝ -->
 <style>
 /* ============================================================
-   TOKENS & BASE — tout est scopé sous .kc-presta pour ne rien
-   casser ailleurs dans WordPress / Elementor
+   TOKENS & BASE — tout scopé sous .kc-presta
+   Fond CLAIR & UNI (pas de dégradé, pas de motif/grille)
    ============================================================ */
 .kc-presta{
-  --teal:#0FA7A5; --teal-deep:#076E6D;
-  --neon:#2EE6C6;            /* accent néon cyan-vert (logo) */
-  --neon-soft:#7CF5DD;
-  --bg-0:#05080F; --bg-1:#0A1020;
-  --ink:#EAF1FB;            /* texte principal */
-  --ink-soft:#9FB0C6;       /* texte secondaire */
-  --line:rgba(255,255,255,.10);
-  --glass:rgba(255,255,255,.045);
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076E6D;
+  --teal-light:#E6F5F5; --teal-soft:#F0FAFA;
+  --dark:#0D2340; --ink:#1F2937; --ink-soft:#4B5563; --muted:#6B7280;
+  --bg:#F5F7FA; --white:#fff; --line:#E6E9EE;
   --ease:cubic-bezier(.16,1,.3,1);
+  --dur:.6s;                       /* durée d'animation signature */
+  --shadow-sm:0 1px 2px rgba(13,35,64,.04),0 4px 12px rgba(13,35,64,.05);
+  --shadow-md:0 2px 8px rgba(13,35,64,.06),0 18px 40px rgba(13,35,64,.08);
+  --shadow-lg:0 12px 28px rgba(13,35,64,.10),0 36px 70px rgba(13,35,64,.12);
+  --glow:0 0 0 1.5px rgba(15,167,165,.5),0 14px 36px rgba(15,167,165,.24),0 0 50px rgba(15,167,165,.16);
+  --glass:rgba(255,255,255,.78);
 
   position:relative;
-  overflow:hidden;                 /* contient les halos lumineux */
-  color:var(--ink);
-  line-height:1.6;
+  background:var(--bg);            /* CLAIR & UNI */
+  color:var(--ink); line-height:1.6;
   -webkit-font-smoothing:antialiased;
-  /* Police 100% système (aucun chargement externe) */
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-  /* Fond sombre profond + halos teal/néon */
-  background:
-    radial-gradient(1100px 560px at 12% -8%, rgba(46,230,198,.16), transparent 60%),
-    radial-gradient(1000px 560px at 102% 2%, rgba(15,167,165,.18), transparent 56%),
-    radial-gradient(900px 700px at 50% 118%, rgba(11,30,58,.55), transparent 60%),
-    linear-gradient(180deg,#070C16 0%,#05080F 100%);
 }
 .kc-presta *,.kc-presta *::before,.kc-presta *::after{box-sizing:border-box}
 .kc-presta a{text-decoration:none;color:inherit}
 .kc-presta svg{display:block;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.kc-presta :focus-visible{outline:2px solid var(--neon);outline-offset:3px;border-radius:10px}
+.kc-presta :focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:10px}
+.kc-presta .kcp-wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+.kc-presta .kcp-sec{padding:clamp(54px,8vw,100px) 0}
 
-/* ============================================================
-   SECTION · HÉRO
-   ============================================================ */
-.kc-presta .kcp-hero{position:relative;overflow:hidden;padding:clamp(88px,13vw,160px) 22px clamp(64px,9vw,120px);text-align:center}
-
-/* Grille « tech » en fondu radial */
-.kc-presta .kcp-hero::before{
-  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:
-    linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
-  background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(circle at 50% 38%,#000,transparent 70%);
-          mask-image:radial-gradient(circle at 50% 38%,#000,transparent 70%);
-}
-/* Halo néon en haut */
-.kc-presta .kcp-hero::after{
-  content:"";position:absolute;z-index:0;pointer-events:none;
-  width:min(720px,92vw);height:720px;left:50%;top:-300px;transform:translateX(-50%);
-  background:radial-gradient(circle,rgba(46,230,198,.22),rgba(15,167,165,.06) 45%,transparent 70%);
-  filter:blur(18px);
-}
-.kc-presta .kcp-hero-in{position:relative;z-index:1;max-width:900px;margin:0 auto}
-
-/* Sur-titre (pastille verre + point néon pulsé) */
-.kc-presta .kcp-eyebrow{
-  display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:100px;
-  background:rgba(46,230,198,.07);border:1px solid rgba(46,230,198,.30);
-  color:var(--neon-soft);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
-}
-.kc-presta .kcp-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--neon);box-shadow:0 0 8px var(--neon),0 0 18px var(--neon);animation:kcp-pulse 2.4s ease-in-out infinite}
-
-/* Titre + mot accentué en dégradé néon */
-.kc-presta .kcp-h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-1.6px;line-height:1.05;margin:22px auto 0;max-width:18ch}
-.kc-presta .kcp-grad{background:linear-gradient(100deg,var(--neon),var(--neon-soft) 42%,var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
-
-/* Sous-titre */
-.kc-presta .kcp-sub{font-size:clamp(15px,2.1vw,18px);line-height:1.65;color:var(--ink-soft);max-width:60ch;margin:22px auto 0}
+/* Titres & sur-titres (signature commune) */
+.kc-presta .kcp-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:100px;background:var(--teal-light);border:1px solid rgba(15,167,165,.22);color:var(--teal-deep);font-size:11.5px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+.kc-presta .kcp-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(15,167,165,.8);animation:kcp-pulse 2.4s ease-in-out infinite}
+.kc-presta .kcp-h1{font-size:clamp(2.1rem,5.4vw,3.7rem);font-weight:800;letter-spacing:-1.5px;line-height:1.06;color:var(--dark);margin:20px auto 0;max-width:18ch}
+.kc-presta .kcp-h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800;letter-spacing:-1px;line-height:1.12;color:var(--dark);margin:16px 0 0}
+.kc-presta .kcp-grad{background:linear-gradient(100deg,var(--teal),var(--teal-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.kc-presta .kcp-head{max-width:720px;margin:0 auto clamp(34px,5vw,54px);text-align:center}
+.kc-presta .kcp-head p{margin:16px 0 0;font-size:17px;color:var(--ink-soft)}
 
 /* Boutons */
-.kc-presta .kcp-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px}
-.kc-presta .kcp-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;border:1px solid transparent;transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease),background .25s var(--ease)}
+.kc-presta .kcp-btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:14px;font-size:15px;font-weight:700;cursor:pointer;border:1px solid transparent;transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s var(--ease),background .26s var(--ease)}
 .kc-presta .kcp-btn svg{width:18px;height:18px;stroke-width:2}
-.kc-presta .kcp-btn-primary{background:linear-gradient(135deg,var(--neon),var(--teal));color:#042620;box-shadow:0 0 0 1px rgba(46,230,198,.45),0 12px 34px rgba(46,230,198,.34)}
-.kc-presta .kcp-btn-primary:hover{transform:translateY(-3px);box-shadow:0 0 0 1px rgba(46,230,198,.7),0 18px 48px rgba(46,230,198,.5)}
-.kc-presta .kcp-btn-ghost{background:var(--glass);border-color:rgba(255,255,255,.16);color:var(--ink);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.kc-presta .kcp-btn-ghost:hover{transform:translateY(-3px);border-color:rgba(46,230,198,.55);box-shadow:0 0 26px rgba(46,230,198,.22)}
+.kc-presta .kcp-btn-primary{background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;box-shadow:0 8px 22px rgba(15,167,165,.32)}
+.kc-presta .kcp-btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(15,167,165,.46)}
+.kc-presta .kcp-btn-ghost{background:var(--white);border-color:var(--line);color:var(--dark);box-shadow:var(--shadow-sm)}
+.kc-presta .kcp-btn-ghost:hover{transform:translateY(-3px);border-color:var(--teal);box-shadow:0 0 0 1px rgba(15,167,165,.3),var(--shadow-md)}
 
-/* Barre de réassurance */
-.kc-presta .kcp-trust{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:42px}
-.kc-presta .kcp-trust span{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:100px;background:var(--glass);border:1px solid var(--line);font-size:12.5px;font-weight:500;color:var(--ink-soft);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
-.kc-presta .kcp-trust svg{width:15px;height:15px;color:var(--neon)}
+/* Barre de progression de lecture (sticky, animée) */
+.kc-presta .kcp-progress{position:sticky;top:0;z-index:40;height:3px;background:rgba(15,167,165,.10)}
+.kc-presta .kcp-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--teal-dark));box-shadow:0 0 12px rgba(15,167,165,.55)}
 
-/* Fallback verre dépoli si backdrop-filter non géré */
+/* ============================================================
+   SECTION 1 · HÉRO  (fond clair, sans motif)
+   ============================================================ */
+.kc-presta .kcp-hero{padding:clamp(70px,10vw,120px) 0 clamp(48px,7vw,84px);text-align:center}
+.kc-presta .kcp-hero-in{max-width:900px;margin:0 auto}
+.kc-presta .kcp-sub{font-size:clamp(15px,2.1vw,18.5px);line-height:1.65;color:var(--ink-soft);max-width:62ch;margin:22px auto 0}
+.kc-presta .kcp-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.kc-presta .kcp-trust{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px}
+.kc-presta .kcp-trust span{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:100px;background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow-sm);font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+.kc-presta .kcp-trust svg{width:15px;height:15px;color:var(--teal)}
+
+/* ============================================================
+   SECTION 2 · GRILLE DES 13 PRESTATIONS
+   ============================================================ */
+.kc-presta .kcp-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:18px}
+.kc-presta .kcp-card{position:relative;display:flex;flex-direction:column;gap:12px;padding:26px;border-radius:20px;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-md),inset 0 1px 0 rgba(255,255,255,.6);-webkit-backdrop-filter:blur(12px) saturate(1.2);backdrop-filter:blur(12px) saturate(1.2);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);overflow:hidden}
+.kc-presta .kcp-card::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:linear-gradient(135deg,var(--teal),var(--teal-deep));opacity:0;transition:opacity .3s var(--ease);pointer-events:none;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.kc-presta .kcp-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg),0 0 40px rgba(15,167,165,.14);border-color:transparent}
+@supports ((-webkit-mask-composite:xor) or (mask-composite:exclude)){.kc-presta .kcp-card:hover::before{opacity:.9}}
+.kc-presta .kcp-ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:var(--teal-light);color:var(--teal-deep);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.kc-presta .kcp-ic svg{width:24px;height:24px}
+.kc-presta .kcp-card:hover .kcp-ic{transform:scale(1.08) rotate(-3deg);box-shadow:0 10px 24px rgba(15,167,165,.32)}
+.kc-presta .kcp-card h3{font-family:inherit;font-size:18px;font-weight:800;letter-spacing:-.3px;color:var(--dark);margin:2px 0 0}
+.kc-presta .kcp-card p{font-size:14.5px;color:var(--ink-soft);margin:0;flex:1}
+.kc-presta .kcp-go{display:inline-flex;align-items:center;gap:7px;margin-top:4px;font-weight:700;font-size:14px;color:var(--teal-dark)}
+.kc-presta .kcp-go svg{width:16px;height:16px;stroke-width:2;transition:transform .25s var(--ease)}
+.kc-presta .kcp-card:hover .kcp-go svg{transform:translateX(4px)}
+
+/* ============================================================
+   SECTION 3 · POURQUOI KAYLI CLINN
+   ============================================================ */
+.kc-presta .kcp-why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.kc-presta .kcp-why-card{position:relative;padding:30px 28px;border-radius:20px;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-md),inset 0 1px 0 rgba(255,255,255,.6);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.kc-presta .kcp-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 0 40px rgba(15,167,165,.12)}
+.kc-presta .kcp-why-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.kc-presta .kcp-num{font-size:40px;font-weight:800;letter-spacing:-1px;line-height:1;background:linear-gradient(135deg,var(--teal),var(--teal-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.kc-presta .kcp-why-ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--teal-light);color:var(--teal-deep)}
+.kc-presta .kcp-why-ic svg{width:22px;height:22px}
+.kc-presta .kcp-why-card h3{font-size:18.5px;font-weight:800;color:var(--dark);letter-spacing:-.3px;margin:0 0 8px}
+.kc-presta .kcp-why-card p{font-size:14.5px;color:var(--ink-soft);margin:0}
+
+/* ============================================================
+   SECTION 4 · ZONES D'INTERVENTION
+   ============================================================ */
+.kc-presta .kcp-zones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:0 auto}
+.kc-presta .kcp-zone{display:flex;align-items:center;gap:13px;padding:13px 20px 13px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-sm);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:transform .26s var(--ease),box-shadow .26s var(--ease),border-color .26s var(--ease)}
+.kc-presta .kcp-zone:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--glow)}
+.kc-presta .kcp-zone b{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-size:16px;font-weight:800;letter-spacing:-.5px}
+.kc-presta .kcp-zone span{font-size:14.5px;font-weight:600;color:var(--dark)}
+
+/* ============================================================
+   SECTION 5 · FAQ
+   ============================================================ */
+.kc-presta .kcp-faq{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.kc-presta .kcp-faq details{background:var(--glass);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-sm);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);overflow:hidden;transition:border-color .26s var(--ease),box-shadow .26s var(--ease)}
+.kc-presta .kcp-faq details[open]{border-color:rgba(15,167,165,.4);box-shadow:var(--shadow-md)}
+.kc-presta .kcp-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:19px 22px;font-size:16px;font-weight:700;color:var(--dark)}
+.kc-presta .kcp-faq summary::-webkit-details-marker{display:none}
+.kc-presta .kcp-faq summary:hover{color:var(--teal-deep)}
+.kc-presta .kcp-faq .chev{flex-shrink:0;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--teal-light);color:var(--teal-deep);transition:transform .3s var(--ease),background .3s var(--ease)}
+.kc-presta .kcp-faq .chev svg{width:17px;height:17px;stroke-width:2.2}
+.kc-presta .kcp-faq details[open] .chev{transform:rotate(180deg);background:var(--teal);color:#fff}
+.kc-presta .kcp-faq .kcp-a{padding:0 22px 20px;color:var(--ink-soft);font-size:14.5px;line-height:1.7}
+.kc-presta .kcp-faq details[open] .kcp-a{animation:kcp-fade .42s var(--ease)}
+
+/* ============================================================
+   SECTION 6 · CTA FINAL  (bandeau teal — accent de marque)
+   ============================================================ */
+.kc-presta .kcp-cta{position:relative;overflow:hidden;max-width:1100px;margin:0 auto;border-radius:28px;padding:clamp(42px,6vw,68px) clamp(24px,5vw,56px);text-align:center;color:#fff;background:linear-gradient(135deg,var(--teal-deep),var(--teal) 55%,var(--teal-dark));box-shadow:0 30px 70px rgba(15,167,165,.32)}
+.kc-presta .kcp-cta::after{content:"";position:absolute;width:520px;height:520px;border-radius:50%;top:-260px;right:-160px;background:radial-gradient(circle,rgba(255,255,255,.18),transparent 70%);pointer-events:none}
+.kc-presta .kcp-cta .kcp-eyebrow{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.3);color:#fff}
+.kc-presta .kcp-cta .kcp-eyebrow .dot{background:#fff;box-shadow:0 0 8px rgba(255,255,255,.9)}
+.kc-presta .kcp-cta h2{position:relative;color:#fff;font-size:clamp(1.8rem,3.8vw,2.6rem);font-weight:800;letter-spacing:-1px;margin:18px 0 0}
+.kc-presta .kcp-cta p{position:relative;color:rgba(255,255,255,.92);font-size:17px;max-width:60ch;margin:14px auto 0}
+.kc-presta .kcp-cta .kcp-actions{margin-top:30px}
+.kc-presta .kcp-cta .kcp-btn-primary{background:#fff;color:var(--teal-deep);box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.kc-presta .kcp-cta .kcp-btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 42px rgba(0,0,0,.28)}
+.kc-presta .kcp-cta .kcp-btn-ghost{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.45);color:#fff;box-shadow:none}
+.kc-presta .kcp-cta .kcp-btn-ghost:hover{background:rgba(255,255,255,.2);border-color:#fff}
+
+/* ============================================================
+   FALLBACKS  (verre dépoli + dégradé-texte non supportés)
+   ============================================================ */
 @supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
-  .kc-presta .kcp-eyebrow,.kc-presta .kcp-btn-ghost,.kc-presta .kcp-trust span{background:rgba(255,255,255,.08)}
+  .kc-presta .kcp-card,.kc-presta .kcp-why-card,.kc-presta .kcp-zone,.kc-presta .kcp-faq details,.kc-presta .kcp-trust span{background:var(--white)}
 }
-/* Fallback dégradé-texte */
 @supports not ((-webkit-background-clip:text) or (background-clip:text)){
-  .kc-presta .kcp-grad{color:var(--neon)}
+  .kc-presta .kcp-grad,.kc-presta .kcp-num{color:var(--teal-deep)}
 }
 
-/* Animations d'entrée (pures CSS, coupées si prefers-reduced-motion) */
-@keyframes kcp-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+/* ============================================================
+   ANIMATIONS — langage commun à TOUTES les sections
+   Reveal au scroll (piloté JS) · flash-free · reduced-motion OK
+   ============================================================ */
 @keyframes kcp-pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.kc-presta .kcp-anim{opacity:0;animation:kcp-rise .85s var(--ease) forwards}
-.kc-presta .d1{animation-delay:.06s}.kc-presta .d2{animation-delay:.14s}.kc-presta .d3{animation-delay:.22s}.kc-presta .d4{animation-delay:.30s}.kc-presta .d5{animation-delay:.40s}
+@keyframes kcp-fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:no-preference){
+  .kcp-anim [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity var(--dur) var(--ease) var(--d,0ms),transform var(--dur) var(--ease) var(--d,0ms)}
+  .kcp-anim [data-reveal].in{opacity:1;transform:none}
+}
 @media (prefers-reduced-motion:reduce){
-  .kc-presta .kcp-anim{animation:none;opacity:1}
   .kc-presta .kcp-eyebrow .dot{animation:none}
 }
 
-/* Responsive */
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:860px){
+  .kc-presta .kcp-why{grid-template-columns:1fr}
+}
 @media (max-width:560px){
   .kc-presta .kcp-actions{flex-direction:column}
   .kc-presta .kcp-btn{justify-content:center}
+  .kc-presta .kcp-cards{grid-template-columns:1fr}
 }
 </style>
 
 <div class="kc-presta">
+  <script>/* ajoute la classe d'animation AVANT le rendu des sections → zéro flash */(function(){var s=document.currentScript;if(s&&s.parentElement)s.parentElement.classList.add('kcp-anim');})();</script>
+
+  <!-- Barre de progression de lecture -->
+  <div class="kcp-progress" aria-hidden="true"><div class="kcp-progress-fill"></div></div>
 
   <!-- ===================== SECTION 1 · HÉRO ===================== -->
   <section class="kcp-hero">
-    <div class="kcp-hero-in">
-
-      <span class="kcp-eyebrow kcp-anim d1"><span class="dot"></span>Nettoyage professionnel · Île-de-France</span>
-
-      <h1 class="kcp-h1 kcp-anim d2">Toutes nos prestations,<br><span class="kcp-grad">un seul interlocuteur.</span></h1>
-
-      <p class="kcp-sub kcp-anim d3">Particuliers, commerces, syndics, Airbnb, BTP, sites sensibles. Une équipe formée et assurée, un devis sous 24h, une intervention rapide 7j/7 partout en Île-de-France.</p>
-
-      <div class="kcp-actions kcp-anim d4">
+    <div class="kcp-wrap kcp-hero-in">
+      <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Nettoyage professionnel · Île-de-France</span>
+      <h1 class="kcp-h1" data-reveal>Toutes nos prestations,<br><span class="kcp-grad">un seul interlocuteur.</span></h1>
+      <p class="kcp-sub" data-reveal>Particuliers, commerces, syndics, Airbnb, BTP, sites sensibles. Une équipe formée et assurée, un devis sous 24h, une intervention rapide 7j/7 partout en Île-de-France.</p>
+      <div class="kcp-actions" data-reveal>
         <a href="/devis/" class="kcp-btn kcp-btn-primary">Demander un devis gratuit
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         <a href="tel:0670012061" class="kcp-btn kcp-btn-ghost">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          Nous appeler
-        </a>
+          Nous appeler</a>
       </div>
-
-      <div class="kcp-trust kcp-anim d5">
+      <div class="kcp-trust" data-reveal>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>RC Pro AXA · 5M€</span>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>Devis sous 24h</span>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Équipe attitrée</span>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg>Sans engagement long</span>
         <span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>7j/7</span>
       </div>
+    </div>
+  </section>
 
+  <!-- ============== SECTION 2 · GRILLE DES 13 PRESTATIONS ============== -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Nos domaines</span>
+        <h2 class="kcp-h2" data-reveal>Une <span class="kcp-grad">expertise</span> pour chaque besoin</h2>
+      </div>
+      <div class="kcp-cards">
+
+        <a class="kcp-card" href="/proprete-recurrente/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg></div>
+          <h3>Propreté récurrente</h3>
+          <p>Entretien régulier sur mesure, en journée ou en horaires décalés, pour des locaux toujours nickel.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/entretien-de-bureaux/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/></svg></div>
+          <h3>Entretien de bureaux</h3>
+          <p>Bureaux, cabinets et sièges sociaux : un cadre de travail sain et impeccable au quotidien.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/commerces-retail/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+          <h3>Commerces &amp; Retail</h3>
+          <p>Boutiques, restaurants, hôtels : surfaces de vente et vitrines prêtes avant l'ouverture.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/coproprietes-syndics/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+          <h3>Copropriétés &amp; Syndics</h3>
+          <p>Halls, escaliers, ascenseurs et locaux : des parties communes soignées pour vos résidents.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/nettoyage-fin-de-chantier-paris/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+          <h3>Nettoyage fin de chantier</h3>
+          <p>Post-travaux et rénovations : dépoussiérage complet, traces retirées, sols prêts à livrer.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/nettoyage-apres-demenagement-etat-des-lieux/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+          <h3>Après déménagement / état des lieux</h3>
+          <p>Un logement rendu nickel pour réussir l'état des lieux et récupérer votre caution sereinement.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/airbnb-conciergeries/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+          <h3>Turnover Airbnb</h3>
+          <p>Ménage hôtelier et linge entre deux locations : logement prêt à accueillir, photos à l'appui.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/3d-nuisibles/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M12 20a6 6 0 0 0 6-6v-2a6 6 0 0 0-12 0v2a6 6 0 0 0 6 6z"/><path d="M12 8V6a3 3 0 0 1 3-3M12 8V6a3 3 0 0 0-3-3"/><path d="M12 9v11M5 13H3M21 13h-2M5 8 3 7M21 7l-2 1M5 18l-2 1M21 19l-2-1"/></svg></div>
+          <h3>3D Nuisibles</h3>
+          <p>Dératisation, désinsectisation, désinfection : protocoles certifiés et résultats durables.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/etablissements-sensibles/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M12 8v6M9 11h6"/></svg></div>
+          <h3>Sites sensibles (bio-nettoyage)</h3>
+          <p>Cabinets médicaux, crèches, laboratoires : bio-nettoyage et protocoles d'hygiène renforcés.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/prestation-ponctuel/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M12 3l2.1 5.4L20 10l-5.9 1.6L12 17l-2.1-5.4L4 10l5.9-1.6z"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8z"/></svg></div>
+          <h3>Prestation ponctuelle</h3>
+          <p>Un besoin unique ? Grand nettoyage, événement, remise en état express : on s'adapte.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/multi-sites/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+          <h3>Multi-sites &amp; contrats cadres</h3>
+          <p>Plusieurs sites à gérer ? Un pilotage centralisé, un reporting unifié, un seul interlocuteur.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/extreme/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+          <h3>Interventions extrêmes</h3>
+          <p>Encrassement lourd, hauteurs, accès difficiles : matériel et équipes spécialisés.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+        <a class="kcp-card" href="/urgences/" data-reveal>
+          <div class="kcp-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M5 3 2.5 5.5M19 3l2.5 2.5"/></svg></div>
+          <h3>Urgences</h3>
+          <p>Diogène, insalubrité, scènes sensibles : intervention rapide et discrète, 7j/7.</p>
+          <span class="kcp-go">Découvrir <svg viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SECTION 3 · POURQUOI KAYLI CLINN ============== -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Pourquoi nous choisir</span>
+        <h2 class="kcp-h2" data-reveal>Ce qui fait la <span class="kcp-grad">différence</span></h2>
+      </div>
+      <div class="kcp-why">
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top">
+            <span class="kcp-num">01</span>
+            <span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          </div>
+          <h3>Équipe attitrée &amp; formée</h3>
+          <p>Les mêmes agents, formés à vos exigences, pour une qualité constante dans le temps.</p>
+        </div>
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top">
+            <span class="kcp-num">02</span>
+            <span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span>
+          </div>
+          <h3>Réactivité 7j/7</h3>
+          <p>Devis sous 24h, week-end inclus, et une réponse à vos demandes sous 2h ouvrées.</p>
+        </div>
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top">
+            <span class="kcp-num">03</span>
+            <span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span>
+          </div>
+          <h3>Assurance &amp; traçabilité</h3>
+          <p>RC Pro AXA 5M€, reporting photos après intervention, et sans engagement long.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SECTION 4 · ZONES D'INTERVENTION ============== -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Zones d'intervention</span>
+        <h2 class="kcp-h2" data-reveal>Présents partout en <span class="kcp-grad">Île-de-France</span></h2>
+        <p data-reveal>Nos équipes interviennent dans les 8 départements franciliens.</p>
+      </div>
+      <div class="kcp-zones">
+        <div class="kcp-zone" data-reveal><b>75</b><span>Paris</span></div>
+        <div class="kcp-zone" data-reveal><b>77</b><span>Seine-et-Marne</span></div>
+        <div class="kcp-zone" data-reveal><b>78</b><span>Yvelines</span></div>
+        <div class="kcp-zone" data-reveal><b>91</b><span>Essonne</span></div>
+        <div class="kcp-zone" data-reveal><b>92</b><span>Hauts-de-Seine</span></div>
+        <div class="kcp-zone" data-reveal><b>93</b><span>Seine-Saint-Denis</span></div>
+        <div class="kcp-zone" data-reveal><b>94</b><span>Val-de-Marne</span></div>
+        <div class="kcp-zone" data-reveal><b>95</b><span>Val-d'Oise</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 5 · FAQ ===================== -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Questions fréquentes</span>
+        <h2 class="kcp-h2" data-reveal>Vos questions, nos <span class="kcp-grad">réponses</span></h2>
+      </div>
+      <div class="kcp-faq">
+        <details data-reveal>
+          <summary>Sous quel délai puis-je avoir un devis ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Nous vous transmettons un devis <strong>sous 24h</strong>. Pour les besoins qui le nécessitent, une <strong>visite gratuite</strong> sur site est possible afin d'établir un chiffrage au plus juste.</div>
+        </details>
+        <details data-reveal>
+          <summary>Êtes-vous assurés ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Oui. Kayli Clinn est couverte par une <strong>RC Pro AXA jusqu'à 5M€</strong>, et chaque intervenant dispose d'un <strong>badge nominatif</strong> pour une traçabilité totale.</div>
+        </details>
+        <details data-reveal>
+          <summary>Y a-t-il un engagement de durée ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Non, <strong>pas d'engagement long</strong>. Nos contrats récurrents sont résiliables avec un simple <strong>préavis d'un mois, sans pénalité</strong>.</div>
+        </details>
+        <details data-reveal>
+          <summary>Intervenez-vous en urgence ?<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="kcp-a">Oui, <strong>7j/7, week-end inclus</strong>. Nous mobilisons une équipe rapidement selon la nature de l'intervention (réponse sous 2h ouvrées).</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SECTION 6 · CTA FINAL ===================== -->
+  <section class="kcp-sec">
+    <div class="kcp-wrap">
+      <div class="kcp-cta" data-reveal>
+        <span class="kcp-eyebrow"><span class="dot"></span>Devis sous 24h · Intervention rapide 7j/7</span>
+        <h2>Un besoin de propreté ? Parlons-en.</h2>
+        <p>Obtenez un devis gratuit et personnalisé sous 24h. Équipe formée et assurée, sans engagement long.</p>
+        <div class="kcp-actions">
+          <a href="/devis/" class="kcp-btn kcp-btn-primary">Demander un devis gratuit
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+          <a href="tel:0670012061" class="kcp-btn kcp-btn-ghost">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.8 19.8 0 0 1 3.08 4.18 2 2 0 0 1 5 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Nous appeler — 06 70 01 20 61</a>
+        </div>
+      </div>
     </div>
   </section>
 
 </div>
+
+<script>
+/* ============================================================
+   KAYLI CLINN · Prestations — animations (reveal + progression)
+   Aucune dépendance · respecte prefers-reduced-motion
+   ============================================================ */
+(function(){
+  var root = document.querySelector('.kc-presta');
+  if(!root) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Barre de progression de lecture */
+  var fill = root.querySelector('.kcp-progress-fill');
+  if(fill){
+    var ticking = false;
+    function upd(){
+      var d = document.documentElement;
+      var max = (d.scrollHeight - d.clientHeight) || 1;
+      var top = window.scrollY || d.scrollTop || 0;
+      var p = Math.min(1, Math.max(0, top / max));
+      fill.style.width = (p * 100).toFixed(2) + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(upd); } }, {passive:true});
+    window.addEventListener('resize', upd, {passive:true});
+    upd();
+  }
+
+  /* Reveal au scroll (stagger). Si reduced-motion / pas d'IO : contenu déjà visible. */
+  if(reduce || !('IntersectionObserver' in window)) return;
+  root.querySelectorAll('[data-reveal]').forEach(function(el){
+    var sibs = Array.prototype.filter.call(el.parentElement.children, function(c){ return c.hasAttribute('data-reveal'); });
+    el.style.setProperty('--d', (Math.min(sibs.indexOf(el), 7) * 60) + 'ms');
+  });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+    });
+  }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+  root.querySelectorAll('[data-reveal]').forEach(function(el){ io.observe(el); });
+
+  /* Filet de sécurité : tout révéler après 2,6s quoi qu'il arrive */
+  setTimeout(function(){
+    root.querySelectorAll('[data-reveal]:not(.in)').forEach(function(el){ el.classList.add('in'); });
+  }, 2600);
+})();
+</script>
