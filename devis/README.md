@@ -36,7 +36,7 @@ Une ligne par prestation. Les URLs pointent vers la **Médiathèque WordPress**
   colle-la à la place de l'ancienne.
 - **Pas de photo** : laisse `''` (vide) → la carte affiche l'icône stylée sur un
   dégradé teal (fallback élégant). Idem si une image ne charge pas.
-- À compléter : **`commerces`** est en fallback (vide) — ajoute son URL quand prête.
+- Les 10 prestations ont désormais leur photo (Médiathèque `kayliclinn.fr`).
 - Format conseillé : paysage, ~800×550 px, JPG/WebP optimisé.
 
 ---
