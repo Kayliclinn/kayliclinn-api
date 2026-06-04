@@ -370,9 +370,13 @@
   --shadow-sm:0 1px 2px rgba(13,35,64,.04),0 2px 6px rgba(13,35,64,.05);
   --shadow-md:0 2px 6px rgba(13,35,64,.05),0 14px 30px rgba(13,35,64,.07);
   --shadow-lg:0 10px 24px rgba(13,35,64,.08),0 28px 56px rgba(13,35,64,.10);
-  --glow-teal:0 0 0 1.5px rgba(15,167,165,.55),0 10px 28px rgba(15,167,165,.28),0 0 42px rgba(15,167,165,.20);
+  --glow-teal:0 0 0 1.5px rgba(15,167,165,.6),0 12px 30px rgba(15,167,165,.32),0 0 46px rgba(15,167,165,.24);
   --glass:rgba(255,255,255,.72);
   --glass-brd:rgba(13,35,64,.07);
+  /* — Réglages rapides : 1 valeur à changer — */
+  --kc-photo-ratio:4 / 3;  /* hauteur des photos (16/10 = plus court, 1/1 = carré) */
+  --kc-glass-blur:16px;     /* intensité du flou « verre dépoli » */
+  --kc-reveal-dur:.5s;      /* vitesse des apparitions (scroll reveal) */
   /* Aura teal très douce derrière le verre — le fond reste clair */
   background:
     radial-gradient(60rem 32rem at 6% -10%, rgba(15,167,165,.10), transparent 60%),
@@ -403,8 +407,8 @@
 .kc-devis .aside-card,
 .kc-devis .cta-submit-secondary{
   background:var(--glass);
-  -webkit-backdrop-filter:blur(14px) saturate(1.4);
-  backdrop-filter:blur(14px) saturate(1.4);
+  -webkit-backdrop-filter:blur(var(--kc-glass-blur)) saturate(1.4);
+  backdrop-filter:blur(var(--kc-glass-blur)) saturate(1.4);
   border:1px solid var(--glass-brd);
   box-shadow:var(--shadow-md);
 }
@@ -458,12 +462,12 @@
 .kc-devis .step.active .step-title em::after{transform:scaleX(1)}
 
 /* — Scroll reveal (piloté par JS ; sans JS → contenu visible) — */
-.kc-devis .kc-reveal{opacity:0;transform:translateY(16px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--kc-rev-delay,0ms)}
+.kc-devis .kc-reveal{opacity:0;transform:translateY(16px);transition:opacity var(--kc-reveal-dur) var(--ease),transform var(--kc-reveal-dur) var(--ease);transition-delay:var(--kc-rev-delay,0ms)}
 .kc-devis .kc-reveal.kc-in{opacity:1;transform:none}
 
 /* — Cartes prestation AVEC photo (premium, verre, glow) — */
 .kc-devis .presta-card{padding:0;gap:0;overflow:hidden;border-radius:18px}
-.kc-devis .presta-card .oc-photo{position:relative;width:100%;aspect-ratio:16/11;overflow:hidden;background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 55%,var(--teal-dark) 100%)}
+.kc-devis .presta-card .oc-photo{position:relative;width:100%;aspect-ratio:var(--kc-photo-ratio);overflow:hidden;background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 55%,var(--teal-dark) 100%)}
 .kc-devis .presta-card .oc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s var(--ease)}
 .kc-devis .presta-card:hover .oc-photo img{transform:scale(1.06)}
 .kc-devis .presta-card .oc-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,35,64,0) 45%,rgba(13,35,64,.42) 100%);transition:background .3s var(--ease);pointer-events:none}
@@ -486,6 +490,8 @@
 .kc-devis .presta-card.selected::after{top:12px;right:12px;width:30px;height:30px;background:var(--teal);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');background-size:17px;background-position:center;background-repeat:no-repeat;box-shadow:0 6px 16px rgba(15,167,165,.55);z-index:3}
 /* La bordure dégradé ::before passe au-dessus de la photo proprement */
 .kc-devis .presta-card::before{z-index:4}
+/* Photos un peu plus courtes sur mobile (réduit le scroll) */
+@media(max-width:768px){.kc-devis{--kc-photo-ratio:16 / 10}}
 
 /* — prefers-reduced-motion : neutralise tous les effets animés ajoutés — */
 @media (prefers-reduced-motion: reduce){
