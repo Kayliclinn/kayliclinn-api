@@ -11,8 +11,12 @@ Contenu du dépôt :
 | Dossier | Rôle |
 | --- | --- |
 | `site/` | Les pages du site (blocs « HTML personnalisé » à coller dans WordPress) + guide `site/README.md` |
-| `wordpress/` | Code PHP à intégrer dans les extensions (grille de prix serveur, handler kc-devis durci, endpoint disponibilités Phase 3.2) + guide `INTEGRATION-kc-booking.md` |
+| `wordpress/` | Code PHP à intégrer dans les extensions (grille de prix serveur `kc-pricing.php`, handler kc-devis durci) + analyse de sécurité des 4 plugins (`ANALYSE-plugins.md`) + guide `INTEGRATION-kc-booking.md` |
 | `lib/`, `api/` | **Archive** : ancienne API Vercel (décision du 11/06/2026 : Vercel retiré du projet). Ne plus brancher les pages dessus. `lib/pricing.js` reste une référence lisible de la grille. |
+
+## État réel des extensions (vérifié sur le code source, 11/06/2026)
+
+`kc-booking` est plus avancé que le document de suivi ne le dit : **les Phases 3.1 (`GET /types`) et 3.2 (`GET /availability`) sont terminées** (disponibilités croisant horaires du personnel + Google Agenda + réservations). Le webhook Stripe vérifie la signature et est idempotent. **Une faille critique demeure** : `kc_rest_create_booking` accepte le montant envoyé par le navigateur — à corriger avec `KC_Pricing` (voir `wordpress/INTEGRATION-kc-booking.md`, correctif 1). Slugs réels des types : `bureaux, parties-communes, commerces, sensibles, fin-chantier, demenagement, remise-etat, decapage, vitres, airbnb` (seuls `airbnb` et `demenagement` sont `calendar_paid`).
 
 ## Architecture du tunnel (WordPress)
 

@@ -1,106 +1,158 @@
-# Intégration WordPress — sécuriser et finir le tunnel de réservation
+# Intégration WordPress — sécuriser le tunnel (analyse des plugins réels)
 
-Tout le tunnel (devis → réservation → paiement) passe par WordPress :
-extensions `kc-booking`, `kc-devis`, `kc-sheet-sync`. Ce dossier contient le
-code à intégrer dans ces extensions. **À faire via Claude Code en local sur le
-code source des extensions** (méthode du document de formation : modification
-locale → ZIP → Extensions → Téléverser), ou bloc par bloc dans le chat.
+Après lecture des 4 extensions (`kc-booking`, `kc-devis`, `kc-sheet-sync`,
+`kc-contact`), voici ce qui est **déjà en place** et ce qui **doit être
+corrigé**. Tout le tunnel passe par WordPress — aucune dépendance à Vercel.
 
-## 1. `kc-pricing.php` — la grille officielle côté serveur 🔴 priorité sécurité
+## Ce qui est déjà fait (et bien fait) ✅
 
-**Pourquoi.** La page `/reservation/` envoie `amount_total` / `amount_now` à
-`POST /bookings`, mais un fraudeur peut appeler l'API directement avec un
-montant de 1 €. Le plugin doit donc **recalculer** le prix à partir du champ
-`quote` (JSON) et ignorer les montants reçus.
+- **`kc-booking` Phase 3.1 et 3.2 sont opérationnelles** : `GET /types`,
+  `GET /availability` (croise horaires du personnel + Google Agenda free/busy
+  + réservations en base + buffer + délais min/max), `POST /bookings`,
+  `GET|POST /bookings/{token}` (confirm/cancel), `POST /stripe/webhook`.
+  → Le document de suivi indiquait la Phase 3.2 « pas encore construite » :
+  **c'est périmé, elle existe**. La page `site/reservation.html` est déjà
+  alignée sur ce contrat (champs envoyés/lus compatibles).
+- **Webhook Stripe** : signature vérifiée (`kc_stripe_verify_sig`) +
+  idempotence (`if ($b->status === 'pending')`). Conforme aux règles du projet.
+- **`kc-contact`** : nonce, honeypot, rate limiting, validation, `esc_html`
+  partout dans les emails. RAS.
+- Liens durables `?resa=token` + endpoint `/pay` (kc-sheet-sync) :
+  « gérer / payer plus tard / annuler ». Bien.
 
-**Comment.**
-1. Copier `kc-pricing.php` dans `kc-booking/includes/` et le `require_once`.
-2. Dans le handler de `POST /bookings`, pour un type `calendar_paid` :
+## Correctif 1 — 🔴 FAILLE DE PRIX dans `kc-booking` (priorité absolue)
+
+Dans `kc_rest_create_booking`, le bloc « Tarification » fait **confiance au
+montant envoyé par le navigateur** :
 
 ```php
-$quote = json_decode( (string) $request['quote'], true );
-try {
-    $booking_data = is_array( $quote['booking'] ?? null ) ? $quote['booking'] : array();
-    $devis        = KC_Pricing::compute_forfait( $booking_data );
-    $mode         = ( 'full' === $request['payment_mode'] ) ? 'full' : 'deposit';
-    $amount_cents = ( 'full' === $mode ) ? $devis['total_cents'] : $devis['acompte_cents'];
-    // → utiliser $amount_cents pour la session Stripe (unit_amount),
-    //   et $devis['total_cents'] / $devis['solde_cents'] pour l'enregistrement.
-    //   NE PAS utiliser $request['amount_total'] ni $request['amount_now'].
-} catch ( InvalidArgumentException $e ) {
-    return new WP_Error( 'kc_bad_quote', 'Demande invalide : ' . $e->getMessage(), array( 'status' => 400 ) );
+if ($devis_driven) {
+    $total = round((float) $q_total, 2);   // ← le client choisit son prix
+    ...
 }
 ```
 
-3. Idempotence (règle du projet) : avant de traiter un webhook Stripe,
-   vérifier que l'événement (`event->id`) n'a pas déjà été traité
-   (le stocker en base ou en option), pour ne jamais confirmer deux fois.
+Un fraudeur peut appeler `POST /bookings` avec `amount_total=1` et payer 1 €
+une prestation à 149 €. **Correctif : recalculer le prix côté serveur** à partir
+du forfait décrit dans `quote`, via `KC_Pricing` (fichier `kc-pricing.php`).
 
-## 2. `kc-availability-endpoint.php` — Phase 3.2 (créneaux) 🔴 bloquant
-
-Implémentation de référence de `GET /availability`, au format exact attendu
-par la page `/reservation/`. Trois « POINTS D'INTÉGRATION » à brancher sur
-l'existant de `kc-booking` : durées des variantes, horaires réels du
-personnel, occupations (réservations + Google Agenda). Des valeurs par défaut
-permettent de tester le parcours avant ce branchement.
-
-## 3. `kc-devis-handler.php` — envoi du devis par email
-
-Version durcie du handler admin-ajax `kc_devis` : nonce, honeypot, limitation
-de débit, validation, **échappement HTML de toutes les données client**
-(anti-hameçonnage), prix des forfaits recalculés via `KC_Pricing`. La page
-`/devis/` n'affiche plus jamais de faux succès : si `window.kcDevis` n'est pas
-injecté par le plugin, elle informe honnêtement le client.
-
-L'extension doit injecter sur la page `/devis/` :
-
+### a) Installer la grille serveur
+Copier `kc-pricing.php` dans le dossier du plugin `kc-booking`, et l'inclure
+tout en haut du fichier principal :
 ```php
-wp_localize_script( $handle, 'kcDevis', array(
-    'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-    'nonce'   => wp_create_nonce( 'kc_devis' ),
-) );
+require_once __DIR__ . '/kc-pricing.php';
 ```
 
-## 4. Côté admin kc-booking — 2 réglages à faire (sans code)
+### b) Remplacer le bloc « Tarification » de `kc_rest_create_booking`
+Repérer (vers la ligne 1526) le bloc qui commence par
+`// ── Tarification ──` et se termine juste avant `$token = bin2hex(...)`.
+Le remplacer par :
 
-1. **Créer le type « Visite d'audit »** : slug `visite-audit`, mode
-   `calendar_free`, durée ~45 min, tout le personnel. C'est le type utilisé
-   par **toutes** les prestations sur mesure du tunnel (sinistre, textile,
-   containers, événement…) — un seul calendrier, zéro catalogue à rallonge.
-   C'est la réponse au besoin « les prestations non estimables réservent un
-   audit sur le même calendrier ».
-2. **Vérifier les slugs** des types existants face à la table `TYPE_MAP` en
-   haut du script de `site/reservation.html` (airbnb, demenagement, bureaux,
-   commerces, parties-communes, vitres, fin-chantier, remise-etat). Si un slug
-   diffère, ajuster `TYPE_MAP` — une ligne à modifier.
+```php
+    // ── Tarification (RECALCULÉE CÔTÉ SERVEUR — ne jamais croire le client) ──
+    if (is_string($q_blob)) { $dec = json_decode($q_blob, true); if (is_array($dec)) $q_blob = $dec; }
 
-## 5. Correspondance devis → kc-booking (déjà câblée côté pages)
+    $total = null; $deposit = null; $payment_mode = 'none'; $requires_payment = false;
+    $server_priced = false;
 
-| Tunnel de devis | Type kc-booking | Paiement |
-| --- | --- | --- |
-| Airbnb | `airbnb` | Acompte 30 % / total (Stripe) |
-| Déménagement · standard · logement vide | `demenagement` | Acompte 30 % / total (Stripe) |
-| Bureaux · locaux | `bureaux` | Visite gratuite |
-| Commerces · vitrines | `commerces` | Visite gratuite |
-| Copropriétés | `parties-communes` | Visite gratuite |
-| Vitres (toutes) | `vitres` | Visite gratuite |
-| Fin de chantier | `fin-chantier` | Visite gratuite |
-| Maison · grand ménage | `remise-etat` | Visite gratuite |
-| Tout le reste (sinistre, textile, syndic, événement…) | `visite-audit` | Visite gratuite |
+    // Si le devis décrit un forfait logement connu → prix officiel de la grille
+    if (is_array($q_blob) && !empty($q_blob['booking']['forfait']) && class_exists('KC_Pricing')) {
+        try {
+            $devis        = KC_Pricing::compute_forfait($q_blob['booking']);
+            $total        = $devis['total_cents'] / 100;
+            $payment_mode = ($q_mode === 'full') ? 'full' : 'deposit';
+            $deposit      = ($payment_mode === 'full') ? $total : $devis['acompte_cents'] / 100;
+            $requires_payment = ($deposit > 0);
+            $server_priced = true;
+        } catch (InvalidArgumentException $e) {
+            return new WP_Error('kc_bad_quote', 'Demande invalide : ' . $e->getMessage(), ['status' => 400]);
+        }
+    }
 
-Le devis complet voyage dans le champ `quote` de la réservation : l'admin et
-le Google Sheet (kc-sheet-sync) gardent ainsi le détail exact de la demande,
-même quand le type kc-booking est générique.
+    // Sinon : prix de référence du type/variante (jamais le montant reçu du client)
+    if (!$server_priced) {
+        $requires_payment = ($type->cta_type === 'calendar_paid');
+        if ($requires_payment) {
+            $price        = ($variant && $variant->price_indicative !== null) ? (float) $variant->price_indicative
+                          : ($type->price !== null ? (float) $type->price : null);
+            $total        = $price;
+            $dp           = max(0, min(100, (int) kc_opt('deposit_percent', 30)));
+            $deposit      = $price !== null ? round($price * $dp / 100, 2) : null;
+            $payment_mode = 'deposit';
+        }
+    }
+```
 
-## 6. Test de bout en bout (point 4.4 du document de suivi)
+Les variables `$q_total` / `$q_now` ne sont **plus utilisées** pour fixer le
+prix : on peut les ignorer (la page continue de les envoyer, sans effet).
+`kc_stripe_create_checkout($booking, $deposit)` reçoit donc toujours un montant
+calculé serveur. **Rien d'autre à changer** : le reste de la fonction (création
+en base, Stripe, emails) fonctionne tel quel.
 
-En mode test Stripe (carte `4242 4242 4242 4242`) :
-1. `/devis/` → Airbnb 2 pièces + linge → tarif 85 € → « Réserver mon créneau » ;
-2. `/reservation/` → créneau → acompte 25,50 € → paiement Stripe test ;
-3. Vérifier : email admin + client, ligne Google Sheet, événement Agenda,
-   lien « Gérer ma réservation » (`?resa=…`) → payer le solde / annuler ;
-4. Refaire en parcours gratuit : `/devis/` → « Après sinistre » → visite
-   d'audit → créneau → confirmation sans paiement ;
-5. Tester la fraude : rejouer le `POST /bookings` avec `amount_now: 1` —
-   le montant encaissé doit rester celui de la grille (preuve que le
-   recalcul serveur fonctionne).
+### c) Vérifier la grille
+Les `price_indicative` des variantes (`kc_booking_phase_1_2_seed_variants` :
+Airbnb 55/80/120, déménagement 210/330/550) sont des **anciens montants** ;
+ils ne servent plus que de repli si `quote` est absent. La vérité tarifaire est
+désormais `kc-pricing.php` (Airbnb 45/60/75/95, déménagement 79/99/119/149).
+
+## Correctif 2 — 🟠 `kc-sheet-sync` traite le webhook Stripe sans vérifier la signature
+
+`kc_sheet_dispatch` (filtre `rest_post_dispatch`) re-décode le corps du webhook
+et appelle `kc_sheet_on_paid` **même si la signature était invalide** : le
+callback principal rejette (400), mais le filtre s'exécute quand même. Un
+attaquant peut donc forger un faux `checkout.session.completed` pour marquer une
+ligne « Payé » dans le Google Sheet et déclencher l'email « acompte reçu »
+(pas d'impact sur la base, mais pollution + faux signal).
+
+**Correctif** : dans `kc_sheet_dispatch`, pour la branche webhook, ne traiter
+que si la signature est valide :
+
+```php
+elseif ($route === $ns . '/stripe/webhook' && $method === 'POST') {
+    $secret = function_exists('kc_opt') ? kc_opt('stripe_webhook_secret') : '';
+    $sig    = $request->get_header('Stripe-Signature');
+    if ($secret && function_exists('kc_stripe_verify_sig')
+        && !kc_stripe_verify_sig($request->get_body(), $sig, $secret)) {
+        return $result; // signature invalide → on ignore
+    }
+    // … suite inchangée …
+}
+```
+
+## Correctif 3 — 🟠 `kc-devis` calcule des prix périmés
+
+`kc_devis_calculate_price` contient l'**ancienne grille inventée** (Airbnb
+45–65 / 65–95 / 100–140, déménagement 180–240…), incohérente avec la grille
+officielle. De plus, la page `/devis/` envoie désormais un format différent
+(`kind`, `booking`, `estimation`). **Remplacer le handler `kc_devis` actuel par
+`kc-devis-handler.php`** (fourni) : il lit le nouveau format, recalcule les
+forfaits via `KC_Pricing`, échappe toutes les données client et n'invente aucun
+prix pour les estimations pro/audit. Conserver l'`enqueue` qui injecte
+`window.kcDevis = { ajaxUrl, nonce }` (le nonce attendu est `kc_devis`).
+
+Détail mineur : remplacer `json_decode(stripslashes($payload_raw), true)` par
+`json_decode(wp_unslash($payload_raw), true)` (plus sûr sur les apostrophes).
+
+## Correctif 4 — alignement déjà fait côté page
+
+`site/reservation.html` (table `TYPE_MAP`) mappe les 17 prestations du tunnel
+vers les **slugs réels** du plugin. Le type `vitres` étant en mode « email »
+(sans calendrier), les demandes de vitres réservent une visite d'audit sur un
+type gratuit. Tout le reste pointe vers les types existants.
+
+**Optionnel (plus propre)** : créer dans l'admin kc-booking un type
+`visite-audit` (calendar_free, ~45 min, tout le personnel) et le mettre comme
+`DEFAULT_AUDIT_TYPE` + cibles des prestations sur mesure dans `reservation.html`.
+L'admin verrait alors « Visite d'audit » plutôt que « Remise en état » pour ces
+demandes (le devis complet reste de toute façon dans le champ `quote`).
+
+## Test de bout en bout (point 4.4 du suivi) — en mode test Stripe
+
+1. `/devis/` → Airbnb 2 pièces + linge → 85 € → « Réserver mon créneau ».
+2. `/reservation/` → créneau → acompte 25,50 € → Stripe test (carte `4242…`).
+3. Vérifier : email client + admin, ligne Google Sheet (réf `KC-XXXX`),
+   événement Google Agenda, lien « Gérer ma réservation » (`?resa=…`).
+4. Parcours gratuit : `/devis/` → « Après sinistre » → visite d'audit →
+   créneau → confirmation sans paiement.
+5. **Test anti-fraude** (après correctif 1) : rejouer `POST /bookings` avec
+   `amount_total: 1` → le montant Stripe doit rester celui de la grille.

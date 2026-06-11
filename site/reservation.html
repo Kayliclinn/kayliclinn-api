@@ -376,9 +376,12 @@
   };
 
   /* Correspondance entre les prestations du tunnel de devis et les
-     SLUGS des types kc-booking. À ajuster si vos slugs diffèrent
-     (Réglages kc-booking → prestations). Toute prestation « sur
-     mesure » absente de cette table réserve le type d'audit générique. */
+     SLUGS RÉELS des types kc-booking (confirmés dans le plugin :
+     bureaux, parties-communes, commerces, sensibles, fin-chantier,
+     demenagement, remise-etat, decapage, vitres, airbnb).
+     Seuls airbnb et demenagement sont calendar_paid (payés en ligne) ;
+     standard/logement-vide partagent la grille de déménagement (79–149 €)
+     et donc le même type/calendrier. */
   const TYPE_MAP = {
     /* — Forfaits payés en ligne (Flux B) — */
     'airbnb':          'airbnb',
@@ -390,16 +393,22 @@
     'locaux':          'bureaux',
     'commerce':        'commerces',
     'copropriete':     'parties-communes',
-    'vitres-ponctuel': 'vitres',
-    'vitres-hauteur':  'vitres',
+    'syndic':          'parties-communes',
     'fin-chantier':    'fin-chantier',
     'maison':          'remise-etat',
-    'grand-menage':    'remise-etat'
+    'grand-menage':    'remise-etat',
+    'sinistre':        'remise-etat',
+    'textile':         'remise-etat',
+    'evenement':       'remise-etat',
+    // Le type « vitres » du plugin est en mode « email » (pas de calendrier) :
+    // on réserve la visite d'audit sur le type gratuit générique.
+    'vitres-ponctuel': 'remise-etat',
+    'vitres-hauteur':  'remise-etat'
   };
-  /* Type gratuit générique pour tous les autres cas (sinistre, textile,
-     syndic, événement…). À créer une fois dans kc-booking :
-     slug « visite-audit », cta calendar_free, durée ~45 min. */
-  const DEFAULT_AUDIT_TYPE = 'visite-audit';
+  /* Type gratuit générique pour les cas sans type dédié. « remise-etat »
+     existe déjà (calendar_free) → fonctionne immédiatement. Pour un libellé
+     plus neutre dans l'admin, créer un type « visite-audit » et le mettre ici. */
+  const DEFAULT_AUDIT_TYPE = 'remise-etat';
 
   const IS_LIVE = /(^|\.)kayliclinn\.fr$/i.test(location.hostname);
 
