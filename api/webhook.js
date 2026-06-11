@@ -1,4 +1,5 @@
 import Stripe from 'stripe';
+import { escapeHtml, sendEmail, emailFrom } from '../lib/helpers.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -64,75 +65,63 @@ export default async function handler(req, res) {
 }
 
 async function sendConfirmationEmails(session) {
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    console.log('RESEND_API_KEY non configurée — emails non envoyés pour le moment.');
-    return;
-  }
-
   const m = session.metadata || {};
   const adminEmail = process.env.NOTIFICATION_EMAIL || 'contact@kayliclinn.fr';
   const isAcompte = m.mode === 'acompte';
 
+  // SÉCURITÉ : toutes les valeurs issues du client sont échappées avant
+  // insertion dans le HTML (anti-injection / hameçonnage par les champs).
+  const e = (v) => escapeHtml(v);
+
   const detailsHtml = `
     <h3>Intervention</h3>
     <ul>
-      <li>Date : ${m.intervention_date || 'N/A'} ${m.intervention_slot ? 'à ' + m.intervention_slot : ''}</li>
-      <li>Type : ${m.service_type || 'N/A'} ${m.service_surface ? '· ' + m.service_surface + ' m²' : ''}</li>
-      <li>Adresse : ${m.client_address || 'Non renseignée'}</li>
+      <li>Date : ${e(m.intervention_date) || 'N/A'} ${m.intervention_slot ? 'à ' + e(m.intervention_slot) : ''}</li>
+      <li>Prestation : ${e(m.service_type) || 'N/A'} ${m.service_taille ? '· ' + e(m.service_taille) : ''}</li>
+      <li>Options : ${e(m.service_options) || 'Aucune'}</li>
+      <li>Adresse : ${e(m.client_address) || 'Non renseignée'}</li>
     </ul>
     <h3>Client</h3>
     <ul>
-      <li>Nom : ${m.client_firstname || ''} ${m.client_lastname || ''}</li>
-      <li>Email : ${m.client_email || ''}</li>
-      <li>Téléphone : ${m.client_phone || ''}</li>
+      <li>Nom : ${e(m.client_firstname)} ${e(m.client_lastname)}</li>
+      <li>Email : ${e(m.client_email)}</li>
+      <li>Téléphone : ${e(m.client_phone)}</li>
+      ${m.client_message ? `<li>Message : ${e(m.client_message)}</li>` : ''}
     </ul>
     <h3>Paiement</h3>
     <ul>
-      <li>Mode : ${isAcompte ? 'Acompte 30%' : 'Paiement total'}</li>
-      <li>Versé : ${m.amount || ''} €</li>
-      <li>Total TTC : ${m.total_ttc || ''} €</li>
-      <li>Solde dû après intervention : ${m.balance_due || '0'} €</li>
-      <li>Référence Stripe : ${session.id}</li>
+      <li>Mode : ${isAcompte ? 'Acompte 30 %' : 'Paiement total'}</li>
+      <li>Versé : ${e(m.amount)} €</li>
+      <li>Total TTC : ${e(m.total_ttc)} €</li>
+      <li>Solde dû après intervention : ${e(m.balance_due) || '0'} €</li>
+      <li>Référence Stripe : ${e(session.id)}</li>
     </ul>
   `;
 
   // Email de notification à Kayli Clinn
-  await sendEmail(apiKey, {
-    from: 'Kayli Clinn <onboarding@resend.dev>',
+  await sendEmail({
+    from: emailFrom(),
     to: adminEmail,
-    subject: `Nouvelle réservation — ${m.client_firstname} ${m.client_lastname}`,
+    reply_to: String(m.client_email || '').slice(0, 80),
+    subject: `Nouvelle réservation — ${String(m.client_firstname || '').slice(0, 40)} ${String(m.client_lastname || '').slice(0, 40)}`,
     html: `<h2>Nouvelle réservation payée</h2>${detailsHtml}`,
   });
 
   // Email de confirmation au client
   if (m.client_email) {
-    await sendEmail(apiKey, {
-      from: 'Kayli Clinn <onboarding@resend.dev>',
+    await sendEmail({
+      from: emailFrom(),
       to: m.client_email,
       subject: 'Confirmation de votre réservation — Kayli Clinn',
       html: `
         <h2>Merci pour votre réservation !</h2>
-        <p>Bonjour ${m.client_firstname},</p>
-        <p>Nous confirmons la réception de votre paiement de ${isAcompte ? "un acompte de" : "la totalité de"} ${m.amount} €.</p>
+        <p>Bonjour ${e(m.client_firstname)},</p>
+        <p>Nous confirmons la réception de votre paiement de ${isAcompte ? 'un acompte de' : 'la totalité de'} ${e(m.amount)} €.</p>
         ${detailsHtml}
+        <p>Pour annuler ou décaler votre rendez-vous, appelez-nous au
+        <a href="tel:+33670012061">06 70 01 20 61</a>.</p>
         <p>À très bientôt,<br>L'équipe Kayli Clinn</p>
       `,
     });
-  }
-}
-
-async function sendEmail(apiKey, body) {
-  const response = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-  if (!response.ok) {
-    const err = await response.text();
-    console.error('Erreur Resend:', err);
   }
 }
