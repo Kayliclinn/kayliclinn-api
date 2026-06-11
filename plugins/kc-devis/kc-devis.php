@@ -26,69 +26,90 @@ define('KC_DEVIS_RATE_LIMIT',  3);
 define('KC_DEVIS_DB_VERSION',  '1.0');
 
 /* ════════════════════════════════════════════════════════════════════
-   GRILLE TARIFAIRE OFFICIELLE (KC_Pricing) — intégrée au plugin
+   GRILLE TARIFAIRE OFFICIELLE v2 (KC_Pricing) — intégrée au plugin
    ────────────────────────────────────────────────────────────────────
-   Source de vérité des prix, recalculés côté serveur (sécurité).
+   Source : « Kayli Clinn tarification 2 » (11/06/2026). Prix TTC (B2C).
+   Source de vérité des prix, recalculés côté serveur (sécurité) :
+   total = (base + options) × (1 + majorations) + frais fixes.
    La même classe est intégrée dans kc-devis.php : toute modification
    de tarif se reporte dans les deux fichiers (+ la page d'estimation).
    ════════════════════════════════════════════════════════════════════ */
 if ( ! class_exists( 'KC_Pricing' ) ) {
 class KC_Pricing {
 
-	/** Forfaits logement TTC — réservables en ligne (acompte 30 %). */
+	/** Forfaits B2C TTC — prix fixe en ligne. Typologies absentes = devis. */
 	const FORFAITS = array(
-		'airbnb'        => array(
-			'label' => 'Nettoyage Airbnb / location courte durée',
-			'prix'  => array( 'studio' => 45, 'p2' => 60, 'p3' => 75, 'p4' => 95 ),
+		'airbnb' => array(
+			'label' => 'Turnover Airbnb',
+			'prix'  => array( 'studio' => 55, 't2' => 75, 't3' => 95, 't4' => 120 ),
 		),
-		'demenagement'  => array(
-			'label' => 'Nettoyage après déménagement / fin de bail / état des lieux',
-			'prix'  => array( 'studio' => 79, 'p2' => 99, 'p3' => 119, 'p4' => 149 ),
+		'fin-de-bail' => array(
+			'label' => 'Ménage fin de bail / déménagement (logement vide)',
+			'prix'  => array( 'studio' => 160, 't2' => 220, 't3' => 290, 't4' => 360, 't5' => 430 ),
 		),
-		'standard'      => array(
-			'label' => 'Nettoyage appartement standard (ponctuel complet)',
-			'prix'  => array( 'studio' => 79, 'p2' => 99, 'p3' => 119, 'p4' => 149 ),
+		'grand-menage' => array(
+			'label' => 'Grand ménage (meublé occupé)',
+			'prix'  => array( 'studio' => 140, 't2' => 190, 't3' => 250, 't4' => 320 ),
 		),
-		'logement-vide' => array(
-			'label' => 'Nettoyage logement vide',
-			'prix'  => array( 'studio' => 79, 'p2' => 99, 'p3' => 119, 'p4' => 149 ),
+		'vitrerie' => array(
+			'label' => 'Vitrerie résidentielle simple (plain-pied / intérieur)',
+			'prix'  => array( 'studio' => 70, 't2' => 70, 't3' => 95, 't4' => 95, 't5' => 130 ),
 		),
 	);
 
 	const TAILLES = array(
-		'studio' => 'Studio ≤ 25 m²',
-		'p2'     => '2 pièces',
-		'p3'     => '3 pièces',
-		'p4'     => '4 pièces',
+		'studio' => 'Studio / T1',
+		't2'     => 'T2',
+		't3'     => 'T3',
+		't4'     => 'T4',
+		't5'     => 'T5',
 	);
 
-	/** Options à montant fixe (une seule option « linge », un seul « balcon »). */
+	/**
+	 * Options TTC. type 'fixe' = montant unique (qty forcée à 1) ;
+	 * type 'unite' = prix × quantité (lit, heure, m²) avec minimum éventuel.
+	 * 'compat' = forfaits autorisés. 'max' = garde-fou technique anti-abus.
+	 */
 	const OPTIONS = array(
-		'linge-petit'  => array( 'label' => 'Gestion du linge — petit volume', 'prix' => 15, 'groupe' => 'linge' ),
-		'linge-moyen'  => array( 'label' => 'Gestion du linge — volume moyen', 'prix' => 25, 'groupe' => 'linge' ),
-		'linge-gros'   => array( 'label' => 'Gestion du linge — gros volume', 'prix' => 40, 'groupe' => 'linge' ),
-		'frigo'        => array( 'label' => 'Nettoyage intérieur frigo', 'prix' => 10, 'groupe' => '' ),
-		'four'         => array( 'label' => 'Nettoyage intérieur four', 'prix' => 15, 'groupe' => '' ),
-		'petit-balcon' => array( 'label' => 'Petit balcon', 'prix' => 10, 'groupe' => 'balcon' ),
-		'terrasse'     => array( 'label' => 'Terrasse ou grand balcon', 'prix' => 30, 'groupe' => 'balcon' ),
+		'four'         => array( 'label' => 'Four en profondeur',                'prix' => 35, 'type' => 'fixe',  'compat' => array( 'airbnb', 'grand-menage' ) ),
+		'frigo'        => array( 'label' => 'Réfrigérateur / congélateur',       'prix' => 25, 'type' => 'fixe',  'compat' => array( 'airbnb', 'grand-menage' ) ),
+		'vitres-int'   => array( 'label' => 'Vitres intérieures',                'prix' => 20, 'type' => 'fixe',  'compat' => array( 'airbnb', 'grand-menage' ) ),
+		'placards'     => array( 'label' => 'Intérieur des placards',            'prix' => 25, 'type' => 'fixe',  'compat' => array( 'grand-menage' ) ),
+		'consommables' => array( 'label' => 'Réassort consommables',             'prix' => 10, 'type' => 'fixe',  'compat' => array( 'airbnb' ) ),
+		'cave-box'     => array( 'label' => 'Cave / box',                        'prix' => 25, 'type' => 'fixe',  'compat' => array( 'fin-de-bail' ) ),
+		'kit-linge'    => array( 'label' => 'Kit linge complet (par lit)',       'prix' => 18, 'type' => 'unite', 'unite' => 'lit',  'max' => 10,  'compat' => array( 'airbnb' ) ),
+		'repassage'    => array( 'label' => 'Repassage (par heure)',             'prix' => 35, 'type' => 'unite', 'unite' => 'h',    'max' => 8,   'compat' => array( 'airbnb', 'grand-menage' ) ),
+		'balcon'       => array( 'label' => 'Balcon / terrasse (par m²)',        'prix' => 2,  'type' => 'unite', 'unite' => 'm²',   'max' => 150, 'min_total' => 20,  'compat' => array( 'fin-de-bail', 'grand-menage' ) ),
+		'moquette'     => array( 'label' => 'Moquette injection-extraction (m²)', 'prix' => 5, 'type' => 'unite', 'unite' => 'm²',   'max' => 300, 'min_total' => 100, 'compat' => array( 'fin-de-bail' ) ),
+		'canape-2p'    => array( 'label' => 'Canapé 2 places',                   'prix' => 80,  'type' => 'fixe', 'compat' => array( 'airbnb', 'fin-de-bail', 'grand-menage', 'vitrerie' ) ),
+		'canape-3p'    => array( 'label' => 'Canapé 3 places',                   'prix' => 100, 'type' => 'fixe', 'compat' => array( 'airbnb', 'fin-de-bail', 'grand-menage', 'vitrerie' ) ),
+		'canape-4p'    => array( 'label' => 'Canapé 4 places',                   'prix' => 110, 'type' => 'fixe', 'compat' => array( 'airbnb', 'fin-de-bail', 'grand-menage', 'vitrerie' ) ),
+		'fauteuil'     => array( 'label' => 'Fauteuil',                          'prix' => 50,  'type' => 'fixe', 'compat' => array( 'airbnb', 'fin-de-bail', 'grand-menage', 'vitrerie' ) ),
+		'matelas'      => array( 'label' => 'Matelas 2 places',                  'prix' => 75,  'type' => 'fixe', 'compat' => array( 'airbnb', 'fin-de-bail', 'grand-menage', 'vitrerie' ) ),
 	);
 
-	/** Majorations cumulables, en % de (base + options). */
+	/** Majorations en % de (base + options). 'compat' vide = tous forfaits. */
 	const MAJORATIONS = array(
-		'urgence'        => array( 'label' => 'Intervention urgente (< 48 h)', 'taux' => 0.20 ),
-		'dimanche-ferie' => array( 'label' => 'Dimanche ou jour férié', 'taux' => 0.25 ),
+		'urgence'        => array( 'label' => 'Urgence < 48 h',                              'taux' => 0.20, 'compat' => array() ),
+		'dimanche-ferie' => array( 'label' => 'Dimanche ou jour férié',                      'taux' => 0.25, 'compat' => array() ),
+		'non-vide'       => array( 'label' => 'Logement non vidé',                           'taux' => 0.15, 'compat' => array( 'fin-de-bail' ) ),
+		'tres-encrasse'  => array( 'label' => 'Très encrassé / > 6 mois sans entretien',      'taux' => 0.30, 'compat' => array( 'grand-menage' ) ),
+	);
+
+	/** Frais fixes ajoutés après majorations. */
+	const FRAIS = array(
+		'etage' => array( 'label' => 'Étage 3 et + sans ascenseur', 'prix' => 15 ),
 	);
 
 	const ACOMPTE_PCT = 30;
 
 	/**
-	 * Calcule un forfait logement à partir de la demande du client.
-	 * Tous les montants sont en CENTIMES (entiers) pour éviter les flottants.
+	 * Calcule un forfait B2C. Montants en CENTIMES (entiers).
 	 *
 	 * @param array $booking ['forfait' => slug, 'taille' => slug,
-	 *                        'options' => [slugs], 'majorations' => [slugs]]
-	 * @return array{label:string,taille:string,total_cents:int,acompte_cents:int,solde_cents:int,lignes:array}
-	 * @throws InvalidArgumentException si la combinaison n'existe pas dans la grille.
+	 *                        'options' => [slug => quantité],
+	 *                        'majorations' => [slugs], 'frais' => [slugs]]
+	 * @throws InvalidArgumentException si la combinaison sort de la grille.
 	 */
 	public static function compute_forfait( array $booking ) {
 		$forfait = isset( $booking['forfait'] ) ? (string) $booking['forfait'] : '';
@@ -99,47 +120,56 @@ class KC_Pricing {
 		}
 		$grille = self::FORFAITS[ $forfait ];
 		if ( ! isset( $grille['prix'][ $taille ] ) ) {
-			throw new InvalidArgumentException( 'Taille inconnue : ' . $taille );
+			throw new InvalidArgumentException( 'Typologie hors grille (devis requis) : ' . $taille );
 		}
 
 		$base_cents = (int) round( $grille['prix'][ $taille ] * 100 );
 		$lignes     = array(
-			array(
-				'label'   => $grille['label'] . ' — ' . self::TAILLES[ $taille ],
-				'montant' => $base_cents / 100,
-			),
+			array( 'label' => $grille['label'] . ' — ' . self::TAILLES[ $taille ], 'montant' => $base_cents / 100 ),
 		);
 
+		// ── Options (quantités validées, compatibilité par forfait) ──
 		$options       = isset( $booking['options'] ) && is_array( $booking['options'] ) ? $booking['options'] : array();
-		$groupes_vus   = array();
 		$options_cents = 0;
-		foreach ( $options as $key ) {
+		foreach ( $options as $key => $qty ) {
 			$key = (string) $key;
 			if ( ! isset( self::OPTIONS[ $key ] ) ) {
 				throw new InvalidArgumentException( 'Option inconnue : ' . $key );
 			}
-			$opt    = self::OPTIONS[ $key ];
-			$groupe = $opt['groupe'];
-			if ( $groupe && isset( $groupes_vus[ $groupe ] ) ) {
-				throw new InvalidArgumentException( 'Options incompatibles (groupe ' . $groupe . ')' );
+			$opt = self::OPTIONS[ $key ];
+			if ( ! in_array( $forfait, $opt['compat'], true ) ) {
+				throw new InvalidArgumentException( 'Option incompatible avec ce forfait : ' . $key );
 			}
-			if ( $groupe ) {
-				$groupes_vus[ $groupe ] = true;
+			$qty = (int) $qty;
+			if ( 'fixe' === $opt['type'] ) {
+				$qty = 1;
 			}
-			$options_cents += (int) round( $opt['prix'] * 100 );
-			$lignes[]       = array( 'label' => $opt['label'], 'montant' => $opt['prix'] );
+			$max = isset( $opt['max'] ) ? (int) $opt['max'] : 1;
+			if ( $qty < 1 || $qty > $max ) {
+				throw new InvalidArgumentException( 'Quantité invalide pour ' . $key );
+			}
+			$montant_cents = (int) round( $opt['prix'] * $qty * 100 );
+			if ( isset( $opt['min_total'] ) ) {
+				$montant_cents = max( $montant_cents, (int) round( $opt['min_total'] * 100 ) );
+			}
+			$options_cents += $montant_cents;
+			$label          = $opt['label'] . ( 'unite' === $opt['type'] ? ' × ' . $qty . ' ' . $opt['unite'] : '' );
+			$lignes[]       = array( 'label' => $label, 'montant' => $montant_cents / 100 );
 		}
 
 		$sous_total_cents = $base_cents + $options_cents;
 
+		// ── Majorations cumulables, en % de (base + options) ──
 		$majorations = isset( $booking['majorations'] ) && is_array( $booking['majorations'] ) ? $booking['majorations'] : array();
 		$taux_total  = 0.0;
-		foreach ( array_unique( $majorations ) as $key ) {
-			$key = (string) $key;
+		foreach ( array_unique( array_map( 'strval', $majorations ) ) as $key ) {
 			if ( ! isset( self::MAJORATIONS[ $key ] ) ) {
 				throw new InvalidArgumentException( 'Majoration inconnue : ' . $key );
 			}
-			$maj         = self::MAJORATIONS[ $key ];
+			$maj = self::MAJORATIONS[ $key ];
+			if ( ! empty( $maj['compat'] ) && ! in_array( $forfait, $maj['compat'], true ) ) {
+				throw new InvalidArgumentException( 'Majoration incompatible : ' . $key );
+			}
 			$taux_total += $maj['taux'];
 			$lignes[]    = array(
 				'label'   => $maj['label'] . ' (+' . round( $maj['taux'] * 100 ) . ' %)',
@@ -147,7 +177,19 @@ class KC_Pricing {
 			);
 		}
 
-		$total_cents   = (int) round( $sous_total_cents * ( 1 + $taux_total ) );
+		$total_cents = (int) round( $sous_total_cents * ( 1 + $taux_total ) );
+
+		// ── Frais fixes (après majorations) ──
+		$frais = isset( $booking['frais'] ) && is_array( $booking['frais'] ) ? $booking['frais'] : array();
+		foreach ( array_unique( array_map( 'strval', $frais ) ) as $key ) {
+			if ( ! isset( self::FRAIS[ $key ] ) ) {
+				throw new InvalidArgumentException( 'Frais inconnu : ' . $key );
+			}
+			$f            = self::FRAIS[ $key ];
+			$total_cents += (int) round( $f['prix'] * 100 );
+			$lignes[]     = array( 'label' => $f['label'], 'montant' => $f['prix'] );
+		}
+
 		$acompte_cents = (int) round( $total_cents * self::ACOMPTE_PCT / 100 );
 
 		return array(
@@ -160,12 +202,7 @@ class KC_Pricing {
 		);
 	}
 
-	/**
-	 * Montant à encaisser maintenant, en centimes, selon le mode choisi.
-	 *
-	 * @param array  $booking Demande client (voir compute_forfait).
-	 * @param string $mode    'deposit' (acompte 30 %) ou 'full' (totalité).
-	 */
+	/** Montant à encaisser maintenant, en centimes ('deposit' ou 'full'). */
 	public static function amount_now_cents( array $booking, $mode ) {
 		$devis = self::compute_forfait( $booking );
 		return ( 'full' === $mode ) ? $devis['total_cents'] : $devis['acompte_cents'];

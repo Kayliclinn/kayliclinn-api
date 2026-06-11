@@ -539,7 +539,7 @@
 <div class="step-container">
 
 <style>
-  /* ── Compléments V4 (parcours grille officielle) — réutilise le design existant ── */
+  /* ── Compléments V5 (catalogue v2) — réutilise le design existant ── */
   .kc-devis .funnel-tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-left:10px;vertical-align:middle}
   .kc-devis .funnel-tag.online{background:var(--teal-light);color:var(--teal-deep)}
   .kc-devis .funnel-tag.estimate{background:#EEF4FF;color:#3B5BDB}
@@ -551,181 +551,115 @@
   .kc-devis .result-audit-badge{display:inline-block;background:#FFF4E6;color:#B25E09;font-weight:700;font-size:12.5px;border-radius:100px;padding:7px 16px;margin-bottom:14px}
   .kc-devis .inline-result-err{display:none;background:#FDF1EE;border:1px solid #E07856;color:#C45A38;border-radius:12px;padding:12px 16px;margin-top:14px;font-size:13.5px;font-weight:600;line-height:1.5}
   .kc-devis .inline-result-err.show{display:block}
+  /* Stepper de quantité (options au lit / à l'heure / au m²) */
+  .kc-devis .opt-qty{display:flex;align-items:center;gap:10px}
+  .kc-devis .opt-qty button{width:30px;height:30px;border-radius:9px;border:1.5px solid var(--border);background:var(--white);font-size:17px;font-weight:700;color:var(--dark);cursor:pointer;line-height:1;display:grid;place-items:center;transition:all .15s}
+  .kc-devis .opt-qty button:hover:not(:disabled){border-color:var(--teal);color:var(--teal-dark)}
+  .kc-devis .opt-qty button:disabled{opacity:.35;cursor:default}
+  .kc-devis .opt-qty .oq-val{min-width:54px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;font-size:14px;color:var(--dark)}
 </style>
 
   <!-- ÉTAPE 0 : PRESTATION -->
   <div class="step active" id="step-presta" data-step="presta">
     <div class="step-tag">01 · Type de prestation</div>
     <h1 class="step-title">Quelle <em>prestation</em> vous intéresse ?</h1>
-    <p class="step-desc">Trois parcours selon votre besoin : réservation immédiate au tarif officiel, estimation chiffrée pour les pros, ou visite d'audit gratuite pour les demandes sur mesure.</p>
+    <p class="step-desc">Trois parcours selon votre besoin : réservation immédiate à prix fixe, estimation indicative, ou devis après visite gratuite.</p>
 
     <div class="presta-cats">
       <div>
-        <h2 class="presta-cat-title">Logements — tarif fixe<span class="funnel-tag online">Réservation en ligne</span></h2>
-        <div class="presta-grid" role="radiogroup" aria-label="Forfaits logement réservables en ligne">
+        <h2 class="presta-cat-title">Particuliers — prix fixe TTC<span class="funnel-tag online">Réservation en ligne</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Forfaits réservables en ligne">
           <button type="button" class="option-card presta-card" data-presta="airbnb">
             <div class="oc-photo">
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Nettoyage Airbnb</div>
-              <div class="oc-desc">Turnover location courte durée · dès 45 €</div>
+              <div class="oc-title">Turnover Airbnb</div>
+              <div class="oc-desc">Rotation entre deux locations · dès 55 € TTC</div>
             </div>
           </button>
-          <button type="button" class="option-card presta-card" data-presta="demenagement">
+          <button type="button" class="option-card presta-card" data-presta="fin-de-bail">
             <div class="oc-photo">
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Déménagement · fin de bail</div>
-              <div class="oc-desc">Avant état des lieux · dès 79 €</div>
+              <div class="oc-title">Fin de bail / déménagement</div>
+              <div class="oc-desc">Logement vide, tout inclus · dès 160 € TTC</div>
             </div>
           </button>
-          <button type="button" class="option-card presta-card" data-presta="standard">
+          <button type="button" class="option-card presta-card" data-presta="grand-menage">
             <div class="oc-photo">
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Appartement standard</div>
-              <div class="oc-desc">Ménage ponctuel complet · dès 79 €</div>
+              <div class="oc-title">Grand ménage</div>
+              <div class="oc-desc">Logement meublé occupé · dès 140 € TTC</div>
             </div>
           </button>
-          <button type="button" class="option-card presta-card" data-presta="logement-vide">
+          <button type="button" class="option-card presta-card" data-presta="vitrerie">
             <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/></svg></div>
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Logement vide</div>
-              <div class="oc-desc">Particulier, jusqu'à 4 pièces · dès 79 €</div>
+              <div class="oc-title">Vitrerie résidentielle</div>
+              <div class="oc-desc">Plain-pied / intérieur · dès 70 € TTC</div>
             </div>
           </button>
         </div>
       </div>
 
       <div>
-        <h2 class="presta-cat-title">Professionnels &amp; récurrent<span class="funnel-tag estimate">Estimation immédiate</span></h2>
-        <div class="presta-grid" role="radiogroup" aria-label="Prestations professionnelles estimables en ligne">
+        <h2 class="presta-cat-title">Estimation immédiate<span class="funnel-tag estimate">Prix confirmé après audit gratuit</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Prestations en estimation indicative">
+          <button type="button" class="option-card presta-card" data-presta="fin-chantier">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Fin de chantier</div>
+              <div class="oc-desc">Après travaux · dès 4,50 €/m² HT</div>
+            </div>
+          </button>
           <button type="button" class="option-card presta-card" data-presta="bureaux">
             <div class="oc-photo">
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Entretien de bureaux</div>
-              <div class="oc-desc">Cabinets, PME · dès 32 €/h HT</div>
+              <div class="oc-title">Bureaux &amp; locaux pro</div>
+              <div class="oc-desc">Entretien régulier · à partir de 2 €/m²/mois HT</div>
             </div>
           </button>
-          <button type="button" class="option-card presta-card" data-presta="locaux">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Locaux &amp; entretien régulier</div>
-              <div class="oc-desc">Ateliers, salles, espaces · dès 32 €/h HT</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="commerce">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Commerces &amp; vitrines</div>
-              <div class="oc-desc">Boutiques, restaurants · dès 32 €/h HT</div>
-            </div>
-          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="presta-cat-title">Sur devis<span class="funnel-tag audit">Visite gratuite</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Prestations sur devis avec visite gratuite">
           <button type="button" class="option-card presta-card" data-presta="copropriete">
             <div class="oc-photo">
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
             </div>
             <div class="oc-body">
               <div class="oc-title">Copropriétés &amp; parties communes</div>
-              <div class="oc-desc">Immeubles, syndics · dès 32 €/h HT</div>
+              <div class="oc-desc">Cahier des charges syndic, containers</div>
             </div>
           </button>
-          <button type="button" class="option-card presta-card" data-presta="vitres-ponctuel">
+          <button type="button" class="option-card presta-card" data-presta="commerces">
             <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Vitres intérieures</div>
-              <div class="oc-desc">Accessibles, ponctuel · 3 à 7 €/m²</div>
+              <div class="oc-title">Commerces &amp; ERP</div>
+              <div class="oc-desc">Horaires décalés, contraintes d'exploitation</div>
             </div>
           </button>
-        </div>
-      </div>
-
-      <div>
-        <h2 class="presta-cat-title">Sur mesure<span class="funnel-tag audit">Visite d'audit gratuite</span></h2>
-        <div class="presta-grid" role="radiogroup" aria-label="Prestations sur devis avec visite gratuite">
-          <button type="button" class="option-card presta-card" data-presta="maison">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Maison &amp; grands logements</div>
-              <div class="oc-desc">5 pièces et +, plus de 100 m²</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="grand-menage">
+          <button type="button" class="option-card presta-card" data-presta="remise-lourde">
             <div class="oc-photo">
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Grand ménage / très sale</div>
-              <div class="oc-desc">Insalubre, remise en état complète</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="fin-chantier">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Fin de chantier &amp; après travaux</div>
-              <div class="oc-desc">Poussière, gravats, VEFA</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="sinistre">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2v10M5 7l7 5 7-5M5 17l7 5 7-5"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Après sinistre</div>
-              <div class="oc-desc">Dégât des eaux, incendie</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="vitres-hauteur">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Vitres en hauteur / extérieures</div>
-              <div class="oc-desc">Accès difficile, façades</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="textile">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M4 18v-7a8 8 0 0 1 16 0v7M2 18h20M7 18v3M17 18v3"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Canapés, moquettes, tapis</div>
-              <div class="oc-desc">Injection-extraction, détachage</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="syndic">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 6h18M5 6V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2M6 6l1 14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-14"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Containers, parkings, locaux poubelles</div>
-              <div class="oc-desc">Syndics &amp; copropriétés</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="evenement">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Après événement</div>
-              <div class="oc-desc">Réceptions, salles, surfaces</div>
+              <div class="oc-title">Remise en état lourde</div>
+              <div class="oc-desc">Insalubrité, sinistre, après décès · en discrétion</div>
             </div>
           </button>
         </div>
@@ -769,27 +703,34 @@
     </div>
   </div>
 
-  <!-- ÉTAPE TAILLE (forfaits logement — grille officielle) -->
+  <!-- ÉTAPE : TYPOLOGIE (rendu dynamique selon le forfait) -->
   <div class="step" id="step-taille" data-step="taille">
-    <div class="step-tag">03 · Taille du logement</div>
-    <h1 class="step-title">Quelle est la <em>taille</em> du logement ?</h1>
-    <p class="step-desc">Le tarif est forfaitaire selon la taille — aucun supplément surprise. Au-delà de 4 pièces, une visite gratuite permet d'établir un devis précis.</p>
-    <div class="options-grid cols-3" role="radiogroup" aria-label="Taille du logement">
-      <button type="button" class="option-card" data-key="taille" data-value="studio">
-        <div class="oc-num">01</div><div class="oc-title">Studio</div><div class="oc-desc">Jusqu'à 25 m²</div>
+    <div class="step-tag">03 · Typologie</div>
+    <h1 class="step-title">Quelle est la <em>typologie</em> du logement ?</h1>
+    <p class="step-desc" id="taille-desc">Le tarif est forfaitaire selon la typologie — aucun supplément surprise. Au-delà, une visite gratuite permet d'établir un devis précis.</p>
+    <div class="options-grid cols-3" id="taille-grid" role="radiogroup" aria-label="Typologie du logement"></div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
       </button>
-      <button type="button" class="option-card" data-key="taille" data-value="p2">
-        <div class="oc-num">02</div><div class="oc-title">2 pièces</div><div class="oc-desc">T2</div>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : LOGEMENT VIDÉ ? (fin de bail) -->
+  <div class="step" id="step-vide" data-step="vide">
+    <div class="step-tag">04 · État du logement</div>
+    <h1 class="step-title">Le logement sera-t-il <em>entièrement vidé</em> ?</h1>
+    <p class="step-desc">Le forfait fin de bail s'entend pour un logement vide. S'il reste des meubles ou des affaires, une majoration de 15 % s'applique.</p>
+    <div class="options-grid cols-2" role="radiogroup" aria-label="Logement vidé ou non">
+      <button type="button" class="option-card" data-key="vide" data-value="oui">
+        <div class="oc-num">01</div><div class="oc-title">Oui, entièrement vidé</div><div class="oc-desc">Meubles et affaires évacués avant notre passage</div>
+        <span class="oc-badge">Tarif grille</span>
       </button>
-      <button type="button" class="option-card" data-key="taille" data-value="p3">
-        <div class="oc-num">03</div><div class="oc-title">3 pièces</div><div class="oc-desc">T3</div>
-      </button>
-      <button type="button" class="option-card" data-key="taille" data-value="p4">
-        <div class="oc-num">04</div><div class="oc-title">4 pièces</div><div class="oc-desc">T4</div>
-      </button>
-      <button type="button" class="option-card" data-key="taille" data-value="maison-grand">
-        <div class="oc-num">05</div><div class="oc-title">5 pièces et + / maison</div><div class="oc-desc">Sur devis · visite gratuite</div>
-        <span class="oc-badge">Audit gratuit</span>
+      <button type="button" class="option-card" data-key="vide" data-value="non">
+        <div class="oc-num">02</div><div class="oc-title">Non, pas complètement</div><div class="oc-desc">Il restera des meubles ou des affaires</div>
+        <span class="oc-badge">+15 %</span>
       </button>
     </div>
     <div class="step-nav">
@@ -801,7 +742,63 @@
     </div>
   </div>
 
-  <!-- ÉTAPE : TYPE DE BIEN (parcours pro & audit, rendu dynamique) -->
+  <!-- ÉTAPE : ÉTAT (grand ménage — coefficient ou bascule devis) -->
+  <div class="step" id="step-etat" data-step="etat">
+    <div class="step-tag">04 · État du logement</div>
+    <h1 class="step-title">Quel est l'<em>état actuel</em> du logement ?</h1>
+    <p class="step-desc">Soyez honnête : c'est ce qui nous permet de prévoir l'équipe et le matériel adaptés, sans mauvaise surprise sur place.</p>
+    <div class="options-grid cols-3" role="radiogroup" aria-label="État du logement">
+      <button type="button" class="option-card" data-key="etat" data-value="courant">
+        <div class="oc-num">01</div><div class="oc-title">État courant</div><div class="oc-desc">Entretien régulier, salissures normales</div>
+        <span class="oc-badge">Tarif grille</span>
+      </button>
+      <button type="button" class="option-card" data-key="etat" data-value="tres-encrasse">
+        <div class="oc-num">02</div><div class="oc-title">Très encrassé</div><div class="oc-desc">Plus de 6 mois sans entretien</div>
+        <span class="oc-badge">+30 %</span>
+      </button>
+      <button type="button" class="option-card" data-key="etat" data-value="tres-degrade">
+        <div class="oc-num">03</div><div class="oc-title">Très dégradé</div><div class="oc-desc">Encombrement important, état sanitaire douteux</div>
+        <span class="oc-badge">Visite gratuite</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : NIVEAU DE CHANTIER (fin de chantier) -->
+  <div class="step" id="step-niveau" data-step="niveau">
+    <div class="step-tag">03 · Niveau de chantier</div>
+    <h1 class="step-title">Quel <em>type de chantier</em> venez-vous de terminer ?</h1>
+    <p class="step-desc">Le niveau d'empoussièrement détermine le temps de travail. L'estimation est indicative : le prix est confirmé après audit gratuit ou envoi de photos.</p>
+    <div class="options-grid cols-3" role="radiogroup" aria-label="Niveau de chantier">
+      <button type="button" class="option-card" data-key="niveau" data-value="rafraichissement" data-mult="4.5">
+        <div class="oc-num">01</div><div class="oc-title">Rafraîchissement</div><div class="oc-desc">Peinture seule, sols protégés</div>
+        <span class="oc-badge">4,50 €/m² HT</span>
+      </button>
+      <button type="button" class="option-card" data-key="niveau" data-value="standard" data-mult="7">
+        <div class="oc-num">02</div><div class="oc-title">Rénovation standard</div><div class="oc-desc">Dépoussiérage complet, vitres, traces</div>
+        <span class="oc-badge">7 €/m² HT</span>
+      </button>
+      <button type="button" class="option-card" data-key="niveau" data-value="lourd" data-mult="11">
+        <div class="oc-num">03</div><div class="oc-title">Chantier lourd</div><div class="oc-desc">Construction neuve, voiles de ciment, gravats</div>
+        <span class="oc-badge">11 €/m² HT</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : TYPE DE BIEN (parcours devis, rendu dynamique) -->
   <div class="step" id="step-bien" data-step="bien">
     <div class="step-tag">03 · Type de bien</div>
     <h1 class="step-title">Quel <em>type de bien</em> est concerné ?</h1>
@@ -845,64 +842,11 @@
     </div>
   </div>
 
-  <!-- ÉTAPE : FRÉQUENCE (parcours pro) -->
-  <div class="step" id="step-frequence" data-step="frequence">
-    <div class="step-tag">05 · Fréquence</div>
-    <h1 class="step-title">À quelle <em>fréquence</em> intervenir ?</h1>
-    <p class="step-desc">La fréquence détermine votre budget mensuel. Pour une intervention unique, choisissez « Ponctuel ».</p>
-    <div class="options-grid cols-4" role="radiogroup" aria-label="Fréquence d'intervention">
-      <button type="button" class="option-card" data-key="frequence" data-value="ponctuel" data-mult="0">
-        <div class="oc-num">01</div><div class="oc-title">Ponctuel</div><div class="oc-desc">Une seule intervention</div>
-      </button>
-      <button type="button" class="option-card" data-key="frequence" data-value="1" data-mult="1">
-        <div class="oc-num">02</div><div class="oc-title">1× par semaine</div><div class="oc-desc">Maintenance légère</div>
-      </button>
-      <button type="button" class="option-card" data-key="frequence" data-value="2-3" data-mult="2.5">
-        <div class="oc-num">03</div><div class="oc-title">2-3× par semaine</div><div class="oc-desc">Entretien standard</div>
-        <span class="oc-badge">Le plus choisi</span>
-      </button>
-      <button type="button" class="option-card" data-key="frequence" data-value="5" data-mult="5">
-        <div class="oc-num">04</div><div class="oc-title">5× par semaine</div><div class="oc-desc">Tous les jours ouvrés</div>
-      </button>
-    </div>
-    <div class="step-nav">
-      <button type="button" class="btn-back" data-action="prev">
-        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Retour
-      </button>
-      <span></span>
-    </div>
-  </div>
-
-  <!-- ÉTAPE : ÉTAT DU LOGEMENT (forfaits — branche « très sale » vers l'audit) -->
-  <div class="step" id="step-etat" data-step="etat">
-    <div class="step-tag">05 · État du logement</div>
-    <h1 class="step-title">Quel est l'<em>état actuel</em> du logement ?</h1>
-    <p class="step-desc">Soyez honnête : un logement très encrassé demande une visite ou des photos pour fixer le juste prix (majoration de +30 à +50 % selon l'état).</p>
-    <div class="options-grid cols-2" role="radiogroup" aria-label="État du logement">
-      <button type="button" class="option-card" data-key="etat" data-value="normal">
-        <div class="oc-num">01</div><div class="oc-title">Normal ou modérément sale</div><div class="oc-desc">Entretien courant, état classique</div>
-        <span class="oc-badge">Tarif grille</span>
-      </button>
-      <button type="button" class="option-card" data-key="etat" data-value="tres-sale">
-        <div class="oc-num">02</div><div class="oc-title">Très sale / négligé</div><div class="oc-desc">Encrassement important, gros volume de déchets</div>
-        <span class="oc-badge">Visite ou photos</span>
-      </button>
-    </div>
-    <div class="step-nav">
-      <button type="button" class="btn-back" data-action="prev">
-        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Retour
-      </button>
-      <span></span>
-    </div>
-  </div>
-
-  <!-- ÉTAPE : OPTIONS (rendu dynamique selon la prestation) -->
+  <!-- ÉTAPE : OPTIONS (rendu dynamique, quantités) -->
   <div class="step" id="step-options" data-step="options">
-    <div class="step-tag">04 · Options</div>
+    <div class="step-tag">05 · Options</div>
     <h1 class="step-title">Souhaitez-vous des <em>prestations complémentaires</em> ?</h1>
-    <p class="step-desc">Tarifs officiels de notre grille. Vous pouvez aussi ne rien cocher si la prestation standard suffit.</p>
+    <p class="step-desc">Tarifs officiels TTC. Vous pouvez aussi ne rien cocher si le forfait standard suffit.</p>
     <div class="opts-grid" id="options-grid" role="group" aria-label="Options complémentaires"></div>
     <div class="step-nav">
       <button type="button" class="btn-back" data-action="prev">
@@ -916,18 +860,18 @@
     </div>
   </div>
 
-  <!-- ÉTAPE : DÉLAI & JOUR (majorations officielles, cumulables) -->
+  <!-- ÉTAPE : DÉLAI, JOUR & ACCÈS (majorations et frais officiels) -->
   <div class="step" id="step-delai" data-step="delai">
-    <div class="step-tag">06 · Délai d'intervention</div>
-    <h1 class="step-title">Quand l'<em>intervention</em> doit-elle avoir lieu ?</h1>
-    <p class="step-desc">Intervention standard sous 48 h à 7 jours. Les majorations ci-dessous sont cumulables et s'appliquent au total.</p>
-    <div class="opts-grid" role="group" aria-label="Majorations">
+    <div class="step-tag">06 · Délai &amp; accès</div>
+    <h1 class="step-title">Quand et <em>dans quelles conditions</em> ?</h1>
+    <p class="step-desc">Intervention standard sous 48 h à 7 jours. Les majorations ci-dessous sont cumulables et s'appliquent au total ; les frais d'accès sont fixes.</p>
+    <div class="opts-grid" role="group" aria-label="Majorations et frais">
       <button type="button" class="opt-row" id="major-urgence" role="checkbox" aria-checked="false">
         <div class="opt-left">
           <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="opt-info">
-            <div class="opt-name">Intervention urgente</div>
-            <div class="opt-desc-txt">Sous 48 h, selon disponibilités</div>
+            <div class="opt-name">Urgence — sous 48 h</div>
+            <div class="opt-desc-txt">Selon nos disponibilités</div>
           </div>
         </div>
         <div class="opt-right"><div class="opt-price">+20 %</div><div class="opt-check" aria-hidden="true">✓</div></div>
@@ -941,6 +885,16 @@
           </div>
         </div>
         <div class="opt-right"><div class="opt-price">+25 %</div><div class="opt-check" aria-hidden="true">✓</div></div>
+      </button>
+      <button type="button" class="opt-row" id="frais-etage" role="checkbox" aria-checked="false">
+        <div class="opt-left">
+          <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M4 22V8l8-6 8 6v14M4 14h16M4 18h16M4 10h16"/></svg></div>
+          <div class="opt-info">
+            <div class="opt-name">Étage 3 et + sans ascenseur</div>
+            <div class="opt-desc-txt">Frais fixe d'accès (matériel à porter)</div>
+          </div>
+        </div>
+        <div class="opt-right"><div class="opt-price">+15 €</div><div class="opt-check" aria-hidden="true">✓</div></div>
       </button>
     </div>
     <div class="step-nav">
@@ -1185,136 +1139,127 @@
     sessionStorageKey: 'kc_devis_progress',
     handoffKey: 'kc_reservation_handoff',
     sessionExpiry: 24 * 60 * 60 * 1000, // 24h
-    version: 4
+    version: 5
   };
 
   /* ════════════════════════════════════════════════════════
-     GRILLE TARIFAIRE OFFICIELLE (miroir de lib/pricing.js côté
+     GRILLE TARIFAIRE OFFICIELLE v2 (miroir de KC_Pricing côté
      serveur — le serveur reste seul juge au moment du paiement)
+     total = (base + options) × (1 + majorations) + frais fixes
      ════════════════════════════════════════════════════════ */
   const KC_TARIFS = {
     forfaits: {
-      'airbnb':        { studio:45, p2:60, p3:75, p4:95 },
-      'demenagement':  { studio:79, p2:99, p3:119, p4:149 },
-      'standard':      { studio:79, p2:99, p3:119, p4:149 },
-      'logement-vide': { studio:79, p2:99, p3:119, p4:149 }
+      'airbnb':       { studio:55,  t2:75,  t3:95,  t4:120 },
+      'fin-de-bail':  { studio:160, t2:220, t3:290, t4:360, t5:430 },
+      'grand-menage': { studio:140, t2:190, t3:250, t4:320 },
+      'vitrerie':     { studio:70,  t2:70,  t3:95,  t4:95,  t5:130 }
     },
-    tailles: { studio:'Studio ≤ 25 m²', p2:'2 pièces', p3:'3 pièces', p4:'4 pièces' },
+    tailles: { studio:'Studio / T1', t2:'T2', t3:'T3', t4:'T4', t5:'T5' },
     options: {
-      'linge-petit':  { nom:'Gestion du linge — petit volume', prix:15, groupe:'linge' },
-      'linge-moyen':  { nom:'Gestion du linge — volume moyen', prix:25, groupe:'linge' },
-      'linge-gros':   { nom:'Gestion du linge — gros volume',  prix:40, groupe:'linge' },
-      'frigo':        { nom:'Nettoyage intérieur frigo',       prix:10 },
-      'four':         { nom:'Nettoyage intérieur four',        prix:15 },
-      'petit-balcon': { nom:'Petit balcon',                    prix:10, groupe:'balcon' },
-      'terrasse':     { nom:'Terrasse ou grand balcon',        prix:30, groupe:'balcon' }
+      'four':         { nom:'Four en profondeur',                 prix:35,  type:'fixe',  compat:['airbnb','grand-menage'] },
+      'frigo':        { nom:'Réfrigérateur / congélateur',        prix:25,  type:'fixe',  compat:['airbnb','grand-menage'] },
+      'vitres-int':   { nom:'Vitres intérieures',                 prix:20,  type:'fixe',  compat:['airbnb','grand-menage'] },
+      'placards':     { nom:'Intérieur des placards',             prix:25,  type:'fixe',  compat:['grand-menage'] },
+      'consommables': { nom:'Réassort consommables',              prix:10,  type:'fixe',  compat:['airbnb'] },
+      'cave-box':     { nom:'Cave / box',                         prix:25,  type:'fixe',  compat:['fin-de-bail'] },
+      'kit-linge':    { nom:'Kit linge complet',                  prix:18,  type:'unite', unite:'lit', max:10,  compat:['airbnb'], desc:'Location, lavage, livraison — par lit' },
+      'repassage':    { nom:'Repassage',                          prix:35,  type:'unite', unite:'h',   max:8,   compat:['airbnb','grand-menage'], desc:'Par heure' },
+      'balcon':       { nom:'Balcon / terrasse',                  prix:2,   type:'unite', unite:'m²',  max:150, minTotal:20,  compat:['fin-de-bail','grand-menage'], desc:'2 €/m² · minimum 20 €' },
+      'moquette':     { nom:'Moquette injection-extraction',      prix:5,   type:'unite', unite:'m²',  max:300, minTotal:100, compat:['fin-de-bail'], desc:'5 €/m² · minimum 100 €' },
+      'canape-2p':    { nom:'Canapé 2 places',                    prix:80,  type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
+      'canape-3p':    { nom:'Canapé 3 places',                    prix:100, type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
+      'canape-4p':    { nom:'Canapé 4 places',                    prix:110, type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
+      'fauteuil':     { nom:'Fauteuil',                           prix:50,  type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
+      'matelas':      { nom:'Matelas 2 places',                   prix:75,  type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] }
     },
-    majorations: { 'urgence':0.20, 'dimanche-ferie':0.25 },
+    majorations: {
+      'urgence':        { nom:'Urgence — sous 48 h',                          taux:0.20 },
+      'dimanche-ferie': { nom:'Dimanche ou jour férié',                       taux:0.25 },
+      'non-vide':       { nom:'Logement non vidé',                            taux:0.15 },
+      'tres-encrasse':  { nom:'Très encrassé / plus de 6 mois sans entretien', taux:0.30 }
+    },
+    frais: { 'etage': { nom:'Étage 3 et + sans ascenseur', prix:15 } },
     acomptePct: 30,
-    pro: {
-      'bureaux':        { tauxMin:32, tauxMax:38, unite:'h' },
-      'bureaux-idf':    { tauxMin:38, tauxMax:45, unite:'h' },
-      'locaux':         { tauxMin:32, tauxMax:60, unite:'h' },
-      'commerce':       { tauxMin:32, tauxMax:60, unite:'h' },
-      'copropriete':    { tauxMin:32, tauxMax:60, unite:'h' },
-      'vitres-ponctuel':{ tauxMin:3,  tauxMax:7,  unite:'m2' },
-      'vitrine':        { tauxMin:3,  tauxMax:7,  unite:'m2' }
-    },
-    minimumPassage: { min:45, max:65 },
-    rendementM2h: 150,
-    heuresMinPassage: 1.5,
-    optionsPro: {
-      'vitres-recurrent': { nom:'Vitres intérieures chaque mois', desc:'Surfaces vitrées accessibles', prix:79 },
-      'tisanerie':        { nom:'Tisanerie / kitchenette',        desc:'Coin café entretenu à chaque passage', prix:89 },
-      'consommables':     { nom:'Gestion des consommables',       desc:'Papier, savon — produits facturés à part', prix:39 }
-    }
+    chantier: { taux:{ rafraichissement:4.5, standard:7, lourd:11 }, min:300, marge:0.15 },
+    bureaux:  { tauxMin:1.5, tauxMax:3, position:2 }
   };
+
+  /* Mots-clés sensibles → bascule automatique vers la visite (garde-fou) */
+  const KC_MOTS_SENSIBLES = /sinistre|insalubr|d[ée]c[èe]s|gravats|diog[èe]ne|inond|incendie/i;
 
   /* ════════════════════════════════════════════════════════
      PHOTOS DES CARTES (Médiathèque WordPress) — '' = icône stylée
      ════════════════════════════════════════════════════════ */
   const KC_PRESTA_IMAGES = {
-    'airbnb':          'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png',
-    'demenagement':    'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg',
-    'standard':        'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp',
-    'logement-vide':   '',
-    'bureaux':         'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp',
-    'locaux':          'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1180236492-612x612-1.jpg',
-    'commerce':        'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg',
-    'copropriete':     'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg',
-    'vitres-ponctuel': 'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg',
-    'maison':          '',
-    'grand-menage':    'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg',
-    'fin-chantier':    'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp',
-    'sinistre':        '',
-    'vitres-hauteur':  '',
-    'textile':         '',
-    'syndic':          '',
-    'evenement':       ''
+    'airbnb':        'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png',
+    'fin-de-bail':   'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg',
+    'grand-menage':  'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp',
+    'vitrerie':      'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg',
+    'fin-chantier':  'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp',
+    'bureaux':       'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp',
+    'copropriete':   'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg',
+    'commerces':     'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg',
+    'remise-lourde': ''
   };
 
   /* ════════════════════════════════════════════════════════
-     LES 17 PRESTATIONS — 3 parcours :
-     • forfait : prix exact grille → réservation + paiement en ligne
-     • pro     : estimation immédiate → audit gratuit ou devis email
-     • audit   : sur devis → visite d'audit gratuite (même calendrier)
+     LE CATALOGUE — 3 parcours :
+     • forfait  : prix fixe TTC → réservation + paiement en ligne
+     • estimate : fourchette indicative (chantier HT, bureaux HT/mois)
+                  → audit gratuit pour prix ferme
+     • audit    : devis pur, aucun chiffre → visite gratuite
      ════════════════════════════════════════════════════════ */
-  const FLOWS = {
-    forfait: ['presta','zone','taille','options','etat','delai','contact','result'],
-    pro:     ['presta','zone','bien','surface','frequence','options','contact','result'],
-    proM2:   ['presta','zone','bien','surface','contact','result'],
-    audit:   ['presta','zone','bien','surface','contact','result']
-  };
   const STEP_LABELS = {
-    presta:'Type de prestation', zone:'Zone d\'intervention', taille:'Taille du logement',
-    bien:'Type de bien', surface:'Surface', frequence:'Fréquence', etat:'État du logement',
-    options:'Options', delai:'Délai d\'intervention', contact:'Vos coordonnées', result:'Résultat'
+    presta:'Type de prestation', zone:'Zone d\'intervention', taille:'Typologie',
+    vide:'Logement vidé ?', etat:'État du logement', niveau:'Niveau de chantier',
+    bien:'Type de bien', surface:'Surface', options:'Options',
+    delai:'Délai & accès', contact:'Vos coordonnées', result:'Résultat'
   };
 
   const KC_PRESTAS = {
-    /* ── Forfaits logement (réservables en ligne) ── */
-    'airbnb':        { nom:'Nettoyage Airbnb / location courte durée', funnel:'forfait', flow:FLOWS.forfait },
-    'demenagement':  { nom:'Nettoyage après déménagement / fin de bail / état des lieux', funnel:'forfait', flow:FLOWS.forfait },
-    'standard':      { nom:'Nettoyage appartement standard (ponctuel complet)', funnel:'forfait', flow:FLOWS.forfait },
-    'logement-vide': { nom:'Nettoyage logement vide', funnel:'forfait', flow:FLOWS.forfait },
+    /* ── Forfaits B2C (prix fixe en ligne) ── */
+    'airbnb': { nom:'Turnover Airbnb', funnel:'forfait',
+      flow:['presta','zone','taille','options','delai','contact','result'],
+      horsGrille:{ label:'T5 / maison / plus de 90 m²', desc:'Sur devis · visite gratuite',
+        reason:'Grand logement ou maison — devis personnalisé après visite gratuite' } },
+    'fin-de-bail': { nom:'Ménage fin de bail / déménagement', funnel:'forfait',
+      flow:['presta','zone','taille','vide','options','delai','contact','result'],
+      inclus:'Électroménager, vitres intérieures et placards inclus',
+      horsGrille:{ label:'Maison / plus de 110 m²', desc:'Sur devis · visite gratuite',
+        reason:'Grande surface ou maison — devis personnalisé après visite gratuite' } },
+    'grand-menage': { nom:'Grand ménage (meublé occupé)', funnel:'forfait',
+      flow:['presta','zone','taille','etat','options','delai','contact','result'],
+      horsGrille:{ label:'T5 et + / maison', desc:'Sur devis · visite gratuite',
+        reason:'Grand logement — devis personnalisé après visite gratuite' } },
+    'vitrerie': { nom:'Vitrerie résidentielle simple', funnel:'forfait',
+      flow:['presta','zone','taille','options','delai','contact','result'],
+      inclus:'Vitres plain-pied et intérieures accessibles',
+      horsGrille:{ label:'Hauteur / vitrine / verrière', desc:'Sur devis · visite gratuite',
+        reason:'Travaux en hauteur ou vitrine — devis personnalisé après visite gratuite' } },
 
-    /* ── Professionnels (estimation immédiate, devis ferme après audit) ── */
-    'bureaux': { nom:'Entretien de bureaux', funnel:'pro', flow:FLOWS.pro, proKey:'bureaux',
-      bienOptions:[
-        { nom:'Bureaux / cabinet', proKey:'bureaux' },
-        { nom:'Coworking / siège social', proKey:'bureaux' },
-        { nom:'Paris intra-muros / accès contraint', proKey:'bureaux-idf' }
-      ] },
-    'locaux': { nom:'Nettoyage régulier de locaux', funnel:'pro', flow:FLOWS.pro, proKey:'locaux',
-      bienOptions:[ { nom:'Atelier / local technique', proKey:'locaux' }, { nom:'Salle de sport / études', proKey:'locaux' }, { nom:'Autre local professionnel', proKey:'locaux' } ] },
-    'commerce': { nom:'Nettoyage commerce', funnel:'pro', flow:FLOWS.pro, proKey:'commerce',
-      bienOptions:[ { nom:'Boutique', proKey:'commerce' }, { nom:'Restaurant / café', proKey:'commerce' }, { nom:'Hôtel / réception', proKey:'commerce' } ] },
-    'copropriete': { nom:'Copropriété / parties communes', funnel:'pro', flow:FLOWS.pro, proKey:'copropriete',
-      bienOptions:[ { nom:'Immeuble résidentiel', proKey:'copropriete' }, { nom:'Copropriété avec ascenseur', proKey:'copropriete' }, { nom:'Résidence services', proKey:'copropriete' } ] },
-    'vitres-ponctuel': { nom:'Vitres intérieures (ponctuel)', funnel:'pro', flow:FLOWS.proM2, proKey:'vitres-ponctuel',
-      surface:{ min:5, max:300, step:5, def:30, unit:'m² vitrés', title:'Quelle <em>surface vitrée</em> environ ?', desc:'Estimez la surface totale de vitrage (ou comptez ~1,5 m² par fenêtre standard).' },
-      bienOptions:[ { nom:'Logement / bureaux', proKey:'vitres-ponctuel' }, { nom:'Vitrine de commerce', proKey:'vitrine' } ] },
+    /* ── Estimation indicative (Flux A enrichi) ── */
+    'fin-chantier': { nom:'Nettoyage fin de chantier', funnel:'estimate', kind:'chantier',
+      flow:['presta','zone','niveau','surface','contact','result'],
+      surface:{ min:20, max:1000, step:10, def:60, unit:'m²',
+        title:'Quelle est la <em>surface</em> du chantier ?',
+        desc:'Estimation indicative ± 15 % — le prix est confirmé après audit gratuit ou envoi de photos.' } },
+    'bureaux': { nom:'Bureaux & locaux professionnels (entretien régulier)', funnel:'estimate', kind:'bureaux',
+      flow:['presta','zone','surface','contact','result'],
+      surface:{ min:20, max:2000, step:10, def:100, unit:'m²',
+        title:'Quelle est la <em>surface</em> de vos locaux ?',
+        desc:'Simulateur de budget indicatif — le devis ferme est établi après audit gratuit (fréquences, horaires, cahier des charges).' } },
 
-    /* ── Sur devis : visite d'audit gratuite (même calendrier) ── */
-    'maison':         { nom:'Maison & grands logements (5 pièces et +)', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Maison'},{nom:'Appartement 5 pièces et +'},{nom:'Loft / atypique'}] },
-    'grand-menage':   { nom:'Grand ménage / logement très sale', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Appartement'},{nom:'Maison'},{nom:'Logement insalubre / Diogène'}],
-      note:'Pour les situations sensibles (insalubrité, syndrome de Diogène), la visite est obligatoire et réalisée en toute discrétion.' },
-    'fin-chantier':   { nom:'Nettoyage fin de chantier / après travaux', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Appartement'},{nom:'Maison'},{nom:'Bureaux / local'},{nom:'Multi-lots / programme'}] },
-    'sinistre':       { nom:'Nettoyage après sinistre', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Dégât des eaux'},{nom:'Incendie / suie'},{nom:'Autre sinistre'}] },
-    'vitres-hauteur': { nom:'Vitres en hauteur / extérieures difficiles', funnel:'audit', flow:FLOWS.audit,
-      surface:{ min:5, max:500, step:5, def:40, unit:'m² vitrés', title:'Quelle <em>surface vitrée</em> environ ?', desc:'Une estimation suffit — l\'accès et la hauteur seront évalués lors de la visite.' },
-      bienOptions:[{nom:'Immeuble / façade'},{nom:'Verrière / hauteur intérieure'},{nom:'Vitrine en hauteur'}] },
-    'textile':        { nom:'Canapés, moquettes, tapis', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Canapé / fauteuils'},{nom:'Moquette'},{nom:'Tapis'}],
-      surface:{ min:1, max:200, step:1, def:20, unit:'m²', title:'Quelle <em>surface</em> environ ?', desc:'Surface de moquette/tapis, ou nombre de places du canapé en mètres approximatifs.' } },
-    'syndic':         { nom:'Containers, local poubelles, parking', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Containers / bacs'},{nom:'Local poubelles'},{nom:'Parking'}] },
-    'evenement':      { nom:'Nettoyage après événement', funnel:'audit', flow:FLOWS.audit,
-      bienOptions:[{nom:'Salle / local'},{nom:'Bureaux'},{nom:'Extérieur'}] }
+    /* ── Devis pur (aucun chiffre en ligne) ── */
+    'copropriete': { nom:'Copropriétés / parties communes', funnel:'audit',
+      flow:['presta','zone','bien','contact','result'],
+      bienOptions:[{nom:'Immeuble résidentiel'},{nom:'Copropriété avec ascenseur'},{nom:'Résidence services'}] },
+    'commerces': { nom:'Commerces / ERP', funnel:'audit',
+      flow:['presta','zone','bien','contact','result'],
+      bienOptions:[{nom:'Boutique'},{nom:'Restaurant / café'},{nom:'Hôtel / réception'}] },
+    'remise-lourde': { nom:'Remise en état lourde', funnel:'audit', strict:true,
+      flow:['presta','zone','bien','contact','result'],
+      bienOptions:[{nom:'Logement insalubre'},{nom:'Après sinistre (eau, incendie)'},{nom:'Après décès'}],
+      note:'Intervention sensible réalisée en toute discrétion (équipements de protection, évacuation des déchets, coordination assurance si besoin). Visite sous 48 h.' }
   };
 
   /* ════════════════════════════════════════════════════════
@@ -1333,6 +1278,7 @@
      ════════════════════════════════════════════════════════ */
   const state = { currentStep:0, selectedPresta:null, data:{}, stepsFlow:[], forcedAudit:false, auditReason:'' };
   const euro = n => Number(n).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:2});
+  const el = id => document.getElementById(id);
 
   /* ════════════════════════════════════════════════════════
      SCROLL REVEAL
@@ -1351,16 +1297,16 @@
     if(!stepEl || KC_REDUCE || !kcIO) return;
     const sel = '.step-tag, .step-title, .step-desc, .presta-cat-title, .option-card, .opt-row, .slider-block, .form-block, .error-banner, .zone-checkbox-card, .zone-map, .zone-map-label, .result-main, .result-aside, .step-nav';
     let i = 0;
-    stepEl.querySelectorAll(sel).forEach(function(el){
-      if(el.classList.contains('kc-in')) return;
-      el.style.setProperty('--kc-rev-delay', (i < 7 ? i*50 : 0) + 'ms');
-      el.classList.add('kc-reveal');
-      kcIO.observe(el);
+    stepEl.querySelectorAll(sel).forEach(function(elm){
+      if(elm.classList.contains('kc-in')) return;
+      elm.style.setProperty('--kc-rev-delay', (i < 7 ? i*50 : 0) + 'ms');
+      elm.classList.add('kc-reveal');
+      kcIO.observe(elm);
       i++;
     });
     clearTimeout(stepEl._kcRevealT);
     stepEl._kcRevealT = setTimeout(function(){
-      stepEl.querySelectorAll('.kc-reveal:not(.kc-in)').forEach(function(el){ el.classList.add('kc-in'); });
+      stepEl.querySelectorAll('.kc-reveal:not(.kc-in)').forEach(function(elm){ elm.classList.add('kc-in'); });
     }, 1600);
   }
 
@@ -1428,7 +1374,7 @@
     card.classList.add('selected');
     card.setAttribute('aria-checked','true');
     state.selectedPresta = prestaKey;
-    state.data = { presta: prestaKey };
+    state.data = { presta: prestaKey, options:{}, majorations:{}, frais:{} };
     state.stepsFlow = presta.flow.slice();
     state.forcedAudit = false;
     state.auditReason = '';
@@ -1446,14 +1392,21 @@
     state.data[key] = value;
     if(mult !== undefined) state.data[key + '_mult'] = parseFloat(mult) || 0;
 
-    if(key === 'taille' && value === 'maison-grand'){
-      switchToAudit('Logement de plus de 4 pièces ou maison — devis après visite gratuite');
+    if(key === 'taille' && value === 'hors-grille'){
+      switchToAudit(KC_PRESTAS[state.selectedPresta].horsGrille.reason);
+    }
+    if(key === 'vide'){
+      if(value === 'non') state.data.majorations['non-vide'] = true;
+      else delete state.data.majorations['non-vide'];
     }
     if(key === 'etat'){
-      if(value === 'tres-sale'){
-        switchToAudit('Logement très encrassé — tarif confirmé après photos ou visite (+30 à +50 %)');
-      } else if(state.forcedAudit && state.data.taille !== 'maison-grand'){
-        // retour arrière : on quitte la branche audit
+      delete state.data.majorations['tres-encrasse'];
+      if(value === 'tres-encrasse'){
+        state.data.majorations['tres-encrasse'] = true;
+      } else if(value === 'tres-degrade'){
+        switchToAudit('Logement très dégradé — votre demande mérite une étude personnalisée, avec une visite gratuite');
+      }
+      if(value !== 'tres-degrade' && state.forcedAudit && state.data.taille !== 'hors-grille'){
         state.forcedAudit = false; state.auditReason = '';
         state.stepsFlow = KC_PRESTAS[state.selectedPresta].flow.slice();
       }
@@ -1480,7 +1433,7 @@
     }
   }
   function confirmZone(){
-    const cb = document.getElementById('zone-checkbox');
+    const cb = el('zone-checkbox');
     cb.classList.add('checked');
     cb.setAttribute('aria-pressed','true');
     state.data.zone = 'idf';
@@ -1489,7 +1442,7 @@
   }
   function showStep(stepKey){
     document.querySelectorAll('.kc-devis .step').forEach(s => s.classList.remove('active'));
-    const stepEl = document.getElementById('step-'+stepKey);
+    const stepEl = el('step-'+stepKey);
     if(!stepEl) return;
     stepEl.classList.add('active');
     const tag = stepEl.querySelector('.step-tag');
@@ -1498,6 +1451,7 @@
     }
     const h1 = stepEl.querySelector('.step-title');
     if(h1){ h1.setAttribute('tabindex','-1'); h1.focus({preventScroll:true}); }
+    if(stepKey === 'taille') renderTaille();
     if(stepKey === 'bien') renderBienOptions();
     if(stepKey === 'surface') setupSurface();
     if(stepKey === 'options') renderOptionsList();
@@ -1508,20 +1462,60 @@
     const total = state.stepsFlow.length || 8;
     const current = state.currentStep + 1;
     const fill = (current / total) * 100;
-    document.getElementById('pb-fill').style.width = fill + '%';
+    el('pb-fill').style.width = fill + '%';
     document.querySelector('.pb-progress').setAttribute('aria-valuenow', Math.round(fill));
-    document.getElementById('pb-current').textContent = current;
-    document.getElementById('pb-total').textContent = total;
-    document.getElementById('pb-back-btn').style.visibility = (state.currentStep === 0) ? 'hidden' : 'visible';
+    el('pb-current').textContent = current;
+    el('pb-total').textContent = total;
+    el('pb-back-btn').style.visibility = (state.currentStep === 0) ? 'hidden' : 'visible';
   }
 
   /* ════════════════════════════════════════════════════════
      RENDUS DYNAMIQUES
      ════════════════════════════════════════════════════════ */
+  function renderTaille(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const grille = KC_TARIFS.forfaits[state.selectedPresta];
+    if(!presta || !grille) return;
+    const grid = el('taille-grid');
+    grid.textContent = '';
+    el('taille-desc').textContent = (presta.inclus ? presta.inclus + '. ' : '')
+      + 'Le tarif est forfaitaire selon la typologie — aucun supplément surprise.';
+    let i = 0;
+    Object.keys(grille).forEach(key => {
+      i++;
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'option-card';
+      btn.setAttribute('role','radio');
+      const sel = state.data.taille === key;
+      btn.setAttribute('aria-checked', sel ? 'true' : 'false');
+      if(sel) btn.classList.add('selected');
+      btn.innerHTML = '<div class="oc-num"></div><div class="oc-title"></div><div class="oc-desc"></div><span class="oc-badge"></span>';
+      btn.querySelector('.oc-num').textContent = String(i).padStart(2,'0');
+      btn.querySelector('.oc-title').textContent = KC_TARIFS.tailles[key];
+      btn.querySelector('.oc-desc').textContent = 'Forfait tout compris';
+      btn.querySelector('.oc-badge').textContent = euro(grille[key]) + ' € TTC';
+      btn.addEventListener('click', () => selectOption(btn, 'taille', key));
+      grid.appendChild(btn);
+    });
+    // Carte « hors grille » → bascule devis (garde-fou officiel)
+    if(presta.horsGrille){
+      i++;
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'option-card';
+      btn.setAttribute('role','radio'); btn.setAttribute('aria-checked','false');
+      btn.innerHTML = '<div class="oc-num"></div><div class="oc-title"></div><div class="oc-desc"></div><span class="oc-badge">Visite gratuite</span>';
+      btn.querySelector('.oc-num').textContent = String(i).padStart(2,'0');
+      btn.querySelector('.oc-title').textContent = presta.horsGrille.label;
+      btn.querySelector('.oc-desc').textContent = presta.horsGrille.desc;
+      btn.addEventListener('click', () => selectOption(btn, 'taille', 'hors-grille'));
+      grid.appendChild(btn);
+    }
+    grid.className = 'options-grid cols-3';
+  }
   function renderBienOptions(){
     const presta = KC_PRESTAS[state.selectedPresta];
     if(!presta || !presta.bienOptions) return;
-    const grid = document.getElementById('bien-grid');
+    const grid = el('bien-grid');
     grid.textContent = '';
     presta.bienOptions.forEach((opt, i) => {
       const btn = document.createElement('button');
@@ -1533,93 +1527,119 @@
       const num = document.createElement('div'); num.className='oc-num'; num.textContent = String(i+1).padStart(2,'0');
       const title = document.createElement('div'); title.className='oc-title'; title.textContent = opt.nom;
       btn.appendChild(num); btn.appendChild(title);
-      btn.addEventListener('click', () => {
-        if(opt.proKey) state.data.proKey = opt.proKey;
-        selectOption(btn, 'bien', opt.nom);
-      });
+      btn.addEventListener('click', () => selectOption(btn, 'bien', opt.nom));
       grid.appendChild(btn);
     });
-    grid.className = 'options-grid cols-' + (presta.bienOptions.length === 4 ? '2' : '3');
+    grid.className = 'options-grid cols-3';
   }
   function setupSurface(){
     const presta = KC_PRESTAS[state.selectedPresta];
     const cfg = (presta && presta.surface) || { min:20, max:1000, step:10, def:80, unit:'m²',
       title:'Quelle est la <em>surface</em> à traiter ?',
-      desc:'La surface est le critère principal de l\'estimation. Une valeur approximative suffit : le devis ferme est confirmé ensuite.' };
-    const input = document.getElementById('surf-input');
+      desc:'La surface est le critère principal de l\'estimation.' };
+    const input = el('surf-input');
     input.min = cfg.min; input.max = cfg.max; input.step = cfg.step;
     input.setAttribute('aria-valuemin', cfg.min);
     input.setAttribute('aria-valuemax', cfg.max);
     const val = state.data.surface || cfg.def;
     input.value = val;
-    document.getElementById('surface-title').innerHTML = cfg.title;
-    document.getElementById('surface-desc').textContent = cfg.desc;
+    el('surface-title').innerHTML = cfg.title;
+    el('surface-desc').textContent = cfg.desc;
     document.querySelector('.slider-value-unit').textContent = cfg.unit;
     const marks = document.querySelector('.slider-marks');
     marks.textContent = '';
     [0,0.25,0.5,0.75,1].forEach(p => {
       const s = document.createElement('span');
-      s.textContent = Math.round(cfg.min + (cfg.max-cfg.min)*p) + ' ' + cfg.unit.split(' ')[0];
+      s.textContent = Math.round(cfg.min + (cfg.max-cfg.min)*p) + ' ' + cfg.unit;
       marks.appendChild(s);
     });
     updateSurf(val);
   }
   function updateSurf(val){
-    document.getElementById('surf-val').textContent = val;
-    document.getElementById('surf-input').setAttribute('aria-valuenow', val);
+    el('surf-val').textContent = val;
+    el('surf-input').setAttribute('aria-valuenow', val);
     state.data.surface = parseInt(val, 10);
     saveProgress();
   }
   function renderOptionsList(){
-    const presta = KC_PRESTAS[state.selectedPresta];
-    const grid = document.getElementById('options-grid');
+    const grid = el('options-grid');
     grid.textContent = '';
-    const list = presta.funnel === 'forfait'
-      ? Object.entries(KC_TARIFS.options).map(([key,o]) => ({ key, nom:o.nom, desc:'', prix:'+'+euro(o.prix)+' €', groupe:o.groupe }))
-      : Object.entries(KC_TARIFS.optionsPro).map(([key,o]) => ({ key, nom:o.nom, desc:o.desc, prix:'+'+euro(o.prix)+' €/mois' }));
-    list.forEach(opt => {
+    const presta = state.selectedPresta;
+    Object.entries(KC_TARIFS.options).forEach(([key, opt]) => {
+      if(!opt.compat.includes(presta)) return;
       const row = document.createElement('button');
       row.type = 'button';
       row.className = 'opt-row';
+      row.dataset.key = key;
+      const qty = Number(state.data.options[key] || 0);
       row.setAttribute('role','checkbox');
-      row.dataset.key = opt.key;
-      if(opt.groupe) row.dataset.groupe = opt.groupe;
-      const sel = !!(state.data.options && state.data.options[opt.key]);
-      row.setAttribute('aria-checked', sel ? 'true' : 'false');
-      if(sel) row.classList.add('selected');
+      row.setAttribute('aria-checked', qty > 0 ? 'true' : 'false');
+      if(qty > 0) row.classList.add('selected');
       row.innerHTML = '<div class="opt-left"><div class="opt-icon" aria-hidden="true">' +
         '<svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>' +
         '<div class="opt-info"><div class="opt-name"></div><div class="opt-desc-txt"></div></div></div>' +
-        '<div class="opt-right"><div class="opt-price"></div><div class="opt-check" aria-hidden="true">✓</div></div>';
+        '<div class="opt-right"></div>';
       row.querySelector('.opt-name').textContent = opt.nom;
       row.querySelector('.opt-desc-txt').textContent = opt.desc || '';
-      row.querySelector('.opt-price').textContent = opt.prix;
-      row.addEventListener('click', () => toggleOpt(row, opt.key, opt.groupe));
+      const right = row.querySelector('.opt-right');
+      if(opt.type === 'unite'){
+        right.innerHTML = '<div class="opt-price"></div><div class="opt-qty">' +
+          '<button type="button" class="oq-minus" aria-label="Diminuer">−</button>' +
+          '<span class="oq-val"></span>' +
+          '<button type="button" class="oq-plus" aria-label="Augmenter">+</button></div>';
+        right.querySelector('.opt-price').textContent = euro(opt.prix) + ' €/' + opt.unite;
+        const updateRow = () => {
+          const q = Number(state.data.options[key] || 0);
+          right.querySelector('.oq-val').textContent = q + ' ' + opt.unite;
+          right.querySelector('.oq-minus').disabled = q <= 0;
+          right.querySelector('.oq-plus').disabled = q >= opt.max;
+          row.classList.toggle('selected', q > 0);
+          row.setAttribute('aria-checked', q > 0 ? 'true' : 'false');
+        };
+        right.querySelector('.oq-minus').addEventListener('click', e => {
+          e.stopPropagation();
+          const q = Math.max(0, Number(state.data.options[key] || 0) - 1);
+          if(q === 0) delete state.data.options[key]; else state.data.options[key] = q;
+          updateRow(); saveProgress();
+        });
+        right.querySelector('.oq-plus').addEventListener('click', e => {
+          e.stopPropagation();
+          const q = Math.min(opt.max, Number(state.data.options[key] || 0) + 1);
+          state.data.options[key] = q;
+          updateRow(); saveProgress();
+        });
+        row.addEventListener('click', () => {
+          const q = Number(state.data.options[key] || 0);
+          if(q === 0){ state.data.options[key] = 1; } else { delete state.data.options[key]; }
+          updateRow(); saveProgress();
+        });
+        updateRow();
+      } else {
+        right.innerHTML = '<div class="opt-price"></div><div class="opt-check" aria-hidden="true">✓</div>';
+        right.querySelector('.opt-price').textContent = '+' + euro(opt.prix) + ' €';
+        row.addEventListener('click', () => {
+          const sel = !row.classList.contains('selected');
+          row.classList.toggle('selected', sel);
+          row.setAttribute('aria-checked', sel ? 'true' : 'false');
+          if(sel) state.data.options[key] = 1; else delete state.data.options[key];
+          saveProgress();
+        });
+      }
       grid.appendChild(row);
     });
   }
-  function toggleOpt(row, key, groupe){
-    if(!state.data.options) state.data.options = {};
-    const willSelect = !row.classList.contains('selected');
-    // Groupes exclusifs (linge, balcon) : décocher les autres du groupe
-    if(willSelect && groupe){
-      row.parentElement.querySelectorAll('.opt-row[data-groupe="'+groupe+'"]').forEach(r => {
-        r.classList.remove('selected'); r.setAttribute('aria-checked','false');
-        delete state.data.options[r.dataset.key];
-      });
-    }
-    row.classList.toggle('selected', willSelect);
-    row.setAttribute('aria-checked', willSelect ? 'true' : 'false');
-    if(willSelect) state.data.options[key] = true;
-    else delete state.data.options[key];
-    saveProgress();
-  }
   function toggleMajoration(row, key){
-    if(!state.data.majorations) state.data.majorations = {};
     const sel = row.classList.toggle('selected');
     row.setAttribute('aria-checked', sel ? 'true' : 'false');
     if(sel) state.data.majorations[key] = true;
     else delete state.data.majorations[key];
+    saveProgress();
+  }
+  function toggleFrais(row, key){
+    const sel = row.classList.toggle('selected');
+    row.setAttribute('aria-checked', sel ? 'true' : 'false');
+    if(sel) state.data.frais[key] = true;
+    else delete state.data.frais[key];
     saveProgress();
   }
 
@@ -1653,7 +1673,7 @@
     }
   }
   function updateCharCounter(textarea){
-    const counter = document.getElementById('char-counter');
+    const counter = el('char-counter');
     if(!counter) return;
     const len = textarea.value.length;
     const max = 1000;
@@ -1664,7 +1684,7 @@
   }
   function validateField(type, input, showIfEmpty){
     const wrap = input.closest('.form-field');
-    const errMsg = document.getElementById('err-'+type);
+    const errMsg = el('err-'+type);
     const validator = VALIDATORS[type];
     const value = input.value.trim();
     if(value === ''){
@@ -1704,97 +1724,104 @@
     let firstInvalid = null;
     let count = 0;
     for(const f of fields){
-      const input = document.getElementById('c-'+f);
+      const input = el('c-'+f);
       const valid = validateField(f, input, true);
       if(!valid){ count++; if(!firstInvalid) firstInvalid = input; }
     }
     if(firstInvalid){
-      const banner = document.getElementById('form-error-banner');
-      document.getElementById('form-error-text').textContent = `${count} champ(s) à corriger ci-dessous.`;
+      const banner = el('form-error-banner');
+      el('form-error-text').textContent = `${count} champ(s) à corriger ci-dessous.`;
       banner.classList.add('show');
       firstInvalid.focus();
       firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
       return false;
     }
-    document.getElementById('form-error-banner').classList.remove('show');
+    el('form-error-banner').classList.remove('show');
     return true;
   }
 
   /* ════════════════════════════════════════════════════════
-     CALCULS — identiques à lib/pricing.js (le serveur revalide
+     CALCULS — miroir exact de KC_Pricing (le serveur revalide
      systématiquement au moment du paiement)
      ════════════════════════════════════════════════════════ */
   function currentFunnel(){
     if(state.forcedAudit) return 'audit';
     return KC_PRESTAS[state.selectedPresta].funnel;
   }
-  function selectedOptionKeys(){
-    return Object.keys(state.data.options || {});
-  }
-  function selectedMajorationKeys(){
-    return Object.keys(state.data.majorations || {});
-  }
   function calcForfait(){
     const grille = KC_TARIFS.forfaits[state.selectedPresta];
     const taille = state.data.taille;
     const base = grille && grille[taille];
     if(!base) return null;
+    const baseCents = Math.round(base * 100);
     const lignes = [{ nom: KC_PRESTAS[state.selectedPresta].nom + ' — ' + KC_TARIFS.tailles[taille], montant: base }];
-    let totalOptions = 0;
-    selectedOptionKeys().forEach(key => {
+
+    let optionsCents = 0;
+    Object.entries(state.data.options || {}).forEach(([key, qty]) => {
       const o = KC_TARIFS.options[key];
-      if(!o) return;
-      totalOptions += o.prix;
-      lignes.push({ nom:o.nom, montant:o.prix });
+      if(!o || !o.compat.includes(state.selectedPresta)) return;
+      const q = o.type === 'fixe' ? 1 : Math.min(Number(qty)||0, o.max);
+      if(q < 1) return;
+      let cents = Math.round(o.prix * q * 100);
+      if(o.minTotal) cents = Math.max(cents, Math.round(o.minTotal * 100));
+      optionsCents += cents;
+      lignes.push({ nom: o.nom + (o.type==='unite' ? ' × '+q+' '+o.unite : ''), montant: cents/100 });
     });
-    const sousTotal = base + totalOptions;
+
+    const sousTotalCents = baseCents + optionsCents;
     let taux = 0;
-    selectedMajorationKeys().forEach(key => {
-      const t = KC_TARIFS.majorations[key];
-      if(!t) return;
-      taux += t;
-      lignes.push({ nom:(key==='urgence'?'Intervention urgente':'Dimanche ou jour férié')+' (+'+Math.round(t*100)+' %)', montant: Math.round(sousTotal*t*100)/100 });
+    Object.keys(state.data.majorations || {}).forEach(key => {
+      const m = KC_TARIFS.majorations[key];
+      if(!m) return;
+      taux += m.taux;
+      lignes.push({ nom: m.nom + ' (+' + Math.round(m.taux*100) + ' %)', montant: Math.round(sousTotalCents*m.taux)/100 });
     });
-    const totalCents = Math.round(sousTotal * (1 + taux) * 100);
+    let totalCents = Math.round(sousTotalCents * (1 + taux));
+
+    Object.keys(state.data.frais || {}).forEach(key => {
+      const f = KC_TARIFS.frais[key];
+      if(!f) return;
+      totalCents += Math.round(f.prix * 100);
+      lignes.push({ nom: f.nom, montant: f.prix });
+    });
+
     const acompteCents = Math.round(totalCents * KC_TARIFS.acomptePct / 100);
-    return {
-      total: totalCents/100, acompte: acompteCents/100, solde: (totalCents-acompteCents)/100, lignes
-    };
+    return { total: totalCents/100, acompte: acompteCents/100, solde: (totalCents-acompteCents)/100, lignes };
   }
-  function calcPro(){
-    const proKey = state.data.proKey || KC_PRESTAS[state.selectedPresta].proKey;
-    const t = KC_TARIFS.pro[proKey];
-    if(!t) return null;
+  function calcChantier(){
+    const taux = Number(state.data.niveau_mult) || KC_TARIFS.chantier.taux.standard;
+    const s = Math.min(Math.max(Number(state.data.surface) || 0, 10), 5000);
+    const central = Math.max(KC_TARIFS.chantier.min, Math.round(taux * s));
+    const min = Math.round(central * (1 - KC_TARIFS.chantier.marge));
+    const max = Math.round(central * (1 + KC_TARIFS.chantier.marge));
+    return { min, max, central, unite:'€ HT',
+      detail: s + ' m² × ' + euro(taux) + ' €/m² HT (minimum ' + KC_TARIFS.chantier.min + ' € HT) · fourchette ± 15 %' };
+  }
+  function calcBureaux(){
     const s = Math.min(Math.max(Number(state.data.surface) || 0, 10), 10000);
-    if(t.unite === 'm2'){
-      return { min: Math.round(s*t.tauxMin), max: Math.round(s*t.tauxMax), unite:'€ HT',
-        detail: s+' m² × '+t.tauxMin+'–'+t.tauxMax+' €/m²', lignes:[] };
-    }
-    const heures = Math.max(KC_TARIFS.heuresMinPassage, s / KC_TARIFS.rendementM2h);
-    const passages = Number(state.data.frequence_mult || 0);
-    let min = Math.max(KC_TARIFS.minimumPassage.min, Math.round(heures*t.tauxMin));
-    let max = Math.max(KC_TARIFS.minimumPassage.max, Math.round(heures*t.tauxMax));
-    const lignes = [];
-    if(passages > 0){
-      min = Math.round(min * passages * 4.33);
-      max = Math.round(max * passages * 4.33);
-      selectedOptionKeys().forEach(key => {
-        const o = KC_TARIFS.optionsPro[key];
-        if(!o) return;
-        min += o.prix; max += o.prix;
-        lignes.push({ nom:o.nom, montant:o.prix });
-      });
-      return { min, max, unite:'€ HT/mois',
-        detail:'≈ '+(Math.round(heures*10)/10)+' h/passage × '+t.tauxMin+'–'+t.tauxMax+' €/h × '+passages+' passage(s)/sem.', lignes };
-    }
-    return { min, max, unite:'€ HT / intervention',
-      detail:'≈ '+(Math.round(heures*10)/10)+' h × '+t.tauxMin+'–'+t.tauxMax+' €/h (minimum de passage '+KC_TARIFS.minimumPassage.min+'–'+KC_TARIFS.minimumPassage.max+' € HT)', lignes };
+    return { min: Math.round(s * KC_TARIFS.bureaux.tauxMin), max: Math.round(s * KC_TARIFS.bureaux.tauxMax),
+      unite:'€ HT/mois', position: KC_TARIFS.bureaux.position,
+      detail: s + ' m² × 1,50 – 3 €/m²/mois HT selon fréquence et cahier des charges' };
   }
 
   /* ════════════════════════════════════════════════════════
-     RÉSULTAT — 3 affichages selon le parcours
+     RÉSULTAT — affichage selon le parcours
      ════════════════════════════════════════════════════════ */
-  function el(id){ return document.getElementById(id); }
+  function renderDetailLines(lignes){
+    const wrap = el('r-detail');
+    wrap.textContent = '';
+    (lignes || []).forEach((d, idx) => {
+      const row = document.createElement('div'); row.className = 'rd-row';
+      const left = document.createElement('div'); left.className = 'rd-left';
+      const name = document.createElement('div'); name.className = 'rd-name'; name.textContent = d.nom;
+      left.appendChild(name);
+      const amount = document.createElement('div'); amount.className = 'rd-amount';
+      if(d.montant == null) amount.textContent = '✓';
+      else amount.textContent = (idx === 0 ? '' : '+') + euro(d.montant) + ' €';
+      row.appendChild(left); row.appendChild(amount);
+      wrap.appendChild(row);
+    });
+  }
   function renderResult(){
     const funnel = currentFunnel();
     const presta = KC_PRESTAS[state.selectedPresta];
@@ -1813,12 +1840,12 @@
       state.lastResult = { funnel, ...r };
       el('result-tag').textContent = 'Votre tarif · grille officielle';
       el('result-title').innerHTML = 'Votre tarif, <em>ferme et sans surprise</em>.';
-      el('result-desc').textContent = 'Prix issu de notre grille officielle. Réservez votre créneau en ligne avec un acompte de 30 % — le solde se règle après la prestation.';
+      el('result-desc').textContent = 'Prix TTC issu de notre grille officielle. Réservez votre créneau en ligne avec un acompte de 30 % — le solde se règle après la prestation.';
       el('r-label-txt').textContent = 'Total TTC';
       el('r-total').textContent = euro(r.total);
-      el('r-unit').textContent = ' €';
+      el('r-unit').textContent = ' € TTC';
       el('r-total-label').textContent = 'Total TTC';
-      el('r-total-2').textContent = euro(r.total) + ' €';
+      el('r-total-2').textContent = euro(r.total) + ' € TTC';
       renderDetailLines(r.lignes);
       el('r-acompte-panel').style.display = '';
       el('r-acompte').textContent = euro(r.acompte) + ' €';
@@ -1826,33 +1853,52 @@
       el('cta-pay').style.display = 'flex';
       el('cta-pay-desc').textContent = 'Acompte de ' + euro(r.acompte) + ' € sécurisé par Stripe · confirmation immédiate';
       el('cta-email-name').textContent = 'Recevoir ce tarif par email';
-      el('result-note').textContent = 'Tarif ferme pour un logement en état normal. Paiement sécurisé Stripe, annulation possible par téléphone.';
+      el('result-note').textContent = (presta.inclus ? presta.inclus + '. ' : '')
+        + 'Tarif ferme pour la configuration déclarée. Paiement sécurisé Stripe, annulation possible par téléphone.';
     }
-    else if(funnel === 'pro'){
-      const r = calcPro();
-      if(!r) return;
-      state.lastResult = { funnel, ...r };
-      el('result-tag').textContent = 'Estimation immédiate';
-      el('result-title').innerHTML = 'Votre estimation, <em>chiffrée</em>.';
-      el('result-desc').textContent = 'Fourchette indicative calculée sur notre grille. Le devis ferme vous est remis après une visite d\'audit gratuite et sans engagement.';
-      el('r-label-txt').textContent = 'Estimation indicative';
+    else if(funnel === 'estimate' && presta.kind === 'chantier'){
+      const r = calcChantier();
+      state.lastResult = { funnel:'estimate', ...r };
+      el('result-tag').textContent = 'Estimation indicative · ± 15 %';
+      el('result-title').innerHTML = 'Votre estimation <em>indicative</em>.';
+      el('result-desc').textContent = 'Prix confirmé après audit gratuit ou envoi de photos — l\'empoussièrement réel ne se vérifie pas en ligne.';
+      el('r-label-txt').textContent = 'Fourchette indicative HT';
       el('r-total').textContent = euro(r.min) + ' – ' + euro(r.max);
-      el('r-unit').textContent = ' ' + r.unite;
+      el('r-unit').textContent = ' € HT';
       el('r-total-label').textContent = 'Fourchette estimée';
-      el('r-total-2').textContent = euro(r.min) + ' – ' + euro(r.max) + ' ' + r.unite;
-      renderDetailLines([{ nom:r.detail, montant:null }].concat(r.lignes));
+      el('r-total-2').textContent = euro(r.min) + ' – ' + euro(r.max) + ' € HT';
+      renderDetailLines([{ nom:r.detail, montant:null }]);
       el('cta-audit').style.display = 'flex';
-      el('cta-audit-name').textContent = 'Réserver un audit gratuit sur place';
-      el('cta-email-name').textContent = 'Recevoir mon devis par email';
-      el('result-note').textContent = 'Estimation indicative hors taxes. L\'audit gratuit permet d\'ajuster le juste prix — sans engagement.';
+      el('cta-audit-name').textContent = 'Réserver mon audit gratuit';
+      el('cta-email-name').textContent = 'Recevoir cette estimation par email';
+      el('result-note').textContent = 'Estimation indicative, jamais un prix ferme : le tarif définitif est confirmé après audit gratuit ou envoi de photos. Minimum d\'intervention 300 € HT.';
+    }
+    else if(funnel === 'estimate'){
+      const r = calcBureaux();
+      state.lastResult = { funnel:'estimate', ...r };
+      el('result-tag').textContent = 'Budget indicatif';
+      el('result-title').innerHTML = 'Votre budget mensuel <em>indicatif</em>.';
+      el('result-desc').textContent = 'À partir de 2 €/m²/mois HT selon la fréquence, les horaires et le cahier des charges. Le devis ferme est établi après audit gratuit de vos locaux.';
+      el('r-label-txt').textContent = 'Budget mensuel estimé';
+      el('r-total').textContent = euro(r.min) + ' – ' + euro(r.max);
+      el('r-unit').textContent = ' € HT/mois';
+      el('r-total-label').textContent = 'Budget mensuel estimé';
+      el('r-total-2').textContent = euro(r.min) + ' – ' + euro(r.max) + ' € HT/mois';
+      renderDetailLines([{ nom:r.detail, montant:null }]);
+      el('cta-audit').style.display = 'flex';
+      el('cta-audit-name').textContent = 'Réserver mon audit gratuit';
+      el('cta-email-name').textContent = 'Recevoir ce budget par email';
+      el('result-note').textContent = 'Indicatif uniquement — le devis ferme suit l\'audit gratuit (fréquences, horaires, prestations annexes).';
     }
     else {
       state.lastResult = { funnel:'audit' };
       el('result-tag').textContent = 'Devis sur mesure';
       el('result-title').innerHTML = 'Votre devis mérite <em>une visite</em>.';
       el('result-desc').textContent = state.auditReason
-        ? state.auditReason + '. Réservez votre visite gratuite : devis ferme remis sous 24 à 48 h.'
-        : 'Cette prestation se chiffre sur place : réservez une visite d\'audit gratuite, le devis ferme vous est remis sous 24 à 48 h.';
+        ? state.auditReason + '. Réservez votre visite gratuite : devis ferme sous 24 à 48 h.'
+        : (presta.strict
+          ? 'Ce type d\'intervention se chiffre uniquement sur place. Réservez une visite gratuite — sous 48 h — pour un devis ferme et adapté.'
+          : 'Cette prestation se chiffre sur place : réservez une visite d\'audit gratuite, le devis ferme vous est remis sous 24 à 48 h.');
       el('r-audit-badge').style.display = 'inline-block';
       el('r-price-line').style.display = 'none';
       el('r-total-row').style.display = 'none';
@@ -1865,24 +1911,8 @@
       el('cta-audit').style.display = 'flex';
       el('cta-audit-name').textContent = 'Choisir mon créneau de visite gratuite';
       el('cta-email-name').textContent = 'Être recontacté par email';
-      if(presta.note){ el('result-note').textContent = presta.note; }
-      else { el('result-note').textContent = 'La visite permet d\'évaluer précisément le travail : vous recevez un devis ferme, sans surprise.'; }
+      el('result-note').textContent = presta.note || 'La visite permet d\'évaluer précisément le travail : vous recevez un devis ferme, sans surprise.';
     }
-  }
-  function renderDetailLines(lignes){
-    const wrap = el('r-detail');
-    wrap.textContent = '';
-    (lignes || []).forEach(d => {
-      const row = document.createElement('div'); row.className = 'rd-row';
-      const left = document.createElement('div'); left.className = 'rd-left';
-      const name = document.createElement('div'); name.className = 'rd-name'; name.textContent = d.nom;
-      left.appendChild(name);
-      const amount = document.createElement('div'); amount.className = 'rd-amount';
-      amount.textContent = d.montant == null ? '✓' : '+' + euro(d.montant) + ' €';
-      if(d === lignes[0] && d.montant != null) amount.textContent = euro(d.montant) + ' €';
-      row.appendChild(left); row.appendChild(amount);
-      wrap.appendChild(row);
-    });
   }
   function showResult(){
     if(!validateAllFields()) return;
@@ -1894,6 +1924,10 @@
       address: el('c-address').value.trim(),
       message: el('c-message').value.trim()
     };
+    // Garde-fou : mots-clés sensibles dans le champ libre → visite gratuite
+    if(currentFunnel() === 'forfait' && KC_MOTS_SENSIBLES.test(state.data.contact.message)){
+      switchToAudit('Votre demande mérite une étude personnalisée');
+    }
     state.currentStep++;
     showStep('result');
     updateProgress();
@@ -1920,20 +1954,22 @@
       h.booking = {
         forfait: state.selectedPresta,
         taille: state.data.taille,
-        options: selectedOptionKeys(),
-        majorations: selectedMajorationKeys()
+        options: Object.assign({}, state.data.options),
+        majorations: Object.keys(state.data.majorations || {}),
+        frais: Object.keys(state.data.frais || {})
       };
       h.result = { total:r.total, acompte:r.acompte, solde:r.solde,
         lignes: r.lignes.map(l => ({ nom:l.nom, montant:l.montant })) };
     } else {
       h.details = {
-        typeBien: state.data.bien || (state.data.taille ? KC_TARIFS.tailles[state.data.taille] || '5 pièces et + / maison' : ''),
+        typeBien: state.data.bien || (state.data.taille && state.data.taille !== 'hors-grille'
+          ? KC_TARIFS.tailles[state.data.taille] : (state.data.taille === 'hors-grille' && presta.horsGrille ? presta.horsGrille.label : '')),
         surface: state.data.surface || '',
-        description: (state.auditReason ? state.auditReason + '. ' : '') + (state.data.contact && state.data.contact.message || '')
+        description: (state.auditReason ? state.auditReason + '. ' : '') + ((state.data.contact && state.data.contact.message) || '')
       };
-      if(funnel === 'pro' && state.lastResult && state.lastResult.min != null){
-        h.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite, detail:state.lastResult.detail,
-          surface: state.data.surface || '', frequence: state.data.frequence || '' };
+      if(funnel === 'estimate' && state.lastResult && state.lastResult.min != null){
+        h.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
+          detail:state.lastResult.detail, surface:state.data.surface || '', niveau:state.data.niveau || '' };
       }
     }
     return h;
@@ -1957,7 +1993,7 @@
     el('result-error').classList.remove('show');
     const funnel = currentFunnel();
     const payload = {
-      kind: funnel === 'forfait' ? 'forfait' : (funnel === 'pro' ? 'estimation' : 'audit'),
+      kind: funnel === 'forfait' ? 'forfait' : (funnel === 'estimate' ? 'estimation' : 'audit'),
       presta: state.selectedPresta,
       prestation: KC_PRESTAS[state.selectedPresta].nom,
       contact: state.data.contact
@@ -1966,9 +2002,9 @@
       payload.booking = buildHandoff().booking;
       payload.result = state.lastResult ? { total:state.lastResult.total, acompte:state.lastResult.acompte,
         solde:state.lastResult.solde, lignes:state.lastResult.lignes } : null;
-    } else if(funnel === 'pro' && state.lastResult){
+    } else if(funnel === 'estimate' && state.lastResult){
       payload.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
-        detail:state.lastResult.detail, surface:state.data.surface || '', frequence:state.data.frequence || '' };
+        detail:state.lastResult.detail, surface:state.data.surface || '', frequence:'' };
     } else {
       payload.details = buildHandoff().details || null;
     }
@@ -2063,6 +2099,7 @@
     if(surf) surf.addEventListener('input', e => updateSurf(e.target.value));
     el('major-urgence').addEventListener('click', () => toggleMajoration(el('major-urgence'), 'urgence'));
     el('major-dimanche').addEventListener('click', () => toggleMajoration(el('major-dimanche'), 'dimanche-ferie'));
+    el('frais-etage').addEventListener('click', () => toggleFrais(el('frais-etage'), 'etage'));
     ['firstname','lastname','email','address'].forEach(f => {
       const input = el('c-'+f);
       if(!input) return;
@@ -2103,6 +2140,9 @@
       banner.classList.add('show');
       el('btn-resume').addEventListener('click', () => {
         Object.assign(state, saved);
+        state.data.options = state.data.options || {};
+        state.data.majorations = state.data.majorations || {};
+        state.data.frais = state.data.frais || {};
         const prestaCard = document.querySelector(`[data-presta="${state.selectedPresta}"]`);
         if(prestaCard){ prestaCard.classList.add('selected'); prestaCard.setAttribute('aria-checked','true'); }
         if(state.data.contact){

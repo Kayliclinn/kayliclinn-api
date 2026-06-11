@@ -98,7 +98,7 @@ en base, Stripe, emails) fonctionne tel quel.
 Les `price_indicative` des variantes (`kc_booking_phase_1_2_seed_variants` :
 Airbnb 55/80/120, déménagement 210/330/550) sont des **anciens montants** ;
 ils ne servent plus que de repli si `quote` est absent. La vérité tarifaire est
-désormais la classe `KC_Pricing` (Airbnb 45/60/75/95, déménagement 79/99/119/149).
+désormais la classe `KC_Pricing` v2 (Airbnb 55/75/95/120, fin de bail 160–430, grand ménage 140–320, vitrerie 70–130).
 
 ## Correctif 2 — 🟠 `kc-sheet-sync` traite le webhook Stripe sans vérifier la signature
 
