@@ -1,8 +1,13 @@
-# Intégration WordPress — sécuriser le tunnel (analyse des plugins réels)
+# Intégration WordPress — détail technique des corrections
+
+> **Tu veux juste copier les fichiers ?** → voir `COPIER-DANS-WORDPRESS.md`.
+> Les versions **complètes et corrigées** sont dans `wordpress/plugins/` :
+> tu n'as plus de bloc à remplacer à la main, ce document explique seulement
+> *ce qui a changé* et *pourquoi*.
 
 Après lecture des 4 extensions (`kc-booking`, `kc-devis`, `kc-sheet-sync`,
-`kc-contact`), voici ce qui est **déjà en place** et ce qui **doit être
-corrigé**. Tout le tunnel passe par WordPress — aucune dépendance à Vercel.
+`kc-contact`), voici ce qui est **déjà en place** et ce qui **a été corrigé**.
+Tout le tunnel passe par WordPress — aucune dépendance à Vercel.
 
 ## Ce qui est déjà fait (et bien fait) ✅
 

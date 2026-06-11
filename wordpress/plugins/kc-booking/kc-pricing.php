@@ -15,6 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Plusieurs extensions peuvent charger ce fichier : on ne le définit qu'une fois.
+if ( class_exists( 'KC_Pricing' ) ) {
+	return;
+}
+
 class KC_Pricing {
 
 	/** Forfaits logement TTC — réservables en ligne (acompte 30 %). */

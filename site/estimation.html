@@ -1958,6 +1958,7 @@
     const funnel = currentFunnel();
     const payload = {
       kind: funnel === 'forfait' ? 'forfait' : (funnel === 'pro' ? 'estimation' : 'audit'),
+      presta: state.selectedPresta,
       prestation: KC_PRESTAS[state.selectedPresta].nom,
       contact: state.data.contact
     };

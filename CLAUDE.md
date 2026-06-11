@@ -11,7 +11,7 @@ Contenu du dépôt :
 | Dossier | Rôle |
 | --- | --- |
 | `site/` | Les pages du site (blocs « HTML personnalisé » à coller dans WordPress) + guide `site/README.md` |
-| `wordpress/` | Code PHP à intégrer dans les extensions (grille de prix serveur `kc-pricing.php`, handler kc-devis durci) + analyse de sécurité des 4 plugins (`ANALYSE-plugins.md`) + guide `INTEGRATION-kc-booking.md` |
+| `wordpress/` | **Versions complètes et corrigées** des 4 extensions dans `wordpress/plugins/<nom>/` (prêtes à copier) + grille de prix serveur `kc-pricing.php` (dans kc-booking et kc-devis) + guides `COPIER-DANS-WORDPRESS.md`, `INTEGRATION-kc-booking.md` et analyse `ANALYSE-plugins.md` |
 | `lib/`, `api/` | **Archive** : ancienne API Vercel (décision du 11/06/2026 : Vercel retiré du projet). Ne plus brancher les pages dessus. `lib/pricing.js` reste une référence lisible de la grille. |
 
 ## État réel des extensions (vérifié sur le code source, 11/06/2026)
