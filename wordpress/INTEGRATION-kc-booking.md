@@ -133,18 +133,24 @@ prix pour les estimations pro/audit. Conserver l'`enqueue` qui injecte
 Détail mineur : remplacer `json_decode(stripslashes($payload_raw), true)` par
 `json_decode(wp_unslash($payload_raw), true)` (plus sûr sur les apostrophes).
 
-## Correctif 4 — alignement déjà fait côté page
+## Correctif 4 — type « Visite d'audit » + alignement (déjà fait)
 
 `site/reservation.html` (table `TYPE_MAP`) mappe les 17 prestations du tunnel
-vers les **slugs réels** du plugin. Le type `vitres` étant en mode « email »
-(sans calendrier), les demandes de vitres réservent une visite d'audit sur un
-type gratuit. Tout le reste pointe vers les types existants.
+vers les **slugs réels** du plugin. Les prestations à type dédié pointent
+dessus (bureaux, commerces, parties-communes, fin-chantier, remise-etat) ; les
+demandes vraiment diverses (sinistre, textile, vitres en hauteur, événement —
+et les vitres, dont le type plugin est en mode « email » sans calendrier)
+pointent vers un type générique **`visite-audit`**.
 
-**Optionnel (plus propre)** : créer dans l'admin kc-booking un type
-`visite-audit` (calendar_free, ~45 min, tout le personnel) et le mettre comme
-`DEFAULT_AUDIT_TYPE` + cibles des prestations sur mesure dans `reservation.html`.
-L'admin verrait alors « Visite d'audit » plutôt que « Remise en état » pour ces
-demandes (le devis complet reste de toute façon dans le champ `quote`).
+Ce type est créé automatiquement par l'extension **`kc-visite-audit.php`**
+(fournie) : installer le ZIP → activer, rien à régler. Tant qu'il n'est pas
+là, `reservation.html` se replie tout seul sur `remise-etat` puis sur le
+premier type gratuit — le calendrier fonctionne dans tous les cas.
+
+Installation : Extensions → Téléverser → activer `kc-visite-audit`. Le type
+« Visite d'audit gratuite » (slug `visite-audit`, gratuit, 45 min, adresse
+requise) apparaît dans kc-booking → Prestations. Affecter le personnel
+habilité si besoin.
 
 ## Test de bout en bout (point 4.4 du suivi) — en mode test Stripe
 

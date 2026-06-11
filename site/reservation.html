@@ -397,18 +397,20 @@
     'fin-chantier':    'fin-chantier',
     'maison':          'remise-etat',
     'grand-menage':    'remise-etat',
-    'sinistre':        'remise-etat',
-    'textile':         'remise-etat',
-    'evenement':       'remise-etat',
+    // Prestations très diverses → type générique « Visite d'audit gratuite »
+    // (créé par l'extension kc-visite-audit). Repli auto si absent.
+    'sinistre':        'visite-audit',
+    'textile':         'visite-audit',
+    'evenement':       'visite-audit',
     // Le type « vitres » du plugin est en mode « email » (pas de calendrier) :
-    // on réserve la visite d'audit sur le type gratuit générique.
-    'vitres-ponctuel': 'remise-etat',
-    'vitres-hauteur':  'remise-etat'
+    // on réserve donc la visite d'audit sur le type générique.
+    'vitres-ponctuel': 'visite-audit',
+    'vitres-hauteur':  'visite-audit'
   };
-  /* Type gratuit générique pour les cas sans type dédié. « remise-etat »
-     existe déjà (calendar_free) → fonctionne immédiatement. Pour un libellé
-     plus neutre dans l'admin, créer un type « visite-audit » et le mettre ici. */
-  const DEFAULT_AUDIT_TYPE = 'remise-etat';
+  /* Type d'audit générique visé en priorité. Repli en cascade dans boot()
+     vers « remise-etat » puis le premier type gratuit, pour que la page
+     fonctionne même si « visite-audit » n'a pas encore été créé. */
+  const DEFAULT_AUDIT_TYPE = 'visite-audit';
 
   const IS_LIVE = /(^|\.)kayliclinn\.fr$/i.test(location.hostname);
 
@@ -916,10 +918,14 @@
       const types = await fetchJSON(api('/types'));
       const wantedSlug = TYPE_MAP[S.handoff.presta]
         || (S.handoff.funnel === 'forfait' ? S.handoff.presta : DEFAULT_AUDIT_TYPE);
-      let type = (types||[]).find(t => t.slug === wantedSlug);
-      // Repli : prestation sur mesure sans type dédié → type d'audit générique
+      const bySlug = s => (types||[]).find(t => t.slug === s);
+      let type = bySlug(wantedSlug);
+      // Repli en cascade pour les visites d'audit : visite-audit → remise-etat
+      // → 1er type gratuit disponible. Garantit un calendrier même si le type
+      // générique n'a pas encore été créé dans l'admin.
       if(!type && S.handoff.funnel !== 'forfait'){
-        type = (types||[]).find(t => t.slug === DEFAULT_AUDIT_TYPE);
+        type = bySlug('visite-audit') || bySlug('remise-etat')
+            || (types||[]).find(t => t.cta_type === 'calendar_free');
       }
       if(!type){ showError('Cette prestation ne propose pas encore la réservation en ligne. Appelez-nous au 06 70 01 20 61.'); return; }
       S.typeId = type.id;

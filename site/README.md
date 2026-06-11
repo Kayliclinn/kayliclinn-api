@@ -25,10 +25,11 @@ thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
    `GET /availability` (Phase 3.2 — implémentation de référence fournie),
    et surtout **brancher `KC_Pricing`** dans `POST /bookings` pour que les
    montants soient recalculés côté serveur (sécurité paiement).
-2. **kc-booking admin** : créer le type gratuit `visite-audit` (~45 min) —
-   il sert de calendrier commun à toutes les prestations sur mesure —
-   et vérifier les slugs des types face à la table `TYPE_MAP` en haut du
-   script de `reservation.html`.
+2. **Type « Visite d'audit »** : installer l'extension `kc-visite-audit.php`
+   (ZIP → activer) — elle crée automatiquement le type gratuit `visite-audit`
+   qui sert de calendrier commun aux prestations sur mesure. Sans elle, la page
+   se replie sur le type « remise-etat » existant (le calendrier marche quand
+   même).
 3. **kc-devis** : intégrer le handler durci fourni et injecter
    `window.kcDevis = { ajaxUrl, nonce }` sur la page `/devis/`.
    Sans lui, la page affiche un message honnête (plus de faux succès).
