@@ -1,7 +1,7 @@
 # À copier dans WordPress — guide simple
 
 Les **fichiers complets et corrigés** de tes extensions sont dans
-`wordpress/plugins/`. Plus besoin de chercher un bloc à remplacer : tu copies
+`plugins/`. Plus besoin de chercher un bloc à remplacer : tu copies
 le fichier **en entier**. Tout a été vérifié (syntaxe PHP + calcul des prix).
 
 ## Méthode (sans FTP, comme d'habitude)

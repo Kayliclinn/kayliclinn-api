@@ -10,13 +10,14 @@ Contenu du dépôt :
 
 | Dossier | Rôle |
 | --- | --- |
+| `plugins/` | **Versions complètes et corrigées** des extensions (`kc-booking`, `kc-devis`, `kc-sheet-sync`, `kc-contact`, `kc-visite-audit`) — structure prête pour les Déploiements GitHub de WordPress.com (destination `/wp-content`, voir `DEPLOIEMENT-GITHUB.md` et `.deployignore`) |
 | `site/` | Les pages du site (blocs « HTML personnalisé » à coller dans WordPress) + guide `site/README.md` |
-| `wordpress/` | **Versions complètes et corrigées** des 4 extensions dans `wordpress/plugins/<nom>/` (prêtes à copier) + grille de prix serveur `kc-pricing.php` (dans kc-booking et kc-devis) + guides `COPIER-DANS-WORDPRESS.md`, `INTEGRATION-kc-booking.md` et analyse `ANALYSE-plugins.md` |
+| `wordpress/` | Guides : `COPIER-DANS-WORDPRESS.md`, `INTEGRATION-kc-booking.md` (détail des correctifs), `ANALYSE-plugins.md` (revue de sécurité) |
 | `lib/`, `api/` | **Archive** : ancienne API Vercel (décision du 11/06/2026 : Vercel retiré du projet). Ne plus brancher les pages dessus. `lib/pricing.js` reste une référence lisible de la grille. |
 
 ## État réel des extensions (vérifié sur le code source, 11/06/2026)
 
-`kc-booking` est plus avancé que le document de suivi ne le dit : **les Phases 3.1 (`GET /types`) et 3.2 (`GET /availability`) sont terminées** (disponibilités croisant horaires du personnel + Google Agenda + réservations). Le webhook Stripe vérifie la signature et est idempotent. **Une faille critique demeure** : `kc_rest_create_booking` accepte le montant envoyé par le navigateur — à corriger avec `KC_Pricing` (voir `wordpress/INTEGRATION-kc-booking.md`, correctif 1). Slugs réels des types : `bureaux, parties-communes, commerces, sensibles, fin-chantier, demenagement, remise-etat, decapage, vitres, airbnb` (seuls `airbnb` et `demenagement` sont `calendar_paid`).
+`kc-booking` est plus avancé que le document de suivi ne le dit : **les Phases 3.1 (`GET /types`) et 3.2 (`GET /availability`) sont terminées** (disponibilités croisant horaires du personnel + Google Agenda + réservations). Le webhook Stripe vérifie la signature et est idempotent. **La faille critique** (`kc_rest_create_booking` acceptait le montant envoyé par le navigateur) **est corrigée dans `plugins/kc-booking/`** via `KC_Pricing` — la correction prend effet sur le site une fois ce dossier déployé. Slugs réels des types : `bureaux, parties-communes, commerces, sensibles, fin-chantier, demenagement, remise-etat, decapage, vitres, airbnb` (seuls `airbnb` et `demenagement` sont `calendar_paid`).
 
 ## Architecture du tunnel (WordPress)
 
@@ -27,7 +28,7 @@ Contenu du dépôt :
 ## La grille tarifaire (source de vérité)
 
 Fichier source : `site/tarification.xlsx`. Implémentations synchronisées — **toute modification de prix se reporte aux trois endroits** :
-1. `wordpress/kc-pricing.php` (validation côté serveur — fait foi à l'encaissement),
+1. `plugins/kc-booking/kc-pricing.php` (validation côté serveur — fait foi à l'encaissement ; copie identique dans `plugins/kc-devis/`),
 2. constante `KC_TARIFS` dans `site/estimation.html` (affichage),
 3. `lib/pricing.js` (archive lisible).
 
@@ -45,4 +46,4 @@ Forfaits logement TTC (acompte 30 %) : Airbnb 45/60/75/95 € ; déménagement, 
 
 ## Contraintes WordPress.com Atomic
 
-Pas d'accès FTP : les extensions s'installent par ZIP (admin → Extensions → Téléverser). Le code de `wordpress/` s'intègre donc au code source local des extensions, puis on refabrique le ZIP (voir `wordpress/INTEGRATION-kc-booking.md`).
+Pas d'accès FTP. Deux façons de mettre à jour les extensions : **Déploiements GitHub** (recommandé — dépôt connecté, destination `/wp-content`, mode manuel ; voir `DEPLOIEMENT-GITHUB.md`) ou ZIP via admin → Extensions → Téléverser (voir `wordpress/COPIER-DANS-WORDPRESS.md`).

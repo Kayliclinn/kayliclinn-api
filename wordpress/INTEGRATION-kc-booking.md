@@ -1,7 +1,7 @@
 # Intégration WordPress — détail technique des corrections
 
 > **Tu veux juste copier les fichiers ?** → voir `COPIER-DANS-WORDPRESS.md`.
-> Les versions **complètes et corrigées** sont dans `wordpress/plugins/` :
+> Les versions **complètes et corrigées** sont dans `plugins/` :
 > tu n'as plus de bloc à remplacer à la main, ce document explique seulement
 > *ce qui a changé* et *pourquoi*.
 
