@@ -1176,11 +1176,10 @@
   /* ════════════════════════════════════════════════════════
      CONFIGURATION
      ─────────────────────────────────────────────────────────
-     KC_API : URL de l'API de paiement/devis (dépôt kayliclinn-api,
-     déployé sur Vercel). Pour la changer sans retoucher ce bloc,
-     définir window.kcApiBase avant ce script.
+     L'envoi du devis par email passe par l'extension WordPress
+     kc-devis (admin-ajax, action « kc_devis »). Le plugin doit
+     injecter window.kcDevis = { ajaxUrl, nonce } sur cette page.
      ════════════════════════════════════════════════════════ */
-  const KC_API = (window.kcApiBase || 'https://kayliclinn-api.vercel.app').replace(/\/$/,'');
   const KC_CONFIG = {
     reservationURL: '/reservation/',
     sessionStorageKey: 'kc_devis_progress',
@@ -1950,30 +1949,51 @@
   }
   async function sendQuoteEmail(){
     const honeypot = el('kc-website-d');
+    // Honeypot rempli = robot : on simule un succès sans rien envoyer
+    if(honeypot && honeypot.value !== ''){ showSuccessModal(); return; }
+
     const btn = el('cta-email');
     btn.classList.add('loading'); btn.disabled = true;
     el('result-error').classList.remove('show');
     const funnel = currentFunnel();
-    const body = {
+    const payload = {
       kind: funnel === 'forfait' ? 'forfait' : (funnel === 'pro' ? 'estimation' : 'audit'),
       prestation: KC_PRESTAS[state.selectedPresta].nom,
-      contact: state.data.contact,
-      website: honeypot ? honeypot.value : ''
+      contact: state.data.contact
     };
     if(funnel === 'forfait'){
-      body.booking = buildHandoff().booking;
+      payload.booking = buildHandoff().booking;
+      payload.result = state.lastResult ? { total:state.lastResult.total, acompte:state.lastResult.acompte,
+        solde:state.lastResult.solde, lignes:state.lastResult.lignes } : null;
     } else if(funnel === 'pro' && state.lastResult){
-      body.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
+      payload.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
         detail:state.lastResult.detail, surface:state.data.surface || '', frequence:state.data.frequence || '' };
+    } else {
+      payload.details = buildHandoff().details || null;
     }
+
+    const wpConfig = window.kcDevis;
+    if(!wpConfig || !wpConfig.ajaxUrl){
+      // Pas de fausse confirmation : on informe honnêtement et on garde la saisie
+      btn.classList.remove('loading'); btn.disabled = false;
+      resultError('L\'envoi par email n\'est pas encore activé sur cette page (module kc-devis). '
+        + 'Réservez directement votre créneau ci-dessus, ou appelez-nous au 06 70 01 20 61.');
+      return;
+    }
+
     try{
-      const res = await fetch(KC_API + '/api/send-quote', {
+      const params = new URLSearchParams();
+      params.append('action','kc_devis');
+      params.append('_wpnonce', wpConfig.nonce);
+      params.append('payload', JSON.stringify(payload));
+      const res = await fetch(wpConfig.ajaxUrl, {
         method:'POST',
-        headers:{ 'Content-Type':'application/json' },
-        body: JSON.stringify(body)
+        credentials:'same-origin',
+        headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: params
       });
       const data = await res.json().catch(() => ({}));
-      if(!res.ok) throw new Error(data.error || 'HTTP '+res.status);
+      if(!res.ok || !data.success) throw new Error((data.data && data.data.message) || 'HTTP '+res.status);
       clearProgress();
       showSuccessModal();
     }catch(err){

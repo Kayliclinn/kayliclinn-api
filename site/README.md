@@ -1,15 +1,17 @@
 # Pages du site kayliclinn.fr — guide de mise en place
 
 Ces fichiers sont des blocs « HTML personnalisé » à coller dans WordPress
-(un fichier = le contenu complet de la page, hors en-tête/pied de page du thème).
+(un fichier = le contenu complet de la page, hors en-tête/pied de page du
+thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
+`kc-devis`, `kc-sheet-sync`) — aucune dépendance à Vercel.
 
 | Fichier | Page WordPress | Contenu |
 | --- | --- | --- |
 | `accueil.html` | Page d'accueil | Hero, services (prix grille officielle), réalisations, avis (badge « Exemple »), FAQ |
 | `prestation.html` | Gabarit prestation (ex. Turnover Airbnb) | 14 sections éditoriales, tarifs grille officielle |
 | `estimation.html` | `/devis/` | Tunnel d'estimation 3 parcours (forfait / pro / audit) |
-| `reservation.html` | `/reservation/` | Calendrier + paiement Stripe (forfaits) ou visite gratuite (audits) |
-| `tarification.xlsx` | — | Grille tarifaire source (reportée dans `lib/pricing.js`) |
+| `reservation.html` | `/reservation/` | Calendrier kc-booking + paiement Stripe (forfaits) ou visite gratuite (audits) |
+| `tarification.xlsx` | — | Grille tarifaire source |
 
 ## Mise à jour d'une page
 
@@ -17,38 +19,38 @@ Ces fichiers sont des blocs « HTML personnalisé » à coller dans WordPress
 2. Remplacer **tout** le contenu du bloc par le contenu du fichier.
 3. Prévisualiser puis publier.
 
-## Configuration requise avant le test de bout en bout
+## Prérequis côté extensions (voir `../wordpress/INTEGRATION-kc-booking.md`)
 
-1. **URL de l'API** : les pages `estimation.html` et `reservation.html` appellent
-   l'API Vercel. Par défaut : `https://kayliclinn-api.vercel.app`.
-   Si votre projet Vercel a une autre URL (Vercel → Settings → Domains),
-   remplacez-la dans les deux fichiers (constante en haut du `<script>`), ou
-   définissez `window.kcApiBase = 'https://votre-url'` dans un bloc avant.
-2. **Variables d'environnement Vercel** : `STRIPE_SECRET_KEY` (test d'abord),
-   `STRIPE_WEBHOOK_SECRET`, `RESEND_API_KEY`, `EMAIL_FROM` (après vérification
-   du domaine dans Resend), `NOTIFICATION_EMAIL`, `SITE_URL=https://kayliclinn.fr`.
-3. **Webhook Stripe** : dashboard Stripe → Webhooks → endpoint
-   `https://<url-api>/api/webhook`, événement `checkout.session.completed`,
-   copier le secret dans `STRIPE_WEBHOOK_SECRET`.
-4. **Test complet en mode test Stripe** (carte 4242 4242 4242 4242) :
-   devis forfait → réservation → paiement acompte → email admin + client ;
-   puis parcours audit : devis « sur mesure » → visite gratuite → emails.
+1. **kc-booking** : valider `GET /types` (Phase 3.1), intégrer
+   `GET /availability` (Phase 3.2 — implémentation de référence fournie),
+   et surtout **brancher `KC_Pricing`** dans `POST /bookings` pour que les
+   montants soient recalculés côté serveur (sécurité paiement).
+2. **kc-booking admin** : créer le type gratuit `visite-audit` (~45 min) —
+   il sert de calendrier commun à toutes les prestations sur mesure —
+   et vérifier les slugs des types face à la table `TYPE_MAP` en haut du
+   script de `reservation.html`.
+3. **kc-devis** : intégrer le handler durci fourni et injecter
+   `window.kcDevis = { ajaxUrl, nonce }` sur la page `/devis/`.
+   Sans lui, la page affiche un message honnête (plus de faux succès).
 
-## À remplacer par vos vraies données (rappels)
+## Comportement hors ligne / hors prod
 
-- Lien d'avis Google (bouton « Laisser un avis Google » de l'accueil) :
-  pointe pour l'instant vers une recherche Google. Fiche Google Business →
-  « Demander des avis » → coller le lien `g.page/r/…`.
-- Photos avant/après de la section « Nos réalisations » (accueil) :
-  les 12 images pointent encore vers le même fichier (`Image6.webp`).
-- Témoignages : marqués « Exemple » (obligatoire — DGCCRF) tant qu'ils ne sont
-  pas remplacés par de vrais avis clients autorisés.
+Sur un autre domaine que kayliclinn.fr (prévisualisation), les pages passent
+en **mode démo** : bannière visible, données d'exemple, aucune requête réseau.
+Sur kayliclinn.fr sans extension prête, la réservation affiche un état
+d'erreur clair avec le téléphone en secours — jamais de fausse confirmation.
 
-## Créneaux du calendrier de réservation
+## À remplacer par tes vraies données (rappels)
 
-Définis dans `reservation.html` (constante `KC_RESA`) : lundi–samedi,
-créneaux 08:30 / 11:00 / 14:00 / 16:30, délai mini 48 h (24 h si majoration
-urgence), dimanche/fériés uniquement si la majoration « dimanche/férié » est
-choisie, horizon 35 jours. Le serveur revalide la date et le créneau.
-Quand l'extension `kc-booking` (phases 3.x) sera terminée, ce calendrier
-pourra rebasculer sur ses disponibilités réelles (Google Agenda).
+- Lien d'avis Google (accueil) : pointe vers une recherche Google en
+  attendant le vrai lien `g.page/r/…` (Fiche Google Business → Demander des avis).
+- Photos avant/après « Nos réalisations » (accueil) : les 12 images pointent
+  encore vers le même fichier (`Image6.webp`).
+- Témoignages : badge « Exemple » obligatoire (DGCCRF) tant qu'ils ne sont
+  pas remplacés par de vrais avis autorisés.
+
+## Test de bout en bout (avant mise en ligne publique)
+
+Voir la checklist complète dans `../wordpress/INTEGRATION-kc-booking.md`
+(section 6) : parcours payant Stripe test + parcours visite gratuite +
+test anti-fraude (montant forcé → le serveur doit encaisser le prix grille).

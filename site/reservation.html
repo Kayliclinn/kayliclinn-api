@@ -365,39 +365,55 @@
   'use strict';
 
   /* ════════════════════════════════════════════════
-     CONFIGURATION
-     ─────────────────────────────────────────────────
-     apiBase : URL de l'API kayliclinn-api (Vercel).
-     Modifiable sans toucher au bloc via window.kcApiBase.
+     CONFIGURATION — backend WordPress (extension kc-booking)
      ════════════════════════════════════════════════ */
   const KC_RESA = {
-    apiBase: (window.kcApiBase || 'https://kayliclinn-api.vercel.app').replace(/\/$/,''),
-    depositPercent: 30,                  // affichage — le serveur recalcule
+    apiBase: (window.kcReservation && window.kcReservation.apiBase) || '/wp-json/kc-booking/v1',
+    depositPercent: 30,            // affichage — le plugin recalcule côté serveur
     handoffKey: 'kc_reservation_handoff',
     devisURL: '/devis/',
-    daysToShow: 35,                      // amplitude du calendrier
-    slots: ['08:30','11:00','14:00','16:30'],
-    leadHoursStandard: 48,               // délai mini standard
-    leadHoursUrgent: 18                  // délai mini si majoration urgence
+    daysToShow: 21                 // amplitude du calendrier (max 31 côté plugin)
   };
 
-  const IS_LIVE = /(^|\.)kayliclinn\.fr$/i.test(location.hostname);
+  /* Correspondance entre les prestations du tunnel de devis et les
+     SLUGS des types kc-booking. À ajuster si vos slugs diffèrent
+     (Réglages kc-booking → prestations). Toute prestation « sur
+     mesure » absente de cette table réserve le type d'audit générique. */
+  const TYPE_MAP = {
+    /* — Forfaits payés en ligne (Flux B) — */
+    'airbnb':          'airbnb',
+    'demenagement':    'demenagement',
+    'standard':        'demenagement',   // même grille tarifaire (79–149 €)
+    'logement-vide':   'demenagement',   // même grille tarifaire
+    /* — Pros & sur-mesure : visite/audit gratuite (Flux A) — */
+    'bureaux':         'bureaux',
+    'locaux':          'bureaux',
+    'commerce':        'commerces',
+    'copropriete':     'parties-communes',
+    'vitres-ponctuel': 'vitres',
+    'vitres-hauteur':  'vitres',
+    'fin-chantier':    'fin-chantier',
+    'maison':          'remise-etat',
+    'grand-menage':    'remise-etat'
+  };
+  /* Type gratuit générique pour tous les autres cas (sinistre, textile,
+     syndic, événement…). À créer une fois dans kc-booking :
+     slug « visite-audit », cta calendar_free, durée ~45 min. */
+  const DEFAULT_AUDIT_TYPE = 'visite-audit';
 
-  // Jours fériés (exclus du calendrier sauf majoration « dimanche/férié »)
-  const FERIES = ['2026-07-14','2026-08-15','2026-11-01','2026-11-11','2026-12-25',
-    '2027-01-01','2027-03-29','2027-05-01','2027-05-06','2027-05-08','2027-05-17',
-    '2027-07-14','2027-08-15','2027-11-01','2027-11-11','2027-12-25'];
+  const IS_LIVE = /(^|\.)kayliclinn\.fr$/i.test(location.hostname);
 
   /* ════════════════════════════════════════════════
      ÉTAT
      ════════════════════════════════════════════════ */
-  const S = { handoff:null, requiresPayment:true,
+  const S = { handoff:null, typeId:null, variantId:null, duration:null,
+              requiresPayment:true,            // détecté via /types (calendar_paid)
               days:[], dayIndex:null, viewY:null, viewM:null, slot:null, mode:'deposit',
               total:0, deposit:0, submitting:false };
 
   const $ = id => document.getElementById(id);
   const euro = n => Number(n||0).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:2}) + ' €';
-  const api = p => KC_RESA.apiBase + p;
+  const api = p => KC_RESA.apiBase.replace(/\/$/,'') + p;
   const wait = ms => new Promise(r => setTimeout(r, ms));
   function ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
   function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
@@ -407,6 +423,14 @@
     window.scrollTo({top:0, behavior:'smooth'});
   }
   function showError(msg){ $('error-msg').textContent = msg || 'Une erreur est survenue.'; show('st-error'); }
+
+  async function fetchJSON(url, opts){
+    const r = await fetch(url, opts);
+    const txt = await r.text();
+    let body = {}; try{ body = txt ? JSON.parse(txt) : {}; }catch(e){ body = {}; }
+    if(!r.ok){ const e = new Error(body.message || ('HTTP '+r.status)); e.status = r.status; e.body = body; throw e; }
+    return body;
+  }
 
   /* ════════════════════════════════════════════════
      LECTURE DU DEVIS (handoff v2 depuis /devis/)
@@ -437,12 +461,12 @@
   /* ════════════════════════════════════════════════
      RECAP
      ════════════════════════════════════════════════ */
+  const TAILLE_LABELS = { studio:'Studio ≤ 25 m²', p2:'2 pièces', p3:'3 pièces', p4:'4 pièces' };
   function renderRecap(){
     const h = S.handoff;
     $('recap-presta').textContent = h.label || 'Prestation';
-    $('recap-bien').textContent = (h.booking && h.booking.taille)
-      ? ({studio:'Studio ≤ 25 m²',p2:'2 pièces',p3:'3 pièces',p4:'4 pièces'})[h.booking.taille] || ''
-      : ((h.details && h.details.typeBien) || '');
+    $('recap-bien').textContent = (h.booking && TAILLE_LABELS[h.booking.taille])
+      || (h.details && h.details.typeBien) || '';
     let rows = '';
     if(S.requiresPayment && h.result && h.result.lignes){
       rows = h.result.lignes.map(d =>
@@ -456,7 +480,7 @@
       }
     }
     $('recap-rows').innerHTML = rows;
-    $('recap-est').textContent = S.requiresPayment && h.result ? euro(h.result.total) : 'Devis après visite';
+    $('recap-est').textContent = (S.requiresPayment && h.result) ? euro(h.result.total) : 'Devis après visite';
   }
 
   /* ════════════════════════════════════════════════
@@ -466,7 +490,7 @@
     if(S.requiresPayment){
       $('sec-pay').hidden = false;
       $('head-desc').textContent = 'Sélectionnez la date et l\'heure, puis votre mode de règlement. Le paiement est sécurisé par Stripe et votre créneau est réservé immédiatement.';
-      $('recap-note').textContent = 'Tarif ferme issu de notre grille officielle, pour un logement en état normal. Le solde se règle après la prestation.';
+      $('recap-note').textContent = 'Tarif issu de notre grille officielle, pour un logement en état normal. Le solde se règle après la prestation.';
       $('secure-note-txt').textContent = 'Paiement sécurisé par Stripe · sans engagement au-delà de l\'intervention réservée';
     } else {
       $('sec-pay').hidden = true;
@@ -477,37 +501,45 @@
   }
 
   function computeAmounts(){
-    const r = S.handoff.result || {};
+    const r = (S.handoff && S.handoff.result) || {};
     S.total = Number(r.total) || 0;
-    S.deposit = Number(r.acompte) != null && !Number.isNaN(Number(r.acompte)) ? Number(r.acompte) : Math.round(S.total * KC_RESA.depositPercent) / 100;
+    S.deposit = (r.acompte != null && !Number.isNaN(Number(r.acompte)))
+      ? Number(r.acompte)
+      : Math.round(S.total * KC_RESA.depositPercent) / 100;
     $('dep-pct').textContent = KC_RESA.depositPercent;
     $('dep-amount').textContent = euro(S.deposit);
     $('full-amount').textContent = euro(S.total);
   }
 
   /* ════════════════════════════════════════════════
-     DISPONIBILITÉS — règles locales (lun–sam, créneaux
-     fixes, délai mini). Le serveur revalide date & créneau.
+     DISPONIBILITÉS — extension kc-booking (Google Agenda)
      ════════════════════════════════════════════════ */
-  function buildAvailability(){
-    const h = S.handoff;
-    const majo = (h.booking && h.booking.majorations) || [];
-    const allowSunday = majo.includes('dimanche-ferie');
-    const leadHours = majo.includes('urgence') ? KC_RESA.leadHoursUrgent : KC_RESA.leadHoursStandard;
-    const minTime = Date.now() + leadHours * 3600 * 1000;
-    const out = [];
-    for(let i = 0; i <= KC_RESA.daysToShow; i++){
-      const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() + i);
-      const date = ymd(d);
-      const isSunday = d.getDay() === 0;
-      const isFerie = FERIES.includes(date);
-      if((isSunday || isFerie) && !allowSunday) continue;
-      const slots = KC_RESA.slots
-        .filter(t => new Date(date + 'T' + t + ':00').getTime() >= minTime)
-        .map(t => ({ time:t }));
-      if(slots.length) out.push({ date, slots });
+  async function loadAvailability(){
+    const today = new Date();
+    const from = ymd(today);
+    const to = ymd(new Date(today.getTime() + KC_RESA.daysToShow*86400000));
+    const q = `?type_id=${S.typeId}` + (S.variantId ? `&variant_id=${S.variantId}` : '') + `&date_from=${from}&date_to=${to}`;
+    const data = await fetchJSON(api('/availability'+q));
+    S.days = (data.days || []).filter(d => d.slots && d.slots.length);
+  }
+
+  function demoDays(){
+    const out = [], now = new Date(); let added = 0, i = 1;
+    while(added < 10 && i < 25){
+      const d = new Date(now.getTime() + i*86400000);
+      const wd = d.getDay();
+      if(wd!==0 && wd!==6){
+        const date = ymd(d);
+        const times = ['09:00','10:30','13:00','14:30','16:00'].filter(()=>Math.random()>0.25);
+        if(times.length){
+          out.push({ date, weekday:['sun','mon','tue','wed','thu','fri','sat'][wd],
+            slots: times.map(t => ({ time:t, start:date+'T'+t+':00+02:00', end:date+'T'+t+':00+02:00', staff_ids:[1] })) });
+          added++;
+        }
+      }
+      i++;
     }
-    S.days = out;
+    return out;
   }
 
   /* ════════════════════════════════════════════════
@@ -549,7 +581,7 @@
     prev.disabled = (curM <= minM);
     next.disabled = (curM >= maxM);
 
-    const startWd = (new Date(S.viewY, S.viewM, 1).getDay() + 6) % 7;
+    const startWd = (new Date(S.viewY, S.viewM, 1).getDay() + 6) % 7; // lundi = 0
     const dim = new Date(S.viewY, S.viewM + 1, 0).getDate();
 
     let html = '';
@@ -596,10 +628,11 @@
     const day = S.days[S.dayIndex];
     if(!day){ grid.innerHTML=''; return; }
     grid.innerHTML = day.slots.map((s,i) =>
-      `<button type="button" class="slot ${S.slot && S.slot.time===s.time && S.slot.date===day.date ? 'active':''}" data-i="${i}">${s.time}</button>`
+      `<button type="button" class="slot ${S.slot && S.slot.start===s.start ? 'active':''}" data-i="${i}">${escapeHtml(s.time)}</button>`
     ).join('');
     grid.querySelectorAll('.slot').forEach(b => b.addEventListener('click', () => {
-      S.slot = { time: day.slots[parseInt(b.dataset.i,10)].time, date: day.date };
+      S.slot = Object.assign({}, day.slots[parseInt(b.dataset.i,10)]);
+      S.slot.date = day.date;
       renderSlots();
       $('sec-slot').classList.add('done');
       refreshConfirm();
@@ -640,9 +673,9 @@
   }
 
   /* ════════════════════════════════════════════════
-     SOUMISSION
-     • forfait → /api/create-checkout-session → Stripe
-     • audit   → /api/book-audit → confirmation directe
+     SOUMISSION → POST /bookings (kc-booking)
+     Le devis complet part dans `quote` : le plugin DOIT recalculer
+     les montants côté serveur (voir wordpress/kc-pricing.php).
      ════════════════════════════════════════════════ */
   async function submit(){
     if(!S.slot || S.submitting) return;
@@ -651,45 +684,43 @@
     $('post-error').classList.remove('show');
 
     const h = S.handoff;
-    const contact = h.contact || {};
+    const c = h.contact || {};
+    const body = {
+      type_id: S.typeId,
+      start: S.slot.start,
+      firstname: c.firstname, lastname: c.lastname, email: c.email, phone: c.phone,
+      address: c.address || '', message: c.message || '',
+      consent: true,
+      quote: JSON.stringify({
+        funnel: h.funnel, presta: h.presta, label: h.label,
+        booking: h.booking || null, details: h.details || null,
+        estimation: h.estimation || null, result: h.result || null
+      }),
+      company_url: '' // honeypot (doit rester vide)
+    };
+    if(S.variantId) body.variant_id = S.variantId;
+    if(S.requiresPayment){
+      body.amount_total = S.total;     // indicatif — recalculé par le plugin
+      body.amount_now = amountNow();   // indicatif — recalculé par le plugin
+      body.payment_mode = S.mode;
+    }
 
     try{
-      if(!IS_LIVE){ await wait(900); showConfirmation({ paid:S.requiresPayment }); return; }
+      if(!IS_LIVE){ await wait(1000); showConfirmation({ paid:S.requiresPayment, free:!S.requiresPayment }); return; }
 
-      if(S.requiresPayment){
-        const res = await fetch(api('/api/create-checkout-session'), {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({
-            booking: h.booking,
-            mode: S.mode === 'full' ? 'total' : 'acompte',
-            contact,
-            date: S.slot.date,
-            slot: S.slot.time
-          })
-        });
-        const data = await res.json().catch(() => ({}));
-        if(!res.ok){ handlePostError(res.status, data); return; }
-        if(data.url){ window.location.href = data.url; return; }
-        inlineErr('Réponse inattendue du serveur de paiement. Réessayez ou appelez-nous.');
-      } else {
-        const res = await fetch(api('/api/book-audit'), {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({
-            prestation: h.label,
-            details: h.details || {},
-            contact,
-            date: S.slot.date,
-            slot: S.slot.time,
-            website: ''
-          })
-        });
-        const data = await res.json().catch(() => ({}));
-        if(!res.ok){ handlePostError(res.status, data); return; }
-        try{ sessionStorage.removeItem(KC_RESA.handoffKey); }catch(e){}
-        showConfirmation({ free:true });
-      }
+      const res = await fetch(api('/bookings'), {
+        method:'POST', credentials:'same-origin',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(body)
+      });
+      const txt = await res.text(); let data = {}; try{ data = JSON.parse(txt); }catch(e){}
+      if(!res.ok){ handlePostError(res.status, data); return; }
+
+      try{ sessionStorage.removeItem(KC_RESA.handoffKey); }catch(e){}
+
+      if(data.payment_url){ window.location.href = data.payment_url; return; }
+      showConfirmation({ free:!S.requiresPayment, pending:S.requiresPayment, bookingData:data,
+        manage:data.manage_url, canPay:!!data.pay_token, token:data.pay_token });
     }catch(e){
       inlineErr('Erreur réseau. Vérifiez votre connexion et réessayez.');
     }finally{
@@ -699,10 +730,16 @@
 
   function inlineErr(msg){ const e = $('post-error'); e.textContent = msg; e.classList.add('show'); }
 
-  function handlePostError(status, data){
-    if(status === 429){ inlineErr('Trop de tentatives. Patientez une minute puis réessayez.'); return; }
-    if(status === 400){ inlineErr(data.error || 'Une information est manquante ou invalide.'); return; }
-    inlineErr(data.error || 'Réservation impossible pour le moment. Appelez-nous au 06 70 01 20 61.');
+  async function handlePostError(status, data){
+    if(status === 409){
+      inlineErr('Ce créneau vient d\'être pris. On recharge les disponibilités…');
+      try{ await loadAvailability(); S.slot=null; S.dayIndex=null; S.viewY=null; renderDays(); if(S.requiresPayment) markPayEnabled(false); $('sec-slot').classList.remove('done'); refreshConfirm(); }catch(e){}
+      return;
+    }
+    if(status === 503){ inlineErr('Vérification des disponibilités momentanément indisponible. Réessayez dans quelques secondes.'); return; }
+    if(status === 422){ inlineErr(data.message || 'Ce créneau n\'est plus valide, choisissez-en un autre.'); return; }
+    if(status === 400){ inlineErr(data.message || 'Une information est manquante ou invalide.'); return; }
+    inlineErr(data.message || 'Réservation impossible pour le moment. Appelez-nous au 06 70 01 20 61.');
   }
 
   /* ════════════════════════════════════════════════
@@ -713,13 +750,15 @@
     let title, text;
     if(info.free){
       title = 'Visite <em>confirmée</em>';
-      text  = 'Merci ! Votre demande de visite gratuite est enregistrée. Un e-mail récapitulatif vient de vous être envoyé — nous confirmons le créneau très vite.';
+      text  = 'Merci ! Votre visite gratuite est confirmée. Un e-mail récapitulatif vient de vous être envoyé.';
     } else if(info.paid){
       title = 'Paiement <em>reçu</em>';
       text  = 'Merci ! Votre réservation est confirmée. Un e-mail récapitulatif vient de vous être envoyé.';
-    } else if(info.cancelled){
-      title = 'Paiement <em>annulé</em>';
-      text  = 'Le paiement n\'a pas été finalisé : votre créneau n\'est pas réservé. Vous pouvez réessayer quand vous voulez.';
+    } else if(info.pending){
+      title = 'Créneau <em>réservé</em>';
+      text  = info.canPay
+        ? 'Votre créneau est bloqué. Il reste l\'acompte à régler pour le confirmer définitivement — vous pouvez le faire dès maintenant.'
+        : 'Votre créneau est bloqué. Nous revenons vers vous très vite pour finaliser le règlement de l\'acompte.';
     } else {
       title = 'Réservation <em>confirmée</em>';
       text  = 'Merci ! Vous allez recevoir un e-mail de confirmation avec tous les détails.';
@@ -728,42 +767,169 @@
     $('confirm-text').textContent = text;
 
     const rows = [];
+    const ref = info.reference || (info.bookingData && info.bookingData.reference) || '';
+    if(ref) rows.push(['Référence', ref]);
     if(S.handoff) rows.push(['Prestation', S.handoff.label || '—']);
-    if(S.slot) rows.push(['Date', slotHuman()]);
-    if(info.free){ rows.push(['Règlement', 'Visite gratuite — aucun paiement']); }
-    else if(info.paid && S.handoff && S.handoff.result){
-      rows.push([ S.mode==='full' ? 'Montant réglé' : 'Acompte réglé', euro(amountNow()) ]);
-    }
-    $('confirm-recap').innerHTML = rows.map(r => `<div class="cr-row"><span>${escapeHtml(r[0])}</span><span>${escapeHtml(r[1])}</span></div>`).join('')
-      || '<div class="cr-row"><span>Récapitulatif</span><span>Voir l\'email de confirmation</span></div>';
+    const bd = info.bookingData;
+    let dateTxt = '';
+    if(bd && bd.start){ const d = new Date(bd.start); dateTxt = d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) + ' à ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
+    else if(S.slot){ dateTxt = slotHuman(); }
+    if(dateTxt) rows.push(['Date', dateTxt]);
 
-    $('confirm-pay').hidden = true;
-    $('confirm-cancel').hidden = true;
-    $('confirm-manage').hidden = true;
-    const noteEl = $('confirm-note');
-    if(info.cancelled){
-      noteEl.hidden = true;
-      const back = $('link-devis-2');
-      if(back){ back.textContent = 'Reprendre ma réservation'; back.href = '/reservation/'; back.onclick = function(ev){ ev.preventDefault(); location.replace('/reservation/'); }; }
-    } else {
-      noteEl.hidden = false;
-      noteEl.innerHTML = 'Pour annuler ou décaler ce rendez-vous, appelez-nous au <a href="tel:+33670012061">06 70 01 20 61</a>.';
+    if(info.free){ rows.push(['Règlement', 'Visite gratuite — aucun paiement']); }
+    else {
+      let amt = null;
+      if(bd){ amt = (bd.deposit!=null ? bd.deposit : bd.total); }
+      if(amt==null) amt = amountNow();
+      rows.push([ (S.mode==='full' ? 'Montant réglé' : 'Acompte'), euro(amt) ]);
     }
+    $('confirm-recap').innerHTML = rows.map(r => `<div class="cr-row"><span>${escapeHtml(r[0])}</span><span>${escapeHtml(r[1])}</span></div>`).join('');
+
+    const pay = $('confirm-pay');
+    if(info.canPay && info.token){ pay.hidden = false; pay.onclick = () => payNow(info.token); }
+    else { pay.hidden = true; pay.onclick = null; }
+    const cancelBtn = $('confirm-cancel'); if(cancelBtn){ cancelBtn.hidden = true; cancelBtn.onclick = null; }
+    const noteEl = $('confirm-note'); if(noteEl) noteEl.hidden = true;
+    const m = $('confirm-manage');
+    if(info.manage){ m.href = info.manage; m.hidden = false; } else { m.hidden = true; }
     show('st-confirm');
+  }
+
+  async function payNow(token){
+    const btn = $('confirm-pay'); if(!btn) return;
+    const orig = btn.textContent; btn.disabled = true; btn.textContent = 'Redirection vers le paiement…';
+    try{
+      const r = await fetchJSON(api('/bookings/'+encodeURIComponent(token)+'/pay'), {
+        method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json'}, body:'{}'
+      });
+      if(r && r.payment_url){ window.location.href = r.payment_url; return; }
+      throw new Error('no url');
+    }catch(e){
+      btn.disabled = false; btn.textContent = orig;
+      inlineErrConfirm('Le paiement est momentanément indisponible. Réessayez dans un instant, ou appelez-nous au 06 70 01 20 61.');
+    }
+  }
+  function inlineErrConfirm(msg){
+    const noteEl = $('confirm-note');
+    if(noteEl){ noteEl.hidden = false; noteEl.textContent = msg; }
+  }
+
+  /* ════════════════════════════════════════════════
+     GÉRER MA RÉSERVATION (détails · payer · annuler)
+     — liens durables envoyés par kc-sheet-sync (?resa=token)
+     ════════════════════════════════════════════════ */
+  function showManage(b, token){
+    const cancelled = b.status === 'cancelled';
+    const isPaid = b.payment_status === 'paid';
+    const needsPay = !!b.requires_payment && !isPaid && !cancelled;
+
+    let title, text;
+    if(cancelled){ title = 'Réservation <em>annulée</em>'; text = 'Cette réservation a bien été annulée. Vous pouvez en créer une nouvelle quand vous le souhaitez.'; }
+    else if(needsPay){ title = 'Votre <em>réservation</em>'; text = 'Votre créneau est réservé. Il reste l\'acompte à régler pour le confirmer définitivement.'; }
+    else { title = 'Votre <em>réservation</em>'; text = 'Voici le récapitulatif de votre réservation. Vous pouvez la gérer ci-dessous.'; }
+    $('confirm-title').innerHTML = title; // contenu statique contrôlé ci-dessus
+    $('confirm-text').textContent = text;
+
+    const rows = [];
+    if(b.reference) rows.push(['Référence', b.reference]);
+    const presta = (b.type && b.type.name) || (S.handoff && S.handoff.label) || '';
+    if(presta) rows.push(['Prestation', presta + (b.variant_name ? ' — ' + b.variant_name : '')]);
+    if(b.start){ const d = new Date(b.start); rows.push(['Date', d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) + ' à ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})]); }
+    if(b.staff) rows.push(['Intervenant', b.staff]);
+    if(b.address) rows.push(['Adresse', b.address]);
+    rows.push(['Statut', cancelled ? 'Annulée' : (isPaid ? 'Confirmée (payée)' : (b.requires_payment ? 'En attente de paiement' : 'Confirmée'))]);
+    if(b.total != null) rows.push(['Montant', euro(b.total) + ' TTC']);
+    if(b.deposit != null && b.requires_payment) rows.push([ isPaid ? 'Acompte payé' : 'Acompte à régler', euro(b.deposit) ]);
+    $('confirm-recap').innerHTML = rows.map(r => `<div class="cr-row"><span>${escapeHtml(r[0])}</span><span>${escapeHtml(r[1])}</span></div>`).join('');
+
+    const pay = $('confirm-pay');
+    if(needsPay){ pay.hidden = false; pay.onclick = () => payNow(token); } else { pay.hidden = true; pay.onclick = null; }
+
+    const cancelBtn = $('confirm-cancel');
+    const noteEl = $('confirm-note');
+    if(!cancelled && b.can_cancel){
+      cancelBtn.hidden = false; cancelBtn.onclick = () => cancelBooking(token); noteEl.hidden = true;
+    } else {
+      cancelBtn.hidden = true; cancelBtn.onclick = null;
+      if(!cancelled){ noteEl.hidden = false; noteEl.innerHTML = 'Pour annuler ou décaler ce rendez-vous, appelez-nous au <a href="tel:+33670012061">06 70 01 20 61</a>.'; }
+      else { noteEl.hidden = true; }
+    }
+    $('confirm-manage').hidden = true;
+    show('st-confirm');
+  }
+
+  async function cancelBooking(token){
+    if(!confirm('Êtes-vous sûr de vouloir annuler cette réservation ? Cette action est définitive.')) return;
+    const btn = $('confirm-cancel'); const orig = btn.textContent; btn.disabled = true; btn.textContent = 'Annulation en cours…';
+    try{
+      await fetchJSON(api('/bookings/'+encodeURIComponent(token)+'/cancel'), { method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json'}, body:'{}' });
+      const b = await fetchJSON(api('/bookings/'+encodeURIComponent(token)));
+      showManage(b, token);
+    }catch(e){
+      btn.disabled = false; btn.textContent = orig;
+      inlineErrConfirm((e && e.body && e.body.message) || 'Annulation impossible pour le moment. Appelez-nous au 06 70 01 20 61.');
+    }
+  }
+
+  // Retour depuis Stripe (?resa=token&paid=1) ou accès « Gérer ma réservation » (?resa=token)
+  async function handleReturn(token, paid){
+    show('st-loading');
+    if(!IS_LIVE){ S.requiresPayment = true; showConfirmation({ paid:true }); return; }
+    try{
+      const b = await fetchJSON(api('/bookings/'+encodeURIComponent(token)));
+      S.requiresPayment = !!b.requires_payment;
+      if(!S.handoff) S.handoff = { version:2, funnel:(b.requires_payment?'forfait':'audit'), presta:(b.type && b.type.slug) || '', label:(b.type && b.type.name) || 'Votre réservation' };
+      if(paid){
+        showConfirmation({ paid:true, bookingData:b, reference:b.reference, manage:b.manage_url });
+      } else {
+        showManage(b, token);
+      }
+    }catch(e){
+      showConfirmation({ paid: paid });
+    }
   }
 
   /* ════════════════════════════════════════════════
      DÉMARRAGE
      ════════════════════════════════════════════════ */
-  function boot(){
+  async function boot(){
     show('st-loading');
-    S.requiresPayment = (S.handoff.funnel === 'forfait');
-    renderRecap(); applyMode();
-    if(S.requiresPayment) computeAmounts();
-    buildAvailability();
-    renderDays();
-    bindMain();
-    show('st-main');
+    try{
+      if(!IS_LIVE){
+        $('demo-banner').hidden = false;
+        S.typeId = 0; S.variantId = 0;
+        S.requiresPayment = (S.handoff.funnel === 'forfait');
+        renderRecap(); applyMode();
+        if(S.requiresPayment) computeAmounts();
+        S.days = demoDays(); renderDays();
+        bindMain(); show('st-main'); return;
+      }
+      const types = await fetchJSON(api('/types'));
+      const wantedSlug = TYPE_MAP[S.handoff.presta]
+        || (S.handoff.funnel === 'forfait' ? S.handoff.presta : DEFAULT_AUDIT_TYPE);
+      let type = (types||[]).find(t => t.slug === wantedSlug);
+      // Repli : prestation sur mesure sans type dédié → type d'audit générique
+      if(!type && S.handoff.funnel !== 'forfait'){
+        type = (types||[]).find(t => t.slug === DEFAULT_AUDIT_TYPE);
+      }
+      if(!type){ showError('Cette prestation ne propose pas encore la réservation en ligne. Appelez-nous au 06 70 01 20 61.'); return; }
+      S.typeId = type.id;
+      // Le plugin fait foi : un forfait du devis n'est payant que si le type est calendar_paid
+      S.requiresPayment = (S.handoff.funnel === 'forfait') && (type.cta_type === 'calendar_paid');
+      const vslug = (S.handoff.booking && S.handoff.booking.taille === 'studio') ? 'studio' : 'appartement';
+      const variant = (type.variants||[]).find(v => v.slug === vslug) || (type.variants||[])[0] || null;
+      S.variantId = variant ? variant.id : null;
+      S.duration = variant ? variant.duration_minutes : type.duration_minutes;
+
+      renderRecap(); applyMode();
+      if(S.requiresPayment) computeAmounts();
+      await loadAvailability();
+      renderDays();
+      bindMain();
+      show('st-main');
+    }catch(e){
+      showError('Connexion au système de réservation impossible. Réessayez dans un instant, ou appelez-nous au 06 70 01 20 61.');
+    }
   }
 
   function bindMain(){
@@ -820,27 +986,13 @@
     const backLink = $('link-devis-back'); if(backLink) backLink.href = KC_RESA.devisURL;
     $('btn-retry').addEventListener('click', () => location.reload());
 
-    S.handoff = readHandoff();
-
-    // Retour de Stripe : ?paiement=succes | annule
     const params = new URLSearchParams(location.search);
-    const paiement = params.get('paiement');
-    if(paiement === 'succes'){
-      try{ sessionStorage.removeItem(KC_RESA.handoffKey); }catch(e){}
-      S.requiresPayment = true;
-      showConfirmation({ paid:true });
-      return;
-    }
-    if(paiement === 'annule' && S.handoff){
-      // on ré-affiche le parcours avec un message
-      boot();
-      inlineErr('Paiement annulé — votre créneau n\'est pas réservé. Vous pouvez réessayer.');
-      return;
-    }
+    const token = params.get('resa');
+    if(token){ S.handoff = readHandoff(); handleReturn(token, params.get('paid')==='1'); return; }
 
+    S.handoff = readHandoff();
     if(!S.handoff){
       if(IS_LIVE){ show('st-nodata'); return; }
-      $('demo-banner').hidden = false;
       S.handoff = DEMO_HANDOFF;
     }
     boot();

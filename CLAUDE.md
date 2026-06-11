@@ -4,66 +4,41 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Vue d'ensemble
 
-Backend de paiement et de devis du site **kayliclinn.fr** (Kayli Clinn, SAS de nettoyage en Île-de-France). Fonctions serverless de style Vercel (répertoire `api/`, handlers en `export default`), ES modules (`"type": "module"`). Unique dépendance : `stripe`. Tout le code, les commentaires et les messages sont en français ; les textes destinés aux clients sont au **vouvoiement**.
+Dépôt de travail du site **kayliclinn.fr** (Kayli Clinn, SAS de nettoyage en Île-de-France, WordPress.com Atomic). Tout le tunnel devis → réservation → paiement passe par **WordPress** (extensions maison `kc-booking`, `kc-devis`, `kc-sheet-sync`). Tout est en français ; les textes destinés aux clients sont au **vouvoiement**.
 
-Le site WordPress (WordPress.com Atomic) appelle cette API depuis les pages du répertoire `site/` (blocs « HTML personnalisé » à coller dans WordPress — voir `site/README.md`).
+Contenu du dépôt :
 
-## Commandes
-
-- `npm install` — installe les dépendances (automatique en session web via le hook SessionStart).
-- `node --check api/<fichier>.js` — vérification de syntaxe.
-- Aucun test, linter ou build n'est configuré à ce jour.
-
-Le serveur MCP Stripe est déclaré dans `.mcp.json` (variable `STRIPE_RESTRICTED_API_KEY`).
-
-## Architecture
-
-### Source de vérité des prix : `lib/pricing.js`
-
-Grille tarifaire officielle (issue du fichier Excel « Kayli Clinn tarification »). **Le serveur recalcule toujours les prix** ; aucun montant envoyé par le navigateur n'est accepté. Toute modification de tarif se fait ici **puis** dans la constante `KC_TARIFS` de `site/estimation.html` (affichage).
-
-### Endpoints (`api/`)
-
-| Endpoint | Rôle |
+| Dossier | Rôle |
 | --- | --- |
-| `POST /api/create-checkout-session` | Forfaits logement : recalcule le prix (`computeForfait`), crée la session Stripe Checkout (acompte 30 % ou total). Metadata = contrat de données vers le webhook. |
-| `POST /api/webhook` | Reçoit `checkout.session.completed`, envoie les emails admin + client (Resend). |
-| `POST /api/book-audit` | Visite d'audit gratuite (prestations sur devis) : validation + emails. |
-| `POST /api/send-quote` | Envoie le devis par email (forfait recalculé serveur / estimation pro indicative / demande de rappel). |
+| `site/` | Les pages du site (blocs « HTML personnalisé » à coller dans WordPress) + guide `site/README.md` |
+| `wordpress/` | Code PHP à intégrer dans les extensions (grille de prix serveur, handler kc-devis durci, endpoint disponibilités Phase 3.2) + guide `INTEGRATION-kc-booking.md` |
+| `lib/`, `api/` | **Archive** : ancienne API Vercel (décision du 11/06/2026 : Vercel retiré du projet). Ne plus brancher les pages dessus. `lib/pricing.js` reste une référence lisible de la grille. |
 
-`lib/helpers.js` : CORS (liste `ALLOWED_ORIGINS`), échappement HTML, validations, rate limiting (en mémoire, best effort), envoi Resend.
+## Architecture du tunnel (WordPress)
 
-### Parcours côté site (`site/`)
+1. `/devis/` (`site/estimation.html`) : tunnel 3 parcours — **forfait** (prix ferme de la grille, réservable en ligne), **pro** (estimation immédiate), **audit** (visite gratuite). Envoi du devis par email via admin-ajax `kc_devis`. Passage à la réservation via `sessionStorage`, clé `kc_reservation_handoff` (v2, 1 h).
+2. `/reservation/` (`site/reservation.html`) : REST `kc-booking/v1` — `GET /types`, `GET /availability` (Phase 3.2), `POST /bookings` (champ `quote` = devis complet en JSON), liens durables `?resa=token` (gérer / payer / annuler, compatibles kc-sheet-sync). Forfaits = paiement Stripe (acompte 30 % ou total) ; tout le reste = visite gratuite (type générique `visite-audit`).
+3. La table `TYPE_MAP` en haut du script de `reservation.html` fait la correspondance prestation du devis → slug de type kc-booking.
 
-`estimation.html` (page `/devis/`) → 3 parcours alignés sur la grille : **forfait** (réservation + paiement en ligne), **pro** (estimation immédiate puis audit), **audit** (visite gratuite). Passage de relais vers `/reservation/` via `sessionStorage` (clé `kc_reservation_handoff`, v2, 1 h). `reservation.html` → calendrier + paiement Stripe (forfaits) ou réservation de visite gratuite (audits). Retours Stripe : `/reservation/?paiement=succes|annule`.
+## La grille tarifaire (source de vérité)
+
+Fichier source : `site/tarification.xlsx`. Implémentations synchronisées — **toute modification de prix se reporte aux trois endroits** :
+1. `wordpress/kc-pricing.php` (validation côté serveur — fait foi à l'encaissement),
+2. constante `KC_TARIFS` dans `site/estimation.html` (affichage),
+3. `lib/pricing.js` (archive lisible).
+
+Forfaits logement TTC (acompte 30 %) : Airbnb 45/60/75/95 € ; déménagement, fin de bail, état des lieux, standard, logement vide 79/99/119/149 € (studio/2P/3P/4P). Options : linge 15/25/40, frigo 10, four 15, petit balcon 10, terrasse 30. Majorations cumulables sur (base + options) : urgence +20 %, dimanche/férié +25 %. « Très sale » (+30 à 50 %) : jamais réservable en ligne — validation photos/visite. Pros (HT, indicatif) : bureaux 32–38 €/h (IDF contraint 38–45), locaux/commerces/copro 32–60 €/h, minimum passage 45–65 €, vitres 3–7 €/m².
 
 ## Règles non négociables (établies avec la propriétaire)
 
-- **Ne JAMAIS inventer de données métier** : prix, règles de facturation, horaires, personnel → toujours demander. La grille `lib/pricing.js` est la seule référence tarifaire.
-- **Retouches chirurgicales** : modifier le minimum ; jamais de restructuration non demandée.
-- **Paiements** : montants recalculés côté serveur, signature des webhooks Stripe vérifiée sur le corps brut, tester en mode test Stripe avant tout passage en live.
-- **Secrets** uniquement en variables d'environnement (Vercel) — jamais dans le code ni dans `site/`.
-- **Charte site** : navy `#0D2340` dominant, teal `#0FA7A5` en accent seulement ; Montserrat/Inter/Roboto (+ Fraunces pages éditoriales) ; icônes SVG, jamais d'emoji ; un préfixe CSS unique par bloc WordPress.
+- **Ne JAMAIS inventer de données métier** : prix, facturation, horaires, personnel → toujours demander.
+- **Retouches chirurgicales** : modifier le minimum, jamais de restructuration non demandée.
+- **Paiements** : montants recalculés côté serveur (`KC_Pricing`), signature des webhooks Stripe vérifiée, idempotence (jamais deux traitements d'un même événement), tests en mode test avant le live.
+- **Secrets** uniquement côté serveur (jamais dans un bloc HTML ni dans Git).
+- **Charte** : navy `#0D2340` dominant, teal `#0FA7A5` en accent seulement ; Montserrat/Inter/Roboto (+ Fraunces pages éditoriales) ; icônes SVG, jamais d'emoji ; **un préfixe CSS unique par bloc** WordPress.
 - **Commits en français**, un commit par fonctionnalité.
+- Témoignages fictifs : badge « Exemple » obligatoire tant qu'ils ne sont pas remplacés (DGCCRF).
 
-## Contraintes techniques
+## Contraintes WordPress.com Atomic
 
-- **`api/webhook.js` désactive le parsing du corps** (`bodyParser: false`) : signature Stripe vérifiée sur le corps brut. Ne pas lire `req.body` dans ce fichier.
-- **Le webhook renvoie 200 même si le traitement échoue** (anti-retries Stripe). Seul un échec de signature renvoie 400.
-- **CORS** : seuls `kayliclinn.fr`, `www.kayliclinn.fr` et `localhost:3000` (liste dans `lib/helpers.js`).
-- Montants calculés **en centimes** côté serveur pour éviter les erreurs de flottants.
-
-## Variables d'environnement
-
-| Variable | Rôle |
-| --- | --- |
-| `STRIPE_SECRET_KEY` | Clé API Stripe (mode test tant que le KYC n'est pas fini) |
-| `STRIPE_WEBHOOK_SECRET` | Vérification de signature du webhook |
-| `RESEND_API_KEY` | Envoi des emails ; si absente, emails **silencieusement ignorés** (log seulement) |
-| `EMAIL_FROM` | Expéditeur vérifié Resend (défaut : `onboarding@resend.dev`, à remplacer après vérification du domaine) |
-| `NOTIFICATION_EMAIL` | Destinataire admin (défaut : `contact@kayliclinn.fr`) |
-| `SITE_URL` | Base des redirections (défaut : `https://kayliclinn.fr`) |
-
-## Contexte projet plus large
-
-Le site WordPress possède aussi des extensions maison (`kc-booking` — réservations + Google Agenda, REST `kc-booking/v1`, phases 3.1/3.2 inachevées —, `kc-sheet-sync`, `kc-contact`, `kc-devis`). À terme, la page réservation pourra rebasculer sur `kc-booking` quand ses endpoints (`/types`, `/availability`, `/bookings`) seront finis ; cette API Vercel restera l'intermédiaire Stripe sécurisé. Ne pas mélanger les deux chemins sans décision explicite de la propriétaire.
+Pas d'accès FTP : les extensions s'installent par ZIP (admin → Extensions → Téléverser). Le code de `wordpress/` s'intègre donc au code source local des extensions, puis on refabrique le ZIP (voir `wordpress/INTEGRATION-kc-booking.md`).
