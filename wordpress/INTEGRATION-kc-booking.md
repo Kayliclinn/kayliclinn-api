@@ -39,14 +39,14 @@ if ($devis_driven) {
 
 Un fraudeur peut appeler `POST /bookings` avec `amount_total=1` et payer 1 €
 une prestation à 149 €. **Correctif : recalculer le prix côté serveur** à partir
-du forfait décrit dans `quote`, via `KC_Pricing` (fichier `kc-pricing.php`).
+du forfait décrit dans `quote`, via la classe `KC_Pricing`.
 
-### a) Installer la grille serveur
-Copier `kc-pricing.php` dans le dossier du plugin `kc-booking`, et l'inclure
-tout en haut du fichier principal :
-```php
-require_once __DIR__ . '/kc-pricing.php';
-```
+### a) La grille serveur
+La classe `KC_Pricing` (grille officielle) est **intégrée en tête** de
+`plugins/kc-booking/kc-booking.php` (et de `kc-devis.php`), protégée par
+`if ( ! class_exists( 'KC_Pricing' ) )` : chaque plugin reste un fichier
+unique et autonome, et l'activation des deux en même temps ne crée aucun
+conflit.
 
 ### b) Remplacer le bloc « Tarification » de `kc_rest_create_booking`
 Repérer (vers la ligne 1526) le bloc qui commence par
@@ -98,7 +98,7 @@ en base, Stripe, emails) fonctionne tel quel.
 Les `price_indicative` des variantes (`kc_booking_phase_1_2_seed_variants` :
 Airbnb 55/80/120, déménagement 210/330/550) sont des **anciens montants** ;
 ils ne servent plus que de repli si `quote` est absent. La vérité tarifaire est
-désormais `kc-pricing.php` (Airbnb 45/60/75/95, déménagement 79/99/119/149).
+désormais la classe `KC_Pricing` (Airbnb 45/60/75/95, déménagement 79/99/119/149).
 
 ## Correctif 2 — 🟠 `kc-sheet-sync` traite le webhook Stripe sans vérifier la signature
 

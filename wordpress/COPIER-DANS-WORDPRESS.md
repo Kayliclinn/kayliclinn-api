@@ -15,16 +15,18 @@ contenu du fichier `.php` à la place de l'ancien.)
 
 | Extension | Fichier(s) | Ce qui change |
 | --- | --- | --- |
-| **kc-booking** (réservations) | `kc-booking.php` **+ le nouveau `kc-pricing.php`** (même dossier) | 🔴 Corrige la faille de prix : les montants sont recalculés côté serveur. C'est la correction la plus importante. |
-| **kc-devis** (devis) | `kc-devis.php` **+ `kc-pricing.php`** (même dossier) | Comprend le nouveau formulaire (3 parcours), prix officiels, e-mails échappés. Ton suivi des devis (admin) est conservé. |
+| **kc-booking** (réservations) | `kc-booking.php` (un seul fichier) | 🔴 Corrige la faille de prix : les montants sont recalculés côté serveur (grille `KC_Pricing` intégrée en tête de fichier). C'est la correction la plus importante. |
+| **kc-devis** (devis) | `kc-devis.php` (un seul fichier) | Comprend le nouveau formulaire (3 parcours), prix officiels (grille intégrée), e-mails échappés. Ton suivi des devis (admin) est conservé. |
 | **kc-sheet-sync** (Google Sheet) | `kc-sheet-sync.php` | Vérifie la signature Stripe avant d'écrire dans le Sheet. |
 | **kc-visite-audit** (nouveau) | `kc-visite-audit.php` | Crée le créneau « Visite d'audit gratuite » commun aux prestations sur mesure. |
 | **kc-contact** (contact) | *(rien à faire)* | Déjà sûr — aucune correction nécessaire. La copie est là pour ta sauvegarde. |
 
-> **Important — kc-booking et kc-devis** : chacun a besoin du fichier
-> `kc-pricing.php` **dans son propre dossier** (il y est déjà). C'est la grille
-> tarifaire officielle : pour changer un prix plus tard, modifie ces deux
-> copies (et la page d'estimation pour l'affichage).
+> **Important** : chaque extension tient dans **un seul fichier**, copiable
+> d'un bloc (y compris via l'éditeur de fichiers d'extension de WordPress).
+> La grille tarifaire officielle (classe `KC_Pricing`) est intégrée en tête
+> de `kc-booking.php` **et** de `kc-devis.php` : pour changer un prix plus
+> tard, modifie-la dans ces deux fichiers (et dans la page d'estimation
+> pour l'affichage).
 
 ## Réglages à vérifier après installation
 

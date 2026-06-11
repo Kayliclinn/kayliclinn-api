@@ -28,7 +28,7 @@ Contenu du dépôt :
 ## La grille tarifaire (source de vérité)
 
 Fichier source : `site/tarification.xlsx`. Implémentations synchronisées — **toute modification de prix se reporte aux trois endroits** :
-1. `plugins/kc-booking/kc-pricing.php` (validation côté serveur — fait foi à l'encaissement ; copie identique dans `plugins/kc-devis/`),
+1. classe `KC_Pricing` intégrée en tête de `plugins/kc-booking/kc-booking.php` (validation côté serveur — fait foi à l'encaissement) **et** de `plugins/kc-devis/kc-devis.php` (copie identique — un plugin reste un seul fichier autonome, copiable d'un bloc),
 2. constante `KC_TARIFS` dans `site/estimation.html` (affichage),
 3. `lib/pricing.js` (archive lisible).
 
