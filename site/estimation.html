@@ -1,0 +1,2169 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE DEVIS V3 — Wizard Multi-Étapes Premium
+
+   AMÉLIORATIONS V3 (vs V2) :
+   ✅ Accessibilité WCAG AA complète (ARIA, focus trap, labels)
+   ✅ Honeypot anti-spam + emplacement nonce WP
+   ✅ Sauvegarde automatique (sessionStorage) - survit aux refresh
+   ✅ État de chargement sur submit (anti double-clic)
+   ✅ Bannière d'erreur stylée (au lieu d'alert)
+   ✅ Compteur de caractères sur le message
+   ✅ Radios ultra-visibles quand sélectionnés
+   ✅ Focus trap accessible sur modale
+   ✅ JS refactoré en IIFE + addEventListener
+   ✅ Fix bug formatage téléphone (curseur)
+   ✅ Support prefers-reduced-motion
+   ✅ Intégration WordPress prête (AJAX)
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+.kc-devis{
+  --teal:#0FA7A5;--teal-dark:#0B8483;--teal-deep:#076E6D;--teal-light:#E6F5F5;--teal-soft:#F0FAFA;
+  --dark:#0D2340;--dark-light:#1a3a5c;
+  --bg:#F8F9FB;--white:#FFFFFF;
+  --gray:#6B7280;--gray-light:#E5E7EB;--gray-soft:#F3F4F6;
+  --border:#E5E7EB;
+  --text:#1F2937;--text-light:#4B5563;
+  --terra:#E07856;--terra-dark:#C45A38;--amber:#F59E0B;--green:#10B981;
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:16px;line-height:1.5;color:var(--text);
+  background:var(--bg);min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+.kc-devis *,.kc-devis *::before,.kc-devis *::after{box-sizing:border-box}
+.kc-devis a{color:inherit;text-decoration:none}
+.kc-devis button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;color:inherit}
+.kc-devis input,.kc-devis select,.kc-devis textarea{font-family:inherit;font-size:inherit}
+
+/* Focus visible accessible */
+.kc-devis a:focus-visible,.kc-devis button:focus-visible,
+.kc-devis input:focus-visible,.kc-devis select:focus-visible,.kc-devis textarea:focus-visible,
+.kc-devis .option-card:focus-visible,.kc-devis .opt-row:focus-visible,
+.kc-devis [tabindex]:focus-visible{
+  outline:2px solid var(--teal-dark);outline-offset:2px;
+}
+
+/* Honeypot anti-spam */
+.kc-devis .honeypot{position:absolute !important;left:-9999px !important;width:1px;height:1px;overflow:hidden}
+
+/* Sr-only */
+.kc-devis .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* NAV TOP */
+.kc-devis .nav-top{padding:24px 60px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:var(--white)}
+.kc-devis .nav-logo{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.5px}
+.kc-devis .nav-logo em{color:var(--teal-dark);font-style:normal}
+.kc-devis .nav-subtitle{font-size:12px;color:var(--gray);letter-spacing:0.04em;text-transform:uppercase;font-weight:500}
+
+/* BANDEAU "Reprise sauvegarde" */
+.kc-devis .resume-banner{
+  background:var(--amber);color:#fff;padding:10px 60px;
+  display:none;align-items:center;justify-content:space-between;gap:14px;font-size:13px;
+}
+.kc-devis .resume-banner.show{display:flex}
+.kc-devis .resume-banner-actions{display:flex;gap:8px}
+.kc-devis .resume-banner button{
+  background:rgba(255,255,255,0.2);color:#fff;padding:5px 12px;border-radius:6px;
+  font-size:12px;font-weight:600;transition:background .2s;
+}
+.kc-devis .resume-banner button:hover{background:rgba(255,255,255,0.3)}
+
+/* PROGRESS BAR */
+.kc-devis .progress-section{background:var(--white);border-bottom:1px solid var(--border);padding:18px 60px;position:sticky;top:0;z-index:50}
+.kc-devis .progress-bar{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto}
+.kc-devis .pb-progress{flex:1;height:4px;background:var(--gray-soft);border-radius:2px;overflow:hidden}
+.kc-devis .pb-progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-dark));border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
+.kc-devis .pb-counter{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--gray);font-variant-numeric:tabular-nums;letter-spacing:0.03em;white-space:nowrap;font-weight:500}
+.kc-devis .pb-counter strong{color:var(--dark);font-weight:700}
+.kc-devis .pb-back{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);font-weight:500;transition:color .2s;padding:6px 10px;border-radius:6px}
+.kc-devis .pb-back:hover{color:var(--dark);background:var(--gray-soft)}
+.kc-devis .pb-back svg{transition:transform .2s}
+.kc-devis .pb-back:hover svg{transform:translateX(-2px)}
+
+/* STEP CONTAINER */
+.kc-devis .step-container{max-width:920px;margin:0 auto;padding:60px 40px 120px;min-height:calc(100vh - 180px)}
+.kc-devis .step{display:none;animation:kcFadeUp .4s cubic-bezier(.16,1,.3,1)}
+.kc-devis .step.active{display:block}
+@keyframes kcFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.kc-devis .step-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin-bottom:22px}
+.kc-devis .step-tag::before{content:'';width:24px;height:1px;background:var(--teal)}
+.kc-devis .step-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:var(--dark);line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+.kc-devis .step-title em{color:var(--teal-dark);font-style:normal;position:relative;display:inline-block}
+.kc-devis .step-title em::after{content:'';position:absolute;bottom:4px;left:-2px;right:-2px;height:8px;background:var(--teal);opacity:0.18;border-radius:5px;z-index:-1}
+.kc-devis .step-desc{font-size:16px;color:var(--text-light);max-width:640px;line-height:1.65;margin-bottom:44px}
+
+/* OPTION CARDS */
+.kc-devis .options-grid{display:grid;gap:14px;margin-bottom:36px}
+.kc-devis .options-grid.cols-2{grid-template-columns:1fr 1fr}
+.kc-devis .options-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.kc-devis .options-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.kc-devis .option-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px;cursor:pointer;position:relative;transition:all .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:8px;text-align:left;width:100%}
+.kc-devis .option-card:hover{border-color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,167,165,0.08)}
+.kc-devis .option-card.selected{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 12px 32px rgba(15,167,165,0.35);transform:scale(1.02)}
+.kc-devis .option-card.selected .oc-num,
+.kc-devis .option-card.selected .oc-desc{color:rgba(255,255,255,0.85)}
+.kc-devis .option-card.selected .oc-title{color:#fff}
+.kc-devis .option-card.selected::after{content:'';position:absolute;top:14px;right:14px;width:24px;height:24px;background:#fff;border-radius:50%;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%230FA7A5" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');background-size:14px;background-position:center;background-repeat:no-repeat}
+.kc-devis .oc-icon{width:38px;height:38px;border-radius:10px;background:var(--teal-light);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:4px;transition:all .25s}
+.kc-devis .option-card.selected .oc-icon{background:rgba(255,255,255,0.25);color:#fff}
+.kc-devis .oc-num{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--gray);letter-spacing:0.08em;font-weight:600;margin-bottom:2px}
+.kc-devis .oc-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--dark);line-height:1.25;letter-spacing:-0.3px}
+.kc-devis .oc-desc{font-size:13px;color:var(--gray);line-height:1.5}
+.kc-devis .oc-badge{display:inline-block;font-size:11px;font-weight:600;color:var(--teal-deep);background:var(--teal-light);padding:3px 10px;border-radius:100px;letter-spacing:0.02em;margin-top:4px;align-self:flex-start}
+.kc-devis .option-card.selected .oc-badge{background:rgba(255,255,255,0.25);color:#fff}
+
+.kc-devis svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ZONE IDF */
+.kc-devis .zone-checkbox-card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:20px;cursor:pointer;max-width:620px;margin:0 auto 48px;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.kc-devis .zone-checkbox-card:hover{border-color:var(--teal-dark);box-shadow:0 12px 32px rgba(15,167,165,0.1);transform:translateY(-2px)}
+.kc-devis .zone-checkbox-card.checked{border-color:var(--teal);background:var(--teal-soft);box-shadow:0 12px 32px rgba(15,167,165,0.15)}
+.kc-devis .zone-checkbox-square{width:38px;height:38px;border:2px solid var(--gray-light);border-radius:10px;background:var(--white);display:grid;place-items:center;flex-shrink:0;transition:all .25s}
+.kc-devis .zone-checkbox-card.checked .zone-checkbox-square{background:var(--teal);border-color:var(--teal)}
+.kc-devis .zone-checkbox-square svg{color:transparent;transition:color .2s}
+.kc-devis .zone-checkbox-card.checked .zone-checkbox-square svg{color:#fff}
+.kc-devis .zone-checkbox-text{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--dark);line-height:1.35;letter-spacing:-0.3px}
+.kc-devis .zone-checkbox-text em{color:var(--teal-dark);font-style:normal}
+
+/* Carte IDF (positions géo correctes) */
+.kc-devis .zone-map{position:relative;width:100%;max-width:500px;height:380px;margin:0 auto 24px}
+.kc-devis .zone-circle{position:absolute;background:var(--white);border:1.5px solid var(--gray-light);border-radius:50%;display:grid;place-items:center;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--dark);letter-spacing:-0.5px;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.kc-devis .zone-circle.center{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 24px rgba(15,167,165,0.35);z-index:5}
+.kc-devis .zone-c-95{width:115px;height:115px;font-size:19px;top:0;left:50%;transform:translateX(-50%)}
+.kc-devis .zone-c-78{width:140px;height:140px;font-size:22px;top:115px;left:0}
+.kc-devis .zone-c-93{width:65px;height:65px;font-size:14px;top:120px;left:62%;transform:translateX(-50%)}
+.kc-devis .zone-c-77{width:160px;height:160px;font-size:24px;top:100px;right:0}
+.kc-devis .zone-c-92{width:60px;height:60px;font-size:14px;top:170px;left:35%;transform:translateX(-50%)}
+.kc-devis .zone-c-75{width:75px;height:75px;font-size:17px;top:163px;left:50%;transform:translateX(-50%)}
+.kc-devis .zone-c-94{width:60px;height:60px;font-size:14px;top:235px;left:60%;transform:translateX(-50%)}
+.kc-devis .zone-c-91{width:130px;height:130px;font-size:21px;bottom:0;left:50%;transform:translateX(-50%)}
+.kc-devis .zone-map-label{text-align:center;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-light);font-weight:600;margin-top:8px}
+.kc-devis .zone-map-label strong{color:var(--dark);font-weight:700}
+
+/* SLIDER */
+.kc-devis .slider-block{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:36px 32px;margin-bottom:32px}
+.kc-devis .slider-value{font-family:'Montserrat',sans-serif;font-size:64px;font-weight:800;color:var(--dark);line-height:1;letter-spacing:-2px;margin-bottom:8px;display:flex;align-items:flex-end;gap:10px}
+.kc-devis .slider-value em{color:var(--teal-dark);font-style:normal}
+.kc-devis .slider-value-unit{font-family:'Inter',sans-serif;font-size:18px;color:var(--gray);font-weight:500;margin-bottom:12px;letter-spacing:0}
+.kc-devis .slider-hint{font-size:13.5px;color:var(--text-light);margin-bottom:28px}
+.kc-devis input[type=range]{-webkit-appearance:none;width:100%;height:4px;outline:none;cursor:pointer;background:var(--gray-light);border-radius:2px}
+.kc-devis input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--teal);border:5px solid var(--white);box-shadow:0 0 0 1.5px var(--teal),0 4px 12px rgba(15,167,165,0.3);cursor:grab}
+.kc-devis input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--teal);border:5px solid var(--white);box-shadow:0 0 0 1.5px var(--teal),0 4px 12px rgba(15,167,165,0.3);cursor:grab}
+.kc-devis .slider-marks{display:flex;justify-content:space-between;margin-top:14px;font-size:11px;color:var(--gray);font-weight:500}
+
+/* CHECKBOXES OPTIONS */
+.kc-devis .opts-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.kc-devis .opt-row{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--white);border:1.5px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;gap:16px;width:100%;text-align:left}
+.kc-devis .opt-row:hover{border-color:var(--teal-dark)}
+.kc-devis .opt-row.selected{border-color:var(--teal);background:var(--teal-soft)}
+.kc-devis .opt-row.selected .opt-check{background:var(--teal);border-color:var(--teal);color:#fff}
+.kc-devis .opt-left{display:flex;align-items:flex-start;gap:14px;flex:1}
+.kc-devis .opt-icon{width:36px;height:36px;background:var(--teal-light);color:var(--teal-deep);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-devis .opt-row.selected .opt-icon{background:var(--teal);color:#fff}
+.kc-devis .opt-info{flex:1}
+.kc-devis .opt-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:2px;line-height:1.3;letter-spacing:-0.2px}
+.kc-devis .opt-desc-txt{font-size:12.5px;color:var(--text-light);line-height:1.5}
+.kc-devis .opt-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.kc-devis .opt-price{font-family:'Montserrat',sans-serif;font-size:15px;color:var(--teal-deep);font-weight:700;white-space:nowrap}
+.kc-devis .opt-check{width:22px;height:22px;border:1.5px solid var(--border);border-radius:6px;display:grid;place-items:center;font-size:12px;color:transparent;transition:all .2s;background:var(--white);flex-shrink:0;font-weight:700}
+
+/* FORMULAIRE */
+.kc-devis .form-block{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:32px;margin-bottom:20px}
+.kc-devis .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.kc-devis .form-field{display:flex;flex-direction:column;gap:6px;position:relative}
+.kc-devis .form-field.full{grid-column:1/-1}
+.kc-devis .form-field label{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--dark);letter-spacing:0.01em}
+.kc-devis .form-field label .req{color:var(--teal-dark);margin-left:2px}
+.kc-devis .form-field input,.kc-devis .form-field select,.kc-devis .form-field textarea{padding:12px 14px;border:1.5px solid var(--border);background:var(--bg);font-size:14px;color:var(--text);border-radius:9px;transition:all .2s;width:100%;outline:none}
+.kc-devis .form-field input:focus,.kc-devis .form-field select:focus,.kc-devis .form-field textarea:focus{border-color:var(--teal-dark);background:var(--white);box-shadow:0 0 0 3px rgba(15,167,165,0.15)}
+.kc-devis .form-field textarea{min-height:90px;resize:vertical;font-family:'Inter',sans-serif}
+.kc-devis .form-field.invalid input,.kc-devis .form-field.invalid select,.kc-devis .form-field.invalid textarea{border-color:var(--terra-dark);background:rgba(224,120,86,0.04)}
+.kc-devis .form-field.valid input,.kc-devis .form-field.valid select,.kc-devis .form-field.valid textarea{border-color:var(--green)}
+.kc-devis .form-error{font-size:12px;color:var(--terra-dark);margin-top:6px;line-height:1.4;font-weight:600;display:none;align-items:center;gap:6px}
+.kc-devis .form-field.invalid .form-error{display:flex}
+.kc-devis .form-error svg{flex-shrink:0}
+.kc-devis .form-helper{font-size:11.5px;color:var(--text-light);margin-top:4px;font-style:italic;line-height:1.4;display:flex;justify-content:space-between;gap:10px}
+.kc-devis .char-counter{font-style:normal;color:var(--text-light);font-weight:500;font-feature-settings:'tnum'}
+.kc-devis .char-counter.warning{color:var(--amber)}
+.kc-devis .char-counter.danger{color:var(--terra-dark);font-weight:600}
+
+/* BANNIÈRE ERREUR (au lieu d'alert) */
+.kc-devis .error-banner{
+  background:rgba(224,120,86,0.1);border:1px solid var(--terra);border-radius:10px;
+  padding:14px 18px;margin-bottom:20px;display:none;
+  align-items:center;gap:12px;animation:kcFadeUp .3s ease;
+}
+.kc-devis .error-banner.show{display:flex}
+.kc-devis .error-banner svg{color:var(--terra-dark);flex-shrink:0}
+.kc-devis .error-banner-text{font-size:13.5px;color:var(--terra-dark);font-weight:500;flex:1}
+.kc-devis .error-banner-close{background:none;color:var(--terra-dark);padding:4px 8px;border-radius:6px;font-size:12px}
+.kc-devis .error-banner-close:hover{background:rgba(224,120,86,0.15)}
+
+/* NAV BUTTONS */
+.kc-devis .step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.kc-devis .btn-back{display:flex;align-items:center;gap:8px;color:var(--gray);font-family:'Roboto',sans-serif;font-size:14px;font-weight:500;padding:10px 14px;border-radius:8px;transition:all .2s}
+.kc-devis .btn-back:hover{color:var(--dark);background:var(--gray-soft)}
+.kc-devis .btn-back svg{transition:transform .2s}
+.kc-devis .btn-back:hover svg{transform:translateX(-3px)}
+.kc-devis .btn-next{background:var(--teal);color:#fff;padding:14px 36px;border-radius:10px;font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;transition:all .25s cubic-bezier(.4,0,.2,1);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(15,167,165,0.25);position:relative;min-height:48px}
+.kc-devis .btn-next:hover:not(:disabled){background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,167,165,0.4)}
+.kc-devis .btn-next:disabled{opacity:0.35;cursor:not-allowed;transform:none;background:var(--gray);box-shadow:none}
+.kc-devis .btn-next svg{transition:transform .2s}
+.kc-devis .btn-next:hover:not(:disabled) svg{transform:translateX(2px)}
+.kc-devis .btn-next.loading .btn-text,
+.kc-devis .btn-next.loading svg{opacity:0}
+.kc-devis .btn-next .spinner{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;display:none;animation:kcSpin .8s linear infinite}
+.kc-devis .btn-next.loading .spinner{display:block}
+@keyframes kcSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* RESULT */
+.kc-devis .result-container{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start;margin-top:32px}
+.kc-devis .result-main{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:40px}
+.kc-devis .result-label{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;font-weight:600;display:flex;align-items:center;gap:8px}
+.kc-devis .result-label-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:kcPulse 2s infinite}
+@keyframes kcPulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.kc-devis .result-price{font-family:'Montserrat',sans-serif;font-size:64px;font-weight:800;color:var(--dark);line-height:1;letter-spacing:-2.5px;margin-bottom:8px}
+.kc-devis .result-price em{color:var(--teal-dark);font-style:normal}
+.kc-devis .result-from{font-size:14px;color:var(--text-light);margin-bottom:32px}
+.kc-devis .result-detail{display:flex;flex-direction:column;gap:14px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:24px}
+.kc-devis .rd-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.kc-devis .rd-name{font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:2px}
+.kc-devis .rd-sub{font-size:12px;color:var(--gray);line-height:1.4}
+.kc-devis .rd-amount{font-family:'Montserrat',sans-serif;font-size:14.5px;color:var(--dark);font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.kc-devis .result-total{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:2px solid var(--dark);margin-bottom:28px}
+.kc-devis .result-total-label{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--dark);letter-spacing:-0.2px}
+.kc-devis .result-total-val{font-family:'Montserrat',sans-serif;font-size:28px;color:var(--dark);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-0.8px}
+.kc-devis .result-cta{display:flex;flex-direction:column;gap:10px}
+.kc-devis .cta-submit{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:12px;cursor:pointer;transition:all .25s;text-align:left;width:100%;position:relative;min-height:60px}
+.kc-devis .cta-submit-primary{background:var(--teal);color:#fff;box-shadow:0 4px 16px rgba(15,167,165,0.3)}
+.kc-devis .cta-submit-primary:hover:not(:disabled){background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 12px 32px rgba(15,167,165,0.45)}
+.kc-devis .cta-submit-primary:disabled{opacity:0.7;cursor:not-allowed}
+.kc-devis .cta-submit-secondary{background:var(--white);color:var(--dark);border:1.5px solid var(--border)}
+.kc-devis .cta-submit-secondary:hover{border-color:var(--teal-dark)}
+.kc-devis .cta-submit-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.2);display:grid;place-items:center;flex-shrink:0}
+.kc-devis .cta-submit-secondary .cta-submit-icon{background:var(--teal-light);color:var(--teal-deep)}
+.kc-devis .cta-submit-content{flex:1}
+.kc-devis .cta-submit-name{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.2px;margin-bottom:2px}
+.kc-devis .cta-submit-desc{font-size:11.5px;line-height:1.4;opacity:0.85}
+.kc-devis .cta-submit .spinner{position:absolute;right:20px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;display:none;animation:kcSpin .8s linear infinite}
+.kc-devis .cta-submit.loading .spinner{display:block}
+.kc-devis .cta-submit.loading{padding-right:60px}
+
+.kc-devis .result-aside{display:flex;flex-direction:column;gap:14px}
+.kc-devis .aside-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px}
+.kc-devis .aside-card.dark{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);color:#fff;border-color:transparent}
+.kc-devis .aside-title{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--dark);font-weight:700;letter-spacing:-0.2px;margin-bottom:14px}
+.kc-devis .aside-card.dark .aside-title{color:#fff}
+.kc-devis .aside-list{display:flex;flex-direction:column;gap:10px}
+.kc-devis .aside-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-light);line-height:1.5}
+.kc-devis .aside-card.dark .aside-item{color:rgba(255,255,255,0.85)}
+.kc-devis .aside-item svg{color:var(--teal);flex-shrink:0;margin-top:2px}
+.kc-devis .aside-card .aside-item a{color:inherit;text-decoration:underline}
+.kc-devis .result-note{font-size:12.5px;color:var(--text-light);line-height:1.6;margin-top:14px;font-style:italic;text-align:center}
+
+/* PRESTA CATEGORIES */
+.kc-devis .presta-cats{display:flex;flex-direction:column;gap:28px}
+.kc-devis .presta-cat-title{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--dark);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;padding-left:22px;position:relative}
+.kc-devis .presta-cat-title::before{content:'';position:absolute;top:50%;left:0;width:14px;height:1px;background:var(--teal);transform:translateY(-50%)}
+.kc-devis .presta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+
+/* MODAL */
+.kc-devis-modal{position:fixed;inset:0;background:rgba(13,35,64,0.65);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;animation:kcModalFadeIn .25s ease}
+.kc-devis-modal.show{display:flex}
+@keyframes kcModalFadeIn{from{opacity:0}to{opacity:1}}
+.kc-devis-modal-content{background:#fff;border-radius:24px;padding:48px 40px 40px;max-width:480px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(13,35,64,0.3);animation:kcModalSlide .35s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+@keyframes kcModalSlide{from{opacity:0;transform:translateY(30px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.kc-devis-modal-icon{width:84px;height:84px;background:#E6F5F5;color:#0FA7A5;border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;position:relative;animation:kcIconPop .5s cubic-bezier(.16,1,.3,1) .2s both}
+@keyframes kcIconPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.kc-devis-modal-icon::after{content:'';position:absolute;inset:-8px;border:3px solid #0FA7A5;border-radius:50%;opacity:0.2;animation:kcRipple 1.5s ease-out infinite}
+@keyframes kcRipple{from{transform:scale(0.9);opacity:0.6}to{transform:scale(1.4);opacity:0}}
+.kc-devis-modal h2{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;color:#0D2340;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.2}
+.kc-devis-modal h2 em{color:#0B8483;font-style:normal}
+.kc-devis-modal p{font-size:15px;color:#4B5563;line-height:1.65;margin-bottom:8px}
+.kc-devis-modal-recap{background:#F8F9FB;border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;font-size:13.5px;color:#1F2937}
+.kc-devis-modal-recap strong{display:block;font-family:'Montserrat',sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280;margin-bottom:8px;font-weight:600}
+.kc-devis-modal-recap-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E5E7EB}
+.kc-devis-modal-recap-row:last-child{border-bottom:none}
+.kc-devis-modal-recap-row span:first-child{color:#6B7280;font-size:12.5px}
+.kc-devis-modal-recap-row span:last-child{color:#0D2340;font-weight:600}
+.kc-devis-modal-actions{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.kc-devis-modal-btn{padding:14px 28px;border-radius:10px;font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;cursor:pointer;transition:all .25s;border:none}
+.kc-devis-modal-btn-primary{background:#0FA7A5;color:#fff;box-shadow:0 4px 14px rgba(15,167,165,0.3)}
+.kc-devis-modal-btn-primary:hover{background:#0B8483;transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,167,165,0.4)}
+.kc-devis-modal-btn-secondary{background:transparent;color:#6B7280;border:1.5px solid #E5E7EB}
+.kc-devis-modal-btn-secondary:hover{border-color:#0D2340;color:#0D2340}
+.kc-devis-modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#6B7280;background:none;border:none;cursor:pointer;transition:all .2s}
+.kc-devis-modal-close:hover{background:#F3F4F6;color:#1F2937}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .kc-devis .nav-top{padding:18px 32px}
+  .kc-devis .progress-section{padding:14px 32px}
+  .kc-devis .resume-banner{padding:10px 32px}
+  .kc-devis .step-container{padding:40px 24px 100px}
+  .kc-devis .step-title{font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:-1.2px}
+  .kc-devis .options-grid.cols-3,.kc-devis .options-grid.cols-4{grid-template-columns:repeat(2,1fr)}
+  .kc-devis .result-container{grid-template-columns:1fr;gap:20px}
+  .kc-devis .result-main{padding:28px}
+  .kc-devis .result-price{font-size:48px}
+}
+@media(max-width:768px){
+  .kc-devis .nav-top{padding:16px 20px;flex-wrap:wrap;gap:8px}
+  .kc-devis .nav-logo{font-size:18px}
+  .kc-devis .resume-banner{padding:8px 20px;flex-direction:column;gap:8px;text-align:center}
+  .kc-devis .progress-section{padding:12px 20px}
+  .kc-devis .step-container{padding:32px 18px 80px}
+  .kc-devis .step-title{font-size:1.7rem;letter-spacing:-1px}
+  .kc-devis .options-grid{grid-template-columns:1fr !important}
+  .kc-devis .options-grid.cols-2{grid-template-columns:1fr 1fr !important}
+  .kc-devis .presta-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .kc-devis .form-row{grid-template-columns:1fr;gap:10px}
+  .kc-devis .form-block{padding:22px}
+  .kc-devis .result-price{font-size:40px}
+  .kc-devis .zone-map{height:300px;max-width:380px}
+  .kc-devis .zone-c-77{width:120px;height:120px;font-size:18px;top:70px}
+  .kc-devis .zone-c-78{width:105px;height:105px;font-size:17px;top:85px}
+  .kc-devis .zone-c-91{width:100px;height:100px;font-size:16px}
+  .kc-devis .zone-c-95{width:88px;height:88px;font-size:15px}
+  .kc-devis .zone-c-75{width:58px;height:58px;font-size:14px;top:125px}
+  .kc-devis .zone-c-92{width:46px;height:46px;font-size:12px;top:138px}
+  .kc-devis .zone-c-93{width:50px;height:50px;font-size:12px;top:92px}
+  .kc-devis .zone-c-94{width:46px;height:46px;font-size:12px;top:180px}
+}
+@media(max-width:480px){
+  .kc-devis .options-grid.cols-2{grid-template-columns:1fr !important}
+  .kc-devis .presta-grid{grid-template-columns:1fr}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .kc-devis *,.kc-devis *::before,.kc-devis *::after{
+    animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;
+  }
+}
+
+/* PRINT */
+@media print{
+  .kc-devis .progress-section,.kc-devis .resume-banner,.kc-devis .step-nav,
+  .kc-devis .result-cta,.kc-devis .nav-top{display:none !important}
+  .kc-devis .step:not(#step-result){display:none !important}
+}
+
+/* ════════════════════════════════════════════════════════
+   V4 · FINITIONS PRO & TOUCHES FUTURISTES — surcouche additive
+   Glassmorphism subtil · ombres douces multi-couches · accents
+   dégradés teal · glow sur sélection · scroll reveal · barre de
+   progression animée · soulignement animé du mot accentué.
+   ► Fond clair conservé · charte teal #0FA7A5 · lisibilité d'abord
+   ► prefers-reduced-motion respecté · fallback @supports (verre)
+   ════════════════════════════════════════════════════════ */
+
+/* — Tokens : easing soigné, ombres multi-couches, glow, verre — */
+.kc-devis{
+  --ease:cubic-bezier(.16,1,.3,1);
+  --shadow-sm:0 1px 2px rgba(13,35,64,.04),0 2px 6px rgba(13,35,64,.05);
+  --shadow-md:0 2px 6px rgba(13,35,64,.05),0 14px 30px rgba(13,35,64,.07);
+  --shadow-lg:0 10px 24px rgba(13,35,64,.08),0 28px 56px rgba(13,35,64,.10);
+  --glow-teal:0 0 0 1.5px rgba(15,167,165,.6),0 12px 30px rgba(15,167,165,.32),0 0 46px rgba(15,167,165,.24);
+  --glass:rgba(255,255,255,.72);
+  --glass-brd:rgba(13,35,64,.07);
+  /* — Réglages rapides : 1 valeur à changer — */
+  --kc-photo-ratio:4 / 3;  /* hauteur des photos (16/10 = plus court, 1/1 = carré) */
+  --kc-glass-blur:16px;     /* intensité du flou « verre dépoli » */
+  --kc-reveal-dur:.5s;      /* vitesse des apparitions (scroll reveal) */
+  /* Aura teal très douce derrière le verre — le fond reste clair */
+  background:
+    radial-gradient(60rem 32rem at 6% -10%, rgba(15,167,165,.10), transparent 60%),
+    radial-gradient(52rem 30rem at 110% 2%, rgba(15,167,165,.08), transparent 58%),
+    radial-gradient(46rem 40rem at 50% 118%, rgba(11,132,131,.06), transparent 60%),
+    var(--bg);
+}
+
+/* — Plus d'air : grille & espacements + lignes d'accent en dégradé — */
+.kc-devis .step-desc{margin-bottom:48px}
+.kc-devis .presta-cats{gap:34px}
+.kc-devis .presta-grid{gap:16px}
+.kc-devis .options-grid{gap:16px}
+.kc-devis .step-tag::before{background:linear-gradient(90deg,var(--teal),var(--teal-deep))}
+.kc-devis .presta-cat-title::before{width:18px;background:linear-gradient(90deg,var(--teal),var(--teal-deep))}
+
+/* — Entrée d'étape en fondu doux (le glissé est géré par le reveal) — */
+@keyframes kcFadeSoft{from{opacity:0}to{opacity:1}}
+.kc-devis .step{animation-name:kcFadeSoft}
+
+/* — Glassmorphism subtil sur les surfaces — */
+.kc-devis .option-card,
+.kc-devis .slider-block,
+.kc-devis .form-block,
+.kc-devis .opt-row,
+.kc-devis .zone-checkbox-card,
+.kc-devis .result-main,
+.kc-devis .aside-card,
+.kc-devis .cta-submit-secondary{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--kc-glass-blur)) saturate(1.4);
+  backdrop-filter:blur(var(--kc-glass-blur)) saturate(1.4);
+  border:1px solid var(--glass-brd);
+  box-shadow:var(--shadow-md);
+}
+/* Fallback : backdrop-filter non géré → surfaces opaques (zéro perte de lisibilité) */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .kc-devis .option-card,.kc-devis .slider-block,.kc-devis .form-block,
+  .kc-devis .opt-row,.kc-devis .zone-checkbox-card,.kc-devis .result-main,
+  .kc-devis .aside-card,.kc-devis .cta-submit-secondary{background:var(--white)}
+}
+/* La carte « garanties » conserve son accent foncé d'origine (non flouté) */
+.kc-devis .aside-card.dark{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* — Bordure dégradé teal au survol (amélioration progressive ; masquée si non gérée) — */
+.kc-devis .option-card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+  background:linear-gradient(135deg,var(--teal),var(--teal-deep));
+  opacity:0;transition:opacity .3s var(--ease);pointer-events:none;z-index:1;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+@supports ((-webkit-mask-composite:xor) or (mask-composite:exclude)){
+  .kc-devis .option-card:hover::before{opacity:.85}
+}
+
+/* — États clairs : survol / actif / sélection (lift + ombres + glow teal) — */
+.kc-devis .option-card{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
+.kc-devis .option-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(15,167,165,.35)}
+.kc-devis .option-card:active{transform:translateY(-1px) scale(.992)}
+.kc-devis .option-card.selected{box-shadow:var(--glow-teal);transform:translateY(-2px) scale(1.015)}
+.kc-devis .opt-row{transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease)}
+.kc-devis .opt-row:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);border-color:rgba(15,167,165,.35)}
+.kc-devis .opt-row.selected{box-shadow:0 0 0 1px rgba(15,167,165,.4),var(--shadow-md)}
+.kc-devis .zone-checkbox-card.checked{box-shadow:var(--glow-teal)}
+
+/* — Boutons : dégradé teal + micro-interactions — */
+.kc-devis .btn-next{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.kc-devis .btn-next:hover:not(:disabled){background:linear-gradient(135deg,var(--teal-dark),var(--teal-deep));transform:translateY(-2px);box-shadow:0 14px 30px rgba(15,167,165,.40)}
+.kc-devis .btn-next:active:not(:disabled){transform:translateY(0)}
+.kc-devis .cta-submit-primary{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.kc-devis .cta-submit-primary:hover:not(:disabled){background:linear-gradient(135deg,var(--teal-dark),var(--teal-deep));transform:translateY(-1px);box-shadow:0 12px 32px rgba(15,167,165,.45)}
+
+/* — Barre de progression : dégradé + glow + reflet animé (shimmer) — */
+.kc-devis .pb-progress{height:6px;background:rgba(13,35,64,.06)}
+.kc-devis .pb-progress-fill{position:relative;overflow:hidden;background:linear-gradient(90deg,var(--teal-deep),var(--teal) 55%,var(--teal-dark));box-shadow:0 0 14px rgba(15,167,165,.45);transition:width .6s var(--ease)}
+.kc-devis .pb-progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-100%);animation:kcShimmer 2.6s ease-in-out infinite}
+@keyframes kcShimmer{0%{transform:translateX(-100%)}55%,100%{transform:translateX(120%)}}
+
+/* — Titre : surbrillance dégradé animée du mot accentué — */
+.kc-devis .step-title em::after{height:10px;bottom:3px;opacity:.20;background:linear-gradient(90deg,var(--teal),var(--teal-deep));transform:scaleX(0);transform-origin:left center;transition:transform .7s var(--ease) .15s}
+.kc-devis .step.active .step-title em::after{transform:scaleX(1)}
+
+/* — Scroll reveal (piloté par JS ; sans JS → contenu visible) — */
+.kc-devis .kc-reveal{opacity:0;transform:translateY(16px);transition:opacity var(--kc-reveal-dur) var(--ease),transform var(--kc-reveal-dur) var(--ease);transition-delay:var(--kc-rev-delay,0ms)}
+.kc-devis .kc-reveal.kc-in{opacity:1;transform:none}
+
+/* — Cartes prestation AVEC photo (premium, verre, glow) — */
+.kc-devis .presta-card{padding:0;gap:0;overflow:hidden;border-radius:18px}
+.kc-devis .presta-card .oc-photo{position:relative;width:100%;aspect-ratio:var(--kc-photo-ratio);overflow:hidden;background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 55%,var(--teal-dark) 100%)}
+.kc-devis .presta-card .oc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s var(--ease)}
+.kc-devis .presta-card:hover .oc-photo img{transform:scale(1.06)}
+.kc-devis .presta-card .oc-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,35,64,0) 45%,rgba(13,35,64,.42) 100%);transition:background .3s var(--ease);pointer-events:none}
+.kc-devis .presta-card:hover .oc-photo::after{background:linear-gradient(180deg,rgba(15,167,165,.12) 0%,rgba(13,35,64,.5) 100%)}
+/* Badge icône frosté teal, flottant sur la photo */
+.kc-devis .presta-card .oc-icon{position:absolute;top:12px;left:12px;z-index:2;margin:0;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.92);color:var(--teal-deep);box-shadow:0 6px 18px rgba(13,35,64,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+/* Corps texte sous la photo */
+.kc-devis .presta-card .oc-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;width:100%}
+/* Fallback élégant si pas de photo (ex. commerces) ou image cassée */
+.kc-devis .presta-card .oc-photo.no-photo::after{display:none}
+.kc-devis .presta-card .oc-photo.no-photo{display:grid;place-items:center}
+.kc-devis .presta-card .oc-photo.no-photo .oc-icon{position:static;width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.95);box-shadow:0 12px 28px rgba(13,35,64,.2)}
+.kc-devis .presta-card .oc-photo.no-photo .oc-icon svg{width:28px;height:28px}
+/* État sélectionné : photo conservée (pas de fond teal plein) + glow + check */
+.kc-devis .presta-card.selected{background:var(--white);color:var(--text);transform:translateY(-3px) scale(1.012);box-shadow:var(--glow-teal)}
+.kc-devis .presta-card.selected .oc-title{color:var(--dark)}
+.kc-devis .presta-card.selected .oc-desc{color:var(--gray)}
+.kc-devis .presta-card.selected .oc-icon{background:#fff;color:var(--teal-deep)}
+.kc-devis .presta-card.selected .oc-photo::after{background:linear-gradient(180deg,rgba(15,167,165,.18) 0%,rgba(13,35,64,.42) 100%)}
+.kc-devis .presta-card.selected::after{top:12px;right:12px;width:30px;height:30px;background:var(--teal);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');background-size:17px;background-position:center;background-repeat:no-repeat;box-shadow:0 6px 16px rgba(15,167,165,.55);z-index:3}
+/* La bordure dégradé ::before passe au-dessus de la photo proprement */
+.kc-devis .presta-card::before{z-index:4}
+/* Photos un peu plus courtes sur mobile (réduit le scroll) */
+@media(max-width:768px){.kc-devis{--kc-photo-ratio:16 / 10}}
+
+/* — prefers-reduced-motion : neutralise tous les effets animés ajoutés — */
+@media (prefers-reduced-motion: reduce){
+  .kc-devis .kc-reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  .kc-devis .pb-progress-fill::after{display:none !important}
+  .kc-devis .step-title em::after{transition:none !important;transform:scaleX(1)}
+  .kc-devis .step{animation:none !important}
+}
+</style>
+
+<div class="kc-devis">
+
+<!-- BANDEAU REPRISE SAUVEGARDE -->
+<div class="resume-banner" id="resume-banner" role="status">
+  <span>💾 Une demande non terminée a été retrouvée.</span>
+  <div class="resume-banner-actions">
+    <button type="button" id="btn-resume">Reprendre</button>
+    <button type="button" id="btn-discard">Recommencer</button>
+  </div>
+</div>
+
+<!-- NAV TOP -->
+<div class="nav-top">
+  <div class="nav-logo">Kayli <em>Clinn</em></div>
+  <div class="nav-subtitle">Devis personnalisé · sans engagement</div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-section">
+  <div class="progress-bar">
+    <button class="pb-back" id="pb-back-btn" type="button" style="visibility:hidden" aria-label="Étape précédente">
+      <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Précédent
+    </button>
+    <div class="pb-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progression du devis">
+      <div class="pb-progress-fill" id="pb-fill"></div>
+    </div>
+    <div class="pb-counter" aria-live="polite" aria-atomic="true">
+      Étape <strong id="pb-current">1</strong> / <span id="pb-total">8</span>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS CONTAINER -->
+<div class="step-container">
+
+<style>
+  /* ── Compléments V4 (parcours grille officielle) — réutilise le design existant ── */
+  .kc-devis .funnel-tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-left:10px;vertical-align:middle}
+  .kc-devis .funnel-tag.online{background:var(--teal-light);color:var(--teal-deep)}
+  .kc-devis .funnel-tag.estimate{background:#EEF4FF;color:#3B5BDB}
+  .kc-devis .funnel-tag.audit{background:#FFF4E6;color:#B25E09}
+  .kc-devis .acompte-panel{background:var(--teal-soft);border:1px solid var(--teal-light);border-radius:14px;padding:18px 20px;margin-top:18px}
+  .kc-devis .acompte-panel .ap-row{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:6px 0}
+  .kc-devis .acompte-panel .ap-row strong{font-variant-numeric:tabular-nums}
+  .kc-devis .acompte-panel .ap-row.main{font-size:16px;font-weight:700;color:var(--teal-deep)}
+  .kc-devis .result-audit-badge{display:inline-block;background:#FFF4E6;color:#B25E09;font-weight:700;font-size:12.5px;border-radius:100px;padding:7px 16px;margin-bottom:14px}
+  .kc-devis .inline-result-err{display:none;background:#FDF1EE;border:1px solid #E07856;color:#C45A38;border-radius:12px;padding:12px 16px;margin-top:14px;font-size:13.5px;font-weight:600;line-height:1.5}
+  .kc-devis .inline-result-err.show{display:block}
+</style>
+
+  <!-- ÉTAPE 0 : PRESTATION -->
+  <div class="step active" id="step-presta" data-step="presta">
+    <div class="step-tag">01 · Type de prestation</div>
+    <h1 class="step-title">Quelle <em>prestation</em> vous intéresse ?</h1>
+    <p class="step-desc">Trois parcours selon votre besoin : réservation immédiate au tarif officiel, estimation chiffrée pour les pros, ou visite d'audit gratuite pour les demandes sur mesure.</p>
+
+    <div class="presta-cats">
+      <div>
+        <h2 class="presta-cat-title">Logements — tarif fixe<span class="funnel-tag online">Réservation en ligne</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Forfaits logement réservables en ligne">
+          <button type="button" class="option-card presta-card" data-presta="airbnb">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Nettoyage Airbnb</div>
+              <div class="oc-desc">Turnover location courte durée · dès 45 €</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="demenagement">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Déménagement · fin de bail</div>
+              <div class="oc-desc">Avant état des lieux · dès 79 €</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="standard">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Appartement standard</div>
+              <div class="oc-desc">Ménage ponctuel complet · dès 79 €</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="logement-vide">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Logement vide</div>
+              <div class="oc-desc">Particulier, jusqu'à 4 pièces · dès 79 €</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="presta-cat-title">Professionnels &amp; récurrent<span class="funnel-tag estimate">Estimation immédiate</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Prestations professionnelles estimables en ligne">
+          <button type="button" class="option-card presta-card" data-presta="bureaux">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Entretien de bureaux</div>
+              <div class="oc-desc">Cabinets, PME · dès 32 €/h HT</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="locaux">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Locaux &amp; entretien régulier</div>
+              <div class="oc-desc">Ateliers, salles, espaces · dès 32 €/h HT</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="commerce">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Commerces &amp; vitrines</div>
+              <div class="oc-desc">Boutiques, restaurants · dès 32 €/h HT</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="copropriete">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Copropriétés &amp; parties communes</div>
+              <div class="oc-desc">Immeubles, syndics · dès 32 €/h HT</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="vitres-ponctuel">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Vitres intérieures</div>
+              <div class="oc-desc">Accessibles, ponctuel · 3 à 7 €/m²</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="presta-cat-title">Sur mesure<span class="funnel-tag audit">Visite d'audit gratuite</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Prestations sur devis avec visite gratuite">
+          <button type="button" class="option-card presta-card" data-presta="maison">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Maison &amp; grands logements</div>
+              <div class="oc-desc">5 pièces et +, plus de 100 m²</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="grand-menage">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Grand ménage / très sale</div>
+              <div class="oc-desc">Insalubre, remise en état complète</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="fin-chantier">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Fin de chantier &amp; après travaux</div>
+              <div class="oc-desc">Poussière, gravats, VEFA</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="sinistre">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2v10M5 7l7 5 7-5M5 17l7 5 7-5"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Après sinistre</div>
+              <div class="oc-desc">Dégât des eaux, incendie</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="vitres-hauteur">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Vitres en hauteur / extérieures</div>
+              <div class="oc-desc">Accès difficile, façades</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="textile">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M4 18v-7a8 8 0 0 1 16 0v7M2 18h20M7 18v3M17 18v3"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Canapés, moquettes, tapis</div>
+              <div class="oc-desc">Injection-extraction, détachage</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="syndic">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 6h18M5 6V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2M6 6l1 14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1l1-14"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Containers, parkings, locaux poubelles</div>
+              <div class="oc-desc">Syndics &amp; copropriétés</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="evenement">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Après événement</div>
+              <div class="oc-desc">Réceptions, salles, surfaces</div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : ZONE IDF -->
+  <div class="step" id="step-zone" data-step="zone">
+    <div class="step-tag">02 · Zone d'intervention</div>
+    <h1 class="step-title">Votre bien est-il en <em>Île-de-France</em> ?</h1>
+    <p class="step-desc">Kayli Clinn intervient exclusivement en Île-de-France. Si votre bien est ailleurs, nous ne pourrons malheureusement pas réaliser les travaux.</p>
+
+    <button type="button" class="zone-checkbox-card" id="zone-checkbox" aria-pressed="false">
+      <div class="zone-checkbox-square" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <div class="zone-checkbox-text">Je confirme que le bien est bien situé en <em>Île-de-France</em></div>
+    </button>
+
+    <div class="zone-map" role="img" aria-label="Carte d'Île-de-France : 8 départements couverts (75, 77, 78, 91, 92, 93, 94, 95)">
+      <div class="zone-circle zone-c-95" aria-hidden="true">95</div>
+      <div class="zone-circle zone-c-78" aria-hidden="true">78</div>
+      <div class="zone-circle zone-c-93" aria-hidden="true">93</div>
+      <div class="zone-circle zone-c-77" aria-hidden="true">77</div>
+      <div class="zone-circle zone-c-92" aria-hidden="true">92</div>
+      <div class="zone-circle zone-c-75 center" aria-hidden="true">75</div>
+      <div class="zone-circle zone-c-94" aria-hidden="true">94</div>
+      <div class="zone-circle zone-c-91" aria-hidden="true">91</div>
+    </div>
+    <div class="zone-map-label">Île-de-France · <strong>8 départements</strong> couverts</div>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE TAILLE (forfaits logement — grille officielle) -->
+  <div class="step" id="step-taille" data-step="taille">
+    <div class="step-tag">03 · Taille du logement</div>
+    <h1 class="step-title">Quelle est la <em>taille</em> du logement ?</h1>
+    <p class="step-desc">Le tarif est forfaitaire selon la taille — aucun supplément surprise. Au-delà de 4 pièces, une visite gratuite permet d'établir un devis précis.</p>
+    <div class="options-grid cols-3" role="radiogroup" aria-label="Taille du logement">
+      <button type="button" class="option-card" data-key="taille" data-value="studio">
+        <div class="oc-num">01</div><div class="oc-title">Studio</div><div class="oc-desc">Jusqu'à 25 m²</div>
+      </button>
+      <button type="button" class="option-card" data-key="taille" data-value="p2">
+        <div class="oc-num">02</div><div class="oc-title">2 pièces</div><div class="oc-desc">T2</div>
+      </button>
+      <button type="button" class="option-card" data-key="taille" data-value="p3">
+        <div class="oc-num">03</div><div class="oc-title">3 pièces</div><div class="oc-desc">T3</div>
+      </button>
+      <button type="button" class="option-card" data-key="taille" data-value="p4">
+        <div class="oc-num">04</div><div class="oc-title">4 pièces</div><div class="oc-desc">T4</div>
+      </button>
+      <button type="button" class="option-card" data-key="taille" data-value="maison-grand">
+        <div class="oc-num">05</div><div class="oc-title">5 pièces et + / maison</div><div class="oc-desc">Sur devis · visite gratuite</div>
+        <span class="oc-badge">Audit gratuit</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : TYPE DE BIEN (parcours pro & audit, rendu dynamique) -->
+  <div class="step" id="step-bien" data-step="bien">
+    <div class="step-tag">03 · Type de bien</div>
+    <h1 class="step-title">Quel <em>type de bien</em> est concerné ?</h1>
+    <p class="step-desc">Le type de bien détermine l'approche technique, le matériel nécessaire et le temps d'intervention.</p>
+    <div class="options-grid cols-3" id="bien-grid" role="radiogroup" aria-label="Type de bien"></div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : SURFACE -->
+  <div class="step" id="step-surface" data-step="surface">
+    <div class="step-tag">04 · Surface</div>
+    <h1 class="step-title" id="surface-title">Quelle est la <em>surface</em> à traiter ?</h1>
+    <p class="step-desc" id="surface-desc">La surface est le critère principal de l'estimation. Une valeur approximative suffit : le devis ferme est confirmé ensuite.</p>
+    <div class="slider-block">
+      <div class="slider-value" aria-live="polite">
+        <em id="surf-val">80</em>
+        <span class="slider-value-unit">m²</span>
+      </div>
+      <div class="slider-hint">Glissez pour ajuster la surface</div>
+      <label for="surf-input" class="sr-only">Surface en m²</label>
+      <input type="range" min="20" max="1000" value="80" step="10" id="surf-input" aria-valuemin="20" aria-valuemax="1000" aria-valuenow="80">
+      <div class="slider-marks" aria-hidden="true">
+        <span>20 m²</span><span>250 m²</span><span>500 m²</span><span>750 m²</span><span>1000 m²</span>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" data-action="next">
+        <span class="btn-text">Continuer</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : FRÉQUENCE (parcours pro) -->
+  <div class="step" id="step-frequence" data-step="frequence">
+    <div class="step-tag">05 · Fréquence</div>
+    <h1 class="step-title">À quelle <em>fréquence</em> intervenir ?</h1>
+    <p class="step-desc">La fréquence détermine votre budget mensuel. Pour une intervention unique, choisissez « Ponctuel ».</p>
+    <div class="options-grid cols-4" role="radiogroup" aria-label="Fréquence d'intervention">
+      <button type="button" class="option-card" data-key="frequence" data-value="ponctuel" data-mult="0">
+        <div class="oc-num">01</div><div class="oc-title">Ponctuel</div><div class="oc-desc">Une seule intervention</div>
+      </button>
+      <button type="button" class="option-card" data-key="frequence" data-value="1" data-mult="1">
+        <div class="oc-num">02</div><div class="oc-title">1× par semaine</div><div class="oc-desc">Maintenance légère</div>
+      </button>
+      <button type="button" class="option-card" data-key="frequence" data-value="2-3" data-mult="2.5">
+        <div class="oc-num">03</div><div class="oc-title">2-3× par semaine</div><div class="oc-desc">Entretien standard</div>
+        <span class="oc-badge">Le plus choisi</span>
+      </button>
+      <button type="button" class="option-card" data-key="frequence" data-value="5" data-mult="5">
+        <div class="oc-num">04</div><div class="oc-title">5× par semaine</div><div class="oc-desc">Tous les jours ouvrés</div>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : ÉTAT DU LOGEMENT (forfaits — branche « très sale » vers l'audit) -->
+  <div class="step" id="step-etat" data-step="etat">
+    <div class="step-tag">05 · État du logement</div>
+    <h1 class="step-title">Quel est l'<em>état actuel</em> du logement ?</h1>
+    <p class="step-desc">Soyez honnête : un logement très encrassé demande une visite ou des photos pour fixer le juste prix (majoration de +30 à +50 % selon l'état).</p>
+    <div class="options-grid cols-2" role="radiogroup" aria-label="État du logement">
+      <button type="button" class="option-card" data-key="etat" data-value="normal">
+        <div class="oc-num">01</div><div class="oc-title">Normal ou modérément sale</div><div class="oc-desc">Entretien courant, état classique</div>
+        <span class="oc-badge">Tarif grille</span>
+      </button>
+      <button type="button" class="option-card" data-key="etat" data-value="tres-sale">
+        <div class="oc-num">02</div><div class="oc-title">Très sale / négligé</div><div class="oc-desc">Encrassement important, gros volume de déchets</div>
+        <span class="oc-badge">Visite ou photos</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : OPTIONS (rendu dynamique selon la prestation) -->
+  <div class="step" id="step-options" data-step="options">
+    <div class="step-tag">04 · Options</div>
+    <h1 class="step-title">Souhaitez-vous des <em>prestations complémentaires</em> ?</h1>
+    <p class="step-desc">Tarifs officiels de notre grille. Vous pouvez aussi ne rien cocher si la prestation standard suffit.</p>
+    <div class="opts-grid" id="options-grid" role="group" aria-label="Options complémentaires"></div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" data-action="next">
+        <span class="btn-text">Continuer</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : DÉLAI & JOUR (majorations officielles, cumulables) -->
+  <div class="step" id="step-delai" data-step="delai">
+    <div class="step-tag">06 · Délai d'intervention</div>
+    <h1 class="step-title">Quand l'<em>intervention</em> doit-elle avoir lieu ?</h1>
+    <p class="step-desc">Intervention standard sous 48 h à 7 jours. Les majorations ci-dessous sont cumulables et s'appliquent au total.</p>
+    <div class="opts-grid" role="group" aria-label="Majorations">
+      <button type="button" class="opt-row" id="major-urgence" role="checkbox" aria-checked="false">
+        <div class="opt-left">
+          <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="opt-info">
+            <div class="opt-name">Intervention urgente</div>
+            <div class="opt-desc-txt">Sous 48 h, selon disponibilités</div>
+          </div>
+        </div>
+        <div class="opt-right"><div class="opt-price">+20 %</div><div class="opt-check" aria-hidden="true">✓</div></div>
+      </button>
+      <button type="button" class="opt-row" id="major-dimanche" role="checkbox" aria-checked="false">
+        <div class="opt-left">
+          <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
+          <div class="opt-info">
+            <div class="opt-name">Dimanche ou jour férié</div>
+            <div class="opt-desc-txt">Intervention hors jours ouvrés</div>
+          </div>
+        </div>
+        <div class="opt-right"><div class="opt-price">+25 %</div><div class="opt-check" aria-hidden="true">✓</div></div>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" data-action="next">
+        <span class="btn-text">Continuer</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : COORDONNÉES -->
+  <div class="step" id="step-contact" data-step="contact">
+    <div class="step-tag">07 · Vos coordonnées</div>
+    <h1 class="step-title">Quelques <em>informations</em> pour finaliser</h1>
+    <p class="step-desc" id="contact-desc">Ces données nous permettent de vous envoyer le récapitulatif et d'organiser l'intervention.</p>
+
+    <!-- Bannière d'erreur (au lieu d'alert) -->
+    <div class="error-banner" id="form-error-banner" role="alert">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span class="error-banner-text" id="form-error-text">Veuillez corriger les champs invalides ci-dessous.</span>
+      <button type="button" class="error-banner-close" id="error-banner-close" aria-label="Fermer">✕</button>
+    </div>
+
+    <form id="kc-devis-form" novalidate class="form-block">
+      <!-- HONEYPOT anti-spam -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="kc-website-d">Ne pas remplir</label>
+        <input type="text" id="kc-website-d" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-row">
+        <div class="form-field" id="ff-firstname">
+          <label for="c-firstname">Prénom <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="text" id="c-firstname" name="firstname" placeholder="Jean" autocomplete="given-name" maxlength="40" required aria-required="true" aria-invalid="false" aria-describedby="err-firstname">
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-firstname">Prénom requis</span>
+          </div>
+        </div>
+        <div class="form-field" id="ff-lastname">
+          <label for="c-lastname">Nom <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="text" id="c-lastname" name="lastname" placeholder="Dupont" autocomplete="family-name" maxlength="40" required aria-required="true" aria-invalid="false" aria-describedby="err-lastname">
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-lastname">Nom requis</span>
+          </div>
+        </div>
+        <div class="form-field" id="ff-email">
+          <label for="c-email">Email <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="email" id="c-email" name="email" placeholder="jean.dupont@exemple.fr" autocomplete="email" inputmode="email" maxlength="80" required aria-required="true" aria-invalid="false" aria-describedby="err-email">
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-email">Email invalide</span>
+          </div>
+        </div>
+        <div class="form-field" id="ff-phone">
+          <label for="c-phone">Téléphone <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="tel" id="c-phone" name="phone" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel" maxlength="17" required aria-required="true" aria-invalid="false" aria-describedby="err-phone">
+          <div class="form-helper">Format mobile (06/07) ou fixe (01-05)</div>
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-phone">Numéro français requis</span>
+          </div>
+        </div>
+        <div class="form-field full" id="ff-address">
+          <label for="c-address">Adresse du bien <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="text" id="c-address" name="address" placeholder="12 rue de la Paix, 75011 Paris" autocomplete="street-address" maxlength="150" required aria-required="true" aria-invalid="false" aria-describedby="err-address addr-helper">
+          <div class="form-helper" id="addr-helper"><strong>Île-de-France uniquement</strong> (75, 77, 78, 91, 92, 93, 94, 95)</div>
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-address">Adresse incomplète</span>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label for="c-message">Précisions complémentaires <span style="color:var(--gray);font-weight:500">(optionnel)</span></label>
+          <textarea id="c-message" name="message" placeholder="Contraintes d'accès, planning, particularités…" maxlength="1000" aria-describedby="msg-helper"></textarea>
+          <div class="form-helper" id="msg-helper">
+            <span>Maximum 1000 caractères</span>
+            <span class="char-counter" id="char-counter" aria-live="polite" aria-atomic="true">0 / 1000</span>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" id="btn-show-result">
+        <span class="btn-text">Voir mon estimation</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : RÉSULTAT -->
+  <div class="step" id="step-result" data-step="result">
+    <div class="step-tag" id="result-tag">Votre tarif · grille officielle</div>
+    <h1 class="step-title" id="result-title">Votre demande, <em>chiffrée</em>.</h1>
+    <p class="step-desc" id="result-desc"></p>
+
+    <div class="result-container">
+      <div class="result-main">
+        <div class="result-audit-badge" id="r-audit-badge" style="display:none">Sur devis — visite gratuite</div>
+        <div class="result-label" id="r-label">
+          <span class="result-label-dot" aria-hidden="true"></span>
+          <span id="r-label-txt">Votre tarif</span>
+        </div>
+        <div class="result-price" aria-live="polite" id="r-price-line"><em id="r-total">0</em><span id="r-unit"> €</span></div>
+        <div class="result-from" id="r-from">prestation personnalisée</div>
+        <div class="result-detail" id="r-detail"></div>
+        <div class="result-total" id="r-total-row">
+          <div class="result-total-label" id="r-total-label">Total</div>
+          <div class="result-total-val" id="r-total-2" aria-live="polite">0 €</div>
+        </div>
+
+        <div class="acompte-panel" id="r-acompte-panel" style="display:none">
+          <div class="ap-row main"><span>À régler aujourd'hui (acompte 30 %)</span><strong id="r-acompte">—</strong></div>
+          <div class="ap-row"><span>Solde après l'intervention</span><strong id="r-solde">—</strong></div>
+        </div>
+
+        <div class="result-cta">
+          <button type="button" class="cta-submit cta-submit-primary" id="cta-pay" style="display:none">
+            <div class="cta-submit-icon" aria-hidden="true">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24" stroke="#fff"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="cta-submit-content">
+              <div class="cta-submit-name">Réserver mon créneau en ligne</div>
+              <div class="cta-submit-desc" id="cta-pay-desc">Acompte 30 % sécurisé par Stripe · confirmation immédiate</div>
+            </div>
+          </button>
+
+          <button type="button" class="cta-submit cta-submit-primary" id="cta-audit" style="display:none">
+            <div class="cta-submit-icon" aria-hidden="true">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24" stroke="#fff"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="cta-submit-content">
+              <div class="cta-submit-name" id="cta-audit-name">Réserver ma visite d'audit gratuite</div>
+              <div class="cta-submit-desc">Choisissez votre créneau dans notre agenda · sans engagement</div>
+            </div>
+          </button>
+
+          <button type="button" class="cta-submit cta-submit-secondary" id="cta-email">
+            <div class="cta-submit-icon" aria-hidden="true">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="cta-submit-content">
+              <div class="cta-submit-name" id="cta-email-name">Recevoir le récapitulatif par email</div>
+              <div class="cta-submit-desc">Gratuit, sans engagement</div>
+            </div>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="inline-result-err" id="result-error" role="alert"></div>
+        <div class="result-note" id="result-note">Tarif issu de notre grille officielle.</div>
+      </div>
+
+      <aside class="result-aside">
+        <div class="aside-card dark">
+          <h2 class="aside-title">Vos garanties</h2>
+          <div class="aside-list">
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Tarifs officiels, sans surprise</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Visite gratuite si nécessaire</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Aucun engagement requis</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Garantie satisfait</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>RC Pro AXA 5M€</div>
+          </div>
+        </div>
+        <div class="aside-card">
+          <h2 class="aside-title">Besoin d'un échange direct ?</h2>
+          <div class="aside-list">
+            <div class="aside-item">
+              <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+33670012061">06 70 01 20 61</a>
+            </div>
+            <div class="aside-item">
+              <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:contact@kayliclinn.fr">contact@kayliclinn.fr</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Modifier ma demande
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL DE SUCCÈS -->
+<div class="kc-devis-modal" id="kc-success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-d-title" aria-describedby="modal-d-desc">
+  <div class="kc-devis-modal-content">
+    <button class="kc-devis-modal-close" id="modal-close-btn" aria-label="Fermer la fenêtre">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="kc-devis-modal-icon" aria-hidden="true">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h2 id="modal-d-title">Demande <em>envoyée</em> avec succès</h2>
+    <p id="modal-d-desc">Le récapitulatif vient de vous être envoyé par email. Nous vous recontactons sous <strong>24 h ouvrées</strong>.</p>
+    <div class="kc-devis-modal-recap">
+      <strong>Récapitulatif</strong>
+      <div class="kc-devis-modal-recap-row"><span>Prestation</span><span id="recap-presta">—</span></div>
+      <div class="kc-devis-modal-recap-row"><span>Estimation</span><span id="recap-price">—</span></div>
+      <div class="kc-devis-modal-recap-row"><span>Email</span><span id="recap-email">—</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--gray);font-style:italic;">Vérifiez votre boîte mail (et vos spams) dans les prochaines minutes.</p>
+    <div class="kc-devis-modal-actions">
+      <button class="kc-devis-modal-btn kc-devis-modal-btn-primary" id="modal-ok-btn">Parfait, merci !</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  'use strict';
+
+  /* ════════════════════════════════════════════════════════
+     CONFIGURATION
+     ─────────────────────────────────────────────────────────
+     KC_API : URL de l'API de paiement/devis (dépôt kayliclinn-api,
+     déployé sur Vercel). Pour la changer sans retoucher ce bloc,
+     définir window.kcApiBase avant ce script.
+     ════════════════════════════════════════════════════════ */
+  const KC_API = (window.kcApiBase || 'https://kayliclinn-api.vercel.app').replace(/\/$/,'');
+  const KC_CONFIG = {
+    reservationURL: '/reservation/',
+    sessionStorageKey: 'kc_devis_progress',
+    handoffKey: 'kc_reservation_handoff',
+    sessionExpiry: 24 * 60 * 60 * 1000, // 24h
+    version: 4
+  };
+
+  /* ════════════════════════════════════════════════════════
+     GRILLE TARIFAIRE OFFICIELLE (miroir de lib/pricing.js côté
+     serveur — le serveur reste seul juge au moment du paiement)
+     ════════════════════════════════════════════════════════ */
+  const KC_TARIFS = {
+    forfaits: {
+      'airbnb':        { studio:45, p2:60, p3:75, p4:95 },
+      'demenagement':  { studio:79, p2:99, p3:119, p4:149 },
+      'standard':      { studio:79, p2:99, p3:119, p4:149 },
+      'logement-vide': { studio:79, p2:99, p3:119, p4:149 }
+    },
+    tailles: { studio:'Studio ≤ 25 m²', p2:'2 pièces', p3:'3 pièces', p4:'4 pièces' },
+    options: {
+      'linge-petit':  { nom:'Gestion du linge — petit volume', prix:15, groupe:'linge' },
+      'linge-moyen':  { nom:'Gestion du linge — volume moyen', prix:25, groupe:'linge' },
+      'linge-gros':   { nom:'Gestion du linge — gros volume',  prix:40, groupe:'linge' },
+      'frigo':        { nom:'Nettoyage intérieur frigo',       prix:10 },
+      'four':         { nom:'Nettoyage intérieur four',        prix:15 },
+      'petit-balcon': { nom:'Petit balcon',                    prix:10, groupe:'balcon' },
+      'terrasse':     { nom:'Terrasse ou grand balcon',        prix:30, groupe:'balcon' }
+    },
+    majorations: { 'urgence':0.20, 'dimanche-ferie':0.25 },
+    acomptePct: 30,
+    pro: {
+      'bureaux':        { tauxMin:32, tauxMax:38, unite:'h' },
+      'bureaux-idf':    { tauxMin:38, tauxMax:45, unite:'h' },
+      'locaux':         { tauxMin:32, tauxMax:60, unite:'h' },
+      'commerce':       { tauxMin:32, tauxMax:60, unite:'h' },
+      'copropriete':    { tauxMin:32, tauxMax:60, unite:'h' },
+      'vitres-ponctuel':{ tauxMin:3,  tauxMax:7,  unite:'m2' },
+      'vitrine':        { tauxMin:3,  tauxMax:7,  unite:'m2' }
+    },
+    minimumPassage: { min:45, max:65 },
+    rendementM2h: 150,
+    heuresMinPassage: 1.5,
+    optionsPro: {
+      'vitres-recurrent': { nom:'Vitres intérieures chaque mois', desc:'Surfaces vitrées accessibles', prix:79 },
+      'tisanerie':        { nom:'Tisanerie / kitchenette',        desc:'Coin café entretenu à chaque passage', prix:89 },
+      'consommables':     { nom:'Gestion des consommables',       desc:'Papier, savon — produits facturés à part', prix:39 }
+    }
+  };
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS DES CARTES (Médiathèque WordPress) — '' = icône stylée
+     ════════════════════════════════════════════════════════ */
+  const KC_PRESTA_IMAGES = {
+    'airbnb':          'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png',
+    'demenagement':    'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg',
+    'standard':        'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp',
+    'logement-vide':   '',
+    'bureaux':         'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp',
+    'locaux':          'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1180236492-612x612-1.jpg',
+    'commerce':        'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg',
+    'copropriete':     'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg',
+    'vitres-ponctuel': 'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg',
+    'maison':          '',
+    'grand-menage':    'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg',
+    'fin-chantier':    'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp',
+    'sinistre':        '',
+    'vitres-hauteur':  '',
+    'textile':         '',
+    'syndic':          '',
+    'evenement':       ''
+  };
+
+  /* ════════════════════════════════════════════════════════
+     LES 17 PRESTATIONS — 3 parcours :
+     • forfait : prix exact grille → réservation + paiement en ligne
+     • pro     : estimation immédiate → audit gratuit ou devis email
+     • audit   : sur devis → visite d'audit gratuite (même calendrier)
+     ════════════════════════════════════════════════════════ */
+  const FLOWS = {
+    forfait: ['presta','zone','taille','options','etat','delai','contact','result'],
+    pro:     ['presta','zone','bien','surface','frequence','options','contact','result'],
+    proM2:   ['presta','zone','bien','surface','contact','result'],
+    audit:   ['presta','zone','bien','surface','contact','result']
+  };
+  const STEP_LABELS = {
+    presta:'Type de prestation', zone:'Zone d\'intervention', taille:'Taille du logement',
+    bien:'Type de bien', surface:'Surface', frequence:'Fréquence', etat:'État du logement',
+    options:'Options', delai:'Délai d\'intervention', contact:'Vos coordonnées', result:'Résultat'
+  };
+
+  const KC_PRESTAS = {
+    /* ── Forfaits logement (réservables en ligne) ── */
+    'airbnb':        { nom:'Nettoyage Airbnb / location courte durée', funnel:'forfait', flow:FLOWS.forfait },
+    'demenagement':  { nom:'Nettoyage après déménagement / fin de bail / état des lieux', funnel:'forfait', flow:FLOWS.forfait },
+    'standard':      { nom:'Nettoyage appartement standard (ponctuel complet)', funnel:'forfait', flow:FLOWS.forfait },
+    'logement-vide': { nom:'Nettoyage logement vide', funnel:'forfait', flow:FLOWS.forfait },
+
+    /* ── Professionnels (estimation immédiate, devis ferme après audit) ── */
+    'bureaux': { nom:'Entretien de bureaux', funnel:'pro', flow:FLOWS.pro, proKey:'bureaux',
+      bienOptions:[
+        { nom:'Bureaux / cabinet', proKey:'bureaux' },
+        { nom:'Coworking / siège social', proKey:'bureaux' },
+        { nom:'Paris intra-muros / accès contraint', proKey:'bureaux-idf' }
+      ] },
+    'locaux': { nom:'Nettoyage régulier de locaux', funnel:'pro', flow:FLOWS.pro, proKey:'locaux',
+      bienOptions:[ { nom:'Atelier / local technique', proKey:'locaux' }, { nom:'Salle de sport / études', proKey:'locaux' }, { nom:'Autre local professionnel', proKey:'locaux' } ] },
+    'commerce': { nom:'Nettoyage commerce', funnel:'pro', flow:FLOWS.pro, proKey:'commerce',
+      bienOptions:[ { nom:'Boutique', proKey:'commerce' }, { nom:'Restaurant / café', proKey:'commerce' }, { nom:'Hôtel / réception', proKey:'commerce' } ] },
+    'copropriete': { nom:'Copropriété / parties communes', funnel:'pro', flow:FLOWS.pro, proKey:'copropriete',
+      bienOptions:[ { nom:'Immeuble résidentiel', proKey:'copropriete' }, { nom:'Copropriété avec ascenseur', proKey:'copropriete' }, { nom:'Résidence services', proKey:'copropriete' } ] },
+    'vitres-ponctuel': { nom:'Vitres intérieures (ponctuel)', funnel:'pro', flow:FLOWS.proM2, proKey:'vitres-ponctuel',
+      surface:{ min:5, max:300, step:5, def:30, unit:'m² vitrés', title:'Quelle <em>surface vitrée</em> environ ?', desc:'Estimez la surface totale de vitrage (ou comptez ~1,5 m² par fenêtre standard).' },
+      bienOptions:[ { nom:'Logement / bureaux', proKey:'vitres-ponctuel' }, { nom:'Vitrine de commerce', proKey:'vitrine' } ] },
+
+    /* ── Sur devis : visite d'audit gratuite (même calendrier) ── */
+    'maison':         { nom:'Maison & grands logements (5 pièces et +)', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Maison'},{nom:'Appartement 5 pièces et +'},{nom:'Loft / atypique'}] },
+    'grand-menage':   { nom:'Grand ménage / logement très sale', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Appartement'},{nom:'Maison'},{nom:'Logement insalubre / Diogène'}],
+      note:'Pour les situations sensibles (insalubrité, syndrome de Diogène), la visite est obligatoire et réalisée en toute discrétion.' },
+    'fin-chantier':   { nom:'Nettoyage fin de chantier / après travaux', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Appartement'},{nom:'Maison'},{nom:'Bureaux / local'},{nom:'Multi-lots / programme'}] },
+    'sinistre':       { nom:'Nettoyage après sinistre', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Dégât des eaux'},{nom:'Incendie / suie'},{nom:'Autre sinistre'}] },
+    'vitres-hauteur': { nom:'Vitres en hauteur / extérieures difficiles', funnel:'audit', flow:FLOWS.audit,
+      surface:{ min:5, max:500, step:5, def:40, unit:'m² vitrés', title:'Quelle <em>surface vitrée</em> environ ?', desc:'Une estimation suffit — l\'accès et la hauteur seront évalués lors de la visite.' },
+      bienOptions:[{nom:'Immeuble / façade'},{nom:'Verrière / hauteur intérieure'},{nom:'Vitrine en hauteur'}] },
+    'textile':        { nom:'Canapés, moquettes, tapis', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Canapé / fauteuils'},{nom:'Moquette'},{nom:'Tapis'}],
+      surface:{ min:1, max:200, step:1, def:20, unit:'m²', title:'Quelle <em>surface</em> environ ?', desc:'Surface de moquette/tapis, ou nombre de places du canapé en mètres approximatifs.' } },
+    'syndic':         { nom:'Containers, local poubelles, parking', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Containers / bacs'},{nom:'Local poubelles'},{nom:'Parking'}] },
+    'evenement':      { nom:'Nettoyage après événement', funnel:'audit', flow:FLOWS.audit,
+      bienOptions:[{nom:'Salle / local'},{nom:'Bureaux'},{nom:'Extérieur'}] }
+  };
+
+  /* ════════════════════════════════════════════════════════
+     VALIDATEURS
+     ════════════════════════════════════════════════════════ */
+  const VALIDATORS = {
+    firstname:{regex:/^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ\s\-'.]{1,39}$/,msg:'Prénom requis (lettres uniquement, min. 2)'},
+    lastname:{regex:/^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ\s\-'.]{1,39}$/,msg:'Nom requis (lettres uniquement, min. 2)'},
+    email:{regex:/^[a-zA-Z0-9](?:[a-zA-Z0-9._%+\-]{0,62}[a-zA-Z0-9])?@(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.){1,3}[a-zA-Z]{2,24}$/,msg:'Email invalide',custom:v=>{if(v.includes('..'))return{valid:false,msg:'Email invalide (points consécutifs interdits)'};if(v.length>80)return{valid:false,msg:'Email trop long'};return{valid:true};}},
+    phone:{regex:/^(?:(?:\+33|0033)\s?[1-9](?:[\s.\-]?\d{2}){4}|0[1-9](?:[\s.\-]?\d{2}){4})$/,msg:'Numéro français valide requis'},
+    address:{regex:/^.{10,}/,msg:'Adresse incomplète',custom:v=>{if(v.length<10)return{valid:false,msg:'Adresse trop courte'};const cp=v.match(/\b(\d{5})\b/);if(!cp)return{valid:false,msg:'Code postal manquant (5 chiffres)'};const dept=cp[1].substring(0,2);const idf=['75','77','78','91','92','93','94','95'];if(!idf.includes(dept))return{valid:false,msg:`Code postal ${cp[1]} hors Île-de-France`};return{valid:true};}}
+  };
+
+  /* ════════════════════════════════════════════════════════
+     STATE
+     ════════════════════════════════════════════════════════ */
+  const state = { currentStep:0, selectedPresta:null, data:{}, stepsFlow:[], forcedAudit:false, auditReason:'' };
+  const euro = n => Number(n).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:2});
+
+  /* ════════════════════════════════════════════════════════
+     SCROLL REVEAL
+     ════════════════════════════════════════════════════════ */
+  const KC_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  let kcIO = null;
+  function kcSetupReveal(){
+    if(KC_REDUCE || !('IntersectionObserver' in window)) return;
+    kcIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('kc-in'); kcIO.unobserve(en.target); }
+      });
+    }, { threshold:0.08, rootMargin:'0px 0px -4% 0px' });
+  }
+  function kcRevealStep(stepEl){
+    if(!stepEl || KC_REDUCE || !kcIO) return;
+    const sel = '.step-tag, .step-title, .step-desc, .presta-cat-title, .option-card, .opt-row, .slider-block, .form-block, .error-banner, .zone-checkbox-card, .zone-map, .zone-map-label, .result-main, .result-aside, .step-nav';
+    let i = 0;
+    stepEl.querySelectorAll(sel).forEach(function(el){
+      if(el.classList.contains('kc-in')) return;
+      el.style.setProperty('--kc-rev-delay', (i < 7 ? i*50 : 0) + 'ms');
+      el.classList.add('kc-reveal');
+      kcIO.observe(el);
+      i++;
+    });
+    clearTimeout(stepEl._kcRevealT);
+    stepEl._kcRevealT = setTimeout(function(){
+      stepEl.querySelectorAll('.kc-reveal:not(.kc-in)').forEach(function(el){ el.classList.add('kc-in'); });
+    }, 1600);
+  }
+
+  /* ════════════════════════════════════════════════════════
+     SAUVEGARDE / RESTAURATION (sessionStorage)
+     ════════════════════════════════════════════════════════ */
+  function saveProgress(){
+    if(!state.selectedPresta) return;
+    try{
+      sessionStorage.setItem(KC_CONFIG.sessionStorageKey, JSON.stringify({ state, v:KC_CONFIG.version, timestamp:Date.now() }));
+    } catch(e){}
+  }
+  function loadProgress(){
+    try{
+      const raw = sessionStorage.getItem(KC_CONFIG.sessionStorageKey);
+      if(!raw) return null;
+      const data = JSON.parse(raw);
+      if(data.v !== KC_CONFIG.version || Date.now() - data.timestamp > KC_CONFIG.sessionExpiry){
+        sessionStorage.removeItem(KC_CONFIG.sessionStorageKey);
+        return null;
+      }
+      if(!data.state || !KC_PRESTAS[data.state.selectedPresta]) return null;
+      return data.state;
+    } catch(e){ return null; }
+  }
+  function clearProgress(){
+    try{ sessionStorage.removeItem(KC_CONFIG.sessionStorageKey); } catch(e){}
+  }
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS PRESTATIONS — injection + repli élégant
+     ════════════════════════════════════════════════════════ */
+  function injectPrestaImages(){
+    document.querySelectorAll('#step-presta .presta-card').forEach(function(card){
+      const photo = card.querySelector('.oc-photo');
+      if(!photo || photo.querySelector('img')) return;
+      const url = KC_PRESTA_IMAGES[card.dataset.presta];
+      if(!url){ photo.classList.add('no-photo'); return; }
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = '';
+      img.addEventListener('error', function(){ photo.classList.add('no-photo'); img.remove(); });
+      img.src = url;
+      photo.insertBefore(img, photo.firstChild);
+    });
+  }
+
+  /* ════════════════════════════════════════════════════════
+     NAVIGATION & FLUX
+     ════════════════════════════════════════════════════════ */
+  function switchToAudit(reason){
+    state.forcedAudit = true;
+    state.auditReason = reason || '';
+    const done = state.stepsFlow.slice(0, state.currentStep + 1);
+    state.stepsFlow = done.concat(['contact','result']);
+  }
+  function selectPresta(card, prestaKey){
+    const presta = KC_PRESTAS[prestaKey];
+    if(!presta) return;
+    document.querySelectorAll('#step-presta .option-card').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-checked','false');
+    });
+    card.classList.add('selected');
+    card.setAttribute('aria-checked','true');
+    state.selectedPresta = prestaKey;
+    state.data = { presta: prestaKey };
+    state.stepsFlow = presta.flow.slice();
+    state.forcedAudit = false;
+    state.auditReason = '';
+    state.currentStep = 0;
+    saveProgress();
+    setTimeout(() => goNext(), 450);
+  }
+  function selectOption(card, key, value, mult){
+    card.parentElement.querySelectorAll('.option-card').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-checked','false');
+    });
+    card.classList.add('selected');
+    card.setAttribute('aria-checked','true');
+    state.data[key] = value;
+    if(mult !== undefined) state.data[key + '_mult'] = parseFloat(mult) || 0;
+
+    if(key === 'taille' && value === 'maison-grand'){
+      switchToAudit('Logement de plus de 4 pièces ou maison — devis après visite gratuite');
+    }
+    if(key === 'etat'){
+      if(value === 'tres-sale'){
+        switchToAudit('Logement très encrassé — tarif confirmé après photos ou visite (+30 à +50 %)');
+      } else if(state.forcedAudit && state.data.taille !== 'maison-grand'){
+        // retour arrière : on quitte la branche audit
+        state.forcedAudit = false; state.auditReason = '';
+        state.stepsFlow = KC_PRESTAS[state.selectedPresta].flow.slice();
+      }
+    }
+    saveProgress();
+    setTimeout(() => goNext(), 450);
+  }
+  function goNext(){
+    if(state.currentStep < state.stepsFlow.length - 1){
+      state.currentStep++;
+      showStep(state.stepsFlow[state.currentStep]);
+      updateProgress();
+      saveProgress();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  }
+  function goPrev(){
+    if(state.currentStep > 0){
+      state.currentStep--;
+      showStep(state.stepsFlow[state.currentStep]);
+      updateProgress();
+      saveProgress();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  }
+  function confirmZone(){
+    const cb = document.getElementById('zone-checkbox');
+    cb.classList.add('checked');
+    cb.setAttribute('aria-pressed','true');
+    state.data.zone = 'idf';
+    saveProgress();
+    setTimeout(() => goNext(), 550);
+  }
+  function showStep(stepKey){
+    document.querySelectorAll('.kc-devis .step').forEach(s => s.classList.remove('active'));
+    const stepEl = document.getElementById('step-'+stepKey);
+    if(!stepEl) return;
+    stepEl.classList.add('active');
+    const tag = stepEl.querySelector('.step-tag');
+    if(tag && stepKey !== 'result'){
+      tag.textContent = String(state.currentStep + 1).padStart(2,'0') + ' · ' + (STEP_LABELS[stepKey] || '');
+    }
+    const h1 = stepEl.querySelector('.step-title');
+    if(h1){ h1.setAttribute('tabindex','-1'); h1.focus({preventScroll:true}); }
+    if(stepKey === 'bien') renderBienOptions();
+    if(stepKey === 'surface') setupSurface();
+    if(stepKey === 'options') renderOptionsList();
+    if(stepKey === 'result') renderResult();
+    kcRevealStep(stepEl);
+  }
+  function updateProgress(){
+    const total = state.stepsFlow.length || 8;
+    const current = state.currentStep + 1;
+    const fill = (current / total) * 100;
+    document.getElementById('pb-fill').style.width = fill + '%';
+    document.querySelector('.pb-progress').setAttribute('aria-valuenow', Math.round(fill));
+    document.getElementById('pb-current').textContent = current;
+    document.getElementById('pb-total').textContent = total;
+    document.getElementById('pb-back-btn').style.visibility = (state.currentStep === 0) ? 'hidden' : 'visible';
+  }
+
+  /* ════════════════════════════════════════════════════════
+     RENDUS DYNAMIQUES
+     ════════════════════════════════════════════════════════ */
+  function renderBienOptions(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    if(!presta || !presta.bienOptions) return;
+    const grid = document.getElementById('bien-grid');
+    grid.textContent = '';
+    presta.bienOptions.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option-card';
+      btn.setAttribute('role','radio');
+      btn.setAttribute('aria-checked', state.data.bien === opt.nom ? 'true' : 'false');
+      if(state.data.bien === opt.nom) btn.classList.add('selected');
+      const num = document.createElement('div'); num.className='oc-num'; num.textContent = String(i+1).padStart(2,'0');
+      const title = document.createElement('div'); title.className='oc-title'; title.textContent = opt.nom;
+      btn.appendChild(num); btn.appendChild(title);
+      btn.addEventListener('click', () => {
+        if(opt.proKey) state.data.proKey = opt.proKey;
+        selectOption(btn, 'bien', opt.nom);
+      });
+      grid.appendChild(btn);
+    });
+    grid.className = 'options-grid cols-' + (presta.bienOptions.length === 4 ? '2' : '3');
+  }
+  function setupSurface(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const cfg = (presta && presta.surface) || { min:20, max:1000, step:10, def:80, unit:'m²',
+      title:'Quelle est la <em>surface</em> à traiter ?',
+      desc:'La surface est le critère principal de l\'estimation. Une valeur approximative suffit : le devis ferme est confirmé ensuite.' };
+    const input = document.getElementById('surf-input');
+    input.min = cfg.min; input.max = cfg.max; input.step = cfg.step;
+    input.setAttribute('aria-valuemin', cfg.min);
+    input.setAttribute('aria-valuemax', cfg.max);
+    const val = state.data.surface || cfg.def;
+    input.value = val;
+    document.getElementById('surface-title').innerHTML = cfg.title;
+    document.getElementById('surface-desc').textContent = cfg.desc;
+    document.querySelector('.slider-value-unit').textContent = cfg.unit;
+    const marks = document.querySelector('.slider-marks');
+    marks.textContent = '';
+    [0,0.25,0.5,0.75,1].forEach(p => {
+      const s = document.createElement('span');
+      s.textContent = Math.round(cfg.min + (cfg.max-cfg.min)*p) + ' ' + cfg.unit.split(' ')[0];
+      marks.appendChild(s);
+    });
+    updateSurf(val);
+  }
+  function updateSurf(val){
+    document.getElementById('surf-val').textContent = val;
+    document.getElementById('surf-input').setAttribute('aria-valuenow', val);
+    state.data.surface = parseInt(val, 10);
+    saveProgress();
+  }
+  function renderOptionsList(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const grid = document.getElementById('options-grid');
+    grid.textContent = '';
+    const list = presta.funnel === 'forfait'
+      ? Object.entries(KC_TARIFS.options).map(([key,o]) => ({ key, nom:o.nom, desc:'', prix:'+'+euro(o.prix)+' €', groupe:o.groupe }))
+      : Object.entries(KC_TARIFS.optionsPro).map(([key,o]) => ({ key, nom:o.nom, desc:o.desc, prix:'+'+euro(o.prix)+' €/mois' }));
+    list.forEach(opt => {
+      const row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'opt-row';
+      row.setAttribute('role','checkbox');
+      row.dataset.key = opt.key;
+      if(opt.groupe) row.dataset.groupe = opt.groupe;
+      const sel = !!(state.data.options && state.data.options[opt.key]);
+      row.setAttribute('aria-checked', sel ? 'true' : 'false');
+      if(sel) row.classList.add('selected');
+      row.innerHTML = '<div class="opt-left"><div class="opt-icon" aria-hidden="true">' +
+        '<svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>' +
+        '<div class="opt-info"><div class="opt-name"></div><div class="opt-desc-txt"></div></div></div>' +
+        '<div class="opt-right"><div class="opt-price"></div><div class="opt-check" aria-hidden="true">✓</div></div>';
+      row.querySelector('.opt-name').textContent = opt.nom;
+      row.querySelector('.opt-desc-txt').textContent = opt.desc || '';
+      row.querySelector('.opt-price').textContent = opt.prix;
+      row.addEventListener('click', () => toggleOpt(row, opt.key, opt.groupe));
+      grid.appendChild(row);
+    });
+  }
+  function toggleOpt(row, key, groupe){
+    if(!state.data.options) state.data.options = {};
+    const willSelect = !row.classList.contains('selected');
+    // Groupes exclusifs (linge, balcon) : décocher les autres du groupe
+    if(willSelect && groupe){
+      row.parentElement.querySelectorAll('.opt-row[data-groupe="'+groupe+'"]').forEach(r => {
+        r.classList.remove('selected'); r.setAttribute('aria-checked','false');
+        delete state.data.options[r.dataset.key];
+      });
+    }
+    row.classList.toggle('selected', willSelect);
+    row.setAttribute('aria-checked', willSelect ? 'true' : 'false');
+    if(willSelect) state.data.options[key] = true;
+    else delete state.data.options[key];
+    saveProgress();
+  }
+  function toggleMajoration(row, key){
+    if(!state.data.majorations) state.data.majorations = {};
+    const sel = row.classList.toggle('selected');
+    row.setAttribute('aria-checked', sel ? 'true' : 'false');
+    if(sel) state.data.majorations[key] = true;
+    else delete state.data.majorations[key];
+    saveProgress();
+  }
+
+  /* ════════════════════════════════════════════════════════
+     FORMATAGE TÉLÉPHONE / COMPTEUR / VALIDATION
+     ════════════════════════════════════════════════════════ */
+  function formatPhone(input){
+    const cursorAtEnd = input.selectionStart === input.value.length;
+    let v = input.value;
+    if(v.startsWith('+')){
+      v = '+' + v.substring(1).replace(/[^\d]/g,'');
+      if(v.startsWith('+33')){
+        const d = v.substring(3);
+        let f = '+33';
+        if(d.length>0) f += ' '+d.substring(0,1);
+        if(d.length>1) f += ' '+d.substring(1,3);
+        if(d.length>3) f += ' '+d.substring(3,5);
+        if(d.length>5) f += ' '+d.substring(5,7);
+        if(d.length>7) f += ' '+d.substring(7,9);
+        v = f.substring(0,17);
+      }
+    } else {
+      const d = v.replace(/[^\d]/g,'').substring(0,10);
+      let f = '';
+      for(let i=0; i<d.length; i++){ if(i>0 && i%2===0) f += ' '; f += d[i]; }
+      v = f;
+    }
+    if(input.value !== v){
+      input.value = v;
+      if(cursorAtEnd) input.setSelectionRange(v.length, v.length);
+    }
+  }
+  function updateCharCounter(textarea){
+    const counter = document.getElementById('char-counter');
+    if(!counter) return;
+    const len = textarea.value.length;
+    const max = 1000;
+    counter.textContent = len + ' / ' + max;
+    counter.classList.remove('warning','danger');
+    if(len > max*0.95) counter.classList.add('danger');
+    else if(len > max*0.8) counter.classList.add('warning');
+  }
+  function validateField(type, input, showIfEmpty){
+    const wrap = input.closest('.form-field');
+    const errMsg = document.getElementById('err-'+type);
+    const validator = VALIDATORS[type];
+    const value = input.value.trim();
+    if(value === ''){
+      wrap.classList.remove('valid','invalid');
+      input.setAttribute('aria-invalid','false');
+      if(showIfEmpty){
+        wrap.classList.add('invalid');
+        input.setAttribute('aria-invalid','true');
+        if(errMsg) errMsg.textContent = validator.msg;
+      }
+      return false;
+    }
+    if(!validator || !validator.regex.test(value)){
+      wrap.classList.remove('valid');
+      wrap.classList.add('invalid');
+      input.setAttribute('aria-invalid','true');
+      if(errMsg) errMsg.textContent = validator.msg;
+      return false;
+    }
+    if(validator.custom){
+      const r = validator.custom(value);
+      if(!r.valid){
+        wrap.classList.remove('valid');
+        wrap.classList.add('invalid');
+        input.setAttribute('aria-invalid','true');
+        if(errMsg) errMsg.textContent = r.msg || validator.msg;
+        return false;
+      }
+    }
+    wrap.classList.remove('invalid');
+    wrap.classList.add('valid');
+    input.setAttribute('aria-invalid','false');
+    return true;
+  }
+  function validateAllFields(){
+    const fields = ['firstname','lastname','email','phone','address'];
+    let firstInvalid = null;
+    let count = 0;
+    for(const f of fields){
+      const input = document.getElementById('c-'+f);
+      const valid = validateField(f, input, true);
+      if(!valid){ count++; if(!firstInvalid) firstInvalid = input; }
+    }
+    if(firstInvalid){
+      const banner = document.getElementById('form-error-banner');
+      document.getElementById('form-error-text').textContent = `${count} champ(s) à corriger ci-dessous.`;
+      banner.classList.add('show');
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+    document.getElementById('form-error-banner').classList.remove('show');
+    return true;
+  }
+
+  /* ════════════════════════════════════════════════════════
+     CALCULS — identiques à lib/pricing.js (le serveur revalide
+     systématiquement au moment du paiement)
+     ════════════════════════════════════════════════════════ */
+  function currentFunnel(){
+    if(state.forcedAudit) return 'audit';
+    return KC_PRESTAS[state.selectedPresta].funnel;
+  }
+  function selectedOptionKeys(){
+    return Object.keys(state.data.options || {});
+  }
+  function selectedMajorationKeys(){
+    return Object.keys(state.data.majorations || {});
+  }
+  function calcForfait(){
+    const grille = KC_TARIFS.forfaits[state.selectedPresta];
+    const taille = state.data.taille;
+    const base = grille && grille[taille];
+    if(!base) return null;
+    const lignes = [{ nom: KC_PRESTAS[state.selectedPresta].nom + ' — ' + KC_TARIFS.tailles[taille], montant: base }];
+    let totalOptions = 0;
+    selectedOptionKeys().forEach(key => {
+      const o = KC_TARIFS.options[key];
+      if(!o) return;
+      totalOptions += o.prix;
+      lignes.push({ nom:o.nom, montant:o.prix });
+    });
+    const sousTotal = base + totalOptions;
+    let taux = 0;
+    selectedMajorationKeys().forEach(key => {
+      const t = KC_TARIFS.majorations[key];
+      if(!t) return;
+      taux += t;
+      lignes.push({ nom:(key==='urgence'?'Intervention urgente':'Dimanche ou jour férié')+' (+'+Math.round(t*100)+' %)', montant: Math.round(sousTotal*t*100)/100 });
+    });
+    const totalCents = Math.round(sousTotal * (1 + taux) * 100);
+    const acompteCents = Math.round(totalCents * KC_TARIFS.acomptePct / 100);
+    return {
+      total: totalCents/100, acompte: acompteCents/100, solde: (totalCents-acompteCents)/100, lignes
+    };
+  }
+  function calcPro(){
+    const proKey = state.data.proKey || KC_PRESTAS[state.selectedPresta].proKey;
+    const t = KC_TARIFS.pro[proKey];
+    if(!t) return null;
+    const s = Math.min(Math.max(Number(state.data.surface) || 0, 10), 10000);
+    if(t.unite === 'm2'){
+      return { min: Math.round(s*t.tauxMin), max: Math.round(s*t.tauxMax), unite:'€ HT',
+        detail: s+' m² × '+t.tauxMin+'–'+t.tauxMax+' €/m²', lignes:[] };
+    }
+    const heures = Math.max(KC_TARIFS.heuresMinPassage, s / KC_TARIFS.rendementM2h);
+    const passages = Number(state.data.frequence_mult || 0);
+    let min = Math.max(KC_TARIFS.minimumPassage.min, Math.round(heures*t.tauxMin));
+    let max = Math.max(KC_TARIFS.minimumPassage.max, Math.round(heures*t.tauxMax));
+    const lignes = [];
+    if(passages > 0){
+      min = Math.round(min * passages * 4.33);
+      max = Math.round(max * passages * 4.33);
+      selectedOptionKeys().forEach(key => {
+        const o = KC_TARIFS.optionsPro[key];
+        if(!o) return;
+        min += o.prix; max += o.prix;
+        lignes.push({ nom:o.nom, montant:o.prix });
+      });
+      return { min, max, unite:'€ HT/mois',
+        detail:'≈ '+(Math.round(heures*10)/10)+' h/passage × '+t.tauxMin+'–'+t.tauxMax+' €/h × '+passages+' passage(s)/sem.', lignes };
+    }
+    return { min, max, unite:'€ HT / intervention',
+      detail:'≈ '+(Math.round(heures*10)/10)+' h × '+t.tauxMin+'–'+t.tauxMax+' €/h (minimum de passage '+KC_TARIFS.minimumPassage.min+'–'+KC_TARIFS.minimumPassage.max+' € HT)', lignes };
+  }
+
+  /* ════════════════════════════════════════════════════════
+     RÉSULTAT — 3 affichages selon le parcours
+     ════════════════════════════════════════════════════════ */
+  function el(id){ return document.getElementById(id); }
+  function renderResult(){
+    const funnel = currentFunnel();
+    const presta = KC_PRESTAS[state.selectedPresta];
+    el('r-audit-badge').style.display = 'none';
+    el('r-acompte-panel').style.display = 'none';
+    el('cta-pay').style.display = 'none';
+    el('cta-audit').style.display = 'none';
+    el('r-price-line').style.display = '';
+    el('r-total-row').style.display = '';
+    el('result-error').classList.remove('show');
+    el('r-from').textContent = presta.nom.toLowerCase();
+
+    if(funnel === 'forfait'){
+      const r = calcForfait();
+      if(!r) return;
+      state.lastResult = { funnel, ...r };
+      el('result-tag').textContent = 'Votre tarif · grille officielle';
+      el('result-title').innerHTML = 'Votre tarif, <em>ferme et sans surprise</em>.';
+      el('result-desc').textContent = 'Prix issu de notre grille officielle. Réservez votre créneau en ligne avec un acompte de 30 % — le solde se règle après la prestation.';
+      el('r-label-txt').textContent = 'Total TTC';
+      el('r-total').textContent = euro(r.total);
+      el('r-unit').textContent = ' €';
+      el('r-total-label').textContent = 'Total TTC';
+      el('r-total-2').textContent = euro(r.total) + ' €';
+      renderDetailLines(r.lignes);
+      el('r-acompte-panel').style.display = '';
+      el('r-acompte').textContent = euro(r.acompte) + ' €';
+      el('r-solde').textContent = euro(r.solde) + ' €';
+      el('cta-pay').style.display = 'flex';
+      el('cta-pay-desc').textContent = 'Acompte de ' + euro(r.acompte) + ' € sécurisé par Stripe · confirmation immédiate';
+      el('cta-email-name').textContent = 'Recevoir ce tarif par email';
+      el('result-note').textContent = 'Tarif ferme pour un logement en état normal. Paiement sécurisé Stripe, annulation possible par téléphone.';
+    }
+    else if(funnel === 'pro'){
+      const r = calcPro();
+      if(!r) return;
+      state.lastResult = { funnel, ...r };
+      el('result-tag').textContent = 'Estimation immédiate';
+      el('result-title').innerHTML = 'Votre estimation, <em>chiffrée</em>.';
+      el('result-desc').textContent = 'Fourchette indicative calculée sur notre grille. Le devis ferme vous est remis après une visite d\'audit gratuite et sans engagement.';
+      el('r-label-txt').textContent = 'Estimation indicative';
+      el('r-total').textContent = euro(r.min) + ' – ' + euro(r.max);
+      el('r-unit').textContent = ' ' + r.unite;
+      el('r-total-label').textContent = 'Fourchette estimée';
+      el('r-total-2').textContent = euro(r.min) + ' – ' + euro(r.max) + ' ' + r.unite;
+      renderDetailLines([{ nom:r.detail, montant:null }].concat(r.lignes));
+      el('cta-audit').style.display = 'flex';
+      el('cta-audit-name').textContent = 'Réserver un audit gratuit sur place';
+      el('cta-email-name').textContent = 'Recevoir mon devis par email';
+      el('result-note').textContent = 'Estimation indicative hors taxes. L\'audit gratuit permet d\'ajuster le juste prix — sans engagement.';
+    }
+    else {
+      state.lastResult = { funnel:'audit' };
+      el('result-tag').textContent = 'Devis sur mesure';
+      el('result-title').innerHTML = 'Votre devis mérite <em>une visite</em>.';
+      el('result-desc').textContent = state.auditReason
+        ? state.auditReason + '. Réservez votre visite gratuite : devis ferme remis sous 24 à 48 h.'
+        : 'Cette prestation se chiffre sur place : réservez une visite d\'audit gratuite, le devis ferme vous est remis sous 24 à 48 h.';
+      el('r-audit-badge').style.display = 'inline-block';
+      el('r-price-line').style.display = 'none';
+      el('r-total-row').style.display = 'none';
+      el('r-label-txt').textContent = 'Visite gratuite · sans engagement';
+      renderDetailLines([
+        { nom:'Visite d\'audit gratuite à votre adresse', montant:null },
+        { nom:'Devis ferme sous 24 à 48 h après la visite', montant:null },
+        { nom:'Aucun engagement, aucun frais d\'étude', montant:null }
+      ]);
+      el('cta-audit').style.display = 'flex';
+      el('cta-audit-name').textContent = 'Choisir mon créneau de visite gratuite';
+      el('cta-email-name').textContent = 'Être recontacté par email';
+      if(presta.note){ el('result-note').textContent = presta.note; }
+      else { el('result-note').textContent = 'La visite permet d\'évaluer précisément le travail : vous recevez un devis ferme, sans surprise.'; }
+    }
+  }
+  function renderDetailLines(lignes){
+    const wrap = el('r-detail');
+    wrap.textContent = '';
+    (lignes || []).forEach(d => {
+      const row = document.createElement('div'); row.className = 'rd-row';
+      const left = document.createElement('div'); left.className = 'rd-left';
+      const name = document.createElement('div'); name.className = 'rd-name'; name.textContent = d.nom;
+      left.appendChild(name);
+      const amount = document.createElement('div'); amount.className = 'rd-amount';
+      amount.textContent = d.montant == null ? '✓' : '+' + euro(d.montant) + ' €';
+      if(d === lignes[0] && d.montant != null) amount.textContent = euro(d.montant) + ' €';
+      row.appendChild(left); row.appendChild(amount);
+      wrap.appendChild(row);
+    });
+  }
+  function showResult(){
+    if(!validateAllFields()) return;
+    state.data.contact = {
+      firstname: el('c-firstname').value.trim(),
+      lastname: el('c-lastname').value.trim(),
+      email: el('c-email').value.trim(),
+      phone: el('c-phone').value.trim(),
+      address: el('c-address').value.trim(),
+      message: el('c-message').value.trim()
+    };
+    state.currentStep++;
+    showStep('result');
+    updateProgress();
+    saveProgress();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  /* ════════════════════════════════════════════════════════
+     ACTIONS FINALES — réservation (handoff) & devis par email
+     ════════════════════════════════════════════════════════ */
+  function buildHandoff(){
+    const funnel = currentFunnel();
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const h = {
+      version: 2,
+      funnel: funnel === 'forfait' ? 'forfait' : 'audit',
+      presta: state.selectedPresta,
+      label: presta.nom,
+      contact: state.data.contact || {},
+      ts: Date.now()
+    };
+    if(funnel === 'forfait'){
+      const r = calcForfait();
+      h.booking = {
+        forfait: state.selectedPresta,
+        taille: state.data.taille,
+        options: selectedOptionKeys(),
+        majorations: selectedMajorationKeys()
+      };
+      h.result = { total:r.total, acompte:r.acompte, solde:r.solde,
+        lignes: r.lignes.map(l => ({ nom:l.nom, montant:l.montant })) };
+    } else {
+      h.details = {
+        typeBien: state.data.bien || (state.data.taille ? KC_TARIFS.tailles[state.data.taille] || '5 pièces et + / maison' : ''),
+        surface: state.data.surface || '',
+        description: (state.auditReason ? state.auditReason + '. ' : '') + (state.data.contact && state.data.contact.message || '')
+      };
+      if(funnel === 'pro' && state.lastResult && state.lastResult.min != null){
+        h.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite, detail:state.lastResult.detail,
+          surface: state.data.surface || '', frequence: state.data.frequence || '' };
+      }
+    }
+    return h;
+  }
+  function goReservation(){
+    try { sessionStorage.setItem(KC_CONFIG.handoffKey, JSON.stringify(buildHandoff())); } catch(e){}
+    window.location.href = KC_CONFIG.reservationURL;
+  }
+  function resultError(msg){
+    const e = el('result-error');
+    e.textContent = msg;
+    e.classList.add('show');
+  }
+  async function sendQuoteEmail(){
+    const honeypot = el('kc-website-d');
+    const btn = el('cta-email');
+    btn.classList.add('loading'); btn.disabled = true;
+    el('result-error').classList.remove('show');
+    const funnel = currentFunnel();
+    const body = {
+      kind: funnel === 'forfait' ? 'forfait' : (funnel === 'pro' ? 'estimation' : 'audit'),
+      prestation: KC_PRESTAS[state.selectedPresta].nom,
+      contact: state.data.contact,
+      website: honeypot ? honeypot.value : ''
+    };
+    if(funnel === 'forfait'){
+      body.booking = buildHandoff().booking;
+    } else if(funnel === 'pro' && state.lastResult){
+      body.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
+        detail:state.lastResult.detail, surface:state.data.surface || '', frequence:state.data.frequence || '' };
+    }
+    try{
+      const res = await fetch(KC_API + '/api/send-quote', {
+        method:'POST',
+        headers:{ 'Content-Type':'application/json' },
+        body: JSON.stringify(body)
+      });
+      const data = await res.json().catch(() => ({}));
+      if(!res.ok) throw new Error(data.error || 'HTTP '+res.status);
+      clearProgress();
+      showSuccessModal();
+    }catch(err){
+      resultError('L\'envoi a échoué (' + (err.message || 'erreur réseau') + '). Réessayez, ou appelez-nous au 06 70 01 20 61.');
+    }finally{
+      btn.classList.remove('loading'); btn.disabled = false;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════
+     MODALE (focus trap accessible)
+     ════════════════════════════════════════════════════════ */
+  let lastFocusedElement = null;
+  function getFocusable(c){ return c.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])'); }
+  function trapFocus(e, modal){
+    if(e.key !== 'Tab') return;
+    const f = getFocusable(modal);
+    if(f.length === 0) return;
+    if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+    else if(!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+  }
+  function showSuccessModal(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    el('recap-presta').textContent = presta ? presta.nom : '—';
+    let prix = '—';
+    if(state.lastResult){
+      if(state.lastResult.funnel === 'forfait') prix = euro(state.lastResult.total) + ' € TTC';
+      else if(state.lastResult.min != null) prix = euro(state.lastResult.min) + ' – ' + euro(state.lastResult.max) + ' ' + state.lastResult.unite;
+      else prix = 'Sur devis après visite gratuite';
+    }
+    el('recap-price').textContent = prix;
+    el('recap-email').textContent = (state.data.contact && state.data.contact.email) || '—';
+    const modal = el('kc-success-modal');
+    lastFocusedElement = document.activeElement;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => el('modal-ok-btn') && el('modal-ok-btn').focus(), 100);
+  }
+  function closeSuccessModal(){
+    el('kc-success-modal').classList.remove('show');
+    document.body.style.overflow = '';
+    if(lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+  }
+
+  /* ════════════════════════════════════════════════════════
+     INIT
+     ════════════════════════════════════════════════════════ */
+  function init(){
+    injectPrestaImages();
+    document.querySelectorAll('#step-presta .presta-card').forEach(card => {
+      card.setAttribute('role','radio');
+      card.setAttribute('aria-checked','false');
+      card.addEventListener('click', () => selectPresta(card, card.dataset.presta));
+    });
+    document.querySelectorAll('.option-card[data-key]').forEach(card => {
+      if(card.dataset.presta) return;
+      card.setAttribute('role','radio');
+      card.setAttribute('aria-checked','false');
+      card.addEventListener('click', () => selectOption(card, card.dataset.key, card.dataset.value, card.dataset.mult));
+    });
+    el('zone-checkbox').addEventListener('click', confirmZone);
+    document.querySelectorAll('[data-action="prev"]').forEach(b => b.addEventListener('click', goPrev));
+    document.querySelectorAll('[data-action="next"]').forEach(b => b.addEventListener('click', goNext));
+    el('pb-back-btn').addEventListener('click', goPrev);
+    const surf = el('surf-input');
+    if(surf) surf.addEventListener('input', e => updateSurf(e.target.value));
+    el('major-urgence').addEventListener('click', () => toggleMajoration(el('major-urgence'), 'urgence'));
+    el('major-dimanche').addEventListener('click', () => toggleMajoration(el('major-dimanche'), 'dimanche-ferie'));
+    ['firstname','lastname','email','address'].forEach(f => {
+      const input = el('c-'+f);
+      if(!input) return;
+      input.addEventListener('input', () => validateField(f, input, false));
+      input.addEventListener('blur', () => validateField(f, input, true));
+    });
+    const phone = el('c-phone');
+    if(phone){
+      phone.addEventListener('input', () => { formatPhone(phone); validateField('phone', phone, false); });
+      phone.addEventListener('blur', () => validateField('phone', phone, true));
+    }
+    const msg = el('c-message');
+    if(msg){ msg.addEventListener('input', () => updateCharCounter(msg)); updateCharCounter(msg); }
+    el('btn-show-result').addEventListener('click', showResult);
+    el('cta-pay').addEventListener('click', goReservation);
+    el('cta-audit').addEventListener('click', goReservation);
+    el('cta-email').addEventListener('click', sendQuoteEmail);
+    el('error-banner-close').addEventListener('click', () => el('form-error-banner').classList.remove('show'));
+    el('modal-close-btn').addEventListener('click', closeSuccessModal);
+    el('modal-ok-btn').addEventListener('click', closeSuccessModal);
+    el('kc-success-modal').addEventListener('click', e => {
+      if(e.target.id === 'kc-success-modal') closeSuccessModal();
+    });
+    document.addEventListener('keydown', e => {
+      const m = el('kc-success-modal');
+      if(m && m.classList.contains('show')){
+        if(e.key === 'Escape') closeSuccessModal();
+        else trapFocus(e, m);
+      }
+    });
+    updateProgress();
+    kcSetupReveal();
+
+    // Reprise d'une demande sauvegardée
+    const saved = loadProgress();
+    if(saved && saved.selectedPresta){
+      const banner = el('resume-banner');
+      banner.classList.add('show');
+      el('btn-resume').addEventListener('click', () => {
+        Object.assign(state, saved);
+        const prestaCard = document.querySelector(`[data-presta="${state.selectedPresta}"]`);
+        if(prestaCard){ prestaCard.classList.add('selected'); prestaCard.setAttribute('aria-checked','true'); }
+        if(state.data.contact){
+          Object.keys(state.data.contact).forEach(k => {
+            const inp = el('c-'+k);
+            if(inp) inp.value = state.data.contact[k];
+          });
+        }
+        showStep(state.stepsFlow[state.currentStep]);
+        updateProgress();
+        banner.classList.remove('show');
+      });
+      el('btn-discard').addEventListener('click', () => {
+        clearProgress();
+        banner.classList.remove('show');
+      });
+    }
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<!-- ════════════════════════════════════════════════════════
+   COMPLÉMENT PAGE DEVIS — Kayli Clinn
+   À ajouter comme NOUVEAU bloc « HTML personnalisé » sur la page /devis/
+   (en bas de la page, après le bloc principal). Ne modifie pas le code existant.
+
+   • Masque le logo en double du bloc devis (le thème affiche déjà le logo).
+   • Descend tout le bloc devis JUSTE SOUS l'en-tête du site (mesuré
+     automatiquement) → la bannière « Une demande retrouvée… » et tout
+     le reste ne chevauchent plus l'en-tête. Repli CSS si le JS ne tourne pas.
+   • Masque le bouton « Estimation en ligne » du header sur cette page.
+   ════════════════════════════════════════════════════════ -->
+<style>
+  /* Logo en double masqué + repli d'espace si le JavaScript ne s'exécute pas */
+  .kc-devis .nav-top{ display:none !important; }
+  .kc-devis{ padding-top:100px; }
+</style>
+<script>
+(function(){
+  /* 1) Masquer le bouton « Estimation en ligne » du header sur cette page */
+  function hideEstimateCTA(){
+    try{
+      document.querySelectorAll('a, button').forEach(function(el){
+        if(el.closest('.kc-devis')) return;            /* ne pas toucher au bloc devis */
+        if((el.textContent || '').trim().toLowerCase() === 'estimation en ligne'){
+          var li = el.closest('li');
+          (li || el).style.display = 'none';
+        }
+      });
+    }catch(e){}
+  }
+
+  /* 2) Caler le bloc devis juste sous l'en-tête fixe du thème (mesure auto) */
+  function pushBelowHeader(){
+    var block = document.querySelector('.kc-devis');
+    if(!block) return;
+    try{
+      block.style.paddingTop = '0px';
+      var blockTop = block.getBoundingClientRect().top + window.scrollY;
+      var hb = 0, els = document.body.getElementsByTagName('*');
+      for(var i=0;i<els.length;i++){
+        var el = els[i];
+        if(block.contains(el)) continue;
+        var cs = getComputedStyle(el);
+        if(cs.position!=='fixed' && cs.position!=='sticky' && cs.position!=='absolute') continue;
+        if(cs.display==='none' || cs.visibility==='hidden') continue;
+        var r = el.getBoundingClientRect();
+        if(r.top<=5 && r.height>=24 && r.height<=260 && r.width>=window.innerWidth*0.5){
+          var b = r.bottom + window.scrollY; if(b>hb) hb=b;
+        }
+      }
+      var pad = (hb > blockTop ? (hb - blockTop) : 0) + 24;
+      block.style.paddingTop = Math.ceil(pad) + 'px';
+    }catch(e){ block.style.paddingTop = ''; }
+  }
+
+  function run(){ hideEstimateCTA(); pushBelowHeader(); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+  window.addEventListener('load', pushBelowHeader);
+  window.addEventListener('resize', pushBelowHeader);
+})();
+</script>
