@@ -90,7 +90,7 @@ class KC_Pricing {
 
 	/** Majorations en % de (base + options). 'compat' vide = tous forfaits. */
 	const MAJORATIONS = array(
-		'urgence'        => array( 'label' => 'Urgence < 48 h',                              'taux' => 0.20, 'compat' => array() ),
+		'urgence'        => array( 'label' => 'Urgence < 48 h',                              'taux' => 0.30, 'compat' => array() ),
 		'dimanche-ferie' => array( 'label' => 'Dimanche ou jour férié',                      'taux' => 0.25, 'compat' => array() ),
 		'non-vide'       => array( 'label' => 'Logement non vidé',                           'taux' => 0.15, 'compat' => array( 'fin-de-bail' ) ),
 		'tres-encrasse'  => array( 'label' => 'Très encrassé / > 6 mois sans entretien',      'taux' => 0.30, 'compat' => array( 'grand-menage' ) ),
