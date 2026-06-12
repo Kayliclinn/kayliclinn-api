@@ -79,35 +79,23 @@
 .kc-presta .kcp-pcard-go svg{width:15px;height:15px;stroke-width:2;transition:transform .25s var(--ease)}
 .kc-presta .kcp-pcard:hover .kcp-pcard-go svg{transform:translateX(4px)}
 
-/* ===== POURQUOI (NOUVELLE OPTION : 2 colonnes éditoriales) ===== */
-.kc-presta .kcp-why2{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(30px,5vw,60px);align-items:center;max-width:1080px;margin:0 auto}
-.kc-presta .kcp-why2-intro h2{margin-top:14px}
-.kc-presta .kcp-why2-intro p{margin:16px 0 0;font-size:16px;color:var(--ink-soft);max-width:42ch}
-.kc-presta .kcp-why2-intro .kcp-btn{margin-top:26px}
-.kc-presta .kcp-why2-list{background:var(--glass);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-md);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:6px 26px}
-.kc-presta .kcp-why2-item{display:flex;gap:18px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--line)}
-.kc-presta .kcp-why2-item:last-child{border-bottom:none}
-.kc-presta .kcp-why2-ic{flex-shrink:0;width:54px;height:54px;border-radius:16px;background:var(--teal-light);color:var(--teal-deep);display:grid;place-items:center;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
-.kc-presta .kcp-why2-ic svg{width:24px;height:24px}
-.kc-presta .kcp-why2-item:hover .kcp-why2-ic{transform:scale(1.07) rotate(-3deg);box-shadow:0 10px 24px rgba(15,167,165,.3)}
-.kc-presta .kcp-why2-tx h3{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--dark);letter-spacing:-.2px;margin:4px 0 5px}
-.kc-presta .kcp-why2-tx p{font-size:14px;color:var(--ink-soft);margin:0;line-height:1.6}
+/* ===== POURQUOI (3 cartes numérotées) ===== */
+.kc-presta .kcp-why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.kc-presta .kcp-why-card{padding:30px 28px;border-radius:20px;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-md),inset 0 1px 0 rgba(255,255,255,.6);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);transition:transform .3s var(--ease),box-shadow .3s}
+.kc-presta .kcp-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 0 40px rgba(15,167,165,.14)}
+.kc-presta .kcp-why-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.kc-presta .kcp-num{font-family:'Montserrat',sans-serif;font-size:40px;font-weight:800;letter-spacing:-1px;line-height:1;background:linear-gradient(135deg,var(--teal),var(--teal-deep));-webkit-background-clip:text;background-clip:text;color:transparent}
+.kc-presta .kcp-why-ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--teal-light);border:1px solid rgba(15,167,165,.18);color:var(--teal-deep)}
+.kc-presta .kcp-why-ic svg{width:22px;height:22px}
+.kc-presta .kcp-why-card h3{font-family:'Montserrat',sans-serif;font-size:18.5px;font-weight:700;color:var(--dark);letter-spacing:-.3px;margin:0 0 8px}
+.kc-presta .kcp-why-card p{font-size:14.5px;color:var(--ink-soft);margin:0}
 
-/* ===== ZONES (NOUVELLE OPTION : carte Île-de-France) ===== */
-.kc-presta .kcp-map{position:relative;width:100%;max-width:480px;height:360px;margin:0 auto 18px}
-.kc-presta .kcp-dept{position:absolute;background:var(--white);border:1.5px solid var(--line);border-radius:50%;display:grid;place-items:center;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--dark);letter-spacing:-.5px;box-shadow:var(--shadow-sm);transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s,color .3s,border-color .3s}
-.kc-presta .kcp-dept:hover{transform:translateY(-3px) scale(1.06);background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;border-color:transparent;box-shadow:var(--glow);z-index:6}
-.kc-presta .kcp-dept.is-center{background:linear-gradient(135deg,var(--teal),var(--teal-dark));border-color:transparent;color:#fff;box-shadow:0 10px 28px rgba(15,167,165,.4);z-index:5}
-.kc-presta .kcp-c-95{width:112px;height:112px;font-size:19px;top:0;left:50%;transform:translateX(-50%)}
-.kc-presta .kcp-c-78{width:134px;height:134px;font-size:22px;top:108px;left:0}
-.kc-presta .kcp-c-93{width:62px;height:62px;font-size:14px;top:114px;left:62%;transform:translateX(-50%)}
-.kc-presta .kcp-c-77{width:152px;height:152px;font-size:24px;top:96px;right:0}
-.kc-presta .kcp-c-92{width:58px;height:58px;font-size:14px;top:162px;left:35%;transform:translateX(-50%)}
-.kc-presta .kcp-c-75{width:74px;height:74px;font-size:17px;top:155px;left:50%;transform:translateX(-50%)}
-.kc-presta .kcp-c-94{width:58px;height:58px;font-size:14px;top:224px;left:60%;transform:translateX(-50%)}
-.kc-presta .kcp-c-91{width:124px;height:124px;font-size:21px;bottom:0;left:50%;transform:translateX(-50%)}
-.kc-presta .kcp-map-legend{text-align:center;max-width:780px;margin:0 auto;font-size:13.5px;color:var(--ink-soft);line-height:1.95}
-.kc-presta .kcp-map-legend b{color:var(--dark);font-weight:700}
+/* ===== ZONES D'INTERVENTION (pastilles) ===== */
+.kc-presta .kcp-zones{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:920px;margin:0 auto}
+.kc-presta .kcp-zone{display:flex;align-items:center;gap:13px;padding:13px 20px 13px 14px;border-radius:16px;background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow-sm);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);transition:transform .26s var(--ease),box-shadow .26s,border-color .26s}
+.kc-presta .kcp-zone:hover{transform:translateY(-4px);border-color:var(--teal);box-shadow:var(--glow)}
+.kc-presta .kcp-zone b{display:grid;place-items:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--teal-dark));color:#fff;font-family:'Montserrat',sans-serif;font-size:16px;font-weight:800}
+.kc-presta .kcp-zone span{font-size:14.5px;font-weight:600;color:var(--dark)}
 
 /* ===== FAQ ===== */
 .kc-presta .kcp-faq{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
@@ -143,19 +131,8 @@
 }
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:780px){.kc-presta .kcp-why2{grid-template-columns:1fr;gap:26px}}
-@media(max-width:560px){
-  .kc-presta .kcp-actions{flex-direction:column}.kc-presta .kcp-btn{justify-content:center}
-  .kc-presta .kcp-map{height:300px;max-width:380px}
-  .kc-presta .kcp-c-77{width:118px;height:118px;font-size:18px;top:70px}
-  .kc-presta .kcp-c-78{width:104px;height:104px;font-size:17px;top:82px}
-  .kc-presta .kcp-c-91{width:98px;height:98px;font-size:16px}
-  .kc-presta .kcp-c-95{width:86px;height:86px;font-size:15px}
-  .kc-presta .kcp-c-75{width:57px;height:57px;font-size:14px;top:120px}
-  .kc-presta .kcp-c-92{width:45px;height:45px;font-size:12px;top:132px}
-  .kc-presta .kcp-c-93{width:49px;height:49px;font-size:12px;top:88px}
-  .kc-presta .kcp-c-94{width:45px;height:45px;font-size:12px;top:172px}
-}
+@media(max-width:860px){.kc-presta .kcp-why{grid-template-columns:1fr}}
+@media(max-width:560px){.kc-presta .kcp-actions{flex-direction:column}.kc-presta .kcp-btn{justify-content:center}}
 </style>
 
 <div class="kc-presta">
@@ -288,36 +265,34 @@
     </div>
   </section>
 
-  <!-- ✦✦✦ POURQUOI (NOUVELLE OPTION : 2 colonnes) ✦✦✦ -->
+  <!-- ✦✦✦ POURQUOI KAYLI CLINN ✦✦✦ -->
   <section class="kcp-sec">
     <div class="kcp-wrap">
-      <div class="kcp-why2">
-        <div class="kcp-why2-intro" data-reveal>
-          <span class="kcp-eyebrow"><span class="dot"></span>Pourquoi nous choisir</span>
-          <h2 class="kcp-h2">Ce qui fait la <span class="kcp-grad">différence</span></h2>
-          <p>Un partenaire de propreté fiable, réactif et pleinement assuré — pensé pour les exigences des professionnels comme des particuliers.</p>
-          <a href="/devis/" class="kcp-btn kcp-btn-primary">Demander un devis
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <div class="kcp-head">
+        <span class="kcp-eyebrow" data-reveal><span class="dot"></span>Pourquoi nous choisir</span>
+        <h2 class="kcp-h2" data-reveal>Ce qui fait la <span class="kcp-grad">différence</span></h2>
+      </div>
+      <div class="kcp-why">
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top"><span class="kcp-num">01</span><span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
+          <h3>Équipe attitrée &amp; formée</h3>
+          <p>Les mêmes agents, formés à vos exigences, pour une qualité constante dans le temps.</p>
         </div>
-        <div class="kcp-why2-list">
-          <div class="kcp-why2-item" data-reveal>
-            <div class="kcp-why2-ic"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-            <div class="kcp-why2-tx"><h3>Équipe attitrée &amp; formée</h3><p>Les mêmes agents, formés à vos exigences, pour une qualité constante dans le temps.</p></div>
-          </div>
-          <div class="kcp-why2-item" data-reveal>
-            <div class="kcp-why2-ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></div>
-            <div class="kcp-why2-tx"><h3>Réactivité 7j/7</h3><p>Devis sous 24h, week-end inclus, et une réponse à vos demandes sous 2h ouvrées.</p></div>
-          </div>
-          <div class="kcp-why2-item" data-reveal>
-            <div class="kcp-why2-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-            <div class="kcp-why2-tx"><h3>Assurance &amp; traçabilité</h3><p>RC Pro AXA 5M€, reporting photos après intervention, et sans engagement long.</p></div>
-          </div>
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top"><span class="kcp-num">02</span><span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg></span></div>
+          <h3>Réactivité 7j/7</h3>
+          <p>Devis sous 24h, week-end inclus, et une réponse à vos demandes sous 2h ouvrées.</p>
+        </div>
+        <div class="kcp-why-card" data-reveal>
+          <div class="kcp-why-top"><span class="kcp-num">03</span><span class="kcp-why-ic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span></div>
+          <h3>Assurance &amp; traçabilité</h3>
+          <p>RC Pro AXA 5M€, reporting photos après intervention, et sans engagement long.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ✦✦✦ ZONES (NOUVELLE OPTION : carte Île-de-France) ✦✦✦ -->
+  <!-- ✦✦✦ ZONES D'INTERVENTION ✦✦✦ -->
   <section class="kcp-sec">
     <div class="kcp-wrap">
       <div class="kcp-head">
@@ -325,17 +300,16 @@
         <h2 class="kcp-h2" data-reveal>Présents partout en <span class="kcp-grad">Île-de-France</span></h2>
         <p data-reveal>Nos équipes interviennent dans les 8 départements franciliens.</p>
       </div>
-      <div class="kcp-map" data-reveal role="img" aria-label="Carte d'Île-de-France : 8 départements couverts — 75, 77, 78, 91, 92, 93, 94, 95">
-        <div class="kcp-dept kcp-c-95" aria-hidden="true">95</div>
-        <div class="kcp-dept kcp-c-78" aria-hidden="true">78</div>
-        <div class="kcp-dept kcp-c-93" aria-hidden="true">93</div>
-        <div class="kcp-dept kcp-c-77" aria-hidden="true">77</div>
-        <div class="kcp-dept kcp-c-92" aria-hidden="true">92</div>
-        <div class="kcp-dept kcp-c-75 is-center" aria-hidden="true">75</div>
-        <div class="kcp-dept kcp-c-94" aria-hidden="true">94</div>
-        <div class="kcp-dept kcp-c-91" aria-hidden="true">91</div>
+      <div class="kcp-zones">
+        <div class="kcp-zone" data-reveal><b>75</b><span>Paris</span></div>
+        <div class="kcp-zone" data-reveal><b>77</b><span>Seine-et-Marne</span></div>
+        <div class="kcp-zone" data-reveal><b>78</b><span>Yvelines</span></div>
+        <div class="kcp-zone" data-reveal><b>91</b><span>Essonne</span></div>
+        <div class="kcp-zone" data-reveal><b>92</b><span>Hauts-de-Seine</span></div>
+        <div class="kcp-zone" data-reveal><b>93</b><span>Seine-Saint-Denis</span></div>
+        <div class="kcp-zone" data-reveal><b>94</b><span>Val-de-Marne</span></div>
+        <div class="kcp-zone" data-reveal><b>95</b><span>Val-d'Oise</span></div>
       </div>
-      <p class="kcp-map-legend" data-reveal><b>75</b> Paris · <b>77</b> Seine-et-Marne · <b>78</b> Yvelines · <b>91</b> Essonne · <b>92</b> Hauts-de-Seine · <b>93</b> Seine-Saint-Denis · <b>94</b> Val-de-Marne · <b>95</b> Val-d'Oise</p>
     </div>
   </section>
 
