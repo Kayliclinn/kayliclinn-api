@@ -1,39 +1,82 @@
 <!-- ════════════════════════════════════════════════════════
-   ACCUEIL KAYLI CLINN — HERO + À PROPOS (fusion)
+   ACCUEIL KAYLI CLINN — PAGE COMPLÈTE
    ════════════════════════════════════════════════════════
 
-   📸 PANNEAU PHOTOS — TOUT SE MODIFIE ICI
-   ────────────────────────────────────────────────────────
-   Les 2 visuels sont centralisés en variables CSS plus bas
-   ( --photo-hero  et  --photo-about ).
-   Pour changer une image : remplacez UNIQUEMENT l'URL entre
-   url('…'). Rien d'autre à toucher dans le code.
+   📸 PANNEAU PHOTOS — TOUTES LES IMAGES DE LA PAGE SE MODIFIENT ICI
+   ──────────────────────────────────────────────────────────
+   Règle unique : remplacez UNIQUEMENT l'URL entre url('…').
+   Rien d'autre à toucher. Pour trouver chaque bloc de variables,
+   faites Ctrl+F sur le nom de la variable (les numéros de ligne
+   bougent, les noms de variables ne bougent jamais).
 
-   ┌─ IMG 1 · FOND DU HERO ─────────────────────────────────
+   ┌─ 1 · HERO (fond plein écran) ──────────────────────────
    │  Variable .......... --photo-hero
-   │  URL actuelle ...... .../pexels-tima-miroshnichenko-6196685.jpg
-   │  Format conseillé .. paysage ~1920×1280 · < 300 Ko · WebP idéal
-   │  ALT (si vraie <img> Elementor) :
-   │  « Agent de nettoyage professionnel Kayli Clinn en
-   │    intervention en Île-de-France »
+   │  Format conseillé .. paysage ~1920×1280 · < 300 Ko · WebP
+   │  ALT : « Agent de nettoyage professionnel Kayli Clinn en
+   │         intervention en Île-de-France »
    └─────────────────────────────────────────────────────────
 
-   ┌─ IMG 2 · SECTION À PROPOS ─────────────────────────────
+   ┌─ 2 · SECTION À PROPOS ─────────────────────────────────
    │  Variable .......... --photo-about
-   │  URL actuelle ...... .../pexels-nizam-344438805-19786710.jpg
    │  Format conseillé .. portrait 5:4 ~1100×880 · < 250 Ko · WebP
-   │  ALT (si vraie <img> Elementor) :
-   │  « Équipe Kayli Clinn lors d'une prestation de
-   │    nettoyage haut de gamme »
+   │  ALT : « Équipe Kayli Clinn lors d'une prestation de
+   │         nettoyage haut de gamme »
+   └─────────────────────────────────────────────────────────
+
+   ┌─ 3 · CARROUSEL PRESTATIONS (8 cartes × 2-3 photos) ────
+   │  Variables (Ctrl+F « .kcp-section{ ») :
+   │   01 Fin de chantier ... --chantier-1 / -2 / -3
+   │   02 Turnover Airbnb ... --airbnb-1 / -2 / -3
+   │   03 Bureaux ........... --bureaux-1 / -2 / -3
+   │   04 Déménagement ...... --demenagement-1 / -2 / -3
+   │   05 Vitres ............ --vitres-1 / -2   (2 photos)
+   │   06 Diogène ........... --diogene-1 / -2 / -3
+   │   07 Désinfection ...... --desinfection-1 / -2 / -3
+   │   08 Sinistres ......... --sinistres-1 / -2 / -3
+   │  Format conseillé .. paysage ~800×534 · < 150 Ko chacune
+   │  ALT type : « [Prestation] par Kayli Clinn — [contexte] »
+   │  ex. « Nettoyage de fin de chantier par Kayli Clinn —
+   │        dépoussiérage après rénovation »
+   └─────────────────────────────────────────────────────────
+
+   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (6 comparateurs) ────────
+   │  Variables (Ctrl+F « --r1-avant ») — 12 photos à venir :
+   │   R1 Appartement Paris 11e (fin de chantier 72 m²)
+   │      --r1-avant / --r1-apres
+   │      ALT avant : « Appartement Paris 11e avant nettoyage
+   │                    de fin de chantier — poussières et traces »
+   │      ALT après : « Appartement Paris 11e livré impeccable
+   │                    par Kayli Clinn après fin de chantier »
+   │   R2 Local commercial Levallois (140 m²)
+   │      --r2-avant / --r2-apres
+   │      ALT : même modèle (« avant nettoyage » / « livré propre »)
+   │   R3 Maison Boulogne-Billancourt ... --r3-avant / --r3-apres
+   │   R4 Studio Airbnb Paris 9e ........ --r4-avant / --r4-apres
+   │   R5 Bureaux open-space La Défense . --r5-avant / --r5-apres
+   │   R6 T2 Saint-Mandé ................ --r6-avant / --r6-apres
+   │  Format conseillé .. MÊME CADRAGE avant/après, paysage 4:3
+   │                      ~1200×900 · < 200 Ko · WebP
+   │  ⚠️ Actuellement les 12 URLs pointent vers Image6.webp
+   │     (placeholder) : le curseur ne montre aucune différence
+   │     tant que les vraies photos ne sont pas en place.
+   │  Lecteurs d'écran : déjà gérés (aria-label + rôle curseur
+   │     sur chaque comparateur) — rien à ajouter.
+   └─────────────────────────────────────────────────────────
+
+   ┌─ 5 · ZONE D'INTERVENTION (carte IDF) ──────────────────
+   │  Vraie balise <img> (Ctrl+F « kczn2-img ») : modifiez
+   │  directement src="…" et alt="…".
+   │  ALT actuel : « Carte de la zone d'intervention Kayli
+   │  Clinn en Île-de-France » — déjà bon pour le SEO.
    └─────────────────────────────────────────────────────────
 
    ℹ️  RAPPEL SEO / ACCESSIBILITÉ
-   Ces 2 visuels sont des IMAGES DE FOND CSS.
+   Les zones 1 à 4 sont des IMAGES DE FOND CSS :
    • Google Images ........ ne les indexe pas (pas de signal SEO).
-   • Lecteurs d'écran ..... déjà gérés ici via role="img" + aria-label.
-   ➜ Chantier de fond, à faire progressivement : repasser ces fonds
-     en vraies <img> dans Elementor avec les ALT ci-dessus, pour le
-     référencement. La structure ci-dessous reste valable entre-temps.
+   • Lecteurs d'écran ..... déjà gérés via role="img" + aria-label.
+   ➜ Chantier de fond possible : repasser ces fonds en vraies
+     <img> avec les ALT ci-dessus pour le référencement d'images.
+     Demandez-le avec les vraies photos, c'est le bon moment.
 
    🔗 Liens : /devis/ · /nos-services/ · /a-propos/
    ════════════════════════════════════════════════════════ -->
