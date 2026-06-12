@@ -198,6 +198,30 @@
 .kc-option-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
 .kc-option-price{font-family:'Inter',sans-serif;color:var(--teal-deep);font-weight:600;font-size:14px;white-space:nowrap}
 
+/* ── 5b · Linge & consommables — services intégrés (pas de page dédiée) ── */
+.kc-lingec-panel{background:var(--navy);border-radius:28px;padding:clamp(40px,5.5vw,72px);color:#fff;position:relative;overflow:hidden;scroll-margin-top:96px}
+.kc-lingec-panel::before{content:'';position:absolute;top:-130px;left:-130px;width:460px;height:460px;background:radial-gradient(circle,rgba(15,167,165,0.15) 0%,transparent 70%);pointer-events:none}
+.kc-lingec-head{position:relative;z-index:1;max-width:660px;margin-bottom:36px}
+.kc-lingec-head .eyebrow{color:var(--teal)}
+.kc-lingec-head .eyebrow::before{background:var(--teal)}
+.kc-lingec-head h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.12;letter-spacing:-0.015em;color:#fff;margin-bottom:14px}
+.kc-lingec-head h2 em{color:var(--teal)}
+.kc-lingec-head p{font-size:15px;color:rgba(255,255,255,0.72);line-height:1.75}
+.kc-lingec-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:1}
+.kc-lingec-card{background:rgba(255,255,255,0.045);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:30px 30px 26px;transition:all .3s}
+.kc-lingec-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(15,167,165,0.45);transform:translateY(-3px)}
+.kc-lingec-card-top{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.kc-lingec-card-icon{width:46px;height:46px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.kc-lingec-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:#fff;letter-spacing:-0.01em;flex:1;min-width:140px}
+.kc-lingec-price{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;color:var(--teal);background:rgba(15,167,165,0.13);border:1px solid rgba(15,167,165,0.35);border-radius:999px;padding:6px 13px;white-space:nowrap}
+.kc-lingec-card>p{font-size:13.5px;color:rgba(255,255,255,0.66);line-height:1.7;margin-bottom:16px}
+.kc-lingec-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0;padding:0}
+.kc-lingec-list li{display:flex;gap:11px;font-size:13.5px;color:rgba(255,255,255,0.82);line-height:1.55}
+.kc-lingec-list svg{flex-shrink:0;margin-top:3px;color:var(--teal)}
+.kc-lingec-foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px 28px;flex-wrap:wrap;margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.10)}
+.kc-lingec-foot p{font-size:13.5px;color:rgba(255,255,255,0.68);line-height:1.7;max-width:560px}
+.kc-lingec-foot p strong{color:#fff;font-weight:600}
+
 /* ════════════════════════════════════════════════════════
    PROCESS
    ════════════════════════════════════════════════════════ */
@@ -319,6 +343,7 @@
   .kc-split-grid{grid-template-columns:1fr}
   .kc-split.reverse .kc-split-grid{direction:ltr}
   .kc-options-grid{grid-template-columns:1fr}
+  .kc-lingec-grid{grid-template-columns:1fr}
   .kc-process-grid{grid-template-columns:repeat(3,1fr);gap:24px}
   .kc-process-grid::before{display:none}
   .kc-testi-grid,.kc-why-grid{grid-template-columns:1fr}
@@ -327,6 +352,7 @@
 }
 @media(max-width:560px){
   .kc-page section{padding:64px 6%}
+  .kc-lingec-panel{padding:44px 26px;border-radius:20px}
   .kc-hero{min-height:auto;padding:130px 6% 64px}
   .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
   .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
@@ -486,6 +512,53 @@
   </div>
 </section>
 
+<!-- 5b · LINGE & CONSOMMABLES — services intégrés au turnover (pas de page dédiée : ancre #linge-consommables pour les menus) -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-lingec-panel kc-fade" id="linge-consommables">
+      <div class="kc-lingec-head">
+        <span class="eyebrow">Services intégrés au turnover</span>
+        <h2>Gestion du linge & réassort des consommables, <em>sans y penser</em></h2>
+        <p>Deux services à part entière, intégrés à chaque turnover : pas de prestataire supplémentaire, pas de devis séparé. Vous les ajoutez à votre forfait en un clic au moment du devis.</p>
+      </div>
+      <div class="kc-lingec-grid">
+        <div class="kc-lingec-card">
+          <div class="kc-lingec-card-top">
+            <div class="kc-lingec-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 6h18l-2 13H5L3 6zM3 6l-.5-3H1M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>Gestion du linge</h3>
+            <div class="kc-lingec-price">18 € / lit · par passage</div>
+          </div>
+          <p>Ne touchez plus une machine : nous apportons le linge propre et repartons avec le linge sale, à chaque rotation.</p>
+          <ul class="kc-lingec-list">
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Kit complet par lit : parure (draps, housse de couette, taies) et serviettes</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Collecte, lavage professionnel et repassage</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Lits refaits façon hôtel — la réfection est déjà incluse au forfait turnover</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Stock de parures de rotation possible, pour ne jamais bloquer un turnover</span></li>
+          </ul>
+        </div>
+        <div class="kc-lingec-card">
+          <div class="kc-lingec-card-top">
+            <div class="kc-lingec-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>Réassort des consommables</h3>
+            <div class="kc-lingec-price">10 € · par passage</div>
+          </div>
+          <p>Vos voyageurs ne trouvent jamais un distributeur vide : le kit d'accueil est complet à chaque check-in.</p>
+          <ul class="kc-lingec-list">
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Papier toilette, savon, sacs poubelle</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Café, capsules, thé, sel, produits d'accueil</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Suivi du stock laissé sur place et signalement avant la rupture</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Kit reconstitué avant chaque arrivée, vérifié à la checklist qualité</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kc-lingec-foot">
+        <p><strong>Pas de page dédiée, pas de démarche en plus :</strong> ces deux services s'ajoutent directement dans le devis en ligne — le linge se compte par lit, le réassort s'ajoute par passage.</p>
+        <a href="/devis-turnover-airbnb/" class="kc-btn kc-btn-primary">Ajouter À Mon Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 6 · OPTIONS -->
 <section>
   <div class="kc-page-wrap">
@@ -495,8 +568,6 @@
       <p class="section-desc">Selon votre logement et votre mode de gestion, ces prestations complètent le turnover de base pour une délégation totale.</p>
     </div>
     <div class="kc-options-grid">
-      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 6h18l-2 13H5L3 6zM3 6l-.5-3H1M16 10a4 4 0 0 1-8 0"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Kit linge complet</div><div class="kc-option-desc">Location, lavage et livraison du linge — draps, serviettes, par lit équipé</div></div><div class="kc-option-price">18 €/lit</div></div>
-      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Réassort consommables</div><div class="kc-option-desc">Café, capsules, savon, papier — kit d'accueil reconstitué à chaque rotation</div></div><div class="kc-option-price">10 €</div></div>
       <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.6 7.6a5 5 0 1 1-7 7 5 5 0 0 1 7-7zM15 7l3 3M17 5l3 3"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Gestion des clés & accès</div><div class="kc-option-desc">Boîte à clés, remise/dépôt, accueil voyageurs ponctuel sur demande</div></div><div class="kc-option-price">Sur devis</div></div>
       <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Vitres intérieures</div><div class="kc-option-desc">Vitrages et baies accessibles, côté intérieur</div></div><div class="kc-option-price">20 €</div></div>
       <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2v6M5 8l2 2M19 8l-2 2M3 14h18M5 14l1 7h12l1-7"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Grand ménage périodique</div><div class="kc-option-desc">Remise à niveau approfondie : four, calcaire, joints, recoins</div></div><div class="kc-option-price">Dès 140 €</div></div>
@@ -541,8 +612,9 @@
         <div class="kc-price-row"><div class="kc-price-label">T3<small>50–70 m² · ~ 2 h 45</small></div><div class="kc-price-value"><em>95 €</em> TTC</div></div>
         <div class="kc-price-row"><div class="kc-price-label">T4<small>70–90 m² · ~ 3 h 30</small></div><div class="kc-price-value"><em>120 €</em> TTC</div></div>
         <div class="kc-price-row"><div class="kc-price-label">Kit linge complet<small>Location, lavage, livraison — par lit</small></div><div class="kc-price-value"><em>18 €</em>/lit</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">Réassort consommables<small>Kit d'accueil reconstitué — par passage</small></div><div class="kc-price-value"><em>10 €</em></div></div>
         <div class="kc-price-row"><div class="kc-price-label">T5, maison, plus de 90 m² / multi-biens<small>Visite gratuite · tarif dégressif au volume</small></div><div class="kc-price-value">Sur devis</div></div>
-        <div class="kc-price-disclaimer">Tarifs officiels TTC pour un logement en état d'usage normal, réservables en ligne avec un acompte de 30 %. Options (four 35 €, frigo 25 €, vitres intérieures 20 €, consommables 10 €…) et majorations cumulables (urgence +30 %, dimanche/férié +25 %) selon la grille.</div>
+        <div class="kc-price-disclaimer">Tarifs officiels TTC pour un logement en état d'usage normal, réservables en ligne avec un acompte de 30 %. Options (four 35 €, frigo 25 €, vitres intérieures 20 €…) et majorations cumulables (urgence +30 %, dimanche/férié +25 %) selon la grille.</div>
       </div>
     </div>
   </div>
@@ -638,7 +710,7 @@
       </div>
       <div class="kc-faq-item kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Gérez-vous le linge ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Le <strong>changement et la réfection des lits</strong> sont inclus dans le turnover de base. En option, nous prenons en charge la <strong>blanchisserie complète</strong> (collecte, lavage, repassage) et pouvons gérer un <strong>stock de parures de rotation</strong> pour ne jamais bloquer un turnover faute de linge propre.</div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le <strong>changement et la réfection des lits</strong> sont inclus dans le turnover de base. En option (<strong>kit linge complet, 18 € par lit et par passage</strong>), nous prenons en charge la <strong>blanchisserie complète</strong> (collecte, lavage, repassage) et pouvons gérer un <strong>stock de parures de rotation</strong> pour ne jamais bloquer un turnover faute de linge propre.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Que faites-vous si vous trouvez un dégât ou un objet oublié ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
@@ -654,7 +726,7 @@
       </div>
       <div class="kc-faq-item kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Réassortissez-vous les consommables ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Le <strong>réassort de base</strong> (papier toilette, savon, sacs poubelle) est inclus. Le <strong>kit d'accueil</strong> (café, capsules, thé, produits d'accueil…) peut être réapprovisionné par nos soins et <strong>facturé au réel</strong>, ou laissé en stock par vos soins. Vous décidez du niveau de délégation.</div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. La remise en place du <strong>stock que vous laissez sur place</strong> fait partie du turnover. Avec l'<strong>option réassort (10 € par passage)</strong>, nous suivons le stock, reconstituons le <strong>kit d'accueil</strong> complet (papier toilette, savon, café, capsules, thé, produits d'accueil…) avant chaque arrivée et vous signalons les rachats à prévoir. Vous décidez du niveau de délégation.</div></div>
       </div>
     </div>
   </div>
@@ -730,7 +802,9 @@ function kcToggleFaq(el){
     {"@type": "Offer", "name": "Studio / T1", "price": 55, "priceCurrency": "EUR"},
     {"@type": "Offer", "name": "T2", "price": 75, "priceCurrency": "EUR"},
     {"@type": "Offer", "name": "T3", "price": 95, "priceCurrency": "EUR"},
-    {"@type": "Offer", "name": "T4", "price": 120, "priceCurrency": "EUR"}
+    {"@type": "Offer", "name": "T4", "price": 120, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "Gestion du linge — kit complet par lit", "price": 18, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "Réassort des consommables", "price": 10, "priceCurrency": "EUR"}
   ]
 }
 </script>
