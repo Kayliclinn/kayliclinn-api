@@ -67,7 +67,7 @@
 .kc-home .kh-hero{margin-top:0}
 
 /* ════════ ANIMATIONS ════════ */
-@keyframes khZoom{0%{transform:scale(1.12) translate(0,0)}100%{transform:scale(1.24) translate(-1.5%,-1.5%)}}
+@keyframes khZoom{0%{transform:scale(1.16) translate(0,0)}100%{transform:scale(1.08) translate(-.6%,-.6%)}}
 @keyframes khVeil{0%,100%{opacity:1}50%{opacity:.9}}
 @keyframes khUp{0%{opacity:0;transform:translateY(26px)}100%{opacity:1;transform:none}}
 @keyframes khWord{0%{opacity:0;transform:translateY(34px);filter:blur(10px)}100%{opacity:1;transform:none;filter:blur(0)}}
@@ -85,7 +85,7 @@
   position:absolute; inset:-4%; z-index:-4;
   background-image:var(--photo-hero);
   background-size:cover; background-position:center;
-  animation:khZoom 22s ease-in-out infinite alternate;
+  animation:khZoom 3.6s cubic-bezier(.22,.61,.36,1) both;
   will-change:transform; transition:transform .25s ease-out;
 }
 .kc-home .kh-veil{
@@ -93,7 +93,7 @@
   background:
     linear-gradient(180deg, rgba(11,13,36,.30) 0%, rgba(11,13,36,.34) 38%, rgba(13,19,48,.56) 100%),
     radial-gradient(120% 95% at 50% 42%, rgba(11,13,36,.14) 0%, rgba(11,13,36,.50) 100%);
-  animation:khVeil 9s ease-in-out infinite;
+  opacity:.96;
 }
 .kc-home .kh-grain{
   position:absolute; inset:0; z-index:-2; opacity:.05; pointer-events:none;
@@ -105,7 +105,7 @@
   pointer-events:none; filter:blur(8px);
   background:linear-gradient(90deg,transparent,rgba(25,227,223,.16),rgba(15,167,165,.05),transparent);
   transform:translateX(-60%) rotate(8deg);
-  animation:khBeam 11s ease-in-out infinite;
+  animation:khBeam 2.8s ease-out .7s 1 both;
 }
 .kc-home .kh-beam.b2{width:12%; opacity:0; animation-delay:5.5s}
 .kc-home .kh-glow{
@@ -355,11 +355,44 @@
 {
   "@context": "https://schema.org",
   "@type": "CleaningService",
+  "@id": "https://kayliclinn.fr/#organisation",
   "name": "Kayli Clinn",
   "url": "https://kayliclinn.fr/",
-  "areaServed": "Île-de-France",
-  "description": "Prestations de nettoyage professionnel en Île-de-France pour bureaux, fins de chantier, locations Airbnb, déménagements et copropriétés.",
-  "serviceType": ["Nettoyage professionnel","Nettoyage de bureaux","Nettoyage fin de chantier","Nettoyage Airbnb","Nettoyage après déménagement","Nettoyage de copropriété"]
+  "telephone": "+33670012061",
+  "email": "contact@kayliclinn.fr",
+  "priceRange": "€€",
+  "description": "Entreprise de nettoyage professionnel en Île-de-France : turnover Airbnb, fin de bail et déménagement, grand ménage, vitrerie, fin de chantier, bureaux, copropriétés et remises en état.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Paris",
+    "addressRegion": "Île-de-France",
+    "addressCountry": "FR"
+  },
+  "areaServed": [
+    {"@type": "AdministrativeArea", "name": "Paris (75)"},
+    {"@type": "AdministrativeArea", "name": "Seine-et-Marne (77)"},
+    {"@type": "AdministrativeArea", "name": "Yvelines (78)"},
+    {"@type": "AdministrativeArea", "name": "Essonne (91)"},
+    {"@type": "AdministrativeArea", "name": "Hauts-de-Seine (92)"},
+    {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis (93)"},
+    {"@type": "AdministrativeArea", "name": "Val-de-Marne (94)"},
+    {"@type": "AdministrativeArea", "name": "Val-d'Oise (95)"}
+  ],
+  "knowsLanguage": "fr",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Prestations de nettoyage",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Turnover Airbnb"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 55, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Ménage fin de bail / déménagement (logement vide, tout inclus)"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 160, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grand ménage (logement meublé)"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 140, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Vitrerie résidentielle"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 70, "priceCurrency": "EUR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Nettoyage fin de chantier"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Entretien de bureaux et locaux professionnels"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Copropriétés et parties communes"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Remise en état lourde (insalubrité, sinistre, après décès)"}}
+    ]
+  }
 }
 </script>
 
@@ -2490,12 +2523,33 @@
           var before = cmp.querySelector(".kr-before");
           var line = cmp.querySelector(".kr-line");
           var dragging = false;
+          var current = 50;
+
+          // Accessibilité clavier : le comparateur est un vrai curseur
+          cmp.setAttribute("tabindex", "0");
+          cmp.setAttribute("role", "slider");
+          cmp.setAttribute("aria-valuemin", "0");
+          cmp.setAttribute("aria-valuemax", "100");
+          cmp.setAttribute("aria-valuenow", "50");
+          cmp.setAttribute("aria-valuetext", "50 % avant, 50 % après");
 
           function set(percent) {
             percent = Math.max(6, Math.min(94, percent));
+            current = percent;
             before.style.width = percent + "%";
             line.style.left = percent + "%";
+            var p = Math.round(percent);
+            cmp.setAttribute("aria-valuenow", String(p));
+            cmp.setAttribute("aria-valuetext", p + " % avant, " + (100 - p) + " % après");
           }
+
+          cmp.addEventListener("keydown", function (event) {
+            var step = event.shiftKey ? 12 : 4;
+            if (event.key === "ArrowLeft" || event.key === "ArrowDown") { event.preventDefault(); set(current - step); }
+            else if (event.key === "ArrowRight" || event.key === "ArrowUp") { event.preventDefault(); set(current + step); }
+            else if (event.key === "Home") { event.preventDefault(); set(6); }
+            else if (event.key === "End") { event.preventDefault(); set(94); }
+          });
 
           function move(clientX) {
             var rect = cmp.getBoundingClientRect();
@@ -2504,6 +2558,7 @@
 
           cmp.addEventListener("mousedown", function (event) {
             dragging = true;
+            cmp.classList.add("kr-dragging");
             move(event.clientX);
           });
 
@@ -2513,6 +2568,7 @@
 
           window.addEventListener("mouseup", function () {
             dragging = false;
+            cmp.classList.remove("kr-dragging");
           });
 
           cmp.addEventListener("mousemove", function (event) {
@@ -2520,11 +2576,16 @@
           });
 
           cmp.addEventListener("touchstart", function (event) {
+            cmp.classList.add("kr-dragging");
             if (event.touches && event.touches[0]) move(event.touches[0].clientX);
           }, { passive: true });
 
           cmp.addEventListener("touchmove", function (event) {
             if (event.touches && event.touches[0]) move(event.touches[0].clientX);
+          }, { passive: true });
+
+          cmp.addEventListener("touchend", function () {
+            cmp.classList.remove("kr-dragging");
           }, { passive: true });
         }
 
@@ -2812,7 +2873,7 @@
       <div class="kczn2-mapcard">
         <div class="kczn2-ring">
           <!-- 👉 IMAGE DE LA CARTE ÎLE-DE-FRANCE (changez l'URL ici si besoin · pensez à mettre à jour l'alt) -->
-          <img class="kczn2-img" src="https://kayliclinn.fr/wp-content/uploads/2026/05/ChatGPT-Image-9-mai-2026-01_26_51.png" alt="Carte de la zone d'intervention Kayli Clinn en Île-de-France">
+          <img class="kczn2-img" src="https://kayliclinn.fr/wp-content/uploads/2026/05/ChatGPT-Image-9-mai-2026-01_26_51.png" alt="Carte de la zone d'intervention Kayli Clinn en Île-de-France" loading="lazy" decoding="async">
           <span class="kczn2-pin" data-dep="95" style="left:50%;top:29%"><i></i></span>
           <span class="kczn2-pin" data-dep="93" style="left:56%;top:35%"><i></i></span>
           <span class="kczn2-pin" data-dep="92" style="left:43%;top:41%"><i></i></span>
@@ -3075,11 +3136,11 @@
           <div class="kcfq-toggle"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></div>
         </div>
         <div class="kcfq-a"><div class="kcfq-a-in">
-          <p><strong>Oui, absolument.</strong> Nous proposons trois niveaux de réactivité :</p>
+          <p><strong>Oui, absolument.</strong> Nos délais et majorations officiels :</p>
           <ul>
-            <li><strong>Standard</strong> — sous 3 à 7 jours (tarif normal)</li>
-            <li><strong>Rapide</strong> — sous 48 h ouvrées (+15 %)</li>
-            <li><strong>Urgence absolue</strong> — sous 24 h, week-ends et jours fériés inclus (+25 %)</li>
+            <li><strong>Standard</strong> — sous 48 h à 7 jours (tarif normal)</li>
+            <li><strong>Urgence</strong> — sous 48 h, selon disponibilités (+20 %)</li>
+            <li><strong>Dimanche et jours fériés</strong> — intervention possible (+25 %)</li>
           </ul>
           <p>Pour les urgences, appelez directement le 06 70 01 20 61 : nous trouvons toujours une solution.</p>
         </div></div>
@@ -3139,16 +3200,16 @@
           <div class="kcfq-toggle"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></div>
         </div>
         <div class="kcfq-a"><div class="kcfq-a-in">
-          <p>Nous couvrons <strong>8 prestations principales</strong> :</p>
+          <p>Notre catalogue couvre <strong>les particuliers comme les professionnels</strong> :</p>
           <ul>
-            <li>Nettoyage de fin de chantier (notre spécialité)</li>
-            <li>Turnover Airbnb</li>
-            <li>Entretien de bureaux (récurrent)</li>
-            <li>Nettoyage après déménagement / état des lieux</li>
-            <li>Vitrerie intérieure et extérieure</li>
-            <li>Syndrome de Diogène</li>
-            <li>Désinfection virucide (normes EN 14476)</li>
-            <li>Sinistres et dégâts des eaux</li>
+            <li>Turnover Airbnb (réservable en ligne)</li>
+            <li>Ménage fin de bail / déménagement, tout inclus (réservable en ligne)</li>
+            <li>Grand ménage de logement meublé (réservable en ligne)</li>
+            <li>Vitrerie résidentielle (réservable en ligne)</li>
+            <li>Nettoyage de fin de chantier</li>
+            <li>Bureaux et locaux professionnels (entretien régulier)</li>
+            <li>Copropriétés, parties communes, commerces et ERP</li>
+            <li>Remises en état lourdes : insalubrité, sinistre, après décès</li>
           </ul>
           <p>Le détail de chaque prestation se trouve sur notre page <strong>Nos services</strong>.</p>
         </div></div>
@@ -3332,3 +3393,107 @@
     </div>
   </div>
 </section>
+<!-- ════════════════════════════════════════════════════════
+   HARMONISATION PREMIUM — Kayli Clinn (passe design 12/06/2026)
+   Bloc final qui unifie le rythme des sections, apaise les
+   animations et raffine le comparateur avant/après. Réversible :
+   supprimer ce bloc restaure l'état antérieur.
+   ════════════════════════════════════════════════════════ -->
+<style id="kc-harmonie">
+  /* ── Rythme vertical unifié (un seul souffle de haut en bas) ── */
+  @media (min-width: 768px){
+    .ka-section, .kh4-section, .kcp-section, .kr-section,
+    .kcw2, .kczn2, .kcav2, .kcfq-section{
+      padding-top: 104px !important;
+      padding-bottom: 104px !important;
+    }
+    .kn-section{ padding-top: 88px !important; padding-bottom: 84px !important; }
+  }
+  @media (max-width: 767px){
+    .ka-section, .kh4-section, .kcp-section, .kr-section,
+    .kcw2, .kczn2, .kcav2, .kcfq-section{
+      padding-top: 64px !important;
+      padding-bottom: 64px !important;
+    }
+  }
+
+  /* ── Titres de section : même voix typographique partout ── */
+  .ka-section h2, .kh4-section h2, .kcp-section h2, .kr-section h2,
+  .kcw2 h2, .kczn2 h2, .kcav2 h2, .kcfq-section h2{
+    font-family: 'Montserrat', Inter, sans-serif !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.6px !important;
+    line-height: 1.12 !important;
+  }
+
+  /* ── Charte : pas de dégradé teal dans les titres (accent sobre) ── */
+  .kcp-h2 em{
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    background-clip: initial !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: #0FA7A5 !important;
+    font-style: normal;
+  }
+
+  /* ── Comparateur avant/après : geste fluide, focus visible ── */
+  .kr-compare{ cursor: ew-resize; }
+  .kr-compare:focus-visible{
+    outline: none;
+    box-shadow: 0 0 0 3px #fff, 0 0 0 6px rgba(15,167,165,.55);
+    border-radius: 18px;
+  }
+  .kr-compare .kr-before{ transition: width .22s cubic-bezier(.22,.61,.36,1); }
+  .kr-compare .kr-line{ transition: left .22s cubic-bezier(.22,.61,.36,1); }
+  .kr-compare.kr-dragging .kr-before,
+  .kr-compare.kr-dragging .kr-line{ transition: none; }
+  .kr-handle{
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+  }
+  .kr-compare:hover .kr-handle,
+  .kr-compare:focus-visible .kr-handle{
+    transform: translate(-50%, -50%) scale(1.07);
+    box-shadow: 0 14px 34px rgba(13,35,64,.35), 0 0 0 6px rgba(15,167,165,.18);
+  }
+  .kr-tag{
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-size: 11px !important;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── Cartes : élévation douce et homogène au survol ── */
+  .kr-card, .kcav2-card, .kcp-card{
+    transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s !important;
+  }
+  .kr-card:hover, .kcav2-card:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 18px 44px rgba(13,35,64,.10);
+  }
+
+  /* ── Mouvement réduit : on respecte la préférence partout ── */
+  @media (prefers-reduced-motion: reduce){
+    .kr-compare .kr-before, .kr-compare .kr-line, .kr-handle,
+    .kr-card, .kcav2-card, .kcp-card{ transition: none !important; }
+  }
+</style>
+
+<!-- Données structurées FAQ (résultats enrichis Google) — reflet exact de la FAQ affichée -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Intervenez-vous en urgence, week-ends compris ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Standard : sous 48 h à 7 jours (tarif normal). Urgence : sous 48 h selon disponibilités (+20 %). Dimanche et jours fériés : intervention possible (+25 %). Pour les urgences, appelez le 06 70 01 20 61."}},
+    {"@type": "Question", "name": "Comment sont calculés vos tarifs ?", "acceptedAnswer": {"@type": "Answer", "text": "Tarification transparente issue d'une grille officielle (TTC pour les particuliers) : turnover Airbnb dès 55 € par rotation, fin de bail/déménagement dès 160 € tout inclus, grand ménage dès 140 €, vitrerie dès 70 €, fin de chantier dès 4,50 €/m² HT (prix confirmé après audit gratuit), bureaux à partir de 2 €/m²/mois HT sur devis. Les forfaits se réservent en ligne avec un acompte de 30 %."}},
+    {"@type": "Question", "name": "En combien de temps mon devis est-il prêt ?", "acceptedAnswer": {"@type": "Answer", "text": "Particuliers : estimation immédiate via le simulateur en ligne, devis ferme sous 24 h après réception des photos. Professionnels : visite technique gratuite et devis ferme remis sur place."}},
+    {"@type": "Question", "name": "Travaillez-vous avec les particuliers comme avec les professionnels ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Particuliers : Airbnb, fin de bail, grand ménage, vitrerie — réservation en ligne à prix fixe TTC avec acompte de 30 %. Professionnels : bureaux, copropriétés, commerces — visite gratuite, facturation à 30 jours fin de mois."}},
+    {"@type": "Question", "name": "Quelles prestations proposez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "Turnover Airbnb, ménage fin de bail/déménagement tout inclus, grand ménage de logement meublé, vitrerie résidentielle (réservables en ligne), nettoyage fin de chantier, entretien de bureaux et locaux professionnels, copropriétés et parties communes, commerces/ERP, remises en état lourdes (insalubrité, sinistre, après décès)."}},
+    {"@type": "Question", "name": "Couvrez-vous toute l'Île-de-France ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, les 8 départements franciliens : Paris (75), Seine-et-Marne (77), Yvelines (78), Essonne (91), Hauts-de-Seine (92), Seine-Saint-Denis (93), Val-de-Marne (94) et Val-d'Oise (95). Zones limitrophes étudiées au cas par cas."}},
+    {"@type": "Question", "name": "Dois-je fournir le matériel ou les produits ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, nous arrivons avec tout : aspirateurs HEPA professionnels, monobrosses, produits spécifiques par type de surface, microfibres, escabeaux et échelles. Intervention en autonomie complète."}},
+    {"@type": "Question", "name": "Comment se passe le paiement ?", "acceptedAnswer": {"@type": "Answer", "text": "Particuliers : carte bancaire en ligne (paiement sécurisé Stripe), virement ou espèces. Acompte de 30 % à la réservation, solde après prestation. Professionnels : facturation à 30 jours fin de mois par virement."}},
+    {"@type": "Question", "name": "Êtes-vous assurés en cas de dommage ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, assurance RC Pro AXA à hauteur de 5 millions d'euros. Tous les intervenants sont déclarés et formés, leurs documents vérifiés avant chaque chantier."}},
+    {"@type": "Question", "name": "Et si le résultat ne me convient pas ?", "acceptedAnswer": {"@type": "Answer", "text": "Engagement « Satisfait ou repassé » sans condition : signalez tout détail sous 48 h et nous revenons gratuitement. Un rapport photo est remis après chaque chantier."}}
+  ]
+}
+</script>

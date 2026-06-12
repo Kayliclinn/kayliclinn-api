@@ -698,3 +698,25 @@ function kcToggleFaq(el){
   document.querySelectorAll('.kc-page .kc-fade').forEach(el => observer.observe(el));
 })();
 </script>
+<!-- Données structurées SEO — service Turnover Airbnb (grille officielle v2) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Turnover Airbnb — ménage entre deux locations",
+  "serviceType": "Nettoyage de location courte durée",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "offers": [
+    {"@type": "Offer", "name": "Studio / T1", "price": 55, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T2", "price": 75, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T3", "price": 95, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T4", "price": 120, "priceCurrency": "EUR"}
+  ]
+}
+</script>
