@@ -24,7 +24,7 @@
    └─────────────────────────────────────────────────────────
 
    ┌─ 3 · CARROUSEL PRESTATIONS (8 cartes × 2-3 photos) ────
-   │  Variables (Ctrl+F « .kcp-section{ ») :
+   │  Variables (panneau :root, tout en haut du fichier) :
    │   01 Fin de chantier ... --chantier-1 / -2 / -3
    │   02 Turnover Airbnb ... --airbnb-1 / -2 / -3
    │   03 Bureaux ........... --bureaux-1 / -2 / -3
@@ -40,7 +40,7 @@
    └─────────────────────────────────────────────────────────
 
    ┌─ 4 · RÉALISATIONS AVANT/APRÈS (6 comparateurs) ────────
-   │  Variables (Ctrl+F « --r1-avant ») — 12 photos à venir :
+   │  Variables (panneau :root, tout en haut) — 12 photos à venir :
    │   R1 Appartement Paris 11e (fin de chantier 72 m²)
    │      --r1-avant / --r1-apres
    │      ALT avant : « Appartement Paris 11e avant nettoyage
@@ -86,10 +86,71 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
 
 <style>
-.kc-home{
-  /* ░░░ PHOTOS — À MODIFIER ICI UNIQUEMENT ░░░ */
+:root{
+  /* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+     ░  PHOTOS DE LA PAGE D’ACCUEIL — TOUTES MODIFIABLES ICI            ░
+     ░  Remplacez UNIQUEMENT l’URL entre url(...).  1 ligne = 1 image.   ░
+     ░  Variables :root (globales) : valables pour toutes les sections.    ░
+     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+  /* 1 · HERO (fond plein écran) */
   --photo-hero: url("https://kayliclinn.fr/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg");
+  /* 2 · SECTION À PROPOS */
   --photo-about: url("https://kayliclinn.fr/wp-content/uploads/2026/05/pexels-nizam-344438805-19786710.jpg");
+
+  /* 3 · CARROUSEL PRESTATIONS (8 cartes) */
+  /* 01 · Nettoyage fin de chantier */
+  --chantier-1:url(/wp-content/uploads/2026/03/Image6.webp);
+  --chantier-2:url(/wp-content/uploads/2026/05/pexels-lamiko-3616756.jpg?fit=683%2C1024&ssl=1);
+  --chantier-3:url(/wp-content/uploads/2026/03/pexels-tima-miroshnichenko-6195122.jpg?fit=800%2C534&ssl=1);
+  /* 02 · Turnover Airbnb */
+  --airbnb-1:url(/wp-content/uploads/2026/02/pexels-karola-g-4239141.webp);
+  --airbnb-2:url(/wp-content/uploads/2026/05/pexels-cottonbro-6466479.jpg?fit=800%2C534&ssl=1);
+  --airbnb-3:url(/wp-content/uploads/2026/05/pexels-chrislyn-dsouza-424969149-34496706.jpg?fit=768%2C1024&ssl=1);
+  /* 03 · Entretien de bureaux */
+  --bureaux-1:url(/wp-content/uploads/2026/02/nettoyagebureau.webp);
+  --bureaux-2:url(/wp-content/uploads/2026/03/pexels-liliana-drew-9462732.jpg?fit=683%2C1024&ssl=1);
+  --bureaux-3:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197121.jpg?fit=800%2C534&ssl=1);
+  /* 04 · Nettoyage déménagement */
+  --demenagement-1:url(/wp-content/uploads/2026/03/istockphoto-1417833187-612x612-1.webp);
+  --demenagement-2:url(/wp-content/uploads/2026/02/pexels-karola-g-4239113.jpg?fit=800%2C534&ssl=1);
+  --demenagement-3:url(/wp-content/uploads/2026/05/pexels-misbaa-eri-426041722-36916382.jpg?fit=576%2C1024&ssl=1);
+  /* 05 · Nettoyage de vitres (2 images) */
+  --vitres-1:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg?fit=800%2C534&ssl=1);
+  --vitres-2:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197124.jpg?fit=683%2C1024&ssl=1);
+  /* 06 · Syndrome de Diogène */
+  --diogene-1:url(/wp-content/uploads/2026/03/Image2.webp);
+  --diogene-2:url(/wp-content/uploads/2026/05/pexels-bnwtake0405-8931489.jpg?fit=683%2C1024&ssl=1);
+  --diogene-3:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4097740.jpg?fit=683%2C1024&ssl=1);
+  /* 07 · Désinfection virucide */
+  --desinfection-1:url(/wp-content/uploads/2026/05/pexels-michelangelo-buonarroti-4176370.jpg?fit=800%2C534&ssl=1);
+  --desinfection-2:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg?fit=683%2C1024&ssl=1);
+  --desinfection-3:url(/wp-content/uploads/2026/03/pexels-uniqueton-4021256.jpg?fit=800%2C534&ssl=1);
+  /* 08 · Sinistres & dégâts des eaux */
+  --sinistres-1:url(/wp-content/uploads/2026/05/istockphoto-2075834329-1024x1024-1.jpg?fit=768%2C512&ssl=1);
+  --sinistres-2:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg?fit=683%2C1024&ssl=1);
+  --sinistres-3:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196692.webp);
+
+  /* 4 · RÉALISATIONS AVANT / APRÈS (6 comparateurs · placeholder Image6.webp) */
+  /* R1 · Appartement Paris 11e */
+  --r1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --r1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* R2 · Local commercial Levallois */
+  --r2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --r2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* R3 · Maison Boulogne-Billancourt */
+  --r3-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --r3-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* R4 · Studio Airbnb Paris 9e */
+  --r4-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --r4-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* R5 · Bureaux open-space La Défense */
+  --r5-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --r5-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* R6 · T2 Saint-Mandé */
+  --r6-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --r6-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+}
+.kc-home{
 
   --kc-primary:#0FA7A5; --kc-primary-light:#19E3DF; --kc-navy:#16163F;
   --kc-bg-soft:#F7F8FA; --kc-text:#5a647c; --kc-text-muted:#6b7488;
@@ -903,8 +964,8 @@
 
    📸 PANNEAU PHOTOS — TOUT SE MODIFIE ICI
    ────────────────────────────────────────────────────────
-   Les 22 visuels sont centralisés en variables CSS plus bas
-   (bloc « ░ PHOTOS ░ » dans .kcp-section).
+   Les 22 visuels sont centralisés EN HAUT du fichier
+   (panneau :root « PHOTOS DE LA PAGE D’ACCUEIL »).
    Pour changer une image : remplacez UNIQUEMENT l'URL entre
    url(...). Rien d'autre à toucher.
 
@@ -946,37 +1007,7 @@
    ░ PHOTOS — À MODIFIER ICI UNIQUEMENT (1 ligne = 1 image) ░
    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
 .kcp-section{
-  /* 01 · Nettoyage fin de chantier */
-  --chantier-1:url(/wp-content/uploads/2026/03/Image6.webp);
-  --chantier-2:url(/wp-content/uploads/2026/05/pexels-lamiko-3616756.jpg?fit=683%2C1024&ssl=1);
-  --chantier-3:url(/wp-content/uploads/2026/03/pexels-tima-miroshnichenko-6195122.jpg?fit=800%2C534&ssl=1);
-  /* 02 · Turnover Airbnb */
-  --airbnb-1:url(/wp-content/uploads/2026/02/pexels-karola-g-4239141.webp);
-  --airbnb-2:url(/wp-content/uploads/2026/05/pexels-cottonbro-6466479.jpg?fit=800%2C534&ssl=1);
-  --airbnb-3:url(/wp-content/uploads/2026/05/pexels-chrislyn-dsouza-424969149-34496706.jpg?fit=768%2C1024&ssl=1);
-  /* 03 · Entretien de bureaux */
-  --bureaux-1:url(/wp-content/uploads/2026/02/nettoyagebureau.webp);
-  --bureaux-2:url(/wp-content/uploads/2026/03/pexels-liliana-drew-9462732.jpg?fit=683%2C1024&ssl=1);
-  --bureaux-3:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197121.jpg?fit=800%2C534&ssl=1);
-  /* 04 · Nettoyage déménagement */
-  --demenagement-1:url(/wp-content/uploads/2026/03/istockphoto-1417833187-612x612-1.webp);
-  --demenagement-2:url(/wp-content/uploads/2026/02/pexels-karola-g-4239113.jpg?fit=800%2C534&ssl=1);
-  --demenagement-3:url(/wp-content/uploads/2026/05/pexels-misbaa-eri-426041722-36916382.jpg?fit=576%2C1024&ssl=1);
-  /* 05 · Nettoyage de vitres (2 images) */
-  --vitres-1:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg?fit=800%2C534&ssl=1);
-  --vitres-2:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197124.jpg?fit=683%2C1024&ssl=1);
-  /* 06 · Syndrome de Diogène */
-  --diogene-1:url(/wp-content/uploads/2026/03/Image2.webp);
-  --diogene-2:url(/wp-content/uploads/2026/05/pexels-bnwtake0405-8931489.jpg?fit=683%2C1024&ssl=1);
-  --diogene-3:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4097740.jpg?fit=683%2C1024&ssl=1);
-  /* 07 · Désinfection virucide */
-  --desinfection-1:url(/wp-content/uploads/2026/05/pexels-michelangelo-buonarroti-4176370.jpg?fit=800%2C534&ssl=1);
-  --desinfection-2:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg?fit=683%2C1024&ssl=1);
-  --desinfection-3:url(/wp-content/uploads/2026/03/pexels-uniqueton-4021256.jpg?fit=800%2C534&ssl=1);
-  /* 08 · Sinistres & dégâts des eaux */
-  --sinistres-1:url(/wp-content/uploads/2026/05/istockphoto-2075834329-1024x1024-1.jpg?fit=768%2C512&ssl=1);
-  --sinistres-2:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg?fit=683%2C1024&ssl=1);
-  --sinistres-3:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196692.webp);
+  /* ░ Photos centralisées EN HAUT du fichier (panneau :root). Les affectations lisent ces variables globales. ░ */
 }
 /* ░ Affectation des photos aux diapositives (ne pas modifier) ░ */
 .kcp-card[data-i="0"] .kcp-slide:nth-child(1){background-image:var(--chantier-1)}
@@ -1443,7 +1474,7 @@
    📸 PANNEAU PHOTOS — TOUT SE MODIFIE ICI
    ────────────────────────────────────────────────────────
    Les 12 visuels de la section « Réalisations » sont centralisés
-   en variables CSS plus bas (bloc « ░ PHOTOS ░ »).
+   EN HAUT du fichier (panneau :root « PHOTOS DE LA PAGE D’ACCUEIL »).
    Chaque réalisation = 1 paire :  --rN-avant  /  --rN-apres.
    Pour changer une image : remplacez l'URL entre url('...').
 
@@ -1486,25 +1517,8 @@
      ░ ⚠️ Actuellement toutes identiques (placeholder) → à remplacer ░
      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
   .kr-section{
-    /* R1 · Appartement Paris 11e */
-    --r1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    --r1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    /* R2 · Local commercial Levallois */
-    --r2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    --r2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    /* R3 · Maison Boulogne-Billancourt */
-    --r3-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    --r3-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    /* R4 · Studio Airbnb Paris 9e */
-    --r4-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    --r4-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    /* R5 · Bureaux open-space La Défense */
-    --r5-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    --r5-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    /* R6 · T2 Saint-Mandé */
-    --r6-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-    --r6-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  }
+    /* ░ Photos centralisées EN HAUT du fichier (panneau :root). Les affectations lisent ces variables globales. ░ */
+    }
   /* ░ Affectation des photos (ne pas modifier) · before = AVANT · after = APRÈS ░ */
   .kr-card[data-r="1"] .kr-before{background-image:var(--r1-avant)}
   .kr-card[data-r="1"] .kr-after {background-image:var(--r1-apres)}
