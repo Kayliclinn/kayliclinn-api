@@ -6,58 +6,95 @@ en-tête/pied de page du thème). Méthode : ouvrir la page → bloc « HTML
 personnalisé » → remplacer **tout** le contenu par le fichier → prévisualiser →
 publier.
 
-> Toutes les pages partagent le design du gabarit (`prestation.html`) : charte
-> navy `#0D2340` / teal `#0FA7A5`, polices Montserrat/Inter/Roboto + Fraunces,
-> icônes SVG, **aucun emoji**, vouvoiement. Prix issus de la grille v2 quand ils
-> sont fermes, sinon **« sur devis »** (aucun prix inventé).
+> Charte commune : navy `#0D2340` / teal `#0FA7A5`, Montserrat/Inter/Roboto +
+> Fraunces, icônes SVG, **aucun emoji**, vouvoiement. Prix de la grille v2 quand
+> ils sont fermes, sinon **« sur devis »** (aucun prix inventé).
 
-## Pages à publier
+## Barre de navigation
 
-| Fichier | Page / slug WordPress | Tarifs | Avant de publier |
-| --- | --- | --- | --- |
-| `accueil.html` | Accueil | grille | photos « réalisations », vrai lien avis Google |
-| `prestation.html` | `/turnover-airbnb/` | Airbnb 55–120 TTC | 4 photos |
-| `nettoyage-de-vitres.html` | `/nettoyage-de-vitres/` | 70/70/95/95/130 TTC | 4 photos |
-| `nettoyage-apres-demenagement-etat-des-lieux.html` | `/nettoyage-apres-demenagement-etat-des-lieux/` | 160/220/290/360/430 TTC | 4 photos |
-| `nettoyage-fin-de-chantier-paris.html` | `/nettoyage-fin-de-chantier-paris/` | indicatif HT (audit) | 4 photos, position gravats |
-| `entretien-de-bureaux.html` | `/entretien-de-bureaux/` | indicatif HT, devis | 4 photos, durée d'engagement, gamme produits |
-| `entretien-professionnel.html` | `/entretien-professionnel/` | sur devis | 4 photos |
-| `prestations.html` | `/prestations/` | repères / devis | — |
-| `a-propos.html` | `/a-propos/` | — | histoire, dirigeante, effectif, certifications, SIREN |
-| `contact.html` | `/contact/` | — | e-mail, adresse, horaires, lien confidentialité ; **plugin kc-contact actif + `window.kcContact`** |
-| `realisations.html` | `/realisations/` | — | **20 photos avant/après** (placeholder `Image6.webp`) |
-| `estimation.html` | `/devis/` | grille | **plugin kc-devis** + `window.kcDevis` injecté |
-| `reservation.html` | `/reservation/` | grille | **plugin kc-booking** (KC_Pricing branché) |
+| Fichier | Page / slug | Notes avant publication |
+| --- | --- | --- |
+| `accueil.html` | Accueil | photos (panneau `:root` en tête), vrai lien avis Google |
+| `prestations.html` | `/prestations/` | catalogue (sert aussi `/nos-services/`) |
+| `realisations.html` | `/realisations/` | **20 photos avant/après** (placeholder `Image6.webp`) |
+| `qualite-qse.html` | `/qualite-qse/` | assureur & montant RC Pro, certifications |
+| `contact.html` | `/contact/` | e-mail, adresse, horaires ; **kc-contact + `window.kcContact`** |
+| `rendez-vous.html` | `/rendez-vous/` | e-mail/horaires ; **kc-contact + `window.kcContact`** |
+| `estimation.html` | `/devis/` | **kc-devis** + `window.kcDevis` |
+| `reservation.html` | `/reservation/` | **kc-booking** (KC_Pricing + type `visite-audit`) |
 
-## Redirections de slugs (301) — pour éviter le contenu dupliqué
+## Pages prestations (menu « Prestations »)
 
-- `/nettoyage-demenagement/` → `/nettoyage-apres-demenagement-etat-des-lieux/` (même prestation)
-- `/nettoyage-fin-de-chantier/` → `/nettoyage-fin-de-chantier-paris/`
-- `/nos-services/` → `/prestations/`
-- `/devis-turnover-airbnb/` → **faire pointer vers `/devis/`** (ne pas dupliquer le tunnel)
+| Fichier | Page / slug | Tarifs |
+| --- | --- | --- |
+| `prestation.html` | `/turnover-airbnb/` | **Forfait** Airbnb 55–120 TTC |
+| `vitres-classiques.html` | `/vitres-classiques/` | **Forfait** 70/70/95/95/130 TTC |
+| `nettoyage-apres-demenagement-etat-des-lieux.html` | `/nettoyage-apres-demenagement-etat-des-lieux/` | **Forfait** 160→430 TTC |
+| `entretien-de-bureaux.html` | `/entretien-de-bureaux/` | indicatif HT, sur devis |
+| `parties-communes-immeubles.html` | `/parties-communes-immeubles/` | sur devis |
+| `commerces-retail.html` | `/commerces-retail/` | sur devis |
+| `etablissements-sensibles.html` | `/etablissements-sensibles/` | sur devis |
+| `nettoyage-fin-de-chantier.html` | `/nettoyage-fin-de-chantier/` | indicatif HT (audit) |
+| `remise-en-etat.html` | `/remise-en-etat/` | sur devis |
+| `decapage-cristallisation-sols.html` | `/decapage-cristallisation-sols/` | sur devis |
+| `shampouinage-moquettes.html` | `/shampouinage-moquettes/` | sur devis |
+| `nettoyage-haute-pression.html` | `/nettoyage-haute-pression/` | sur devis |
+| `pieces-blanches.html` | `/pieces-blanches/` | sur devis |
+
+## Prise de rendez-vous (sur toutes les prestations)
+
+- Chaque page prestation a un bouton **« Prendre rendez-vous »** → `/rendez-vous/?presta=<slug>`
+  (primaire sur les pages « sur devis » ; secondaire sur les forfaits, où
+  « Estimation/réservation en ligne » reste primaire). L'accueil a aussi ce bouton.
+- **`/rendez-vous/`** propose 2 actions :
+  1. **« Être rappelé(e) »** → envoi via **kc-contact** (`window.kcContact`).
+  2. **« Réserver une visite gratuite »** → `/reservation/?visite=<slug>` (calendrier
+     kc-booking, type `visite-audit`, sans paiement).
+- `/reservation/` accepte désormais `?visite=<slug>` (entrée directe visite gratuite) en
+  plus du relais depuis `/devis/` — ajout additif, le tunnel de paiement est inchangé.
 
 ## NE PAS PUBLIER en l'état (règles du projet)
 
-Ces pages sont prêtes mais **conditionnées** ; un commentaire d'avertissement
-est présent en tête de chaque fichier.
+Avertissement en tête de chaque fichier ; **sans aucun prix**, sans réservation en ligne.
 
 | Fichier | Page / slug | Blocage |
 | --- | --- | --- |
-| `syndrome-de-diogene.html` | `/syndrome-de-diogene/` | **Certibiocide** (désinsectisation) + validation propriétaire |
-| `desinfection-virucide.html` | `/desinfection-virucide/` | **Certibiocide** + normes/produits à confirmer |
-| `sinistres-degats-des-eaux.html` | `/sinistres-degats-des-eaux/` | validation propriétaire + modalités assurance |
+| `syndrome-de-diogene.html` | `/syndrome-de-diogene/` (Extrême) | **Certibiocide** + validation |
+| `scenes-sensibles.html` | `/scenes-sensibles/` (Extrême) | validation (décès/biohazard) |
+| `deratisation.html` | `/deratisation/` (3D) | **Certibiocide** |
+| `desinsectisation.html` | `/desinsectisation/` (3D) | **Certibiocide** |
+| `punaises-de-lit.html` | `/punaises-de-lit/` (3D) | **Certibiocide** |
 
-Ces trois pages sont **sans aucun prix** (devis pur) et **sans réservation en
-ligne**, conformément à la règle « insalubrité / sinistre / décès ».
+## En réserve (hors menu, non publiées — gardées à ta demande)
 
-## Pages encore à créer (non bloquantes)
+`entretien-professionnel.html` · `desinfection-virucide.html` (⛔ Certibiocide) ·
+`sinistres-degats-des-eaux.html`. Elles ont aussi le bouton « Prendre rendez-vous ».
 
-- **Grand ménage** (meublé occupé) : prix validés 140/190/250/320 TTC, mais pas
-  encore de page dédiée. Le catalogue (`prestations.html`) renvoie vers `/devis/`
-  en attendant. Page à bâtir sur le même gabarit quand vous voulez.
+## Redirections 301 (éviter le contenu dupliqué)
 
-## Données à remplacer partout
+- `/nettoyage-demenagement/` → `/nettoyage-apres-demenagement-etat-des-lieux/`
+- `/nettoyage-fin-de-chantier-paris/` → `/nettoyage-fin-de-chantier/`
+- `/nettoyage-de-vitres/` → `/vitres-classiques/`
+- `/nos-services/` → `/prestations/`
+- `/devis-turnover-airbnb/` → `/devis/`
 
-Chaque page comporte des marqueurs `<!-- 👉 À COMPLÉTER : … -->` visibles dans le
-code aux endroits où une donnée métier manque (jamais inventée). Cherchez `👉`
-dans chaque fichier avant publication.
+## Catégories de menu = simples regroupements
+
+« Propreté récurrente », « Prestation ponctuelle », « Extrême », « 3D nuisibles »,
+« Spécifique » ne sont **pas des pages** : juste des conteneurs de sous-menu.
+
+## À créer plus tard
+
+- **Grand ménage** (forfait validé 140/190/250/320 TTC) : pas encore de page ; le
+  catalogue renvoie vers `/devis/` en attendant.
+
+## Dépendances plugins (sinon repli honnête + téléphone)
+
+- `/contact/` et `/rendez-vous/` → **kc-contact** + `window.kcContact { ajaxUrl, nonce }`.
+- `/devis/` → **kc-devis** + `window.kcDevis`.
+- `/reservation/` → **kc-booking** (KC_Pricing, type `visite-audit`).
+
+## Données à compléter
+
+Cherchez `👉` dans chaque fichier : photos, e-mail, adresse, horaires, assureur RC Pro,
+certifications, classes ISO, etc. — **jamais inventées**, toujours en placeholder visible.
