@@ -475,7 +475,12 @@
 /* Badge icône frosté teal, flottant sur la photo */
 .kc-devis .presta-card .oc-icon{position:absolute;top:12px;left:12px;z-index:2;margin:0;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.92);color:var(--teal-deep);box-shadow:0 6px 18px rgba(13,35,64,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
 /* Corps texte sous la photo */
-.kc-devis .presta-card .oc-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;width:100%}
+.kc-devis .presta-card .oc-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+/* Anti-troncature : titres & descriptions s'affichent EN ENTIER (retour à la ligne).
+   La carte peut grandir en hauteur ; seuls les coins de la photo gardent overflow:hidden. */
+.kc-devis .presta-card .oc-body,
+.kc-devis .presta-card .oc-title,
+.kc-devis .presta-card .oc-desc{white-space:normal;overflow:visible;text-overflow:clip;max-height:none;height:auto;overflow-wrap:anywhere;word-break:break-word;hyphens:auto}
 /* Fallback élégant si pas de photo (ex. commerces) ou image cassée */
 .kc-devis .presta-card .oc-photo.no-photo::after{display:none}
 .kc-devis .presta-card .oc-photo.no-photo{display:grid;place-items:center}
@@ -492,6 +497,12 @@
 .kc-devis .presta-card::before{z-index:4}
 /* Photos un peu plus courtes sur mobile (réduit le scroll) */
 @media(max-width:768px){.kc-devis{--kc-photo-ratio:16 / 10}}
+
+/* — Cartes « Sur devis » : LIENS vers la demande de devis (pas d'estimation) — */
+.kc-devis .presta-devis-intro{font-size:14px;color:var(--text-light);line-height:1.6;margin:-6px 0 16px;max-width:680px}
+.kc-devis a.presta-devis{text-decoration:none}
+.kc-devis a.presta-devis .oc-photo{aspect-ratio:auto;min-height:120px}
+.kc-devis a.presta-devis .oc-photo.no-photo{display:grid;place-items:center}
 
 /* — prefers-reduced-motion : neutralise tous les effets animés ajoutés — */
 @media (prefers-reduced-motion: reduce){
@@ -601,7 +612,7 @@
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Vitrerie résidentielle</div>
+              <div class="oc-title">Vitres classiques</div>
               <div class="oc-desc">Plain-pied / intérieur · dès 70 € TTC</div>
             </div>
           </button>
@@ -616,7 +627,7 @@
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Fin de chantier</div>
+              <div class="oc-title">Nettoyage fin de chantier</div>
               <div class="oc-desc">Après travaux · dès 4,50 €/m² HT</div>
             </div>
           </button>
@@ -625,7 +636,7 @@
               <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Bureaux &amp; locaux pro</div>
+              <div class="oc-title">Entretien de bureaux</div>
               <div class="oc-desc">Entretien régulier · à partir de 2 €/m²/mois HT</div>
             </div>
           </button>
@@ -634,34 +645,80 @@
 
       <div>
         <h2 class="presta-cat-title">Sur devis<span class="funnel-tag audit">Visite gratuite</span></h2>
-        <div class="presta-grid" role="radiogroup" aria-label="Prestations sur devis avec visite gratuite">
-          <button type="button" class="option-card presta-card" data-presta="copropriete">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg></div>
+        <p class="presta-devis-intro">Pas de prix en ligne pour ces prestations : choisissez la vôtre, nous établissons un devis gratuit (rappel ou visite).</p>
+        <div class="presta-grid" aria-label="Prestations sur devis">
+          <a href="/demande-de-devis/?presta=parties-communes-immeubles" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5M9 11h.01M15 11h.01"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Copropriétés &amp; parties communes</div>
-              <div class="oc-desc">Cahier des charges syndic, containers</div>
+              <div class="oc-title">Parties communes d'immeubles</div>
+              <div class="oc-desc">Halls, escaliers, locaux — syndics &amp; bailleurs</div>
             </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="commerces">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Commerces &amp; ERP</div>
-              <div class="oc-desc">Horaires décalés, contraintes d'exploitation</div>
-            </div>
-          </button>
-          <button type="button" class="option-card presta-card" data-presta="remise-lourde">
-            <div class="oc-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7z"/></svg></div>
+          </a>
+          <a href="/demande-de-devis/?presta=commerces-retail" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9zM9 21v-6h6v6"/></svg></div>
             </div>
             <div class="oc-body">
-              <div class="oc-title">Remise en état lourde</div>
-              <div class="oc-desc">Insalubrité, sinistre, après décès · en discrétion</div>
+              <div class="oc-title">Commerces &amp; Retail</div>
+              <div class="oc-desc">Surfaces de vente, vitrines, horaires décalés</div>
             </div>
-          </button>
+          </a>
+          <a href="/demande-de-devis/?presta=etablissements-sensibles" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Établissements sensibles</div>
+              <div class="oc-desc">Santé, crèches, écoles — protocoles renforcés</div>
+            </div>
+          </a>
+          <a href="/demande-de-devis/?presta=remise-en-etat" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Remise en état</div>
+              <div class="oc-desc">Logements/bureaux dégradés, avant relocation</div>
+            </div>
+          </a>
+          <a href="/demande-de-devis/?presta=decapage-cristallisation-sols" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Décapage / cristallisation des sols</div>
+              <div class="oc-desc">Carrelage, marbre, pierre, PVC</div>
+            </div>
+          </a>
+          <a href="/demande-de-devis/?presta=shampouinage-moquettes" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 7h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 7l2-3h14l2 3M7 12v3M12 12v3M17 12v3"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Shampouinage de moquettes</div>
+              <div class="oc-desc">Injection-extraction, tapis &amp; textiles</div>
+            </div>
+          </a>
+          <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M7 21V10l5-3 5 3v11M10 7V4h4v3M5 14h.01M5 17h.01"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Nettoyage haute pression</div>
+              <div class="oc-desc">Façades, terrasses, parkings</div>
+            </div>
+          </a>
+          <a href="/demande-de-devis/?presta=pieces-blanches" class="option-card presta-card presta-devis">
+            <div class="oc-photo no-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4zM9 12h6M9 16h6"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Pièces blanches</div>
+              <div class="oc-desc">Salles blanches, environnements contrôlés</div>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -1231,7 +1288,7 @@
       flow:['presta','zone','taille','etat','options','delai','contact','result'],
       horsGrille:{ label:'T5 et + / maison', desc:'Sur devis · visite gratuite',
         reason:'Grand logement — devis personnalisé après visite gratuite' } },
-    'vitrerie': { nom:'Vitrerie résidentielle simple', funnel:'forfait',
+    'vitrerie': { nom:'Vitres classiques', funnel:'forfait',
       flow:['presta','zone','taille','options','delai','contact','result'],
       inclus:'Vitres plain-pied et intérieures accessibles',
       horsGrille:{ label:'Hauteur / vitrine / verrière', desc:'Sur devis · visite gratuite',
@@ -1243,7 +1300,7 @@
       surface:{ min:20, max:1000, step:10, def:60, unit:'m²',
         title:'Quelle est la <em>surface</em> du chantier ?',
         desc:'Estimation indicative ± 15 % — le prix est confirmé après audit gratuit ou envoi de photos.' } },
-    'bureaux': { nom:'Bureaux & locaux professionnels (entretien régulier)', funnel:'estimate', kind:'bureaux',
+    'bureaux': { nom:'Entretien de bureaux', funnel:'estimate', kind:'bureaux',
       flow:['presta','zone','surface','contact','result'],
       surface:{ min:20, max:2000, step:10, def:100, unit:'m²',
         title:'Quelle est la <em>surface</em> de vos locaux ?',
@@ -1340,7 +1397,7 @@
      PHOTOS PRESTATIONS — injection + repli élégant
      ════════════════════════════════════════════════════════ */
   function injectPrestaImages(){
-    document.querySelectorAll('#step-presta .presta-card').forEach(function(card){
+    document.querySelectorAll('#step-presta .presta-card:not(.presta-devis)').forEach(function(card){
       const photo = card.querySelector('.oc-photo');
       if(!photo || photo.querySelector('img')) return;
       const url = KC_PRESTA_IMAGES[card.dataset.presta];
@@ -2080,7 +2137,7 @@
      ════════════════════════════════════════════════════════ */
   function init(){
     injectPrestaImages();
-    document.querySelectorAll('#step-presta .presta-card').forEach(card => {
+    document.querySelectorAll('#step-presta .presta-card:not(.presta-devis)').forEach(card => {
       card.setAttribute('role','radio');
       card.setAttribute('aria-checked','false');
       card.addEventListener('click', () => selectPresta(card, card.dataset.presta));
