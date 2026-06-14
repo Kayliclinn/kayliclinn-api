@@ -66,22 +66,30 @@ Deux verbes seulement, jamais ambigus :
 - Le tunnel `/devis/` route déjà les prestations non estimables vers « sur devis · visite
   gratuite » (aucun emploi du mot « rendez-vous »).
 
-## NE PAS PUBLIER en l'état (règles du projet)
+## Interventions spécialisées — sous-traitance (partenaires certifiés)
 
-Avertissement en tête de chaque fichier ; **sans aucun prix**, sans réservation en ligne.
+Décision propriétaire : ces 5 prestations réglementées/sensibles sont **proposées en
+sous-traitance** (un partenaire certifié réalise l'acte réglementé ; Kayli Clinn coordonne).
+Elles sont **publiables**, en **« sur devis »** (aucun prix, aucune réservation en ligne),
+avec une bande « partenariat » en tête de page et le bouton « Demander un devis ». Présentes
+aussi dans le tunnel `/devis/` (section « Interventions spécialisées ») et le catalogue.
 
-| Fichier | Page / slug | Blocage |
+| Fichier | Page / slug | Catégorie menu |
 | --- | --- | --- |
-| `syndrome-de-diogene.html` | `/syndrome-de-diogene/` (Extrême) | **Certibiocide** + validation |
-| `scenes-sensibles.html` | `/scenes-sensibles/` (Extrême) | validation (décès/biohazard) |
-| `deratisation.html` | `/deratisation/` (3D) | **Certibiocide** |
-| `desinsectisation.html` | `/desinsectisation/` (3D) | **Certibiocide** |
-| `punaises-de-lit.html` | `/punaises-de-lit/` (3D) | **Certibiocide** |
+| `deratisation.html` | `/deratisation/` | 3D nuisibles |
+| `desinsectisation.html` | `/desinsectisation/` | 3D nuisibles |
+| `punaises-de-lit.html` | `/punaises-de-lit/` | 3D nuisibles |
+| `syndrome-de-diogene.html` | `/syndrome-de-diogene/` | Extrême |
+| `scenes-sensibles.html` | `/scenes-sensibles/` | Extrême |
+
+> 👉 **À valider par la propriétaire** : la formulation du partenariat (commentaire `À VALIDER`
+> dans chaque fichier) et la réalité du/des partenaire(s) certifié(s) Certibiocide. À confirmer
+> avec votre conseil avant publication.
 
 ## En réserve (hors menu, non publiées — gardées à ta demande)
 
-`entretien-professionnel.html` · `desinfection-virucide.html` (⛔ Certibiocide) ·
-`sinistres-degats-des-eaux.html`. Elles ont aussi le bouton « Demander un devis ».
+`entretien-professionnel.html` · `desinfection-virucide.html` · `sinistres-degats-des-eaux.html`.
+Elles ont aussi le bouton « Demander un devis ».
 
 ## Redirections 301 (éviter le contenu dupliqué)
 
