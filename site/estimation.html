@@ -551,6 +551,20 @@
 
 <style>
   /* ── Compléments V5 (catalogue v2) — réutilise le design existant ── */
+  /* ── Repli des prestations sur devis ── */
+  .kc-devis .kcfold-toggle{
+    width:100%;background:var(--white);border:1.5px dashed var(--gray-light);
+    border-radius:14px;padding:18px 22px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;color:var(--teal-deep);
+    transition:border-color .2s,background .2s;margin-top:4px;
+  }
+  .kc-devis .kcfold-toggle:hover{border-color:var(--teal-dark);background:var(--teal-soft)}
+  .kc-devis .kcfold-toggle .kcfold-ico{font-size:18px;line-height:1;font-weight:700}
+  .kc-devis .kcfold-toggle[aria-expanded="true"]{border-color:var(--teal);background:var(--teal-soft)}
+  .kc-devis .kcfold-zone[hidden]{display:none}
+  .kc-devis .kcfold-zone{display:flex;flex-direction:column;gap:34px;margin-top:34px}
+  .kc-devis a.presta-devis .oc-photo:not(.no-photo){aspect-ratio:var(--kc-photo-ratio);min-height:0}
   .kc-devis .funnel-tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-left:10px;vertical-align:middle}
   .kc-devis .funnel-tag.online{background:var(--teal-light);color:var(--teal-deep)}
   .kc-devis .funnel-tag.estimate{background:#EEF4FF;color:#3B5BDB}
@@ -634,134 +648,141 @@
         </div>
       </div>
 
-      <div>
-        <h2 class="presta-cat-title">Sur devis<span class="funnel-tag audit">Visite gratuite</span></h2>
-        <p class="presta-devis-intro">Pas de prix en ligne pour ces prestations : choisissez la vôtre, nous établissons un devis gratuit (rappel ou visite).</p>
-        <div class="presta-grid" aria-label="Prestations sur devis">
-          <a href="/demande-de-devis/?presta=parties-communes-immeubles" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5M9 11h.01M15 11h.01"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Parties communes d'immeubles</div>
-              <div class="oc-desc">Halls, escaliers, locaux — syndics &amp; bailleurs</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=commerces-retail" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9zM9 21v-6h6v6"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Commerces &amp; Retail</div>
-              <div class="oc-desc">Surfaces de vente, vitrines, horaires décalés</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=etablissements-sensibles" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Établissements sensibles</div>
-              <div class="oc-desc">Santé, crèches, écoles — protocoles renforcés</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=remise-en-etat" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Remise en état</div>
-              <div class="oc-desc">Logements/bureaux dégradés, avant relocation</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=decapage-cristallisation-sols" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Décapage / cristallisation des sols</div>
-              <div class="oc-desc">Carrelage, marbre, pierre, PVC</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=shampouinage-moquettes" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 7h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 7l2-3h14l2 3M7 12v3M12 12v3M17 12v3"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Shampouinage de moquettes</div>
-              <div class="oc-desc">Injection-extraction, tapis &amp; textiles</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M7 21V10l5-3 5 3v11M10 7V4h4v3M5 14h.01M5 17h.01"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Nettoyage haute pression</div>
-              <div class="oc-desc">Façades, terrasses, parkings</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=pieces-blanches" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4zM9 12h6M9 16h6"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Pièces blanches</div>
-              <div class="oc-desc">Salles blanches, environnements contrôlés</div>
-            </div>
-          </a>
-        </div>
-      </div>
+      <button type="button" class="kcfold-toggle" id="kcfold-toggle" aria-expanded="false" aria-controls="kcfold-zone">
+        <span class="kcfold-ico" id="kcfold-ico" aria-hidden="true">+</span>
+        <span id="kcfold-label">Voir les prestations sur devis (nuisibles, Diogène, commerces…)</span>
+      </button>
 
-      <div>
-        <h2 class="presta-cat-title">Interventions spécialisées<span class="funnel-tag audit">Partenaires certifiés</span></h2>
-        <p class="presta-devis-intro">Interventions réglementées ou sensibles, réalisées avec nos partenaires spécialisés certifiés et assurés. Choisissez la vôtre : nous établissons un devis gratuit. <!-- 👉 À VALIDER (propriétaire) : mention du partenariat de sous-traitance --></p>
-        <div class="presta-grid" aria-label="Interventions spécialisées sur devis (partenaires certifiés)">
-          <a href="/demande-de-devis/?presta=deratisation" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 6a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0v-3a5 5 0 0 1 5-5zM12 6V3M9 4l3 2 3-2M7 11H3M7 15H3M21 11h-4M21 15h-4"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Dératisation</div>
-              <div class="oc-desc">Rats, souris — diagnostic &amp; traitement</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=desinsectisation" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 7a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 7V4M9 3l3 2 3-2M6 12H3M6 16H3M21 12h-3M21 16h-3"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Désinsectisation</div>
-              <div class="oc-desc">Cafards, fourmis, guêpes…</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=punaises-de-lit" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 18v2M21 18v2M7 12h4"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Punaises de lit</div>
-              <div class="oc-desc">Détection &amp; traitement</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=syndrome-de-diogene" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Syndrome de Diogène</div>
-              <div class="oc-desc">Accompagnement confidentiel</div>
-            </div>
-          </a>
-          <a href="/demande-de-devis/?presta=scenes-sensibles" class="option-card presta-card presta-devis">
-            <div class="oc-photo no-photo">
-              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            </div>
-            <div class="oc-body">
-              <div class="oc-title">Scènes sensibles</div>
-              <div class="oc-desc">Après sinistre ou décès — discrétion</div>
-            </div>
-          </a>
+      <div class="kcfold-zone" id="kcfold-zone" hidden>
+        <div>
+          <h2 class="presta-cat-title">Sur devis<span class="funnel-tag audit">Visite gratuite</span></h2>
+          <p class="presta-devis-intro">Pas de prix en ligne pour ces prestations : choisissez la vôtre, nous établissons un devis gratuit (rappel ou visite).</p>
+          <div class="presta-grid" aria-label="Prestations sur devis">
+            <a href="/demande-de-devis/?presta=parties-communes-immeubles" class="option-card presta-card presta-devis" data-img="parties-communes">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5M9 11h.01M15 11h.01"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Parties communes d'immeubles</div>
+                <div class="oc-desc">Halls, escaliers, locaux — syndics &amp; bailleurs</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=commerces-retail" class="option-card presta-card presta-devis" data-img="commerces-retail">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9zM9 21v-6h6v6"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Commerces &amp; Retail</div>
+                <div class="oc-desc">Surfaces de vente, vitrines, horaires décalés</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=etablissements-sensibles" class="option-card presta-card presta-devis" data-img="etablissements-sensibles">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Établissements sensibles</div>
+                <div class="oc-desc">Santé, crèches, écoles — protocoles renforcés</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=remise-en-etat" class="option-card presta-card presta-devis" data-img="remise-en-etat">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Remise en état</div>
+                <div class="oc-desc">Logements/bureaux dégradés, avant relocation</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=decapage-cristallisation-sols" class="option-card presta-card presta-devis" data-img="decapage">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Décapage / cristallisation des sols</div>
+                <div class="oc-desc">Carrelage, marbre, pierre, PVC</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=shampouinage-moquettes" class="option-card presta-card presta-devis" data-img="shampouinage">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 7h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 7l2-3h14l2 3M7 12v3M12 12v3M17 12v3"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Shampouinage de moquettes</div>
+                <div class="oc-desc">Injection-extraction, tapis &amp; textiles</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="option-card presta-card presta-devis" data-img="haute-pression">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M7 21V10l5-3 5 3v11M10 7V4h4v3M5 14h.01M5 17h.01"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Nettoyage haute pression</div>
+                <div class="oc-desc">Façades, terrasses, parkings</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=pieces-blanches" class="option-card presta-card presta-devis" data-img="pieces-blanches">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4zM9 12h6M9 16h6"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Pièces blanches</div>
+                <div class="oc-desc">Salles blanches, environnements contrôlés</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="presta-cat-title">Interventions spécialisées<span class="funnel-tag audit">Partenaires certifiés</span></h2>
+          <p class="presta-devis-intro">Interventions réglementées ou sensibles, réalisées avec nos partenaires spécialisés certifiés et assurés. Choisissez la vôtre : nous établissons un devis gratuit. <!-- 👉 À VALIDER (propriétaire) : mention du partenariat de sous-traitance --></p>
+          <div class="presta-grid" aria-label="Interventions spécialisées sur devis (partenaires certifiés)">
+            <a href="/demande-de-devis/?presta=deratisation" class="option-card presta-card presta-devis" data-img="deratisation">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 6a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0v-3a5 5 0 0 1 5-5zM12 6V3M9 4l3 2 3-2M7 11H3M7 15H3M21 11h-4M21 15h-4"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Dératisation</div>
+                <div class="oc-desc">Rats, souris — diagnostic &amp; traitement</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=desinsectisation" class="option-card presta-card presta-devis" data-img="desinsectisation">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 7a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 7V4M9 3l3 2 3-2M6 12H3M6 16H3M21 12h-3M21 16h-3"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Désinsectisation</div>
+                <div class="oc-desc">Cafards, fourmis, guêpes…</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=punaises-de-lit" class="option-card presta-card presta-devis" data-img="punaises-de-lit">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 18v2M21 18v2M7 12h4"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Punaises de lit</div>
+                <div class="oc-desc">Détection &amp; traitement</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=syndrome-de-diogene" class="option-card presta-card presta-devis" data-img="diogene">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Syndrome de Diogène</div>
+                <div class="oc-desc">Accompagnement confidentiel</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=scenes-sensibles" class="option-card presta-card presta-devis" data-img="scenes-sensibles">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Scènes sensibles</div>
+                <div class="oc-desc">Après sinistre ou décès — discrétion</div>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1291,15 +1312,33 @@
      PHOTOS DES CARTES (Médiathèque WordPress) — '' = icône stylée
      ════════════════════════════════════════════════════════ */
   const KC_PRESTA_IMAGES = {
-    'airbnb':        'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png',
-    'fin-de-bail':   'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg',
-    'grand-menage':  'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp',
-    'vitrerie':      'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg',
-    'fin-chantier':  'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp',
-    'bureaux':       'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp',
-    'copropriete':   'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg',
-    'commerces':     'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg',
-    'remise-lourde': ''
+    /* ── Prestations estimables (déjà en place) ── */
+    'airbnb':        { url:'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png', alt:'Nettoyage et remise en état d’un logement Airbnb entre deux locations' },
+    'fin-de-bail':   { url:'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg', alt:'Ménage de fin de bail dans un logement vidé avant l’état des lieux' },
+    'grand-menage':  { url:'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp', alt:'Grand ménage en profondeur d’un logement meublé occupé' },
+    'vitrerie':      { url:'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg', alt:'Nettoyage de vitres intérieures en plain-pied' },
+    'fin-chantier':  { url:'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp', alt:'Nettoyage de fin de chantier après travaux de rénovation' },
+    'bureaux':       { url:'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp', alt:'Entretien régulier de bureaux professionnels' },
+    'copropriete':   { url:'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg', alt:'Nettoyage des parties communes d’une copropriété' },
+    'commerces':     { url:'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg', alt:'Nettoyage d’une surface de vente commerciale' },
+    'remise-lourde': { url:'', alt:'Remise en état lourde d’un local dégradé' },
+
+    /* ── Prestations « Sur devis » — url À REMPLIR quand la photo sera en ligne ── */
+    'parties-communes':         { url:'', alt:'Nettoyage des parties communes d’immeuble : hall et escaliers' },
+    'commerces-retail':         { url:'', alt:'Nettoyage de commerce et surface de vente' },
+    'etablissements-sensibles': { url:'', alt:'Nettoyage désinfectant d’un établissement sensible (santé, crèche, école)' },
+    'remise-en-etat':           { url:'', alt:'Remise en état d’un logement ou bureau dégradé avant relocation' },
+    'decapage':                 { url:'', alt:'Décapage et cristallisation de sols en marbre, pierre ou carrelage' },
+    'shampouinage':             { url:'', alt:'Shampouinage de moquette par injection-extraction' },
+    'haute-pression':           { url:'', alt:'Nettoyage haute pression de façade, terrasse ou parking' },
+    'pieces-blanches':          { url:'', alt:'Nettoyage de salle blanche et environnement contrôlé' },
+
+    /* ── Interventions spécialisées (partenaires) — url À REMPLIR ── */
+    'deratisation':     { url:'', alt:'Dératisation professionnelle contre rats et souris' },
+    'desinsectisation': { url:'', alt:'Désinsectisation professionnelle contre cafards, fourmis et guêpes' },
+    'punaises-de-lit':  { url:'', alt:'Traitement professionnel contre les punaises de lit' },
+    'diogene':          { url:'', alt:'Accompagnement confidentiel pour syndrome de Diogène' },
+    'scenes-sensibles': { url:'', alt:'Nettoyage de scènes sensibles après sinistre ou décès, en toute discrétion' },
   };
 
   /* ════════════════════════════════════════════════════════
@@ -1440,15 +1479,18 @@
      PHOTOS PRESTATIONS — injection + repli élégant
      ════════════════════════════════════════════════════════ */
   function injectPrestaImages(){
-    document.querySelectorAll('#step-presta .presta-card:not(.presta-devis)').forEach(function(card){
+    document.querySelectorAll('#step-presta .presta-card').forEach(function(card){
       const photo = card.querySelector('.oc-photo');
       if(!photo || photo.querySelector('img')) return;
-      const url = KC_PRESTA_IMAGES[card.dataset.presta];
+      const key = card.dataset.presta || card.dataset.img;
+      const entry = key ? KC_PRESTA_IMAGES[key] : null;
+      const url = entry && entry.url;
       if(!url){ photo.classList.add('no-photo'); return; }
+      photo.classList.remove('no-photo');
       const img = document.createElement('img');
       img.loading = 'lazy';
       img.decoding = 'async';
-      img.alt = '';
+      img.alt = entry.alt || '';
       img.addEventListener('error', function(){ photo.classList.add('no-photo'); img.remove(); });
       img.src = url;
       photo.insertBefore(img, photo.firstChild);
@@ -2180,6 +2222,18 @@
      ════════════════════════════════════════════════════════ */
   function init(){
     injectPrestaImages();
+    (function(){
+      var t = el('kcfold-toggle'); if(!t) return;
+      var zone = el('kcfold-zone'), ico = el('kcfold-ico'), lab = el('kcfold-label');
+      t.addEventListener('click', function(){
+        var open = t.getAttribute('aria-expanded') === 'true';
+        open = !open;
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        zone.hidden = !open;
+        ico.textContent = open ? '−' : '+';
+        lab.textContent = open ? 'Masquer les prestations sur devis' : 'Voir les prestations sur devis (nuisibles, Diogène, commerces…)';
+      });
+    })();
     document.querySelectorAll('#step-presta .presta-card:not(.presta-devis)').forEach(card => {
       card.setAttribute('role','radio');
       card.setAttribute('aria-checked','false');
