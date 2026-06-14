@@ -1,0 +1,727 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE « PRENDRE RENDEZ-VOUS » — KAYLI CLINN
+   URL : /rendez-vous/  ·  Hub de prise de contact
+   Bloc « HTML personnalisé » WordPress (contenu complet, sans
+   en-tête / pied de page du thème). <style> scoped « .kc-rdv ».
+   ────────────────────────────────────────────────────────
+   🎯 RÔLE : orienter chaque visiteur vers DEUX actions
+     ① « Être rappelé(e) »  → envoi du formulaire via kc-contact
+     ② « Réserver une visite gratuite » → LIEN vers /reservation/
+   ────────────────────────────────────────────────────────
+   👉 CÂBLAGE DU FORMULAIRE (extension kc-contact) — IDENTIQUE à
+   site/contact.html. Le plugin kc-contact injecte tout seul, sur
+   les pages du site, l'objet :  window.kcContact = { ajaxUrl, nonce }
+     • action AJAX ......... « kc_contact »
+     • nonce ............... champ « _wpnonce » (action « kc_contact_action »)
+     • champs attendus ..... subject, firstname, lastname, email,
+                             phone, company (option.), message,
+                             website (HONEYPOT — doit rester vide)
+     • subject (liste FERMÉE côté serveur) :
+         information · suivi · reclamation · partenariat
+         → ici on envoie TOUJOURS « information » (demande / devis) et
+           on glisse la prestation + les disponibilités DANS le message.
+     • réponse ............. JSON { success:bool, data:{ message,… } }
+   Si window.kcContact est absent (page hors prod ou extension non
+   activée), AUCUN envoi : message honnête + rappel du téléphone.
+   ────────────────────────────────────────────────────────
+   🔗 « Réserver une visite » construit :  /reservation/?visite=<slug>
+   (slug issu de ?presta= ou du <select> ; « Autre » → visite-audit)
+   ────────────────────────────────────────────────────────
+   ☎️ SEUL contact connu : 06 70 01 20 61 · tel:+33670012061
+   👉 À COMPLÉTER (données INCONNUES — ne pas inventer) :
+        email · adresse postale · horaires d'ouverture
+   📸 Aucune photo sur cette page (pas de variable --photo-*).
+   AUCUN PRIX sur cette page (elle ne chiffre rien).
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   SYSTÈME — repris du gabarit prestation.html / contact.html
+   ════════════════════════════════════════════════════════ */
+.kc-rdv{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-rdv *,.kc-rdv *::before,.kc-rdv *::after{box-sizing:border-box}
+.kc-rdv img{max-width:100%;display:block}
+.kc-rdv a{color:inherit;text-decoration:none}
+
+.kc-rdv .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-rdv .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+
+.kc-rdv section{padding:clamp(64px,9vw,120px) 6%}
+.kc-rdv-wrap{max-width:1180px;margin:0 auto}
+
+.kc-rdv .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
+.kc-rdv .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+.kc-rdv .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:20px}
+.kc-rdv .section-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+
+.kc-rdv svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-rdv .kc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-rdv .kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-rdv .kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-rdv .kc-btn-primary svg{transition:transform .3s}
+.kc-rdv .kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-rdv .kc-btn-secondary{background:var(--white);color:var(--navy);border:1px solid var(--line)}
+.kc-rdv .kc-btn-secondary:hover{border-color:var(--navy);background:var(--white);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.kc-rdv .kc-btn-secondary svg{transition:transform .3s}
+.kc-rdv .kc-btn-secondary:hover svg{transform:translateX(3px)}
+.kc-rdv .kc-btn[disabled]{opacity:.55;cursor:not-allowed;transform:none !important;box-shadow:none}
+
+/* ════════════════════════════════════════════════════════
+   BANNIÈRE MODE DÉMO (hors kayliclinn.fr) — injectée par JS
+   ════════════════════════════════════════════════════════ */
+.kc-rdv .kc-demo-banner{display:none;background:var(--amber);color:#3a2a09;text-align:center;font-size:13.5px;font-weight:600;line-height:1.5;padding:13px 20px;letter-spacing:0.01em}
+.kc-rdv.kc-is-demo .kc-demo-banner{display:block}
+
+/* ════════════════════════════════════════════════════════
+   HERO COURT
+   ════════════════════════════════════════════════════════ */
+.kc-rdv-hero{background:var(--navy);color:#fff;padding:clamp(96px,12vw,150px) 6% clamp(72px,9vw,110px);position:relative;overflow:hidden}
+.kc-rdv-hero::before{content:'';position:absolute;top:-150px;right:-120px;width:480px;height:480px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-rdv-hero-wrap{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.kc-rdv-hero .eyebrow{color:var(--teal)}
+.kc-rdv-hero .eyebrow::before{background:var(--teal)}
+.kc-rdv-hero h1{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2.2rem,4.6vw,3.5rem);line-height:1.06;letter-spacing:-0.02em;color:#fff;margin-bottom:20px;max-width:16ch}
+.kc-rdv-hero h1 em{font-style:italic;font-weight:500;color:var(--teal)}
+.kc-rdv-hero p{font-size:clamp(16px,1.4vw,18.5px);color:rgba(255,255,255,0.78);line-height:1.7;font-weight:300;max-width:620px}
+
+/* ════════════════════════════════════════════════════════
+   GRILLE 2 COLONNES : formulaire + réassurance
+   ════════════════════════════════════════════════════════ */
+.kc-rdv-main{background:var(--cream)}
+.kc-rdv-grid{display:grid;grid-template-columns:1.08fr 0.92fr;gap:clamp(36px,5vw,68px);align-items:start}
+
+/* — carte formulaire — */
+.kc-form-card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:clamp(28px,3.4vw,46px);box-shadow:var(--shadow)}
+.kc-form-card h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,2.6vw,2rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:8px}
+.kc-form-card h2 em{font-style:italic;color:var(--teal-deep)}
+.kc-form-intro{font-size:14.5px;color:var(--muted);line-height:1.7;margin-bottom:26px}
+
+/* bandeau « votre demande concerne » (visible si ?presta connu) */
+.kc-presta-badge{display:none;align-items:center;gap:13px;padding:14px 18px;background:var(--teal-soft);border:1px solid var(--line-soft);border-radius:12px;margin-bottom:24px}
+.kc-presta-badge.show{display:flex}
+.kc-presta-badge svg{flex-shrink:0;color:var(--teal-deep)}
+.kc-presta-badge .kc-presta-badge-text{font-size:13.5px;color:var(--muted);line-height:1.5}
+.kc-presta-badge .kc-presta-badge-text strong{display:block;font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-top:2px;letter-spacing:-0.01em}
+
+.kc-field{margin-bottom:18px}
+.kc-field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kc-field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:7px;letter-spacing:0.005em}
+.kc-field label .req{color:var(--teal-deep)}
+.kc-field input,.kc-field select,.kc-field textarea{width:100%;font-family:'Inter',sans-serif;font-size:14.5px;color:var(--ink);background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:13px 15px;transition:border-color .2s,box-shadow .2s,background .2s;-webkit-appearance:none;appearance:none}
+.kc-field textarea{resize:vertical;min-height:110px;line-height:1.6}
+.kc-field select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235B6573' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:42px;cursor:pointer}
+.kc-field input:focus,.kc-field select:focus,.kc-field textarea:focus{outline:none;border-color:var(--teal);background:var(--white);box-shadow:0 0 0 3px rgba(15,167,165,0.14)}
+.kc-field input::placeholder,.kc-field textarea::placeholder{color:var(--faint)}
+.kc-field-hint{font-size:12px;color:var(--faint);margin-top:6px;line-height:1.5}
+/* état erreur (validation client) */
+.kc-field.kc-invalid input,.kc-field.kc-invalid select,.kc-field.kc-invalid textarea{border-color:#d64545;background:#fff6f6}
+.kc-field-error{display:none;font-size:12px;color:#c23838;margin-top:6px;font-weight:500}
+.kc-field.kc-invalid .kc-field-error{display:block}
+
+/* consentement RGPD */
+.kc-consent{display:flex;align-items:flex-start;gap:12px;margin:22px 0 24px;padding:16px 18px;background:var(--teal-soft);border:1px solid var(--line-soft);border-radius:12px}
+.kc-consent input[type=checkbox]{flex-shrink:0;width:19px;height:19px;margin-top:1px;accent-color:var(--teal);cursor:pointer}
+.kc-consent label{font-size:12.5px;color:var(--muted);line-height:1.6;cursor:pointer}
+.kc-consent.kc-invalid{border-color:#d64545;background:#fff6f6}
+
+/* honeypot anti-spam (invisible) */
+.kc-rdv .kc-honeypot{position:absolute !important;left:-9999px !important;width:1px;height:1px;overflow:hidden}
+
+/* zone d'action : 2 boutons */
+.kc-form-actions{display:flex;flex-direction:column;gap:14px}
+.kc-form-actions .kc-btn{width:100%}
+.kc-action-or{display:flex;align-items:center;gap:14px;color:var(--faint);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin:4px 0}
+.kc-action-or::before,.kc-action-or::after{content:'';flex:1;height:1px;background:var(--line)}
+.kc-form-subnote{font-size:12px;color:var(--faint);line-height:1.6;text-align:center;margin-top:-4px}
+.kc-form-note{font-size:12px;color:var(--faint);line-height:1.6;text-align:center;margin-top:8px}
+
+/* messages d'état (succès / erreur) */
+.kc-form-status{display:none;align-items:flex-start;gap:13px;padding:16px 18px;border-radius:12px;font-size:14px;line-height:1.6;margin-bottom:22px}
+.kc-form-status.show{display:flex}
+.kc-form-status svg{flex-shrink:0;margin-top:2px}
+.kc-form-status.is-success{background:var(--teal-wash);border:1px solid rgba(15,167,165,0.4);color:var(--teal-deep)}
+.kc-form-status.is-error{background:#fff3f3;border:1px solid rgba(214,69,69,0.4);color:#a82f2f}
+.kc-form-status strong{font-weight:600}
+.kc-form-status a{color:inherit;font-weight:600;border-bottom:1px solid currentColor}
+
+/* ════════════════════════════════════════════════════════
+   COLONNE RÉASSURANCE
+   ════════════════════════════════════════════════════════ */
+.kc-reassure{display:flex;flex-direction:column;gap:18px}
+.kc-reassure-intro h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.4rem,2.4vw,1.85rem);color:var(--navy);line-height:1.16;letter-spacing:-0.015em;margin-bottom:12px}
+.kc-reassure-intro h2 em{font-style:italic;color:var(--teal-deep)}
+.kc-reassure-intro p{font-size:14.5px;color:var(--muted);line-height:1.7}
+
+.kc-reassure-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:24px 26px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-reassure-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-sm);border-color:transparent}
+.kc-reassure-card-top{display:flex;align-items:center;gap:15px;margin-bottom:10px}
+.kc-reassure-icon{width:46px;height:46px;border-radius:12px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;flex-shrink:0}
+.kc-reassure-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);letter-spacing:-0.01em;line-height:1.2}
+.kc-reassure-card p{font-size:13.5px;color:var(--muted);line-height:1.65}
+
+/* carte téléphone (accent) */
+.kc-phone-card{background:var(--navy);border-radius:16px;padding:26px 28px;color:#fff;position:relative;overflow:hidden}
+.kc-phone-card::before{content:'';position:absolute;top:-90px;right:-70px;width:280px;height:280px;background:radial-gradient(circle,rgba(15,167,165,0.18) 0%,transparent 70%);pointer-events:none}
+.kc-phone-card-top{display:flex;align-items:center;gap:14px;margin-bottom:12px;position:relative;z-index:1}
+.kc-phone-card-icon{width:46px;height:46px;border-radius:12px;background:rgba(15,167,165,0.16);color:var(--teal);display:grid;place-items:center;flex-shrink:0}
+.kc-phone-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:#fff;letter-spacing:-0.01em}
+.kc-phone-card p{font-size:13px;color:rgba(255,255,255,0.7);line-height:1.6;margin-bottom:16px;position:relative;z-index:1}
+.kc-phone-number{font-family:'Fraunces',serif;font-weight:560;font-size:25px;color:#fff;letter-spacing:-0.01em;display:inline-flex;align-items:center;gap:11px;position:relative;z-index:1;transition:color .2s}
+.kc-phone-number:hover{color:var(--teal)}
+.kc-phone-number svg{color:var(--teal)}
+.kc-phone-hours{margin-top:14px;font-size:12.5px;color:rgba(255,255,255,0.62);font-style:italic;line-height:1.55;position:relative;z-index:1}
+
+/* zones d'intervention (puces) */
+.kc-zones{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.kc-zone{padding:7px 13px;background:var(--teal-soft);border:1px solid var(--line-soft);border-radius:100px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--navy)}
+.kc-zone span{color:var(--faint);font-weight:500;margin-left:5px;font-size:11.5px}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-rdv .kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-rdv .kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:980px){
+  .kc-rdv-grid{grid-template-columns:1fr;gap:36px}
+  .kc-reassure{order:2}
+}
+@media(max-width:560px){
+  .kc-rdv section{padding:56px 6%}
+  .kc-field-row{grid-template-columns:1fr;gap:0}
+  .kc-form-card{border-radius:16px}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-rdv *,.kc-rdv *::before,.kc-rdv *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-rdv .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-rdv">
+
+  <!-- Bannière mode démo : visible uniquement hors kayliclinn.fr (classe ajoutée par JS) -->
+  <div class="kc-demo-banner" role="status">
+    Mode démonstration (hors kayliclinn.fr) : le formulaire n'envoie aucun message.
+    Pour nous joindre, appelez le 06 70 01 20 61.
+  </div>
+
+  <!-- 1 · HERO COURT -->
+  <section class="kc-rdv-hero">
+    <div class="kc-rdv-hero-wrap kc-fade">
+      <span class="eyebrow">Prendre rendez-vous · Île-de-France</span>
+      <h1>Prenons <em>rendez-vous</em></h1>
+      <p>Faites-vous rappeler par notre équipe, ou réservez directement en ligne votre visite gratuite et sans engagement. Nous étudions votre besoin et vous proposons la solution la plus adaptée.</p>
+    </div>
+  </section>
+
+  <!-- 2 · FORMULAIRE + RÉASSURANCE -->
+  <section class="kc-rdv-main">
+    <div class="kc-rdv-wrap">
+      <div class="kc-rdv-grid">
+
+        <!-- COLONNE 1 — FORMULAIRE (câblé sur kc-contact) -->
+        <div class="kc-form-card kc-fade">
+          <h2>Être <em>rappelé(e)</em></h2>
+          <p class="kc-form-intro">Laissez-nous vos coordonnées : nous vous rappelons sous 24&nbsp;h ouvrées. Les champs marqués d'un astérisque sont obligatoires.</p>
+
+          <!-- Bandeau prestation (affiché par JS si ?presta connu) -->
+          <div class="kc-presta-badge" id="kc-presta-badge" role="status" aria-live="polite">
+            <svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            <div class="kc-presta-badge-text">Votre demande concerne :<strong id="kc-presta-label"></strong></div>
+          </div>
+
+          <!-- zone d'état (succès / erreur / démo) — pilotée par JS -->
+          <div id="kc-rdv-status" class="kc-form-status" role="status" aria-live="polite"></div>
+
+          <form id="kc-rdv-form" novalidate>
+
+            <!-- HONEYPOT anti-spam : doit rester vide (champ « website » attendu par kc-contact) -->
+            <div class="kc-honeypot" aria-hidden="true">
+              <label for="kc-website">Ne pas remplir ce champ</label>
+              <input type="text" id="kc-website" name="website" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- subject : valeur FERMÉE imposée côté serveur — toujours « information » ici -->
+            <input type="hidden" name="subject" value="information">
+            <!-- prestation : pré-remplie depuis ?presta= ou le <select> ci-dessous (transmise dans le message) -->
+            <input type="hidden" name="prestation" id="kc-prestation" value="">
+
+            <div class="kc-field-row">
+              <div class="kc-field" data-field="firstname">
+                <label for="kc-firstname">Prénom <span class="req">*</span></label>
+                <input type="text" id="kc-firstname" name="firstname" autocomplete="given-name" maxlength="40" placeholder="Votre prénom" required>
+                <span class="kc-field-error">Indiquez votre prénom (2 à 40 caractères).</span>
+              </div>
+              <div class="kc-field" data-field="lastname">
+                <label for="kc-lastname">Nom <span class="req">*</span></label>
+                <input type="text" id="kc-lastname" name="lastname" autocomplete="family-name" maxlength="40" placeholder="Votre nom" required>
+                <span class="kc-field-error">Indiquez votre nom (2 à 40 caractères).</span>
+              </div>
+            </div>
+
+            <div class="kc-field-row">
+              <div class="kc-field" data-field="phone">
+                <label for="kc-phone">Téléphone <span class="req">*</span></label>
+                <input type="tel" id="kc-phone" name="phone" autocomplete="tel" maxlength="20" placeholder="06 12 34 56 78" required>
+                <span class="kc-field-error">Indiquez un numéro de téléphone français valide.</span>
+              </div>
+              <div class="kc-field" data-field="email">
+                <label for="kc-email">E-mail <span class="req">*</span></label>
+                <input type="email" id="kc-email" name="email" autocomplete="email" maxlength="100" placeholder="vous@exemple.fr" required>
+                <span class="kc-field-error">Indiquez une adresse e-mail valide.</span>
+              </div>
+            </div>
+
+            <!-- PRESTATION : <select> affiché UNIQUEMENT si ?presta absent ou inconnu (sinon masqué par JS) -->
+            <div class="kc-field" data-field="presta-select" id="kc-presta-select-wrap">
+              <label for="kc-presta-select">Quelle prestation ? <span class="req">*</span></label>
+              <select id="kc-presta-select" name="presta_select">
+                <option value="" disabled selected>Choisissez votre besoin…</option>
+                <option value="turnover-airbnb">Turnover Airbnb</option>
+                <option value="vitres-classiques">Vitres classiques</option>
+                <option value="nettoyage-apres-demenagement-etat-des-lieux">Nettoyage après déménagement / état des lieux</option>
+                <option value="nettoyage-fin-de-chantier">Nettoyage fin de chantier</option>
+                <option value="entretien-de-bureaux">Entretien de bureaux</option>
+                <option value="parties-communes-immeubles">Parties communes d'immeubles</option>
+                <option value="commerces-retail">Commerces &amp; Retail</option>
+                <option value="etablissements-sensibles">Établissements sensibles</option>
+                <option value="remise-en-etat">Remise en état logement / bureaux</option>
+                <option value="decapage-cristallisation-sols">Décapage / cristallisation des sols</option>
+                <option value="shampouinage-moquettes">Shampouinage de moquettes</option>
+                <option value="nettoyage-haute-pression">Nettoyage haute pression</option>
+                <option value="scenes-sensibles">Scènes sensibles</option>
+                <option value="deratisation">Dératisation</option>
+                <option value="desinsectisation">Désinsectisation</option>
+                <option value="punaises-de-lit">Punaises de lit</option>
+                <option value="pieces-blanches">Pièces blanches</option>
+                <option value="autre">Autre / je ne sais pas</option>
+              </select>
+              <span class="kc-field-error">Sélectionnez la prestation concernée.</span>
+            </div>
+
+            <div class="kc-field-row">
+              <div class="kc-field" data-field="location">
+                <label for="kc-location">Code postal ou ville <span class="req">*</span></label>
+                <input type="text" id="kc-location" name="location" autocomplete="postal-code" maxlength="60" placeholder="Ex. 75011 ou Paris 11e" required>
+                <span class="kc-field-error">Indiquez votre code postal ou votre ville.</span>
+              </div>
+              <div class="kc-field" data-field="availability">
+                <label for="kc-availability">Disponibilités <span style="font-weight:400;color:var(--faint)">(facultatif)</span></label>
+                <input type="text" id="kc-availability" name="availability" maxlength="120" placeholder="Ex. lun-ven matin">
+              </div>
+            </div>
+
+            <div class="kc-field" data-field="message">
+              <label for="kc-message">Votre message <span style="font-weight:400;color:var(--faint)">(facultatif)</span></label>
+              <textarea id="kc-message" name="message" maxlength="2000" placeholder="Décrivez votre besoin : surface ou typologie, état des lieux, échéance souhaitée…"></textarea>
+              <span class="kc-field-error">Votre message est trop long (2000 caractères maximum).</span>
+            </div>
+
+            <!-- Consentement RGPD -->
+            <div class="kc-consent" id="kc-consent-wrap" data-field="consent">
+              <input type="checkbox" id="kc-consent" name="consent" value="1" required>
+              <label for="kc-consent">J'accepte que mes informations soient utilisées par Kayli Clinn pour traiter ma demande et me recontacter. Elles ne sont jamais cédées à des tiers.
+                <!-- 👉 À COMPLÉTER : lien vers la page « Politique de confidentialité » une fois publiée. -->
+              </label>
+            </div>
+
+            <div class="kc-form-actions">
+              <!-- ① BOUTON PRIMAIRE : envoi via kc-contact -->
+              <button type="submit" class="kc-btn kc-btn-primary" id="kc-submit">
+                <span class="kc-submit-label">Être rappelé(e)</span>
+                <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </button>
+
+              <div class="kc-action-or">ou</div>
+
+              <!-- ② BOUTON SECONDAIRE : LIEN vers le calendrier de réservation (href construit par JS) -->
+              <a href="/reservation/?visite=visite-audit" class="kc-btn kc-btn-secondary" id="kc-visit-link">
+                Réserver une visite gratuite
+                <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+              </a>
+              <p class="kc-form-subnote">Choisissez votre créneau en ligne, sans paiement.</p>
+
+              <p class="kc-form-note">Besoin d'une réponse immédiate ? Appelez le <a href="tel:+33670012061" class="kc-link">06&nbsp;70&nbsp;01&nbsp;20&nbsp;61</a>.</p>
+            </div>
+
+          </form>
+        </div>
+
+        <!-- COLONNE 2 — RÉASSURANCE -->
+        <div class="kc-reassure kc-fade">
+
+          <div class="kc-reassure-intro">
+            <h2>Sans <em>engagement</em></h2>
+            <p>Chaque rendez-vous commence par une écoute de votre besoin. Vous gardez la main à chaque étape.</p>
+          </div>
+
+          <!-- Visite gratuite -->
+          <div class="kc-reassure-card">
+            <div class="kc-reassure-card-top">
+              <div class="kc-reassure-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+              <h3>Visite gratuite</h3>
+            </div>
+            <p>Pour les prestations sur mesure, nous nous déplaçons gratuitement pour évaluer le chantier. Le devis ferme vous est remis ensuite, sans aucun engagement.</p>
+          </div>
+
+          <!-- Île-de-France -->
+          <div class="kc-reassure-card">
+            <div class="kc-reassure-card-top">
+              <div class="kc-reassure-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+              <h3>Toute l'Île-de-France</h3>
+            </div>
+            <p>Nous intervenons sur les huit départements de la région :</p>
+            <div class="kc-zones">
+              <span class="kc-zone">75<span>Paris</span></span>
+              <span class="kc-zone">77<span>Seine-et-Marne</span></span>
+              <span class="kc-zone">78<span>Yvelines</span></span>
+              <span class="kc-zone">91<span>Essonne</span></span>
+              <span class="kc-zone">92<span>Hauts-de-Seine</span></span>
+              <span class="kc-zone">93<span>Seine-Saint-Denis</span></span>
+              <span class="kc-zone">94<span>Val-de-Marne</span></span>
+              <span class="kc-zone">95<span>Val-d'Oise</span></span>
+            </div>
+          </div>
+
+          <!-- Réponse rapide -->
+          <div class="kc-reassure-card">
+            <div class="kc-reassure-card-top">
+              <div class="kc-reassure-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <h3>Réponse rapide</h3>
+            </div>
+            <p>Nous vous rappelons sous 24&nbsp;h ouvrées après votre demande. Pour les situations urgentes, le téléphone reste le moyen le plus direct.</p>
+          </div>
+
+          <!-- Téléphone (SEUL contact connu) -->
+          <div class="kc-phone-card">
+            <div class="kc-phone-card-top">
+              <div class="kc-phone-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+              <h3>Nous appeler</h3>
+            </div>
+            <p>Le moyen le plus rapide pour un premier échange ou une demande urgente.</p>
+            <a href="tel:+33670012061" class="kc-phone-number">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              06 70 01 20 61
+            </a>
+            <!-- 👉 À COMPLÉTER : jours et horaires de joignabilité (INCONNUS — ne pas inventer). -->
+            <p class="kc-phone-hours">Horaires de joignabilité : à compléter.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ════════════════════════════════════════════════════════
+     TABLE SLUG → LIBELLÉ (catalogue des 18 prestations)
+     ════════════════════════════════════════════════════════ */
+  var PRESTA = {
+    'turnover-airbnb':'Turnover Airbnb',
+    'vitres-classiques':'Vitres classiques',
+    'nettoyage-apres-demenagement-etat-des-lieux':'Nettoyage après déménagement / état des lieux',
+    'nettoyage-fin-de-chantier':'Nettoyage fin de chantier',
+    'entretien-de-bureaux':'Entretien de bureaux',
+    'parties-communes-immeubles':"Parties communes d'immeubles",
+    'commerces-retail':'Commerces & Retail',
+    'etablissements-sensibles':'Établissements sensibles',
+    'remise-en-etat':'Remise en état logement / bureaux',
+    'decapage-cristallisation-sols':'Décapage / cristallisation des sols',
+    'shampouinage-moquettes':'Shampouinage de moquettes',
+    'nettoyage-haute-pression':'Nettoyage haute pression',
+    'scenes-sensibles':'Scènes sensibles',
+    'deratisation':'Dératisation',
+    'desinsectisation':'Désinsectisation',
+    'punaises-de-lit':'Punaises de lit',
+    'pieces-blanches':'Pièces blanches'
+  };
+  /* Slug par défaut pour la réservation quand la prestation est inconnue / « Autre ».
+     Aligné sur le type d'audit générique de la page /reservation/ (kc-booking). */
+  var DEFAULT_VISIT_SLUG = 'visite-audit';
+
+  var root   = document.querySelector('.kc-rdv');
+  var form   = document.getElementById('kc-rdv-form');
+  var status = document.getElementById('kc-rdv-status');
+  var submit = document.getElementById('kc-submit');
+  if(!root || !form) return;
+
+  var PHONE_HTML = '<a href="tel:+33670012061">06 70 01 20 61</a>';
+
+  /* Mode démo : tout domaine qui n'est pas le site de production */
+  var host    = (window.location.hostname || '').toLowerCase();
+  var IS_DEMO = !(host === 'kayliclinn.fr' || host === 'www.kayliclinn.fr');
+  if(IS_DEMO) root.classList.add('kc-is-demo');
+
+  /* ════════════════════════════════════════════════════════
+     LECTURE DE ?presta= → badge + champ caché + choix du <select>
+     ════════════════════════════════════════════════════════ */
+  var selectWrap = document.getElementById('kc-presta-select-wrap');
+  var selectEl   = document.getElementById('kc-presta-select');
+  var hiddenEl   = document.getElementById('kc-prestation');
+  var visitLink  = document.getElementById('kc-visit-link');
+  var badge      = document.getElementById('kc-presta-badge');
+  var badgeLabel = document.getElementById('kc-presta-label');
+
+  var params  = new URLSearchParams(window.location.search);
+  var qpresta = (params.get('presta') || '').trim().toLowerCase();
+  var hasKnownPresta = Object.prototype.hasOwnProperty.call(PRESTA, qpresta);
+
+  /* Construit le lien « Réserver une visite » : /reservation/?visite=<slug> */
+  function buildVisitLink(slug){
+    var s = (slug && slug !== 'autre' && PRESTA[slug]) ? slug : DEFAULT_VISIT_SLUG;
+    visitLink.setAttribute('href', '/reservation/?visite=' + encodeURIComponent(s));
+  }
+
+  if(hasKnownPresta){
+    /* ?presta connu → on masque le <select>, on affiche le badge,
+       on pré-remplit le champ caché et on cible le lien de réservation. */
+    selectWrap.style.display = 'none';
+    if(selectEl) selectEl.removeAttribute('required');
+    badgeLabel.textContent = PRESTA[qpresta];
+    badge.classList.add('show');
+    hiddenEl.value = PRESTA[qpresta];
+    buildVisitLink(qpresta);
+  } else {
+    /* ?presta absent ou inconnu → le <select> pilote tout.
+       Le champ caché et le lien se mettent à jour au changement. */
+    if(selectEl){
+      selectEl.setAttribute('required', 'required');
+      selectEl.addEventListener('change', function(){
+        var v = selectEl.value;
+        hiddenEl.value = (v && v !== 'autre' && PRESTA[v]) ? PRESTA[v] : (v === 'autre' ? 'Autre / je ne sais pas' : '');
+        buildVisitLink(v);
+        var w = selectEl.closest('[data-field]');
+        if(w) w.classList.remove('kc-invalid');
+      });
+    }
+    buildVisitLink(''); // repli : visite-audit tant que rien n'est choisi
+  }
+
+  /* ════════════════════════════════════════════════════════
+     RÉVÉLATION AU DÉFILEMENT (.kc-fade → .visible)
+     ════════════════════════════════════════════════════════ */
+  if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold:0.1, rootMargin:'0px 0px -50px 0px' });
+    root.querySelectorAll('.kc-fade').forEach(function(el){ io.observe(el); });
+  } else {
+    root.querySelectorAll('.kc-fade').forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  /* ════════════════════════════════════════════════════════
+     HELPERS D'ÉTAT
+     ════════════════════════════════════════════════════════ */
+  function showStatus(type, html){
+    status.className = 'kc-form-status show ' + (type === 'success' ? 'is-success' : 'is-error');
+    var icon = type === 'success'
+      ? '<svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+      : '<svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+    status.innerHTML = icon + '<div>' + html + '</div>';
+    status.scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+  function clearStatus(){ status.className = 'kc-form-status'; status.innerHTML = ''; }
+
+  function setFieldError(name, on){
+    var wrap = name === 'consent'
+      ? document.getElementById('kc-consent-wrap')
+      : form.querySelector('[data-field="' + name + '"]');
+    if(wrap) wrap.classList.toggle('kc-invalid', !!on);
+  }
+  function val(name){ var f = form.elements[name]; return f ? String(f.value).trim() : ''; }
+
+  /* ════════════════════════════════════════════════════════
+     VALIDATION CLIENT (champs requis pour « Être rappelé »)
+     Le bouton « Réserver une visite » est un lien : pas de validation.
+     ════════════════════════════════════════════════════════ */
+  var NAME_RE  = /^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ\s\-'.]{1,39}$/;
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function validate(){
+    var ok = true;
+    function fail(name){ setFieldError(name, true); ok = false; }
+    ['firstname','lastname','phone','email','location','message','presta-select','consent'].forEach(function(n){ setFieldError(n, false); });
+
+    if(!NAME_RE.test(val('firstname'))) fail('firstname');
+    if(!NAME_RE.test(val('lastname')))  fail('lastname');
+
+    var phone = val('phone').replace(/[\s.\-]/g, '');
+    if(!/^(?:\+33|0033|0)[1-9]\d{8}$/.test(phone)) fail('phone');
+
+    if(!EMAIL_RE.test(val('email'))) fail('email');
+
+    if(val('location').length < 2) fail('location');
+
+    /* Prestation obligatoire seulement quand le <select> est affiché */
+    if(!hasKnownPresta){
+      if(!selectEl || !selectEl.value || selectEl.value === '') fail('presta-select');
+    }
+
+    if(val('message').length > 2000) fail('message');
+
+    if(!form.elements['consent'].checked) fail('consent');
+
+    return ok;
+  }
+
+  /* Compose le message envoyé à kc-contact : besoin client + contexte
+     (prestation, code postal/ville, disponibilités) pour que la demande
+     soit exploitable même si subject reste « information ». */
+  function composeMessage(){
+    var lines = [];
+    lines.push('Demande de rappel (page Prendre rendez-vous).');
+    var presta = hiddenEl.value || (hasKnownPresta ? PRESTA[qpresta] : '');
+    if(presta) lines.push('Prestation : ' + presta);
+    if(val('location'))     lines.push('Secteur : ' + val('location'));
+    if(val('availability')) lines.push('Disponibilités : ' + val('availability'));
+    var m = val('message');
+    if(m) lines.push('', m);
+    return lines.join('\n');
+  }
+
+  /* ════════════════════════════════════════════════════════
+     SOUMISSION → admin-ajax kc_contact (IDENTIQUE à contact.html)
+     ════════════════════════════════════════════════════════ */
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    clearStatus();
+
+    /* Honeypot : si rempli, on simule un succès sans rien envoyer (anti-bot) */
+    var hp = form.elements['website'];
+    if(hp && hp.value !== ''){
+      form.reset();
+      showStatus('success', '<strong>Demande envoyée.</strong> Merci, nous vous rappelons rapidement.');
+      return;
+    }
+
+    if(!validate()){
+      showStatus('error', 'Certains champs doivent être corrigés. Vérifiez les zones signalées en rouge.');
+      var firstBad = form.querySelector('.kc-invalid input, .kc-invalid select, .kc-invalid textarea');
+      if(firstBad) firstBad.focus();
+      return;
+    }
+
+    /* Mode démo : aucun envoi réseau, message honnête (jamais de faux succès) */
+    if(IS_DEMO){
+      showStatus('error', '<strong>Mode démonstration.</strong> Le formulaire n\'envoie pas de demande en dehors du site officiel kayliclinn.fr. '
+        + 'Pour être rappelé(e) dès maintenant, appelez le ' + PHONE_HTML + '.');
+      return;
+    }
+
+    /* Config kc-contact absente (extension non activée) : message honnête, pas de faux succès */
+    var cfg = window.kcContact;
+    if(!cfg || !cfg.ajaxUrl){
+      showStatus('error', 'L\'envoi du formulaire n\'est pas encore activé sur cette page (module kc-contact). '
+        + 'Réessayez une fois le module en place, ou appelez-nous au ' + PHONE_HTML + '.');
+      return;
+    }
+
+    /* Envoi réel via admin-ajax (action kc_contact) */
+    var labelEl = submit.querySelector('.kc-submit-label');
+    var prevLabel = labelEl ? labelEl.textContent : '';
+    submit.disabled = true;
+    if(labelEl) labelEl.textContent = 'Envoi en cours…';
+
+    var body = new URLSearchParams();
+    body.append('action', 'kc_contact');
+    body.append('_wpnonce', cfg.nonce || '');
+    body.append('subject',   'information');       // valeur fermée acceptée par kc-contact
+    body.append('firstname', val('firstname'));
+    body.append('lastname',  val('lastname'));
+    body.append('email',     val('email'));
+    body.append('phone',     val('phone'));
+    body.append('company',   '');                  // champ optionnel inutilisé ici
+    body.append('message',   composeMessage());    // besoin + prestation + secteur + dispos
+    body.append('website',   '');                  // honeypot vide
+
+    fetch(cfg.ajaxUrl, {
+      method:'POST',
+      credentials:'same-origin',
+      headers:{ 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8' },
+      body: body
+    })
+    .then(function(res){ return res.json().catch(function(){ return {}; }).then(function(data){ return { ok:res.ok, status:res.status, data:data }; }); })
+    .then(function(r){
+      if(!r.ok || !r.data.success){
+        var m = (r.data && r.data.data && r.data.data.message) ? r.data.data.message : ('Erreur ' + r.status);
+        throw new Error(m);
+      }
+      form.reset();
+      /* Le <select> redevient vide après reset : on neutralise le lien de visite par défaut */
+      if(!hasKnownPresta){ hiddenEl.value = ''; buildVisitLink(''); }
+      showStatus('success', '<strong>Votre demande est envoyée, nous vous rappelons sous 24&nbsp;h ouvrées.</strong> '
+        + 'Pour un échange immédiat, appelez le ' + PHONE_HTML + '.');
+    })
+    .catch(function(err){
+      showStatus('error', 'L\'envoi a échoué (' + (err.message || 'erreur réseau') + '). Réessayez dans un instant, ou appelez-nous au ' + PHONE_HTML + '.');
+    })
+    .finally(function(){
+      submit.disabled = false;
+      if(labelEl) labelEl.textContent = prevLabel;
+    });
+  });
+
+  /* ── Nettoyage visuel de l'erreur dès que l'utilisateur corrige ── */
+  form.addEventListener('input', function(ev){
+    var fieldWrap = ev.target.closest('[data-field]');
+    if(fieldWrap && fieldWrap.classList.contains('kc-invalid')) fieldWrap.classList.remove('kc-invalid');
+  });
+  var consentBox = form.elements['consent'];
+  if(consentBox){ consentBox.addEventListener('change', function(){ if(consentBox.checked) setFieldError('consent', false); }); }
+
+})();
+</script>
+
+<!-- Données structurées SEO — page Prendre rendez-vous (uniquement champs connus, SANS offers) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Prendre rendez-vous — Kayli Clinn",
+  "url": "https://kayliclinn.fr/rendez-vous/",
+  "mainEntity": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061",
+    "areaServed": { "@type": "AdministrativeArea", "name": "Île-de-France" },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+33670012061",
+      "contactType": "customer service",
+      "areaServed": "FR",
+      "availableLanguage": "French"
+    }
+  }
+}
+</script>
