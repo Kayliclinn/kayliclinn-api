@@ -41,11 +41,20 @@ publier.
 | `nettoyage-haute-pression.html` | `/nettoyage-haute-pression/` | sur devis |
 | `pieces-blanches.html` | `/pieces-blanches/` | sur devis |
 
-## Prise de rendez-vous (sur toutes les prestations)
+## Prise de rendez-vous
 
-- Chaque page prestation a un bouton **« Prendre rendez-vous »** → `/rendez-vous/?presta=<slug>`
-  (primaire sur les pages « sur devis » ; secondaire sur les forfaits, où
-  « Estimation/réservation en ligne » reste primaire). L'accueil a aussi ce bouton.
+Deux entrées distinctes selon que la prestation a un prix en ligne ou non :
+
+- **Prestations estimables** (forfaits : Turnover Airbnb, Vitres classiques, Fin de
+  bail/déménagement) → bouton **« Estimer & réserver en ligne »** → `/devis/`. L'estimation
+  **calcule le montant et recueille les infos**, puis enchaîne sur la réservation du créneau
+  (ou une visite). On ne passe donc jamais à côté du montant. *Pas* de bouton « Prendre
+  rendez-vous » sur ces pages (il court-circuiterait l'estimation).
+- **Prestations sur devis** (tout le reste) → bouton **« Prendre rendez-vous »** →
+  `/rendez-vous/?presta=<slug>`.
+- **`/rendez-vous/` est directement accessible** (jamais conditionné à l'estimation). Pensez à
+  pointer le bouton du menu (haut-droite) ou une entrée de menu vers `/rendez-vous/`.
+- Hero de l'accueil : **2 boutons** (« Estimation en ligne » + « Voir nos prestations »).
 - **`/rendez-vous/`** propose 2 actions :
   1. **« Être rappelé(e) »** → envoi via **kc-contact** (`window.kcContact`).
   2. **« Réserver une visite gratuite »** → `/reservation/?visite=<slug>` (calendrier
