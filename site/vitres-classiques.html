@@ -1,29 +1,30 @@
 <!-- ════════════════════════════════════════════════════════
-   PAGE PRESTATION : NETTOYAGE FIN DE CHANTIER — KAYLI CLINN
+   PAGE PRESTATION : NETTOYAGE DE VITRES RÉSIDENTIEL — KAYLI CLINN
    Refonte « studio premium » · WordPress-ready
-   URL : /nettoyage-fin-de-chantier-paris/
+   URL : /vitres-classiques/   (menu : « Vitres classiques »)
    ────────────────────────────────────────────────────────
    📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous.
    Remplacez UNIQUEMENT l'URL entre url('…').
    │ --photo-hero ..... grand fond du haut de page
-   │   ALT : « Logement rénové réceptionné nickel par Kayli Clinn —
-   │   pièce livrée propre après travaux, lumineuse »
+   │   ALT : « Baie vitrée d'appartement nettoyée par Kayli Clinn —
+   │   vitres sans traces, intérieur baigné de lumière »
    │ --photo-banner ... bandeau immersif au milieu de page
-   │   ALT : « Chantier de rénovation terminé, sols et surfaces
-   │   nettoyés avant la livraison du logement en Île-de-France »
-   │ --photo-split-1 .. section « réception de chantier » (gauche)
-   │   ALT : « Contrôle qualité Kayli Clinn après travaux —
-   │   dépoussiérage et traces de plâtre éliminées »
-   │ --photo-split-2 .. section « co-activité artisans »
-   │   ALT : « Logement remis propre prêt à être livré au client
-   │   après la fin du chantier par Kayli Clinn »
+   │   ALT : « Salon lumineux aux fenêtres impeccables après le
+   │   passage de Kayli Clinn en Île-de-France »
+   │ --photo-split-1 .. section « lumière retrouvée » (gauche)
+   │   ALT : « Agent Kayli Clinn nettoyant une fenêtre côté
+   │   intérieur à la raclette professionnelle »
+   │ --photo-split-2 .. section « plain-pied / sécurité »
+   │   ALT : « Vitrage intérieur d'appartement parfaitement
+   │   transparent après nettoyage Kayli Clinn »
    │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
-   🔗 Liens internes : /devis/ · /nettoyage-apres-demenagement-etat-des-lieux/
-       /entretien-professionnel/ · /turnover-airbnb/
-   ☎️ Téléphone : +33670012061
-   ⚠️ RÈGLE TARIFAIRE : JAMAIS de prix ferme, JAMAIS de réservation en ligne.
-      Estimation INDICATIVE HT ±15 %, confirmée après audit gratuit ou photos.
-      Barème indicatif (grille v2) : 4,50 / 7 / 11 €/m² HT · minimum 300 € HT.
+   🔗 Liens internes : /devis/ · /turnover-airbnb/
+       /nettoyage-apres-demenagement-etat-des-lieux/ · /entretien-professionnel/
+   ☎️ Téléphone : +33670012061 · Prix : grille officielle v2 (12/06/2026).
+   ⚠️ Forfaits FERMES TTC réservables en ligne (plain-pied / vitres intérieures) :
+       Studio/T1 70 € · T2 70 € · T3 95 € · T4 95 € · T5 130 €.
+       BASCULE SUR DEVIS (jamais de prix ferme en ligne) :
+       vitres en hauteur, vitrine, véranda/verrière, ou besoin pro/récurrent.
    ════════════════════════════════════════════════════════ -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,10 +36,10 @@
    📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
    ════════════════════════════════════════════════════════ */
 .kc-page{
-  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_airy_modern_minimalist_bedroom_kitchen_batch_1.png');
-  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_wide_well_lit_interior_corridor_scene_in_a_modern_batch_5.png');
-  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png');
-  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_clean_modern_apartment_interior_photographed_in_batch_2.png');
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-hero.png');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-banner.png');
+  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-split-1.png');
+  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-split-2.png');
 }
 
 /* ════════════════════════════════════════════════════════
@@ -190,29 +191,39 @@
 .kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
 
 /* ════════════════════════════════════════════════════════
-   ENCART « PAS DE PRIX FERME » — bloc navy (ex-lingec)
+   POUR ALLER PLUS LOIN — bascules devis + options
    ════════════════════════════════════════════════════════ */
-.kc-lingec-panel{background:var(--navy);border-radius:28px;padding:clamp(40px,5.5vw,72px);color:#fff;position:relative;overflow:hidden;scroll-margin-top:96px}
-.kc-lingec-panel::before{content:'';position:absolute;top:-130px;left:-130px;width:460px;height:460px;background:radial-gradient(circle,rgba(15,167,165,0.15) 0%,transparent 70%);pointer-events:none}
-.kc-lingec-head{position:relative;z-index:1;max-width:660px;margin-bottom:36px}
-.kc-lingec-head .eyebrow{color:var(--teal)}
-.kc-lingec-head .eyebrow::before{background:var(--teal)}
-.kc-lingec-head h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.12;letter-spacing:-0.015em;color:#fff;margin-bottom:14px}
-.kc-lingec-head h2 em{color:var(--teal)}
-.kc-lingec-head p{font-size:15px;color:rgba(255,255,255,0.72);line-height:1.75}
-.kc-lingec-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:1}
-.kc-lingec-card{background:rgba(255,255,255,0.045);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:30px 30px 26px;transition:all .3s}
-.kc-lingec-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(15,167,165,0.45);transform:translateY(-3px)}
-.kc-lingec-card-top{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
-.kc-lingec-card-icon{width:46px;height:46px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:12px;display:grid;place-items:center;flex-shrink:0}
-.kc-lingec-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:#fff;letter-spacing:-0.01em;flex:1;min-width:140px}
-.kc-lingec-card>p{font-size:13.5px;color:rgba(255,255,255,0.66);line-height:1.7;margin-bottom:16px}
-.kc-lingec-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0;padding:0}
-.kc-lingec-list li{display:flex;gap:11px;font-size:13.5px;color:rgba(255,255,255,0.82);line-height:1.55}
-.kc-lingec-list svg{flex-shrink:0;margin-top:3px;color:var(--teal)}
-.kc-lingec-foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px 28px;flex-wrap:wrap;margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.10)}
-.kc-lingec-foot p{font-size:13.5px;color:rgba(255,255,255,0.68);line-height:1.7;max-width:560px}
-.kc-lingec-foot p strong{color:#fff;font-weight:600}
+.kc-further-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,4vw,56px);align-items:stretch}
+.kc-further-panel{background:var(--navy);border-radius:24px;padding:clamp(34px,4vw,52px);color:#fff;position:relative;overflow:hidden}
+.kc-further-panel::before{content:'';position:absolute;bottom:-130px;right:-130px;width:420px;height:420px;background:radial-gradient(circle,rgba(15,167,165,0.15) 0%,transparent 70%);pointer-events:none}
+.kc-further-panel .eyebrow{color:var(--teal)}
+.kc-further-panel .eyebrow::before{background:var(--teal)}
+.kc-further-panel h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.14;letter-spacing:-0.015em;color:#fff;margin-bottom:14px;position:relative;z-index:1}
+.kc-further-panel h3 em{color:var(--teal)}
+.kc-further-panel>p{font-size:14.5px;color:rgba(255,255,255,0.72);line-height:1.75;margin-bottom:26px;position:relative;z-index:1}
+.kc-further-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin:0;padding:0;position:relative;z-index:1}
+.kc-further-list li{display:flex;gap:14px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,0.84);line-height:1.6}
+.kc-further-list svg{flex-shrink:0;margin-top:2px;width:24px;height:24px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:8px;padding:4px}
+.kc-further-list strong{color:#fff;font-weight:600;display:block;margin-bottom:1px}
+.kc-further-note{position:relative;z-index:1;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.10);font-size:13px;color:rgba(255,255,255,0.66);line-height:1.7}
+.kc-further-note strong{color:#fff;font-weight:600}
+.kc-further-opts{display:flex;flex-direction:column;gap:16px}
+.kc-further-opts-head{margin-bottom:4px}
+.kc-further-opts-head .eyebrow{margin-bottom:14px}
+.kc-further-opts-head h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.14;letter-spacing:-0.015em;color:var(--navy);margin-bottom:10px}
+.kc-further-opts-head h3 em{font-style:italic;color:var(--teal-deep)}
+.kc-further-opts-head p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   OPTIONS
+   ════════════════════════════════════════════════════════ */
+.kc-option-row{display:flex;align-items:center;gap:20px;padding:24px 28px;background:var(--white);border:1px solid var(--line);border-radius:13px;transition:all .3s}
+.kc-option-row:hover{border-color:var(--teal);transform:translateX(3px);box-shadow:var(--shadow-sm)}
+.kc-option-icon{width:46px;height:46px;background:var(--teal-wash);color:var(--teal-deep);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+.kc-option-info{flex:1;min-width:0}
+.kc-option-name{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:3px;letter-spacing:-0.01em}
+.kc-option-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
+.kc-option-price{font-family:'Inter',sans-serif;color:var(--teal-deep);font-weight:600;font-size:14px;white-space:nowrap}
 
 /* ════════════════════════════════════════════════════════
    PROCESS
@@ -228,7 +239,7 @@
 .kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
 
 /* ════════════════════════════════════════════════════════
-   PRICING — 3 niveaux présentés comme REPÈRES indicatifs HT
+   PRICING
    ════════════════════════════════════════════════════════ */
 .kc-pricing{background:var(--cream-2)}
 .kc-pricing-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:clamp(48px,7vw,92px);align-items:center}
@@ -241,14 +252,8 @@
 .kc-price-row:last-of-type{border-bottom:none;padding-bottom:0}
 .kc-price-label{font-size:14.5px;color:var(--ink);font-weight:500}
 .kc-price-label small{display:block;font-size:11.5px;color:var(--faint);font-weight:400;margin-top:3px}
-.kc-price-value{font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:18px;white-space:nowrap;text-align:right}
+.kc-price-value{font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:18px;white-space:nowrap}
 .kc-price-value em{font-style:italic;color:var(--teal-deep)}
-.kc-price-value small{display:block;font-family:'Inter',sans-serif;font-style:normal;font-size:10.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em;margin-top:2px}
-/* — encadré d'avertissement « repères » au-dessus du tableau — */
-.kc-price-warn{display:flex;gap:14px;align-items:flex-start;background:#FFF7EC;border:1px solid rgba(216,155,60,0.35);border-radius:12px;padding:16px 18px;margin-bottom:26px}
-.kc-price-warn svg{flex-shrink:0;color:var(--amber);margin-top:2px}
-.kc-price-warn p{font-size:12.5px;color:#7a5a1c;line-height:1.6;margin:0;font-weight:500}
-.kc-price-warn strong{color:#5e440f;font-weight:700}
 .kc-price-disclaimer{font-size:12px;color:var(--faint);font-style:italic;margin-top:24px;padding-top:22px;border-top:1px solid var(--line-soft);line-height:1.65}
 
 /* ════════════════════════════════════════════════════════
@@ -333,14 +338,13 @@
    ════════════════════════════════════════════════════════ */
 @media(max-width:1100px){
   .kc-target-grid,.kc-included-grid{grid-template-columns:repeat(2,1fr)}
-  .kc-promise-grid,.kc-pricing-grid{grid-template-columns:1fr}
+  .kc-promise-grid,.kc-pricing-grid,.kc-further-grid{grid-template-columns:1fr}
   .kc-banner{background-attachment:scroll}
 }
 @media(max-width:900px){
   .kc-hero{min-height:90vh}
   .kc-split-grid{grid-template-columns:1fr}
   .kc-split.reverse .kc-split-grid{direction:ltr}
-  .kc-lingec-grid{grid-template-columns:1fr}
   .kc-process-grid{grid-template-columns:repeat(3,1fr);gap:24px}
   .kc-process-grid::before{display:none}
   .kc-testi-grid,.kc-why-grid{grid-template-columns:1fr}
@@ -349,7 +353,7 @@
 }
 @media(max-width:560px){
   .kc-page section{padding:64px 6%}
-  .kc-lingec-panel{padding:44px 26px;border-radius:20px}
+  .kc-further-panel{padding:34px 26px;border-radius:20px}
   .kc-hero{min-height:auto;padding:130px 6% 64px}
   .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
   .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
@@ -371,15 +375,15 @@
 <section class="kc-hero">
   <div class="kc-hero-wrap">
     <div class="kc-hero-content kc-fade">
-      <span class="kc-hero-eyebrow">Nettoyage fin de chantier · Île-de-France</span>
-      <h1 class="kc-hero-title">Une Réception De Chantier <em>Nickel</em></h1>
-      <p class="kc-hero-sub">Après les travaux, nous remettons votre bien dans un état impeccable, prêt à être livré ou habité. Dépoussiérage complet, traces de peinture, plâtre et colle effacées, vitres et sanitaires comme neufs — votre chantier réceptionné dans les délais.</p>
+      <span class="kc-hero-eyebrow">Nettoyage de vitres · Île-de-France</span>
+      <h1 class="kc-hero-title">Des Vitres <em>Impeccables</em>, Sans Une Trace</h1>
+      <p class="kc-hero-sub">Le nettoyage de vitres résidentiel pour votre appartement ou votre maison de plain-pied : vitrages intérieurs, encadrements, rebords et miroirs traités à la raclette professionnelle. Vous retrouvez la lumière, sans reflet ni traînée.</p>
       <div class="kc-hero-ctas">
         <a href="/devis/" class="kc-btn kc-btn-primary">
-          Demander Mon Audit Gratuit
+          Réserver Mon Forfait
           <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#reperes" class="kc-btn kc-btn-secondary">Voir Les Repères De Prix</a>
+        <a href="#tarifs" class="kc-btn kc-btn-secondary">Voir Les Tarifs</a>
       </div>
     </div>
   </div>
@@ -389,10 +393,10 @@
 <div class="kc-trust">
   <div class="kc-trust-wrap">
     <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro AXA · 5M€</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Audit gratuit avant devis</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Intervention dans vos délais</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span>Matériel & produits pro</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Reporting photo de réception</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 2 2 7v6c0 5 4 8 10 9 6-1 10-4 10-9V7z"/><path d="m9 12 2 2 4-4"/></svg><span>Finition sans traces garantie</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span>Vitres, encadrements & rebords</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Forfaits fixes dès 70 € TTC</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Réservation en ligne en 2 min</span></div>
   </div>
 </div>
 
@@ -401,29 +405,29 @@
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
       <span class="eyebrow">Pour qui</span>
-      <h2 class="section-title">Le partenaire propreté de votre <em>fin de chantier</em></h2>
-      <p class="section-desc">Une prestation pour tous ceux qui doivent livrer ou récupérer un bien parfaitement propre une fois les travaux terminés, sans poussière ni trace de chantier.</p>
+      <h2 class="section-title">Pour celles et ceux qui veulent <em>retrouver la lumière</em></h2>
+      <p class="section-desc">Une prestation simple et au prix ferme, pensée pour les vitres accessibles de plain-pied — appartements, maisons et locations en Île-de-France.</p>
     </div>
     <div class="kc-target-grid">
       <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l5-3 5 3M14 20V4l6 3v13M7 9v0M7 13v0M7 17v0"/></svg></div>
-        <h3>Artisans & entreprises du bâtiment</h3>
-        <p>Maçons, plaquistes, peintres, électriciens : nous prenons le relais du nettoyage final pour que vous livriez un chantier impeccable, sans y consacrer vos équipes.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
         <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
-        <h3>Particuliers en rénovation</h3>
-        <p>Après vos travaux, vous récupérez un logement prêt à habiter, débarrassé de la poussière fine et des résidus que laisse tout chantier.</p>
+        <h3>Particuliers & familles</h3>
+        <p>Appartement ou maison de plain-pied. Des vitres nettes pour faire entrer la lumière, sans y passer votre week-end.</p>
       </div>
       <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v0M9 13v0M9 17v0"/></svg></div>
-        <h3>Promoteurs & maîtres d'ouvrage</h3>
-        <p>Livraison de logements neufs ou réhabilités : remise en état avant remise des clés, pour une réception sans réserve sur la propreté.</p>
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <h3>Avant une vente ou visite</h3>
+        <p>Des vitrages éclatants valorisent un bien et soignent la première impression lors des visites et des photos d'annonce.</p>
       </div>
       <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8h5v13M13 21V3h5v18M8.5 11v0M8.5 15v0M15.5 7v0M15.5 11v0M15.5 15v0"/></svg></div>
-        <h3>Bureaux, commerces & locaux pro</h3>
-        <p>Aménagement ou rénovation de surfaces tertiaires : nettoyage de réception pour ouvrir vos espaces propres et opérationnels.</p>
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+        <h3>Locations & propriétaires</h3>
+        <p>Remise en état d'un logement entre deux occupants : vitres, miroirs et encadrements remis à neuf, sans organisation lourde.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2v6M5 8l2 2M19 8l-2 2M3 14h18M5 14l1 7h12l1-7"/></svg></div>
+        <h3>En complément d'un grand ménage</h3>
+        <p>À combiner avec un nettoyage approfondi pour un logement vraiment impeccable, du sol jusqu'aux fenêtres.</p>
       </div>
     </div>
   </div>
@@ -436,26 +440,26 @@
       <div class="kc-promise-grid">
         <div>
           <span class="eyebrow">Notre promesse</span>
-          <h2>Une livraison <em>dans les délais</em>, un bien prêt à recevoir</h2>
-          <p class="kc-promise-text">Un chantier n'est vraiment terminé qu'une fois le bien propre. Poussière de ponçage incrustée, <strong>projections de peinture et de plâtre</strong>, traces de colle, gravats fins, étiquettes sur les vitres : ce sont les dernières heures, souvent les plus ingrates, qui décident de l'impression à la réception.</p>
-          <p class="kc-promise-text">Nous intervenons une fois les artisans partis, avec du <strong>matériel et des produits professionnels</strong>, en nous calant sur votre date de livraison. Au-delà de la fin de chantier, nous assurons aussi le <a href="/nettoyage-apres-demenagement-etat-des-lieux/" class="kc-link">nettoyage de fin de bail</a> et l'<a href="/entretien-professionnel/" class="kc-link">entretien régulier</a> de vos locaux.</p>
+          <h2>Le « <em>sans trace</em> » n'est pas un détail</h2>
+          <p class="kc-promise-text">Une vitre mal nettoyée se voit au premier rayon de soleil : auréoles, traînées, peluches dans les angles. Nous travaillons à la <strong>raclette professionnelle</strong>, avec une finition à la microfibre et un produit adapté, pour un vitrage <strong>net sur toute la surface</strong>, jusqu'aux bords.</p>
+          <p class="kc-promise-text">Nos forfaits couvrent les <strong>vitres accessibles de plain-pied</strong> (côté intérieur), encadrements et rebords compris. Pour un logement complet, pensez à notre <a href="/nettoyage-apres-demenagement-etat-des-lieux/" class="kc-link">nettoyage de fin de bail</a> ou à un <a href="/entretien-professionnel/" class="kc-link">entretien régulier</a> de vos surfaces vitrées.</p>
         </div>
         <div class="kc-promise-points">
           <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Calé sur votre date de livraison</strong><span>On intervient après les artisans, dans la fenêtre qui précède la remise des clés</span></div>
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Finition sans traces</strong><span>Raclette pro + microfibre : vitres nettes jusque dans les angles, même à contre-jour</span></div>
           </div>
           <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Poussière fine maîtrisée</strong><span>Aspiration, dépoussiérage des recoins, hauteurs et gaines : la poussière de chantier ne ressort pas</span></div>
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Encadrements & rebords inclus</strong><span>Montants, traverses et appuis de fenêtre nettoyés, pas seulement le verre</span></div>
           </div>
           <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Traces de travaux effacées</strong><span>Peinture, plâtre, colle, silicone, étiquettes : les résidus sont retirés sans abîmer les supports</span></div>
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Prix ferme, annoncé d'avance</strong><span>Un forfait fixe selon la taille du logement — pas de surprise à la fin</span></div>
           </div>
           <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Reporting de réception</strong><span>Photos avant / après et état des lieux de propreté transmis à la livraison</span></div>
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Sécurité & assurance</strong><span>Intervention de plain-pied, RC Pro, matériel adapté — la hauteur passe par un devis dédié</span></div>
           </div>
         </div>
       </div>
@@ -466,9 +470,9 @@
 <!-- BANDEAU -->
 <section class="kc-banner">
   <div class="kc-banner-content kc-fade">
-    <span class="eyebrow">Le nettoyage qui clôt vos travaux</span>
-    <h2>Un nettoyage fin de chantier<br>n'a rien d'un <em>ménage ordinaire</em></h2>
-    <p>La poussière de ponçage s'infiltre partout, les projections sèchent dur, les supports neufs sont fragiles. Il faut le bon matériel, les bons produits et une méthode pour révéler un bien fini sans rayer une seule surface. C'est ce niveau d'exigence qui transforme un chantier en livraison réussie.</p>
+    <span class="eyebrow">La lumière change tout</span>
+    <h2>Une pièce avec des vitres propres<br>n'est plus <em>la même pièce</em></h2>
+    <p>On finit par ne plus voir le voile qui s'installe sur les vitres. Puis vient le nettoyage : la lumière revient, les couleurs ressortent, l'espace paraît plus grand. C'est ce qu'un vitrage parfaitement transparent apporte à votre intérieur.</p>
   </div>
 </section>
 
@@ -476,19 +480,19 @@
 <section class="kc-included">
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Ce que comprend la prestation</span>
-      <h2 class="section-title">Tout ce que couvre <em>un nettoyage fin de chantier</em></h2>
-      <p class="section-desc">Le périmètre exact est confirmé après audit, selon l'état du bien et les corps de métier intervenus. Voici les opérations typiques d'une réception de chantier.</p>
+      <span class="eyebrow">Prestation de base</span>
+      <h2 class="section-title">Ce que comprend <em>votre forfait vitres</em></h2>
+      <p class="section-desc">Notre forfait couvre l'ensemble des surfaces vitrées accessibles de plain-pied, côté intérieur, pour un rendu net et homogène.</p>
     </div>
     <div class="kc-included-grid">
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div><h4>Dépoussiérage complet</h4><p>Aspiration et dépoussiérage de toutes les surfaces, recoins, hauteurs, plinthes et gaines. La poussière fine de chantier est traitée jusqu'aux angles.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div><h4>Traces de peinture, plâtre & colle</h4><p>Projections, gouttes et résidus de chantier retirés sur sols, murs, vitres et menuiseries, avec les produits adaptés à chaque support.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><h4>Vitres & menuiseries</h4><p>Vitrages côté intérieur, encadrements, rebords et appuis nettoyés, étiquettes et adhésifs de protection retirés.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><circle cx="12" cy="17" r="2"/></svg></div><h4>Sanitaires & robinetterie</h4><p>WC, douche, lavabos, faïence et robinetterie dégraissés, détartrés et désinfectés, prêts à l'usage dès la livraison.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 12h16M9 4v16"/></svg></div><h4>Sols & revêtements</h4><p>Lavage adapté au revêtement (carrelage, parquet, vinyle, béton…), retrait des laitances de ciment et finition selon le matériau.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h4v4H7zM7 7v0M14 8h3M14 12h3M7 16h10"/></svg></div><h4>Cuisine & placards</h4><p>Plan de travail, façades, intérieur des meubles et électroménager dépoussiérés et dégraissés, débarrassés des films de protection.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></div><h4>Évacuation des petits déchets</h4><p>Ramassage des résidus de chantier légers et des emballages restants. <!-- 👉 À COMPLÉTER : préciser la limite « hors gravats / hors benne » validée par la propriétaire --></p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Contrôle de réception</h4><p>Vérification pièce par pièce, finitions et points de détail. Reporting photo avant / après transmis pour la remise des clés.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><h4>Vitres intérieures</h4><p>Toutes les fenêtres et baies vitrées accessibles, nettoyées côté intérieur à la raclette, sans trace ni traînée.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><rect x="8" y="8" width="8" height="8"/></svg></div><h4>Encadrements & montants</h4><p>Cadres, montants et traverses des fenêtres dépoussiérés et nettoyés, pour une finition propre tout autour du verre.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 17h18M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10"/><line x1="3" y1="21" x2="21" y2="21"/></svg></div><h4>Rebords & appuis</h4><p>Appuis de fenêtre et rebords intérieurs essuyés : poussière, dépôts et traces du quotidien éliminés.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6"/></svg></div><h4>Miroirs</h4><p>Miroirs muraux des pièces de vie et de la salle de bain nettoyés et lustrés, sans halo ni projection.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 4H3v16h18zM3 9h18M8 4v5"/></svg></div><h4>Portes vitrées intérieures</h4><p>Portes-fenêtres et séparations vitrées accessibles, traitées des deux côtés lorsque c'est possible de plain-pied.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6c0 4 6 12 6 12s6-8 6-12a6 6 0 0 0-6-6z"/><circle cx="12" cy="9" r="2"/></svg></div><h4>Traitement des traces</h4><p>Doigts, projections, gouttes de pluie séchées : les marques tenaces sont reprises pour un verre vraiment net.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><h4>Produits & matériel fournis</h4><p>Raclette professionnelle, microfibres et produit adapté au verre : vous n'avez rien à préparer.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Contrôle final à contre-jour</h4><p>Vérification de chaque vitre face à la lumière avant de partir, pour s'assurer qu'aucune trace ne subsiste.</p></div>
     </div>
   </div>
 </section>
@@ -497,130 +501,120 @@
 <section class="kc-split">
   <div class="kc-page-wrap">
     <div class="kc-split-grid">
-      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Réception de chantier</span></div>
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Finition sans traces</span></div>
       <div class="kc-split-text kc-fade">
-        <span class="eyebrow">L'effet « clés en main »</span>
-        <h2>Le détail qui fait <em>une réception sans réserve</em></h2>
-        <p>À la livraison, le client ne voit pas les heures de travaux : il voit une vitre encore tachée de plâtre, une plinthe poussiéreuse, une étiquette oubliée sur la fenêtre. Ce sont ces <strong>derniers détails</strong> qui font la différence entre « chantier fini » et « chantier livré ».</p>
-        <p>Nous appliquons une <strong>checklist de réception</strong> pièce par pièce, adaptée aux corps de métier intervenus. Résultat : un bien présenté <strong>fini et propre</strong>, une réception fluide et un client qui retient la qualité, pas la poussière.</p>
-        <div class="kc-split-quote">Un chantier impeccable, c'est un client qui recommande l'entreprise. Le nettoyage final fait partie de la livraison, pas d'un supplément.<span class="kc-split-quote-author">— L'équipe Kayli Clinn</span></div>
+        <span class="eyebrow">Le geste qui fait la différence</span>
+        <h2>La transparence, <em>jusque dans les angles</em></h2>
+        <p>Un coup d'éponge laisse presque toujours un voile, surtout visible quand le soleil donne. Nous travaillons à la <strong>raclette professionnelle</strong>, lame essuyée à chaque passage, puis reprise des bords et des angles à la microfibre.</p>
+        <p>Résultat : un verre <strong>net sur toute sa surface</strong>, sans auréole ni peluche, encadrements et rebords compris. La même rigueur sur chaque fenêtre, du salon à la salle de bain.</p>
+        <div class="kc-split-quote">Une vitre n'est vraiment propre que lorsqu'on ne la voit plus. C'est exactement l'effet que nous recherchons à chaque passage.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 5b · ENCART « POURQUOI PAS DE PRIX FERME EN LIGNE » -->
+<!-- 6 · POUR ALLER PLUS LOIN — bascules devis + options -->
 <section>
   <div class="kc-page-wrap">
-    <div class="kc-lingec-panel kc-fade" id="pourquoi-devis">
-      <div class="kc-lingec-head">
-        <span class="eyebrow">Pourquoi pas de prix ferme en ligne</span>
-        <h2>Le nettoyage fin de chantier se chiffre <em>après audit</em></h2>
-        <p>Deux chantiers de même surface n'ont presque jamais le même état. Annoncer un prix ferme à l'aveugle, ce serait risquer de mal faire — ou de vous facturer trop. Nous préférons regarder, puis vous donner un devis juste et ferme.</p>
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Pour aller plus loin</span>
+      <h2 class="section-title">Quand on passe <em>sur devis</em>, et ce que l'on peut ajouter</h2>
+      <p class="section-desc">Le forfait en ligne couvre les vitres simples de plain-pied. Certains besoins demandent une visite, et quelques prestations viennent compléter votre intervention.</p>
+    </div>
+    <div class="kc-further-grid">
+      <div class="kc-further-panel kc-fade">
+        <span class="eyebrow">Visite & devis sur mesure</span>
+        <h3>Ces situations passent <em>par un devis</em></h3>
+        <p>Par souci de sécurité et de qualité, nous ne fixons jamais de prix ferme en ligne pour ces cas — ils nécessitent une évaluation, parfois du matériel spécifique :</p>
+        <ul class="kc-further-list">
+          <li><svg viewBox="0 0 24 24"><path d="M12 2v20M5 9l7-7 7 7"/></svg><span><strong>Vitres en hauteur</strong>Étages, vitrages inaccessibles de plain-pied, nécessitant perche, échafaudage ou nacelle</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 21V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14M3 21h18M7 21v-6h4v6M14 9h3v3h-3z"/></svg><span><strong>Vitrines</strong>Devantures de commerce, grandes surfaces vitrées exposées sur rue</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 21 12 4l9 17M3 21h18M7 21l1.5-5h7L17 21M12 8v8"/></svg><span><strong>Véranda & verrière</strong>Toitures vitrées, verrières et vérandas — surfaces, accès et sécurité spécifiques</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 21v-4h4v4"/></svg><span><strong>Besoin professionnel ou récurrent</strong>Bureaux, locaux, copropriétés ou passages réguliers programmés</span></li>
+        </ul>
+        <div class="kc-further-note">Dans tous ces cas, nous organisons une <strong>visite ou un échange</strong> pour établir un devis précis. <a href="/devis/" class="kc-link" style="color:#fff;border-color:rgba(255,255,255,0.45)">Demandez votre devis en ligne</a> ou appelez-nous.</div>
       </div>
-      <div class="kc-lingec-grid">
-        <div class="kc-lingec-card">
-          <div class="kc-lingec-card-top">
-            <div class="kc-lingec-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-            <h3>Ce qui change le prix</h3>
-          </div>
-          <p>L'état réel du bien fait varier le temps et les produits nécessaires. Quelques facteurs que l'audit permet de mesurer :</p>
-          <ul class="kc-lingec-list">
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Niveau d'encrassement : simple poussière ou résidus de gros œuvre incrustés</span></li>
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Type de revêtements et de supports (fragiles, poreux, neufs à protéger)</span></li>
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Surface, hauteurs sous plafond et accessibilité du chantier</span></li>
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Corps de métier intervenus et volume de protections à retirer</span></li>
-          </ul>
+      <div class="kc-further-opts">
+        <div class="kc-further-opts-head kc-fade">
+          <span class="eyebrow">Options compatibles</span>
+          <h3>Profitez du déplacement pour <em>en faire plus</em></h3>
+          <p>Au moment de réserver vos vitres, vous pouvez ajouter le nettoyage en profondeur de vos textiles. Tarifs TTC, ajoutés en un clic dans le devis.</p>
         </div>
-        <div class="kc-lingec-card">
-          <div class="kc-lingec-card-top">
-            <div class="kc-lingec-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-            <h3>Notre engagement</h3>
-          </div>
-          <p>Vous obtenez un prix clair, sans surprise, validé avant le moindre coup de chiffon :</p>
-          <ul class="kc-lingec-list">
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Audit gratuit sur place, ou estimation rapide sur envoi de photos</span></li>
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Devis ferme et détaillé, en HT pour les professionnels</span></li>
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Aucune réservation ni paiement en ligne pour cette prestation</span></li>
-            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Les repères au m² ci-dessous ne servent qu'à situer votre budget</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="kc-lingec-foot">
-        <p><strong>En clair :</strong> les taux que vous verrez plus bas sont des <strong>repères indicatifs HT (± 15 %)</strong>. Seul l'audit gratuit ou l'examen de vos photos fixe le prix définitif de votre chantier.</p>
-        <a href="/devis/" class="kc-btn kc-btn-primary">Demander Mon Audit Gratuit<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 11V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3M2 11h20v6a1 1 0 0 1-1 1h-1v2M4 18v2M4 18h16M4 14h16"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Nettoyage de canapé</div><div class="kc-option-desc">Injection-extraction en profondeur · 2, 3 ou 4 places</div></div><div class="kc-option-price">80 / 100 / 110 €</div></div>
+        <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M4 12h16v5h-1v3M5 17v3M5 17h14"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Nettoyage de fauteuil</div><div class="kc-option-desc">Shampouinage en profondeur des tissus</div></div><div class="kc-option-price">50 €</div></div>
+        <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 18v-6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6M3 14h18M5 18v2M19 18v2"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Nettoyage de matelas</div><div class="kc-option-desc">Désincrustation et assainissement en profondeur</div></div><div class="kc-option-price">75 €</div></div>
+        <!-- 👉 Ces 3 options (canapé / fauteuil / matelas) sont celles déclarées compatibles avec la vitrerie dans la grille v2. Ajouter d'autres options ici uniquement si la propriétaire les valide. -->
       </div>
     </div>
   </div>
 </section>
 
-<!-- 6 · PROCESS -->
+<!-- 7 · PROCESS -->
 <section class="kc-process">
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
       <span class="eyebrow">Notre méthode</span>
-      <h2 class="section-title">Quatre étapes, <em>de l'audit à la réception</em></h2>
-      <p class="section-desc">Un déroulé clair : on commence par regarder, on chiffre fermement, puis on intervient au bon moment pour ne pas retarder votre livraison.</p>
+      <h2 class="section-title">Cinq étapes, <em>de la réservation au contre-jour</em></h2>
+      <p class="section-desc">Un déroulé simple et cadré, du devis en ligne jusqu'au contrôle final de chaque vitre face à la lumière.</p>
     </div>
     <div class="kc-process-grid">
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Audit ou photos</h4><p>Visite gratuite sur place ou envoi de photos : on évalue l'état réel du chantier et le périmètre exact.</p><span class="kc-process-step-duration">Gratuit</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Devis ferme</h4><p>Vous recevez un devis détaillé en HT, sans surprise, calé sur votre date de livraison.</p><span class="kc-process-step-duration">Sous 48 h</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Intervention</h4><p>Une fois les artisans partis : dépoussiérage, traces de travaux, vitres, sanitaires, sols. Matériel pro.</p><span class="kc-process-step-duration">Jour J</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">04</div><h4>Réception & reporting</h4><p>Contrôle pièce par pièce, reporting photo avant / après, bien remis prêt à livrer ou habiter.</p><span class="kc-process-step-duration">À la fin</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Réservation en ligne</h4><p>Vous choisissez la taille de votre logement et votre créneau, le prix ferme s'affiche immédiatement.</p><span class="kc-process-step-duration">En 2 min</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Préparation des accès</h4><p>On dégage les abords des fenêtres et on protège le sol si besoin avant d'intervenir.</p><span class="kc-process-step-duration">Sur place</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Nettoyage des vitres</h4><p>Vitrages, encadrements et rebords traités à la raclette pro, pièce après pièce.</p><span class="kc-process-step-duration">Le jour J</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">04</div><h4>Reprise des détails</h4><p>Angles, miroirs et traces tenaces repris à la microfibre pour une finition homogène.</p><span class="kc-process-step-duration">Systématique</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">05</div><h4>Contrôle à contre-jour</h4><p>Chaque vitre vérifiée face à la lumière avant le départ : aucune trace ne doit subsister.</p><span class="kc-process-step-duration">Avant de partir</span></div>
     </div>
   </div>
 </section>
 
-<!-- 7 · REPÈRES DE PRIX — taux HT indicatifs, jamais fermes -->
-<section class="kc-pricing" id="reperes">
+<!-- 8 · PRICING -->
+<section class="kc-pricing" id="tarifs">
   <div class="kc-page-wrap">
     <div class="kc-pricing-grid">
       <div class="kc-pricing-left kc-fade">
-        <span class="eyebrow">Repères indicatifs</span>
-        <h3>Trois niveaux pour <em>situer votre budget</em></h3>
-        <p>Le tarif d'un nettoyage fin de chantier dépend du <strong>niveau d'encrassement</strong>, des <strong>supports</strong>, de la <strong>surface</strong> et de l'accessibilité. Les taux ci-contre sont des <strong>repères en HT (± 15 %)</strong> pour vous donner un ordre d'idée — pas un prix ferme.</p>
-        <p>Le <strong>prix définitif est confirmé après l'audit gratuit ou l'examen de vos photos</strong>, et fait l'objet d'un devis ferme. Un <strong>minimum d'intervention de 300 € HT</strong> s'applique. <a href="/devis/" class="kc-link">Demandez votre estimation</a> en quelques minutes.</p>
-        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:18px">Demander Mon Audit Gratuit<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <span class="eyebrow">Tarification claire</span>
+        <h3>Un forfait fixe, <em>selon la taille du logement</em></h3>
+        <p>Le prix dépend de la <strong>typologie de votre logement</strong> (du studio au T5) et couvre les <strong>vitres accessibles de plain-pied</strong>, côté intérieur, encadrements et rebords compris. Aucun chiffrage au nombre de vitres.</p>
+        <p>Les <strong>vitres en hauteur, vitrines, vérandas et verrières</strong>, ainsi que tout besoin professionnel ou récurrent, passent par une <strong>visite et un devis</strong> — jamais de prix ferme en ligne.</p>
+        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:18px">Réserver Mon Forfait<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="kc-pricing-table kc-fade">
-        <div class="kc-price-warn">
-          <svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <p><strong>Repères, pas des tarifs fermes.</strong> Estimation indicative HT (± 15 %). Seul l'audit gratuit ou vos photos fixent le prix — aucune réservation ni paiement en ligne pour cette prestation.</p>
-        </div>
-        <div class="kc-pricing-table-title">Repères indicatifs · prix au m² HT</div>
-        <div class="kc-price-row"><div class="kc-price-label">Rafraîchissement / chantier léger<small>Poussière fine, fin de travaux peu salissants</small></div><div class="kc-price-value"><em>dès 4,50&nbsp;€</em><small>/ m² HT · indicatif ± 15 %</small></div></div>
-        <div class="kc-price-row"><div class="kc-price-label">Fin de chantier standard<small>Rénovation classique, traces et résidus courants</small></div><div class="kc-price-value"><em>dès 7&nbsp;€</em><small>/ m² HT · indicatif ± 15 %</small></div></div>
-        <div class="kc-price-row"><div class="kc-price-label">Lourd / gros œuvre<small>Poussières incrustées, laitances, encrassement fort</small></div><div class="kc-price-value"><em>dès 11&nbsp;€</em><small>/ m² HT · indicatif ± 15 %</small></div></div>
-        <div class="kc-price-row"><div class="kc-price-label">Minimum d'intervention<small>Quelle que soit la surface</small></div><div class="kc-price-value"><em>300&nbsp;€</em> HT</div></div>
-        <div class="kc-price-disclaimer">Taux HT donnés à titre purement indicatif (marge ± 15 %), destinés à la clientèle professionnelle. Ils ne constituent ni un devis, ni une offre ferme, ni un prix réservable en ligne. Le montant définitif est établi après audit gratuit sur place ou envoi de photos, selon l'état réel et le périmètre du chantier.</div>
+        <div class="kc-pricing-table-title">Forfaits officiels · vitrerie résidentielle</div>
+        <div class="kc-price-row"><div class="kc-price-label">Studio / T1<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>70 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T2<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>70 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T3<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>95 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T4<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>95 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T5<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>130 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">Hauteur, vitrine, véranda / verrière<small>Étages, devantures, toitures vitrées, besoin pro ou récurrent</small></div><div class="kc-price-value">Sur devis</div></div>
+        <div class="kc-price-disclaimer">Tarifs officiels TTC pour les particuliers, vitres accessibles de plain-pied (côté intérieur) en état d'usage normal — réservables en ligne avec un acompte de 30 %. Options textiles compatibles : canapé 80/100/110 €, fauteuil 50 €, matelas 75 € (TTC). Vitres en hauteur, vitrines, vérandas/verrières et besoins professionnels ou récurrents : sur devis uniquement.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 8 · TÉMOIGNAGES -->
+<!-- 9 · TÉMOIGNAGES -->
 <section>
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
       <span class="eyebrow">Ils nous font confiance</span>
-      <h2 class="section-title">Ce qu'en disent <em>artisans & particuliers</em></h2>
-      <p class="section-desc">Quelques retours d'entreprises du bâtiment et de particuliers que nous avons accompagnés en fin de chantier, en Île-de-France.</p>
+      <h2 class="section-title">Ce qu'en disent <em>nos clients</em></h2>
+      <p class="section-desc">Quelques retours de particuliers dont nous avons redonné de l'éclat aux fenêtres, partout en Île-de-France.</p>
     </div>
     <div class="kc-testi-grid">
       <div class="kc-testi kc-fade">
         <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
-        <p class="kc-testi-text">On leur confie le nettoyage final de nos rénovations. Devis clair après visite, intervention pile dans nos délais de livraison. Nos clients reçoivent un chantier nickel.</p>
-        <div class="kc-testi-author"><div class="kc-testi-avatar">TB</div><div class="kc-testi-info"><strong>Thomas B.</strong><span>Entreprise de rénovation · Paris 15e</span></div></div>
+        <p class="kc-testi-text">Je n'avais jamais réussi à enlever les traces sur ma baie vitrée. Là, c'est transparent, même en plein soleil. Le salon paraît plus grand et plus lumineux.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">ML</div><div class="kc-testi-info"><strong>Marie L.</strong><span>Appartement T3 · Paris 15e</span></div></div>
       </div>
       <div class="kc-testi kc-fade">
         <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
-        <p class="kc-testi-text">Après nos travaux, l'appartement était couvert de poussière de plâtre. Ils sont passés, ont tout repris : vitres, sols, salle de bain. On a emménagé dans un logement impeccable.</p>
-        <div class="kc-testi-author"><div class="kc-testi-avatar">NF</div><div class="kc-testi-info"><strong>Nadia F.</strong><span>Particulier en rénovation · Montreuil (93)</span></div></div>
+        <p class="kc-testi-text">Prix annoncé d'avance, réservation en deux minutes, et un résultat impeccable jusque dans les angles. Les rebords aussi étaient nickel. Je referai sans hésiter.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">TD</div><div class="kc-testi-info"><strong>Thomas D.</strong><span>Maison de plain-pied · Essonne</span></div></div>
       </div>
       <div class="kc-testi kc-fade">
         <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
-        <p class="kc-testi-text">Livraison de plusieurs logements neufs à nettoyer avant remise des clés. Audit, devis ferme, reporting photo : tout était carré. Réception sans la moindre réserve sur la propreté.</p>
-        <div class="kc-testi-author"><div class="kc-testi-avatar">KP</div><div class="kc-testi-info"><strong>Karim P.</strong><span>Maître d'ouvrage · Hauts-de-Seine</span></div></div>
+        <p class="kc-testi-text">J'ai fait nettoyer les vitres avant des visites pour vendre. L'appartement est tout de suite plus lumineux sur les photos. J'ai ajouté le canapé, parfait aussi.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">SB</div><div class="kc-testi-info"><strong>Sophie B.</strong><span>Appartement T2 · Hauts-de-Seine</span></div></div>
       </div>
     </div>
   </div>
@@ -630,93 +624,93 @@
 <section class="kc-split alt reverse">
   <div class="kc-page-wrap">
     <div class="kc-split-grid">
-      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Co-activité maîtrisée</span></div>
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Sécurité & plain-pied</span></div>
       <div class="kc-split-text kc-fade">
-        <span class="eyebrow">Timing & coordination</span>
-        <h2>Calés sur <em>la fin de vos travaux</em></h2>
-        <p>Sur un chantier, le nettoyage final est la dernière brique avant la livraison : il ne peut pas commencer trop tôt, ni faire prendre du retard. Une intervention mal calée, et c'est la remise des clés qui glisse.</p>
-        <p>Nous nous coordonnons avec vous et vos artisans pour intervenir <strong>une fois les corps de métier partis</strong>, au moment juste avant la réception. Vous tenez vos délais, votre client retient un bien fini et propre. <a href="/devis/" class="kc-link">Obtenez votre estimation</a> en quelques minutes.</p>
-        <div class="kc-split-quote">Le nettoyage de fin de chantier ne devrait jamais retarder une livraison. Se caler sur vos délais fait partie du métier — pas seulement nettoyer.</div>
+        <span class="eyebrow">Une intervention maîtrisée</span>
+        <h2>De plain-pied <em>et en toute sécurité</em></h2>
+        <p>Nos forfaits en ligne concernent les vitres que l'on peut atteindre <strong>sans équipement de hauteur</strong>, depuis l'intérieur. C'est la garantie d'une intervention rapide, propre et sûre.</p>
+        <p>Dès qu'il faut prendre de la hauteur — étage, vitrine, véranda ou verrière — nous passons par une <strong>visite et un devis adaptés</strong>, avec le matériel et les précautions qui s'imposent. <a href="/devis/" class="kc-link">Demandez votre devis en ligne</a> en quelques minutes.</p>
+        <div class="kc-split-quote">Travailler en sécurité, c'est non négociable. C'est pourquoi la hauteur ne se chiffre jamais à l'aveugle, mais toujours après une visite.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 9 · POURQUOI NOUS -->
+<!-- 11 · POURQUOI NOUS -->
 <section class="kc-why">
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
       <span class="eyebrow">Pourquoi Kayli Clinn</span>
-      <h2 class="section-title">Ce qui nous différencie <em>sur vos chantiers</em></h2>
-      <p class="section-desc">La fin de chantier a ses propres exigences. Nous avons bâti notre offre autour de la transparence des prix, du bon matériel et du respect de vos délais.</p>
+      <h2 class="section-title">Ce qui nous différencie <em>sur vos vitres</em></h2>
+      <p class="section-desc">Une prestation simple à réserver, un prix clair et une finition exigeante : voilà ce que nous mettons dans chaque nettoyage de vitres.</p>
     </div>
     <div class="kc-why-grid">
       <div class="kc-why-card kc-fade">
         <span class="kc-why-num">01 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h3>Prix transparent</h3>
-        <p>Pas de tarif à l'aveugle : audit gratuit ou photos, puis devis ferme en HT. Vous savez exactement ce que vous payez avant qu'on commence.</p>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>Finition exigeante</h3>
+        <p>Raclette professionnelle, reprise des angles et contrôle à contre-jour. Le « sans trace » est notre standard, pas une option.</p>
       </div>
       <div class="kc-why-card kc-fade">
         <span class="kc-why-num">02 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h3>Matériel & produits pro</h3>
-        <p>Aspiration de la poussière fine, décapants adaptés à chaque support, protection des surfaces neuves. La finition d'une vraie réception.</p>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
+        <h3>Prix clair, réservation simple</h3>
+        <p>Un forfait fixe selon la taille du logement, affiché avant de réserver. Tout se fait en ligne, en quelques minutes.</p>
       </div>
       <div class="kc-why-card kc-fade">
         <span class="kc-why-num">03 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <h3>Respect des délais</h3>
-        <p>On se cale sur votre planning de livraison et on intervient après les artisans. Votre réception n'attend pas le ménage.</p>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+        <h3>Sécurité & assurance</h3>
+        <p>Intervention de plain-pied, RC Pro, matériel adapté. La hauteur et les surfaces complexes passent toujours par un devis.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 10 · FAQ -->
+<!-- 12 · FAQ -->
 <section>
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
       <span class="eyebrow">Questions fréquentes</span>
       <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
-      <p class="section-desc">Les questions que se posent artisans et particuliers avant de confier le nettoyage de fin de chantier.</p>
+      <p class="section-desc">Les questions que se posent nos clients avant de réserver un nettoyage de vitres résidentiel.</p>
     </div>
     <div class="kc-faq-list">
       <div class="kc-faq-item open kc-fade">
-        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Pourquoi n'affichez-vous pas de prix ferme en ligne ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Parce que <strong>deux chantiers de même surface n'ont presque jamais le même état</strong> : encrassement, supports, hauteurs et accessibilité font fortement varier le travail. Les taux au m² affichés (4,50 / 7 / 11 € HT) sont de simples <strong>repères indicatifs (± 15 %)</strong>. Le prix ferme est établi <strong>après un audit gratuit sur place ou l'examen de vos photos</strong> — c'est la garantie d'un devis juste, pour vous comme pour nous.</div></div>
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Quelles vitres sont comprises dans le forfait ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le forfait couvre <strong>toutes les vitres accessibles de plain-pied, côté intérieur</strong> : fenêtres, baies vitrées et portes-fenêtres, avec leurs <strong>encadrements et rebords</strong>, ainsi que les <strong>miroirs</strong> des pièces. Les vitres en hauteur, les vitrines et les vérandas/verrières font l'objet d'un <strong>devis dédié</strong>.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment obtenir une estimation rapidement ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Deux solutions : un <strong>audit gratuit sur place</strong>, idéal pour les chantiers importants, ou l'<strong>envoi de quelques photos</strong> via notre <a href="/devis/" class="kc-link">formulaire de devis</a> pour une première estimation. Dans les deux cas, vous recevez ensuite un <strong>devis ferme et détaillé en HT</strong>, sans engagement.</div></div>
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Pourquoi les vitres en hauteur ne sont-elles pas au forfait ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Pour des raisons de <strong>sécurité et de matériel</strong>. Les vitres inaccessibles de plain-pied (étages, façades), les <strong>vitrines</strong> et les <strong>vérandas ou verrières</strong> demandent une évaluation des accès et parfois un équipement spécifique (perche, échafaudage…). Nous établissons donc un <strong>devis précis après visite</strong>, sans jamais annoncer de prix ferme à l'aveugle.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Évacuez-vous les gravats ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Notre prestation couvre le <strong>ramassage des petits déchets et résidus de chantier légers</strong> ainsi que le retrait des protections. <!-- 👉 À COMPLÉTER : préciser la position sur l'évacuation des gravats / encombrants (incluse, en option, ou exclue) et l'éventuel renvoi vers un prestataire benne — à valider par la propriétaire --> L'évacuation des gravats lourds et des encombrants est à préciser lors de l'audit, selon le volume.</div></div>
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Les prix affichés sont-ils bien tout compris ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Les forfaits (70 €, 95 €, 130 € selon la typologie) sont des <strong>prix fermes TTC pour les particuliers</strong>, pour un logement en état d'usage normal. La réservation se fait en ligne avec un <strong>acompte de 30 %</strong>. Seules les options choisies (canapé, fauteuil, matelas) s'ajoutent au tarif, en toute transparence.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Pouvez-vous intervenir pendant que les artisans terminent ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Le nettoyage de réception se fait <strong>une fois les corps de métier partis</strong>, pour éviter de nettoyer deux fois et de gêner la co-activité. Nous nous <strong>coordonnons avec vous et vos artisans</strong> pour intervenir au bon moment, juste avant la livraison, sans retarder la remise des clés.</div></div>
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment garantissez-vous l'absence de traces ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous travaillons à la <strong>raclette professionnelle</strong>, lame essuyée à chaque passage, avec un produit adapté au verre, puis nous reprenons <strong>angles et bords à la microfibre</strong>. Avant de partir, chaque vitre est <strong>contrôlée à contre-jour</strong> : c'est le test le plus exigeant pour repérer la moindre trace.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Travaillez-vous avec les professionnels comme avec les particuliers ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content"><strong>Oui, les deux.</strong> Entreprises du bâtiment, artisans, promoteurs et maîtres d'ouvrage d'un côté ; particuliers en fin de rénovation de l'autre. Les repères de prix sont exprimés en <strong>HT</strong> (clientèle professionnelle) ; pour un particulier, le devis précise le montant applicable. Pensez aussi à notre <a href="/entretien-professionnel/" class="kc-link">entretien régulier</a> une fois les locaux livrés.</div></div>
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Puis-je ajouter d'autres prestations à mon rendez-vous ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Au moment de réserver, vous pouvez ajouter le nettoyage en profondeur de vos textiles : <strong>canapé (80/100/110 € selon 2, 3 ou 4 places), fauteuil (50 €) et matelas (75 €)</strong>, tous en TTC. Pratique pour profiter du déplacement et faire d'une pierre deux coups.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Le bien sera-t-il vraiment prêt à livrer après votre passage ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">C'est l'objectif d'une réception de chantier : un bien <strong>fini et propre, prêt à livrer ou à habiter</strong>. Nous procédons à un <strong>contrôle pièce par pièce</strong> et vous transmettons un <strong>reporting photo avant / après</strong>, utile pour la remise des clés et pour valider la propreté sans réserve.</div></div>
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Intervenez-vous aussi pour les professionnels ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui, mais hors forfait en ligne. Les <strong>besoins professionnels ou récurrents</strong> (bureaux, locaux commerciaux, copropriétés, passages programmés) sont chiffrés sur mesure. Découvrez notre <a href="/entretien-professionnel/" class="kc-link">entretien professionnel régulier</a> ou demandez un devis adapté à votre rythme.</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 11 · ZONES -->
+<!-- 13 · ZONES -->
 <section class="kc-zones">
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
       <span class="eyebrow">Zones d'intervention</span>
       <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
-      <p class="section-desc">Nos équipes interviennent sur vos chantiers et rénovations dans les huit départements franciliens.</p>
+      <p class="section-desc">Nos équipes redonnent de l'éclat à vos vitres dans les huit départements franciliens.</p>
     </div>
     <div class="kc-zones-list">
       <div class="kc-zone kc-fade">75<span>Paris</span></div>
@@ -731,14 +725,14 @@
   </div>
 </section>
 
-<!-- 12 · CTA FINAL -->
+<!-- 14 · CTA FINAL -->
 <section class="kc-final-cta">
   <div class="kc-final-cta-wrap kc-fade">
-    <span class="kc-final-cta-tag">Audit gratuit · Devis ferme</span>
-    <h2>Prêt à réceptionner un chantier<br>parfaitement <em>propre</em> ?</h2>
-    <p>Demandez votre audit gratuit ou envoyez-nous quelques photos : vous recevez un devis ferme en HT, calé sur votre date de livraison. Aucun paiement en ligne — on regarde, on chiffre, puis on intervient.</p>
+    <span class="kc-final-cta-tag">Forfait fixe · Réservation en ligne</span>
+    <h2>Prêt à retrouver<br>des vitres <em>impeccables</em> ?</h2>
+    <p>Choisissez la taille de votre logement, votre créneau, et réservez en ligne en quelques minutes. Prix ferme TTC, finition sans traces, contrôle à contre-jour avant chaque départ.</p>
     <div class="kc-final-ctas">
-      <a href="/devis/" class="kc-btn kc-btn-primary">Demander Mon Audit Gratuit<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="/devis/" class="kc-btn kc-btn-primary">Réserver Mon Forfait<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
     </div>
   </div>
@@ -762,14 +756,13 @@ function kcToggleFaq(el){
   document.querySelectorAll('.kc-page .kc-fade').forEach(el => observer.observe(el));
 })();
 </script>
-<!-- Données structurées SEO — service Nettoyage fin de chantier (sur devis, aucun prix ferme) -->
+<!-- Données structurées SEO — service Nettoyage de vitres résidentiel (grille officielle v2) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Nettoyage fin de chantier",
-  "serviceType": "Nettoyage après travaux et fin de chantier",
-  "description": "Nettoyage de réception après travaux ou rénovation pour professionnels et particuliers : dépoussiérage complet, retrait des traces de peinture, plâtre et colle, vitres, sanitaires et sols. Prestation sur devis, établie après audit gratuit ou envoi de photos.",
+  "name": "Nettoyage de vitres résidentiel",
+  "serviceType": "Nettoyage de vitres",
   "provider": {
     "@type": "CleaningService",
     "name": "Kayli Clinn",
@@ -777,14 +770,12 @@ function kcToggleFaq(el){
     "telephone": "+33670012061"
   },
   "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceSpecification": {
-      "@type": "PriceSpecification",
-      "priceCurrency": "EUR",
-      "description": "Prestation sur devis. Estimation indicative HT (± 15 %), confirmée après audit gratuit ou envoi de photos. Minimum d'intervention 300 € HT."
-    }
-  }
+  "offers": [
+    {"@type": "Offer", "name": "Studio / T1", "price": 70, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T2", "price": 70, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T3", "price": 95, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T4", "price": 95, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T5", "price": 130, "priceCurrency": "EUR"}
+  ]
 }
 </script>
