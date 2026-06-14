@@ -1,0 +1,807 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE « NOS RÉALISATIONS » — KAYLI CLINN
+   Bloc « HTML personnalisé » WordPress autonome (sans en-tête / pied de page)
+   URL : /realisations/
+   Préfixe CSS unique du bloc : .kcr-
+   ────────────────────────────────────────────────────────
+
+   📸 PANNEAU PHOTOS — TOUT SE MODIFIE ICI UNIQUEMENT
+   ────────────────────────────────────────────────────────
+   ⚠️ Toutes les images ci-dessous sont des PLACEHOLDERS identiques
+   (le même fichier que sur l'accueil). Le curseur avant/après ne
+   montre donc AUCUNE différence tant que les vraies photos ne sont
+   pas en place. Pour chaque vignette : remplacez l'URL entre url('…')
+   par une VRAIE photo AVANT puis une VRAIE photo APRÈS, distinctes
+   et au MÊME cadrage (paysage 4:3 ~1200×900 · < 200 Ko · WebP).
+   Ne JAMAIS présenter une image inventée comme une réalisation réelle.
+
+   ┌─ Variables & ALT conseillés (1 paire avant/après par vignette) ─
+   │ TURNOVER AIRBNB
+   │  A1 --air1-avant / --air1-apres
+   │     👉 À REMPLACER : vraie photo avant/après — studio / T1 entre deux séjours
+   │     ALT avant : « Studio Airbnb avant rotation locative »
+   │     ALT après : « Studio Airbnb préparé pour les voyageurs par Kayli Clinn »
+   │  A2 --air2-avant / --air2-apres
+   │     👉 À REMPLACER : vraie photo avant/après — T2 / T3 meublé
+   │     ALT avant : « Appartement Airbnb avant turnover »
+   │     ALT après : « Appartement Airbnb prêt à accueillir par Kayli Clinn »
+   │ FIN DE BAIL / DÉMÉNAGEMENT
+   │  B1 --bail1-avant / --bail1-apres
+   │     👉 À REMPLACER : vraie photo avant/après — logement vide, cuisine
+   │     ALT avant : « Cuisine avant nettoyage de fin de bail »
+   │     ALT après : « Cuisine nettoyée pour l'état des lieux par Kayli Clinn »
+   │  B2 --bail2-avant / --bail2-apres
+   │     👉 À REMPLACER : vraie photo avant/après — logement vide, pièce de vie
+   │     ALT avant : « Logement avant état des lieux de sortie »
+   │     ALT après : « Logement remis au propre pour la restitution par Kayli Clinn »
+   │ VITRERIE
+   │  V1 --vit1-avant / --vit1-apres
+   │     👉 À REMPLACER : vraie photo avant/après — baie vitrée / fenêtres
+   │     ALT avant : « Vitres avant nettoyage »
+   │     ALT après : « Vitres nettoyées sans traces par Kayli Clinn »
+   │  V2 --vit2-avant / --vit2-apres
+   │     👉 À REMPLACER : vraie photo avant/après — vitrage résidentiel
+   │     ALT avant : « Fenêtres encrassées avant intervention »
+   │     ALT après : « Fenêtres parfaitement transparentes par Kayli Clinn »
+   │ FIN DE CHANTIER
+   │  C1 --chan1-avant / --chan1-apres
+   │     👉 À REMPLACER : vraie photo avant/après — appartement après travaux
+   │     ALT avant : « Appartement avant nettoyage de fin de chantier — poussières et traces »
+   │     ALT après : « Appartement livré impeccable après fin de chantier par Kayli Clinn »
+   │  C2 --chan2-avant / --chan2-apres
+   │     👉 À REMPLACER : vraie photo avant/après — sols / finitions après rénovation
+   │     ALT avant : « Sols et finitions avant nettoyage après travaux »
+   │     ALT après : « Sols et finitions remis au propre par Kayli Clinn »
+   │ BUREAUX
+   │  P1 --bur1-avant / --bur1-apres
+   │     👉 À REMPLACER : vraie photo avant/après — open-space / poste de travail
+   │     ALT avant : « Bureaux avant nettoyage »
+   │     ALT après : « Bureaux nettoyés et prêts pour les équipes par Kayli Clinn »
+   │  P2 --bur2-avant / --bur2-apres
+   │     👉 À REMPLACER : vraie photo avant/après — espace d'accueil / salle de réunion
+   │     ALT avant : « Espace professionnel avant entretien »
+   │     ALT après : « Espace professionnel entretenu par Kayli Clinn »
+   └────────────────────────────────────────────────────────
+
+   ℹ️ SEO / ACCESSIBILITÉ
+   Les visuels avant/après sont des FONDS CSS décoratifs. Les lecteurs
+   d'écran sont déjà gérés (chaque comparateur est un vrai curseur :
+   role="slider", aria-label, aria-valuetext). Pour le référencement
+   d'images, repassez-les un jour en vraies <img> avec les ALT ci-dessus.
+
+   🧾 Témoignages : ce sont des EXEMPLES (badge « Exemple » visible
+   obligatoire tant qu'ils ne sont pas remplacés par de vrais avis — DGCCRF).
+
+   🔗 Liens : /devis/  ·  ☎️ tel:+33670012061
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+
+<style>
+.kcr-page{
+  /* ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+     ░ PHOTOS — À MODIFIER ICI UNIQUEMENT (paires avant/après) ░
+     ░ ⚠️ Toutes identiques (placeholder) → à remplacer ░
+     ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+  /* Turnover Airbnb */
+  --air1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --air1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --air2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --air2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* Fin de bail / déménagement */
+  --bail1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --bail1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --bail2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --bail2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* Vitrerie */
+  --vit1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --vit1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --vit2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --vit2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* Fin de chantier */
+  --chan1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --chan1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --chan2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --chan2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  /* Bureaux */
+  --bur1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --bur1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --bur2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+  --bur2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
+
+  /* ░ Système (charte Kayli Clinn) ░ */
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kcr-page *,.kcr-page *::before,.kcr-page *::after{box-sizing:border-box}
+.kcr-page img{max-width:100%;display:block}
+.kcr-page a{color:inherit;text-decoration:none}
+
+/* — affectation des fonds (ne pas modifier) · before = AVANT · after = APRÈS — */
+.kcr-card[data-img="air1"] .kcr-before{background-image:var(--air1-avant)}
+.kcr-card[data-img="air1"] .kcr-after {background-image:var(--air1-apres)}
+.kcr-card[data-img="air2"] .kcr-before{background-image:var(--air2-avant)}
+.kcr-card[data-img="air2"] .kcr-after {background-image:var(--air2-apres)}
+.kcr-card[data-img="bail1"] .kcr-before{background-image:var(--bail1-avant)}
+.kcr-card[data-img="bail1"] .kcr-after {background-image:var(--bail1-apres)}
+.kcr-card[data-img="bail2"] .kcr-before{background-image:var(--bail2-avant)}
+.kcr-card[data-img="bail2"] .kcr-after {background-image:var(--bail2-apres)}
+.kcr-card[data-img="vit1"] .kcr-before{background-image:var(--vit1-avant)}
+.kcr-card[data-img="vit1"] .kcr-after {background-image:var(--vit1-apres)}
+.kcr-card[data-img="vit2"] .kcr-before{background-image:var(--vit2-avant)}
+.kcr-card[data-img="vit2"] .kcr-after {background-image:var(--vit2-apres)}
+.kcr-card[data-img="chan1"] .kcr-before{background-image:var(--chan1-avant)}
+.kcr-card[data-img="chan1"] .kcr-after {background-image:var(--chan1-apres)}
+.kcr-card[data-img="chan2"] .kcr-before{background-image:var(--chan2-avant)}
+.kcr-card[data-img="chan2"] .kcr-after {background-image:var(--chan2-apres)}
+.kcr-card[data-img="bur1"] .kcr-before{background-image:var(--bur1-avant)}
+.kcr-card[data-img="bur1"] .kcr-after {background-image:var(--bur1-apres)}
+.kcr-card[data-img="bur2"] .kcr-before{background-image:var(--bur2-avant)}
+.kcr-card[data-img="bur2"] .kcr-after {background-image:var(--bur2-apres)}
+
+/* ════════════════ HERO ════════════════ */
+.kcr-hero{
+  position:relative; overflow:hidden; color:#fff;
+  background:
+    radial-gradient(circle at 80% 8%, rgba(15,167,165,.22), transparent 30%),
+    linear-gradient(165deg,#0B1A33 0%,#0D2340 55%,#14294a 100%);
+  padding:clamp(120px,16vh,170px) 6% clamp(72px,10vh,110px);
+}
+.kcr-hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.4;
+  background-image:
+    linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);
+  background-size:72px 72px;
+  -webkit-mask-image:radial-gradient(circle at center,#000 0%,transparent 75%);
+          mask-image:radial-gradient(circle at center,#000 0%,transparent 75%);
+}
+.kcr-hero-wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center}
+.kcr-hero-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;justify-content:center;
+  font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:24px;
+}
+.kcr-hero-eyebrow::before{content:'';width:34px;height:1px;background:var(--teal)}
+.kcr-hero h1{
+  font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;
+  font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.06;letter-spacing:-.02em;
+  color:#fff;margin:0 0 22px;
+}
+.kcr-hero h1 em{font-style:italic;font-weight:480;color:var(--teal)}
+.kcr-hero p{
+  font-size:clamp(16px,1.4vw,18.5px);line-height:1.75;font-weight:300;
+  color:rgba(255,255,255,.86);max-width:640px;margin:0 auto clamp(36px,5vw,48px);
+}
+.kcr-hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+/* — boutons partagés — */
+.kcr-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  padding:16px 30px;border-radius:11px;
+  font-family:'Inter',sans-serif;font-size:14.5px;font-weight:600;letter-spacing:.01em;
+  border:none;cursor:pointer;text-decoration:none;white-space:nowrap;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+}
+.kcr-btn svg{transition:transform .3s}
+.kcr-btn-primary{background:var(--teal);color:#fff;box-shadow:0 12px 30px -12px rgba(15,167,165,.7)}
+.kcr-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 18px 38px -14px rgba(15,167,165,.78)}
+.kcr-btn-primary:hover svg{transform:translateX(4px)}
+.kcr-hero .kcr-btn-ghost{background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(6px)}
+.kcr-hero .kcr-btn-ghost:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande de réassurance — */
+.kcr-trust{background:var(--navy);padding:26px 6%}
+.kcr-trust-wrap{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 40px;flex-wrap:wrap}
+.kcr-trust-item{display:flex;align-items:center;gap:11px;color:rgba(255,255,255,.84);font-size:13px;font-weight:500;letter-spacing:.01em}
+.kcr-trust-item svg{color:var(--teal);flex-shrink:0;width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* ════════════════ GALERIE AVANT/APRÈS ════════════════ */
+.kcr-gallery{background:linear-gradient(180deg,#ffffff 0%,var(--cream) 46%,var(--cream) 100%);padding:clamp(76px,9vw,120px) 6%}
+.kcr-wrap{max-width:1200px;margin:0 auto}
+.kcr-head{text-align:center;max-width:760px;margin:0 auto clamp(40px,5vw,56px)}
+.kcr-eyebrow{
+  display:inline-flex;align-items:center;gap:12px;justify-content:center;
+  font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--teal-deep);margin-bottom:18px;
+}
+.kcr-eyebrow::before{content:'';width:34px;height:1px;background:var(--teal)}
+.kcr-h2{
+  font-family:'Fraunces',Georgia,serif;font-weight:560;
+  font-size:clamp(2rem,4vw,3.1rem);color:var(--navy);
+  line-height:1.08;letter-spacing:-.018em;margin:0 0 18px;
+}
+.kcr-h2 em{font-style:italic;color:var(--teal-deep)}
+.kcr-sub{font-size:17px;color:var(--muted);line-height:1.75;margin:0}
+
+/* — filtre par catégorie — */
+.kcr-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:0 auto clamp(40px,5vw,52px);max-width:880px}
+.kcr-filter{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 18px;border:1px solid var(--line);border-radius:999px;
+  background:var(--white);color:var(--navy);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:600;letter-spacing:.01em;
+  cursor:pointer;transition:all .25s ease;
+}
+.kcr-filter svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;color:var(--teal-deep);transition:color .25s ease}
+.kcr-filter:hover{border-color:rgba(15,167,165,.4);transform:translateY(-1px);box-shadow:var(--shadow-sm)}
+.kcr-filter[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.kcr-filter[aria-pressed="true"] svg{color:var(--teal)}
+
+/* — grille des comparateurs — */
+.kcr-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.kcr-card{
+  position:relative;background:var(--white);border:1px solid var(--line);
+  border-radius:24px;overflow:hidden;box-shadow:0 18px 52px -40px rgba(13,35,64,.42);
+  opacity:0;transform:translateY(26px);
+  transition:opacity .5s ease,transform .5s cubic-bezier(.22,1,.36,1),box-shadow .35s ease,border-color .35s ease;
+  transition-delay:calc(var(--ci) * .05s);
+}
+.kcr-card.kcr-in{opacity:1;transform:none}
+.kcr-card.kcr-in:hover{transform:translateY(-4px)}
+.kcr-card:hover{border-color:rgba(15,167,165,.24);box-shadow:0 32px 70px -34px rgba(13,35,64,.45)}
+.kcr-card.kcr-hidden{display:none}
+
+.kcr-compare{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;user-select:none;background:var(--navy)}
+.kcr-compare::after{
+  content:"Glissez";position:absolute;left:50%;bottom:14px;transform:translateX(-50%);z-index:4;
+  padding:7px 12px;border:1px solid rgba(255,255,255,.26);border-radius:999px;
+  background:rgba(13,35,64,.55);color:#fff;font-size:10.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;backdrop-filter:blur(10px);opacity:.92;pointer-events:none;
+}
+.kcr-after,.kcr-before{position:absolute;inset:0;background-size:cover;background-position:center}
+.kcr-after{filter:saturate(.82) brightness(.88) contrast(1.02)}
+.kcr-before{width:50%;z-index:1;filter:saturate(1.06) brightness(1.03) contrast(1.04);border-right:2px solid rgba(255,255,255,.96);box-shadow:12px 0 30px rgba(0,0,0,.12)}
+.kcr-tag{
+  position:absolute;top:14px;z-index:5;display:inline-flex;align-items:center;gap:6px;
+  font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:7px 12px;border-radius:999px;color:#fff;backdrop-filter:blur(10px);
+}
+.kcr-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.kcr-tag-before{left:14px;background:rgba(13,35,64,.78)}
+.kcr-tag-after{right:14px;background:rgba(15,167,165,.92)}
+.kcr-line{position:absolute;top:0;bottom:0;left:50%;z-index:3;width:2px;background:rgba(255,255,255,.98);transform:translateX(-50%);pointer-events:none}
+.kcr-handle{
+  position:absolute;top:50%;left:50%;width:48px;height:48px;transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.85);border-radius:50%;background:#fff;
+  box-shadow:0 10px 28px rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;color:var(--teal);
+}
+.kcr-handle svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.kcr-body{padding:22px 22px 24px}
+.kcr-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+.kcr-cat{
+  display:inline-flex;align-items:center;color:var(--teal-deep);
+  background:rgba(15,167,165,.1);border:1px solid rgba(15,167,165,.14);
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:7px 11px;border-radius:999px;
+}
+.kcr-place{color:var(--faint);font-size:12px;font-weight:600;white-space:nowrap}
+.kcr-t{font-family:'Fraunces',serif;color:var(--navy);font-size:18.5px;font-weight:560;letter-spacing:-.01em;line-height:1.3;margin:0 0 9px}
+.kcr-m{color:var(--muted);font-size:13.6px;line-height:1.6;margin:0}
+
+.kcr-empty{display:none;text-align:center;color:var(--muted);font-size:15px;padding:40px 0}
+.kcr-empty.kcr-show{display:block}
+
+.kcr-note{margin:clamp(40px,5vw,54px) auto 0;text-align:center;color:var(--muted);font-size:13.5px;line-height:1.6;max-width:680px}
+.kcr-note strong{color:var(--navy);font-weight:600}
+
+/* ════════════════ TÉMOIGNAGES ════════════════ */
+.kcr-testi-sec{background:var(--white);padding:clamp(76px,9vw,118px) 6%}
+.kcr-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(40px,5vw,54px)}
+.kcr-testi{
+  position:relative;background:var(--cream);border:1px solid var(--line);
+  border-radius:18px;padding:38px 32px 30px;
+  transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s;
+}
+.kcr-testi:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kcr-testi-mark{position:absolute;top:22px;right:28px;font-family:'Fraunces',serif;font-size:54px;font-weight:560;color:var(--teal);opacity:.14;line-height:1}
+.kcr-testi-badge{
+  display:inline-flex;align-items:center;gap:6px;margin-bottom:18px;
+  padding:5px 11px;border-radius:999px;
+  background:rgba(216,155,60,.12);border:1px solid rgba(216,155,60,.4);
+  color:#9a6c1f;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+}
+.kcr-testi-badge svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kcr-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:16px;display:flex;gap:3px}
+.kcr-testi-stars svg{width:15px;height:15px;fill:currentColor;stroke:none}
+.kcr-testi-text{font-family:'Fraunces',serif;font-size:15.5px;color:var(--ink);line-height:1.66;margin:0 0 24px;font-style:italic;font-weight:400}
+.kcr-testi-author{display:flex;align-items:center;gap:13px;padding-top:20px;border-top:1px solid var(--line-soft)}
+.kcr-testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;flex-shrink:0}
+.kcr-testi-info strong{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
+.kcr-testi-info span{font-size:12.5px;color:var(--faint);margin-top:2px;display:block}
+
+/* ════════════════ CTA FINAL ════════════════ */
+.kcr-final{position:relative;overflow:hidden;text-align:center;color:#fff;padding:clamp(72px,9vw,118px) 6%;background:var(--teal-dark)}
+.kcr-final::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,.09) 0%,transparent 62%);pointer-events:none}
+.kcr-final-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kcr-final-tag{display:inline-flex;align-items:center;gap:12px;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-bottom:22px}
+.kcr-final-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,.6)}
+.kcr-final h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;letter-spacing:-.018em;margin:0 0 18px;color:#fff}
+.kcr-final h2 em{font-style:italic;color:#fff}
+.kcr-final p{font-size:16.5px;color:rgba(255,255,255,.86);line-height:1.7;margin:0 auto 32px;max-width:560px;font-weight:300}
+.kcr-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kcr-final .kcr-btn-primary{background:#fff;color:var(--teal-dark)}
+.kcr-final .kcr-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,.3)}
+.kcr-final .kcr-btn-ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.5)}
+.kcr-final .kcr-btn-ghost:hover{background:rgba(255,255,255,.1);border-color:#fff;color:#fff}
+
+/* ════════════════ ANIMATIONS ════════════════ */
+.kcr-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kcr-fade.kcr-vis{opacity:1;transform:translateY(0)}
+
+/* ════════════════ RESPONSIVE ════════════════ */
+@media(max-width:1000px){
+  .kcr-grid{grid-template-columns:repeat(2,1fr)}
+  .kcr-testi-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .kcr-trust-wrap{justify-content:flex-start;gap:14px 26px}
+}
+@media(max-width:620px){
+  .kcr-grid{grid-template-columns:1fr}
+  .kcr-hero{padding:104px 6% 64px}
+  .kcr-btn{width:100%}
+  .kcr-hero-ctas,.kcr-final-ctas{width:100%}
+  .kcr-filters{justify-content:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  .kcr-page *,.kcr-page *::before,.kcr-page *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kcr-fade,.kcr-card{opacity:1 !important;transform:none !important}
+}
+</style>
+
+<div class="kcr-page">
+
+  <!-- ════════════════ 1 · HERO ════════════════ -->
+  <section class="kcr-hero">
+    <div class="kcr-hero-wrap kcr-fade">
+      <span class="kcr-hero-eyebrow">Nos réalisations · Île-de-France</span>
+      <h1>Avant / après : <em>le résultat</em> parle de lui-même</h1>
+      <p>Turnover Airbnb, fin de bail, vitrerie, fin de chantier ou bureaux : faites glisser le curseur de chaque vignette pour découvrir la transformation. Des exemples par type de prestation, illustrant notre niveau d'exigence.</p>
+      <div class="kcr-hero-ctas">
+        <a href="/devis/" class="kcr-btn kcr-btn-primary">
+          Demander un devis gratuit
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+33670012061" class="kcr-btn kcr-btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          06 70 01 20 61
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- — bande de réassurance — -->
+  <div class="kcr-trust">
+    <div class="kcr-trust-wrap">
+      <div class="kcr-trust-item"><svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro AXA · 5M€</span></div>
+      <div class="kcr-trust-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Intervention en Île-de-France</span></div>
+      <div class="kcr-trust-item"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Reporting photo selon prestation</span></div>
+      <div class="kcr-trust-item"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg><span>Satisfait ou repassé sous 48 h</span></div>
+    </div>
+  </div>
+
+  <!-- ════════════════ 2 · GALERIE AVANT / APRÈS ════════════════ -->
+  <section class="kcr-gallery">
+    <div class="kcr-wrap">
+      <div class="kcr-head kcr-fade">
+        <span class="kcr-eyebrow">Galerie avant / après</span>
+        <h2 class="kcr-h2">Chaque espace, <em>transformé</em></h2>
+        <p class="kcr-sub">Filtrez par type de prestation, puis faites glisser le curseur de chaque vignette. Les descriptions sont volontairement neutres : seules de vraies photos remplaceront les visuels d'illustration ci-dessous.</p>
+      </div>
+
+      <!-- 👉 Filtre par catégorie (optionnel) — boutons -->
+      <div class="kcr-filters kcr-fade" role="group" aria-label="Filtrer les réalisations par type de prestation">
+        <button type="button" class="kcr-filter" data-filter="all" aria-pressed="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Toutes
+        </button>
+        <button type="button" class="kcr-filter" data-filter="airbnb" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg>
+          Turnover Airbnb
+        </button>
+        <button type="button" class="kcr-filter" data-filter="bail" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg>
+          Fin de bail / déménagement
+        </button>
+        <button type="button" class="kcr-filter" data-filter="vitrerie" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
+          Vitrerie
+        </button>
+        <button type="button" class="kcr-filter" data-filter="chantier" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>
+          Fin de chantier
+        </button>
+        <button type="button" class="kcr-filter" data-filter="bureaux" aria-pressed="false">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Bureaux
+        </button>
+      </div>
+
+      <div class="kcr-grid">
+
+        <!-- ── TURNOVER AIRBNB ── -->
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --air1-avant / --air1-apres -->
+        <article class="kcr-card" data-img="air1" data-cat="airbnb" style="--ci:0">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — turnover Airbnb (studio)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Turnover Airbnb</span><span class="kcr-place">Studio</span></div>
+            <h3 class="kcr-t">Studio entre deux séjours</h3>
+            <p class="kcr-m">Remise en condition complète entre deux voyageurs : ménage, linge changé, lits refaits et présentation soignée pour le check-in.</p>
+          </div>
+        </article>
+
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --air2-avant / --air2-apres -->
+        <article class="kcr-card" data-img="air2" data-cat="airbnb" style="--ci:1">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — turnover Airbnb (appartement)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Turnover Airbnb</span><span class="kcr-place">Appartement meublé</span></div>
+            <h3 class="kcr-t">Appartement meublé en rotation</h3>
+            <p class="kcr-m">Cuisine, salle de bain et pièces de vie remises à neuf, réassort des consommables et finition façon hôtel avant l'arrivée suivante.</p>
+          </div>
+        </article>
+
+        <!-- ── FIN DE BAIL / DÉMÉNAGEMENT ── -->
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --bail1-avant / --bail1-apres -->
+        <article class="kcr-card" data-img="bail1" data-cat="bail" style="--ci:2">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — fin de bail (cuisine)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Fin de bail</span><span class="kcr-place">Logement vide</span></div>
+            <h3 class="kcr-t">Cuisine avant état des lieux</h3>
+            <p class="kcr-m">Dégraissage du plan de travail, électroménager, placards et sols : un logement vide remis au propre pour la restitution des clés.</p>
+          </div>
+        </article>
+
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --bail2-avant / --bail2-apres -->
+        <article class="kcr-card" data-img="bail2" data-cat="bail" style="--ci:3">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — déménagement (pièce de vie)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Déménagement</span><span class="kcr-place">Logement vide</span></div>
+            <h3 class="kcr-t">Pièce de vie après déménagement</h3>
+            <p class="kcr-m">Traces d'usage, poussières et sols traités après le départ du mobilier, pour maximiser la restitution du dépôt de garantie.</p>
+          </div>
+        </article>
+
+        <!-- ── VITRERIE ── -->
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --vit1-avant / --vit1-apres -->
+        <article class="kcr-card" data-img="vit1" data-cat="vitrerie" style="--ci:4">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — vitrerie (baie vitrée)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Vitrerie</span><span class="kcr-place">Résidentiel</span></div>
+            <h3 class="kcr-t">Baie vitrée sans traces</h3>
+            <p class="kcr-m">Vitres, encadrements et rebords nettoyés à fond pour une transparence parfaite et un apport de lumière retrouvé.</p>
+          </div>
+        </article>
+
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --vit2-avant / --vit2-apres -->
+        <article class="kcr-card" data-img="vit2" data-cat="vitrerie" style="--ci:5">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — vitrerie (fenêtres)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Vitrerie</span><span class="kcr-place">Résidentiel</span></div>
+            <h3 class="kcr-t">Fenêtres remises en clarté</h3>
+            <p class="kcr-m">Vitrages intérieurs et extérieurs débarrassés des dépôts et auréoles : un résultat net, sans coulures ni reflets parasites.</p>
+          </div>
+        </article>
+
+        <!-- ── FIN DE CHANTIER ── -->
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --chan1-avant / --chan1-apres -->
+        <article class="kcr-card" data-img="chan1" data-cat="chantier" style="--ci:6">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — fin de chantier (appartement)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Fin de chantier</span><span class="kcr-place">Après travaux</span></div>
+            <h3 class="kcr-t">Appartement après rénovation</h3>
+            <p class="kcr-m">Poussières fines, résidus de chantier, vitrages et sanitaires traités pour livrer un logement prêt à habiter.</p>
+          </div>
+        </article>
+
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --chan2-avant / --chan2-apres -->
+        <article class="kcr-card" data-img="chan2" data-cat="chantier" style="--ci:7">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — fin de chantier (sols et finitions)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Fin de chantier</span><span class="kcr-place">Après travaux</span></div>
+            <h3 class="kcr-t">Sols et finitions après travaux</h3>
+            <p class="kcr-m">Décapage des traces de peinture et de plâtre, dépoussiérage en profondeur et finitions contrôlées pièce par pièce.</p>
+          </div>
+        </article>
+
+        <!-- ── BUREAUX ── -->
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --bur1-avant / --bur1-apres -->
+        <article class="kcr-card" data-img="bur1" data-cat="bureaux" style="--ci:8">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — bureaux (open-space)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Bureaux</span><span class="kcr-place">Pro / B2B</span></div>
+            <h3 class="kcr-t">Open-space remis au propre</h3>
+            <p class="kcr-m">Postes de travail, sols et points de contact entretenus pour un environnement sain, accueillant et prêt pour les équipes.</p>
+          </div>
+        </article>
+
+        <!-- 👉 À REMPLACER : vraie photo avant/après · variables --bur2-avant / --bur2-apres -->
+        <article class="kcr-card" data-img="bur2" data-cat="bureaux" style="--ci:9">
+          <div class="kcr-compare" data-kcr aria-label="Comparaison avant après — bureaux (espace d'accueil)">
+            <div class="kcr-after"></div>
+            <div class="kcr-before"></div>
+            <span class="kcr-tag kcr-tag-before">Avant</span>
+            <span class="kcr-tag kcr-tag-after">Après</span>
+            <div class="kcr-line"><div class="kcr-handle" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></div></div>
+          </div>
+          <div class="kcr-body">
+            <div class="kcr-meta"><span class="kcr-cat">Bureaux</span><span class="kcr-place">Pro / B2B</span></div>
+            <h3 class="kcr-t">Espace d'accueil valorisé</h3>
+            <p class="kcr-m">Salle de réunion et zone d'accueil soignées : surfaces, vitrages et sols traités pour une première impression irréprochable.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="kcr-empty" role="status" aria-live="polite">Aucune réalisation pour ce filtre.</p>
+
+      <p class="kcr-note kcr-fade"><strong>Chaque intervention est suivie.</strong> Checklist de passage et rapport photo disponibles selon la prestation. Les visuels ci-dessus sont des illustrations en attendant les vraies photos de chantier.</p>
+    </div>
+  </section>
+
+  <!-- ════════════════ 3 · CE QUE DISENT NOS CLIENTS ════════════════ -->
+  <section class="kcr-testi-sec">
+    <div class="kcr-wrap">
+      <div class="kcr-head kcr-fade">
+        <span class="kcr-eyebrow">Ce que disent nos clients</span>
+        <h2 class="kcr-h2">Des retours qui <em>comptent</em></h2>
+        <p class="kcr-sub">Voici le type de retours que nous visons à chaque intervention. Les témoignages ci-dessous sont des exemples illustratifs, en attendant la publication de vrais avis vérifiés.</p>
+      </div>
+
+      <div class="kcr-testi-grid">
+        <!-- 👉 Témoignage EXEMPLE — badge « Exemple » obligatoire tant que ce n'est pas un vrai avis (DGCCRF) -->
+        <article class="kcr-testi kcr-fade">
+          <span class="kcr-testi-mark" aria-hidden="true">&rdquo;</span>
+          <span class="kcr-testi-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Exemple</span>
+          <div class="kcr-testi-stars" aria-label="5 étoiles sur 5">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+          </div>
+          <p class="kcr-testi-text">Le logement était impeccable pour l'état des lieux, jusque dans les moindres détails. J'ai récupéré l'intégralité de mon dépôt de garantie sans la moindre remarque.</p>
+          <div class="kcr-testi-author">
+            <div class="kcr-testi-avatar" aria-hidden="true">EX</div>
+            <div class="kcr-testi-info"><strong>Témoignage d'exemple</strong><span>Fin de bail · à remplacer par un vrai avis</span></div>
+          </div>
+        </article>
+
+        <!-- 👉 Témoignage EXEMPLE — badge « Exemple » obligatoire (DGCCRF) -->
+        <article class="kcr-testi kcr-fade">
+          <span class="kcr-testi-mark" aria-hidden="true">&rdquo;</span>
+          <span class="kcr-testi-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Exemple</span>
+          <div class="kcr-testi-stars" aria-label="5 étoiles sur 5">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+          </div>
+          <p class="kcr-testi-text">Turnover géré entre deux réservations sans que j'aie à m'en occuper. Linge frais, présentation soignée : mes voyageurs ne voient jamais la trace du séjour précédent.</p>
+          <div class="kcr-testi-author">
+            <div class="kcr-testi-avatar" aria-hidden="true">EX</div>
+            <div class="kcr-testi-info"><strong>Témoignage d'exemple</strong><span>Turnover Airbnb · à remplacer par un vrai avis</span></div>
+          </div>
+        </article>
+
+        <!-- 👉 Témoignage EXEMPLE — badge « Exemple » obligatoire (DGCCRF) -->
+        <article class="kcr-testi kcr-fade">
+          <span class="kcr-testi-mark" aria-hidden="true">&rdquo;</span>
+          <span class="kcr-testi-badge"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>Exemple</span>
+          <div class="kcr-testi-stars" aria-label="5 étoiles sur 5">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .9-5 4.7 1.3 6.9L12 17.8 5.4 21l1.3-6.9-5-4.7 7-.9z"/></svg>
+          </div>
+          <p class="kcr-testi-text">Après les travaux, l'appartement était couvert de poussière. L'équipe a tout repris : vitres, sols, finitions. Le logement était prêt à habiter le jour de la livraison.</p>
+          <div class="kcr-testi-author">
+            <div class="kcr-testi-avatar" aria-hidden="true">EX</div>
+            <div class="kcr-testi-info"><strong>Témoignage d'exemple</strong><span>Fin de chantier · à remplacer par un vrai avis</span></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ 4 · CTA FINAL ════════════════ -->
+  <section class="kcr-final">
+    <div class="kcr-final-wrap kcr-fade">
+      <span class="kcr-final-tag">Votre projet</span>
+      <h2>Et si le prochain avant / après était <em>chez vous</em> ?</h2>
+      <p>Décrivez votre besoin en quelques clics : nous vous proposons le bon créneau et le niveau d'exigence Kayli Clinn, partout en Île-de-France.</p>
+      <div class="kcr-final-ctas">
+        <a href="/devis/" class="kcr-btn kcr-btn-primary">
+          Demander un devis gratuit
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+33670012061" class="kcr-btn kcr-btn-ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          06 70 01 20 61
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- JSON-LD — fil d'Ariane (optionnel, neutre, sans donnée inventée) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kayliclinn.fr/"},
+    {"@type": "ListItem", "position": 2, "name": "Nos réalisations", "item": "https://kayliclinn.fr/realisations/"}
+  ]
+}
+</script>
+
+<script>
+(function(){
+  function ready(fn){ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',fn);} else {fn();} }
+
+  /* ── Comparateur avant/après (souris, tactile, clavier) ── */
+  function initCompare(scope){
+    scope.querySelectorAll('.kcr-compare[data-kcr]').forEach(function(cmp){
+      var before=cmp.querySelector('.kcr-before');
+      var line=cmp.querySelector('.kcr-line');
+      if(!before||!line) return;
+      var dragging=false, current=50;
+
+      // Accessibilité : vrai curseur
+      cmp.setAttribute('tabindex','0');
+      cmp.setAttribute('role','slider');
+      cmp.setAttribute('aria-valuemin','0');
+      cmp.setAttribute('aria-valuemax','100');
+      cmp.setAttribute('aria-valuenow','50');
+      cmp.setAttribute('aria-valuetext','50 % avant, 50 % après');
+
+      function set(percent){
+        percent=Math.max(6,Math.min(94,percent));
+        current=percent;
+        before.style.width=percent+'%';
+        line.style.left=percent+'%';
+        var p=Math.round(percent);
+        cmp.setAttribute('aria-valuenow',String(p));
+        cmp.setAttribute('aria-valuetext',p+' % avant, '+(100-p)+' % après');
+      }
+      function move(clientX){
+        var rect=cmp.getBoundingClientRect();
+        set(((clientX-rect.left)/rect.width)*100);
+      }
+
+      cmp.addEventListener('keydown',function(e){
+        var step=e.shiftKey?12:4;
+        if(e.key==='ArrowLeft'||e.key==='ArrowDown'){e.preventDefault();set(current-step);}
+        else if(e.key==='ArrowRight'||e.key==='ArrowUp'){e.preventDefault();set(current+step);}
+        else if(e.key==='Home'){e.preventDefault();set(6);}
+        else if(e.key==='End'){e.preventDefault();set(94);}
+      });
+      cmp.addEventListener('mousedown',function(e){dragging=true;move(e.clientX);});
+      window.addEventListener('mousemove',function(e){if(dragging)move(e.clientX);});
+      window.addEventListener('mouseup',function(){dragging=false;});
+      cmp.addEventListener('mousemove',function(e){if(!dragging && window.matchMedia('(hover: hover)').matches) move(e.clientX);});
+      cmp.addEventListener('touchstart',function(e){if(e.touches&&e.touches[0])move(e.touches[0].clientX);},{passive:true});
+      cmp.addEventListener('touchmove',function(e){if(e.touches&&e.touches[0])move(e.touches[0].clientX);},{passive:true});
+    });
+  }
+
+  /* ── Apparition au scroll (.kcr-fade et cartes) ── */
+  function initReveal(scope){
+    var items=scope.querySelectorAll('.kcr-fade, .kcr-card');
+    if(!('IntersectionObserver' in window)){
+      items.forEach(function(el){el.classList.add('kcr-vis','kcr-in');});
+      return;
+    }
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        en.target.classList.add('kcr-vis','kcr-in');
+        io.unobserve(en.target);
+      });
+    },{threshold:.08});
+    items.forEach(function(el){io.observe(el);});
+  }
+
+  /* ── Filtre par catégorie ── */
+  function initFilter(scope){
+    var buttons=scope.querySelectorAll('.kcr-filter');
+    var cards=scope.querySelectorAll('.kcr-card');
+    var empty=scope.querySelector('.kcr-empty');
+    if(!buttons.length) return;
+
+    buttons.forEach(function(btn){
+      btn.addEventListener('click',function(){
+        var filter=btn.getAttribute('data-filter');
+        buttons.forEach(function(b){b.setAttribute('aria-pressed', b===btn ? 'true':'false');});
+        var visible=0;
+        cards.forEach(function(card){
+          var match=(filter==='all')||(card.getAttribute('data-cat')===filter);
+          card.classList.toggle('kcr-hidden', !match);
+          if(match) visible++;
+        });
+        if(empty) empty.classList.toggle('kcr-show', visible===0);
+      });
+    });
+  }
+
+  ready(function(){
+    var scope=document.querySelector('.kcr-page');
+    if(!scope) return;
+    initCompare(scope);
+    initReveal(scope);
+    initFilter(scope);
+  });
+})();
+</script>
