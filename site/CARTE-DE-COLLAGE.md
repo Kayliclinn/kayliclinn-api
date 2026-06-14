@@ -104,11 +104,6 @@ Elles ont aussi le bouton « Demander un devis ».
 « Propreté récurrente », « Prestation ponctuelle », « Extrême », « 3D nuisibles »,
 « Spécifique » ne sont **pas des pages** : juste des conteneurs de sous-menu.
 
-## À créer plus tard
-
-- **Grand ménage** (forfait validé 140/190/250/320 TTC) : pas encore de page ; le
-  catalogue renvoie vers `/devis/` en attendant.
-
 ## Dépendances plugins (sinon repli honnête + téléphone)
 
 - `/contact/` et `/demande-de-devis/` → **kc-contact** + `window.kcContact { ajaxUrl, nonce }`.
