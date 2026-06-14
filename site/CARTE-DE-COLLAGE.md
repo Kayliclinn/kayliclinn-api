@@ -19,7 +19,7 @@ publier.
 | `realisations.html` | `/realisations/` | **20 photos avant/après** (placeholder `Image6.webp`) |
 | `qualite-qse.html` | `/qualite-qse/` | assureur & montant RC Pro, certifications |
 | `contact.html` | `/contact/` | e-mail, adresse, horaires ; **kc-contact + `window.kcContact`** |
-| `rendez-vous.html` | `/rendez-vous/` | e-mail/horaires ; **kc-contact + `window.kcContact`** |
+| `demande-de-devis.html` | `/demande-de-devis/` | e-mail/horaires ; **kc-contact + `window.kcContact`** |
 | `estimation.html` | `/devis/` | **kc-devis** + `window.kcDevis` |
 | `reservation.html` | `/reservation/` | **kc-booking** (KC_Pricing + type `visite-audit`) |
 
@@ -41,26 +41,30 @@ publier.
 | `nettoyage-haute-pression.html` | `/nettoyage-haute-pression/` | sur devis |
 | `pieces-blanches.html` | `/pieces-blanches/` | sur devis |
 
-## Prise de rendez-vous
+## Deux intentions : « Réserver » et « Demander un devis »
 
-Deux entrées distinctes selon que la prestation a un prix en ligne ou non :
+Le mot « rendez-vous » est volontairement banni (il se confondait avec « réservation »).
+Deux verbes seulement, jamais ambigus :
 
 - **Prestations estimables** (forfaits : Turnover Airbnb, Vitres classiques, Fin de
   bail/déménagement) → bouton **« Estimer & réserver en ligne »** → `/devis/`. L'estimation
-  **calcule le montant et recueille les infos**, puis enchaîne sur la réservation du créneau
-  (ou une visite). On ne passe donc jamais à côté du montant. *Pas* de bouton « Prendre
-  rendez-vous » sur ces pages (il court-circuiterait l'estimation).
-- **Prestations sur devis** (tout le reste) → bouton **« Prendre rendez-vous »** →
-  `/rendez-vous/?presta=<slug>`.
-- **`/rendez-vous/` est directement accessible** (jamais conditionné à l'estimation). Pensez à
-  pointer le bouton du menu (haut-droite) ou une entrée de menu vers `/rendez-vous/`.
+  **calcule le montant et recueille les infos**, puis enchaîne sur la **réservation** du créneau
+  (ou une visite). On ne passe donc jamais à côté du montant. *Pas* de bouton « Demander un
+  devis » sur ces pages (il court-circuiterait l'estimation).
+- **Prestations sur devis** (tout le reste) → bouton **« Demander un devis »** →
+  `/demande-de-devis/?presta=<slug>`.
+- **`/demande-de-devis/` est directement accessible** (jamais conditionné à l'estimation). Pensez
+  à pointer une entrée de menu vers `/demande-de-devis/` (le bouton teal du menu reste réservé au
+  recrutement « Nous rejoindre »).
 - Hero de l'accueil : **2 boutons** (« Estimation en ligne » + « Voir nos prestations »).
-- **`/rendez-vous/`** propose 2 actions :
+- **`/demande-de-devis/`** propose 2 actions :
   1. **« Être rappelé(e) »** → envoi via **kc-contact** (`window.kcContact`).
   2. **« Réserver une visite gratuite »** → `/reservation/?visite=<slug>` (calendrier
      kc-booking, type `visite-audit`, sans paiement).
-- `/reservation/` accepte désormais `?visite=<slug>` (entrée directe visite gratuite) en
-  plus du relais depuis `/devis/` — ajout additif, le tunnel de paiement est inchangé.
+- `/reservation/` accepte `?visite=<slug>` (entrée directe visite gratuite) en plus du relais
+  depuis `/devis/` — ajout additif, le tunnel de paiement est inchangé.
+- Le tunnel `/devis/` route déjà les prestations non estimables vers « sur devis · visite
+  gratuite » (aucun emploi du mot « rendez-vous »).
 
 ## NE PAS PUBLIER en l'état (règles du projet)
 
@@ -77,7 +81,7 @@ Avertissement en tête de chaque fichier ; **sans aucun prix**, sans réservatio
 ## En réserve (hors menu, non publiées — gardées à ta demande)
 
 `entretien-professionnel.html` · `desinfection-virucide.html` (⛔ Certibiocide) ·
-`sinistres-degats-des-eaux.html`. Elles ont aussi le bouton « Prendre rendez-vous ».
+`sinistres-degats-des-eaux.html`. Elles ont aussi le bouton « Demander un devis ».
 
 ## Redirections 301 (éviter le contenu dupliqué)
 
@@ -99,7 +103,7 @@ Avertissement en tête de chaque fichier ; **sans aucun prix**, sans réservatio
 
 ## Dépendances plugins (sinon repli honnête + téléphone)
 
-- `/contact/` et `/rendez-vous/` → **kc-contact** + `window.kcContact { ajaxUrl, nonce }`.
+- `/contact/` et `/demande-de-devis/` → **kc-contact** + `window.kcContact { ajaxUrl, nonce }`.
 - `/devis/` → **kc-devis** + `window.kcDevis`.
 - `/reservation/` → **kc-booking** (KC_Pricing, type `visite-audit`).
 

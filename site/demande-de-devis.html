@@ -1,6 +1,6 @@
 <!-- ════════════════════════════════════════════════════════
-   PAGE « PRENDRE RENDEZ-VOUS » — KAYLI CLINN
-   URL : /rendez-vous/  ·  Hub de prise de contact
+   PAGE « DEMANDER UN DEVIS » — KAYLI CLINN
+   URL : /demande-de-devis/  ·  Hub de demande de devis
    Bloc « HTML personnalisé » WordPress (contenu complet, sans
    en-tête / pied de page du thème). <style> scoped « .kc-rdv ».
    ────────────────────────────────────────────────────────
@@ -232,8 +232,8 @@
   <!-- 1 · HERO COURT -->
   <section class="kc-rdv-hero">
     <div class="kc-rdv-hero-wrap kc-fade">
-      <span class="eyebrow">Prendre rendez-vous · Île-de-France</span>
-      <h1>Prenons <em>rendez-vous</em></h1>
+      <span class="eyebrow">Demander un devis · Île-de-France</span>
+      <h1>Demandez votre <em>devis gratuit</em></h1>
       <p>Faites-vous rappeler par notre équipe, ou réservez directement en ligne votre visite gratuite et sans engagement. Nous étudions votre besoin et vous proposons la solution la plus adaptée.</p>
     </div>
   </section>
@@ -376,7 +376,7 @@
 
           <div class="kc-reassure-intro">
             <h2>Sans <em>engagement</em></h2>
-            <p>Chaque rendez-vous commence par une écoute de votre besoin. Vous gardez la main à chaque étape.</p>
+            <p>Chaque demande commence par une écoute de votre besoin. Vous gardez la main à chaque étape.</p>
           </div>
 
           <!-- Visite gratuite -->
@@ -599,7 +599,7 @@
      soit exploitable même si subject reste « information ». */
   function composeMessage(){
     var lines = [];
-    lines.push('Demande de rappel (page Prendre rendez-vous).');
+    lines.push('Demande de rappel (page Demander un devis).');
     var presta = hiddenEl.value || (hasKnownPresta ? PRESTA[qpresta] : '');
     if(presta) lines.push('Prestation : ' + presta);
     if(val('location'))     lines.push('Secteur : ' + val('location'));
@@ -702,13 +702,13 @@
 })();
 </script>
 
-<!-- Données structurées SEO — page Prendre rendez-vous (uniquement champs connus, SANS offers) -->
+<!-- Données structurées SEO — page Demander un devis (uniquement champs connus, SANS offers) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  "name": "Prendre rendez-vous — Kayli Clinn",
-  "url": "https://kayliclinn.fr/rendez-vous/",
+  "name": "Demander un devis — Kayli Clinn",
+  "url": "https://kayliclinn.fr/demande-de-devis/",
   "mainEntity": {
     "@type": "CleaningService",
     "name": "Kayli Clinn",

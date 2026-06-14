@@ -396,7 +396,7 @@
      fonctionne même si « visite-audit » n'a pas encore été créé. */
   const DEFAULT_AUDIT_TYPE = 'visite-audit';
 
-  /* Entrée directe « Prendre rendez-vous » depuis les pages prestations :
+  /* Entrée directe « Demander un devis » depuis les pages prestations :
      /reservation/?visite=<slug>. On synthétise un relais de VISITE GRATUITE
      (funnel non-forfait → boot() tombe en cascade sur visite-audit, jamais
      de paiement). Le slug ne sert qu'au libellé du récapitulatif. */
@@ -1010,7 +1010,7 @@
     const token = params.get('resa');
     if(token){ S.handoff = readHandoff(); handleReturn(token, params.get('paid')==='1'); return; }
 
-    // Entrée directe « Prendre rendez-vous » (visite gratuite) depuis une page prestation
+    // Entrée directe « Demander un devis » (visite gratuite) depuis une page prestation
     const visite = params.get('visite');
     if(visite){ S.handoff = makeVisiteHandoff(visite); boot(); return; }
 
