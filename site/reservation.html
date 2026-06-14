@@ -396,6 +396,27 @@
      fonctionne même si « visite-audit » n'a pas encore été créé. */
   const DEFAULT_AUDIT_TYPE = 'visite-audit';
 
+  /* Entrée directe « Prendre rendez-vous » depuis les pages prestations :
+     /reservation/?visite=<slug>. On synthétise un relais de VISITE GRATUITE
+     (funnel non-forfait → boot() tombe en cascade sur visite-audit, jamais
+     de paiement). Le slug ne sert qu'au libellé du récapitulatif. */
+  const VISITE_LABELS = {
+    'turnover-airbnb':'Turnover Airbnb','vitres-classiques':'Vitres classiques',
+    'nettoyage-apres-demenagement-etat-des-lieux':'Nettoyage après déménagement / état des lieux',
+    'nettoyage-fin-de-chantier':'Nettoyage fin de chantier','entretien-de-bureaux':'Entretien de bureaux',
+    'parties-communes-immeubles':"Parties communes d'immeubles",'commerces-retail':'Commerces & Retail',
+    'etablissements-sensibles':'Établissements sensibles','remise-en-etat':'Remise en état logement / bureaux',
+    'decapage-cristallisation-sols':'Décapage / cristallisation des sols','shampouinage-moquettes':'Shampouinage de moquettes',
+    'nettoyage-haute-pression':'Nettoyage haute pression','scenes-sensibles':'Scènes sensibles',
+    'deratisation':'Dératisation','desinsectisation':'Désinsectisation','punaises-de-lit':'Punaises de lit',
+    'pieces-blanches':'Pièces blanches','visite-audit':'Visite gratuite'
+  };
+  function makeVisiteHandoff(slug){
+    slug = String(slug||'').toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,64);
+    return { version:2, funnel:'audit', presta:slug || 'visite-audit',
+             label: VISITE_LABELS[slug] || 'Visite gratuite', ts: Date.now() };
+  }
+
   const IS_LIVE = /(^|\.)kayliclinn\.fr$/i.test(location.hostname);
 
   /* ════════════════════════════════════════════════
@@ -988,6 +1009,10 @@
     const params = new URLSearchParams(location.search);
     const token = params.get('resa');
     if(token){ S.handoff = readHandoff(); handleReturn(token, params.get('paid')==='1'); return; }
+
+    // Entrée directe « Prendre rendez-vous » (visite gratuite) depuis une page prestation
+    const visite = params.get('visite');
+    if(visite){ S.handoff = makeVisiteHandoff(visite); boot(); return; }
 
     S.handoff = readHandoff();
     if(!S.handoff){
