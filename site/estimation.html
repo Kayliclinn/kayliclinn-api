@@ -93,7 +93,7 @@
 
 .kc-devis .step-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin-bottom:22px}
 .kc-devis .step-tag::before{content:'';width:24px;height:1px;background:var(--teal)}
-.kc-devis .step-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:600;color:var(--dark);line-height:1.05;letter-spacing:-0.5px;margin-bottom:16px}
+.kc-devis .step-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:var(--dark);line-height:1.12;letter-spacing:normal;margin-bottom:16px}
 .kc-devis .step-title em{color:var(--teal-dark);font-style:normal;position:relative;display:inline-block}
 .kc-devis .step-title em::after{content:'';position:absolute;bottom:4px;left:-2px;right:-2px;height:8px;background:var(--teal);opacity:0.18;border-radius:5px;z-index:-1}
 .kc-devis .step-desc{font-size:16px;color:var(--text-light);max-width:640px;line-height:1.65;margin-bottom:44px}
@@ -307,7 +307,7 @@
   .kc-devis .progress-section{padding:14px 32px}
   .kc-devis .resume-banner{padding:10px 32px}
   .kc-devis .step-container{padding:40px 24px 100px}
-  .kc-devis .step-title{font-size:clamp(1.6rem,3.5vw,2.4rem);letter-spacing:-1.2px}
+  .kc-devis .step-title{font-size:clamp(24px,3.5vw,34px);letter-spacing:normal}
   .kc-devis .options-grid.cols-3,.kc-devis .options-grid.cols-4{grid-template-columns:repeat(2,1fr)}
   .kc-devis .result-container{grid-template-columns:1fr;gap:20px}
   .kc-devis .result-main{padding:28px}
@@ -319,7 +319,7 @@
   .kc-devis .resume-banner{padding:8px 20px;flex-direction:column;gap:8px;text-align:center}
   .kc-devis .progress-section{padding:12px 20px}
   .kc-devis .step-container{padding:32px 18px 80px}
-  .kc-devis .step-title{font-size:1.7rem;letter-spacing:-1px}
+  .kc-devis .step-title{font-size:1.6rem;letter-spacing:normal}
   .kc-devis .options-grid{grid-template-columns:1fr !important}
   .kc-devis .options-grid.cols-2{grid-template-columns:1fr 1fr !important}
   .kc-devis .presta-grid{grid-template-columns:repeat(2,1fr);gap:10px}
@@ -1400,11 +1400,11 @@
       'repassage':    { nom:'Repassage',                          prix:35,  type:'unite', unite:'h',   max:8,   compat:['airbnb','grand-menage'], desc:'Par heure' },
       'balcon':       { nom:'Balcon / terrasse',                  prix:2,   type:'unite', unite:'m²',  max:150, minTotal:20,  compat:['fin-de-bail','grand-menage'], desc:'2 €/m² · minimum 20 €' },
       'moquette':     { nom:'Moquette injection-extraction',      prix:5,   type:'unite', unite:'m²',  max:300, minTotal:100, compat:['fin-de-bail'], desc:'5 €/m² · minimum 100 €' },
-      'canape-2p':    { nom:'Canapé 2 places',                    prix:80,  type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
-      'canape-3p':    { nom:'Canapé 3 places',                    prix:100, type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
-      'canape-4p':    { nom:'Canapé 4 places',                    prix:110, type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
-      'fauteuil':     { nom:'Fauteuil',                           prix:50,  type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] },
-      'matelas':      { nom:'Matelas 2 places',                   prix:75,  type:'fixe',  compat:['airbnb','fin-de-bail','grand-menage','vitrerie'] }
+      'canape-2p':    { nom:'Canapé 2 places',                    prix:80,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'canape-3p':    { nom:'Canapé 3 places',                    prix:100, type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'canape-4p':    { nom:'Canapé 4 places',                    prix:110, type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'fauteuil':     { nom:'Fauteuil',                           prix:50,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'matelas':      { nom:'Matelas 2 places',                   prix:75,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] }
     },
     majorations: {
       'urgence':        { nom:'Urgence — sous 48 h',                          taux:0.30 },
