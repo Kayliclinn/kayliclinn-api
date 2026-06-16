@@ -18,7 +18,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 .kc-devis{
@@ -56,7 +56,7 @@
 
 /* NAV TOP */
 .kc-devis .nav-top{padding:24px 60px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:var(--white)}
-.kc-devis .nav-logo{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--dark);letter-spacing:-0.5px}
+.kc-devis .nav-logo{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:600;color:var(--dark);letter-spacing:-0.5px}
 .kc-devis .nav-logo em{color:var(--teal-dark);font-style:normal}
 .kc-devis .nav-subtitle{font-size:12px;color:var(--gray);letter-spacing:0.04em;text-transform:uppercase;font-weight:500}
 
@@ -93,7 +93,7 @@
 
 .kc-devis .step-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin-bottom:22px}
 .kc-devis .step-tag::before{content:'';width:24px;height:1px;background:var(--teal)}
-.kc-devis .step-title{font-family:'Montserrat',sans-serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:800;color:var(--dark);line-height:1.05;letter-spacing:-1.5px;margin-bottom:16px}
+.kc-devis .step-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:600;color:var(--dark);line-height:1.05;letter-spacing:-0.5px;margin-bottom:16px}
 .kc-devis .step-title em{color:var(--teal-dark);font-style:normal;position:relative;display:inline-block}
 .kc-devis .step-title em::after{content:'';position:absolute;bottom:4px;left:-2px;right:-2px;height:8px;background:var(--teal);opacity:0.18;border-radius:5px;z-index:-1}
 .kc-devis .step-desc{font-size:16px;color:var(--text-light);max-width:640px;line-height:1.65;margin-bottom:44px}
@@ -112,8 +112,8 @@
 .kc-devis .option-card.selected::after{content:'';position:absolute;top:14px;right:14px;width:24px;height:24px;background:#fff;border-radius:50%;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%230FA7A5" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');background-size:14px;background-position:center;background-repeat:no-repeat}
 .kc-devis .oc-icon{width:38px;height:38px;border-radius:10px;background:var(--teal-light);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:4px;transition:all .25s}
 .kc-devis .option-card.selected .oc-icon{background:rgba(255,255,255,0.25);color:#fff}
-.kc-devis .oc-num{font-family:'Montserrat',sans-serif;font-size:12px;color:var(--gray);letter-spacing:0.08em;font-weight:600;margin-bottom:2px}
-.kc-devis .oc-title{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--dark);line-height:1.25;letter-spacing:-0.3px}
+.kc-devis .oc-num{font-family:'Inter',sans-serif;font-size:12px;color:var(--gray);letter-spacing:0.08em;font-weight:600;margin-bottom:2px}
+.kc-devis .oc-title{font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:600;color:var(--dark);line-height:1.25;letter-spacing:-0.3px}
 .kc-devis .oc-desc{font-size:13px;color:var(--gray);line-height:1.5}
 .kc-devis .oc-badge{display:inline-block;font-size:11px;font-weight:600;color:var(--teal-deep);background:var(--teal-light);padding:3px 10px;border-radius:100px;letter-spacing:0.02em;margin-top:4px;align-self:flex-start}
 .kc-devis .option-card.selected .oc-badge{background:rgba(255,255,255,0.25);color:#fff}
@@ -128,12 +128,12 @@
 .kc-devis .zone-checkbox-card.checked .zone-checkbox-square{background:var(--teal);border-color:var(--teal)}
 .kc-devis .zone-checkbox-square svg{color:transparent;transition:color .2s}
 .kc-devis .zone-checkbox-card.checked .zone-checkbox-square svg{color:#fff}
-.kc-devis .zone-checkbox-text{font-family:'Montserrat',sans-serif;font-size:17px;font-weight:700;color:var(--dark);line-height:1.35;letter-spacing:-0.3px}
+.kc-devis .zone-checkbox-text{font-family:'Inter',sans-serif;font-size:17px;font-weight:700;color:var(--dark);line-height:1.35;letter-spacing:-0.3px}
 .kc-devis .zone-checkbox-text em{color:var(--teal-dark);font-style:normal}
 
 /* Carte IDF (positions géo correctes) */
 .kc-devis .zone-map{position:relative;width:100%;max-width:500px;height:380px;margin:0 auto 24px}
-.kc-devis .zone-circle{position:absolute;background:var(--white);border:1.5px solid var(--gray-light);border-radius:50%;display:grid;place-items:center;font-family:'Montserrat',sans-serif;font-weight:700;color:var(--dark);letter-spacing:-0.5px;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.kc-devis .zone-circle{position:absolute;background:var(--white);border:1.5px solid var(--gray-light);border-radius:50%;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:700;color:var(--dark);letter-spacing:-0.5px;transition:all .35s cubic-bezier(.4,0,.2,1)}
 .kc-devis .zone-circle.center{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 24px rgba(15,167,165,0.35);z-index:5}
 .kc-devis .zone-c-95{width:115px;height:115px;font-size:19px;top:0;left:50%;transform:translateX(-50%)}
 .kc-devis .zone-c-78{width:140px;height:140px;font-size:22px;top:115px;left:0}
@@ -148,7 +148,7 @@
 
 /* SLIDER */
 .kc-devis .slider-block{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:36px 32px;margin-bottom:32px}
-.kc-devis .slider-value{font-family:'Montserrat',sans-serif;font-size:64px;font-weight:800;color:var(--dark);line-height:1;letter-spacing:-2px;margin-bottom:8px;display:flex;align-items:flex-end;gap:10px}
+.kc-devis .slider-value{font-family:'Fraunces',Georgia,serif;font-size:64px;font-weight:600;color:var(--dark);line-height:1;letter-spacing:-0.5px;margin-bottom:8px;display:flex;align-items:flex-end;gap:10px}
 .kc-devis .slider-value em{color:var(--teal-dark);font-style:normal}
 .kc-devis .slider-value-unit{font-family:'Inter',sans-serif;font-size:18px;color:var(--gray);font-weight:500;margin-bottom:12px;letter-spacing:0}
 .kc-devis .slider-hint{font-size:13.5px;color:var(--text-light);margin-bottom:28px}
@@ -167,10 +167,10 @@
 .kc-devis .opt-icon{width:36px;height:36px;background:var(--teal-light);color:var(--teal-deep);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
 .kc-devis .opt-row.selected .opt-icon{background:var(--teal);color:#fff}
 .kc-devis .opt-info{flex:1}
-.kc-devis .opt-name{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:2px;line-height:1.3;letter-spacing:-0.2px}
+.kc-devis .opt-name{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:2px;line-height:1.3;letter-spacing:-0.2px}
 .kc-devis .opt-desc-txt{font-size:12.5px;color:var(--text-light);line-height:1.5}
 .kc-devis .opt-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
-.kc-devis .opt-price{font-family:'Montserrat',sans-serif;font-size:15px;color:var(--teal-deep);font-weight:700;white-space:nowrap}
+.kc-devis .opt-price{font-family:'Inter',sans-serif;font-size:15px;color:var(--teal-deep);font-weight:700;white-space:nowrap}
 .kc-devis .opt-check{width:22px;height:22px;border:1.5px solid var(--border);border-radius:6px;display:grid;place-items:center;font-size:12px;color:transparent;transition:all .2s;background:var(--white);flex-shrink:0;font-weight:700}
 
 /* FORMULAIRE */
@@ -228,17 +228,17 @@
 .kc-devis .result-label{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;font-weight:600;display:flex;align-items:center;gap:8px}
 .kc-devis .result-label-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:kcPulse 2s infinite}
 @keyframes kcPulse{0%,100%{opacity:1}50%{opacity:0.4}}
-.kc-devis .result-price{font-family:'Montserrat',sans-serif;font-size:64px;font-weight:800;color:var(--dark);line-height:1;letter-spacing:-2.5px;margin-bottom:8px}
+.kc-devis .result-price{font-family:'Fraunces',Georgia,serif;font-size:64px;font-weight:600;color:var(--dark);line-height:1;letter-spacing:-0.5px;margin-bottom:8px}
 .kc-devis .result-price em{color:var(--teal-dark);font-style:normal}
 .kc-devis .result-from{font-size:14px;color:var(--text-light);margin-bottom:32px}
 .kc-devis .result-detail{display:flex;flex-direction:column;gap:14px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:24px}
 .kc-devis .rd-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
 .kc-devis .rd-name{font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:2px}
 .kc-devis .rd-sub{font-size:12px;color:var(--gray);line-height:1.4}
-.kc-devis .rd-amount{font-family:'Montserrat',sans-serif;font-size:14.5px;color:var(--dark);font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.kc-devis .rd-amount{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--dark);font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
 .kc-devis .result-total{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:2px solid var(--dark);margin-bottom:28px}
-.kc-devis .result-total-label{font-family:'Montserrat',sans-serif;font-size:15px;font-weight:700;color:var(--dark);letter-spacing:-0.2px}
-.kc-devis .result-total-val{font-family:'Montserrat',sans-serif;font-size:28px;color:var(--dark);font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:-0.8px}
+.kc-devis .result-total-label{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--dark);letter-spacing:-0.2px}
+.kc-devis .result-total-val{font-family:'Fraunces',Georgia,serif;font-size:28px;color:var(--dark);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-0.8px}
 .kc-devis .result-cta{display:flex;flex-direction:column;gap:10px}
 .kc-devis .cta-submit{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:12px;cursor:pointer;transition:all .25s;text-align:left;width:100%;position:relative;min-height:60px}
 .kc-devis .cta-submit-primary{background:var(--teal);color:#fff;box-shadow:0 4px 16px rgba(15,167,165,0.3)}
@@ -249,7 +249,7 @@
 .kc-devis .cta-submit-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.2);display:grid;place-items:center;flex-shrink:0}
 .kc-devis .cta-submit-secondary .cta-submit-icon{background:var(--teal-light);color:var(--teal-deep)}
 .kc-devis .cta-submit-content{flex:1}
-.kc-devis .cta-submit-name{font-family:'Montserrat',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.2px;margin-bottom:2px}
+.kc-devis .cta-submit-name{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.2px;margin-bottom:2px}
 .kc-devis .cta-submit-desc{font-size:11.5px;line-height:1.4;opacity:0.85}
 .kc-devis .cta-submit .spinner{position:absolute;right:20px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;display:none;animation:kcSpin .8s linear infinite}
 .kc-devis .cta-submit.loading .spinner{display:block}
@@ -258,7 +258,7 @@
 .kc-devis .result-aside{display:flex;flex-direction:column;gap:14px}
 .kc-devis .aside-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px}
 .kc-devis .aside-card.dark{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);color:#fff;border-color:transparent}
-.kc-devis .aside-title{font-family:'Montserrat',sans-serif;font-size:14px;color:var(--dark);font-weight:700;letter-spacing:-0.2px;margin-bottom:14px}
+.kc-devis .aside-title{font-family:'Fraunces',Georgia,serif;font-size:14px;color:var(--dark);font-weight:600;letter-spacing:-0.2px;margin-bottom:14px}
 .kc-devis .aside-card.dark .aside-title{color:#fff}
 .kc-devis .aside-list{display:flex;flex-direction:column;gap:10px}
 .kc-devis .aside-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-light);line-height:1.5}
@@ -283,11 +283,11 @@
 @keyframes kcIconPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 .kc-devis-modal-icon::after{content:'';position:absolute;inset:-8px;border:3px solid #0FA7A5;border-radius:50%;opacity:0.2;animation:kcRipple 1.5s ease-out infinite}
 @keyframes kcRipple{from{transform:scale(0.9);opacity:0.6}to{transform:scale(1.4);opacity:0}}
-.kc-devis-modal h2{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:800;color:#0D2340;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.2}
+.kc-devis-modal h2{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:600;color:#0D2340;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.2}
 .kc-devis-modal h2 em{color:#0B8483;font-style:normal}
 .kc-devis-modal p{font-size:15px;color:#4B5563;line-height:1.65;margin-bottom:8px}
 .kc-devis-modal-recap{background:#F8F9FB;border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;font-size:13.5px;color:#1F2937}
-.kc-devis-modal-recap strong{display:block;font-family:'Montserrat',sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280;margin-bottom:8px;font-weight:600}
+.kc-devis-modal-recap strong{display:block;font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280;margin-bottom:8px;font-weight:600}
 .kc-devis-modal-recap-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E5E7EB}
 .kc-devis-modal-recap-row:last-child{border-bottom:none}
 .kc-devis-modal-recap-row span:first-child{color:#6B7280;font-size:12.5px}
@@ -877,7 +877,7 @@
 .kcidf-wrap{font-family:'Inter',system-ui,sans-serif;background:#F7F8FA;padding:48px 20px;color:#0D2340;box-sizing:border-box}
 .kcidf-wrap *{box-sizing:border-box}
 .kcidf-head{text-align:center;max-width:560px;margin:0 auto}
-.kcidf-eyebrow{font-family:'Montserrat',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0B8483;margin:0 0 14px}
+.kcidf-eyebrow{font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0B8483;margin:0 0 14px}
 .kcidf-title{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.12;margin:0 0 14px;color:#0D2340}
 .kcidf-title span{color:#0FA7A5}
 .kcidf-sub{font-size:16px;line-height:1.6;color:#5b6b7d;margin:0}
@@ -889,9 +889,9 @@
 .kcidf-dep.kcidf-active{fill:#0FA7A5;stroke:#0B8483;stroke-width:2}
 .kcidf-leader{stroke:#b9c2cc;stroke-width:1;stroke-dasharray:3 3}
 .kcidf-pillbg{fill:#fff;stroke:#d7dde4;stroke-width:1}
-.kcidf-pillnum{font-family:'Montserrat',sans-serif;font-weight:700;font-size:14px;fill:#0FA7A5}
+.kcidf-pillnum{font-family:'Inter',sans-serif;font-weight:700;font-size:14px;fill:#0FA7A5}
 .kcidf-pillnom{font-family:'Inter',sans-serif;font-weight:500;font-size:11px;fill:#0D2340}
-.kcidf-bignum{font-family:'Montserrat',sans-serif;font-weight:700;font-size:22px;fill:#0D2340;text-anchor:middle}
+.kcidf-bignum{font-family:'Inter',sans-serif;font-weight:700;font-size:22px;fill:#0D2340;text-anchor:middle}
 .kcidf-bignom{font-family:'Inter',sans-serif;font-weight:500;font-size:12px;fill:#5b6b7d;text-anchor:middle}
 .kcidf-lbl,.kcidf-biglbl{pointer-events:none}
 .kcidf-readout{text-align:center;margin-top:22px;font-size:15px;min-height:24px}
@@ -2202,6 +2202,8 @@
       funnel: funnel === 'forfait' ? 'forfait' : 'audit',
       presta: state.selectedPresta,
       label: presta.nom,
+      zone: state.data.zone || '',
+      departement: state.data.departement || '',
       contact: state.data.contact || {},
       ts: Date.now()
     };
