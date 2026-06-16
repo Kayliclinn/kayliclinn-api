@@ -30,9 +30,9 @@
    │   03 Bureaux ........... --bureaux-1 / -2 / -3
    │   04 Déménagement ...... --demenagement-1 / -2 / -3
    │   05 Vitres ............ --vitres-1 / -2   (2 photos)
-   │   06 Diogène ........... --diogene-1 / -2 / -3
-   │   07 Désinfection ...... --desinfection-1 / -2 / -3
-   │   08 Sinistres ......... --sinistres-1 / -2 / -3
+   │   06 Remise en état ..... --remise-1 / -2 / -3
+   │   07 Parties communes ... --parties-1 / -2 / -3
+   │   08 Commerces .......... --commerces-1 / -2 / -3
    │  Format conseillé .. paysage ~800×534 · < 150 Ko chacune
    │  ALT type : « [Prestation] par Kayli Clinn — [contexte] »
    │  ex. « Nettoyage de fin de chantier par Kayli Clinn —
@@ -117,18 +117,18 @@
   /* 05 · Nettoyage de vitres (2 images) */
   --vitres-1:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg?fit=800%2C534&ssl=1);
   --vitres-2:url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197124.jpg?fit=683%2C1024&ssl=1);
-  /* 06 · Syndrome de Diogène */
-  --diogene-1:url(/wp-content/uploads/2026/03/Image2.webp);
-  --diogene-2:url(/wp-content/uploads/2026/05/pexels-bnwtake0405-8931489.jpg?fit=683%2C1024&ssl=1);
-  --diogene-3:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4097740.jpg?fit=683%2C1024&ssl=1);
-  /* 07 · Désinfection virucide */
-  --desinfection-1:url(/wp-content/uploads/2026/05/pexels-michelangelo-buonarroti-4176370.jpg?fit=800%2C534&ssl=1);
-  --desinfection-2:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg?fit=683%2C1024&ssl=1);
-  --desinfection-3:url(/wp-content/uploads/2026/03/pexels-uniqueton-4021256.jpg?fit=800%2C534&ssl=1);
-  /* 08 · Sinistres & dégâts des eaux */
-  --sinistres-1:url(/wp-content/uploads/2026/05/istockphoto-2075834329-1024x1024-1.jpg?fit=768%2C512&ssl=1);
-  --sinistres-2:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg?fit=683%2C1024&ssl=1);
-  --sinistres-3:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196692.webp);
+  /* 06 · Remise en état */
+  --remise-1:url(/wp-content/uploads/2026/03/Image2.webp);
+  --remise-2:url(/wp-content/uploads/2026/05/pexels-bnwtake0405-8931489.jpg?fit=683%2C1024&ssl=1);
+  --remise-3:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4097740.jpg?fit=683%2C1024&ssl=1);
+  /* 07 · Parties communes d'immeubles */
+  --parties-1:url(/wp-content/uploads/2026/05/pexels-michelangelo-buonarroti-4176370.jpg?fit=800%2C534&ssl=1);
+  --parties-2:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg?fit=683%2C1024&ssl=1);
+  --parties-3:url(/wp-content/uploads/2026/03/pexels-uniqueton-4021256.jpg?fit=800%2C534&ssl=1);
+  /* 08 · Commerces & retail */
+  --commerces-1:url(/wp-content/uploads/2026/05/istockphoto-2075834329-1024x1024-1.jpg?fit=768%2C512&ssl=1);
+  --commerces-2:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg?fit=683%2C1024&ssl=1);
+  --commerces-3:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196692.webp);
 
   /* 4 · RÉALISATIONS AVANT / APRÈS (6 comparateurs · placeholder Image6.webp) */
   /* R1 · Appartement Paris 11e */
@@ -1023,15 +1023,15 @@
 .kcp-card[data-i="3"] .kcp-slide:nth-child(3){background-image:var(--demenagement-3)}
 .kcp-card[data-i="4"] .kcp-slide:nth-child(1){background-image:var(--vitres-1)}
 .kcp-card[data-i="4"] .kcp-slide:nth-child(2){background-image:var(--vitres-2)}
-.kcp-card[data-i="5"] .kcp-slide:nth-child(1){background-image:var(--diogene-1)}
-.kcp-card[data-i="5"] .kcp-slide:nth-child(2){background-image:var(--diogene-2)}
-.kcp-card[data-i="5"] .kcp-slide:nth-child(3){background-image:var(--diogene-3)}
-.kcp-card[data-i="6"] .kcp-slide:nth-child(1){background-image:var(--desinfection-1)}
-.kcp-card[data-i="6"] .kcp-slide:nth-child(2){background-image:var(--desinfection-2)}
-.kcp-card[data-i="6"] .kcp-slide:nth-child(3){background-image:var(--desinfection-3)}
-.kcp-card[data-i="7"] .kcp-slide:nth-child(1){background-image:var(--sinistres-1)}
-.kcp-card[data-i="7"] .kcp-slide:nth-child(2){background-image:var(--sinistres-2)}
-.kcp-card[data-i="7"] .kcp-slide:nth-child(3){background-image:var(--sinistres-3)}
+.kcp-card[data-i="5"] .kcp-slide:nth-child(1){background-image:var(--remise-1)}
+.kcp-card[data-i="5"] .kcp-slide:nth-child(2){background-image:var(--remise-2)}
+.kcp-card[data-i="5"] .kcp-slide:nth-child(3){background-image:var(--remise-3)}
+.kcp-card[data-i="6"] .kcp-slide:nth-child(1){background-image:var(--parties-1)}
+.kcp-card[data-i="6"] .kcp-slide:nth-child(2){background-image:var(--parties-2)}
+.kcp-card[data-i="6"] .kcp-slide:nth-child(3){background-image:var(--parties-3)}
+.kcp-card[data-i="7"] .kcp-slide:nth-child(1){background-image:var(--commerces-1)}
+.kcp-card[data-i="7"] .kcp-slide:nth-child(2){background-image:var(--commerces-2)}
+.kcp-card[data-i="7"] .kcp-slide:nth-child(3){background-image:var(--commerces-3)}
 
 .kcp-section{position:relative;background:#F7F8FA;padding:90px 24px 100px;font-family:'Poppins',sans-serif;overflow:hidden}
 .kcp-head{max-width:760px;margin:0 auto 54px;text-align:center}
@@ -1082,7 +1082,7 @@
   <div class="kcp-grid">
 
     <!-- 01 · Nettoyage fin de chantier (photos → variables --chantier-* en haut) -->
-    <a class="kcp-card" href="/nettoyage-fin-de-chantier-paris/" data-i="0">
+    <a class="kcp-card" href="/nettoyage-fin-de-chantier/" data-i="0">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1130,7 +1130,7 @@
     </a>
 
     <!-- 04 · Nettoyage déménagement (photos → variables --demenagement-* en haut) -->
-    <a class="kcp-card" href="/nettoyage-demenagement/" data-i="3">
+    <a class="kcp-card" href="/nettoyage-apres-demenagement-etat-des-lieux/" data-i="3">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1146,7 +1146,7 @@
     </a>
 
     <!-- 05 · Nettoyage de vitres (photos → variables --vitres-* en haut · 2 images) -->
-    <a class="kcp-card" href="/nettoyage-de-vitres/" data-i="4">
+    <a class="kcp-card" href="/vitres-classiques/" data-i="4">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1160,8 +1160,8 @@
       </div>
     </a>
 
-    <!-- 06 · Syndrome de Diogène (photos → variables --diogene-* en haut) -->
-    <a class="kcp-card" href="/syndrome-de-diogene/" data-i="5">
+    <!-- 06 · Remise en état (photos → variables --remise-* en haut) -->
+    <a class="kcp-card" href="/remise-en-etat/" data-i="5">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1169,15 +1169,15 @@
         <div class="kcp-shade"></div><span class="kcp-badge">Spécialiste</span><span class="kcp-num">06</span>
       </div>
       <div class="kcp-body">
-        <h3 class="kcp-t">Syndrome de Diogène</h3>
-        <p class="kcp-d">Nettoyage extrême de logements insalubres, en toute discrétion, par une équipe certifiée et formée.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Visite obligatoire</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <h3 class="kcp-t">Remise en état</h3>
+        <p class="kcp-d">Remise à neuf de logements ou locaux très dégradés : nettoyage en profondeur, traitement des surfaces, résultat soigné avant relocation.</p>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Visite conseillée</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
-    <!-- 07 · Désinfection virucide (photos → variables --desinfection-* en haut) -->
-    <a class="kcp-card" href="/desinfection-virucide/" data-i="6">
+    <!-- 07 · Parties communes d'immeubles (photos → variables --parties-* en haut) -->
+    <a class="kcp-card" href="/parties-communes-immeubles/" data-i="6">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1185,25 +1185,25 @@
         <div class="kcp-shade"></div><span class="kcp-num">07</span>
       </div>
       <div class="kcp-body">
-        <h3 class="kcp-t">Désinfection virucide</h3>
-        <p class="kcp-d">Bio-nettoyage aux normes EN 14476 : bureaux, commerces et copropriétés, après contamination.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Intervention</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <h3 class="kcp-t">Parties communes d'immeubles</h3>
+        <p class="kcp-d">Entretien des halls, escaliers, paliers et locaux communs, en contrat régulier pour syndics et copropriétés.</p>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Copropriétés</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
-    <!-- 08 · Sinistres & dégâts des eaux (photos → variables --sinistres-* en haut) -->
-    <a class="kcp-card" href="/sinistres-degats-des-eaux/" data-i="7">
+    <!-- 08 · Commerces & retail (photos → variables --commerces-* en haut) -->
+    <a class="kcp-card" href="/commerces-retail/" data-i="7">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
         <div class="kcp-slide"></div>
-        <div class="kcp-shade"></div><span class="kcp-badge">Urgence</span><span class="kcp-num">08</span>
+        <div class="kcp-shade"></div><span class="kcp-num">08</span>
       </div>
       <div class="kcp-body">
-        <h3 class="kcp-t">Sinistres &amp; dégâts des eaux</h3>
-        <p class="kcp-d">Intervention rapide après inondation, incendie ou sinistre, en coordination avec votre assurance.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">24 h/24</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <h3 class="kcp-t">Commerces &amp; retail</h3>
+        <p class="kcp-d">Entretien de boutiques, restaurants et locaux recevant du public, en horaires décalés adaptés à votre activité.</p>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Commerces</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
