@@ -1,8 +1,16 @@
 {
   "name": "kayliclinn-api",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
+  "type": "module",
+  "description": "API serverless (Vercel) pour Kayli Clinn — paiements Stripe et notifications de réservation par email.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
   "dependencies": {
     "stripe": "^22.0.0"
   }
