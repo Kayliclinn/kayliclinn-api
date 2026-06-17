@@ -31,27 +31,20 @@
    │   04 Déménagement ...... --demenagement-1 / -2 / -3
    │   05 Vitres ............ --vitres-1 / -2   (2 photos)
    │   06 Remise en état ..... --remise-1 / -2 / -3
-   │   07 Parties communes ... --parties-1 / -2 / -3
-   │   08 Commerces .......... --commerces-1 / -2 / -3
    │  Format conseillé .. paysage ~800×534 · < 150 Ko chacune
    │  ALT type : « [Prestation] par Kayli Clinn — [contexte] »
    │  ex. « Nettoyage de fin de chantier par Kayli Clinn —
    │        dépoussiérage après rénovation »
    └─────────────────────────────────────────────────────────
 
-   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (6 comparateurs) ────────
-   │  Variables (panneau :root, tout en haut) — 12 photos à venir :
+   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (3 comparateurs) ────────
+   │  Variables (panneau :root, tout en haut) — 6 photos à venir :
    │   R1 Appartement Paris 11e (fin de chantier 72 m²)
    │      --r1-avant / --r1-apres
    │      ALT avant : « Appartement Paris 11e avant nettoyage
    │                    de fin de chantier — poussières et traces »
    │      ALT après : « Appartement Paris 11e livré impeccable
    │                    par Kayli Clinn après fin de chantier »
-   │   R2 Local commercial Levallois (140 m²)
-   │      --r2-avant / --r2-apres
-   │      ALT : même modèle (« avant nettoyage » / « livré propre »)
-   │   R3 Maison Boulogne-Billancourt ... --r3-avant / --r3-apres
-   │   R4 Studio Airbnb Paris 9e ........ --r4-avant / --r4-apres
    │   R5 Bureaux open-space La Défense . --r5-avant / --r5-apres
    │   R6 T2 Saint-Mandé ................ --r6-avant / --r6-apres
    │  Format conseillé .. MÊME CADRAGE avant/après, paysage 4:3
@@ -121,28 +114,14 @@
   --remise-1:url(/wp-content/uploads/2026/03/Image2.webp);
   --remise-2:url(/wp-content/uploads/2026/05/pexels-bnwtake0405-8931489.jpg?fit=683%2C1024&ssl=1);
   --remise-3:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4097740.jpg?fit=683%2C1024&ssl=1);
-  /* 07 · Parties communes d'immeubles */
-  --parties-1:url(/wp-content/uploads/2026/05/pexels-michelangelo-buonarroti-4176370.jpg?fit=800%2C534&ssl=1);
-  --parties-2:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4098915.jpg?fit=683%2C1024&ssl=1);
-  --parties-3:url(/wp-content/uploads/2026/03/pexels-uniqueton-4021256.jpg?fit=800%2C534&ssl=1);
-  /* 08 · Commerces & retail */
-  --commerces-1:url(/wp-content/uploads/2026/05/istockphoto-2075834329-1024x1024-1.jpg?fit=768%2C512&ssl=1);
-  --commerces-2:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg?fit=683%2C1024&ssl=1);
-  --commerces-3:url(/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196692.webp);
 
   /* 4 · RÉALISATIONS AVANT / APRÈS (6 comparateurs · placeholder Image6.webp) */
   /* R1 · Appartement Paris 11e */
   --r1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R2 · Local commercial Levallois */
-  --r2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R3 · Maison Boulogne-Billancourt */
-  --r3-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r3-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R4 · Studio Airbnb Paris 9e */
-  --r4-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r4-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R5 · Bureaux open-space La Défense */
   --r5-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r5-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
@@ -228,7 +207,7 @@
   backdrop-filter:blur(6px); padding:9px 16px; border-radius:999px;
   opacity:0; animation:khUp .8s .15s ease forwards;
 }
-.kc-home .kh-dot{width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:var(--kc-primary-light); animation:khDot 2.4s ease-out infinite}
+.kc-home .kh-dot{width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:var(--kc-primary-light)}
 .kc-home .kh-title{
   max-width:60ch; margin:22px auto 0; color:var(--kc-white);
   font-family:'Fraunces',Georgia,serif; font-size:clamp(36px,4.7vw,56px);
@@ -236,7 +215,7 @@
   text-shadow:0 2px 24px rgba(8,12,30,.58);
 }
 .kc-home .kh-w{display:inline-block; overflow:hidden; vertical-align:top}
-.kc-home .kh-w>span{display:inline-block; opacity:0; animation:khWord .9s cubic-bezier(.22,1,.36,1) forwards; animation-delay:calc(.42s + var(--wi)*.1s)}
+.kc-home .kh-w>span{display:inline-block; opacity:1}
 .kc-home .kh-para{
   max-width:54ch; margin:24px auto 0; color:rgba(255,255,255,.90);
   font-size:clamp(16px,1.35vw,19px); line-height:1.68;
@@ -254,7 +233,7 @@
 .kc-home .kh-btn svg,
 .kc-home .ka-btn svg{width:18px; height:18px; transition:transform .25s ease}
 .kc-home .kh-btn-1{padding:16px 30px; color:var(--kc-white); background:var(--kc-primary); box-shadow:0 14px 34px -12px rgba(15,167,165,.72)}
-.kc-home .kh-btn-1::after{content:""; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); animation:khSheen 4.5s 2s ease-in-out infinite}
+.kc-home .kh-btn-1::after{content:""; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); display:none}
 .kc-home .kh-btn-1:hover{transform:translateY(-3px); background:var(--kc-primary-light); box-shadow:0 20px 40px -12px rgba(15,167,165,.82)}
 .kc-home .kh-btn-1:hover svg,
 .kc-home .ka-btn:hover svg{transform:translateX(4px)}
@@ -356,9 +335,9 @@
     <!-- 📸 IMG 1 (fond CSS) · ALT = aria-label ci-dessous · cf. panneau en tête de fichier -->
     <div class="kh-bg" role="img" aria-label="Agent de nettoyage professionnel Kayli Clinn en intervention en Île-de-France"></div>
     <div class="kh-veil" aria-hidden="true"></div>
-    <div class="kh-grain" aria-hidden="true"></div>
-    <div class="kh-beam" aria-hidden="true"></div>
-    <div class="kh-beam b2" aria-hidden="true"></div>
+    
+    
+    
     <div class="kh-glow" aria-hidden="true"></div>
 
     <div class="kh-inner">
@@ -366,16 +345,16 @@
 
       <h1 class="kh-title">
         <span class="kh-w" style="--wi:0"><span>Nettoyage</span></span>
-        <span class="kh-w" style="--wi:1"><span>professionnel</span></span>
+        <span class="kh-w" style="--wi:1"><span>professionnel</span></span><br>
         <span class="kh-w" style="--wi:2"><span>en</span></span>
-        <span class="kh-w" style="--wi:3"><span>Île-de-France,</span></span>
+        <span class="kh-w" style="--wi:3"><span>Île-de-France,</span></span><br>
         <span class="kh-w" style="--wi:4"><span>rapide</span></span>
         <span class="kh-w" style="--wi:5"><span>et</span></span>
         <span class="kh-w" style="--wi:6"><span>impeccable.</span></span>
       </h1>
 
       <p class="kh-para">
-        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés : Kayli Clinn intervient rapidement avec une équipe fiable, discrète et un résultat soigné. Demandez votre devis en quelques clics.
+        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés :<br>Kayli Clinn intervient rapidement avec une équipe fiable, discrète et un résultat soigné.<br>Demandez votre devis en quelques clics.
       </p>
 
       <div class="kh-cta" aria-label="Actions principales">
@@ -409,7 +388,7 @@
         </h2>
 
         <p class="ka-p ka-rev">
-          Kayli Clinn accompagne particuliers, professionnels, syndics et hôtes Airbnb avec des prestations de nettoyage haut de gamme en Île-de-France. Chaque intervention est adaptée à vos contraintes : horaires, type d’espace, urgence et niveau d’exigence. Notre objectif : vous livrer un espace propre, sain et prêt à l’usage.
+          Kayli Clinn accompagne particuliers, professionnels, syndics et hôtes Airbnb avec des prestations de nettoyage haut de gamme en Île-de-France.<br>Chaque intervention est adaptée à vos contraintes :<br>horaires, type d’espace, urgence et niveau d’exigence.<br>Notre objectif :<br>vous livrer un espace propre, sain et prêt à l’usage.
         </p>
 
         <ul class="ka-proof-line ka-rev">
@@ -529,9 +508,7 @@
         var to=parseInt(el.getAttribute('data-to'),10);
         var suf=el.getAttribute('data-suf')||'';
         if(!Number.isFinite(to)) return;
-        var cur=0, step=Math.max(1,Math.round(to/32));
-        el.textContent='0'+suf;
-        var t=setInterval(function(){ cur+=step; if(cur>=to){cur=to; clearInterval(t);} el.textContent=cur+suf; },22);
+        el.textContent=to+suf;
       });
     }
     function revealAll(){ items.forEach(function(it){it.classList.add('ka-in');}); startCount(); }
@@ -685,6 +662,9 @@
 .kh4-step.kh4-in{opacity:1;transform:none;}
 .kh4-card{
   position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   height:100%;
   min-height:245px;
   padding:88px 20px 24px;
@@ -743,7 +723,7 @@
 .kh4-step.kh4-pulse .kh4-dot svg{animation:kh4pop .62s cubic-bezier(.34,1.56,.64,1);}
 @keyframes kh4pop{0%{transform:scale(.4) rotate(-10deg);}62%{transform:scale(1.16) rotate(4deg);}100%{transform:scale(1) rotate(0);}}
 .kh4-t{position:relative;color:var(--ink);font-size:17.5px;font-weight:800;line-height:1.25;margin:0 0 10px;letter-spacing:-.2px;}
-.kh4-p{position:relative;color:var(--muted);font-size:13.8px;line-height:1.65;margin:0 auto;max-width:245px;}
+.kh4-p{position:relative;color:var(--muted);font-size:13.8px;line-height:1.65;margin:0 auto;max-width:245px;flex:1;}
 .kh4-mini{
   position:relative;
   display:inline-flex;
@@ -833,7 +813,7 @@
     <div class="kh4-head">
       <span class="kh4-eyebrow kh4-rev">— Réservation en ligne</span>
       <h2 class="kh4-h2 kh4-rev" id="kh4-title">Réservez votre prestation en <span>quelques minutes</span></h2>
-      <p class="kh4-sub kh4-rev">Un parcours simple, transparent et sécurisé : vous décrivez votre besoin, nous confirmons le meilleur créneau, puis notre équipe intervient avec le niveau d’exigence Kayli Clinn.</p>
+      <p class="kh4-sub kh4-rev">Un parcours simple, transparent et sécurisé :<br>vous décrivez votre besoin, nous confirmons le meilleur créneau, puis notre équipe intervient avec le niveau d’exigence Kayli Clinn.</p>
       <ul class="kh4-trust kh4-rev" aria-label="Garanties de réservation">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Devis gratuit</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Paiement sécurisé</li>
@@ -990,14 +970,12 @@
    │ 03 Bureaux ....... « Entretien et nettoyage de bureaux professionnels par Kayli Clinn »
    │ 04 Déménagement .. « Nettoyage de logement avant état des lieux de sortie par Kayli Clinn »
    │ 05 Vitres ........ « Nettoyage de vitres sans traces par Kayli Clinn »
-   │ 06 Diogène ....... « Nettoyage de logement insalubre (syndrome de Diogène) par Kayli Clinn »
-   │ 07 Désinfection .. « Désinfection virucide aux normes EN 14476 par Kayli Clinn »
-   │ 08 Sinistres ..... « Nettoyage après dégât des eaux / sinistre par Kayli Clinn »
+   │ 06 Remise en état . « Logement ou local remis à neuf après une remise en état par Kayli Clinn »
    └────────────────────────────────────────────────────────
 
-   🔗 Liens cartes : /nettoyage-fin-de-chantier-paris/ · /turnover-airbnb/
-      /entretien-de-bureaux/ · /nettoyage-demenagement/ · /nettoyage-de-vitres/
-      /syndrome-de-diogene/ · /desinfection-virucide/ · /sinistres-degats-des-eaux/
+   🔗 Liens cartes : /nettoyage-fin-de-chantier/ · /turnover-airbnb/
+      /entretien-de-bureaux/ · /nettoyage-apres-demenagement-etat-des-lieux/ · /vitres-classiques/
+      /remise-en-etat/ · /parties-communes-immeubles/ · /commerces-retail/
    🔗 Bouton : /prestations/
    ════════════════════════════════════════════════════════ -->
 
@@ -1026,12 +1004,6 @@
 .kcp-card[data-i="5"] .kcp-slide:nth-child(1){background-image:var(--remise-1)}
 .kcp-card[data-i="5"] .kcp-slide:nth-child(2){background-image:var(--remise-2)}
 .kcp-card[data-i="5"] .kcp-slide:nth-child(3){background-image:var(--remise-3)}
-.kcp-card[data-i="6"] .kcp-slide:nth-child(1){background-image:var(--parties-1)}
-.kcp-card[data-i="6"] .kcp-slide:nth-child(2){background-image:var(--parties-2)}
-.kcp-card[data-i="6"] .kcp-slide:nth-child(3){background-image:var(--parties-3)}
-.kcp-card[data-i="7"] .kcp-slide:nth-child(1){background-image:var(--commerces-1)}
-.kcp-card[data-i="7"] .kcp-slide:nth-child(2){background-image:var(--commerces-2)}
-.kcp-card[data-i="7"] .kcp-slide:nth-child(3){background-image:var(--commerces-3)}
 
 .kcp-section{position:relative;background:#F7F8FA;padding:90px 24px 100px;font-family:'Poppins',sans-serif;overflow:hidden}
 .kcp-head{max-width:760px;margin:0 auto 54px;text-align:center}
@@ -1040,7 +1012,7 @@
 .kcp-h2{font-size:clamp(28px,4vw,44px);line-height:1.12;font-weight:800;color:#0D2340;margin:0 0 18px}
 .kcp-h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .kcp-sub{font-size:17px;line-height:1.65;color:#5a647c;margin:0}
-.kcp-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.kcp-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:1100px){.kcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.kcp-grid{grid-template-columns:1fr}}
 .kcp-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none;box-shadow:0 10px 30px -18px rgba(13,35,64,.25);border:1px solid #eef1f5;opacity:1;transform:none;transition:opacity .3s,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;animation:kcpIn .45s ease both}
@@ -1052,7 +1024,7 @@
 @keyframes kcpKen{0%{transform:scale(1.02)}100%{transform:scale(1.13)}}
 .kcp-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,48,0) 30%,rgba(11,17,48,.55) 100%);z-index:2}
 .kcp-num{position:absolute;top:12px;right:14px;z-index:3;color:rgba(255,255,255,.9);font-weight:800;font-size:15px;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
-.kcp-badge{position:absolute;top:12px;left:12px;z-index:3;background:#0FA7A5;color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 11px;border-radius:100px;box-shadow:0 4px 12px rgba(15,167,165,.45);animation:kcpBadge 2.4s ease-in-out infinite}
+.kcp-badge{position:absolute;top:12px;left:12px;z-index:3;background:#0FA7A5;color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 11px;border-radius:100px;box-shadow:0 4px 12px rgba(15,167,165,.45)}
 @keyframes kcpBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .kcp-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
 .kcp-t{font-size:18px;font-weight:700;color:#0D2340;margin:0 0 8px;line-height:1.25}
@@ -1076,7 +1048,7 @@
   <div class="kcp-head">
     <span class="kcp-eyebrow">Nos prestations</span>
     <h2 class="kcp-h2">Des interventions <em>sur-mesure</em> pour tous vos besoins</h2>
-    <p class="kcp-sub">Particuliers, professionnels, syndics, hôtes Airbnb, promoteurs : nos équipes interviennent partout en Île-de-France avec un protocole adapté à chaque chantier.</p>
+    <p class="kcp-sub">Particuliers, professionnels, syndics, hôtes Airbnb, promoteurs :<br>nos équipes interviennent partout en Île-de-France avec un protocole adapté à chaque chantier.</p>
   </div>
 
   <div class="kcp-grid">
@@ -1176,38 +1148,6 @@
       </div>
     </a>
 
-    <!-- 07 · Parties communes d'immeubles (photos → variables --parties-* en haut) -->
-    <a class="kcp-card" href="/parties-communes-immeubles/" data-i="6">
-      <div class="kcp-media">
-        <div class="kcp-slide is-active"></div>
-        <div class="kcp-slide"></div>
-        <div class="kcp-slide"></div>
-        <div class="kcp-shade"></div><span class="kcp-num">07</span>
-      </div>
-      <div class="kcp-body">
-        <h3 class="kcp-t">Parties communes d'immeubles</h3>
-        <p class="kcp-d">Entretien des halls, escaliers, paliers et locaux communs, en contrat régulier pour syndics et copropriétés.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Copropriétés</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-        <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
-      </div>
-    </a>
-
-    <!-- 08 · Commerces & retail (photos → variables --commerces-* en haut) -->
-    <a class="kcp-card" href="/commerces-retail/" data-i="7">
-      <div class="kcp-media">
-        <div class="kcp-slide is-active"></div>
-        <div class="kcp-slide"></div>
-        <div class="kcp-slide"></div>
-        <div class="kcp-shade"></div><span class="kcp-num">08</span>
-      </div>
-      <div class="kcp-body">
-        <h3 class="kcp-t">Commerces &amp; retail</h3>
-        <p class="kcp-d">Entretien de boutiques, restaurants et locaux recevant du public, en horaires décalés adaptés à votre activité.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Commerces</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
-        <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
-      </div>
-    </a>
-
   </div>
 
   <div class="kcp-cta">
@@ -1245,225 +1185,6 @@
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");}});},{threshold:.01,rootMargin:'300px 0px'});
   document.querySelectorAll(".kcp-card").forEach(function(c,k){io.observe(c);});
   start();
-})();
-</script>
-<!-- ════════════════════════════════════════════════════════
-   KAYLI CLINN — BLOC 2 : Chiffres / Engagement
-   Bloc autonome · à coller dans un bloc « HTML personnalisé »
-   Fond bleu nuit (sans halo vert) · accents turquoise/menthe.
-   ════════════════════════════════════════════════════════ -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-
-<style id="kn-style">
-.kn-section{
-  --ink:#0D2340;
-  --teal:#0FA7A5;
-  --teal-ink:#0B7A78;
-  --mint:#19E3DF;
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  background:linear-gradient(140deg,#16163F 0%,#0D1330 55%,#0B1130 100%);
-  padding:76px 24px 72px;
-  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
-}
-.kn-section::before{
-  content:"";
-  position:absolute;
-  inset:18px;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:32px;
-  pointer-events:none;
-  z-index:-1;
-}
-.kn-wrap{position:relative;max-width:1180px;margin:0 auto;}
-.kn-head{text-align:center;max-width:790px;margin:0 auto 46px;}
-.kn-eyebrow{display:inline-block;color:#19E3DF;font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;}
-.kn-h2{font-family:'Fraunces',Georgia,serif;color:#fff;font-size:clamp(28px,3.4vw,46px);font-weight:600;line-height:1.12;margin:0 0 14px;letter-spacing:-.6px;}
-.kn-h2 span{color:#19E3DF;}
-.kn-subtitle{color:rgba(255,255,255,.68);font-size:16px;line-height:1.7;margin:0 auto;max-width:640px;}
-.kn-panel{
-  position:relative;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:28px;
-  background:rgba(255,255,255,.08);
-  box-shadow:0 30px 80px -42px rgba(0,0,0,.72);
-}
-.kn-stat{
-  position:relative;
-  min-height:232px;
-  padding:34px 26px 30px;
-  text-align:center;
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
-  opacity:0;
-  transform:translateY(26px);
-  transition:opacity .55s ease,transform .62s cubic-bezier(.22,1,.36,1),background .35s ease;
-  transition-delay:calc(var(--ni)*.06s);
-}
-.kn-stat::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(260px 140px at 50% 0%,rgba(255,255,255,.06),transparent 66%);
-  opacity:0;
-  transition:opacity .35s ease;
-}
-.kn-stat.kn-in{opacity:1;transform:none;}
-.kn-stat:hover{background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.045));}
-.kn-stat:hover::before{opacity:1;}
-.kn-ic{
-  position:relative;
-  width:58px;
-  height:58px;
-  margin:0 auto 20px;
-  border-radius:18px;
-  background:rgba(15,167,165,.15);
-  border:1px solid rgba(25,227,223,.16);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#19E3DF;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 34px -24px rgba(25,227,223,.75);
-  transition:background .35s ease,transform .35s ease,color .35s ease,border-color .35s ease;
-}
-.kn-ic svg{width:27px;height:27px;}
-.kn-stat:hover .kn-ic{background:#0FA7A5;color:#fff;border-color:rgba(25,227,223,.36);transform:translateY(-4px);}
-.kn-num{position:relative;display:block;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(42px,4.6vw,58px);color:#fff;line-height:.96;letter-spacing:-0.5px;transition:color .35s ease;}
-.kn-stat:hover .kn-num{color:#19E3DF;}
-.kn-lab{position:relative;display:block;color:#fff;font-weight:750;font-size:15.5px;margin-top:14px;}
-.kn-sub{position:relative;display:block;color:rgba(255,255,255,.58);font-size:13px;line-height:1.5;margin-top:5px;}
-.kn-footer{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin-top:28px;
-  color:rgba(255,255,255,.72);
-  font-size:13.5px;
-  text-align:center;
-}
-.kn-footer svg{width:17px;height:17px;color:#19E3DF;flex:0 0 auto;}
-.kn-rev{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1);}
-.kn-rev.kn-in{opacity:1;transform:none;}
-.kn-head .kn-rev:nth-child(2){transition-delay:.08s;}
-.kn-head .kn-rev:nth-child(3){transition-delay:.16s;}
-
-@media(max-width:940px){
-  .kn-section{padding:66px 20px;}
-  .kn-panel{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:560px){
-  .kn-section{padding:58px 18px;}
-  .kn-section::before{inset:10px;border-radius:24px;}
-  .kn-head{margin-bottom:34px;}
-  .kn-panel{grid-template-columns:1fr;border-radius:24px;}
-  .kn-stat{min-height:0;padding:30px 22px;}
-  .kn-footer{align-items:flex-start;text-align:left;}
-}
-@media (prefers-reduced-motion: reduce){
-  .kn-section *{animation:none!important;transition:none!important;}
-  .kn-rev,.kn-stat{opacity:1!important;transform:none!important;}
-}
-</style>
-
-<section class="kn-section" aria-labelledby="kn-title">
-  <div class="kn-wrap">
-    <div class="kn-head">
-      <span class="kn-eyebrow kn-rev">Notre engagement en chiffres</span>
-      <h2 class="kn-h2 kn-rev" id="kn-title">Une équipe locale engagée pour <span>votre tranquillité</span></h2>
-      <p class="kn-subtitle kn-rev">Des indicateurs simples, une promesse claire : réactivité, couverture locale et qualité vérifiée à chaque intervention.</p>
-    </div>
-
-    <div class="kn-panel">
-      <article class="kn-stat" style="--ni:0">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></span>
-        <span class="kn-num" data-to="75" data-suf="+">0+</span>
-        <span class="kn-lab">Chantiers livrés</span>
-        <span class="kn-sub">particuliers et professionnels en Île-de-France</span>
-      </article>
-
-      <article class="kn-stat" style="--ni:1">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><path d="M12 9v4M10 11h4"/></svg></span>
-        <span class="kn-num" data-to="8" data-suf="">0</span>
-        <span class="kn-lab">Départements couverts</span>
-        <span class="kn-sub">une présence locale sur l’ensemble de l’IDF</span>
-      </article>
-
-      <article class="kn-stat" style="--ni:2">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></span>
-        <span class="kn-num" data-to="24" data-suf="H">0H</span>
-        <span class="kn-lab">Délai de devis</span>
-        <span class="kn-sub">réponse rapide pour organiser votre prestation</span>
-      </article>
-
-      <article class="kn-stat" style="--ni:3">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <span class="kn-num" data-to="100" data-suf="%">0%</span>
-        <span class="kn-lab">Satisfait ou repassé</span>
-        <span class="kn-sub">une garantie qualité qui vous rassure vraiment</span>
-      </article>
-    </div>
-
-    <p class="kn-footer kn-rev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Chaque intervention est préparée, suivie et validée pour garantir un résultat propre, fiable et durable.</p>
-  </div>
-</section>
-
-<script>
-(function(){
-  function initKn(){
-    var sec=document.querySelector(".kn-section");
-    if(!sec)return setTimeout(initKn,150);
-
-    var counted=false;
-    var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    function startCount(){
-      if(counted)return;
-      counted=true;
-      sec.querySelectorAll(".kn-num").forEach(function(el){
-        var to=parseInt(el.getAttribute("data-to"),10)||0;
-        var suffix=el.getAttribute("data-suf")||"";
-        if(reduce){ el.textContent=to+suffix; return; }
-        var start=0, duration=950, begin=null;
-        function tick(timestamp){
-          if(!begin)begin=timestamp;
-          var progress=Math.min((timestamp-begin)/duration,1);
-          var eased=1-Math.pow(1-progress,3);
-          el.textContent=Math.round(start+(to-start)*eased)+suffix;
-          if(progress<1)requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }
-
-    var observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add("kn-in");
-          if(entry.target.classList.contains("kn-stat"))startCount();
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:.16});
-
-    sec.querySelectorAll(".kn-rev,.kn-stat").forEach(function(el){observer.observe(el);});
-
-    setTimeout(function(){
-      var rect=sec.getBoundingClientRect();
-      if(rect.top<window.innerHeight){
-        sec.querySelectorAll(".kn-rev,.kn-stat").forEach(function(el){el.classList.add("kn-in");});
-        startCount();
-      }
-    },500);
-  }
-  initKn();
 })();
 </script>
 <!-- ════════════════════════════════════════════════════════
@@ -1521,12 +1242,6 @@
   /* ░ Affectation des photos (ne pas modifier) · before = AVANT · after = APRÈS ░ */
   .kr-card[data-r="1"] .kr-before{background-image:var(--r1-avant)}
   .kr-card[data-r="1"] .kr-after {background-image:var(--r1-apres)}
-  .kr-card[data-r="2"] .kr-before{background-image:var(--r2-avant)}
-  .kr-card[data-r="2"] .kr-after {background-image:var(--r2-apres)}
-  .kr-card[data-r="3"] .kr-before{background-image:var(--r3-avant)}
-  .kr-card[data-r="3"] .kr-after {background-image:var(--r3-apres)}
-  .kr-card[data-r="4"] .kr-before{background-image:var(--r4-avant)}
-  .kr-card[data-r="4"] .kr-after {background-image:var(--r4-apres)}
   .kr-card[data-r="5"] .kr-before{background-image:var(--r5-avant)}
   .kr-card[data-r="5"] .kr-after {background-image:var(--r5-apres)}
   .kr-card[data-r="6"] .kr-before{background-image:var(--r6-avant)}
@@ -1705,7 +1420,7 @@
   .kr-compare {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
     cursor: ew-resize;
     user-select: none;
@@ -2384,81 +2099,6 @@
         </div>
       </article>
 
-      <!-- R2 · photos → variables --r2-avant / --r2-apres -->
-      <article class="kr-card" data-r="2" style="--ci:1">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après local commercial Levallois">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Livraison neuve</span>
-            <span class="kr-time">3 agents</span>
-          </div>
-          <h3 class="kr-t">Local commercial Levallois</h3>
-          <p class="kr-m">140 m² préparés avant ouverture : surfaces dégraissées, zones clients valorisées et espaces techniques remis au propre.</p>
-        </div>
-      </article>
-
-      <!-- R3 · photos → variables --r3-avant / --r3-apres -->
-      <article class="kr-card" data-r="3" style="--ci:2">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après maison Boulogne-Billancourt">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Construction</span>
-            <span class="kr-time">2 jours</span>
-          </div>
-          <h3 class="kr-t">Maison Boulogne-Billancourt</h3>
-          <p class="kr-m">180 m² en construction neuve : nettoyage progressif, finitions minutieuses et contrôle pièce par pièce avant livraison.</p>
-        </div>
-      </article>
-
-      <!-- R4 · photos → variables --r4-avant / --r4-apres -->
-      <article class="kr-card" data-r="4" style="--ci:3">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après studio Airbnb Paris 9e">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Turnover</span>
-            <span class="kr-time">2 h</span>
-          </div>
-          <h3 class="kr-t">Studio Airbnb Paris 9e</h3>
-          <p class="kr-m">28 m² remis en condition premium entre deux séjours : propreté, présentation, linge et détails d’accueil vérifiés.</p>
-        </div>
-      </article>
-
       <!-- R5 · photos → variables --r5-avant / --r5-apres -->
       <article class="kr-card" data-r="5" style="--ci:4">
         <div class="kr-compare" data-kr aria-label="Comparaison avant après bureaux open-space La Défense">
@@ -2523,13 +2163,30 @@
 </section>
 
 <!-- ════════════════ POURQUOI NOUS CHOISIR ════════════════ -->
+<style id="kcw2-figs-style">
+/* Chiffres regroupés en panneau distinct sur la bande sombre */
+.kcw2-figs{max-width:900px;margin:40px auto;display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 14px;position:relative;z-index:2}
+.kcw2-fig{flex:1 1 0;min-width:130px;text-align:center;padding:6px 22px;border-left:1px solid rgba(255,255,255,.1)}
+.kcw2-fig:first-child{border-left:none}
+.kcw2-fig-num{display:block;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(32px,3.8vw,44px);color:#fff;line-height:1;letter-spacing:-.5px}
+.kcw2-fig-lab{display:block;margin-top:8px;color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500}
+@media(max-width:640px){.kcw2-figs{max-width:430px;padding:18px 12px}.kcw2-fig{flex-basis:42%;border-left:none;padding:14px 10px}}
+</style>
+
 <section class="kcw2" aria-labelledby="kcw2-title">
   <div class="kcw2-head">
     <div class="kcw2-eye">Pourquoi nous choisir</div>
     <h2 class="kcw2-title" id="kcw2-title">Une entreprise de nettoyage pensée pour <em>votre tranquillité</em></h2>
     <p class="kcw2-sub">
-      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée : vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
+      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée :<br>vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
     </p>
+  </div>
+
+  <div class="kcw2-figs" aria-label="Kayli Clinn en chiffres">
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="75" data-suf="+">0+</span><span class="kcw2-fig-lab">Chantiers livrés</span></div>
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="8" data-suf="">0</span><span class="kcw2-fig-lab">Départements couverts</span></div>
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="24" data-suf="H">0H</span><span class="kcw2-fig-lab">Délai de devis</span></div>
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="100" data-suf="%">0%</span><span class="kcw2-fig-lab">Satisfait ou repassé</span></div>
   </div>
 
   <div class="kcw2-trustbar" aria-label="Garanties Kayli Clinn">
@@ -2879,7 +2536,7 @@
 .kczn2-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .kczn2-btn{display:inline-flex;align-items:center;gap:8px;background:#0FA7A5;color:#fff;font-weight:600;font-size:14px;padding:14px 22px;border-radius:11px;text-decoration:none;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;box-shadow:0 12px 26px -14px rgba(15,167,165,.6)}
 .kczn2-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(15,167,165,.7)}
-.kczn2-btn:after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:kcznsheen 4s ease-in-out infinite}
+.kczn2-btn:after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);display:none}
 @keyframes kcznsheen{0%,60%{left:-120%}80%,100%{left:160%}}
 .kczn2-tel{display:inline-flex;align-items:center;gap:8px;color:#0D2340;font-weight:600;font-size:14px;text-decoration:none;padding:14px 22px;border:1px solid #E7EAEF;border-radius:11px;background:#fff;transition:border-color .3s,box-shadow .3s,transform .3s}
 .kczn2-tel:hover{border-color:#0FA7A5;box-shadow:0 8px 20px -10px rgba(15,167,165,.35);transform:translateY(-2px)}
@@ -2894,7 +2551,7 @@
 .kczn2-mapcard:hover .kczn2-img{transform:scale(1.07)}
 /* MODIF : voile vert (.kczn2-imgveil) retiré — il était inutilisé dans le HTML */
 .kczn2-pin{position:absolute;width:12px;height:12px;border-radius:50%;background:#0FA7A5;box-shadow:0 0 0 0 rgba(15,167,165,.55);z-index:3;transform:translate(-50%,-50%);opacity:0}
-.kczn2-pin.on{opacity:1;animation:kcznpin 2.4s ease-out infinite}
+.kczn2-pin.on{opacity:1}
 @keyframes kcznpin{0%{box-shadow:0 0 0 0 rgba(15,167,165,.55)}70%{box-shadow:0 0 0 16px rgba(15,167,165,0)}100%{box-shadow:0 0 0 0 rgba(15,167,165,0)}}
 .kczn2-pin i{position:absolute;inset:3px;border-radius:50%;background:#fff}
 .kczn2-legend{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;color:#6b7488;font-size:13px;position:relative;z-index:1}
@@ -2905,18 +2562,40 @@
 .kczn2-map.reveal.show{transform:none}
 @media(max-width:900px){.kczn2-wrap{grid-template-columns:1fr;gap:42px}.kczn2-map{order:-1;max-width:440px;margin:0 auto}}
 </style>
+<script>
+(function(){
+  var sec=document.querySelector('.kcw2'); if(!sec) return;
+  var figs=sec.querySelector('.kcw2-figs'); if(!figs) return;
+  var counted=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function startCount(){
+    if(counted)return; counted=true;
+    figs.querySelectorAll('.kcw2-fig-num').forEach(function(el){
+      var to=parseInt(el.getAttribute('data-to'),10)||0, suffix=el.getAttribute('data-suf')||'';
+      if(reduce){ el.textContent=to+suffix; return; }
+      var begin=null, duration=950;
+      function tick(ts){ if(!begin)begin=ts; var pr=Math.min((ts-begin)/duration,1); var eased=1-Math.pow(1-pr,3); el.textContent=Math.round(to*eased)+suffix; if(pr<1)requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  }
+  if(!('IntersectionObserver' in window)){ startCount(); return; }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){startCount();io.unobserve(e.target);}});},{threshold:.25});
+  io.observe(figs);
+})();
+</script>
+
 <section class="kczn2">
   <div class="kczn2-wrap">
     <div class="kczn2-left">
       <div class="kczn2-eye reveal">Zone d'intervention</div>
       <h2 class="kczn2-title reveal">Présents partout en Île-de-France</h2>
-      <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens. Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
+      <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens.<br>Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
-      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb : quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
+      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb :<br>quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
       <div class="kczn2-stats reveal">
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="8">0</div><div class="kczn2-lab">Départements</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">0</div><div class="kczn2-lab">Communes accessibles</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">0</div><div class="kczn2-lab">Délai max</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="8">8</div><div class="kczn2-lab">Départements</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">1 281</div><div class="kczn2-lab">Communes accessibles</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">48 h</div><div class="kczn2-lab">Délai max</div></div>
       </div>
       <div class="kczn2-cta reveal">
         <!-- 👉 BOUTON DEVIS -->
@@ -2952,7 +2631,7 @@
   function run(){if(done)return;done=true;
     document.querySelectorAll('.kczn2 .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('show');},i*110);});
     setTimeout(function(){document.querySelectorAll('.kczn2-pin').forEach(function(p,i){setTimeout(function(){p.classList.add('on');},i*160);});},600);
-    setTimeout(function(){document.querySelectorAll('.kczn2-num').forEach(animCount);},650);
+    /* compteurs zone statiques (aeration) */
   }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)run();});},{threshold:.2});
   io.observe(sec);
@@ -2975,9 +2654,9 @@
    ════════════════════════════════════════════════════════ -->
 
 <style>
-.kcav2{position:relative;background:linear-gradient(180deg,#F7F8FA 0%,#FFFFFF 100%);padding:96px 24px 110px;font-family:'Poppins',system-ui,sans-serif;overflow:hidden}
+.kcav2{position:relative;background:linear-gradient(180deg,#F7F8FA 0%,#FFFFFF 100%);padding:64px 24px 72px;font-family:'Poppins',system-ui,sans-serif;overflow:hidden}
 /* MODIF : halo vert de page supprimé (ancien .kcav2:before retiré) */
-.kcav2-head{max-width:720px;margin:0 auto 56px;text-align:center;position:relative;z-index:2}
+.kcav2-head{max-width:720px;margin:0 auto 34px;text-align:center;position:relative;z-index:2}
 .kcav2-eye{display:inline-flex;align-items:center;gap:10px;color:#0FA7A5;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
 .kcav2-eye:before,.kcav2-eye:after{content:"";width:30px;height:2px;background:#0FA7A5;display:inline-block}
 .kcav2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 16px}
@@ -2994,7 +2673,7 @@
 .kcav2-av{width:50px;height:50px;border-radius:50%;background:linear-gradient(150deg,#0FA7A5,#19E3DF);color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 18px -8px rgba(15,167,165,.6)}
 .kcav2-name{font-size:16px;font-weight:700;color:#16163F;margin:0}
 .kcav2-role{font-size:13px;color:#6b7488;margin:3px 0 0}
-.kcav2-cta{max-width:880px;margin:56px auto 0;background:linear-gradient(135deg,#0B1130,#16163F);border-radius:24px;padding:40px 44px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;z-index:2;overflow:hidden}
+.kcav2-cta{max-width:880px;margin:34px auto 0;background:linear-gradient(135deg,#0B1130,#16163F);border-radius:24px;padding:30px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;z-index:2;overflow:hidden}
 .kcav2-cta:before{content:"";position:absolute;top:-80px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(25,227,223,.22),transparent 70%);pointer-events:none}
 .kcav2-cta-txt{position:relative;z-index:1}
 .kcav2-cta-txt h3{font-size:21px;font-weight:700;color:#fff;margin:0 0 8px}
@@ -3402,7 +3081,7 @@
 .kcct2 .kcct2-glow2{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(25,227,223,.08),transparent 70%);bottom:-140px;left:-100px;pointer-events:none}
 .kcct2 .kcct2-inner{position:relative;max-width:680px;margin:0 auto;z-index:2}
 .kcct2 .kcct2-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(15,167,165,.12);border:1px solid rgba(25,227,223,.30);color:#19E3DF;font-weight:700;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;padding:7px 15px;border-radius:100px;margin-bottom:20px}
-.kcct2 .kcct2-badge .dot{width:7px;height:7px;border-radius:50%;background:#19E3DF;box-shadow:0 0 0 0 rgba(25,227,223,.6);animation:kcctPulse 2s infinite}
+.kcct2 .kcct2-badge .dot{width:7px;height:7px;border-radius:50%;background:#19E3DF;box-shadow:0 0 0 0 rgba(25,227,223,.6)}
 @keyframes kcctPulse{0%{box-shadow:0 0 0 0 rgba(25,227,223,.55)}70%{box-shadow:0 0 0 9px rgba(25,227,223,0)}100%{box-shadow:0 0 0 0 rgba(25,227,223,0)}}
 .kcct2 h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12;font-weight:800;color:#fff;margin:0 0 14px}
 .kcct2 h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -3411,7 +3090,7 @@
 .kcct2 .kcct2-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 24px;border-radius:11px;text-decoration:none;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
 .kcct2 .kcct2-btn-primary{background:#0FA7A5;color:#fff;box-shadow:0 10px 26px rgba(15,167,165,.30)}
 .kcct2 .kcct2-btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(15,167,165,.42)}
-.kcct2 .kcct2-btn-primary .sheen{position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:kcctSheen 3.2s infinite}
+.kcct2 .kcct2-btn-primary .sheen{position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);display:none}
 @keyframes kcctSheen{0%{left:-120%}45%{left:160%}100%{left:160%}}
 .kcct2 .kcct2-btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.16)}
 .kcct2 .kcct2-btn-ghost:hover{transform:translateY(-3px);border-color:#19E3DF}
@@ -3458,15 +3137,14 @@
   /* ── Rythme vertical unifié (un seul souffle de haut en bas) ── */
   @media (min-width: 768px){
     .ka-section, .kh4-section, .kcp-section, .kr-section,
-    .kcw2, .kczn2, .kcav2, .kcfq-section{
+    .kcw2, .kczn2, .kcfq-section{
       padding-top: 104px !important;
       padding-bottom: 104px !important;
     }
-    .kn-section{ padding-top: 88px !important; padding-bottom: 84px !important; }
   }
   @media (max-width: 767px){
     .ka-section, .kh4-section, .kcp-section, .kr-section,
-    .kcw2, .kczn2, .kcav2, .kcfq-section{
+    .kcw2, .kczn2, .kcfq-section{
       padding-top: 64px !important;
       padding-bottom: 64px !important;
     }
@@ -3479,6 +3157,11 @@
     font-weight:600 !important;
     letter-spacing: -0.6px !important;
     line-height: 1.12 !important;
+  }
+
+  /* ── Texte centré : lignes équilibrées, aucun mot orphelin ── */
+  .kh-para, .kh4-sub, .kcp-sub, .kr-sub, .kcw2-sub, .kcav2-sub, .kcfq-sub{
+    text-wrap: balance;
   }
 
   /* ── Charte : pas de dégradé teal dans les titres (accent sobre) ── */
