@@ -81,7 +81,7 @@
 .kc-hp .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
 
 /* — titres : Fraunces serif + accents italiques — */
-.kc-hp .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-hp .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
 .kc-hp .section-title em,.kc-hp h2 em,.kc-hp h3 em,.kc-hp .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
 .kc-hp .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
 
@@ -104,7 +104,7 @@
 .kc-hp .kc-hero-content{max-width:none}
 .kc-hp .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
 .kc-hp .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hp .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-hp .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(36px,4.7vw,56px);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
 .kc-hp .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
 .kc-hp .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:560px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
 .kc-hp .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
@@ -318,7 +318,7 @@
 @media(max-width:560px){
   .kc-hp section{padding:64px 6%}
   .kc-hp .kc-hero{min-height:auto;padding:130px 6% 64px}
-  .kc-hp .kc-hero-title{font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-hp .kc-hero-title{font-size:clamp(36px,4.7vw,56px)}
   .kc-hp .kc-target-grid,.kc-hp .kc-included-grid{grid-template-columns:1fr}
   .kc-hp .kc-ba-grid{grid-template-columns:1fr}
   .kc-hp .kc-process-grid{grid-template-columns:1fr;gap:18px}
@@ -336,14 +336,20 @@
 <div class="kc-hp">
 
 <!-- 1 · HERO -->
+<style>
+/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
+.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
+.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
+</style>
 <section class="kc-hero">
   <div class="kc-hero-wrap">
     <div class="kc-hero-content kc-fade">
       <span class="kc-hero-eyebrow">Nettoyage haute pression · Île-de-France</span>
       <h1 class="kc-hero-title">Vos surfaces extérieures, <em>comme neuves</em></h1>
-      <p class="kc-hero-sub">Façades, terrasses, cours, allées, parkings, sols extérieurs et mobilier urbain : un décrassage en profondeur au nettoyeur haute pression, à l'eau chaude ou froide selon le support, avec traitement anti-mousse possible. Élimination des graffitis et des salissures incrustées.</p>
+      <p class="kc-hero-sub">Façades, terrasses, cours, allées, parkings, sols extérieurs et mobilier urbain :<br>un décrassage en profondeur au nettoyeur haute pression, à l'eau chaude ou froide selon le support, avec traitement anti-mousse possible. Élimination des graffitis et des salissures incrustées.</p>
       <div class="kc-hero-ctas">
-        <a href="/devis/" class="kc-btn kc-btn-primary">
+        <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-primary">
           Demander un devis
           <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -417,7 +423,7 @@
           <span class="eyebrow">Notre approche</span>
           <h2>La puissance, oui — <em>mais pas n'importe comment</em></h2>
           <p class="kc-promise-text">La haute pression est redoutablement efficace, mais mal employée elle peut <strong>abîmer un support</strong> : déjointer un dallage, marquer un bois, attaquer un crépi fragile. Tout l'enjeu est de doser la pression, la température et la distance selon le matériau.</p>
-          <p class="kc-promise-text">Nous évaluons chaque surface avant d'intervenir, adaptons notre matériel et proposons, si besoin, un <strong>traitement anti-mousse</strong> pour espacer les salissures. <a href="/devis/" class="kc-link">Demandez votre devis</a> sur la base d'une visite ou de quelques photos.</p>
+          <p class="kc-promise-text">Nous évaluons chaque surface avant d'intervenir, adaptons notre matériel et proposons, si besoin, un <strong>traitement anti-mousse</strong> pour espacer les salissures. <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-link">Demandez votre devis</a> sur la base d'une visite ou de quelques photos.</p>
         </div>
         <div class="kc-promise-points">
           <div class="kc-promise-point">
@@ -450,6 +456,12 @@
     <p>Mousses, pollution, traces noires, graffitis : la haute pression redonne aux surfaces extérieures leur aspect d'origine. Un résultat immédiat et visible, qui valorise un bâtiment, une copropriété ou un espace recevant du public.</p>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Un besoin précis ? Demandez votre devis.</p>
+  <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 5 · LE PROCÉDÉ -->
 <section class="kc-included">
@@ -536,7 +548,7 @@
         <span class="eyebrow">Avant / après</span>
         <h2>Un résultat <em>qui se voit</em></h2>
         <p>L'effet de la haute pression est souvent spectaculaire : une terrasse qui retrouve sa couleur, une façade débarrassée de ses traces noires, un mur libéré d'un graffiti. C'est un <strong>résultat immédiat</strong>, qui valorise instantanément un lieu.</p>
-        <p>Avant chaque intervention, nous vous donnons une idée réaliste du résultat atteignable selon l'état et la nature du support. <a href="/devis/" class="kc-link">Envoyez-nous quelques photos</a> pour une première estimation.</p>
+        <p>Avant chaque intervention, nous vous donnons une idée réaliste du résultat atteignable selon l'état et la nature du support. <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-link">Envoyez-nous quelques photos</a> pour une première estimation.</p>
         <div class="kc-split-quote">La haute pression ne fait pas de miracle sur tout, mais sur le bon support, le contraste avant / après parle de lui-même.</div>
       </div>
     </div>
@@ -559,6 +571,12 @@
     </div>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Prêt à démarrer votre projet ?</p>
+  <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 8 · POURQUOI NOUS -->
 <section class="kc-why">
@@ -591,6 +609,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Convaincu ? Lançons-nous.</p>
+  <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 9 · FAQ -->
 <section>
   <div class="kc-hp-wrap">
@@ -620,7 +644,7 @@
       </div>
       <div class="kc-faq-item kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment obtenir un devis ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Au plus simple : décrivez-nous vos surfaces et <strong>envoyez-nous quelques photos</strong>, ou nous nous déplaçons pour constater sur place. Nous évaluons ensuite le travail et vous remettons un <strong>devis personnalisé, sans engagement</strong>. <a href="/devis/" class="kc-link">Demandez votre devis</a> ou appelez-nous directement.</div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Au plus simple : décrivez-nous vos surfaces et <strong>envoyez-nous quelques photos</strong>, ou nous nous déplaçons pour constater sur place. Nous évaluons ensuite le travail et vous remettons un <strong>devis personnalisé, sans engagement</strong>. <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-link">Demandez votre devis</a> ou appelez-nous directement.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Intervenez-vous pour les professionnels et les copropriétés ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
@@ -651,6 +675,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Nous intervenons partout en Île-de-France.</p>
+  <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 11 · CTA FINAL -->
 <section class="kc-final-cta">
   <div class="kc-final-cta-wrap kc-fade">
@@ -659,7 +689,7 @@
     <p>Décrivez-nous vos surfaces ou envoyez-nous quelques photos : nous évaluons le travail et vous remettons un devis adapté. Façades, terrasses, cours, parkings, anti-graffitis. Tarification sur devis.</p>
     <div class="kc-final-ctas">
       <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
-      <a href="/devis/" class="kc-btn kc-btn-secondary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="kc-btn kc-btn-secondary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
     </div>
   </div>

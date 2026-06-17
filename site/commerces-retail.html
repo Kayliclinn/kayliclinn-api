@@ -80,7 +80,7 @@
 .kc-page .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
 
 /* — titres : Fraunces serif + accents italiques — */
-.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
 .kc-page .section-title em,.kc-page h2 em,.kc-page h3 em,.kc-page .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
 .kc-page .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
 
@@ -103,7 +103,7 @@
 .kc-hero-content{max-width:none}
 .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
 .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(36px,4.7vw,56px);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
 .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
 .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:560px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
 .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
@@ -332,7 +332,7 @@
 @media(max-width:560px){
   .kc-page section{padding:64px 6%}
   .kc-hero{min-height:auto;padding:130px 6% 64px}
-  .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-hero-title{white-space:normal;font-size:clamp(36px,4.7vw,56px)}
   .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
   .kc-process-grid{grid-template-columns:1fr;gap:18px}
   .kc-zones-list{grid-template-columns:repeat(2,1fr)}
@@ -349,6 +349,12 @@
 <div class="kc-page">
 
 <!-- 1 · HERO -->
+<style>
+/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
+.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
+.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
+</style>
 <section class="kc-hero">
   <div class="kc-hero-wrap">
     <div class="kc-hero-content kc-fade">
@@ -356,7 +362,7 @@
       <h1 class="kc-hero-title">Un Commerce Qui <em>Donne Envie</em> D'Entrer</h1>
       <p class="kc-hero-sub">Le nettoyage de votre boutique, surface de vente ou point de vente, avant ou après ouverture, sans jamais gêner votre clientèle. Récurrent ou ponctuel, un partenaire propreté discret et fiable, partout en Île-de-France.</p>
       <div class="kc-hero-ctas">
-        <a href="/devis/" class="kc-btn kc-btn-primary">
+        <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary">
           Demander Un Devis
           <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -419,7 +425,7 @@
           <span class="eyebrow">Notre promesse</span>
           <h2>Une boutique <em>prête à vendre</em>, dès l'ouverture</h2>
           <p class="kc-promise-text">Dans le commerce, la propreté n'est pas un détail : c'est la <strong>première impression</strong> qui décide si un client entre, reste et achète. Sol terne, vitrine marquée, sanitaires négligés — et c'est l'image de l'enseigne qui en souffre.</p>
-          <p class="kc-promise-text">Nous intervenons <strong>avant ou après l'ouverture</strong>, selon vos horaires, avec des équipes discrètes et formées. Tout est cadré dans un <strong>cahier des charges</strong> précis, pour une boutique impeccable à chaque journée de vente. Tout est établi sur <a href="/devis/" class="kc-link">devis personnalisé</a>.</p>
+          <p class="kc-promise-text">Nous intervenons <strong>avant ou après l'ouverture</strong>, selon vos horaires, avec des équipes discrètes et formées. Tout est cadré dans un <strong>cahier des charges</strong> précis, pour une boutique impeccable à chaque journée de vente. Tout est établi sur <a href="/demande-de-devis/?presta=commerces-retail" class="kc-link">devis personnalisé</a>.</p>
         </div>
         <div class="kc-promise-points">
           <div class="kc-promise-point">
@@ -452,6 +458,12 @@
     <p>La perception de propreté influe directement sur le temps passé en magasin, l'image de l'enseigne et la décision d'achat. Des sols nets, une vitrine claire et des sanitaires irréprochables, c'est une clientèle qui se sent bien — et qui revient.</p>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Un besoin précis ? Demandez votre devis.</p>
+  <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 5 · CE QUE NOUS NETTOYONS -->
 <section class="kc-included">
@@ -528,6 +540,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Prêt à démarrer votre projet ?</p>
+  <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 8 · DEVIS (sans aucun prix) -->
 <section class="kc-pricing" id="devis">
   <div class="kc-page-wrap">
@@ -537,7 +555,7 @@
         <h3>Chaque commerce est <em>différent</em>, votre devis aussi</h3>
         <p>Le nettoyage d'un point de vente se chiffre toujours sur mesure : le prix dépend de la <strong>surface de vente</strong>, du <strong>type de revêtements</strong>, de la <strong>fréquence</strong> retenue et des <strong>prestations</strong> intégrées (vitrines, sanitaires, réserves…). Aucun tarif n'est donc affiché ni réservable en ligne.</p>
         <p>Le montant définitif vous est communiqué dans un <strong>devis personnalisé après une visite gratuite</strong> de votre commerce. Pour notre clientèle professionnelle, les montants sont exprimés <strong>hors taxes (HT)</strong>.</p>
-        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:18px">Demander Mon Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary" style="margin-top:18px">Demander Mon Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       </div>
       <div class="kc-pricing-table kc-fade">
         <div class="kc-pricing-table-title">Votre devis, point par point</div>
@@ -582,6 +600,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Convaincu ? Lançons-nous.</p>
+  <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- SPLIT 2 -->
 <section class="kc-split alt reverse">
   <div class="kc-page-wrap">
@@ -591,7 +615,7 @@
         <span class="eyebrow">Sans gêner votre activité</span>
         <h2>Présents quand <em>vos clients ne le sont pas</em></h2>
         <p>Personne n'aime voir une équipe de ménage circuler entre les rayons en pleine affluence. C'est pourquoi nous intervenons aux <strong>heures qui vous arrangent</strong> : avant l'ouverture, après la fermeture ou pendant les creux.</p>
-        <p>Vos clients entrent dans un espace impeccable sans avoir vu personne, et votre activité n'est jamais perturbée. <a href="/devis/" class="kc-link">Demandez votre devis</a> et nous calons le créneau qui vous convient, partout en Île-de-France.</p>
+        <p>Vos clients entrent dans un espace impeccable sans avoir vu personne, et votre activité n'est jamais perturbée. <a href="/demande-de-devis/?presta=commerces-retail" class="kc-link">Demandez votre devis</a> et nous calons le créneau qui vous convient, partout en Île-de-France.</p>
         <div class="kc-split-quote">Un bon nettoyage de commerce, c'est celui que le client ne voit jamais se faire — mais qu'il ressent à chaque visite.</div>
       </div>
     </div>
@@ -685,6 +709,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Nous intervenons partout en Île-de-France.</p>
+  <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 13 · CTA FINAL -->
 <section class="kc-final-cta">
   <div class="kc-final-cta-wrap kc-fade">
@@ -693,7 +723,7 @@
     <p>Obtenez un devis personnalisé après une visite gratuite de votre point de vente. Interventions avant ou après ouverture, équipes discrètes et formées, partout en Île-de-France.</p>
     <div class="kc-final-ctas">
       <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
-      <a href="/devis/" class="kc-btn kc-btn-secondary">Demander Un Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="/demande-de-devis/?presta=commerces-retail" class="kc-btn kc-btn-secondary">Demander Un Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
     </div>
   </div>

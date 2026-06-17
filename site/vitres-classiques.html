@@ -83,7 +83,7 @@
 .kc-page .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
 
 /* — titres : Fraunces serif + accents italiques — */
-.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
 .kc-page .section-title em,.kc-page h2 em,.kc-page h3 em,.kc-page .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
 .kc-page .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
 
@@ -106,7 +106,7 @@
 .kc-hero-content{max-width:none}
 .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
 .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(36px,4.7vw,56px);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
 .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
 .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:540px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
 .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
@@ -358,7 +358,7 @@
   .kc-page section{padding:64px 6%}
   .kc-further-panel{padding:34px 26px;border-radius:20px}
   .kc-hero{min-height:auto;padding:130px 6% 64px}
-  .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-hero-title{white-space:normal;font-size:clamp(36px,4.7vw,56px)}
   .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
   .kc-process-grid{grid-template-columns:1fr;gap:18px}
   .kc-zones-list{grid-template-columns:repeat(2,1fr)}
@@ -375,12 +375,18 @@
 <div class="kc-page">
 
 <!-- 1 · HERO -->
+<style>
+/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
+.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
+.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
+</style>
 <section class="kc-hero">
   <div class="kc-hero-wrap">
     <div class="kc-hero-content kc-fade">
       <span class="kc-hero-eyebrow">Nettoyage de vitres · Île-de-France</span>
       <h1 class="kc-hero-title">Des Vitres <em>Impeccables</em>, Sans Une Trace</h1>
-      <p class="kc-hero-sub">Le nettoyage de vitres résidentiel pour votre appartement ou votre maison de plain-pied : vitrages intérieurs, encadrements, rebords et miroirs traités à la raclette professionnelle. Vous retrouvez la lumière, sans reflet ni traînée.</p>
+      <p class="kc-hero-sub">Le nettoyage de vitres résidentiel pour votre appartement ou votre maison de plain-pied :<br>vitrages intérieurs, encadrements, rebords et miroirs traités à la raclette professionnelle. Vous retrouvez la lumière, sans reflet ni traînée.</p>
       <div class="kc-hero-ctas">
         <a href="/devis/" class="kc-btn kc-btn-primary">
           Réserver Mon Forfait
@@ -479,6 +485,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Un besoin précis ? Demandez votre devis.</p>
+  <a href="/devis/" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 5 · INCLUS -->
 <section class="kc-included">
   <div class="kc-page-wrap">
@@ -569,6 +581,12 @@
     </div>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Prêt à démarrer votre projet ?</p>
+  <a href="/devis/" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 8 · PRICING -->
 <section class="kc-pricing" id="tarifs">
@@ -670,6 +688,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Convaincu ? Lançons-nous.</p>
+  <a href="/devis/" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 12 · FAQ -->
 <section>
   <div class="kc-page-wrap">
@@ -727,6 +751,12 @@
     </div>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Nous intervenons partout en Île-de-France.</p>
+  <a href="/devis/" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 14 · CTA FINAL -->
 <section class="kc-final-cta">
