@@ -78,7 +78,7 @@
 .kc-remise .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
 
 /* — titres — */
-.kc-remise .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-remise .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
 .kc-remise .section-title em,.kc-remise h2 em,.kc-remise h3 em,.kc-remise .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
 .kc-remise .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
 
@@ -101,7 +101,7 @@
 .kc-remise .kc-hero-content{max-width:none}
 .kc-remise .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
 .kc-remise .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-remise .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(40px,5vw,64px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-remise .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(36px,4.7vw,56px);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(40px,5vw,64px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
 .kc-remise .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
 .kc-remise .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:580px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
 .kc-remise .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
@@ -285,7 +285,7 @@
 @media(max-width:560px){
   .kc-remise section{padding:64px 6%}
   .kc-remise .kc-hero{min-height:auto;padding:130px 6% 64px}
-  .kc-remise .kc-hero-title{font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-remise .kc-hero-title{font-size:clamp(36px,4.7vw,56px)}
   .kc-remise .kc-target-grid,.kc-remise .kc-included-grid{grid-template-columns:1fr}
   .kc-remise .kc-process-grid{grid-template-columns:1fr;gap:18px}
   .kc-remise .kc-zones-list{grid-template-columns:repeat(2,1fr)}
@@ -302,14 +302,20 @@
 <div class="kc-remise">
 
 <!-- 1 · HERO -->
+<style>
+/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
+.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
+.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
+</style>
 <section class="kc-hero">
   <div class="kc-hero-wrap">
     <div class="kc-hero-content kc-fade">
       <span class="kc-hero-eyebrow">Remise en état · Île-de-France</span>
       <h1 class="kc-hero-title">Remettre à neuf<br>un lieu <em>laissé de côté</em></h1>
-      <p class="kc-hero-sub">Logement très encrassé, local laissé à l'abandon, intérieur marqué par une occupation difficile : nous prenons en charge la remise en état complète, avec méthode et discrétion, pour rendre le lieu de nouveau présentable et habitable.</p>
+      <p class="kc-hero-sub">Logement très encrassé, local laissé à l'abandon, intérieur marqué par une occupation difficile :<br>nous prenons en charge la remise en état complète, avec méthode et discrétion, pour rendre le lieu de nouveau présentable et habitable.</p>
       <div class="kc-hero-ctas">
-        <a href="/devis/" class="kc-btn kc-btn-primary">
+        <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-primary">
           Demander un devis
           <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
@@ -406,6 +412,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Un besoin précis ? Demandez votre devis.</p>
+  <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 5 · CE QUE COMPREND LA REMISE EN ÉTAT -->
 <section class="kc-included">
   <div class="kc-remise-wrap">
@@ -460,6 +472,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Prêt à démarrer votre projet ?</p>
+  <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- SPLIT 2 — AVANT RELOCATION / REVENTE -->
 <section class="kc-split alt reverse">
   <div class="kc-remise-wrap">
@@ -507,6 +525,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Convaincu ? Lançons-nous.</p>
+  <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 8 · FAQ -->
 <section>
   <div class="kc-remise-wrap">
@@ -518,7 +542,7 @@
     <div class="kc-faq-list">
       <div class="kc-faq-item open kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment obtenir un devis ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">La remise en état est une prestation <strong>sur devis</strong>, établi après une <strong>visite sur place</strong> ou à partir de <strong>photos</strong> que vous nous transmettez. L'état d'un lieu dégradé varie beaucoup d'un cas à l'autre : cette évaluation nous permet de vous proposer un prix juste, sans surprise. Vous pouvez lancer la demande via notre <a href="/devis/" class="kc-link">formulaire de devis</a> ou nous appeler.</div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La remise en état est une prestation <strong>sur devis</strong>, établi après une <strong>visite sur place</strong> ou à partir de <strong>photos</strong> que vous nous transmettez. L'état d'un lieu dégradé varie beaucoup d'un cas à l'autre : cette évaluation nous permet de vous proposer un prix juste, sans surprise. Vous pouvez lancer la demande via notre <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-link">formulaire de devis</a> ou nous appeler.</div></div>
       </div>
       <div class="kc-faq-item kc-fade">
         <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Pourquoi n'y a-t-il pas de prix affiché ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
@@ -565,6 +589,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Nous intervenons partout en Île-de-France.</p>
+  <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 10 · CTA FINAL -->
 <section class="kc-final-cta">
   <div class="kc-final-cta-wrap kc-fade">
@@ -574,7 +604,7 @@
     <span class="kc-phone"><a href="tel:+33670012061">+33 6 70 01 20 61</a></span>
     <div class="kc-final-ctas">
       <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
-      <a href="/devis/" class="kc-btn kc-btn-secondary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="/demande-de-devis/?presta=remise-en-etat" class="kc-btn kc-btn-secondary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
       <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
     </div>
   </div>

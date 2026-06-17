@@ -56,7 +56,7 @@
 .kc-desin-header{text-align:center;max-width:760px;margin:0 auto clamp(52px,7vw,84px)}
 .kc-desin .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
 .kc-desin .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
-.kc-desin .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(1.9rem,3.6vw,2.9rem);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-desin .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
 .kc-desin .section-title em,.kc-desin h2 em,.kc-desin h3 em,.kc-desin .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
 .kc-desin .section-desc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:400}
 .kc-desin svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -71,7 +71,7 @@
 .kc-hero-wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2}
 .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(34px,4vw,52px)}
 .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.9rem,3.8vw,3.4rem);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(36px,4.7vw,56px);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
 .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
 .kc-hero-sub{font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.88);line-height:1.75;margin-bottom:clamp(34px,4vw,48px);max-width:620px;font-weight:300}
 .kc-hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -187,13 +187,19 @@
 <div class="kc-desin">
 
   <!-- ════════ 1. HERO ════════ -->
-  <section class="kc-hero">
+  <style>
+/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
+.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
+.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
+</style>
+<section class="kc-hero">
     <div class="kc-hero-wrap">
       <div class="kc-hero-eyebrow kc-fade">Désinsectisation 3D · Île-de-France</div>
       <h1 class="kc-hero-title kc-fade">Désinsectisation : un traitement <em>ciblé</em>, espèce par espèce</h1>
       <p class="kc-hero-sub kc-fade">Cafards, fourmis, guêpes, frelons, puces, mouches… Chaque nuisible appelle une réponse précise. Nous commençons toujours par identifier l'espèce, puis nous adaptons le traitement, prévenons le retour et assurons un suivi. Intervention discrète, devis établi après diagnostic.</p>
       <div class="kc-hero-ctas kc-fade">
-        <a href="/devis/" class="kc-btn kc-btn-primary">Demander un diagnostic
+        <a href="/demande-de-devis/?presta=desinsectisation" class="kc-btn kc-btn-primary">Demander un diagnostic
           <svg class="kc-icon" width="17" height="17" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">
@@ -367,6 +373,12 @@
     </div>
   </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Un besoin précis ? Demandez votre devis.</p>
+  <a href="/demande-de-devis/?presta=desinsectisation" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
   <!-- ════════ 6. ENGAGEMENTS ════════ -->
   <section class="kc-commit">
     <div class="kc-desin-wrap">
@@ -536,6 +548,12 @@
     </div>
   </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Une question ? Demandez votre devis.</p>
+  <a href="/demande-de-devis/?presta=desinsectisation" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
   <!-- ════════ 9. ZONES ════════ -->
   <section class="kc-zones">
     <div class="kc-desin-wrap">
@@ -557,6 +575,12 @@
     </div>
   </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Nous intervenons partout en Île-de-France.</p>
+  <a href="/demande-de-devis/?presta=desinsectisation" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
   <!-- ════════ 10. CTA FINAL ════════ -->
   <section class="kc-final-cta">
     <div class="kc-final-cta-wrap kc-fade">
@@ -566,7 +590,7 @@
       <span class="kc-phone"><a href="tel:+33670012061">+33 6 70 01 20 61</a></span>
       <div class="kc-final-ctas">
       <a href="/demande-de-devis/?presta=desinsectisation" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
-        <a href="/devis/" class="kc-btn kc-btn-secondary">Demander un diagnostic
+        <a href="/demande-de-devis/?presta=desinsectisation" class="kc-btn kc-btn-secondary">Demander un diagnostic
           <svg class="kc-icon" width="17" height="17" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
         <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">

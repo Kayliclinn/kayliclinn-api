@@ -67,7 +67,7 @@
 .kc-des .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
 .kc-des .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
 
-.kc-des .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(1.9rem,3.6vw,2.9rem);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-des .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
 .kc-des .section-title em,.kc-des h2 em,.kc-des h3 em,.kc-des .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
 .kc-des .section-desc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:400}
 
@@ -86,7 +86,7 @@
 .kc-hero-wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2}
 .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(34px,4vw,52px)}
 .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.9rem,3.8vw,3.4rem);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(36px,4.7vw,56px);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
 .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
 .kc-hero-sub{font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.88);line-height:1.75;margin-bottom:clamp(34px,4vw,48px);max-width:620px;font-weight:300}
 .kc-hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
@@ -228,12 +228,18 @@
 <div class="kc-des">
 
 <!-- 1 · HERO -->
+<style>
+/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
+.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
+.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
+.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
+</style>
 <section class="kc-hero">
   <div class="kc-hero-wrap">
     <div class="kc-hero-content kc-fade">
       <span class="kc-hero-eyebrow">Désinfection des locaux · Île-de-France</span>
       <h1 class="kc-hero-title">Désinfection et traitement <em>virucide</em> de vos locaux</h1>
-      <p class="kc-hero-sub">Logements et locaux professionnels : nous procédons à la désinfection des surfaces et des points de contact selon un protocole adapté à vos espaces. Prestation établie sur devis, après échange sur vos besoins.</p>
+      <p class="kc-hero-sub">Logements et locaux professionnels :<br>nous procédons à la désinfection des surfaces et des points de contact selon un protocole adapté à vos espaces. Prestation établie sur devis, après échange sur vos besoins.</p>
       <div class="kc-hero-ctas">
         <a href="tel:+33670012061" class="kc-btn kc-btn-primary">
           Demander un devis confidentiel
@@ -368,6 +374,12 @@
   </div>
 </section>
 
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Prêt à démarrer votre projet ?</p>
+  <a href="/demande-de-devis/?presta=desinfection-virucide" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
+
 <!-- 6 · BANDEAU -->
 <section class="kc-banner">
   <div class="kc-banner-content kc-fade">
@@ -376,6 +388,12 @@
     <p>Pour vos collaborateurs comme pour le public que vous accueillez, des locaux désinfectés avec méthode sont un gage de confiance. Nous mettons notre rigueur au service de votre tranquillité.</p>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Un besoin précis ? Demandez votre devis.</p>
+  <a href="/demande-de-devis/?presta=desinfection-virucide" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 7 · ENGAGEMENTS -->
 <section class="kc-commit">
@@ -404,6 +422,12 @@
     </div>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Convaincu ? Lançons-nous.</p>
+  <a href="/demande-de-devis/?presta=desinfection-virucide" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 8 · ENCART CERTIFICATION / RÉGLEMENTAIRE (neutre, sans revendication) -->
 <section class="kc-note">
@@ -471,6 +495,12 @@
     </div>
   </div>
 </section>
+
+<!-- CTA intermédiaire -->
+<div class="kc-cta-strip kc-fade">
+  <p>Nous intervenons partout en Île-de-France.</p>
+  <a href="/demande-de-devis/?presta=desinfection-virucide" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+</div>
 
 <!-- 11 · CTA FINAL -->
 <section class="kc-final-cta">
