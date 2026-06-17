@@ -39,18 +39,14 @@
    │        dépoussiérage après rénovation »
    └─────────────────────────────────────────────────────────
 
-   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (6 comparateurs) ────────
-   │  Variables (panneau :root, tout en haut) — 12 photos à venir :
+   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (4 comparateurs) ────────
+   │  Variables (panneau :root, tout en haut) — 8 photos à venir :
    │   R1 Appartement Paris 11e (fin de chantier 72 m²)
    │      --r1-avant / --r1-apres
    │      ALT avant : « Appartement Paris 11e avant nettoyage
    │                    de fin de chantier — poussières et traces »
    │      ALT après : « Appartement Paris 11e livré impeccable
    │                    par Kayli Clinn après fin de chantier »
-   │   R2 Local commercial Levallois (140 m²)
-   │      --r2-avant / --r2-apres
-   │      ALT : même modèle (« avant nettoyage » / « livré propre »)
-   │   R3 Maison Boulogne-Billancourt ... --r3-avant / --r3-apres
    │   R4 Studio Airbnb Paris 9e ........ --r4-avant / --r4-apres
    │   R5 Bureaux open-space La Défense . --r5-avant / --r5-apres
    │   R6 T2 Saint-Mandé ................ --r6-avant / --r6-apres
@@ -135,11 +131,7 @@
   --r1-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r1-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R2 · Local commercial Levallois */
-  --r2-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r2-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R3 · Maison Boulogne-Billancourt */
-  --r3-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r3-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R4 · Studio Airbnb Paris 9e */
   --r4-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r4-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
@@ -228,7 +220,7 @@
   backdrop-filter:blur(6px); padding:9px 16px; border-radius:999px;
   opacity:0; animation:khUp .8s .15s ease forwards;
 }
-.kc-home .kh-dot{width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:var(--kc-primary-light); animation:khDot 2.4s ease-out infinite}
+.kc-home .kh-dot{width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:var(--kc-primary-light)}
 .kc-home .kh-title{
   max-width:60ch; margin:22px auto 0; color:var(--kc-white);
   font-family:'Fraunces',Georgia,serif; font-size:clamp(36px,4.7vw,56px);
@@ -236,7 +228,7 @@
   text-shadow:0 2px 24px rgba(8,12,30,.58);
 }
 .kc-home .kh-w{display:inline-block; overflow:hidden; vertical-align:top}
-.kc-home .kh-w>span{display:inline-block; opacity:0; animation:khWord .9s cubic-bezier(.22,1,.36,1) forwards; animation-delay:calc(.42s + var(--wi)*.1s)}
+.kc-home .kh-w>span{display:inline-block; opacity:1}
 .kc-home .kh-para{
   max-width:54ch; margin:24px auto 0; color:rgba(255,255,255,.90);
   font-size:clamp(16px,1.35vw,19px); line-height:1.68;
@@ -254,7 +246,7 @@
 .kc-home .kh-btn svg,
 .kc-home .ka-btn svg{width:18px; height:18px; transition:transform .25s ease}
 .kc-home .kh-btn-1{padding:16px 30px; color:var(--kc-white); background:var(--kc-primary); box-shadow:0 14px 34px -12px rgba(15,167,165,.72)}
-.kc-home .kh-btn-1::after{content:""; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); animation:khSheen 4.5s 2s ease-in-out infinite}
+.kc-home .kh-btn-1::after{content:""; position:absolute; top:0; left:-120%; width:60%; height:100%; background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent); transform:skewX(-20deg); display:none}
 .kc-home .kh-btn-1:hover{transform:translateY(-3px); background:var(--kc-primary-light); box-shadow:0 20px 40px -12px rgba(15,167,165,.82)}
 .kc-home .kh-btn-1:hover svg,
 .kc-home .ka-btn:hover svg{transform:translateX(4px)}
@@ -356,9 +348,9 @@
     <!-- 📸 IMG 1 (fond CSS) · ALT = aria-label ci-dessous · cf. panneau en tête de fichier -->
     <div class="kh-bg" role="img" aria-label="Agent de nettoyage professionnel Kayli Clinn en intervention en Île-de-France"></div>
     <div class="kh-veil" aria-hidden="true"></div>
-    <div class="kh-grain" aria-hidden="true"></div>
-    <div class="kh-beam" aria-hidden="true"></div>
-    <div class="kh-beam b2" aria-hidden="true"></div>
+    
+    
+    
     <div class="kh-glow" aria-hidden="true"></div>
 
     <div class="kh-inner">
@@ -990,14 +982,14 @@
    │ 03 Bureaux ....... « Entretien et nettoyage de bureaux professionnels par Kayli Clinn »
    │ 04 Déménagement .. « Nettoyage de logement avant état des lieux de sortie par Kayli Clinn »
    │ 05 Vitres ........ « Nettoyage de vitres sans traces par Kayli Clinn »
-   │ 06 Diogène ....... « Nettoyage de logement insalubre (syndrome de Diogène) par Kayli Clinn »
-   │ 07 Désinfection .. « Désinfection virucide aux normes EN 14476 par Kayli Clinn »
-   │ 08 Sinistres ..... « Nettoyage après dégât des eaux / sinistre par Kayli Clinn »
+   │ 06 Remise en état . « Logement ou local remis à neuf après une remise en état par Kayli Clinn »
+   │ 07 Parties communes « Hall, escaliers et parties communes d’immeuble entretenus par Kayli Clinn »
+   │ 08 Commerces ...... « Boutique ou local commercial entretenu par Kayli Clinn »
    └────────────────────────────────────────────────────────
 
-   🔗 Liens cartes : /nettoyage-fin-de-chantier-paris/ · /turnover-airbnb/
-      /entretien-de-bureaux/ · /nettoyage-demenagement/ · /nettoyage-de-vitres/
-      /syndrome-de-diogene/ · /desinfection-virucide/ · /sinistres-degats-des-eaux/
+   🔗 Liens cartes : /nettoyage-fin-de-chantier/ · /turnover-airbnb/
+      /entretien-de-bureaux/ · /nettoyage-apres-demenagement-etat-des-lieux/ · /vitres-classiques/
+      /remise-en-etat/ · /parties-communes-immeubles/ · /commerces-retail/
    🔗 Bouton : /prestations/
    ════════════════════════════════════════════════════════ -->
 
@@ -1052,7 +1044,7 @@
 @keyframes kcpKen{0%{transform:scale(1.02)}100%{transform:scale(1.13)}}
 .kcp-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,17,48,0) 30%,rgba(11,17,48,.55) 100%);z-index:2}
 .kcp-num{position:absolute;top:12px;right:14px;z-index:3;color:rgba(255,255,255,.9);font-weight:800;font-size:15px;letter-spacing:1px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
-.kcp-badge{position:absolute;top:12px;left:12px;z-index:3;background:#0FA7A5;color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 11px;border-radius:100px;box-shadow:0 4px 12px rgba(15,167,165,.45);animation:kcpBadge 2.4s ease-in-out infinite}
+.kcp-badge{position:absolute;top:12px;left:12px;z-index:3;background:#0FA7A5;color:#fff;font-weight:700;font-size:11px;letter-spacing:.5px;text-transform:uppercase;padding:5px 11px;border-radius:100px;box-shadow:0 4px 12px rgba(15,167,165,.45)}
 @keyframes kcpBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .kcp-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
 .kcp-t{font-size:18px;font-weight:700;color:#0D2340;margin:0 0 8px;line-height:1.25}
@@ -1521,10 +1513,6 @@
   /* ░ Affectation des photos (ne pas modifier) · before = AVANT · after = APRÈS ░ */
   .kr-card[data-r="1"] .kr-before{background-image:var(--r1-avant)}
   .kr-card[data-r="1"] .kr-after {background-image:var(--r1-apres)}
-  .kr-card[data-r="2"] .kr-before{background-image:var(--r2-avant)}
-  .kr-card[data-r="2"] .kr-after {background-image:var(--r2-apres)}
-  .kr-card[data-r="3"] .kr-before{background-image:var(--r3-avant)}
-  .kr-card[data-r="3"] .kr-after {background-image:var(--r3-apres)}
   .kr-card[data-r="4"] .kr-before{background-image:var(--r4-avant)}
   .kr-card[data-r="4"] .kr-after {background-image:var(--r4-apres)}
   .kr-card[data-r="5"] .kr-before{background-image:var(--r5-avant)}
@@ -2384,56 +2372,6 @@
         </div>
       </article>
 
-      <!-- R2 · photos → variables --r2-avant / --r2-apres -->
-      <article class="kr-card" data-r="2" style="--ci:1">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après local commercial Levallois">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Livraison neuve</span>
-            <span class="kr-time">3 agents</span>
-          </div>
-          <h3 class="kr-t">Local commercial Levallois</h3>
-          <p class="kr-m">140 m² préparés avant ouverture : surfaces dégraissées, zones clients valorisées et espaces techniques remis au propre.</p>
-        </div>
-      </article>
-
-      <!-- R3 · photos → variables --r3-avant / --r3-apres -->
-      <article class="kr-card" data-r="3" style="--ci:2">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après maison Boulogne-Billancourt">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Construction</span>
-            <span class="kr-time">2 jours</span>
-          </div>
-          <h3 class="kr-t">Maison Boulogne-Billancourt</h3>
-          <p class="kr-m">180 m² en construction neuve : nettoyage progressif, finitions minutieuses et contrôle pièce par pièce avant livraison.</p>
-        </div>
-      </article>
-
       <!-- R4 · photos → variables --r4-avant / --r4-apres -->
       <article class="kr-card" data-r="4" style="--ci:3">
         <div class="kr-compare" data-kr aria-label="Comparaison avant après studio Airbnb Paris 9e">
@@ -2879,7 +2817,7 @@
 .kczn2-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .kczn2-btn{display:inline-flex;align-items:center;gap:8px;background:#0FA7A5;color:#fff;font-weight:600;font-size:14px;padding:14px 22px;border-radius:11px;text-decoration:none;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;box-shadow:0 12px 26px -14px rgba(15,167,165,.6)}
 .kczn2-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(15,167,165,.7)}
-.kczn2-btn:after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:kcznsheen 4s ease-in-out infinite}
+.kczn2-btn:after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);display:none}
 @keyframes kcznsheen{0%,60%{left:-120%}80%,100%{left:160%}}
 .kczn2-tel{display:inline-flex;align-items:center;gap:8px;color:#0D2340;font-weight:600;font-size:14px;text-decoration:none;padding:14px 22px;border:1px solid #E7EAEF;border-radius:11px;background:#fff;transition:border-color .3s,box-shadow .3s,transform .3s}
 .kczn2-tel:hover{border-color:#0FA7A5;box-shadow:0 8px 20px -10px rgba(15,167,165,.35);transform:translateY(-2px)}
@@ -2894,7 +2832,7 @@
 .kczn2-mapcard:hover .kczn2-img{transform:scale(1.07)}
 /* MODIF : voile vert (.kczn2-imgveil) retiré — il était inutilisé dans le HTML */
 .kczn2-pin{position:absolute;width:12px;height:12px;border-radius:50%;background:#0FA7A5;box-shadow:0 0 0 0 rgba(15,167,165,.55);z-index:3;transform:translate(-50%,-50%);opacity:0}
-.kczn2-pin.on{opacity:1;animation:kcznpin 2.4s ease-out infinite}
+.kczn2-pin.on{opacity:1}
 @keyframes kcznpin{0%{box-shadow:0 0 0 0 rgba(15,167,165,.55)}70%{box-shadow:0 0 0 16px rgba(15,167,165,0)}100%{box-shadow:0 0 0 0 rgba(15,167,165,0)}}
 .kczn2-pin i{position:absolute;inset:3px;border-radius:50%;background:#fff}
 .kczn2-legend{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;color:#6b7488;font-size:13px;position:relative;z-index:1}
@@ -3402,7 +3340,7 @@
 .kcct2 .kcct2-glow2{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(25,227,223,.08),transparent 70%);bottom:-140px;left:-100px;pointer-events:none}
 .kcct2 .kcct2-inner{position:relative;max-width:680px;margin:0 auto;z-index:2}
 .kcct2 .kcct2-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(15,167,165,.12);border:1px solid rgba(25,227,223,.30);color:#19E3DF;font-weight:700;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;padding:7px 15px;border-radius:100px;margin-bottom:20px}
-.kcct2 .kcct2-badge .dot{width:7px;height:7px;border-radius:50%;background:#19E3DF;box-shadow:0 0 0 0 rgba(25,227,223,.6);animation:kcctPulse 2s infinite}
+.kcct2 .kcct2-badge .dot{width:7px;height:7px;border-radius:50%;background:#19E3DF;box-shadow:0 0 0 0 rgba(25,227,223,.6)}
 @keyframes kcctPulse{0%{box-shadow:0 0 0 0 rgba(25,227,223,.55)}70%{box-shadow:0 0 0 9px rgba(25,227,223,0)}100%{box-shadow:0 0 0 0 rgba(25,227,223,0)}}
 .kcct2 h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12;font-weight:800;color:#fff;margin:0 0 14px}
 .kcct2 h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -3411,7 +3349,7 @@
 .kcct2 .kcct2-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 24px;border-radius:11px;text-decoration:none;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
 .kcct2 .kcct2-btn-primary{background:#0FA7A5;color:#fff;box-shadow:0 10px 26px rgba(15,167,165,.30)}
 .kcct2 .kcct2-btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(15,167,165,.42)}
-.kcct2 .kcct2-btn-primary .sheen{position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:kcctSheen 3.2s infinite}
+.kcct2 .kcct2-btn-primary .sheen{position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);display:none}
 @keyframes kcctSheen{0%{left:-120%}45%{left:160%}100%{left:160%}}
 .kcct2 .kcct2-btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.16)}
 .kcct2 .kcct2-btn-ghost:hover{transform:translateY(-3px);border-color:#19E3DF}
