@@ -39,15 +39,14 @@
    │        dépoussiérage après rénovation »
    └─────────────────────────────────────────────────────────
 
-   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (4 comparateurs) ────────
-   │  Variables (panneau :root, tout en haut) — 8 photos à venir :
+   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (3 comparateurs) ────────
+   │  Variables (panneau :root, tout en haut) — 6 photos à venir :
    │   R1 Appartement Paris 11e (fin de chantier 72 m²)
    │      --r1-avant / --r1-apres
    │      ALT avant : « Appartement Paris 11e avant nettoyage
    │                    de fin de chantier — poussières et traces »
    │      ALT après : « Appartement Paris 11e livré impeccable
    │                    par Kayli Clinn après fin de chantier »
-   │   R4 Studio Airbnb Paris 9e ........ --r4-avant / --r4-apres
    │   R5 Bureaux open-space La Défense . --r5-avant / --r5-apres
    │   R6 T2 Saint-Mandé ................ --r6-avant / --r6-apres
    │  Format conseillé .. MÊME CADRAGE avant/après, paysage 4:3
@@ -133,8 +132,6 @@
   /* R2 · Local commercial Levallois */
   /* R3 · Maison Boulogne-Billancourt */
   /* R4 · Studio Airbnb Paris 9e */
-  --r4-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r4-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R5 · Bureaux open-space La Défense */
   --r5-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r5-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
@@ -358,16 +355,16 @@
 
       <h1 class="kh-title">
         <span class="kh-w" style="--wi:0"><span>Nettoyage</span></span>
-        <span class="kh-w" style="--wi:1"><span>professionnel</span></span>
+        <span class="kh-w" style="--wi:1"><span>professionnel</span></span><br>
         <span class="kh-w" style="--wi:2"><span>en</span></span>
-        <span class="kh-w" style="--wi:3"><span>Île-de-France,</span></span>
+        <span class="kh-w" style="--wi:3"><span>Île-de-France,</span></span><br>
         <span class="kh-w" style="--wi:4"><span>rapide</span></span>
         <span class="kh-w" style="--wi:5"><span>et</span></span>
         <span class="kh-w" style="--wi:6"><span>impeccable.</span></span>
       </h1>
 
       <p class="kh-para">
-        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés : Kayli Clinn intervient rapidement avec une équipe fiable, discrète et un résultat soigné.<br>Demandez votre devis en quelques clics.
+        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés :<br>Kayli Clinn intervient rapidement avec une équipe fiable, discrète et un résultat soigné.<br>Demandez votre devis en quelques clics.
       </p>
 
       <div class="kh-cta" aria-label="Actions principales">
@@ -401,7 +398,7 @@
         </h2>
 
         <p class="ka-p ka-rev">
-          Kayli Clinn accompagne particuliers, professionnels, syndics et hôtes Airbnb avec des prestations de nettoyage haut de gamme en Île-de-France.<br>Chaque intervention est adaptée à vos contraintes : horaires, type d’espace, urgence et niveau d’exigence.<br>Notre objectif : vous livrer un espace propre, sain et prêt à l’usage.
+          Kayli Clinn accompagne particuliers, professionnels, syndics et hôtes Airbnb avec des prestations de nettoyage haut de gamme en Île-de-France.<br>Chaque intervention est adaptée à vos contraintes :<br>horaires, type d’espace, urgence et niveau d’exigence.<br>Notre objectif :<br>vous livrer un espace propre, sain et prêt à l’usage.
         </p>
 
         <ul class="ka-proof-line ka-rev">
@@ -1068,7 +1065,7 @@
   <div class="kcp-head">
     <span class="kcp-eyebrow">Nos prestations</span>
     <h2 class="kcp-h2">Des interventions <em>sur-mesure</em> pour tous vos besoins</h2>
-    <p class="kcp-sub">Particuliers, professionnels, syndics, hôtes Airbnb, promoteurs : nos équipes interviennent partout en Île-de-France avec un protocole adapté à chaque chantier.</p>
+    <p class="kcp-sub">Particuliers, professionnels, syndics, hôtes Airbnb, promoteurs :<br>nos équipes interviennent partout en Île-de-France avec un protocole adapté à chaque chantier.</p>
   </div>
 
   <div class="kcp-grid">
@@ -1294,8 +1291,6 @@
   /* ░ Affectation des photos (ne pas modifier) · before = AVANT · after = APRÈS ░ */
   .kr-card[data-r="1"] .kr-before{background-image:var(--r1-avant)}
   .kr-card[data-r="1"] .kr-after {background-image:var(--r1-apres)}
-  .kr-card[data-r="4"] .kr-before{background-image:var(--r4-avant)}
-  .kr-card[data-r="4"] .kr-after {background-image:var(--r4-apres)}
   .kr-card[data-r="5"] .kr-before{background-image:var(--r5-avant)}
   .kr-card[data-r="5"] .kr-after {background-image:var(--r5-apres)}
   .kr-card[data-r="6"] .kr-before{background-image:var(--r6-avant)}
@@ -1474,7 +1469,7 @@
   .kr-compare {
     position: relative;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 2;
     overflow: hidden;
     cursor: ew-resize;
     user-select: none;
@@ -2153,31 +2148,6 @@
         </div>
       </article>
 
-      <!-- R4 · photos → variables --r4-avant / --r4-apres -->
-      <article class="kr-card" data-r="4" style="--ci:3">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après studio Airbnb Paris 9e">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Turnover</span>
-            <span class="kr-time">2 h</span>
-          </div>
-          <h3 class="kr-t">Studio Airbnb Paris 9e</h3>
-          <p class="kr-m">28 m² remis en condition premium entre deux séjours : propreté, présentation, linge et détails d’accueil vérifiés.</p>
-        </div>
-      </article>
-
       <!-- R5 · photos → variables --r5-avant / --r5-apres -->
       <article class="kr-card" data-r="5" style="--ci:4">
         <div class="kr-compare" data-kr aria-label="Comparaison avant après bureaux open-space La Défense">
@@ -2247,7 +2217,7 @@
     <div class="kcw2-eye">Pourquoi nous choisir</div>
     <h2 class="kcw2-title" id="kcw2-title">Une entreprise de nettoyage pensée pour <em>votre tranquillité</em></h2>
     <p class="kcw2-sub">
-      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée : vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
+      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée :<br>vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
     </p>
   </div>
 
@@ -2631,7 +2601,7 @@
       <h2 class="kczn2-title reveal">Présents partout en Île-de-France</h2>
       <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens.<br>Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
-      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb : quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
+      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb :<br>quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
       <div class="kczn2-stats reveal">
         <div class="kczn2-stat"><div class="kczn2-num" data-to="8">8</div><div class="kczn2-lab">Départements</div></div>
         <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">1 281</div><div class="kczn2-lab">Communes accessibles</div></div>
@@ -3177,14 +3147,14 @@
   /* ── Rythme vertical unifié (un seul souffle de haut en bas) ── */
   @media (min-width: 768px){
     .ka-section, .kh4-section, .kcp-section, .kr-section,
-    .kcw2, .kczn2, .kcav2, .kcfq-section, .kcct2{
+    .kcw2, .kczn2, .kcav2, .kcfq-section{
       padding-top: 104px !important;
       padding-bottom: 104px !important;
     }
   }
   @media (max-width: 767px){
     .ka-section, .kh4-section, .kcp-section, .kr-section,
-    .kcw2, .kczn2, .kcav2, .kcfq-section, .kcct2{
+    .kcw2, .kczn2, .kcav2, .kcfq-section{
       padding-top: 64px !important;
       padding-bottom: 64px !important;
     }
