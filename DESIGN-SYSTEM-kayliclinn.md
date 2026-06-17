@@ -42,8 +42,8 @@ Import Google Fonts :
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
 ```
 
-Note : le tunnel d'estimation utilise encore Montserrat pour ses titres. Sa migration
-vers Fraunces est un chantier à part (voir §7), à faire d'un seul tenant sur tout le tunnel.
+Note : le tunnel d'estimation (`/devis/`) a été **migré vers Fraunces** (titres) — corps en
+Inter, boutons en Roboto, conforme au standard. Migration réalisée d'un seul tenant sur tout le tunnel.
 
 ---
 
@@ -92,7 +92,7 @@ L'unification ne se fait pas page par page au hasard. Ordre proposé :
 
 1. **Figer ce document** (fait) — le standard de référence.
 2. **Recenser les pages** et leur écart au standard (audit page par page).
-3. **Migrer le tunnel estimation/devis** de Montserrat → Fraunces (chantier d'un tenant).
+3. **Migrer le tunnel estimation/devis** de Montserrat → Fraunces (chantier d'un tenant) — **fait**.
 4. **Aligner les pages anciennes** sur le gabarit Fraunces + Inter.
 5. **Vérifier la cohérence transversale** : mêmes boutons, mêmes couleurs, mêmes espacements partout.
 
