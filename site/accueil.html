@@ -822,7 +822,7 @@
     <div class="kh4-head">
       <span class="kh4-eyebrow kh4-rev">— Réservation en ligne</span>
       <h2 class="kh4-h2 kh4-rev" id="kh4-title">Réservez votre prestation en <span>quelques minutes</span></h2>
-      <p class="kh4-sub kh4-rev">Un parcours simple, transparent et sécurisé : vous décrivez votre besoin, nous confirmons le meilleur créneau, puis notre équipe intervient avec le niveau d’exigence Kayli Clinn.</p>
+      <p class="kh4-sub kh4-rev">Un parcours simple, transparent et sécurisé :<br>vous décrivez votre besoin, nous confirmons le meilleur créneau, puis notre équipe intervient avec le niveau d’exigence Kayli Clinn.</p>
       <ul class="kh4-trust kh4-rev" aria-label="Garanties de réservation">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>Devis gratuit</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Paiement sécurisé</li>
@@ -3167,6 +3167,11 @@
     font-weight:600 !important;
     letter-spacing: -0.6px !important;
     line-height: 1.12 !important;
+  }
+
+  /* ── Texte centré : lignes équilibrées, aucun mot orphelin ── */
+  .kh-para, .kh4-sub, .kcp-sub, .kr-sub, .kcw2-sub, .kcav2-sub, .kcfq-sub{
+    text-wrap: balance;
   }
 
   /* ── Charte : pas de dégradé teal dans les titres (accent sobre) ── */
