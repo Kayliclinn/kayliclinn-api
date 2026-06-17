@@ -1,0 +1,754 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE PRESTATION : ENTRETIEN DE BUREAUX / LOCAUX PROFESSIONNELS — KAYLI CLINN
+   Prestation récurrente (contrat) · B2B · WordPress-ready
+   URL : /entretien-de-bureaux/
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous.
+   Remplacez UNIQUEMENT l'URL entre url('…').
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Open space d'entreprise propre et lumineux entretenu
+   │   par Kayli Clinn — bureaux impeccables en Île-de-France »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Salle de réunion d'entreprise nettoyée par Kayli Clinn,
+   │   surfaces et sol impeccables »
+   │ --photo-split-1 .. section « propreté & image de marque » (gauche)
+   │   ALT : « Agent Kayli Clinn entretenant un espace de travail
+   │   professionnel — désinfection des points de contact »
+   │ --photo-split-2 .. section « horaires décalés » (droite)
+   │   ALT : « Espace de bureaux entretenu en dehors des heures
+   │   d'activité par les équipes Kayli Clinn »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   👉 À COMPLÉTER : remplacer les 4 URL placeholder ci-dessous par
+      de vraies photos de bureaux/locaux pros (libres de droits ou maison).
+   🔗 Liens internes : /devis/ · /nettoyage-fin-de-chantier/
+       /turnover-airbnb/ · /nettoyage-apres-demenagement-etat-des-lieux/
+   ☎️ Téléphone : +33670012061 · Prix : budget INDICATIF HT seulement (sur devis).
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
+   ════════════════════════════════════════════════════════ */
+.kc-page{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-hero.png');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-banner.png');
+  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-split-1.png');
+  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-split-2.png');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME
+   ════════════════════════════════════════════════════════ */
+.kc-page{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-page *,.kc-page *::before,.kc-page *::after{box-sizing:border-box}
+.kc-page img{max-width:100%;display:block}
+.kc-page a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-page .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-page .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-page .kc-promise-text .kc-link,.kc-page .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-page .kc-promise-text .kc-link:hover,.kc-page .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-page section{padding:clamp(84px,11vw,152px) 6%}
+.kc-page-wrap{max-width:1240px;margin:0 auto}
+.kc-page-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
+
+/* — sur-titre éditorial (filet + petites capitales) — */
+.kc-page .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
+.kc-page .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres : Fraunces serif + accents italiques — */
+.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-page .section-title em,.kc-page h2 em,.kc-page h3 em,.kc-page .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-page .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-page svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-btn-primary svg{transition:transform .3s}
+.kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO — plein cadre, très aéré
+   ════════════════════════════════════════════════════════ */
+.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-hero-content{max-width:none}
+.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
+.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:540px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
+.kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande de réassurance — */
+.kc-trust{background:var(--navy);padding:30px 6%}
+.kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
+.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   POUR QUI
+   ════════════════════════════════════════════════════════ */
+.kc-target{background:var(--cream-2)}
+.kc-target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-target-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-target-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-target-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
+.kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
+.kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
+.kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   PROMESSE
+   ════════════════════════════════════════════════════════ */
+.kc-promise-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
+.kc-promise-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-promise-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
+.kc-promise .eyebrow{color:var(--teal)}
+.kc-promise .eyebrow::before{background:var(--teal)}
+.kc-promise h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
+.kc-promise h2 em{color:var(--teal)}
+.kc-promise-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
+.kc-promise-text:last-child{margin-bottom:0}
+.kc-promise-text strong{color:#fff;font-weight:600}
+.kc-promise-points{display:flex;flex-direction:column;gap:14px}
+.kc-promise-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
+.kc-promise-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
+.kc-promise-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-promise-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
+.kc-promise-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU
+   ════════════════════════════════════════════════════════ */
+.kc-banner{position:relative;min-height:540px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-banner-content{max-width:900px}
+.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
+.kc-banner h2 em{font-style:italic;color:#fff}
+.kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   INCLUS — fiches au trait
+   ════════════════════════════════════════════════════════ */
+.kc-included{background:var(--cream)}
+.kc-included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kc-incl-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
+.kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
+.kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   SPLIT
+   ════════════════════════════════════════════════════════ */
+.kc-split{background:var(--white)}
+.kc-split.alt{background:var(--cream-2)}
+.kc-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
+.kc-split.reverse .kc-split-grid{direction:rtl}
+.kc-split.reverse .kc-split-grid>*{direction:ltr}
+.kc-split-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-split-1);background-size:cover;background-position:center;box-shadow:var(--shadow)}
+.kc-split.alt .kc-split-img{background-image:var(--photo-split-2)}
+.kc-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
+.kc-split-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
+.kc-split-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:24px}
+.kc-split-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.kc-split-text p:last-of-type{margin-bottom:0}
+.kc-split-text strong{color:var(--navy);font-weight:600}
+.kc-split-quote{margin-top:32px;padding:26px 30px;background:transparent;border-left:2px solid var(--teal);border-radius:0;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--navy);font-size:17px;line-height:1.6}
+.kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   FRÉQUENCES (réutilise le style des fiches options)
+   ════════════════════════════════════════════════════════ */
+.kc-options-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.kc-option-row{display:flex;align-items:center;gap:20px;padding:24px 28px;background:var(--white);border:1px solid var(--line);border-radius:13px;transition:all .3s}
+.kc-option-row:hover{border-color:var(--teal);transform:translateX(3px);box-shadow:var(--shadow-sm)}
+.kc-option-icon{width:46px;height:46px;background:var(--teal-wash);color:var(--teal-deep);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+.kc-option-info{flex:1;min-width:0}
+.kc-option-name{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:3px;letter-spacing:-0.01em}
+.kc-option-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
+.kc-option-price{font-family:'Inter',sans-serif;color:var(--teal-deep);font-weight:600;font-size:14px;white-space:nowrap}
+
+/* ════════════════════════════════════════════════════════
+   PROCESS
+   ════════════════════════════════════════════════════════ */
+.kc-process{background:var(--cream)}
+.kc-process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
+.kc-process-grid::before{content:'';position:absolute;top:34px;left:11%;right:11%;height:1px;background:var(--line);z-index:0}
+.kc-process-step{position:relative;z-index:1;text-align:center}
+.kc-process-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
+.kc-process-step:hover .kc-process-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-process-step h4{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-process-step p{font-size:13px;color:var(--muted);line-height:1.65}
+.kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   BUDGET INDICATIF
+   ════════════════════════════════════════════════════════ */
+.kc-pricing{background:var(--cream-2)}
+.kc-pricing-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:clamp(48px,7vw,92px);align-items:center}
+.kc-pricing-left h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.1;letter-spacing:-0.015em;margin-bottom:22px}
+.kc-pricing-left p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.kc-pricing-left strong{color:var(--navy);font-weight:600}
+.kc-pricing-table{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:clamp(28px,3vw,42px);box-shadow:var(--shadow)}
+.kc-pricing-table-title{font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:26px}
+.kc-price-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid var(--line-soft)}
+.kc-price-row:last-of-type{border-bottom:none;padding-bottom:0}
+.kc-price-label{font-size:14.5px;color:var(--ink);font-weight:500}
+.kc-price-label small{display:block;font-size:11.5px;color:var(--faint);font-weight:400;margin-top:3px}
+.kc-price-value{font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:18px;white-space:nowrap}
+.kc-price-value em{font-style:italic;color:var(--teal-deep)}
+.kc-price-disclaimer{font-size:12px;color:var(--faint);font-style:italic;margin-top:24px;padding-top:22px;border-top:1px solid var(--line-soft);line-height:1.65}
+/* encart « à partir de » mis en avant */
+.kc-price-headline{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;padding:4px 0 22px;margin-bottom:22px;border-bottom:1px solid var(--line-soft)}
+.kc-price-headline-from{font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--faint)}
+.kc-price-headline-amount{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(2rem,4vw,2.8rem);color:var(--navy);line-height:1}
+.kc-price-headline-amount em{font-style:italic;color:var(--teal-deep)}
+.kc-price-headline-unit{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--muted)}
+
+/* ════════════════════════════════════════════════════════
+   TÉMOIGNAGES
+   ════════════════════════════════════════════════════════ */
+.kc-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-testi{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-testi:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-testi-quote-mark{position:absolute;top:26px;right:30px;font-family:'Fraunces',serif;font-size:54px;font-weight:560;color:var(--teal);opacity:0.14;line-height:1}
+.kc-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:18px}
+.kc-testi-text{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:26px;font-style:italic;font-weight:400}
+.kc-testi-author{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line-soft)}
+.kc-testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:0.02em;flex-shrink:0}
+.kc-testi-info strong{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
+.kc-testi-info span{font-size:12.5px;color:var(--faint);margin-top:2px;display:block}
+
+/* ════════════════════════════════════════════════════════
+   POURQUOI NOUS — éditorial
+   ════════════════════════════════════════════════════════ */
+.kc-why{background:var(--cream)}
+.kc-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-why-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.kc-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-why-card:hover::before{transform:scaleX(1)}
+.kc-why-num{font-family:'Fraunces',serif;font-size:14px;font-weight:560;color:var(--teal-deep);letter-spacing:0.1em;margin-bottom:26px;display:block}
+.kc-why-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-why-card:hover .kc-why-icon{background:var(--teal);color:#fff}
+.kc-why-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:13px;letter-spacing:-0.01em}
+.kc-why-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ════════════════════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════════════════════ */
+.kc-faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
+.kc-faq-q{padding:26px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.kc-faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.35}
+.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-faq-item.open .kc-faq-a{max-height:480px}
+.kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-faq-a-content strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   ZONES
+   ════════════════════════════════════════════════════════ */
+.kc-zones{background:var(--cream-2)}
+.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
+.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL — vert uni
+   ════════════════════════════════════════════════════════ */
+.kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
+.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
+.kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
+.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
+.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-final-cta h2 em{font-style:italic;color:#fff}
+.kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
+.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
+.kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
+.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-target-grid,.kc-included-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-promise-grid,.kc-pricing-grid{grid-template-columns:1fr}
+  .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-hero{min-height:90vh}
+  .kc-split-grid{grid-template-columns:1fr}
+  .kc-split.reverse .kc-split-grid{direction:ltr}
+  .kc-options-grid{grid-template-columns:1fr}
+  .kc-process-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .kc-process-grid::before{display:none}
+  .kc-testi-grid,.kc-why-grid{grid-template-columns:1fr}
+  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
+}
+@media(max-width:560px){
+  .kc-page section{padding:64px 6%}
+  .kc-hero{min-height:auto;padding:130px 6% 64px}
+  .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
+  .kc-process-grid{grid-template-columns:1fr;gap:18px}
+  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-promise-block{border-radius:20px}
+  .kc-btn{width:100%;justify-content:center}
+  .kc-hero-ctas,.kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-page *,.kc-page *::before,.kc-page *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-page .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-page">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Entretien de bureaux · Île-de-France</span>
+      <h1 class="kc-hero-title">Des Bureaux À La <em>Hauteur</em> De Votre Image</h1>
+      <p class="kc-hero-sub">L'entretien régulier de vos bureaux et locaux professionnels, par contrat. Des espaces impeccables au quotidien, qui valorisent votre image de marque et le bien-être de vos équipes.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Demander Un Devis
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#budget" class="kc-btn kc-btn-secondary">Voir Le Budget Indicatif</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro AXA · 5M€</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Équipes formées & dédiées</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Horaires décalés possibles</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 11l-3 3-1.5-1.5"/></svg><span>Interlocuteur unique</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Suivi qualité & cahier des charges</span></div>
+  </div>
+</div>
+
+<!-- 3 · POUR QUI -->
+<section class="kc-target">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Pour qui</span>
+      <h2 class="section-title">Le partenaire propreté de vos <em>locaux professionnels</em></h2>
+      <p class="section-desc">Une prestation récurrente sur mesure pour toutes les organisations dont l'image et le confort de travail dépendent d'espaces irréprochables, jour après jour.</p>
+    </div>
+    <div class="kc-target-grid">
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+        <h3>Entreprises & sièges</h3>
+        <p>Open spaces, bureaux fermés, salles de réunion. Un entretien régulier qui maintient des espaces de travail sains et accueillants.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Cabinets & professions libérales</h3>
+        <p>Avocats, experts-comptables, professionnels de santé. Des locaux d'accueil impeccables, dans le respect de la confidentialité.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 7l10-4 10 4-10 4-10-4zM2 7v10l10 4 10-4V7M7 9v6"/></svg></div>
+        <h3>Coworkings & centres d'affaires</h3>
+        <p>Espaces partagés à fort passage. Une présence régulière pour tenir un niveau de propreté constant tout au long de la journée.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+        <h3>Showrooms & agences</h3>
+        <p>Espaces de réception et de vente où chaque détail compte. Une propreté soignée qui reflète directement votre marque.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PROMESSE -->
+<section>
+  <div class="kc-page-wrap kc-fade">
+    <div class="kc-promise-block kc-promise">
+      <div class="kc-promise-grid">
+        <div>
+          <span class="eyebrow">Notre promesse</span>
+          <h2>Un entretien <em>régulier</em>, pensé pour la durée</h2>
+          <p class="kc-promise-text">Des bureaux propres ne se voient pas — ils se ressentent. Un sol net, des sanitaires impeccables, une cuisine entretenue et des points de contact désinfectés : c'est ce qui met vos collaborateurs à l'aise et rassure vos visiteurs dès l'entrée.</p>
+          <p class="kc-promise-text">Nous bâtissons avec vous un <strong>cahier des charges précis</strong>, confié à une <strong>équipe dédiée et formée</strong>, avec un <strong>interlocuteur unique</strong> et un suivi qualité régulier. Au-delà de l'entretien courant, nous assurons aussi le <a href="/nettoyage-fin-de-chantier/" class="kc-link">nettoyage de fin de chantier</a> et la remise en état de vos locaux.</p>
+        </div>
+        <div class="kc-promise-points">
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 11l-3 3-1.5-1.5"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Un interlocuteur unique</strong><span>Un seul contact qui connaît vos locaux, vos consignes et votre planning</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Une équipe dédiée & formée</strong><span>Toujours les mêmes intervenants, formés à vos exigences et à la sécurité</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Des horaires qui s'adaptent</strong><span>Tôt le matin, en soirée ou pendant la fermeture, sans gêner votre activité</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Un suivi qualité régulier</strong><span>Cahier des charges, contrôles et points réguliers pour ajuster la prestation</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">La propreté, première impression</span>
+    <h2>Des locaux soignés,<br>une <em>image qui rassure</em></h2>
+    <p>La propreté de vos espaces est le premier signal envoyé à un client qui entre, à un candidat reçu en entretien, à un collaborateur qui arrive le matin. Un entretien régulier et constant, c'est une image de marque protégée et des équipes qui travaillent dans de bonnes conditions.</p>
+  </div>
+</section>
+
+<!-- 5 · NOS PRESTATIONS BUREAUX -->
+<section class="kc-included">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Nos prestations bureaux</span>
+      <h2 class="section-title">Tout ce que couvre <em>l'entretien de vos locaux</em></h2>
+      <p class="section-desc">Un socle de prestations défini avec vous dans le cahier des charges, adapté à la configuration de vos espaces et à la fréquence retenue.</p>
+    </div>
+    <div class="kc-included-grid">
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div><h4>Sols & surfaces</h4><p>Aspiration, lavage et entretien des sols (carrelage, moquette, parquet), dépoussiérage des bureaux et plans de travail.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><circle cx="12" cy="17" r="2"/></svg></div><h4>Sanitaires</h4><p>Nettoyage et désinfection complète des WC, lavabos et robinetterie, réapprovisionnement des consommables hygiéniques.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><h4>Cuisines & espaces communs</h4><p>Entretien des coins repas, micro-ondes et plans de travail, salles de pause et espaces détente laissés nets.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><h4>Vitres intérieures</h4><p>Vitrages intérieurs, cloisons vitrées, portes et miroirs sans traces, pour des espaces lumineux et soignés.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></div><h4>Corbeilles & déchets</h4><p>Vidage des corbeilles, changement des sacs, gestion du tri et évacuation vers les points de collecte.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div><h4>Désinfection des points de contact</h4><p>Poignées, interrupteurs, rampes, claviers et zones partagées désinfectés pour limiter la transmission.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h4>Salles de réunion & accueil</h4><p>Remise en ordre et propreté des salles de réunion, du hall et de l'espace d'accueil entre deux rendez-vous.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div><h4>Prestations périodiques</h4><p>Vitres en hauteur, remise à niveau des sols, grand nettoyage saisonnier : planifiés et intégrés au contrat.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 1 -->
+<section class="kc-split">
+  <div class="kc-page-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Propreté & image de marque</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">L'image que vous renvoyez</span>
+        <h2>Des espaces qui parlent <em>pour vous</em></h2>
+        <p>Avant même le premier mot, vos locaux racontent votre exigence. Un accueil net, des vitres claires, des sanitaires irréprochables : ce sont ces <strong>détails constants</strong> qui inspirent confiance à vos clients et partenaires.</p>
+        <p>Nous appliquons un <strong>cahier des charges identique</strong> à chaque passage, avec la même équipe et les mêmes contrôles. Résultat : une <strong>propreté homogène</strong> dans le temps, qui valorise votre marque et soutient le bien-être de vos équipes.</p>
+        <!-- 👉 Témoignage à valider : badge « Exemple » obligatoire tant qu'il n'est pas remplacé par un vrai retour client (DGCCRF). -->
+        <div class="kc-split-quote">Nos bureaux sont impeccables chaque matin, et nos visiteurs le remarquent. Un vrai plus pour notre image.<span class="kc-split-quote-author">— Exemple · Office manager, PME tertiaire · Paris</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · FRÉQUENCES -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Fréquences d'intervention</span>
+      <h2 class="section-title">Le rythme qui correspond à <em>votre activité</em></h2>
+      <p class="section-desc">Du passage quotidien à l'entretien hebdomadaire, nous calons la fréquence sur la taille de vos locaux, votre affluence et vos contraintes — défini ensemble dans le contrat.</p>
+    </div>
+    <div class="kc-options-grid">
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Quotidien</div><div class="kc-option-desc">Pour les espaces à fort passage : un entretien chaque jour ouvré, propreté toujours au top</div></div><div class="kc-option-price">Sur devis</div></div>
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Plusieurs fois par semaine</div><div class="kc-option-desc">Le bon équilibre pour la plupart des bureaux : 2 à 4 passages hebdomadaires</div></div><div class="kc-option-price">Sur devis</div></div>
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01M12 14h.01M16 14h.01"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Hebdomadaire</div><div class="kc-option-desc">Pour les petits locaux ou les structures peu fréquentées : un passage régulier chaque semaine</div></div><div class="kc-option-price">Sur devis</div></div>
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Sur mesure & ponctuel</div><div class="kc-option-desc">Renfort événementiel, prestations périodiques ou rythme spécifique : on s'adapte</div></div><div class="kc-option-price">Sur devis</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · PROCESS -->
+<section class="kc-process">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Notre méthode</span>
+      <h2 class="section-title">Quatre étapes, <em>de la visite au suivi</em></h2>
+      <p class="section-desc">Un déroulé simple et transparent pour mettre en place un contrat d'entretien parfaitement adapté à vos locaux.</p>
+    </div>
+    <div class="kc-process-grid">
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Visite des locaux</h4><p>Nous venons sur place évaluer vos surfaces, vos contraintes et vos attentes, gratuitement et sans engagement.</p><span class="kc-process-step-duration">Gratuit</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Devis personnalisé</h4><p>Cahier des charges précis, fréquence et prestations détaillées, budget clair établi sur mesure.</p><span class="kc-process-step-duration">Sous 48 h</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Contrat & démarrage</h4><p>Mise en place du contrat, présentation de l'équipe dédiée et de votre interlocuteur unique.</p><span class="kc-process-step-duration">Rapide</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">04</div><h4>Suivi qualité</h4><p>Contrôles réguliers, points d'étape et ajustements de la prestation pour une satisfaction durable.</p><span class="kc-process-step-duration">En continu</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · BUDGET INDICATIF -->
+<section class="kc-pricing" id="budget">
+  <div class="kc-page-wrap">
+    <div class="kc-pricing-grid">
+      <div class="kc-pricing-left kc-fade">
+        <span class="eyebrow">Budget indicatif</span>
+        <h3>Une idée du <em>budget</em>, le prix juste après visite</h3>
+        <p>L'entretien de bureaux se chiffre toujours sur mesure : le prix dépend de la <strong>surface</strong>, de la <strong>fréquence</strong> retenue et des <strong>prestations</strong> intégrées au contrat. Aucun tarif ferme n'est donc affiché ni réservable en ligne.</p>
+        <p>À titre purement indicatif, comptez <strong>à partir de 2 € HT par m² et par mois</strong>. Le montant définitif vous est communiqué dans un <strong>devis personnalisé après une visite gratuite</strong> de vos locaux.</p>
+        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:18px">Demander Mon Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="kc-pricing-table kc-fade">
+        <div class="kc-pricing-table-title">Repère de budget · HT</div>
+        <div class="kc-price-headline">
+          <span class="kc-price-headline-from">À partir de</span>
+          <span class="kc-price-headline-amount"><em>2 €</em></span>
+          <span class="kc-price-headline-unit">/ m² / mois HT</span>
+        </div>
+        <div class="kc-price-row"><div class="kc-price-label">Ce qui fait varier le budget<small>Surface, fréquence, prestations choisies</small></div><div class="kc-price-value">Sur mesure</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">Tarification<small>Hors taxes (HT) · clientèle professionnelle</small></div><div class="kc-price-value">HT</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">Visite & devis<small>Évaluation sur place, sans engagement</small></div><div class="kc-price-value"><em>Gratuit</em></div></div>
+        <div class="kc-price-disclaimer">Fourchette indicative de marché (1,5 à 3 € HT / m² / mois selon la fréquence et les prestations) — aucun prix ferme n'est garanti en ligne. Le tarif définitif est établi sur devis après visite des locaux. Montants exprimés hors taxes pour une clientèle professionnelle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · POURQUOI NOUS -->
+<section class="kc-why">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Pourquoi Kayli Clinn</span>
+      <h2 class="section-title">Ce qui nous différencie <em>sur vos contrats</em></h2>
+      <p class="section-desc">L'entretien professionnel régulier a ses exigences. Nous avons bâti notre offre autour de la relation, de la fiabilité et de la souplesse.</p>
+    </div>
+    <div class="kc-why-grid">
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">01 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 7a4 4 0 1 0 0 .01M22 11l-3 3-1.5-1.5"/></svg></div>
+        <h3>Un interlocuteur unique</h3>
+        <p>Un seul contact qui connaît vos locaux et vos consignes. Pas de standard anonyme : une relation directe et réactive.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">02 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Des équipes formées</h3>
+        <p>Toujours les mêmes intervenants, formés à vos exigences, aux produits et à la sécurité. Continuité et confiance.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">03 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Flexibilité horaire</h3>
+        <p>Tôt le matin, en soirée, le week-end : nous intervenons en horaires décalés, partout en Île-de-France, sans gêner votre activité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 2 -->
+<section class="kc-split alt reverse">
+  <div class="kc-page-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Horaires décalés</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">Sans gêner votre activité</span>
+        <h2>Présents quand <em>vous ne l'êtes pas</em></h2>
+        <p>Personne n'aime voir une équipe de ménage circuler en pleine réunion. C'est pourquoi nous intervenons aux <strong>heures qui vous arrangent</strong> : avant l'arrivée de vos équipes, après leur départ, ou pendant la fermeture.</p>
+        <p>Vos collaborateurs retrouvent des locaux propres sans avoir vu personne, et votre activité n'est jamais perturbée. <a href="/devis/" class="kc-link">Demandez votre devis</a> et nous calons le créneau qui vous convient, partout en Île-de-France.</p>
+        <div class="kc-split-quote">Un bon entretien de bureaux, c'est celui qu'on ne voit pas se faire — mais qu'on ressent chaque matin.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · TÉMOIGNAGES -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2 class="section-title">Ce qu'en disent <em>nos clients pros</em></h2>
+      <p class="section-desc">Quelques retours d'entreprises et de professionnels que nous accompagnons au quotidien en Île-de-France.</p>
+    </div>
+    <!-- 👉 Témoignages FICTIFS : badge « Exemple » obligatoire tant qu'ils ne sont pas remplacés par de vrais avis (DGCCRF). -->
+    <div class="kc-testi-grid">
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Équipe sérieuse et toujours la même. Nos bureaux sont nickel chaque matin et l'interlocuteur unique simplifie tout. On ne s'en occupe plus.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">OM</div><div class="kc-testi-info"><strong>Exemple</strong><span>Office manager · PME tertiaire, Paris</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Ils interviennent en soirée après la fermeture, on ne les croise jamais et tout est impeccable. Pratique pour un cabinet qui reçoit du public.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">AC</div><div class="kc-testi-info"><strong>Exemple</strong><span>Cabinet libéral · Hauts-de-Seine</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Espace de coworking à fort passage : il fallait une présence fiable et constante. Le suivi qualité et la réactivité font vraiment la différence.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">RD</div><div class="kc-testi-info"><strong>Exemple</strong><span>Responsable de site · Coworking, Val-de-Marne</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · FAQ -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
+      <p class="section-desc">Les questions que se posent les entreprises avant de confier l'entretien de leurs locaux.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Y a-t-il un engagement de durée ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">L'entretien de bureaux fonctionne par <strong>contrat récurrent</strong>, dont les conditions (durée, préavis, fréquence) sont définies ensemble et détaillées dans le devis. <!-- 👉 À COMPLÉTER : durée d'engagement et préavis exacts à confirmer par la propriétaire (ne pas inventer). --> Les modalités précises vous sont présentées lors de la visite et figurent au contrat.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">À quels horaires intervenez-vous ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous nous adaptons à votre activité : <strong>tôt le matin avant l'arrivée des équipes, en soirée après leur départ, ou pendant les heures de fermeture</strong>. L'objectif est d'assurer un entretien impeccable sans jamais perturber votre travail ni l'accueil de vos visiteurs.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Quels produits et équipements utilisez-vous ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous apportons <strong>nos produits et notre matériel professionnels</strong>, adaptés à chaque type de surface et aux contraintes de vos locaux. <!-- 👉 À COMPLÉTER : préciser la gamme de produits (écolabel, désinfectants normés…) si la propriétaire souhaite la mettre en avant. --> Les besoins spécifiques (sols délicats, allergies, normes d'hygiène) sont pris en compte dès la visite.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Que se passe-t-il en cas d'absence d'un intervenant ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La <strong>continuité du service est assurée</strong> : en cas de congé ou d'absence, un remplacement est organisé pour que votre entretien soit maintenu sans interruption, dans le respect du même cahier des charges. Votre interlocuteur unique reste votre point de contact.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment est calculé le prix ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le tarif dépend de la <strong>surface</strong>, de la <strong>fréquence</strong> et des <strong>prestations</strong> retenues. À titre indicatif, comptez <strong>à partir de 2 € HT par m² et par mois</strong> (fourchette de marché de 1,5 à 3 € HT/m²/mois). Le <strong>prix définitif est établi sur devis après une visite gratuite</strong> — aucun montant ferme n'est réservable en ligne pour ce type de prestation.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Intervenez-vous sur plusieurs sites ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Pour les entreprises <strong>multi-sites en Île-de-France</strong>, nous proposons un <strong>interlocuteur unique</strong>, un cahier des charges homogène et une facturation centralisée. Un fonctionnement pensé pour simplifier la gestion de la propreté sur l'ensemble de vos locaux.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes entretiennent vos bureaux et locaux professionnels dans les huit départements franciliens.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Visite & devis gratuits · Réponse rapide</span>
+    <h2>Confiez-nous l'entretien<br>de vos <em>bureaux</em></h2>
+    <p>Demandez un devis personnalisé ou faites-vous rappeler. Visite gratuite de vos locaux, cahier des charges sur mesure et interlocuteur unique en Île-de-France.</p>
+    <div class="kc-final-ctas">
+      <a href="/demande-de-devis/?presta=entretien-de-bureaux" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
+      <a href="/devis/" class="kc-btn kc-btn-secondary">Demander Un Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Être rappelé</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-page .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service Entretien de bureaux (sur devis, PAS d'offers chiffrées fermes) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Entretien de bureaux — nettoyage de locaux professionnels",
+  "serviceType": "Entretien régulier de bureaux et locaux professionnels",
+  "description": "Entretien récurrent de bureaux et locaux professionnels en Île-de-France : sols, sanitaires, cuisines, vitres intérieures, désinfection des points de contact. Prestation sur contrat, devis personnalisé après visite gratuite.",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "priceCurrency": "EUR",
+      "valueAddedTaxIncluded": false
+    },
+    "description": "Tarif sur devis après visite des locaux — budget indicatif à partir de 2 € HT / m² / mois."
+  }
+}
+</script>

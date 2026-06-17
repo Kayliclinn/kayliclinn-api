@@ -1,0 +1,527 @@
+<!-- ⛔ NE PAS PUBLIER avant validation propriétaire. Tarifs : DEVIS PUR, aucun chiffre en ligne (règle insalubrité/sinistre/décès, CLAUDE.md). -->
+<!-- ⛔ Prestation 3D/biocides : publication CONDITIONNÉE À L'OBTENTION DU CERTIBIOCIDE (certification biocides obligatoire avant toute mise en ligne). -->
+<!-- ════════════════════════════════════════════════════════
+   PAGE PRESTATION SENSIBLE : DÉSINFECTION / TRAITEMENT VIRUCIDE — KAYLI CLINN
+   Page SOBRE, institutionnelle, SANS PRIX, SANS réservation en ligne.
+   URL : /desinfection-virucide/
+   Registre : sérieux · hygiène · maîtrise. AUCUNE norme/certification précise revendiquée.
+   ────────────────────────────────────────────────────────
+   ⚠️ NE REVENDIQUER AUCUNE norme (EN 14476, etc.), agrément, produit homologué précis
+   tant qu'ils ne sont pas fournis et validés → utiliser les placeholders 👉 À COMPLÉTER.
+   📸 PANNEAU PHOTOS — variables --photo-* ci-dessous (URLs placeholder à remplacer).
+   Privilégier des images SOBRES (agent équipé EPI, surfaces nettoyées, locaux pro/logement).
+   │ --photo-hero ..... fond du haut de page
+   │   ALT : « Agent Kayli Clinn équipé procédant à la désinfection des surfaces d'un local »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Points de contact d'un espace professionnel désinfectés par Kayli Clinn »
+   👉 À COMPLÉTER : remplacer les URLs placeholder par des visuels validés par la propriétaire.
+   ☎️ Téléphone : +33670012061 · Contact : /contact/ · PAS DE PRIX EN LIGNE.
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   PHOTOS — A MODIFIER ICI UNIQUEMENT (placeholders)
+   ════════════════════════════════════════════════════════ */
+.kc-des{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/placeholder/desinfection-hero.jpg');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/placeholder/desinfection-banner.jpg');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME (tokens clonés de prestation.html — ton sobre)
+   ════════════════════════════════════════════════════════ */
+.kc-des{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-des *,.kc-des *::before,.kc-des *::after{box-sizing:border-box}
+.kc-des img{max-width:100%;display:block}
+.kc-des a{color:inherit;text-decoration:none}
+
+.kc-des .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-des .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-des .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-des .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+.kc-des section{padding:clamp(78px,10vw,140px) 6%}
+.kc-des-wrap{max-width:1180px;margin:0 auto}
+.kc-des-header{text-align:center;max-width:760px;margin:0 auto clamp(52px,7vw,84px)}
+
+.kc-des .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
+.kc-des .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+.kc-des .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(1.9rem,3.6vw,2.9rem);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-des .section-title em,.kc-des h2 em,.kc-des h3 em,.kc-des .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-des .section-desc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-des svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-btn-primary svg{transition:transform .3s}
+.kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* — HERO sobre, voile navy dominant — */
+.kc-hero{position:relative;min-height:78vh;padding:clamp(140px,17vh,196px) 6% clamp(64px,9vh,104px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.86) 0%,rgba(13,35,64,0.62) 48%,rgba(13,35,64,0.38) 100%),var(--photo-hero);background-color:var(--navy);background-size:cover;background-position:center}
+.kc-hero-wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(34px,4vw,52px)}
+.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.9rem,3.8vw,3.4rem);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
+.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-hero-sub{font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.88);line-height:1.75;margin-bottom:clamp(34px,4vw,48px);max-width:620px;font-weight:300}
+.kc-hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande réassurance — */
+.kc-trust{background:var(--navy-2);padding:28px 6%}
+.kc-trust-wrap{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 36px;flex-wrap:wrap}
+.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.84);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* — CAS : cartes au trait — */
+.kc-cases{background:var(--cream-2)}
+.kc-cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kc-case-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:36px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-case-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-case-card:hover .kc-case-icon{background:var(--teal);color:#fff}
+.kc-case-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.25}
+.kc-case-card p{font-size:14px;color:var(--muted);line-height:1.7}
+
+/* — SURFACES / POINTS DE CONTACT (fiches au trait) — */
+.kc-incl{background:var(--white)}
+.kc-incl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kc-incl-card{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
+.kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
+.kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* — APPROCHE / ÉTAPES — */
+.kc-approach{background:var(--cream-2)}
+.kc-steps{display:flex;flex-direction:column;gap:0;max-width:880px;margin:0 auto;position:relative}
+.kc-step{display:grid;grid-template-columns:auto 1fr;gap:26px;padding:0 0 38px;position:relative}
+.kc-step:last-child{padding-bottom:0}
+.kc-step::before{content:'';position:absolute;left:23px;top:52px;bottom:-4px;width:1px;background:var(--line)}
+.kc-step:last-child::before{display:none}
+.kc-step-num{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:17px;font-weight:560;flex-shrink:0;position:relative;z-index:1}
+.kc-step-body{padding-top:4px}
+.kc-step-body h3{font-family:'Fraunces',serif;font-weight:560;font-size:18.5px;color:var(--navy);margin-bottom:8px;letter-spacing:-0.01em}
+.kc-step-body p{font-size:14.5px;color:var(--muted);line-height:1.75}
+
+/* — BANDEAU sobre — */
+.kc-banner{position:relative;min-height:440px;padding:clamp(80px,10vw,130px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.92) 0%,rgba(13,35,64,0.74) 100%),var(--photo-banner);background-color:var(--navy);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-banner-content{max-width:840px}
+.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.14;letter-spacing:-0.018em;margin-bottom:22px;color:#fff}
+.kc-banner h2 em{font-style:italic;color:#fff}
+.kc-banner p{font-size:16.5px;line-height:1.8;color:rgba(255,255,255,0.9);max-width:640px;margin:0 auto;font-weight:300}
+
+/* — ENGAGEMENTS — */
+.kc-commit{background:var(--cream)}
+.kc-commit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kc-commit-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:40px 34px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-commit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-commit-icon{width:52px;height:52px;background:var(--teal-wash);color:var(--teal-deep);border-radius:13px;display:grid;place-items:center;margin-bottom:22px;transition:all .4s}
+.kc-commit-card:hover .kc-commit-icon{background:var(--teal);color:#fff}
+.kc-commit-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em}
+.kc-commit-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* — ENCART CERTIFICATION / RÉGLEMENTAIRE (sobre, neutre) — */
+.kc-note{background:var(--white)}
+.kc-note-block{max-width:920px;margin:0 auto;background:var(--teal-soft);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:14px;padding:clamp(28px,4vw,44px);display:flex;gap:22px;align-items:flex-start}
+.kc-note-icon{width:46px;height:46px;background:var(--white);color:var(--teal-deep);border:1px solid var(--line);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+.kc-note-block h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:10px;letter-spacing:-0.01em}
+.kc-note-block p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* — FAQ — */
+.kc-faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
+.kc-faq-q{padding:24px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:22px}
+.kc-faq-q-text{font-family:'Fraunces',serif;font-size:16.5px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.4}
+.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-faq-item.open .kc-faq-a{max-height:560px}
+.kc-faq-a-content{padding:0 28px 28px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-faq-a-content strong{color:var(--navy);font-weight:600}
+
+/* — ZONES — */
+.kc-zones{background:var(--cream-2)}
+.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:44px}
+.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* — CTA FINAL (navy sobre) — */
+.kc-final-cta{background:var(--navy);color:#fff;text-align:center;padding:clamp(68px,9vw,112px) 6%;position:relative;overflow:hidden}
+.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:660px;height:660px;background:radial-gradient(circle,rgba(15,167,165,0.12) 0%,transparent 62%);pointer-events:none}
+.kc-final-cta-wrap{position:relative;z-index:1;max-width:740px;margin:0 auto}
+.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:24px}
+.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:var(--teal)}
+.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.85rem,3.4vw,2.8rem);line-height:1.14;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-final-cta h2 em{font-style:italic;color:var(--teal)}
+.kc-final-cta p{font-size:16px;color:rgba(255,255,255,0.84);line-height:1.75;margin:0 auto 32px;max-width:560px;font-weight:300}
+.kc-final-cta .kc-phone{display:block;font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);color:#fff;margin-bottom:30px;letter-spacing:-0.01em}
+.kc-final-cta .kc-phone a{border-bottom:1px solid rgba(15,167,165,0.5)}
+.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* — ANIMATIONS — */
+.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* — RESPONSIVE — */
+@media(max-width:1100px){
+  .kc-incl-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:1000px){
+  .kc-cases-grid,.kc-commit-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:760px){
+  .kc-hero{min-height:auto}
+  .kc-cases-grid,.kc-commit-grid{grid-template-columns:1fr}
+  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-trust-wrap{justify-content:flex-start;gap:14px 24px}
+  .kc-note-block{flex-direction:column;gap:16px}
+}
+@media(max-width:540px){
+  .kc-des section{padding:60px 6%}
+  .kc-incl-grid{grid-template-columns:1fr}
+  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-final-cta{border-radius:18px}
+  .kc-btn{width:100%;justify-content:center}
+  .kc-hero-ctas,.kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-des *,.kc-des *::before,.kc-des *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-des .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-des">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Désinfection des locaux · Île-de-France</span>
+      <h1 class="kc-hero-title">Désinfection et traitement <em>virucide</em> de vos locaux</h1>
+      <p class="kc-hero-sub">Logements et locaux professionnels : nous procédons à la désinfection des surfaces et des points de contact selon un protocole adapté à vos espaces. Prestation établie sur devis, après échange sur vos besoins.</p>
+      <div class="kc-hero-ctas">
+        <a href="tel:+33670012061" class="kc-btn kc-btn-primary">
+          Demander un devis confidentiel
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a href="/contact/" class="kc-btn kc-btn-secondary">Nous décrire votre besoin</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Protocole adapté à vos locaux</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v1H7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2V5a3 3 0 0 0-3-3z"/></svg><span>Agents équipés (EPI)</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span>Surfaces &amp; points de contact</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M14 8h1M14 12h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg><span>Logements &amp; locaux pro</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg><span>Compte rendu d'intervention</span></div>
+  </div>
+</div>
+
+<!-- 3 · DANS QUELS CAS INTERVENIR -->
+<section class="kc-cases">
+  <div class="kc-des-wrap">
+    <div class="kc-des-header kc-fade">
+      <span class="eyebrow">Dans quels cas intervenir</span>
+      <h2 class="section-title">Quand la désinfection <em>fait la différence</em></h2>
+      <p class="section-desc">Au-delà du nettoyage courant, certaines situations appellent une désinfection ciblée des surfaces. Nous accompagnons logements et professionnels avec un protocole adapté à chaque contexte.</p>
+    </div>
+    <div class="kc-cases-grid">
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M9 8h1M9 12h1M14 8h1M14 12h1M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/></svg></div>
+        <h3>Bureaux &amp; espaces de travail</h3>
+        <p>Open spaces, salles de réunion, sanitaires partagés : désinfection des points de contact pour des équipes accueillies dans un environnement sain.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Logements</h3>
+        <p>Avant une emménagement, après une occupation ou en cas de besoin sanitaire : désinfection des surfaces et des pièces sensibles du domicile.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01"/></svg></div>
+        <h3>Commerces &amp; accueil du public</h3>
+        <p>Boutiques, espaces de réception, zones de passage : un protocole pour rassurer votre clientèle et préserver vos collaborateurs.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Après une absence prolongée</h3>
+        <p>Réouverture d'un local resté fermé, reprise d'activité : remise en condition d'usage avec un nettoyage et une désinfection des surfaces.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h3>Lieux à forte fréquentation</h3>
+        <p>Espaces partagés et très fréquentés où les points de contact se multiplient. Désinfection ponctuelle ou récurrente, selon vos besoins.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Besoin sanitaire particulier</h3>
+        <p>Contexte exigeant une attention renforcée à l'hygiène. Nous définissons avec vous un protocole proportionné, après évaluation. <!-- 👉 À COMPLÉTER : préciser les contextes/pathogènes pris en charge une fois le Certibiocide et les produits homologués validés --></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · SURFACES & POINTS DE CONTACT -->
+<section class="kc-incl">
+  <div class="kc-des-wrap">
+    <div class="kc-des-header kc-fade">
+      <span class="eyebrow">Ce que nous traitons</span>
+      <h2 class="section-title">Surfaces et <em>points de contact</em></h2>
+      <p class="section-desc">Nous concentrons la désinfection sur les zones les plus manipulées, là où la transmission est la plus probable, en complément d'un nettoyage soigné.</p>
+    </div>
+    <div class="kc-incl-grid">
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6z"/><path d="M14 2v4h4"/></svg></div><h4>Poignées &amp; interrupteurs</h4><p>Poignées de porte, interrupteurs, boutons : les points les plus touchés au quotidien.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M2 18h20M8 22h8"/></svg></div><h4>Postes de travail</h4><p>Bureaux, claviers, téléphones, écrans et accoudoirs des espaces partagés.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><circle cx="12" cy="17" r="2"/></svg></div><h4>Sanitaires</h4><p>WC, robinetterie, lavabos et zones humides, nettoyés puis désinfectés.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div><h4>Surfaces &amp; mobilier</h4><p>Plans de travail, tables, comptoirs et zones de contact fréquentes.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M4 4h16v12H5.17L4 17.17z"/></svg></div><h4>Espaces communs</h4><p>Accueils, salles de pause, zones de passage et points de rassemblement.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div><h4>Équipements partagés</h4><p>Distributeurs, ascenseurs, rampes et équipements manipulés par tous.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v3H3zM5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></div><h4>Cuisines &amp; coins repas</h4><p>Kitchenettes, micro-ondes, réfrigérateurs et surfaces de préparation.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Zones définies avec vous</h4><p>Le périmètre exact est arrêté ensemble, selon l'usage et vos priorités.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · NOTRE APPROCHE / ÉTAPES -->
+<section class="kc-approach">
+  <div class="kc-des-wrap">
+    <div class="kc-des-header kc-fade">
+      <span class="eyebrow">Notre approche</span>
+      <h2 class="section-title">Un protocole <em>sérieux et maîtrisé</em></h2>
+      <p class="section-desc">La désinfection ne s'improvise pas. Nous suivons un déroulé rigoureux, du premier échange à la remise en condition de vos locaux.</p>
+    </div>
+    <div class="kc-steps">
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">1</div>
+        <div class="kc-step-body">
+          <h3>Prise de contact &amp; écoute du besoin</h3>
+          <p>Un premier échange pour cerner votre contexte, la nature des locaux, la surface et le niveau d'exigence attendu. Confidentialité assurée.</p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">2</div>
+        <div class="kc-step-body">
+          <h3>Évaluation &amp; protocole adapté</h3>
+          <p>Nous définissons le périmètre, les surfaces prioritaires et le protocole le plus proportionné, ainsi que les contraintes d'accès et d'horaires.</p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">3</div>
+        <div class="kc-step-body">
+          <h3>Devis clair, sans engagement</h3>
+          <p>Vous recevez un devis détaillé et le déroulé prévu. Aucune intervention n'est engagée sans votre validation préalable.</p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">4</div>
+        <div class="kc-step-body">
+          <h3>Nettoyage puis désinfection</h3>
+          <p>Nos agents, équipés des protections adaptées, procèdent au nettoyage des surfaces puis à la désinfection des points de contact selon le protocole défini. <!-- 👉 À COMPLÉTER : produits/normes (ex. virucide) une fois homologations et Certibiocide validés --></p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">5</div>
+        <div class="kc-step-body">
+          <h3>Compte rendu &amp; suivi</h3>
+          <p>Nous vous remettons un compte rendu de l'intervention et pouvons mettre en place une <strong>désinfection récurrente</strong> si votre activité le justifie.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Hygiène &amp; sérénité</span>
+    <h2>Un environnement sain,<br><em>une confiance retrouvée</em></h2>
+    <p>Pour vos collaborateurs comme pour le public que vous accueillez, des locaux désinfectés avec méthode sont un gage de confiance. Nous mettons notre rigueur au service de votre tranquillité.</p>
+  </div>
+</section>
+
+<!-- 7 · ENGAGEMENTS -->
+<section class="kc-commit">
+  <div class="kc-des-wrap">
+    <div class="kc-des-header kc-fade">
+      <span class="eyebrow">Nos engagements</span>
+      <h2 class="section-title">Rigueur, sécurité et <em>discrétion</em></h2>
+      <p class="section-desc">Trois principes qui encadrent chacune de nos interventions de désinfection.</p>
+    </div>
+    <div class="kc-commit-grid">
+      <div class="kc-commit-card kc-fade">
+        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Rigueur du protocole</h3>
+        <p>Un protocole défini en amont, des surfaces traitées avec méthode et un périmètre arrêté avec vous. Pas d'approximation sur l'hygiène.</p>
+      </div>
+      <div class="kc-commit-card kc-fade">
+        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v1H7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2V5a3 3 0 0 0-3-3z"/><path d="M9 13l2 2 4-4"/></svg></div>
+        <h3>Sécurité des intervenants</h3>
+        <p>Agents équipés des protections adaptées (EPI) et formés au maniement des produits, pour leur sécurité comme pour la vôtre.</p>
+      </div>
+      <div class="kc-commit-card kc-fade">
+        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Souplesse &amp; discrétion</h3>
+        <p>Interventions possibles en dehors des heures d'activité pour ne pas perturber votre fonctionnement, ponctuelles ou récurrentes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · ENCART CERTIFICATION / RÉGLEMENTAIRE (neutre, sans revendication) -->
+<section class="kc-note">
+  <div class="kc-des-wrap kc-fade">
+    <div class="kc-note-block">
+      <div class="kc-note-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
+      <div>
+        <h3>Produits &amp; cadre réglementaire</h3>
+        <p>Nous utilisons des produits adaptés à un usage professionnel et appliquons des protocoles proportionnés à chaque situation. Les références précises (produits homologués, normes, certifications) vous sont communiquées dans le devis et lors de l'intervention. <!-- 👉 À COMPLÉTER : mentionner ici les certifications/normes réelles (ex. Certibiocide, produits homologués, norme virucide) UNIQUEMENT après obtention et validation par la propriétaire. NE RIEN AFFIRMER avant. --></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · FAQ -->
+<section>
+  <div class="kc-des-wrap">
+    <div class="kc-des-header kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Vos questions sur <em>la désinfection</em></h2>
+      <p class="section-desc">Les interrogations qui reviennent le plus souvent avant une prestation de désinfection.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Quelle différence entre nettoyage et désinfection ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le <strong>nettoyage</strong> élimine les salissures visibles ; la <strong>désinfection</strong> vise à réduire les micro-organismes présents sur les surfaces. Les deux sont complémentaires : nous nettoyons d'abord, puis désinfectons les points de contact selon le protocole défini avec vous.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment obtenir un tarif ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La prestation est établie <strong>sur devis</strong>, sans engagement. Le tarif dépend de la surface, de la nature des locaux, du protocole retenu et de la fréquence souhaitée. Contactez-nous pour décrire votre besoin : nous vous remettons une proposition adaptée.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Quels produits utilisez-vous ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous employons des produits adaptés à un usage professionnel, mis en œuvre par des agents équipés et formés. Les références précises et le cadre réglementaire vous sont communiqués dans le devis. <!-- 👉 À COMPLÉTER : préciser produits homologués / norme virucide / Certibiocide une fois obtenus et validés par la propriétaire --></div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Peut-on réoccuper les locaux juste après ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Selon le protocole et les produits employés, un <strong>délai de séchage ou d'aération</strong> peut être recommandé avant la réoccupation. Nous vous l'indiquons lors de l'intervention et planifions, si besoin, en dehors de vos heures d'activité.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Proposez-vous une désinfection régulière ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Pour les lieux à forte fréquentation ou les activités sensibles, nous pouvons mettre en place une <strong>désinfection récurrente</strong>, à un rythme défini ensemble, en complément de l'entretien habituel de vos locaux.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-des-wrap">
+    <div class="kc-des-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Nous intervenons partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes se déplacent dans les huit départements franciliens, pour les logements comme pour les locaux professionnels.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Devis sur mesure · Sans engagement</span>
+    <h2>Des locaux sains, <em>en toute confiance</em></h2>
+    <p>Décrivez-nous votre besoin : nous définissons ensemble le protocole adapté et vous remettons un devis clair, sans engagement.</p>
+    <span class="kc-phone"><a href="tel:+33670012061">+33 6 70 01 20 61</a></span>
+    <div class="kc-final-ctas">
+      <a href="tel:+33670012061" class="kc-btn kc-btn-primary">Nous appeler<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+      <a href="/contact/" class="kc-btn kc-btn-secondary">Demander un devis confidentiel</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-des .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service sensible, SANS offers chiffrées (devis pur) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Désinfection et traitement virucide de locaux",
+  "serviceType": "Désinfection des surfaces et points de contact",
+  "description": "Désinfection des surfaces et des points de contact pour logements et locaux professionnels, selon un protocole adapté. Prestation établie sur devis après évaluation du besoin.",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {"@type": "ContactPoint", "telephone": "+33670012061", "contactType": "customer service", "areaServed": "FR", "availableLanguage": "French"}
+  }
+}
+</script>

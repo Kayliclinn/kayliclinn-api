@@ -1,0 +1,1030 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE RÉSERVATION & PAIEMENT — Kayli Clinn (vue CALENDRIER)
+   Visuel "ultra premium" — logique & API inchangées
+   À coller dans un bloc "HTML personnalisé" sur la page /reservation/
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+.kc-resa{
+  --teal:#0FA7A5;--teal-bright:#15B3B1;--teal-dark:#0B8483;--teal-deep:#076E6D;
+  --teal-light:#E3F3F2;--teal-soft:#F3FAFA;
+  --ink:#0B1A2B;--ink-2:#15324C;
+  --paper:#FFFFFF;
+  --gray:#647386;--gray-light:#E8ECF0;--gray-soft:#F4F6F8;
+  --border:#ECEFF2;--border-strong:#DCE2E8;
+  --text:#1A2939;--text-light:#566377;
+  --terra:#E07856;--terra-dark:#C45A38;--amber:#F59E0B;--green:#10B981;
+  --grad-teal:linear-gradient(135deg,#15B3B1 0%,#0B8483 100%);
+  --grad-ink:linear-gradient(160deg,#15314C 0%,#0A1726 100%);
+  --shadow-sm:0 1px 2px rgba(11,26,43,.04),0 4px 14px rgba(11,26,43,.04);
+  --shadow-md:0 8px 22px rgba(11,26,43,.05),0 26px 56px rgba(11,26,43,.06);
+  --shadow-lg:0 14px 34px rgba(11,26,43,.07),0 44px 90px rgba(11,26,43,.10);
+  --shadow-teal:0 10px 24px rgba(15,167,165,.24);
+  --shadow-ink:0 14px 32px rgba(11,26,43,.30);
+  --ring:0 0 0 4px rgba(15,167,165,.16);
+  position:relative;overflow:hidden;
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.5;color:var(--text);
+  font-feature-settings:"cv05","ss01";
+  background:
+    radial-gradient(700px 480px at 102% 112%, rgba(11,26,43,.045), transparent 60%),
+    linear-gradient(180deg,#FBFCFD 0%, #F2F5F8 100%);
+  min-height:100vh;-webkit-font-smoothing:antialiased;
+  display:flow-root;padding-top:100px;
+}
+.kc-resa::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.kc-resa *,.kc-resa *::before,.kc-resa *::after{box-sizing:border-box}
+.kc-resa a{color:inherit;text-decoration:none}
+.kc-resa button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;color:inherit}
+.kc-resa svg.ico{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kc-resa .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.kc-resa [hidden]{display:none !important}
+.kc-resa button:focus-visible,.kc-resa [tabindex]:focus-visible{outline:none;box-shadow:var(--ring);border-radius:10px}
+
+/* DÉCOR DE FOND (neutre, repoussé en bas) */
+.kc-resa .kc-bg{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.kc-resa .kc-bg .orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.6}
+.kc-resa .kc-bg .orb-1{bottom:-150px;left:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(11,26,43,.06),transparent 70%);animation:kcFloat 18s ease-in-out infinite}
+.kc-resa .kc-bg .orb-2{bottom:40px;right:-140px;width:340px;height:340px;background:radial-gradient(circle,rgba(11,26,43,.05),transparent 70%);animation:kcFloat 22s ease-in-out infinite reverse}
+@keyframes kcFloat{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,-24px)}}
+
+/* LAYOUT */
+.kc-resa .wrap,.kc-resa .state,.kc-resa .demo-banner{position:relative;z-index:1}
+.kc-resa .wrap{max-width:1120px;margin:0 auto;padding:8px 40px 140px}
+.kc-resa .head-tag{display:inline-flex;align-items:center;gap:13px;font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gray);font-weight:600;margin-bottom:24px;animation:kcUp .6s cubic-bezier(.16,.84,.44,1) both}
+.kc-resa .head-tag::before{content:'';width:30px;height:1px;background:linear-gradient(90deg,var(--teal),rgba(15,167,165,.1))}
+.kc-resa .head-title{font-family:'Fraunces','Times New Roman',serif;font-optical-sizing:auto;font-size:clamp(2.3rem,5vw,3.7rem);font-weight:600;color:var(--ink);line-height:1.04;letter-spacing:-0.5px;margin-bottom:18px;animation:kcUp .6s cubic-bezier(.16,.84,.44,1) .05s both}
+.kc-resa .head-title em{font-style:italic;font-weight:500}
+.kc-resa .head-desc{font-size:16.5px;color:var(--text-light);max-width:600px;line-height:1.72;margin-bottom:50px;animation:kcUp .6s cubic-bezier(.16,.84,.44,1) .1s both}
+.kc-resa .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--gray);font-weight:600;margin-bottom:26px;transition:all .2s;padding:8px 16px 8px 13px;border-radius:100px;background:var(--paper);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+.kc-resa .back-link:hover{color:var(--ink);border-color:var(--border-strong)}
+.kc-resa .back-link svg{transition:transform .25s}
+.kc-resa .back-link:hover svg{transform:translateX(-3px)}
+
+.kc-resa .grid{display:grid;grid-template-columns:minmax(360px,1.12fr) minmax(0,1fr);gap:34px;align-items:start}
+.kc-resa .col-main{order:2;display:flex;flex-direction:column;gap:28px}
+
+/* SECTIONS */
+.kc-resa .sec{background:var(--paper);border:1px solid var(--border);border-radius:26px;padding:36px 38px;box-shadow:var(--shadow-md);transition:box-shadow .3s,border-color .3s,opacity .3s;animation:kcUp .65s cubic-bezier(.16,.84,.44,1) both}
+.kc-resa #sec-slot{animation-delay:.15s}
+.kc-resa #sec-pay{animation-delay:.2s}
+.kc-resa .sec:hover{box-shadow:var(--shadow-lg)}
+.kc-resa .sec.disabled{opacity:0.5;pointer-events:none;filter:grayscale(.4) saturate(.7);box-shadow:var(--shadow-sm)}
+.kc-resa .sec-head{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+.kc-resa .sec-num{width:36px;height:36px;border-radius:12px;background:var(--gray-soft);color:var(--gray);font-weight:700;font-size:15px;display:grid;place-items:center;flex-shrink:0;border:1px solid var(--border);transition:all .35s cubic-bezier(.34,1.56,.64,1);font-variant-numeric:tabular-nums}
+.kc-resa .sec.done .sec-num{background:var(--grad-teal);color:#fff;border-color:transparent;box-shadow:var(--shadow-teal);transform:scale(1.05)}
+.kc-resa .sec-title{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:var(--ink);letter-spacing:-0.2px;line-height:1.2}
+.kc-resa .sec-sub{font-size:12.5px;color:var(--gray);margin-top:3px}
+
+/* CALENDRIER MENSUEL */
+.kc-resa .cal{margin-top:4px;max-width:368px}
+.kc-resa .cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.kc-resa .cal-month{font-weight:700;font-size:17px;color:var(--ink);letter-spacing:-0.2px;text-transform:capitalize}
+.kc-resa .cal-nav{width:40px;height:40px;border-radius:12px;border:1px solid var(--border-strong);background:var(--paper);display:grid;place-items:center;color:var(--ink);transition:all .2s;box-shadow:var(--shadow-sm)}
+.kc-resa .cal-nav:hover:not(:disabled){border-color:var(--teal);color:var(--teal-dark);transform:translateY(-1px);box-shadow:var(--shadow-md)}
+.kc-resa .cal-nav:active:not(:disabled){transform:translateY(0)}
+.kc-resa .cal-nav:disabled{opacity:0.26;cursor:not-allowed}
+.kc-resa .cal-wd{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-bottom:12px}
+.kc-resa .cal-wd span{text-align:center;font-size:11px;font-weight:600;color:var(--gray);text-transform:uppercase;letter-spacing:0.06em}
+.kc-resa .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.kc-resa .cal-day{position:relative;aspect-ratio:1;border:1px solid var(--border);border-radius:13px;background:var(--paper);font-weight:600;font-size:14.5px;color:var(--ink);display:grid;place-items:center;transition:all .2s cubic-bezier(.16,.84,.44,1);font-variant-numeric:tabular-nums}
+.kc-resa .cal-day[data-idx]::after{content:'';position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:var(--teal);opacity:.8;transition:all .2s}
+.kc-resa .cal-day:hover:not(:disabled):not(.unavail):not(.empty){border-color:var(--teal);color:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.kc-resa .cal-day.unavail{color:#C4CCD6;background:transparent;border-color:transparent;cursor:default;font-weight:500}
+.kc-resa .cal-day.empty{border:none;background:none;pointer-events:none}
+.kc-resa .cal-day.active{border-color:transparent;background:var(--grad-teal);color:#fff;box-shadow:var(--shadow-teal);transform:translateY(-1px)}
+.kc-resa .cal-day.active::after{background:#fff;opacity:.9}
+
+/* SLOTS */
+.kc-resa .slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:12px;margin-top:28px}
+.kc-resa .slot{background:var(--paper);border:1px solid var(--border);border-radius:13px;padding:14px 6px;font-weight:600;font-size:15px;color:var(--ink);transition:all .2s cubic-bezier(.16,.84,.44,1);font-variant-numeric:tabular-nums;box-shadow:var(--shadow-sm)}
+.kc-resa .slot:hover{border-color:var(--teal);color:var(--teal-dark);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.kc-resa .slot.active{border-color:transparent;background:var(--grad-teal);color:#fff;box-shadow:var(--shadow-teal);transform:translateY(-1px)}
+.kc-resa .slots-empty{grid-column:1/-1;font-size:14px;color:var(--text-light);padding:18px;font-style:italic;background:var(--gray-soft);border-radius:14px;border:1px dashed var(--border-strong);line-height:1.55}
+
+/* PAY OPTIONS */
+.kc-resa .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kc-resa .pay-card{background:var(--paper);border:1.5px solid var(--border);border-radius:20px;padding:26px 24px;text-align:left;position:relative;transition:all .25s cubic-bezier(.16,.84,.44,1)}
+.kc-resa .pay-card:hover{border-color:var(--border-strong);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.kc-resa .pay-card.active{border-color:var(--teal);background:var(--teal-soft);box-shadow:0 10px 26px rgba(15,167,165,.14)}
+.kc-resa .pay-card.active::after{content:'';position:absolute;top:16px;right:16px;width:24px;height:24px;border-radius:50%;background:var(--grad-teal);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');background-size:13px;background-position:center;background-repeat:no-repeat;box-shadow:var(--shadow-teal);animation:kcPop .3s cubic-bezier(.34,1.56,.64,1)}
+.kc-resa .pay-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);font-weight:700;margin-bottom:12px}
+.kc-resa .pay-amount{font-family:'Fraunces',serif;font-size:33px;font-weight:600;color:var(--ink);letter-spacing:-0.5px;line-height:1}
+.kc-resa .pay-amount em{font-style:normal}
+.kc-resa .pay-hint{font-size:12px;color:var(--text-light);margin-top:11px;line-height:1.5}
+
+/* RECAP ASIDE (order summary) */
+.kc-resa .aside{display:flex;flex-direction:column;gap:18px;position:sticky;top:24px;order:1}
+.kc-resa .recap{background:var(--paper);border:1px solid var(--border);border-radius:26px;padding:0;overflow:hidden;box-shadow:var(--shadow-md);animation:kcUp .65s cubic-bezier(.16,.84,.44,1) .2s both}
+.kc-resa .recap-inner{padding:36px 34px 30px}
+.kc-resa .recap-presta{font-family:'Fraunces',serif;font-size:23px;font-weight:600;color:var(--ink);letter-spacing:-0.3px;line-height:1.18;margin-bottom:6px}
+.kc-resa .recap-bien{font-size:13px;color:var(--gray);margin-bottom:24px;font-weight:500;letter-spacing:0.01em}
+.kc-resa .recap-rows{display:flex;flex-direction:column;gap:14px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.kc-resa .recap-row{display:flex;justify-content:space-between;gap:14px;font-size:14.5px}
+.kc-resa .recap-row .k{color:var(--text-light)}
+.kc-resa .recap-row .v{color:var(--ink);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.kc-resa .recap-est{display:flex;justify-content:space-between;align-items:flex-end;padding-top:24px}
+.kc-resa .recap-est .k{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gray);font-weight:700}
+.kc-resa .recap-est .v{font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:var(--ink);letter-spacing:-0.6px;text-align:right;font-variant-numeric:tabular-nums}
+.kc-resa .recap-note{font-size:11.5px;color:var(--text-light);line-height:1.58;margin-top:18px;font-style:italic}
+
+.kc-resa .guarantees{background:var(--grad-ink);border-radius:22px;padding:28px;color:#fff;box-shadow:var(--shadow-md);position:relative;overflow:hidden;animation:kcUp .65s cubic-bezier(.16,.84,.44,1) .28s both}
+.kc-resa .guarantees h3{font-size:11px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,.5);margin:0 0 20px;position:relative}
+.kc-resa .guarantees ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;position:relative}
+.kc-resa .guarantees li{display:flex;align-items:center;gap:13px;font-size:13.5px;color:rgba(255,255,255,0.94);line-height:1.4}
+.kc-resa .guarantees li svg{color:#fff;flex-shrink:0;width:12px;height:12px;background:var(--grad-teal);border-radius:50%;padding:4px;box-sizing:content-box;box-shadow:0 4px 10px rgba(15,167,165,.35)}
+
+/* CONFIRM BUTTON (encre profonde) */
+.kc-resa .confirm-bar{margin-top:6px;animation:kcUp .65s cubic-bezier(.16,.84,.44,1) .25s both}
+.kc-resa .btn-confirm{width:100%;background:var(--grad-ink);color:#fff;padding:20px 24px;border-radius:15px;font-family:'Inter',sans-serif;font-size:15.5px;font-weight:600;letter-spacing:0.01em;transition:all .25s cubic-bezier(.16,.84,.44,1);display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:var(--shadow-ink);position:relative;min-height:62px;overflow:hidden}
+.kc-resa .btn-confirm::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(110deg,transparent,rgba(255,255,255,.18),transparent);transform:skewX(-18deg);transition:left .7s}
+.kc-resa .btn-confirm:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 20px 44px rgba(11,26,43,.36)}
+.kc-resa .btn-confirm:hover:not(:disabled)::before{left:130%}
+.kc-resa .btn-confirm:active:not(:disabled){transform:translateY(0)}
+.kc-resa .btn-confirm:disabled{cursor:not-allowed;transform:none;background:var(--gray-soft);color:var(--gray);box-shadow:none;border:1px solid var(--border)}
+.kc-resa .btn-confirm:disabled::before{display:none}
+.kc-resa .btn-confirm.loading .btn-txt,.kc-resa .btn-confirm.loading svg{opacity:0}
+.kc-resa .btn-confirm .spin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:23px;height:23px;border:2.5px solid rgba(255,255,255,0.35);border-top-color:#fff;border-radius:50%;display:none;animation:kcSpin .8s linear infinite}
+.kc-resa .btn-confirm.loading .spin{display:block}
+@keyframes kcSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.kc-resa .secure-note{display:flex;align-items:center;justify-content:center;gap:7px;font-size:12px;color:var(--gray);margin-top:16px;text-align:center;line-height:1.5}
+.kc-resa .secure-note svg{color:var(--green);flex-shrink:0}
+
+/* STATES */
+.kc-resa .state{max-width:580px;margin:0 auto;text-align:center;padding:24px 20px 90px;animation:kcFade .5s ease both}
+.kc-resa .state-icon{width:92px;height:92px;border-radius:50%;display:grid;place-items:center;margin:0 auto 26px;position:relative;animation:kcPop .5s cubic-bezier(.34,1.56,.64,1) both}
+.kc-resa .state-icon.ok{background:var(--teal-light);color:var(--teal-dark)}
+.kc-resa .state-icon.ok::before{content:'';position:absolute;inset:-8px;border-radius:50%;border:2px solid var(--teal);opacity:.4;animation:kcRing 1.8s ease-out infinite}
+.kc-resa .state-icon.warn{background:rgba(245,158,11,0.13);color:var(--amber)}
+.kc-resa .state-icon.err{background:rgba(224,120,86,0.13);color:var(--terra-dark)}
+@keyframes kcRing{0%{transform:scale(.85);opacity:.5}100%{transform:scale(1.25);opacity:0}}
+.kc-resa .state h2{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--ink);letter-spacing:-0.4px;margin:0 0 14px;line-height:1.16}
+.kc-resa .state h2 em{font-style:italic;font-weight:500;color:var(--teal-dark)}
+.kc-resa .state p{font-size:15px;color:var(--text-light);line-height:1.68;margin:0 0 10px}
+.kc-resa .state .btn-state{display:inline-flex;align-items:center;gap:8px;background:var(--grad-ink);color:#fff;padding:15px 30px;border-radius:13px;font-family:'Inter',sans-serif;font-weight:600;font-size:14.5px;margin-top:22px;transition:all .25s cubic-bezier(.16,.84,.44,1);box-shadow:var(--shadow-ink)}
+.kc-resa .state .btn-state:hover{transform:translateY(-2px);box-shadow:0 20px 44px rgba(11,26,43,.36)}
+.kc-resa .state .btn-ghost{display:inline-block;color:var(--gray);font-size:13.5px;margin-top:20px;text-decoration:underline;text-underline-offset:3px}
+.kc-resa .state .btn-ghost:hover{color:var(--ink)}
+.kc-resa .state .btn-cancel{display:block;margin:18px auto 0;color:var(--terra-dark);font-size:13.5px;text-decoration:underline;text-underline-offset:3px;background:none;border:none;cursor:pointer}
+.kc-resa .state .btn-cancel:hover:not(:disabled){color:#a83f22}
+.kc-resa .state .btn-cancel:disabled{opacity:.5;cursor:not-allowed}
+.kc-resa .manage-note{font-size:13px;color:var(--text-light);line-height:1.58;margin:6px 0 0}
+.kc-resa .manage-note a{color:var(--teal-dark);font-weight:700;text-decoration:underline}
+.kc-resa .spinner-big{width:52px;height:52px;border:4px solid var(--gray-light);border-top-color:var(--teal);border-radius:50%;margin:0 auto 24px;animation:kcSpin .9s linear infinite}
+
+.kc-resa .confirm-recap{background:var(--gray-soft);border:1px solid var(--border);border-radius:18px;padding:22px 26px;text-align:left;margin:26px 0;font-size:13.5px}
+.kc-resa .confirm-recap .cr-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
+.kc-resa .confirm-recap .cr-row:last-child{border-bottom:none}
+.kc-resa .confirm-recap .cr-row span:first-child{color:var(--text-light)}
+.kc-resa .confirm-recap .cr-row span:last-child{color:var(--ink);font-weight:700;text-align:right}
+
+.kc-resa .inline-err{background:rgba(224,120,86,0.1);border:1px solid var(--terra);border-radius:13px;padding:14px 16px;margin-top:16px;font-size:13.5px;color:var(--terra-dark);font-weight:600;display:none;line-height:1.5}
+.kc-resa .inline-err.show{display:block;animation:kcUp .4s ease both}
+.kc-resa .demo-banner{background:var(--paper);color:var(--text-light);border:1px solid var(--border);text-align:center;font-size:12.5px;padding:11px 18px;font-weight:500;border-radius:100px;max-width:700px;margin:0 auto 8px;box-shadow:var(--shadow-sm);line-height:1.45}
+
+@keyframes kcUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes kcFade{from{opacity:0}to{opacity:1}}
+@keyframes kcPop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
+
+@media(max-width:980px){
+  .kc-resa .wrap{padding:8px 22px 100px}
+  .kc-resa .grid{grid-template-columns:1fr;gap:26px}
+  .kc-resa .aside{position:static;order:-1}
+  .kc-resa .guarantees{display:none}
+}
+@media(max-width:560px){
+  .kc-resa{padding-top:80px}
+  .kc-resa .wrap{padding:6px 16px 84px}
+  .kc-resa .sec{padding:28px 22px;border-radius:22px}
+  .kc-resa .recap-inner{padding:28px 24px}
+  .kc-resa .pay-grid{grid-template-columns:1fr}
+  .kc-resa .cal-wd{gap:6px}
+  .kc-resa .cal-grid{gap:6px}
+  .kc-resa .cal-day{font-size:13.5px;border-radius:11px}
+  .kc-resa .cal-day[data-idx]::after{bottom:4px}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-resa *,.kc-resa *::before,.kc-resa *::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+}
+</style>
+
+<div class="kc-resa">
+  <div class="kc-bg" aria-hidden="true"><span class="orb orb-1"></span><span class="orb orb-2"></span></div>
+
+  <div class="demo-banner" id="demo-banner" hidden>Mode aperçu — données d'exemple. Sur kayliclinn.fr, la page utilisera les vraies données du devis et de l'agenda.</div>
+
+  <!-- CHARGEMENT -->
+  <div class="state" id="st-loading">
+    <div class="spinner-big" aria-hidden="true"></div>
+    <p>Chargement de vos créneaux disponibles…</p>
+  </div>
+
+  <!-- PAS DE DEVIS -->
+  <div class="state" id="st-nodata" hidden>
+    <div class="state-icon warn" aria-hidden="true"><svg class="ico" width="34" height="34" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+    <h2>On reprend au <em>devis</em></h2>
+    <p>Pour réserver, commencez par estimer votre prestation. Cela ne prend qu'une minute et vos créneaux s'afficheront ensuite ici.</p>
+    <a class="btn-state" id="link-devis-1" href="/devis/">Faire mon estimation</a>
+  </div>
+
+  <!-- ERREUR -->
+  <div class="state" id="st-error" hidden>
+    <div class="state-icon err" aria-hidden="true"><svg class="ico" width="34" height="34" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+    <h2>Petit souci technique</h2>
+    <p id="error-msg">Impossible de charger la réservation pour le moment.</p>
+    <button class="btn-state" id="btn-retry">Réessayer</button>
+    <a class="btn-ghost" href="tel:+33670012061">Ou appelez-nous : 06 70 01 20 61</a>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div class="state" id="st-confirm" hidden>
+    <div class="state-icon ok" aria-hidden="true"><svg class="ico" width="36" height="36" viewBox="0 0 24 24" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
+    <h2 id="confirm-title">Réservation <em>confirmée</em></h2>
+    <p id="confirm-text">Merci ! Vous allez recevoir un e-mail de confirmation avec tous les détails.</p>
+    <div class="confirm-recap" id="confirm-recap"></div>
+    <p class="manage-note" id="confirm-note" hidden></p>
+    <button type="button" class="btn-state" id="confirm-pay" hidden>Payer maintenant</button>
+    <a class="btn-state" id="confirm-manage" href="#" hidden>Gérer ma réservation</a>
+    <button type="button" class="btn-cancel" id="confirm-cancel" hidden>Annuler ma réservation</button>
+    <a class="btn-ghost" id="link-devis-2" href="/devis/">Faire une nouvelle estimation</a>
+  </div>
+
+  <!-- FLUX PRINCIPAL -->
+  <div class="wrap" id="st-main" hidden>
+    <a class="back-link" id="link-devis-back" href="/devis/">
+      <svg class="ico" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Revenir à mon devis
+    </a>
+    <div class="head-tag" id="head-tag">Dernière étape</div>
+    <h2 class="head-title">Choisissez votre <em>créneau</em></h2>
+    <p class="head-desc" id="head-desc">Sélectionnez la date et l'heure qui vous conviennent.</p>
+
+    <div class="grid">
+      <div class="col-main">
+
+        <!-- 1. CRÉNEAU -->
+        <div class="sec" id="sec-slot">
+          <div class="sec-head">
+            <div class="sec-num">1</div>
+            <div>
+              <div class="sec-title">Date &amp; heure</div>
+              <div class="sec-sub" id="slot-sub">Créneaux selon nos disponibilités réelles</div>
+            </div>
+          </div>
+
+          <!-- CALENDRIER MENSUEL -->
+          <div class="cal" id="cal">
+            <div class="cal-head">
+              <button type="button" class="cal-nav" id="cal-prev" aria-label="Mois précédent">
+                <svg class="ico" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+              </button>
+              <div class="cal-month" id="cal-month"></div>
+              <button type="button" class="cal-nav" id="cal-next" aria-label="Mois suivant">
+                <svg class="ico" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+              </button>
+            </div>
+            <div class="cal-wd" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+            <div class="cal-grid" id="cal-grid" role="grid" aria-label="Choix du jour"></div>
+          </div>
+
+          <div class="slots" id="slots-grid" role="group" aria-label="Choix de l'heure"></div>
+        </div>
+
+        <!-- 2. RÈGLEMENT (masqué pour les visites gratuites) -->
+        <div class="sec disabled" id="sec-pay">
+          <div class="sec-head">
+            <div class="sec-num">2</div>
+            <div>
+              <div class="sec-title">Mode de règlement</div>
+              <div class="sec-sub">Réservez en payant un acompte, ou réglez la totalité maintenant</div>
+            </div>
+          </div>
+          <div class="pay-grid" role="radiogroup" aria-label="Mode de règlement">
+            <button type="button" class="pay-card active" id="pay-deposit" role="radio" aria-checked="true">
+              <div class="pay-label">Acompte (<span id="dep-pct">30</span>%)</div>
+              <div class="pay-amount"><em id="dep-amount">—</em></div>
+              <div class="pay-hint">Réservez votre créneau dès maintenant. Le solde se règle après l'intervention.</div>
+            </button>
+            <button type="button" class="pay-card" id="pay-full" role="radio" aria-checked="false">
+              <div class="pay-label">Paiement total</div>
+              <div class="pay-amount"><em id="full-amount">—</em></div>
+              <div class="pay-hint">Tout est réglé en une fois. Ajustement éventuel après vérification sur place.</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. CONFIRMER -->
+        <div class="confirm-bar">
+          <button type="button" class="btn-confirm" id="btn-confirm" disabled>
+            <span class="btn-txt" id="confirm-btn-txt">Choisissez d'abord un créneau</span>
+            <svg class="ico" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            <span class="spin" aria-hidden="true"></span>
+          </button>
+          <div class="inline-err" id="post-error"></div>
+          <div class="secure-note" id="secure-note">
+            <svg class="ico" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span id="secure-note-txt">Paiement sécurisé par Stripe · sans engagement au-delà de l'intervention réservée</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ASIDE RECAP -->
+      <div class="aside">
+        <div class="recap">
+          <div class="recap-inner">
+            <div class="recap-presta" id="recap-presta">—</div>
+            <div class="recap-bien" id="recap-bien"></div>
+            <div class="recap-rows" id="recap-rows"></div>
+            <div class="recap-est">
+              <span class="k">Estimation</span>
+              <span class="v" id="recap-est">—</span>
+            </div>
+            <div class="recap-note" id="recap-note">Estimation indicative à ±15 %. Le montant final est confirmé après vérification des conditions précises sur place.</div>
+          </div>
+        </div>
+        <div class="guarantees">
+          <h3>Vos garanties</h3>
+          <ul>
+            <li><svg class="ico" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Créneau réservé immédiatement</li>
+            <li><svg class="ico" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Annulation possible (selon délai)</li>
+            <li><svg class="ico" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Garantie satisfait</li>
+            <li><svg class="ico" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>RC Pro AXA 5M€</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ════════════════════════════════════════════════
+     CONFIGURATION — backend WordPress (extension kc-booking)
+     ════════════════════════════════════════════════ */
+  const KC_RESA = {
+    apiBase: (window.kcReservation && window.kcReservation.apiBase) || '/wp-json/kc-booking/v1',
+    depositPercent: 30,            // affichage — le plugin recalcule côté serveur
+    handoffKey: 'kc_reservation_handoff',
+    devisURL: '/devis/',
+    daysToShow: 21                 // amplitude du calendrier (max 31 côté plugin)
+  };
+
+  /* Correspondance entre les prestations du tunnel de devis (catalogue v2)
+     et les SLUGS des types kc-booking. Les types payants grand-menage et
+     vitrerie sont créés automatiquement par le plugin (catalogue v2). */
+  const TYPE_MAP = {
+    /* — Forfaits payés en ligne (Flux B, Stripe) — */
+    'airbnb':        'airbnb',
+    'fin-de-bail':   'demenagement',    // type « Nettoyage après déménagement »
+    'grand-menage':  'grand-menage',
+    'vitrerie':      'vitrerie',
+    /* — Estimation indicative & devis : visite/audit gratuite (Flux A) — */
+    'fin-chantier':  'fin-chantier',
+    'bureaux':       'bureaux',
+    'copropriete':   'parties-communes',
+    'commerces':     'commerces',
+    'remise-lourde': 'visite-audit'     // visite sous 48 h, en discrétion
+  };
+  /* Type d'audit générique visé en priorité. Repli en cascade dans boot()
+     vers « remise-etat » puis le premier type gratuit, pour que la page
+     fonctionne même si « visite-audit » n'a pas encore été créé. */
+  const DEFAULT_AUDIT_TYPE = 'visite-audit';
+
+  /* Entrée directe « Demander un devis » depuis les pages prestations :
+     /reservation/?visite=<slug>. On synthétise un relais de VISITE GRATUITE
+     (funnel non-forfait → boot() tombe en cascade sur visite-audit, jamais
+     de paiement). Le slug ne sert qu'au libellé du récapitulatif. */
+  const VISITE_LABELS = {
+    'turnover-airbnb':'Turnover Airbnb','vitres-classiques':'Vitres classiques',
+    'nettoyage-apres-demenagement-etat-des-lieux':'Nettoyage après déménagement / état des lieux',
+    'nettoyage-fin-de-chantier':'Nettoyage fin de chantier','entretien-de-bureaux':'Entretien de bureaux',
+    'parties-communes-immeubles':"Parties communes d'immeubles",'commerces-retail':'Commerces & Retail',
+    'etablissements-sensibles':'Établissements sensibles','remise-en-etat':'Remise en état logement / bureaux',
+    'decapage-cristallisation-sols':'Décapage / cristallisation des sols','shampouinage-moquettes':'Shampouinage de moquettes',
+    'nettoyage-haute-pression':'Nettoyage haute pression','scenes-sensibles':'Scènes sensibles',
+    'deratisation':'Dératisation','desinsectisation':'Désinsectisation','punaises-de-lit':'Punaises de lit',
+    'pieces-blanches':'Pièces blanches','visite-audit':'Visite gratuite'
+  };
+  function makeVisiteHandoff(slug){
+    slug = String(slug||'').toLowerCase().replace(/[^a-z0-9-]/g,'').slice(0,64);
+    return { version:2, funnel:'audit', presta:slug || 'visite-audit',
+             label: VISITE_LABELS[slug] || 'Visite gratuite', ts: Date.now() };
+  }
+
+  const IS_LIVE = /(^|\.)kayliclinn\.fr$/i.test(location.hostname);
+
+  /* ════════════════════════════════════════════════
+     ÉTAT
+     ════════════════════════════════════════════════ */
+  const S = { handoff:null, typeId:null, variantId:null, duration:null,
+              requiresPayment:true,            // détecté via /types (calendar_paid)
+              days:[], dayIndex:null, viewY:null, viewM:null, slot:null, mode:'deposit',
+              total:0, deposit:0, submitting:false };
+
+  const $ = id => document.getElementById(id);
+  const euro = n => Number(n||0).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:2}) + ' €';
+  const api = p => KC_RESA.apiBase.replace(/\/$/,'') + p;
+  const wait = ms => new Promise(r => setTimeout(r, ms));
+  function ymd(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function escapeHtml(s){ return String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+  function show(which){
+    ['st-loading','st-nodata','st-error','st-confirm','st-main'].forEach(id => { const el=$(id); if(el) el.hidden = (id!==which); });
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  function showError(msg){ $('error-msg').textContent = msg || 'Une erreur est survenue.'; show('st-error'); }
+
+  async function fetchJSON(url, opts){
+    const r = await fetch(url, opts);
+    const txt = await r.text();
+    let body = {}; try{ body = txt ? JSON.parse(txt) : {}; }catch(e){ body = {}; }
+    if(!r.ok){ const e = new Error(body.message || ('HTTP '+r.status)); e.status = r.status; e.body = body; throw e; }
+    return body;
+  }
+
+  /* ════════════════════════════════════════════════
+     LECTURE DU DEVIS (handoff v2 depuis /devis/)
+     ════════════════════════════════════════════════ */
+  function readHandoff(){
+    try{
+      const raw = sessionStorage.getItem(KC_RESA.handoffKey);
+      if(!raw) return null;
+      const h = JSON.parse(raw);
+      if(!h || h.version !== 2 || !h.funnel || !h.label) return null;
+      if(h.ts && (Date.now() - h.ts > 60*60*1000)) return null;
+      return h;
+    }catch(e){ return null; }
+  }
+
+  const DEMO_HANDOFF = {
+    version:2, funnel:'forfait', presta:'airbnb',
+    label:'Turnover Airbnb',
+    booking:{ forfait:'airbnb', taille:'t2', options:{ 'kit-linge':2 }, majorations:[], frais:[] },
+    contact:{ firstname:'Marie', lastname:'Durand', email:'marie.durand@exemple.fr',
+              phone:'06 12 34 56 78', address:'18 rue Oberkampf, 75011 Paris', message:'' },
+    result:{ total:111, acompte:33.3, solde:77.7,
+             lignes:[{nom:'Turnover Airbnb — T2',montant:75},
+                     {nom:'Kit linge complet × 2 lits',montant:36}] },
+    ts: Date.now()
+  };
+
+  /* ════════════════════════════════════════════════
+     RECAP
+     ════════════════════════════════════════════════ */
+  const TAILLE_LABELS = { studio:'Studio / T1', t2:'T2', t3:'T3', t4:'T4', t5:'T5' };
+  function renderRecap(){
+    const h = S.handoff;
+    $('recap-presta').textContent = h.label || 'Prestation';
+    $('recap-bien').textContent = (h.booking && TAILLE_LABELS[h.booking.taille])
+      || (h.details && h.details.typeBien) || '';
+    let rows = '';
+    if(S.requiresPayment && h.result && h.result.lignes){
+      rows = h.result.lignes.map(d =>
+        `<div class="recap-row"><span class="k">${escapeHtml(d.nom)}</span><span class="v">${escapeHtml(euro(d.montant))}</span></div>`
+      ).join('');
+    } else {
+      rows = `<div class="recap-row"><span class="k">Visite d'audit</span><span class="v">Gratuite</span></div>`;
+      if(h.details && h.details.surface) rows += `<div class="recap-row"><span class="k">Surface indiquée</span><span class="v">${escapeHtml(h.details.surface)} m²</span></div>`;
+      if(h.estimation && h.estimation.min != null){
+        rows += `<div class="recap-row"><span class="k">Estimation indicative</span><span class="v">${escapeHtml(Number(h.estimation.min).toLocaleString('fr-FR'))} – ${escapeHtml(Number(h.estimation.max).toLocaleString('fr-FR'))} ${escapeHtml(h.estimation.unite||'€ HT')}</span></div>`;
+      }
+    }
+    $('recap-rows').innerHTML = rows;
+    $('recap-est').textContent = (S.requiresPayment && h.result) ? euro(h.result.total) : 'Devis après visite';
+  }
+
+  /* ════════════════════════════════════════════════
+     MODE (payant / gratuit)
+     ════════════════════════════════════════════════ */
+  function applyMode(){
+    if(S.requiresPayment){
+      $('sec-pay').hidden = false;
+      $('head-desc').textContent = 'Sélectionnez la date et l\'heure, puis votre mode de règlement. Le paiement est sécurisé par Stripe et votre créneau est réservé immédiatement.';
+      $('recap-note').textContent = 'Tarif issu de notre grille officielle, pour un logement en état normal. Le solde se règle après la prestation.';
+      $('secure-note-txt').textContent = 'Paiement sécurisé par Stripe · sans engagement au-delà de l\'intervention réservée';
+    } else {
+      $('sec-pay').hidden = true;
+      $('head-desc').textContent = 'Sélectionnez la date et l\'heure de votre visite gratuite. Aucun paiement maintenant — le devis ferme vous est remis après la visite.';
+      $('recap-note').textContent = 'Visite gratuite et sans engagement. Le devis ferme vous est remis sous 24 à 48 h après la visite.';
+      $('secure-note-txt').textContent = 'Visite gratuite et sans engagement · un e-mail de confirmation vous sera envoyé';
+    }
+  }
+
+  function computeAmounts(){
+    const r = (S.handoff && S.handoff.result) || {};
+    S.total = Number(r.total) || 0;
+    S.deposit = (r.acompte != null && !Number.isNaN(Number(r.acompte)))
+      ? Number(r.acompte)
+      : Math.round(S.total * KC_RESA.depositPercent) / 100;
+    $('dep-pct').textContent = KC_RESA.depositPercent;
+    $('dep-amount').textContent = euro(S.deposit);
+    $('full-amount').textContent = euro(S.total);
+  }
+
+  /* ════════════════════════════════════════════════
+     DISPONIBILITÉS — extension kc-booking (Google Agenda)
+     ════════════════════════════════════════════════ */
+  async function loadAvailability(){
+    const today = new Date();
+    const from = ymd(today);
+    const to = ymd(new Date(today.getTime() + KC_RESA.daysToShow*86400000));
+    const q = `?type_id=${S.typeId}` + (S.variantId ? `&variant_id=${S.variantId}` : '') + `&date_from=${from}&date_to=${to}`;
+    const data = await fetchJSON(api('/availability'+q));
+    S.days = (data.days || []).filter(d => d.slots && d.slots.length);
+  }
+
+  function demoDays(){
+    const out = [], now = new Date(); let added = 0, i = 1;
+    while(added < 10 && i < 25){
+      const d = new Date(now.getTime() + i*86400000);
+      const wd = d.getDay();
+      if(wd!==0 && wd!==6){
+        const date = ymd(d);
+        const times = ['09:00','10:30','13:00','14:30','16:00'].filter(()=>Math.random()>0.25);
+        if(times.length){
+          out.push({ date, weekday:['sun','mon','tue','wed','thu','fri','sat'][wd],
+            slots: times.map(t => ({ time:t, start:date+'T'+t+':00+02:00', end:date+'T'+t+':00+02:00', staff_ids:[1] })) });
+          added++;
+        }
+      }
+      i++;
+    }
+    return out;
+  }
+
+  /* ════════════════════════════════════════════════
+     RENDU CALENDRIER
+     ════════════════════════════════════════════════ */
+  const WD = { mon:'Lun', tue:'Mar', wed:'Mer', thu:'Jeu', fri:'Ven', sat:'Sam', sun:'Dim' };
+  const MO = ['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+  const MONTHS_FULL = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+
+  function renderDays(){
+    const grid = $('cal-grid');
+    const label = $('cal-month');
+    const prev = $('cal-prev'), next = $('cal-next');
+
+    if(!S.days.length){
+      grid.innerHTML = '';
+      label.textContent = '';
+      prev.disabled = true; next.disabled = true;
+      $('slots-grid').innerHTML = `<div class="slots-empty">Aucun créneau disponible sur les ${KC_RESA.daysToShow} prochains jours. Appelez-nous au 06 70 01 20 61, on trouvera une solution.</div>`;
+      $('slot-sub').textContent = 'Aucune disponibilité affichée';
+      return;
+    }
+
+    const availMap = {};
+    S.days.forEach((d,i) => { availMap[d.date] = i; });
+
+    const fp = S.days[0].date.split('-');
+    const lp = S.days[S.days.length-1].date.split('-');
+    const minM = (+fp[0])*12 + (+fp[1]-1);
+    const maxM = (+lp[0])*12 + (+lp[1]-1);
+
+    if(S.viewY === null || S.viewY === undefined){ S.viewY = +fp[0]; S.viewM = +fp[1]-1; }
+    let curM = S.viewY*12 + S.viewM;
+    if(curM < minM) curM = minM;
+    if(curM > maxM) curM = maxM;
+    S.viewY = Math.floor(curM/12); S.viewM = ((curM % 12) + 12) % 12;
+
+    label.textContent = MONTHS_FULL[S.viewM] + ' ' + S.viewY;
+    prev.disabled = (curM <= minM);
+    next.disabled = (curM >= maxM);
+
+    const startWd = (new Date(S.viewY, S.viewM, 1).getDay() + 6) % 7; // lundi = 0
+    const dim = new Date(S.viewY, S.viewM + 1, 0).getDate();
+
+    let html = '';
+    for(let i=0;i<startWd;i++){ html += '<div class="cal-day empty" aria-hidden="true"></div>'; }
+    for(let day=1; day<=dim; day++){
+      const ds = S.viewY + '-' + String(S.viewM+1).padStart(2,'0') + '-' + String(day).padStart(2,'0');
+      const idx = availMap[ds];
+      if(idx === undefined){
+        html += `<div class="cal-day unavail" aria-disabled="true">${day}</div>`;
+      } else {
+        const active = (idx === S.dayIndex) ? ' active' : '';
+        html += `<button type="button" class="cal-day${active}" data-idx="${idx}" aria-label="${day} ${MONTHS_FULL[S.viewM]}"${active?' aria-pressed="true"':''}>${day}</button>`;
+      }
+    }
+    grid.innerHTML = html;
+
+    grid.querySelectorAll('.cal-day[data-idx]').forEach(b => b.addEventListener('click', () => {
+      S.dayIndex = parseInt(b.dataset.idx, 10);
+      S.slot = null;
+      renderDays(); renderSlots();
+      if(S.requiresPayment) markPayEnabled(false);
+      $('sec-slot').classList.remove('done');
+      refreshConfirm();
+      $('slots-grid').scrollIntoView({behavior:'smooth', block:'nearest'});
+    }));
+
+    renderSlots();
+  }
+
+  function navMonth(dir){
+    if(S.viewY === null) return;
+    S.viewM += dir;
+    if(S.viewM < 0){ S.viewM = 11; S.viewY--; }
+    else if(S.viewM > 11){ S.viewM = 0; S.viewY++; }
+    renderDays();
+  }
+
+  function renderSlots(){
+    const grid = $('slots-grid');
+    if(S.dayIndex === null || S.dayIndex === undefined){
+      grid.innerHTML = '<div class="slots-empty">Sélectionnez un jour pour afficher les horaires disponibles.</div>';
+      return;
+    }
+    const day = S.days[S.dayIndex];
+    if(!day){ grid.innerHTML=''; return; }
+    grid.innerHTML = day.slots.map((s,i) =>
+      `<button type="button" class="slot ${S.slot && S.slot.start===s.start ? 'active':''}" data-i="${i}">${escapeHtml(s.time)}</button>`
+    ).join('');
+    grid.querySelectorAll('.slot').forEach(b => b.addEventListener('click', () => {
+      S.slot = Object.assign({}, day.slots[parseInt(b.dataset.i,10)]);
+      S.slot.date = day.date;
+      renderSlots();
+      $('sec-slot').classList.add('done');
+      refreshConfirm();
+      if(S.requiresPayment){ markPayEnabled(true); $('sec-pay').scrollIntoView({behavior:'smooth', block:'center'}); }
+      else { $('btn-confirm').scrollIntoView({behavior:'smooth', block:'center'}); }
+    }));
+  }
+
+  function markPayEnabled(on){ $('sec-pay').classList.toggle('disabled', !on); }
+
+  /* ════════════════════════════════════════════════
+     RÈGLEMENT + BOUTON CONFIRMER
+     ════════════════════════════════════════════════ */
+  function setMode(mode){
+    S.mode = mode;
+    $('pay-deposit').classList.toggle('active', mode==='deposit');
+    $('pay-deposit').setAttribute('aria-checked', mode==='deposit');
+    $('pay-full').classList.toggle('active', mode==='full');
+    $('pay-full').setAttribute('aria-checked', mode==='full');
+    refreshConfirm();
+  }
+  function amountNow(){ return S.mode==='full' ? S.total : S.deposit; }
+
+  function refreshConfirm(){
+    const btn = $('btn-confirm'), txt = $('confirm-btn-txt');
+    if(!S.slot){ btn.disabled = true; txt.textContent = 'Choisissez d\'abord un créneau'; return; }
+    btn.disabled = false;
+    if(!S.requiresPayment){ txt.textContent = 'Confirmer ma visite gratuite'; return; }
+    txt.textContent = (S.mode==='full' ? 'Régler ' : 'Réserver — acompte ') + euro(amountNow());
+  }
+
+  function slotHuman(){
+    if(!S.slot) return '';
+    const d = new Date(S.slot.date+'T12:00:00');
+    const wd = d.getDay();
+    const wdKey = ['sun','mon','tue','wed','thu','fri','sat'][wd];
+    return `${WD[wdKey]||''} ${d.getDate()} ${MO[d.getMonth()]} à ${S.slot.time}`;
+  }
+
+  /* ════════════════════════════════════════════════
+     SOUMISSION → POST /bookings (kc-booking)
+     Le devis complet part dans `quote` : le plugin DOIT recalculer
+     les montants côté serveur (voir wordpress/kc-pricing.php).
+     ════════════════════════════════════════════════ */
+  async function submit(){
+    if(!S.slot || S.submitting) return;
+    S.submitting = true;
+    const btn = $('btn-confirm'); btn.classList.add('loading'); btn.disabled = true;
+    $('post-error').classList.remove('show');
+
+    const h = S.handoff;
+    const c = h.contact || {};
+    const body = {
+      type_id: S.typeId,
+      start: S.slot.start,
+      firstname: c.firstname, lastname: c.lastname, email: c.email, phone: c.phone,
+      address: c.address || '', message: c.message || '',
+      consent: true,
+      quote: JSON.stringify({
+        funnel: h.funnel, presta: h.presta, label: h.label,
+        booking: h.booking || null, details: h.details || null,
+        estimation: h.estimation || null, result: h.result || null
+      }),
+      company_url: '' // honeypot (doit rester vide)
+    };
+    if(S.variantId) body.variant_id = S.variantId;
+    if(S.requiresPayment){
+      body.amount_total = S.total;     // indicatif — recalculé par le plugin
+      body.amount_now = amountNow();   // indicatif — recalculé par le plugin
+      body.payment_mode = S.mode;
+    }
+
+    try{
+      if(!IS_LIVE){ await wait(1000); showConfirmation({ paid:S.requiresPayment, free:!S.requiresPayment }); return; }
+
+      const res = await fetch(api('/bookings'), {
+        method:'POST', credentials:'same-origin',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(body)
+      });
+      const txt = await res.text(); let data = {}; try{ data = JSON.parse(txt); }catch(e){}
+      if(!res.ok){ handlePostError(res.status, data); return; }
+
+      try{ sessionStorage.removeItem(KC_RESA.handoffKey); }catch(e){}
+
+      if(data.payment_url){ window.location.href = data.payment_url; return; }
+      showConfirmation({ free:!S.requiresPayment, pending:S.requiresPayment, bookingData:data,
+        manage:data.manage_url, canPay:!!data.pay_token, token:data.pay_token });
+    }catch(e){
+      inlineErr('Erreur réseau. Vérifiez votre connexion et réessayez.');
+    }finally{
+      S.submitting = false; btn.classList.remove('loading'); refreshConfirm();
+    }
+  }
+
+  function inlineErr(msg){ const e = $('post-error'); e.textContent = msg; e.classList.add('show'); }
+
+  async function handlePostError(status, data){
+    if(status === 409){
+      inlineErr('Ce créneau vient d\'être pris. On recharge les disponibilités…');
+      try{ await loadAvailability(); S.slot=null; S.dayIndex=null; S.viewY=null; renderDays(); if(S.requiresPayment) markPayEnabled(false); $('sec-slot').classList.remove('done'); refreshConfirm(); }catch(e){}
+      return;
+    }
+    if(status === 503){ inlineErr('Vérification des disponibilités momentanément indisponible. Réessayez dans quelques secondes.'); return; }
+    if(status === 422){ inlineErr(data.message || 'Ce créneau n\'est plus valide, choisissez-en un autre.'); return; }
+    if(status === 400){ inlineErr(data.message || 'Une information est manquante ou invalide.'); return; }
+    inlineErr(data.message || 'Réservation impossible pour le moment. Appelez-nous au 06 70 01 20 61.');
+  }
+
+  /* ════════════════════════════════════════════════
+     CONFIRMATION
+     ════════════════════════════════════════════════ */
+  function showConfirmation(info){
+    info = info || {};
+    let title, text;
+    if(info.free){
+      title = 'Visite <em>confirmée</em>';
+      text  = 'Merci ! Votre visite gratuite est confirmée. Un e-mail récapitulatif vient de vous être envoyé.';
+    } else if(info.paid){
+      title = 'Paiement <em>reçu</em>';
+      text  = 'Merci ! Votre réservation est confirmée. Un e-mail récapitulatif vient de vous être envoyé.';
+    } else if(info.pending){
+      title = 'Créneau <em>réservé</em>';
+      text  = info.canPay
+        ? 'Votre créneau est bloqué. Il reste l\'acompte à régler pour le confirmer définitivement — vous pouvez le faire dès maintenant.'
+        : 'Votre créneau est bloqué. Nous revenons vers vous très vite pour finaliser le règlement de l\'acompte.';
+    } else {
+      title = 'Réservation <em>confirmée</em>';
+      text  = 'Merci ! Vous allez recevoir un e-mail de confirmation avec tous les détails.';
+    }
+    $('confirm-title').innerHTML = title; // contenu statique contrôlé ci-dessus
+    $('confirm-text').textContent = text;
+
+    const rows = [];
+    const ref = info.reference || (info.bookingData && info.bookingData.reference) || '';
+    if(ref) rows.push(['Référence', ref]);
+    if(S.handoff) rows.push(['Prestation', S.handoff.label || '—']);
+    const bd = info.bookingData;
+    let dateTxt = '';
+    if(bd && bd.start){ const d = new Date(bd.start); dateTxt = d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) + ' à ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}); }
+    else if(S.slot){ dateTxt = slotHuman(); }
+    if(dateTxt) rows.push(['Date', dateTxt]);
+
+    if(info.free){ rows.push(['Règlement', 'Visite gratuite — aucun paiement']); }
+    else {
+      let amt = null;
+      if(bd){ amt = (bd.deposit!=null ? bd.deposit : bd.total); }
+      if(amt==null) amt = amountNow();
+      rows.push([ (S.mode==='full' ? 'Montant réglé' : 'Acompte'), euro(amt) ]);
+    }
+    $('confirm-recap').innerHTML = rows.map(r => `<div class="cr-row"><span>${escapeHtml(r[0])}</span><span>${escapeHtml(r[1])}</span></div>`).join('');
+
+    const pay = $('confirm-pay');
+    if(info.canPay && info.token){ pay.hidden = false; pay.onclick = () => payNow(info.token); }
+    else { pay.hidden = true; pay.onclick = null; }
+    const cancelBtn = $('confirm-cancel'); if(cancelBtn){ cancelBtn.hidden = true; cancelBtn.onclick = null; }
+    const noteEl = $('confirm-note'); if(noteEl) noteEl.hidden = true;
+    const m = $('confirm-manage');
+    if(info.manage){ m.href = info.manage; m.hidden = false; } else { m.hidden = true; }
+    show('st-confirm');
+  }
+
+  async function payNow(token){
+    const btn = $('confirm-pay'); if(!btn) return;
+    const orig = btn.textContent; btn.disabled = true; btn.textContent = 'Redirection vers le paiement…';
+    try{
+      const r = await fetchJSON(api('/bookings/'+encodeURIComponent(token)+'/pay'), {
+        method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json'}, body:'{}'
+      });
+      if(r && r.payment_url){ window.location.href = r.payment_url; return; }
+      throw new Error('no url');
+    }catch(e){
+      btn.disabled = false; btn.textContent = orig;
+      inlineErrConfirm('Le paiement est momentanément indisponible. Réessayez dans un instant, ou appelez-nous au 06 70 01 20 61.');
+    }
+  }
+  function inlineErrConfirm(msg){
+    const noteEl = $('confirm-note');
+    if(noteEl){ noteEl.hidden = false; noteEl.textContent = msg; }
+  }
+
+  /* ════════════════════════════════════════════════
+     GÉRER MA RÉSERVATION (détails · payer · annuler)
+     — liens durables envoyés par kc-sheet-sync (?resa=token)
+     ════════════════════════════════════════════════ */
+  function showManage(b, token){
+    const cancelled = b.status === 'cancelled';
+    const isPaid = b.payment_status === 'paid';
+    const needsPay = !!b.requires_payment && !isPaid && !cancelled;
+
+    let title, text;
+    if(cancelled){ title = 'Réservation <em>annulée</em>'; text = 'Cette réservation a bien été annulée. Vous pouvez en créer une nouvelle quand vous le souhaitez.'; }
+    else if(needsPay){ title = 'Votre <em>réservation</em>'; text = 'Votre créneau est réservé. Il reste l\'acompte à régler pour le confirmer définitivement.'; }
+    else { title = 'Votre <em>réservation</em>'; text = 'Voici le récapitulatif de votre réservation. Vous pouvez la gérer ci-dessous.'; }
+    $('confirm-title').innerHTML = title; // contenu statique contrôlé ci-dessus
+    $('confirm-text').textContent = text;
+
+    const rows = [];
+    if(b.reference) rows.push(['Référence', b.reference]);
+    const presta = (b.type && b.type.name) || (S.handoff && S.handoff.label) || '';
+    if(presta) rows.push(['Prestation', presta + (b.variant_name ? ' — ' + b.variant_name : '')]);
+    if(b.start){ const d = new Date(b.start); rows.push(['Date', d.toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) + ' à ' + d.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'})]); }
+    if(b.staff) rows.push(['Intervenant', b.staff]);
+    if(b.address) rows.push(['Adresse', b.address]);
+    rows.push(['Statut', cancelled ? 'Annulée' : (isPaid ? 'Confirmée (payée)' : (b.requires_payment ? 'En attente de paiement' : 'Confirmée'))]);
+    if(b.total != null) rows.push(['Montant', euro(b.total) + ' TTC']);
+    if(b.deposit != null && b.requires_payment) rows.push([ isPaid ? 'Acompte payé' : 'Acompte à régler', euro(b.deposit) ]);
+    $('confirm-recap').innerHTML = rows.map(r => `<div class="cr-row"><span>${escapeHtml(r[0])}</span><span>${escapeHtml(r[1])}</span></div>`).join('');
+
+    const pay = $('confirm-pay');
+    if(needsPay){ pay.hidden = false; pay.onclick = () => payNow(token); } else { pay.hidden = true; pay.onclick = null; }
+
+    const cancelBtn = $('confirm-cancel');
+    const noteEl = $('confirm-note');
+    if(!cancelled && b.can_cancel){
+      cancelBtn.hidden = false; cancelBtn.onclick = () => cancelBooking(token); noteEl.hidden = true;
+    } else {
+      cancelBtn.hidden = true; cancelBtn.onclick = null;
+      if(!cancelled){ noteEl.hidden = false; noteEl.innerHTML = 'Pour annuler ou décaler ce rendez-vous, appelez-nous au <a href="tel:+33670012061">06 70 01 20 61</a>.'; }
+      else { noteEl.hidden = true; }
+    }
+    $('confirm-manage').hidden = true;
+    show('st-confirm');
+  }
+
+  async function cancelBooking(token){
+    if(!confirm('Êtes-vous sûr de vouloir annuler cette réservation ? Cette action est définitive.')) return;
+    const btn = $('confirm-cancel'); const orig = btn.textContent; btn.disabled = true; btn.textContent = 'Annulation en cours…';
+    try{
+      await fetchJSON(api('/bookings/'+encodeURIComponent(token)+'/cancel'), { method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/json'}, body:'{}' });
+      const b = await fetchJSON(api('/bookings/'+encodeURIComponent(token)));
+      showManage(b, token);
+    }catch(e){
+      btn.disabled = false; btn.textContent = orig;
+      inlineErrConfirm((e && e.body && e.body.message) || 'Annulation impossible pour le moment. Appelez-nous au 06 70 01 20 61.');
+    }
+  }
+
+  // Retour depuis Stripe (?resa=token&paid=1) ou accès « Gérer ma réservation » (?resa=token)
+  async function handleReturn(token, paid){
+    show('st-loading');
+    if(!IS_LIVE){ S.requiresPayment = true; showConfirmation({ paid:true }); return; }
+    try{
+      const b = await fetchJSON(api('/bookings/'+encodeURIComponent(token)));
+      S.requiresPayment = !!b.requires_payment;
+      if(!S.handoff) S.handoff = { version:2, funnel:(b.requires_payment?'forfait':'audit'), presta:(b.type && b.type.slug) || '', label:(b.type && b.type.name) || 'Votre réservation' };
+      if(paid){
+        showConfirmation({ paid:true, bookingData:b, reference:b.reference, manage:b.manage_url });
+      } else {
+        showManage(b, token);
+      }
+    }catch(e){
+      showConfirmation({ paid: paid });
+    }
+  }
+
+  /* ════════════════════════════════════════════════
+     DÉMARRAGE
+     ════════════════════════════════════════════════ */
+  async function boot(){
+    show('st-loading');
+    try{
+      if(!IS_LIVE){
+        $('demo-banner').hidden = false;
+        S.typeId = 0; S.variantId = 0;
+        S.requiresPayment = (S.handoff.funnel === 'forfait');
+        renderRecap(); applyMode();
+        if(S.requiresPayment) computeAmounts();
+        S.days = demoDays(); renderDays();
+        bindMain(); show('st-main'); return;
+      }
+      const types = await fetchJSON(api('/types'));
+      const wantedSlug = TYPE_MAP[S.handoff.presta]
+        || (S.handoff.funnel === 'forfait' ? S.handoff.presta : DEFAULT_AUDIT_TYPE);
+      const bySlug = s => (types||[]).find(t => t.slug === s);
+      let type = bySlug(wantedSlug);
+      // Repli en cascade pour les visites d'audit : visite-audit → remise-etat
+      // → 1er type gratuit disponible. Garantit un calendrier même si le type
+      // générique n'a pas encore été créé dans l'admin.
+      if(!type && S.handoff.funnel !== 'forfait'){
+        type = bySlug('visite-audit') || bySlug('remise-etat')
+            || (types||[]).find(t => t.cta_type === 'calendar_free');
+      }
+      if(!type){ showError('Cette prestation ne propose pas encore la réservation en ligne. Appelez-nous au 06 70 01 20 61.'); return; }
+      S.typeId = type.id;
+      // Le plugin fait foi : un forfait du devis n'est payant que si le type est calendar_paid
+      S.requiresPayment = (S.handoff.funnel === 'forfait') && (type.cta_type === 'calendar_paid');
+      const vslug = (S.handoff.booking && S.handoff.booking.taille === 'studio') ? 'studio' : 'appartement';
+      const variant = (type.variants||[]).find(v => v.slug === vslug) || (type.variants||[])[0] || null;
+      S.variantId = variant ? variant.id : null;
+      S.duration = variant ? variant.duration_minutes : type.duration_minutes;
+
+      renderRecap(); applyMode();
+      if(S.requiresPayment) computeAmounts();
+      await loadAvailability();
+      renderDays();
+      bindMain();
+      show('st-main');
+    }catch(e){
+      showError('Connexion au système de réservation impossible. Réessayez dans un instant, ou appelez-nous au 06 70 01 20 61.');
+    }
+  }
+
+  function bindMain(){
+    $('pay-deposit').addEventListener('click', () => setMode('deposit'));
+    $('pay-full').addEventListener('click', () => setMode('full'));
+    $('btn-confirm').addEventListener('click', submit);
+    $('cal-prev').addEventListener('click', () => navMonth(-1));
+    $('cal-next').addEventListener('click', () => navMonth(1));
+    refreshConfirm();
+  }
+
+  // Masquer le bouton « Estimation en ligne » du header (déjà dans le parcours)
+  function hideHeaderEstimateCTA(){
+    try{
+      document.querySelectorAll('a, button').forEach(function(el){
+        if(el.closest('.kc-resa')) return;
+        if((el.textContent || '').trim().toLowerCase() === 'estimation en ligne'){
+          var li = el.closest('li');
+          (li || el).style.display = 'none';
+        }
+      });
+    }catch(e){}
+  }
+
+  // Caler le contenu sous l'en-tête fixe du thème (mesure automatique)
+  function pushBelowHeader(){
+    var block = document.querySelector('.kc-resa');
+    if(!block) return;
+    try{
+      block.style.paddingTop = '0px';
+      var blockTop = block.getBoundingClientRect().top + window.scrollY;
+      var hb = 0, els = document.body.getElementsByTagName('*');
+      for(var i=0;i<els.length;i++){
+        var el = els[i];
+        if(block.contains(el)) continue;
+        var cs = getComputedStyle(el);
+        if(cs.position!=='fixed' && cs.position!=='sticky' && cs.position!=='absolute') continue;
+        if(cs.display==='none' || cs.visibility==='hidden') continue;
+        var r = el.getBoundingClientRect();
+        if(r.top<=5 && r.height>=24 && r.height<=260 && r.width>=window.innerWidth*0.5){
+          var b = r.bottom + window.scrollY; if(b>hb) hb=b;
+        }
+      }
+      var pad = (hb > blockTop ? (hb - blockTop) : 0) + 24;
+      block.style.paddingTop = Math.ceil(pad) + 'px';
+    }catch(e){ block.style.paddingTop = ''; }
+  }
+
+  function init(){
+    hideHeaderEstimateCTA();
+    pushBelowHeader();
+    $('link-devis-1').href = KC_RESA.devisURL;
+    $('link-devis-2').href = KC_RESA.devisURL;
+    const backLink = $('link-devis-back'); if(backLink) backLink.href = KC_RESA.devisURL;
+    $('btn-retry').addEventListener('click', () => location.reload());
+
+    const params = new URLSearchParams(location.search);
+    const token = params.get('resa');
+    if(token){ S.handoff = readHandoff(); handleReturn(token, params.get('paid')==='1'); return; }
+
+    // Entrée directe « Demander un devis » (visite gratuite) depuis une page prestation
+    const visite = params.get('visite');
+    if(visite){ S.handoff = makeVisiteHandoff(visite); boot(); return; }
+
+    S.handoff = readHandoff();
+    if(!S.handoff){
+      if(IS_LIVE){ show('st-nodata'); return; }
+      S.handoff = DEMO_HANDOFF;
+    }
+    boot();
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+  window.addEventListener('load', pushBelowHeader);
+  window.addEventListener('resize', pushBelowHeader);
+})();
+</script>

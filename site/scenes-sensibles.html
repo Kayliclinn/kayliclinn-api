@@ -1,0 +1,514 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE SENSIBLE : NETTOYAGE & REMISE EN ÉTAT DE SCÈNES SENSIBLES — KAYLI CLINN
+   Après décès · incurie sévère · biohazard · situations de détresse
+   URL : /scenes-sensibles/  ·  Catégorie menu « Extrême »
+   ────────────────────────────────────────────────────────
+   ⚠️ SUJET TRÈS SENSIBLE. Ton sobre, digne, confidentiel. Vouvoiement.
+   ⚠️ DEVIS PUR — AUCUN PRIX, AUCUNE RÉSERVATION EN LIGNE.
+   ⚠️ CTA = tel:+33670012061 et /contact/ (et /devis/ = prise de contact confidentielle).
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 2 variables --photo-* ci-dessous.
+   Remplacez UNIQUEMENT l'URL entre url('…'). Images SOBRES et NEUTRES
+   (intérieurs apaisés, lumière douce). JAMAIS d'image choc ni de scène réelle.
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Intérieur sobre et apaisé — Kayli Clinn, remise en état
+   │   discrète et respectueuse en Île-de-France »
+   │ --photo-banner ... bandeau institutionnel au milieu de page
+   │   ALT : « Pièce neutre et lumineuse remise en état avec discrétion
+   │   par les équipes Kayli Clinn »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   🔗 Liens internes : /contact/ · /devis/
+   ☎️ Téléphone : +33670012061 · Tarifs : devis pur après constat, aucun chiffre en ligne.
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT (images sobres, neutres)
+   ════════════════════════════════════════════════════════ */
+.kc-sens{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-scenes-sensibles-hero.jpg');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-scenes-sensibles-banner.jpg');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME — charte Kayli Clinn (navy dominant, teal accent)
+   ════════════════════════════════════════════════════════ */
+.kc-sens{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.7; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-sens *,.kc-sens *::before,.kc-sens *::after{box-sizing:border-box}
+.kc-sens img{max-width:100%;display:block}
+.kc-sens a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-sens .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-sens .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-sens .kc-promise-text .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-sens .kc-promise-text .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-sens section{padding:clamp(78px,10vw,140px) 6%}
+.kc-wrap{max-width:1180px;margin:0 auto}
+.kc-head{text-align:center;max-width:760px;margin:0 auto clamp(52px,6.5vw,84px)}
+
+/* — sur-titre éditorial sobre — */
+.kc-sens .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:11.5px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
+.kc-sens .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres : Fraunces serif, accents italiques discrets — */
+.kc-sens .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:520;font-size:clamp(1.85rem,3.5vw,2.85rem);color:var(--navy);line-height:1.12;letter-spacing:-0.016em;margin-bottom:20px}
+.kc-sens .section-title em,.kc-sens h2 em,.kc-sens h3 em{font-style:italic;font-weight:480;color:var(--teal-deep)}
+.kc-sens .section-desc{font-size:16.5px;color:var(--muted);line-height:1.78;font-weight:400}
+
+.kc-sens svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons (sobres) — */
+.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.6)}
+.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.7)}
+.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO — sobre, retenu
+   ════════════════════════════════════════════════════════ */
+.kc-hero{position:relative;min-height:78vh;padding:clamp(140px,17vh,200px) 6% clamp(72px,10vh,118px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.78) 0%,rgba(13,35,64,0.55) 45%,rgba(13,35,64,0.30) 100%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-hero-wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-hero-content{max-width:720px}
+.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:11.5px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:#fff;margin-bottom:clamp(34px,4.5vw,52px)}
+.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:500;font-size:clamp(1.9rem,3.8vw,3.3rem);color:#fff;line-height:1.12;letter-spacing:-0.018em;margin-bottom:clamp(26px,3.2vw,36px)}
+.kc-hero-title em{font-style:italic;font-weight:440;color:#fff}
+.kc-hero-sub{font-size:clamp(16px,1.3vw,18.5px);color:rgba(255,255,255,0.9);line-height:1.75;margin-bottom:clamp(34px,4vw,46px);max-width:600px;font-weight:300}
+.kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+.kc-hero-note{margin-top:clamp(28px,3.5vw,40px);display:inline-flex;align-items:flex-start;gap:11px;font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;max-width:560px}
+.kc-hero-note svg{flex-shrink:0;margin-top:2px;color:var(--teal)}
+
+/* — bande de réassurance sobre — */
+.kc-trust{background:var(--navy);padding:28px 6%}
+.kc-trust-wrap{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 40px;flex-wrap:wrap}
+.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   DANS QUELS CAS NOUS INTERVENONS
+   ════════════════════════════════════════════════════════ */
+.kc-cases{background:var(--cream-2)}
+.kc-cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.kc-case-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:36px 34px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-case-icon{width:48px;height:48px;border-radius:12px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:24px}
+.kc-case-card h3{font-family:'Fraunces',serif;font-weight:520;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.25}
+.kc-case-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ════════════════════════════════════════════════════════
+   NOTRE APPROCHE — déroulé sobre
+   ════════════════════════════════════════════════════════ */
+.kc-approach{background:var(--white)}
+.kc-approach-list{display:flex;flex-direction:column;gap:0;max-width:920px;margin:0 auto;border-left:1px solid var(--line)}
+.kc-step{position:relative;padding:0 0 38px 40px}
+.kc-step:last-child{padding-bottom:0}
+.kc-step::before{content:'';position:absolute;left:-7px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--white);border:2px solid var(--teal)}
+.kc-step-num{font-family:'Inter',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:8px}
+.kc-step h3{font-family:'Fraunces',serif;font-weight:520;font-size:18.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-step p{font-size:14.5px;color:var(--muted);line-height:1.78}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU institutionnel
+   ════════════════════════════════════════════════════════ */
+.kc-banner{position:relative;min-height:440px;padding:clamp(84px,11vw,130px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.90) 0%,rgba(13,35,64,0.74) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-banner-content{max-width:840px}
+.kc-banner .eyebrow{color:rgba(255,255,255,0.9);justify-content:center}
+.kc-banner .eyebrow::before{background:rgba(255,255,255,0.55)}
+.kc-banner h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.85rem,3.4vw,2.8rem);line-height:1.16;letter-spacing:-0.016em;margin-bottom:22px;color:#fff}
+.kc-banner h2 em{font-style:italic;color:#fff}
+.kc-banner p{font-size:17px;line-height:1.78;color:rgba(255,255,255,0.88);max-width:660px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   NOS ENGAGEMENTS — panneau navy
+   ════════════════════════════════════════════════════════ */
+.kc-commit-block{background:var(--navy);border-radius:26px;padding:clamp(42px,5.5vw,76px);color:#fff;position:relative;overflow:hidden}
+.kc-commit-block::before{content:'';position:absolute;top:-120px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(15,167,165,0.13) 0%,transparent 70%);pointer-events:none}
+.kc-commit-head{position:relative;z-index:1;max-width:660px;margin-bottom:40px}
+.kc-commit-head .eyebrow{color:var(--teal)}
+.kc-commit-head .eyebrow::before{background:var(--teal)}
+.kc-commit-head h2{font-family:'Fraunces',serif;font-weight:520;font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.16;letter-spacing:-0.014em;color:#fff;margin-bottom:14px}
+.kc-commit-head h2 em{color:var(--teal)}
+.kc-commit-head p{font-size:15px;color:rgba(255,255,255,0.72);line-height:1.78}
+.kc-commit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;position:relative;z-index:1}
+.kc-commit{display:flex;gap:18px;padding:24px 26px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.09);border-radius:14px;transition:all .3s}
+.kc-commit:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4)}
+.kc-commit-icon{width:42px;height:42px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+.kc-commit-text strong{display:block;font-family:'Fraunces',serif;font-size:16px;font-weight:520;color:#fff;margin-bottom:6px}
+.kc-commit-text span{font-size:13.5px;color:rgba(255,255,255,0.66);line-height:1.65}
+
+/* ════════════════════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════════════════════ */
+.kc-faq{background:var(--cream)}
+.kc-faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.45)}
+.kc-faq-q{padding:25px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.kc-faq-q-text{font-family:'Fraunces',serif;font-size:16.5px;font-weight:520;color:var(--navy);letter-spacing:-0.01em;line-height:1.38}
+.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-faq-item.open .kc-faq-a{max-height:560px}
+.kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-faq-a-content strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   ZONES
+   ════════════════════════════════════════════════════════ */
+.kc-zones{background:var(--cream-2)}
+.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:44px}
+.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:520;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL — confidentiel, sobre (navy, pas vert vif)
+   ════════════════════════════════════════════════════════ */
+.kc-final-cta{background:var(--navy);color:#fff;text-align:center;padding:clamp(72px,9vw,116px) 6%;position:relative;overflow:hidden}
+.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:660px;height:660px;background:radial-gradient(circle,rgba(15,167,165,0.10) 0%,transparent 62%);pointer-events:none}
+.kc-final-cta-wrap{position:relative;z-index:1;max-width:740px;margin:0 auto}
+.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:11.5px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:22px}
+.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:var(--teal)}
+.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.8rem,3.3vw,2.8rem);line-height:1.16;margin-bottom:18px;letter-spacing:-0.016em;color:#fff}
+.kc-final-cta h2 em{font-style:italic;color:var(--teal)}
+.kc-final-cta p{font-size:16px;color:rgba(255,255,255,0.82);line-height:1.75;margin:0 auto 32px;max-width:560px;font-weight:300}
+.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+.kc-final-phone{margin-top:26px;font-size:14px;color:rgba(255,255,255,0.7)}
+.kc-final-phone a{color:#fff;font-weight:600;border-bottom:1px solid rgba(255,255,255,0.4)}
+.kc-final-phone a:hover{border-color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-fade{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-cases-grid,.kc-commit-grid{grid-template-columns:1fr}
+  .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-hero{min-height:auto}
+  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
+}
+@media(max-width:560px){
+  .kc-sens section{padding:60px 6%}
+  .kc-hero{padding:124px 6% 60px}
+  .kc-commit-block{padding:42px 26px;border-radius:20px}
+  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-btn{width:100%;justify-content:center}
+  .kc-hero-ctas,.kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-sens *,.kc-sens *::before,.kc-sens *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-sens .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-sens">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Interventions sensibles · Île-de-France</span>
+      <h1 class="kc-hero-title">Nettoyage et remise en état de <em>scènes sensibles</em></h1>
+      <p class="kc-hero-sub">Après un décès, dans une situation d'incurie sévère ou de contamination biologique, nous intervenons avec discrétion, méthode et respect. Un seul interlocuteur vous accompagne, du premier appel à la remise en état du lieu.</p>
+      <div class="kc-hero-ctas">
+        <a href="tel:+33670012061" class="kc-btn kc-btn-primary">
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Nous appeler
+        </a>
+        <a href="/contact/" class="kc-btn kc-btn-secondary">Prise de contact confidentielle</a>
+      </div>
+      <div class="kc-hero-note">
+        <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span>Échanges confidentiels. Constat sur place avant tout devis. Aucun engagement de votre part lors de la première prise de contact.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 👉 À VALIDER (propriétaire) : formulation du partenariat de sous-traitance. Possibilité d'indiquer le nom du/des partenaire(s) et leur certification (ex. Certibiocide) si souhaité. -->
+<section class="kc-faq">
+  <div class="kc-wrap">
+    <div class="kc-head kc-fade">
+      <span class="eyebrow">Prestation assurée en partenariat</span>
+      <p class="section-desc">Pour ces interventions spécialisées, Kayli Clinn coordonne votre projet et le confie à des prestataires partenaires certifiés et assurés. Vous gardez un interlocuteur unique, du devis jusqu'au compte rendu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Discrétion absolue</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-9.5C1.5 7 3.5 4 7 4c1.9 0 3.5 1.1 5 3 1.5-1.9 3.1-3 5-3 3.5 0 5.5 3 4 7.5-2 5.15-9 9.5-9 9.5z"/></svg><span>Dignité & respect des personnes</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>Équipes protégées & formées</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Réponse rapide, 7j/7</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4M5 9h14l1 12H4L5 9z"/></svg><span>Devis après constat sur place</span></div>
+  </div>
+</div>
+
+<!-- 3 · DANS QUELS CAS NOUS INTERVENONS -->
+<section class="kc-cases">
+  <div class="kc-wrap">
+    <div class="kc-head kc-fade">
+      <span class="eyebrow">Nos interventions</span>
+      <h2 class="section-title">Dans quels cas nous <em>intervenons</em></h2>
+      <p class="section-desc">Nous prenons en charge des situations difficiles, souvent douloureuses, qui demandent un savoir-faire spécifique et une grande retenue. Chaque intervention fait l'objet d'un constat préalable.</p>
+    </div>
+    <div class="kc-cases-grid">
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-9.5C1.5 7 3.5 4 7 4c1.9 0 3.5 1.1 5 3 1.5-1.9 3.1-3 5-3 3.5 0 5.5 3 4 7.5-2 5.15-9 9.5-9 9.5z"/></svg></div>
+        <h3>Nettoyage après décès</h3>
+        <p>Remise en état d'un logement après un décès, y compris en cas de découverte tardive. Nous agissons avec mesure, dans le respect du défunt et de ses proches, et coordonnons l'intervention avec les démarches en cours.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Situations d'incurie sévère</h3>
+        <p>Logements très encombrés ou fortement dégradés, parfois liés à une situation de détresse (syndrome de Diogène, accumulation, isolement). Tri, débarras, nettoyage en profondeur et assainissement du lieu.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><circle cx="12" cy="17" r="1.4"/></svg></div>
+        <h3>Biohazard & contamination biologique</h3>
+        <p>Présence de fluides ou de matières biologiques, risque infectieux, nuisibles. Décontamination, neutralisation des odeurs et remise en état selon des protocoles adaptés.
+        <!-- 👉 À COMPLÉTER : préciser les protocoles normés / référentiels suivis, sans rien inventer. --></p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Accompagnement de situations difficiles</h3>
+        <p>Au-delà du nettoyage, nous tenons compte du contexte humain : familles endeuillées, voisinage, bailleurs, syndics. Nous restons mesurés, à l'écoute, et coordonnons notre intervention avec les interlocuteurs concernés.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · NOTRE APPROCHE -->
+<section class="kc-approach">
+  <div class="kc-wrap">
+    <div class="kc-head kc-fade">
+      <span class="eyebrow">Notre approche</span>
+      <h2 class="section-title">Un déroulé clair, <em>du premier contact à la remise en état</em></h2>
+      <p class="section-desc">Chaque situation est différente. Notre méthode reste constante : comprendre, constater, intervenir avec rigueur, puis vous restituer un lieu remis en état.</p>
+    </div>
+    <div class="kc-approach-list kc-fade">
+      <div class="kc-step">
+        <div class="kc-step-num">Étape 01</div>
+        <h3>Prise de contact confidentielle</h3>
+        <p>Un premier échange, par téléphone ou via le formulaire, pour cerner la situation en toute discrétion. Aucune information ne sort de ce cadre.</p>
+      </div>
+      <div class="kc-step">
+        <div class="kc-step-num">Étape 02</div>
+        <h3>Constat discret sur place</h3>
+        <p>Un déplacement mesuré pour évaluer l'état du lieu, les contraintes d'accès et la nature de l'intervention. C'est ce constat qui détermine le devis — jamais une estimation à l'aveugle.</p>
+      </div>
+      <div class="kc-step">
+        <div class="kc-step-num">Étape 03</div>
+        <h3>Devis détaillé</h3>
+        <p>Un devis clair, établi après le constat et adapté à la réalité du lieu. Il vous est remis sans engagement et reste strictement confidentiel.</p>
+      </div>
+      <div class="kc-step">
+        <div class="kc-step-num">Étape 04</div>
+        <h3>Intervention en équipe équipée</h3>
+        <p>Nos intervenants, formés et protégés, agissent avec méthode et retenue. Tri, débarras, nettoyage en profondeur : chaque geste est pensé pour le respect du lieu et des personnes.</p>
+      </div>
+      <div class="kc-step">
+        <div class="kc-step-num">Étape 05</div>
+        <h3>Décontamination & remise en état</h3>
+        <p>Assainissement, traitement des odeurs et remise en état du logement, pour le rendre de nouveau habitable ou présentable.
+        <!-- 👉 À COMPLÉTER : décrire précisément les opérations de décontamination réellement réalisées (sans inventer de norme). --></p>
+      </div>
+      <div class="kc-step">
+        <div class="kc-step-num">Étape 06</div>
+        <h3>Coordination avec les interlocuteurs</h3>
+        <p>Nous nous coordonnons, selon le contexte, avec les familles, les bailleurs, les syndics et les autorités concernées, afin de faciliter vos démarches.
+        <!-- 👉 À COMPLÉTER : préciser les interlocuteurs réellement coordonnés (assurances, notaires, services…) selon les cas. --></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU institutionnel -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Un engagement avant tout humain</span>
+    <h2>Derrière chaque intervention,<br>il y a une <em>histoire</em></h2>
+    <p>Nous savons que vous nous contactez dans un moment difficile. Notre rôle est de vous décharger d'une épreuve matérielle, avec la discrétion et la dignité que la situation impose.</p>
+  </div>
+</section>
+
+<!-- 5 · NOS ENGAGEMENTS -->
+<section>
+  <div class="kc-wrap kc-fade">
+    <div class="kc-commit-block">
+      <div class="kc-commit-head">
+        <span class="eyebrow">Nos engagements</span>
+        <h2>Ce à quoi nous nous <em>engageons</em></h2>
+        <p>Sur ce type d'intervention, la confiance ne se négocie pas. Voici les principes qui guident chacun de nos gestes.</p>
+      </div>
+      <div class="kc-commit-grid">
+        <div class="kc-commit">
+          <div class="kc-commit-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <div class="kc-commit-text"><strong>Discrétion absolue</strong><span>Véhicules et tenues neutres, échanges confidentiels, aucune communication sur votre situation. Le voisinage n'a pas à savoir.</span></div>
+        </div>
+        <div class="kc-commit">
+          <div class="kc-commit-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-9.5C1.5 7 3.5 4 7 4c1.9 0 3.5 1.1 5 3 1.5-1.9 3.1-3 5-3 3.5 0 5.5 3 4 7.5-2 5.15-9 9.5-9 9.5z"/></svg></div>
+          <div class="kc-commit-text"><strong>Dignité en toute circonstance</strong><span>Nous traitons le lieu, les objets et la mémoire des personnes avec le plus grand respect, sans jugement et sans précipitation.</span></div>
+        </div>
+        <div class="kc-commit">
+          <div class="kc-commit-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+          <div class="kc-commit-text"><strong>Équipes protégées & formées</strong><span>Intervenants équipés de protections adaptées et formés à ce type de situations, pour leur sécurité comme pour la qualité du résultat.
+          <!-- 👉 À COMPLÉTER : préciser formations / habilitations réelles des équipes (sans inventer). --></span></div>
+        </div>
+        <div class="kc-commit">
+          <div class="kc-commit-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></div>
+          <div class="kc-commit-text"><strong>Traitement encadré des déchets</strong><span>Les déchets, y compris à risque, sont collectés, conditionnés et confiés à une filière de traitement adaptée.
+          <!-- 👉 À COMPLÉTER : nommer la filière d'élimination réelle (DASRI / prestataire agréé) une fois confirmée — ne rien inventer. --></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · FAQ -->
+<section class="kc-faq">
+  <div class="kc-wrap">
+    <div class="kc-head kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Les questions que l'on nous <em>pose</em></h2>
+      <p class="section-desc">Quelques réponses mesurées pour vous aider à aborder ces situations plus sereinement.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment se déroule la première prise de contact ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Un simple appel ou un message suffit. L'échange est <strong>confidentiel</strong> et sans engagement : nous cherchons d'abord à comprendre votre situation. Lorsque c'est nécessaire, nous organisons un <strong>constat discret sur place</strong> avant d'établir tout devis.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Garantissez-vous la discrétion vis-à-vis du voisinage ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Nous privilégions des <strong>véhicules et des tenues neutres</strong> et restons discrets sur place. Votre situation ne fait l'objet d'aucune communication. La <strong>confidentialité</strong> est au cœur de notre engagement.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Pourquoi le tarif est-il établi seulement après un constat ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Chaque situation est unique : l'état du lieu, le volume, l'accès et la nature de l'intervention varient fortement. Pour vous proposer un <strong>devis juste et transparent</strong>, nous tenons à constater la réalité du lieu plutôt qu'à avancer un chiffre à l'aveugle. Le devis est <strong>gratuit et sans engagement</strong>.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Pouvez-vous coordonner l'intervention avec un bailleur ou une famille ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Selon le contexte, nous nous coordonnons avec les <strong>familles, bailleurs, syndics et autorités</strong> concernés afin de faciliter vos démarches et d'intervenir au bon moment.
+        <!-- 👉 À COMPLÉTER : préciser les démarches réellement prises en charge (états des lieux, attestations…). --></div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Que deviennent les déchets et les objets ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Les déchets, y compris à risque, sont conditionnés et confiés à une <strong>filière de traitement adaptée</strong>. Lorsque des objets personnels doivent être préservés, nous les mettons de côté et en discutons avec vous avant toute décision.
+        <!-- 👉 À COMPLÉTER : nommer la filière d'élimination réelle une fois confirmée — ne rien inventer. --></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-wrap">
+    <div class="kc-head kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes interviennent dans les huit départements franciliens.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Échange confidentiel · Sans engagement</span>
+    <h2>Parlons-en, <em>en toute confidentialité</em></h2>
+    <p>Si vous traversez l'une de ces situations, vous n'avez pas à y faire face seul. Contactez-nous : nous vous écoutons, puis nous établissons un devis après constat.</p>
+    <div class="kc-final-ctas">
+      <a href="/demande-de-devis/?presta=scenes-sensibles" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">
+        <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Nous appeler
+      </a>
+      <a href="/contact/" class="kc-btn kc-btn-secondary">Prise de contact confidentielle</a>
+    </div>
+    <p class="kc-final-phone">Par téléphone au <a href="tel:+33670012061">06 70 01 20 61</a> — ou via notre <a href="/devis/" class="">demande de contact confidentielle</a>.</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-sens .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service Scènes sensibles (SANS offers : devis pur, aucun prix) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Nettoyage et remise en état de scènes sensibles",
+  "serviceType": "Nettoyage après décès, incurie et biohazard",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"}
+}
+</script>

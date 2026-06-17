@@ -1,0 +1,777 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE PRESTATION PONCTUELLE : SHAMPOUINAGE / INJECTION-EXTRACTION MOQUETTES, TAPIS & TEXTILES — KAYLI CLINN
+   Page technique · SANS PRIX · sur devis · WordPress-ready
+   URL : /shampouinage-moquettes/
+   Catégorie menu : « Prestation ponctuelle »
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous (URLs placeholder).
+   Remplacez UNIQUEMENT l'URL entre url('…').
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Moquette de bureau nettoyée par injection-extraction par Kayli Clinn »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Machine d'injection-extraction en action sur une moquette en Île-de-France »
+   │ --photo-split-1 .. section procédé (gauche)
+   │   ALT : « Détachage d'une moquette claire avant shampouinage par Kayli Clinn »
+   │ --photo-split-2 .. section textiles (canapés / sièges)
+   │   ALT : « Canapé en tissu nettoyé en profondeur par Kayli Clinn »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   👉 À COMPLÉTER : remplacer les URLs placeholder par des visuels validés par la propriétaire.
+   👉 À COMPLÉTER : visuels « avant / après » réels (pour l'instant placeholders).
+   🔗 CTA : /devis/ uniquement (pas de lien vers d'autres pages prestations).
+   ☎️ Téléphone : +33670012061 · AUCUN PRIX EN LIGNE (montants non validés — sur devis).
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT (placeholders)
+   ════════════════════════════════════════════════════════ */
+.kc-sha{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/placeholder/moquettes-hero.jpg');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/placeholder/moquettes-banner.jpg');
+  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/placeholder/moquettes-detachage.jpg');
+  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/placeholder/moquettes-textiles.jpg');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME (tokens & composants clonés de prestation.html)
+   ════════════════════════════════════════════════════════ */
+.kc-sha{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-sha *,.kc-sha *::before,.kc-sha *::after{box-sizing:border-box}
+.kc-sha img{max-width:100%;display:block}
+.kc-sha a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-sha .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-sha .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-sha .kc-promise-text .kc-link,.kc-sha .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-sha .kc-promise-text .kc-link:hover,.kc-sha .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-sha section{padding:clamp(84px,11vw,152px) 6%}
+.kc-sha-wrap{max-width:1240px;margin:0 auto}
+.kc-sha-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
+
+/* — sur-titre éditorial — */
+.kc-sha .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
+.kc-sha .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres — */
+.kc-sha .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-sha .section-title em,.kc-sha h2 em,.kc-sha h3 em,.kc-sha .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-sha .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-sha svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-sha .kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-sha .kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-sha .kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-sha .kc-btn-primary svg{transition:transform .3s}
+.kc-sha .kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-sha .kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-sha .kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-sha .kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-sha .kc-hero-content{max-width:none}
+.kc-sha .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
+.kc-sha .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-sha .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-sha .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-sha .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:560px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
+.kc-sha .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.kc-sha .kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-sha .kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande de réassurance — */
+.kc-sha .kc-trust{background:var(--navy);padding:30px 6%}
+.kc-sha .kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
+.kc-sha .kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-sha .kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   POUR QUI / SUPPORTS (grille de cartes)
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-target{background:var(--cream-2)}
+.kc-sha .kc-target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-sha .kc-target-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-sha .kc-target-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-sha .kc-target-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
+.kc-sha .kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
+.kc-sha .kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
+.kc-sha .kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   PROMESSE
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-promise-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
+.kc-sha .kc-promise-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-sha .kc-promise-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
+.kc-sha .kc-promise .eyebrow{color:var(--teal)}
+.kc-sha .kc-promise .eyebrow::before{background:var(--teal)}
+.kc-sha .kc-promise h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
+.kc-sha .kc-promise h2 em{color:var(--teal)}
+.kc-sha .kc-promise-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
+.kc-sha .kc-promise-text:last-child{margin-bottom:0}
+.kc-sha .kc-promise-text strong{color:#fff;font-weight:600}
+.kc-sha .kc-promise-points{display:flex;flex-direction:column;gap:14px}
+.kc-sha .kc-promise-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
+.kc-sha .kc-promise-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
+.kc-sha .kc-promise-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-sha .kc-promise-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
+.kc-sha .kc-promise-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-banner{position:relative;min-height:540px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-sha .kc-banner-content{max-width:900px}
+.kc-sha .kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-sha .kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-sha .kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
+.kc-sha .kc-banner h2 em{font-style:italic;color:#fff}
+.kc-sha .kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   INCLUS / BÉNÉFICES — fiches au trait
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-included{background:var(--cream)}
+.kc-sha .kc-included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kc-sha .kc-incl-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-sha .kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-sha .kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
+.kc-sha .kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
+.kc-sha .kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-sha .kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   SPLIT
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-split{background:var(--white)}
+.kc-sha .kc-split.alt{background:var(--cream-2)}
+.kc-sha .kc-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
+.kc-sha .kc-split.reverse .kc-split-grid{direction:rtl}
+.kc-sha .kc-split.reverse .kc-split-grid>*{direction:ltr}
+.kc-sha .kc-split-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-split-1);background-size:cover;background-position:center;box-shadow:var(--shadow)}
+.kc-sha .kc-split.alt .kc-split-img{background-image:var(--photo-split-2)}
+.kc-sha .kc-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
+.kc-sha .kc-split-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
+.kc-sha .kc-split-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:24px}
+.kc-sha .kc-split-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.kc-sha .kc-split-text p:last-of-type{margin-bottom:0}
+.kc-sha .kc-split-text strong{color:var(--navy);font-weight:600}
+.kc-sha .kc-split-quote{margin-top:32px;padding:26px 30px;background:transparent;border-left:2px solid var(--teal);border-radius:0;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--navy);font-size:17px;line-height:1.6}
+.kc-sha .kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   PROCÉDÉ EN ÉTAPES (rangées numérotées)
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-steps{background:var(--white)}
+.kc-sha .kc-steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.kc-sha .kc-step-row{display:flex;gap:22px;padding:30px 32px;background:var(--cream-2);border:1px solid var(--line);border-radius:16px;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.kc-sha .kc-step-row:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent;background:var(--white)}
+.kc-sha .kc-step-num{width:54px;height:54px;flex-shrink:0;background:var(--navy);color:#fff;border-radius:13px;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:19px;font-weight:560;transition:all .35s}
+.kc-sha .kc-step-row:hover .kc-step-num{background:var(--teal);box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-sha .kc-step-body h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-sha .kc-step-body p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   AVANT / APRÈS (placeholders visuels)
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-ba{background:var(--cream-2)}
+.kc-sha .kc-ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.kc-sha .kc-ba-card{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--white)}
+.kc-sha .kc-ba-card .kc-ba-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--faint);background:linear-gradient(135deg,#eef1f5 0%,#e3e8ee 100%)}
+.kc-sha .kc-ba-card.is-after .kc-ba-ph{background:linear-gradient(135deg,var(--teal-wash) 0%,#d9eeed 100%);color:var(--teal-deep)}
+.kc-sha .kc-ba-card .kc-ba-ph svg{opacity:.55}
+.kc-sha .kc-ba-card .kc-ba-ph span{font-size:12.5px;font-weight:500;letter-spacing:0.02em;text-align:center;padding:0 20px;line-height:1.5}
+.kc-sha .kc-ba-tag{position:absolute;top:20px;left:20px;z-index:2;padding:8px 16px;background:rgba(13,35,64,0.92);backdrop-filter:blur(18px);border-radius:100px;font-size:11px;font-weight:600;color:#fff;letter-spacing:0.06em;text-transform:uppercase}
+.kc-sha .kc-ba-card.is-after .kc-ba-tag{background:var(--teal)}
+.kc-sha .kc-ba-note{text-align:center;font-size:12.5px;color:var(--faint);font-style:italic;margin-top:30px}
+
+/* ════════════════════════════════════════════════════════
+   PROCESS (parcours devis)
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-process{background:var(--cream)}
+.kc-sha .kc-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+.kc-sha .kc-process-grid::before{content:'';position:absolute;top:34px;left:15%;right:15%;height:1px;background:var(--line);z-index:0}
+.kc-sha .kc-process-step{position:relative;z-index:1;text-align:center}
+.kc-sha .kc-process-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
+.kc-sha .kc-process-step:hover .kc-process-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-sha .kc-process-step h4{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-sha .kc-process-step p{font-size:13px;color:var(--muted);line-height:1.65}
+.kc-sha .kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   TÉMOIGNAGES
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-sha .kc-testi{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-sha .kc-testi:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-sha .kc-testi-quote-mark{position:absolute;top:26px;right:30px;font-family:'Fraunces',serif;font-size:54px;font-weight:560;color:var(--teal);opacity:0.14;line-height:1}
+.kc-sha .kc-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:18px}
+.kc-sha .kc-testi-text{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:26px;font-style:italic;font-weight:400}
+.kc-sha .kc-testi-author{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line-soft)}
+.kc-sha .kc-testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:0.02em;flex-shrink:0}
+.kc-sha .kc-testi-info strong{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
+.kc-sha .kc-testi-info span{font-size:12.5px;color:var(--faint);margin-top:2px;display:block}
+.kc-sha .kc-testi-badge{display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px}
+
+/* ════════════════════════════════════════════════════════
+   POURQUOI NOUS
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-why{background:var(--cream)}
+.kc-sha .kc-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-sha .kc-why-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-sha .kc-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.kc-sha .kc-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-sha .kc-why-card:hover::before{transform:scaleX(1)}
+.kc-sha .kc-why-num{font-family:'Fraunces',serif;font-size:14px;font-weight:560;color:var(--teal-deep);letter-spacing:0.1em;margin-bottom:26px;display:block}
+.kc-sha .kc-why-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-sha .kc-why-card:hover .kc-why-icon{background:var(--teal);color:#fff}
+.kc-sha .kc-why-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:13px;letter-spacing:-0.01em}
+.kc-sha .kc-why-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ════════════════════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-sha .kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-sha .kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
+.kc-sha .kc-faq-q{padding:26px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.kc-sha .kc-faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.35}
+.kc-sha .kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-sha .kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-sha .kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-sha .kc-faq-item.open .kc-faq-a{max-height:520px}
+.kc-sha .kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-sha .kc-faq-a-content strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   ZONES
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-zones{background:var(--cream-2)}
+.kc-sha .kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
+.kc-sha .kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-sha .kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-sha .kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-sha .kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
+.kc-sha .kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
+.kc-sha .kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kc-sha .kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
+.kc-sha .kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
+.kc-sha .kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-sha .kc-final-cta h2 em{font-style:italic;color:#fff}
+.kc-sha .kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
+.kc-sha .kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-sha .kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
+.kc-sha .kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
+.kc-sha .kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-sha .kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-sha .kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-sha .kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-sha .kc-target-grid,.kc-sha .kc-included-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-sha .kc-promise-grid,.kc-sha .kc-steps-grid{grid-template-columns:1fr}
+  .kc-sha .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-sha .kc-hero{min-height:90vh}
+  .kc-sha .kc-split-grid{grid-template-columns:1fr}
+  .kc-sha .kc-split.reverse .kc-split-grid{direction:ltr}
+  .kc-sha .kc-ba-grid{grid-template-columns:1fr}
+  .kc-sha .kc-process-grid{grid-template-columns:1fr;gap:24px}
+  .kc-sha .kc-process-grid::before{display:none}
+  .kc-sha .kc-testi-grid,.kc-sha .kc-why-grid{grid-template-columns:1fr}
+  .kc-sha .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-sha .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
+}
+@media(max-width:560px){
+  .kc-sha section{padding:64px 6%}
+  .kc-sha .kc-hero{min-height:auto;padding:130px 6% 64px}
+  .kc-sha .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-sha .kc-target-grid,.kc-sha .kc-included-grid{grid-template-columns:1fr}
+  .kc-sha .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-sha .kc-promise-block{border-radius:20px}
+  .kc-sha .kc-btn{width:100%;justify-content:center}
+  .kc-sha .kc-hero-ctas,.kc-sha .kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-sha *,.kc-sha *::before,.kc-sha *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-sha .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-sha">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Shampouinage moquettes &amp; textiles · Île-de-France</span>
+      <h1 class="kc-hero-title">Des Textiles <em>Comme Neufs</em></h1>
+      <p class="kc-hero-sub">Shampouinage et injection-extraction de moquettes, tapis, sièges et canapés : détachage, désodorisation et nettoyage en profondeur, avec un séchage rapide. Pour vos bureaux, hôtels, logements et salles de réunion.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Demander un devis
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>Injection-extraction en profondeur</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg><span>Détachage &amp; désodorisation</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Séchage rapide</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg><span>Bureaux, hôtels, logements</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg><span>Devis adapté à vos surfaces</span></div>
+  </div>
+</div>
+
+<!-- 3 · SUPPORTS TRAITÉS -->
+<section class="kc-target">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Supports traités</span>
+      <h2 class="section-title">Tous vos <em>textiles d'intérieur</em></h2>
+      <p class="section-desc">De la moquette de bureau au canapé en tissu, nous nettoyons en profondeur les surfaces textiles qui s'encrassent au fil des passages — là où l'aspirateur ne suffit plus.</p>
+    </div>
+    <div class="kc-target-grid">
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="1"/><path d="M3 10h18M3 14h18"/></svg></div>
+        <h3>Moquettes de bureaux</h3>
+        <p>Open spaces, couloirs, salles de réunion : on retire la saleté incrustée et les zones de passage marquées.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v3H3zM5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg></div>
+        <h3>Hôtels &amp; chambres</h3>
+        <p>Moquettes de chambres, couloirs et réception : remise à niveau régulière pour préserver le standing.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M4 18v-7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7M2 18h20M6 18v2M18 18v2M7 8V6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/></svg></div>
+        <h3>Canapés &amp; fauteuils</h3>
+        <p>Tissu, microfibre : détachage et nettoyage en profondeur pour raviver l'aspect et la fraîcheur.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><path d="M4 9h16M9 4v16"/></svg></div>
+        <h3>Tapis</h3>
+        <p>Tapis de salon, d'accueil ou de bureau : shampouinage et désodorisation pour leur redonner couleur et douceur.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M5 11V7a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v4M3 11h18v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div>
+        <h3>Salles de réunion</h3>
+        <p>Sièges, moquettes et textiles des espaces de réception : un environnement net pour accueillir vos visiteurs.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Logements</h3>
+        <p>Moquettes, tapis et canapés du domicile : un nettoyage en profondeur ponctuel ou avant un état des lieux.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 13h2l2-8 4 16 2-8h7"/><path d="M5 18a2 2 0 1 0 0 .01M19 18a2 2 0 1 0 0 .01"/></svg></div>
+        <h3>Véhicules &amp; sièges</h3>
+        <p>Habitacles, sièges et moquettes de véhicules de société : détachage et désodorisation sur demande.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div>
+        <h3>Cas particuliers</h3>
+        <p>Textile délicat, tache tenace, fibre fragile ? On réalise un test avant traitement et on adapte la méthode.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PROMESSE -->
+<section>
+  <div class="kc-sha-wrap kc-fade">
+    <div class="kc-promise-block kc-promise">
+      <div class="kc-promise-grid">
+        <div>
+          <span class="eyebrow">Notre approche</span>
+          <h2>Plus loin que <em>l'aspirateur</em></h2>
+          <p class="kc-promise-text">Une moquette retient bien plus que ce qui se voit : poussières fines, allergènes, taches anciennes et odeurs incrustées dans la fibre. L'aspirateur enlève la surface ; <strong>l'injection-extraction nettoie en profondeur</strong>. La solution est injectée dans la fibre, puis aussitôt aspirée avec la saleté qu'elle a décollée.</p>
+          <p class="kc-promise-text">Nous traitons les taches en amont, choisissons les produits selon la fibre, et maîtrisons le taux d'humidité pour un <strong>séchage rapide</strong>. Résultat : un textile propre, désodorisé et remis en valeur, sans le détremper.</p>
+        </div>
+        <div class="kc-promise-points">
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Détachage ciblé</strong><span>Traitement des taches avant le passage, selon leur nature et la fibre</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Nettoyage en profondeur</strong><span>L'injection-extraction décolle et aspire la saleté incrustée dans la fibre</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M3 3v18M3 9h6l3-4 3 8 2-3h4"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Désodorisation</strong><span>On neutralise les odeurs à la source, sans simplement les masquer</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Séchage rapide</strong><span>Humidité maîtrisée pour une remise en service dans les meilleurs délais</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Un environnement plus sain</span>
+    <h2>Une moquette propre,<br>c'est un air <em>plus respirable</em></h2>
+    <p>Les textiles accumulent poussières fines, acariens et allergènes au fil des mois. Un nettoyage en profondeur régulier assainit l'ambiance, prolonge la vie de vos moquettes et redonne une vraie fraîcheur à vos espaces.</p>
+  </div>
+</section>
+
+<!-- 5 · LE PROCÉDÉ EN ÉTAPES -->
+<section class="kc-steps">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Le procédé</span>
+      <h2 class="section-title">L'injection-extraction, <em>étape par étape</em></h2>
+      <p class="section-desc">Une méthode en quatre temps pour passer d'un textile encrassé à une surface propre, désodorisée et sèche rapidement. Le détail s'adapte à la fibre et à l'état constaté.</p>
+    </div>
+    <div class="kc-steps-grid">
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">01</div>
+        <div class="kc-step-body">
+          <h3>Aspiration &amp; détachage</h3>
+          <p>Aspiration en profondeur pour retirer les particules sèches, puis traitement ciblé des taches selon leur nature et la fibre.</p>
+        </div>
+      </div>
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">02</div>
+        <div class="kc-step-body">
+          <h3>Injection de la solution</h3>
+          <p>Une solution nettoyante adaptée est injectée sous pression au cœur de la fibre pour décoller la saleté incrustée.</p>
+        </div>
+      </div>
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">03</div>
+        <div class="kc-step-body">
+          <h3>Extraction</h3>
+          <p>La solution est aussitôt aspirée avec la saleté décollée. C'est cette extraction immédiate qui nettoie en profondeur et limite l'humidité.</p>
+        </div>
+      </div>
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">04</div>
+        <div class="kc-step-body">
+          <h3>Désodorisation &amp; séchage</h3>
+          <p>Désodorisation pour neutraliser les odeurs, puis séchage accéléré pour une remise en service rapide et un rendu uniforme.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · SPLIT (détachage) -->
+<section class="kc-split">
+  <div class="kc-sha-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Détachage avant traitement</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">Le bon produit, la bonne fibre</span>
+        <h2>Chaque tache a <em>son traitement</em></h2>
+        <p>Café, encre, traces de passage, salissures organiques : toutes les taches ne se traitent pas de la même façon. Un mauvais produit peut <strong>fixer la tache</strong> ou altérer la couleur de la fibre.</p>
+        <p>Nous identifions la nature du textile et de la salissure, testons si besoin sur une zone discrète, puis appliquons le traitement adapté. C'est cette <strong>prudence méthodique</strong> qui fait la différence entre un textile ravivé et un textile abîmé.</p>
+        <div class="kc-split-quote">Sur un textile, on n'improvise pas. Le bon geste, c'est de tester avant d'agir et d'adapter la méthode à chaque fibre.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · AVANT / APRÈS -->
+<section class="kc-ba">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Avant / après</span>
+      <h2 class="section-title">La différence se voit <em>immédiatement</em></h2>
+      <p class="section-desc">Quelques exemples de textiles repris : d'une moquette terne et tachée à une surface ravivée et fraîche.</p>
+    </div>
+    <!-- 👉 À COMPLÉTER : remplacer ces deux blocs par de vrais visuels avant/après validés (cf. panneau photos). -->
+    <div class="kc-ba-grid">
+      <div class="kc-ba-card kc-fade">
+        <span class="kc-ba-tag">Avant</span>
+        <div class="kc-ba-ph">
+          <svg class="kc-icon" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Photo « avant » à insérer<br>Moquette terne, tachée, marquée</span>
+        </div>
+      </div>
+      <div class="kc-ba-card is-after kc-fade">
+        <span class="kc-ba-tag">Après</span>
+        <div class="kc-ba-ph">
+          <svg class="kc-icon" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Photo « après » à insérer<br>Fibre ravivée, propre et fraîche</span>
+        </div>
+      </div>
+    </div>
+    <p class="kc-ba-note">Visuels d'illustration — les rendus réels varient selon le textile et son état initial.</p>
+  </div>
+</section>
+
+<!-- 8 · BÉNÉFICES -->
+<section class="kc-included">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Bénéfices</span>
+      <h2 class="section-title">Pourquoi nettoyer <em>en profondeur</em></h2>
+      <p class="section-desc">Un nettoyage régulier de vos textiles prolonge leur durée de vie, assainit vos espaces et soigne l'image que vous renvoyez à vos visiteurs.</p>
+    </div>
+    <div class="kc-included-grid">
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div><h4>Taches estompées</h4><p>Détachage ciblé pour atténuer les marques anciennes et les salissures du quotidien.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3v18M3 9h6l3-4 3 8 2-3h4"/></svg></div><h4>Odeurs neutralisées</h4><p>Désodorisation à la source : on traite l'origine de l'odeur, pas seulement le symptôme.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><h4>Air assaini</h4><p>Moins de poussières fines et d'allergènes retenus dans la fibre, pour un air plus sain.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div><h4>Durée de vie prolongée</h4><p>Une fibre entretenue s'use moins vite : on retarde le remplacement de vos moquettes.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Séchage rapide</h4><p>Humidité maîtrisée pour limiter l'immobilisation de vos espaces.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div><h4>Image soignée</h4><p>Des textiles nets valorisent vos bureaux, votre hôtel ou votre logement.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div><h4>Couleurs ravivées</h4><p>On retire le voile gris qui ternit la fibre et on redonne de l'éclat aux teintes.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 0 0M7 7a3 3 0 1 0 0 0"/></svg></div><h4>Méthode adaptée</h4><p>Produits et procédé choisis selon la fibre, le support et le niveau d'encrassement.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · PROCESS DEVIS -->
+<section class="kc-process">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Comment ça se passe</span>
+      <h2 class="section-title">De l'évaluation <em>à l'intervention</em></h2>
+      <p class="section-desc">Le prix dépend des surfaces, du type de textile et de l'état d'encrassement. Notre démarche tient en trois temps, sans engagement.</p>
+    </div>
+    <div class="kc-process-grid">
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Évaluation</h4><p>Vous nous décrivez les surfaces et textiles concernés ; une visite ou des photos nous aident à cerner le travail.</p><span class="kc-process-step-duration">Sur mesure</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Devis détaillé</h4><p>Vous recevez une proposition claire : surfaces, type de traitement, détachage et déroulé de l'intervention.</p><span class="kc-process-step-duration">Sans engagement</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Intervention</h4><p>Nous réalisons le détachage, l'injection-extraction et la désodorisation, en horaires adaptés à votre activité.</p><span class="kc-process-step-duration">Sur rendez-vous</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · SPLIT (alt) -->
+<section class="kc-split alt reverse">
+  <div class="kc-sha-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Canapés &amp; sièges</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">Au-delà des moquettes</span>
+        <h2>Canapés, fauteuils <em>et sièges</em></h2>
+        <p>Le même savoir-faire s'applique à vos <strong>textiles d'ameublement</strong> : canapés en tissu, fauteuils, sièges de bureau et de salle de réunion. Détachage, nettoyage en profondeur et désodorisation redonnent fraîcheur et confort.</p>
+        <p>Idéal en entretien régulier pour les espaces recevant du public, ou ponctuellement avant un événement ou un état des lieux. <a href="/devis/" class="kc-link">Demandez votre devis</a> en décrivant simplement vos besoins.</p>
+        <div class="kc-split-quote">Un canapé ou un siège de réunion en dit long sur une entreprise. Un textile net, c'est un détail qui se remarque.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · TÉMOIGNAGES -->
+<section>
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2 class="section-title">Ce qu'en disent <em>nos clients</em></h2>
+      <p class="section-desc">Quelques retours de clients professionnels et particuliers accompagnés en Île-de-France.</p>
+    </div>
+    <div class="kc-testi-grid">
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span class="kc-testi-badge">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">La moquette de nos open spaces était grise de passage. Après injection-extraction, les couleurs sont revenues et l'odeur de renfermé a disparu. Intervention le soir, bureaux opérationnels le lendemain.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">PR</div><div class="kc-testi-info"><strong>Philippe R.</strong><span>Office manager · Paris 8e</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span class="kc-testi-badge">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Nos chambres d'hôtel retrouvent un vrai coup de neuf à chaque passage. Détachage efficace, séchage rapide, aucune gêne pour l'exploitation. Prestataire sérieux et ponctuel.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">CD</div><div class="kc-testi-info"><strong>Claire D.</strong><span>Hôtellerie · Hauts-de-Seine</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span class="kc-testi-badge">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Canapé en tissu clair taché par les enfants : je le croyais bon pour la déchèterie. Il est comme neuf. Travail soigné et conseils utiles pour l'entretien.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">AM</div><div class="kc-testi-info"><strong>Aïcha M.</strong><span>Particulier · Seine-Saint-Denis</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · POURQUOI NOUS -->
+<section class="kc-why">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Pourquoi Kayli Clinn</span>
+      <h2 class="section-title">Un nettoyage textile <em>maîtrisé</em></h2>
+      <p class="section-desc">Le traitement des textiles demande méthode et prudence. Nous l'abordons avec le souci de la fibre et du résultat durable.</p>
+    </div>
+    <div class="kc-why-grid">
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">01 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+        <h3>Nettoyage en profondeur</h3>
+        <p>L'injection-extraction va chercher la saleté au cœur de la fibre, là où l'aspirateur ne va pas.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">02 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></div>
+        <h3>Respect de la fibre</h3>
+        <p>Produits adaptés et test préalable : on protège vos textiles autant qu'on les nettoie.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">03 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Souplesse d'organisation</h3>
+        <p>Interventions en horaires décalés pour limiter la gêne, et un séchage rapide pour reprendre l'activité.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · FAQ -->
+<section>
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
+      <p class="section-desc">Les questions que l'on nous pose le plus souvent sur le shampouinage et l'injection-extraction.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcShaToggleFaq(this)"><span class="kc-faq-q-text">Quelle est la différence entre shampouinage et injection-extraction ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le <strong>shampouinage</strong> désigne le nettoyage des textiles à l'aide d'une solution moussante. L'<strong>injection-extraction</strong> est une méthode en profondeur : la solution est injectée dans la fibre puis immédiatement aspirée avec la saleté décollée. Selon le textile et l'objectif, nous choisissons la méthode la plus adaptée — souvent l'injection-extraction pour les moquettes très sollicitées.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcShaToggleFaq(this)"><span class="kc-faq-q-text">Combien de temps faut-il pour que ça sèche ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous maîtrisons le taux d'humidité pendant l'extraction, ce qui permet un <strong>séchage rapide</strong>. Le délai exact dépend du textile, de l'épaisseur de la fibre, de l'aération et de la température des lieux. Nous organisons l'intervention pour que vos espaces soient de nouveau utilisables au plus tôt — souvent en intervenant en fin de journée. <!-- 👉 À COMPLÉTER : délai de séchage indicatif — à valider avant publication, ne rien chiffrer sans accord. --></div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcShaToggleFaq(this)"><span class="kc-faq-q-text">Toutes les taches partent-elles ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La plupart des salissures et taches courantes s'estompent fortement, voire disparaissent. Certaines taches anciennes, brûlures ou décolorations peuvent toutefois être <strong>définitivement fixées dans la fibre</strong>. Nous restons transparents : après examen, nous vous indiquons un résultat réaliste avant d'intervenir, sans promesse intenable.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcShaToggleFaq(this)"><span class="kc-faq-q-text">Pouvez-vous intervenir en dehors des heures d'activité ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content"><strong>Oui.</strong> Pour les bureaux, hôtels et espaces recevant du public, nous intervenons volontiers en <strong>horaires décalés</strong> (soirée, week-end) afin de ne pas perturber votre activité et de laisser le temps au séchage. Les modalités sont définies ensemble au moment du devis.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcShaToggleFaq(this)"><span class="kc-faq-q-text">Traitez-vous aussi les canapés et les sièges ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content"><strong>Oui.</strong> Le même savoir-faire s'applique aux <strong>textiles d'ameublement</strong> : canapés et fauteuils en tissu, sièges de bureau et de salle de réunion. Détachage, nettoyage en profondeur et désodorisation, avec des produits adaptés à chaque type de tissu.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcShaToggleFaq(this)"><span class="kc-faq-q-text">Faut-il déplacer les meubles ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Pour un résultat homogène, les zones à traiter doivent être <strong>dégagées et accessibles</strong>. Nous pouvons convenir ensemble du déplacement du petit mobilier ; le mobilier lourd peut être contourné. Nous précisons l'organisation lors de la visite ou de l'évaluation.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-sha-wrap">
+    <div class="kc-sha-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes interviennent sur le shampouinage de moquettes et textiles dans les huit départements franciliens.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Devis gratuit · Sans engagement</span>
+    <h2>Redonnez vie à vos moquettes<br>et <em>textiles</em></h2>
+    <p>Décrivez-nous vos surfaces et vos besoins : nous évaluons le travail et vous remettons un devis adapté. Détachage, nettoyage en profondeur, séchage rapide.</p>
+    <div class="kc-final-ctas">
+      <a href="/demande-de-devis/?presta=shampouinage-moquettes" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
+      <a href="/devis/" class="kc-btn kc-btn-secondary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcShaToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-sha .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service Shampouinage / injection-extraction (SANS prix : prestation sur devis) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Shampouinage et injection-extraction de moquettes, tapis et textiles",
+  "serviceType": "Nettoyage en profondeur de moquettes, tapis, canapés et textiles",
+  "description": "Shampouinage et injection-extraction de moquettes, tapis, sièges et canapés en Île-de-France : détachage, nettoyage en profondeur, désodorisation et séchage rapide pour bureaux, hôtels, logements et salles de réunion. Devis établi sur mesure.",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {"@type": "ContactPoint", "telephone": "+33670012061", "contactType": "customer service", "areaServed": "FR", "availableLanguage": "French"}
+  }
+}
+</script>

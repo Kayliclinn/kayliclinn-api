@@ -1,0 +1,547 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE « À PROPOS » — KAYLI CLINN
+   Page éditoriale · WordPress-ready (bloc « HTML personnalisé »)
+   URL : /a-propos/
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous.
+   Remplacez UNIQUEMENT l'URL entre url('…').
+   │ --photo-hero ..... grand fond éditorial du haut de page
+   │   ALT : « Équipe Kayli Clinn en intervention de nettoyage
+   │   professionnel en Île-de-France »
+   │ --photo-portrait . section « notre approche » (image de côté)
+   │   ALT : « Agent Kayli Clinn lors d'une prestation de
+   │   nettoyage soignée »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Intérieur lumineux remis à neuf par Kayli Clinn »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   │ (portrait 5:4 ~1100×880 pour --photo-portrait)
+
+   ⚠️ DONNÉES MÉTIER À COMPLÉTER (ne JAMAIS inventer) :
+   👉 année de création / ancienneté de l'entreprise
+   👉 nom & parcours de la dirigeante
+   👉 effectif / taille des équipes
+   👉 certifications, agréments, assurances (n° de police RC Pro…)
+   👉 chiffres (nombre de clients, d'interventions, de m² traités…)
+   👉 forme juridique / SIREN si vous souhaitez les afficher
+   Tant qu'ils ne sont pas fournis : textes neutres + placeholders.
+   Le bloc « en chiffres » reste MASQUÉ (commenté) jusqu'à validation.
+
+   🔗 Liens : /devis/ · /contact/ · tel:+33670012061
+      /turnover-airbnb/ · /nettoyage-apres-demenagement-etat-des-lieux/
+      /vitres-classiques/ · /entretien-de-bureaux/
+   ☎️ Téléphone : +33670012061
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
+   ════════════════════════════════════════════════════════ */
+.kc-about{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg');
+  --photo-portrait: url('https://kayliclinn.fr/wp-content/uploads/2026/05/pexels-nizam-344438805-19786710.jpg');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_clean_modern_apartment_interior_photographed_in_batch_2.png');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME (tokens partagés avec prestation.html)
+   ════════════════════════════════════════════════════════ */
+.kc-about{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-about *,.kc-about *::before,.kc-about *::after{box-sizing:border-box}
+.kc-about img{max-width:100%;display:block}
+.kc-about a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-about .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-about .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-about .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-about .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-about section{padding:clamp(84px,11vw,152px) 6%}
+.kc-about-wrap{max-width:1240px;margin:0 auto}
+.kc-about-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
+
+/* — sur-titre éditorial (filet + petites capitales) — */
+.kc-about .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
+.kc-about .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres : Fraunces serif + accents italiques — */
+.kc-about .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-about .section-title em,.kc-about h2 em,.kc-about h3 em,.kc-about .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-about .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-about svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-about .kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-about .kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-about .kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-about .kc-btn-primary svg{transition:transform .3s}
+.kc-about .kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-about .kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-about .kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO ÉDITORIAL
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-hero{position:relative;min-height:78vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.78) 0%,rgba(13,35,64,0.42) 46%,rgba(13,35,64,0.12) 72%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-about .kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-about .kc-hero-content{max-width:760px}
+.kc-about .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(40px,5vw,68px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
+.kc-about .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-about .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(2rem,4.6vw,3.7rem);color:#fff;line-height:1.06;letter-spacing:-0.02em;margin-bottom:clamp(28px,3.5vw,40px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-about .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-about .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:rgba(255,255,255,0.92);line-height:1.72;margin-bottom:clamp(40px,5vw,56px);max-width:600px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
+.kc-about .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.kc-about .kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-about .kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande de réassurance — */
+.kc-about .kc-trust{background:var(--navy);padding:30px 6%}
+.kc-about .kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
+.kc-about .kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-about .kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   QUI NOUS SOMMES — intro éditoriale (texte + image)
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-intro{background:var(--white)}
+.kc-about .kc-intro-grid{display:grid;grid-template-columns:1.08fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
+.kc-about .kc-intro-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);color:var(--navy);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px}
+.kc-about .kc-intro-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.kc-about .kc-intro-text p:last-child{margin-bottom:0}
+.kc-about .kc-intro-text strong{color:var(--navy);font-weight:600}
+.kc-about .kc-intro-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-portrait);background-size:cover;background-position:center;box-shadow:var(--shadow)}
+.kc-about .kc-intro-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
+.kc-about .kc-intro-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
+
+/* ════════════════════════════════════════════════════════
+   NOS VALEURS
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-values{background:var(--cream-2)}
+.kc-about .kc-values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-about .kc-value-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-about .kc-value-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-about .kc-value-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
+.kc-about .kc-value-card:hover .kc-value-icon{background:var(--teal);color:#fff}
+.kc-about .kc-value-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
+.kc-about .kc-value-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   NOS ENGAGEMENTS — panneau navy
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-commit-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
+.kc-about .kc-commit-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-about .kc-commit-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
+.kc-about .kc-commit .eyebrow{color:var(--teal)}
+.kc-about .kc-commit .eyebrow::before{background:var(--teal)}
+.kc-about .kc-commit h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
+.kc-about .kc-commit h2 em{color:var(--teal)}
+.kc-about .kc-commit-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
+.kc-about .kc-commit-text:last-child{margin-bottom:0}
+.kc-about .kc-commit-text strong{color:#fff;font-weight:600}
+.kc-about .kc-commit-points{display:flex;flex-direction:column;gap:14px}
+.kc-about .kc-commit-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
+.kc-about .kc-commit-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
+.kc-about .kc-commit-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-about .kc-commit-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
+.kc-about .kc-commit-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-banner{position:relative;min-height:480px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-about .kc-banner-content{max-width:900px}
+.kc-about .kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-about .kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-about .kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
+.kc-about .kc-banner h2 em{font-style:italic;color:#fff}
+.kc-about .kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   EN CHIFFRES (placeholder — masqué tant que non validé)
+   👉 À COMPLÉTER puis dé-commenter le bloc HTML correspondant.
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-figures-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-about .kc-figure{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:40px 28px;text-align:center}
+.kc-about .kc-figure-num{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(2.2rem,4vw,3rem);color:var(--navy);line-height:1}
+.kc-about .kc-figure-num em{font-style:italic;color:var(--teal-deep)}
+.kc-about .kc-figure-lab{font-size:13.5px;color:var(--muted);margin-top:12px;line-height:1.5}
+
+/* ════════════════════════════════════════════════════════
+   APERÇU DES PRESTATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-services{background:var(--cream)}
+.kc-about .kc-services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.kc-about .kc-service-card{display:flex;gap:22px;align-items:flex-start;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:32px 30px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-about .kc-service-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-about .kc-service-icon{width:52px;height:52px;flex-shrink:0;background:var(--teal-wash);color:var(--teal-deep);border-radius:13px;display:grid;place-items:center;transition:all .35s}
+.kc-about .kc-service-card:hover .kc-service-icon{background:var(--teal);color:#fff}
+.kc-about .kc-service-body{flex:1;min-width:0}
+.kc-about .kc-service-body h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em;line-height:1.25}
+.kc-about .kc-service-body p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:14px}
+.kc-about .kc-service-link{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--teal-deep);transition:gap .25s,color .25s}
+.kc-about .kc-service-card:hover .kc-service-link{color:var(--teal);gap:11px}
+
+/* ════════════════════════════════════════════════════════
+   ZONES
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-zones{background:var(--cream-2)}
+.kc-about .kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
+.kc-about .kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-about .kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-about .kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-about .kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL — vert uni
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
+.kc-about .kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
+.kc-about .kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kc-about .kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
+.kc-about .kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
+.kc-about .kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-about .kc-final-cta h2 em{font-style:italic;color:#fff}
+.kc-about .kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
+.kc-about .kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-about .kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
+.kc-about .kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
+.kc-about .kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-about .kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-about .kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-about .kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-about .kc-values-grid,.kc-about .kc-figures-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-about .kc-intro-grid,.kc-about .kc-commit-grid,.kc-about .kc-services-grid{grid-template-columns:1fr}
+  .kc-about .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-about .kc-hero{min-height:auto}
+  .kc-about .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
+  .kc-about .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:560px){
+  .kc-about section{padding:64px 6%}
+  .kc-about .kc-hero{min-height:auto;padding:130px 6% 64px}
+  .kc-about .kc-values-grid,.kc-about .kc-figures-grid{grid-template-columns:1fr}
+  .kc-about .kc-service-card{flex-direction:column;gap:16px}
+  .kc-about .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-about .kc-commit-block{border-radius:20px}
+  .kc-about .kc-btn{width:100%;justify-content:center}
+  .kc-about .kc-hero-ctas,.kc-about .kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-about *,.kc-about *::before,.kc-about *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-about .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-about">
+
+<!-- 1 · HERO ÉDITORIAL -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">À propos · Kayli Clinn</span>
+      <h1 class="kc-hero-title">Une équipe de nettoyage<br>à votre <em>écoute</em>, partout en Île-de-France</h1>
+      <p class="kc-hero-sub">Kayli Clinn est une société de nettoyage qui accompagne particuliers, professionnels, syndics et hôtes de location courte durée. Notre métier&nbsp;: vous livrer un espace propre, sain et prêt à l'usage, avec le même soin à chaque intervention.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Demander un devis
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/contact/" class="kc-btn kc-btn-secondary">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE (formulée comme engagements, sans chiffre inventé) -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg><span>Société de nettoyage en Île-de-France</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>Équipes formées et assurées</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Réponse rapide à votre demande</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Devis clair et sans engagement</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><span>Particuliers &amp; professionnels</span></div>
+  </div>
+</div>
+
+<!-- 3 · QUI NOUS SOMMES -->
+<section class="kc-intro">
+  <div class="kc-about-wrap">
+    <div class="kc-intro-grid">
+      <div class="kc-intro-text kc-fade">
+        <span class="eyebrow">Qui nous sommes</span>
+        <h2>Le nettoyage, fait <em>avec exigence</em></h2>
+        <!-- 👉 À COMPLÉTER : histoire de l'entreprise (année de création, parcours de la dirigeante). Texte ci-dessous volontairement neutre, à réécrire dès que ces éléments seront fournis — n'affirme aucune date ni aucun fait précis. -->
+        <p>Kayli Clinn est une <strong>société de nettoyage basée en Île-de-France</strong>. Nous intervenons auprès des particuliers comme des professionnels, pour des prestations ponctuelles ou régulières&nbsp;: turnover de locations courte durée, fin de bail et déménagement, vitrerie, fin de chantier, entretien de bureaux, copropriétés et remises en état.</p>
+        <p>Notre conviction est simple&nbsp;: un espace propre change tout. C'est pourquoi nous abordons chaque mission avec la même rigueur, quelle que soit sa taille. Nous adaptons nos méthodes à vos contraintes&nbsp;: <strong>horaires, type d'espace, niveau d'exigence et urgence</strong>.</p>
+        <p>Vous avez en face de vous une équipe <strong>à votre écoute, discrète et organisée</strong>, qui s'engage sur un résultat soigné — et le contrôle avant de quitter les lieux.</p>
+      </div>
+      <div class="kc-intro-img kc-fade">
+        <!-- 📸 IMG (fond CSS) · cf. panneau photos en tête de fichier · ALT à reporter si passage en vraie <img> -->
+        <span class="kc-intro-img-tag">Soin du détail</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · NOS VALEURS -->
+<section class="kc-values">
+  <div class="kc-about-wrap">
+    <div class="kc-about-header kc-fade">
+      <span class="eyebrow">Notre approche</span>
+      <h2 class="section-title">Les valeurs qui guident <em>chaque intervention</em></h2>
+      <p class="section-desc">Au-delà du résultat visible, c'est notre façon de travailler qui fait la différence&nbsp;: une présence sérieuse, attentive et respectueuse, du premier contact jusqu'à la livraison.</p>
+    </div>
+    <div class="kc-values-grid">
+      <div class="kc-value-card kc-fade">
+        <div class="kc-value-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Exigence</h3>
+        <p>Un standard élevé, appliqué partout&nbsp;: les recoins, les points de contact, les détails que l'on remarque seulement quand ils sont oubliés.</p>
+      </div>
+      <div class="kc-value-card kc-fade">
+        <div class="kc-value-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Fiabilité</h3>
+        <p>Des créneaux tenus et un travail constant d'une intervention à l'autre. Vous savez à quoi vous attendre, à chaque passage.</p>
+      </div>
+      <div class="kc-value-card kc-fade">
+        <div class="kc-value-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <h3>Discrétion</h3>
+        <p>Une présence sobre et respectueuse de vos lieux, de vos voyageurs et de vos collaborateurs. Nous intervenons sans déranger.</p>
+      </div>
+      <div class="kc-value-card kc-fade">
+        <div class="kc-value-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3>Respect</h3>
+        <p>Respect de vos espaces, de vos surfaces et de vos délais. Nous utilisons des produits adaptés à chaque matériau et à chaque usage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · NOS ENGAGEMENTS -->
+<section>
+  <div class="kc-about-wrap kc-fade">
+    <div class="kc-commit-block kc-commit">
+      <div class="kc-commit-grid">
+        <div>
+          <span class="eyebrow">Nos engagements</span>
+          <h2>Ce sur quoi <em>nous nous engageons</em></h2>
+          <p class="kc-commit-text">Choisir un prestataire de nettoyage, c'est lui faire entrer dans des lieux qui comptent. Nous prenons cet engagement au sérieux&nbsp;: <strong>des équipes formées et assurées</strong>, des <strong>produits adaptés</strong> à chaque surface, et une parole tenue sur les horaires comme sur le résultat.</p>
+          <p class="kc-commit-text">Notre fonctionnement repose sur la transparence&nbsp;: un <strong>devis clair en amont</strong>, pas de mauvaise surprise, et un travail contrôlé avant de quitter les lieux — avec reprise si nécessaire.</p>
+        </div>
+        <div class="kc-commit-points">
+          <div class="kc-commit-point">
+            <div class="kc-commit-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="kc-commit-point-content"><strong>Équipes formées et assurées</strong><span>Des intervenants préparés à chaque type de prestation, couverts pour travailler chez vous en confiance</span></div>
+          </div>
+          <div class="kc-commit-point">
+            <div class="kc-commit-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><circle cx="12" cy="17" r="2"/></svg></div>
+            <div class="kc-commit-point-content"><strong>Produits &amp; matériel adaptés</strong><span>Le bon produit pour le bon support, dans le respect de vos surfaces et de leur usage</span></div>
+          </div>
+          <div class="kc-commit-point">
+            <div class="kc-commit-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="kc-commit-point-content"><strong>Ponctualité</strong><span>Des rendez-vous tenus et des créneaux respectés, parce que votre temps compte autant que le nôtre</span></div>
+          </div>
+          <div class="kc-commit-point">
+            <div class="kc-commit-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></div>
+            <div class="kc-commit-point-content"><strong>Transparence</strong><span>Un devis clair avant intervention, un résultat contrôlé et repris si nécessaire</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Notre raison d'être</span>
+    <h2>Un espace propre,<br>c'est une <em>tranquillité</em> retrouvée</h2>
+    <p>Que ce soit un logement à remettre à neuf, des bureaux à entretenir ou une location à préparer entre deux voyageurs, notre rôle est le même&nbsp;: vous décharger du nettoyage et vous rendre un lieu sain, soigné et prêt à vivre. <a href="/devis/" class="kc-link">Demandez votre devis</a> en quelques minutes.</p>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════
+   6 · EN CHIFFRES — BLOC MASQUÉ
+   👉 À COMPLÉTER : ne JAMAIS inventer de chiffres (clients,
+      interventions, années d'expérience, m² traités…).
+   Dès que la propriétaire fournit des chiffres VÉRIFIABLES :
+   1) remplacez chaque « — » par la valeur (ex. <em>+250</em>),
+   2) ajustez le libellé,
+   3) retirez les balises de commentaire autour de la <section>.
+   Tant que le bloc reste commenté, il n'apparaît PAS sur le site.
+   ════════════════════════════════════════════════════════ -->
+<!--
+<section>
+  <div class="kc-about-wrap">
+    <div class="kc-about-header kc-fade">
+      <span class="eyebrow">En quelques chiffres</span>
+      <h2 class="section-title">Kayli Clinn <em>en bref</em></h2>
+      <p class="section-desc">👉 À COMPLÉTER : phrase d'introduction des indicateurs (uniquement des données vérifiables).</p>
+    </div>
+    <div class="kc-figures-grid">
+      <div class="kc-figure kc-fade"><div class="kc-figure-num"><em>—</em></div><div class="kc-figure-lab">👉 À COMPLÉTER : libellé (ex. interventions réalisées)</div></div>
+      <div class="kc-figure kc-fade"><div class="kc-figure-num"><em>8</em></div><div class="kc-figure-lab">Départements franciliens couverts</div></div>
+      <div class="kc-figure kc-fade"><div class="kc-figure-num"><em>—</em></div><div class="kc-figure-lab">👉 À COMPLÉTER : libellé (ex. années d'expérience)</div></div>
+      <div class="kc-figure kc-fade"><div class="kc-figure-num"><em>—</em></div><div class="kc-figure-lab">👉 À COMPLÉTER : libellé (ex. clients accompagnés)</div></div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- 7 · APERÇU DES PRESTATIONS -->
+<section class="kc-services">
+  <div class="kc-about-wrap">
+    <div class="kc-about-header kc-fade">
+      <span class="eyebrow">Nos prestations</span>
+      <h2 class="section-title">Ce que nous <em>prenons en charge</em></h2>
+      <p class="section-desc">Un seul interlocuteur pour l'essentiel de vos besoins de nettoyage en Île-de-France, du particulier au professionnel.</p>
+    </div>
+    <div class="kc-services-grid">
+      <a class="kc-service-card kc-fade" href="/turnover-airbnb/">
+        <div class="kc-service-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <div class="kc-service-body">
+          <h3>Turnover Airbnb</h3>
+          <p>La préparation complète de vos locations courte durée entre deux voyageurs&nbsp;: ménage, linge, réassort et contrôle qualité.</p>
+          <span class="kc-service-link">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a class="kc-service-card kc-fade" href="/nettoyage-apres-demenagement-etat-des-lieux/">
+        <div class="kc-service-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
+        <div class="kc-service-body">
+          <h3>Nettoyage après déménagement &amp; état des lieux</h3>
+          <p>La remise en état d'un logement vide, en sortie de bail comme à l'entrée, pour aborder l'état des lieux sereinement.</p>
+          <span class="kc-service-link">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a class="kc-service-card kc-fade" href="/vitres-classiques/">
+        <div class="kc-service-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+        <div class="kc-service-body">
+          <h3>Nettoyage de vitres</h3>
+          <p>Des vitrages sans traces, à l'intérieur comme à l'extérieur&nbsp;: fenêtres, baies vitrées et surfaces vitrées de votre logement.</p>
+          <span class="kc-service-link">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a class="kc-service-card kc-fade" href="/entretien-de-bureaux/">
+        <div class="kc-service-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
+        <div class="kc-service-body">
+          <h3>Entretien de bureaux</h3>
+          <p>L'entretien régulier ou ponctuel de vos locaux professionnels, organisé autour de vos horaires et de votre activité.</p>
+          <span class="kc-service-link">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · ZONES D'INTERVENTION -->
+<section class="kc-zones">
+  <div class="kc-about-wrap">
+    <div class="kc-about-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes se déplacent dans les huit départements franciliens, auprès des particuliers comme des professionnels.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Devis gratuit · Réponse rapide</span>
+    <h2>Parlons de votre <em>projet</em></h2>
+    <p>Une question, un besoin ponctuel ou un suivi régulier&nbsp;? Décrivez-nous votre situation&nbsp;: nous revenons vers vous rapidement avec une proposition claire.</p>
+    <div class="kc-final-ctas">
+      <a href="/devis/" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="/contact/" class="kc-btn kc-btn-secondary">Nous contacter</a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">06 70 01 20 61</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-about .kc-fade').forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+<!-- ════════════════════════════════════════════════════════
+   Données structurées SEO — Organisation Kayli Clinn
+   ⚠️ Ne contient QUE des champs connus / sûrs.
+   👉 À COMPLÉTER (puis ajouter au JSON) une fois validés :
+      "foundingDate", "founder", "numberOfEmployees",
+      "vatID"/"taxID" (SIREN), "hasCredential" (certifications),
+      "aggregateRating" (uniquement avis réels vérifiables).
+   ════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CleaningService",
+  "@id": "https://kayliclinn.fr/#organisation",
+  "name": "Kayli Clinn",
+  "url": "https://kayliclinn.fr/",
+  "telephone": "+33670012061",
+  "email": "contact@kayliclinn.fr",
+  "description": "Société de nettoyage en Île-de-France : turnover Airbnb, fin de bail et déménagement, vitrerie, fin de chantier, entretien de bureaux, copropriétés et remises en état.",
+  "areaServed": [
+    {"@type": "AdministrativeArea", "name": "Paris (75)"},
+    {"@type": "AdministrativeArea", "name": "Seine-et-Marne (77)"},
+    {"@type": "AdministrativeArea", "name": "Yvelines (78)"},
+    {"@type": "AdministrativeArea", "name": "Essonne (91)"},
+    {"@type": "AdministrativeArea", "name": "Hauts-de-Seine (92)"},
+    {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis (93)"},
+    {"@type": "AdministrativeArea", "name": "Val-de-Marne (94)"},
+    {"@type": "AdministrativeArea", "name": "Val-d'Oise (95)"}
+  ],
+  "knowsLanguage": "fr"
+}
+</script>

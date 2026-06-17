@@ -1,0 +1,2500 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE DEVIS V3 — Wizard Multi-Étapes Premium
+
+   AMÉLIORATIONS V3 (vs V2) :
+   ✅ Accessibilité WCAG AA complète (ARIA, focus trap, labels)
+   ✅ Honeypot anti-spam + emplacement nonce WP
+   ✅ Sauvegarde automatique (sessionStorage) - survit aux refresh
+   ✅ État de chargement sur submit (anti double-clic)
+   ✅ Bannière d'erreur stylée (au lieu d'alert)
+   ✅ Compteur de caractères sur le message
+   ✅ Radios ultra-visibles quand sélectionnés
+   ✅ Focus trap accessible sur modale
+   ✅ JS refactoré en IIFE + addEventListener
+   ✅ Fix bug formatage téléphone (curseur)
+   ✅ Support prefers-reduced-motion
+   ✅ Intégration WordPress prête (AJAX)
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+.kc-devis{
+  --teal:#0FA7A5;--teal-dark:#0B8483;--teal-deep:#076E6D;--teal-light:#E6F5F5;--teal-soft:#F0FAFA;
+  --dark:#0D2340;--dark-light:#1a3a5c;
+  --bg:#F8F9FB;--white:#FFFFFF;
+  --gray:#6B7280;--gray-light:#E5E7EB;--gray-soft:#F3F4F6;
+  --border:#E5E7EB;
+  --text:#1F2937;--text-light:#4B5563;
+  --terra:#E07856;--terra-dark:#C45A38;--amber:#F59E0B;--green:#10B981;
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:16px;line-height:1.5;color:var(--text);
+  background:var(--bg);min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+.kc-devis *,.kc-devis *::before,.kc-devis *::after{box-sizing:border-box}
+.kc-devis a{color:inherit;text-decoration:none}
+.kc-devis button{font-family:inherit;cursor:pointer;border:none;background:none;padding:0;color:inherit}
+.kc-devis input,.kc-devis select,.kc-devis textarea{font-family:inherit;font-size:inherit}
+
+/* Focus visible accessible */
+.kc-devis a:focus-visible,.kc-devis button:focus-visible,
+.kc-devis input:focus-visible,.kc-devis select:focus-visible,.kc-devis textarea:focus-visible,
+.kc-devis .option-card:focus-visible,.kc-devis .opt-row:focus-visible,
+.kc-devis [tabindex]:focus-visible{
+  outline:2px solid var(--teal-dark);outline-offset:2px;
+}
+
+/* Honeypot anti-spam */
+.kc-devis .honeypot{position:absolute !important;left:-9999px !important;width:1px;height:1px;overflow:hidden}
+
+/* Sr-only */
+.kc-devis .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* NAV TOP */
+.kc-devis .nav-top{padding:24px 60px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:var(--white)}
+.kc-devis .nav-logo{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:600;color:var(--dark);letter-spacing:-0.5px}
+.kc-devis .nav-logo em{color:var(--teal-dark);font-style:normal}
+.kc-devis .nav-subtitle{font-size:12px;color:var(--gray);letter-spacing:0.04em;text-transform:uppercase;font-weight:500}
+
+/* BANDEAU "Reprise sauvegarde" */
+.kc-devis .resume-banner{
+  background:var(--amber);color:#fff;padding:10px 60px;
+  display:none;align-items:center;justify-content:space-between;gap:14px;font-size:13px;
+}
+.kc-devis .resume-banner.show{display:flex}
+.kc-devis .resume-banner-actions{display:flex;gap:8px}
+.kc-devis .resume-banner button{
+  background:rgba(255,255,255,0.2);color:#fff;padding:5px 12px;border-radius:6px;
+  font-size:12px;font-weight:600;transition:background .2s;
+}
+.kc-devis .resume-banner button:hover{background:rgba(255,255,255,0.3)}
+
+/* PROGRESS BAR */
+.kc-devis .progress-section{background:var(--white);border-bottom:1px solid var(--border);padding:18px 60px;position:sticky;top:0;z-index:50}
+.kc-devis .progress-bar{display:flex;align-items:center;gap:24px;max-width:1200px;margin:0 auto}
+.kc-devis .pb-progress{flex:1;height:4px;background:var(--gray-soft);border-radius:2px;overflow:hidden}
+.kc-devis .pb-progress-fill{height:100%;background:linear-gradient(90deg,var(--teal),var(--teal-dark));border-radius:2px;transition:width .4s cubic-bezier(.4,0,.2,1);width:0%}
+.kc-devis .pb-counter{font-family:'Inter',sans-serif;font-size:12.5px;color:var(--gray);font-variant-numeric:tabular-nums;letter-spacing:0.03em;white-space:nowrap;font-weight:500}
+.kc-devis .pb-counter strong{color:var(--dark);font-weight:700}
+.kc-devis .pb-back{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--gray);font-weight:500;transition:color .2s;padding:6px 10px;border-radius:6px}
+.kc-devis .pb-back:hover{color:var(--dark);background:var(--gray-soft)}
+.kc-devis .pb-back svg{transition:transform .2s}
+.kc-devis .pb-back:hover svg{transform:translateX(-2px)}
+
+/* STEP CONTAINER */
+.kc-devis .step-container{max-width:920px;margin:0 auto;padding:60px 40px 120px;min-height:calc(100vh - 180px)}
+.kc-devis .step{display:none;animation:kcFadeUp .4s cubic-bezier(.16,1,.3,1)}
+.kc-devis .step.active{display:block}
+@keyframes kcFadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+.kc-devis .step-tag{display:inline-flex;align-items:center;gap:10px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin-bottom:22px}
+.kc-devis .step-tag::before{content:'';width:24px;height:1px;background:var(--teal)}
+.kc-devis .step-title{font-family:'Fraunces',Georgia,serif;font-size:clamp(26px,4vw,38px);font-weight:600;color:var(--dark);line-height:1.12;letter-spacing:normal;margin-bottom:16px}
+.kc-devis .step-title em{color:var(--teal-dark);font-style:normal;position:relative;display:inline-block}
+.kc-devis .step-title em::after{content:'';position:absolute;bottom:4px;left:-2px;right:-2px;height:8px;background:var(--teal);opacity:0.18;border-radius:5px;z-index:-1}
+.kc-devis .step-desc{font-size:16px;color:var(--text-light);max-width:640px;line-height:1.65;margin-bottom:44px}
+
+/* OPTION CARDS */
+.kc-devis .options-grid{display:grid;gap:14px;margin-bottom:36px}
+.kc-devis .options-grid.cols-2{grid-template-columns:1fr 1fr}
+.kc-devis .options-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.kc-devis .options-grid.cols-4{grid-template-columns:repeat(4,1fr)}
+.kc-devis .option-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px;cursor:pointer;position:relative;transition:all .25s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;gap:8px;text-align:left;width:100%}
+.kc-devis .option-card:hover{border-color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 12px 32px rgba(15,167,165,0.08)}
+.kc-devis .option-card.selected{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 12px 32px rgba(15,167,165,0.35);transform:scale(1.02)}
+.kc-devis .option-card.selected .oc-num,
+.kc-devis .option-card.selected .oc-desc{color:rgba(255,255,255,0.85)}
+.kc-devis .option-card.selected .oc-title{color:#fff}
+.kc-devis .option-card.selected::after{content:'';position:absolute;top:14px;right:14px;width:24px;height:24px;background:#fff;border-radius:50%;background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%230FA7A5" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');background-size:14px;background-position:center;background-repeat:no-repeat}
+.kc-devis .oc-icon{width:38px;height:38px;border-radius:10px;background:var(--teal-light);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:4px;transition:all .25s}
+.kc-devis .option-card.selected .oc-icon{background:rgba(255,255,255,0.25);color:#fff}
+.kc-devis .oc-num{font-family:'Inter',sans-serif;font-size:12px;color:var(--gray);letter-spacing:0.08em;font-weight:600;margin-bottom:2px}
+.kc-devis .oc-title{font-family:'Fraunces',Georgia,serif;font-size:16px;font-weight:600;color:var(--dark);line-height:1.25;letter-spacing:-0.3px}
+.kc-devis .oc-desc{font-size:13px;color:var(--gray);line-height:1.5}
+.kc-devis .oc-badge{display:inline-block;font-size:11px;font-weight:600;color:var(--teal-deep);background:var(--teal-light);padding:3px 10px;border-radius:100px;letter-spacing:0.02em;margin-top:4px;align-self:flex-start}
+.kc-devis .option-card.selected .oc-badge{background:rgba(255,255,255,0.25);color:#fff}
+
+.kc-devis svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ZONE IDF */
+.kc-devis .zone-checkbox-card{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:28px 32px;display:flex;align-items:center;gap:20px;cursor:pointer;max-width:620px;margin:0 auto 48px;transition:all .25s cubic-bezier(.4,0,.2,1)}
+.kc-devis .zone-checkbox-card:hover{border-color:var(--teal-dark);box-shadow:0 12px 32px rgba(15,167,165,0.1);transform:translateY(-2px)}
+.kc-devis .zone-checkbox-card.checked{border-color:var(--teal);background:var(--teal-soft);box-shadow:0 12px 32px rgba(15,167,165,0.15)}
+.kc-devis .zone-checkbox-square{width:38px;height:38px;border:2px solid var(--gray-light);border-radius:10px;background:var(--white);display:grid;place-items:center;flex-shrink:0;transition:all .25s}
+.kc-devis .zone-checkbox-card.checked .zone-checkbox-square{background:var(--teal);border-color:var(--teal)}
+.kc-devis .zone-checkbox-square svg{color:transparent;transition:color .2s}
+.kc-devis .zone-checkbox-card.checked .zone-checkbox-square svg{color:#fff}
+.kc-devis .zone-checkbox-text{font-family:'Inter',sans-serif;font-size:17px;font-weight:700;color:var(--dark);line-height:1.35;letter-spacing:-0.3px}
+.kc-devis .zone-checkbox-text em{color:var(--teal-dark);font-style:normal}
+
+/* Carte IDF (positions géo correctes) */
+.kc-devis .zone-map{position:relative;width:100%;max-width:500px;height:380px;margin:0 auto 24px}
+.kc-devis .zone-circle{position:absolute;background:var(--white);border:1.5px solid var(--gray-light);border-radius:50%;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:700;color:var(--dark);letter-spacing:-0.5px;transition:all .35s cubic-bezier(.4,0,.2,1)}
+.kc-devis .zone-circle.center{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 8px 24px rgba(15,167,165,0.35);z-index:5}
+.kc-devis .zone-c-95{width:115px;height:115px;font-size:19px;top:0;left:50%;transform:translateX(-50%)}
+.kc-devis .zone-c-78{width:140px;height:140px;font-size:22px;top:115px;left:0}
+.kc-devis .zone-c-93{width:65px;height:65px;font-size:14px;top:120px;left:62%;transform:translateX(-50%)}
+.kc-devis .zone-c-77{width:160px;height:160px;font-size:24px;top:100px;right:0}
+.kc-devis .zone-c-92{width:60px;height:60px;font-size:14px;top:170px;left:35%;transform:translateX(-50%)}
+.kc-devis .zone-c-75{width:75px;height:75px;font-size:17px;top:163px;left:50%;transform:translateX(-50%)}
+.kc-devis .zone-c-94{width:60px;height:60px;font-size:14px;top:235px;left:60%;transform:translateX(-50%)}
+.kc-devis .zone-c-91{width:130px;height:130px;font-size:21px;bottom:0;left:50%;transform:translateX(-50%)}
+.kc-devis .zone-map-label{text-align:center;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:var(--text-light);font-weight:600;margin-top:8px}
+.kc-devis .zone-map-label strong{color:var(--dark);font-weight:700}
+
+/* SLIDER */
+.kc-devis .slider-block{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:36px 32px;margin-bottom:32px}
+.kc-devis .slider-value{font-family:'Fraunces',Georgia,serif;font-size:44px;font-weight:600;color:var(--dark);line-height:1;letter-spacing:-0.5px;margin-bottom:8px;display:flex;align-items:flex-end;gap:10px}
+.kc-devis .slider-value em{color:var(--teal-dark);font-style:normal}
+.kc-devis .slider-value-unit{font-family:'Inter',sans-serif;font-size:18px;color:var(--gray);font-weight:500;margin-bottom:12px;letter-spacing:0}
+.kc-devis .slider-hint{font-size:13.5px;color:var(--text-light);margin-bottom:28px}
+.kc-devis input[type=range]{-webkit-appearance:none;width:100%;height:4px;outline:none;cursor:pointer;background:var(--gray-light);border-radius:2px}
+.kc-devis input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--teal);border:5px solid var(--white);box-shadow:0 0 0 1.5px var(--teal),0 4px 12px rgba(15,167,165,0.3);cursor:grab}
+.kc-devis input[type=range]::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--teal);border:5px solid var(--white);box-shadow:0 0 0 1.5px var(--teal),0 4px 12px rgba(15,167,165,0.3);cursor:grab}
+.kc-devis .slider-marks{display:flex;justify-content:space-between;margin-top:14px;font-size:11px;color:var(--gray);font-weight:500}
+
+/* CHECKBOXES OPTIONS */
+.kc-devis .opts-grid{display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.kc-devis .opt-row{display:flex;align-items:center;justify-content:space-between;padding:18px 22px;background:var(--white);border:1.5px solid var(--border);border-radius:12px;cursor:pointer;transition:all .2s;gap:16px;width:100%;text-align:left}
+.kc-devis .opt-row:hover{border-color:var(--teal-dark)}
+.kc-devis .opt-row.selected{border-color:var(--teal);background:var(--teal-soft)}
+.kc-devis .opt-row.selected .opt-check{background:var(--teal);border-color:var(--teal);color:#fff}
+.kc-devis .opt-left{display:flex;align-items:flex-start;gap:14px;flex:1}
+.kc-devis .opt-icon{width:36px;height:36px;background:var(--teal-light);color:var(--teal-deep);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-devis .opt-row.selected .opt-icon{background:var(--teal);color:#fff}
+.kc-devis .opt-info{flex:1}
+.kc-devis .opt-name{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--dark);margin-bottom:2px;line-height:1.3;letter-spacing:-0.2px}
+.kc-devis .opt-desc-txt{font-size:12.5px;color:var(--text-light);line-height:1.5}
+.kc-devis .opt-right{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.kc-devis .opt-price{font-family:'Inter',sans-serif;font-size:15px;color:var(--teal-deep);font-weight:700;white-space:nowrap}
+.kc-devis .opt-check{width:22px;height:22px;border:1.5px solid var(--border);border-radius:6px;display:grid;place-items:center;font-size:12px;color:transparent;transition:all .2s;background:var(--white);flex-shrink:0;font-weight:700}
+
+/* FORMULAIRE */
+.kc-devis .form-block{background:var(--white);border:1.5px solid var(--border);border-radius:16px;padding:32px;margin-bottom:20px}
+.kc-devis .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.kc-devis .form-field{display:flex;flex-direction:column;gap:6px;position:relative}
+.kc-devis .form-field.full{grid-column:1/-1}
+.kc-devis .form-field label{font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;color:var(--dark);letter-spacing:0.01em}
+.kc-devis .form-field label .req{color:var(--teal-dark);margin-left:2px}
+.kc-devis .form-field input,.kc-devis .form-field select,.kc-devis .form-field textarea{padding:12px 14px;border:1.5px solid var(--border);background:var(--bg);font-size:14px;color:var(--text);border-radius:9px;transition:all .2s;width:100%;outline:none}
+.kc-devis .form-field input:focus,.kc-devis .form-field select:focus,.kc-devis .form-field textarea:focus{border-color:var(--teal-dark);background:var(--white);box-shadow:0 0 0 3px rgba(15,167,165,0.15)}
+.kc-devis .form-field textarea{min-height:90px;resize:vertical;font-family:'Inter',sans-serif}
+.kc-devis .form-field.invalid input,.kc-devis .form-field.invalid select,.kc-devis .form-field.invalid textarea{border-color:var(--terra-dark);background:rgba(224,120,86,0.04)}
+.kc-devis .form-field.valid input,.kc-devis .form-field.valid select,.kc-devis .form-field.valid textarea{border-color:var(--green)}
+.kc-devis .form-error{font-size:12px;color:var(--terra-dark);margin-top:6px;line-height:1.4;font-weight:600;display:none;align-items:center;gap:6px}
+.kc-devis .form-field.invalid .form-error{display:flex}
+.kc-devis .form-error svg{flex-shrink:0}
+.kc-devis .form-helper{font-size:11.5px;color:var(--text-light);margin-top:4px;font-style:italic;line-height:1.4;display:flex;justify-content:space-between;gap:10px}
+.kc-devis .char-counter{font-style:normal;color:var(--text-light);font-weight:500;font-feature-settings:'tnum'}
+.kc-devis .char-counter.warning{color:var(--amber)}
+.kc-devis .char-counter.danger{color:var(--terra-dark);font-weight:600}
+
+/* BANNIÈRE ERREUR (au lieu d'alert) */
+.kc-devis .error-banner{
+  background:rgba(224,120,86,0.1);border:1px solid var(--terra);border-radius:10px;
+  padding:14px 18px;margin-bottom:20px;display:none;
+  align-items:center;gap:12px;animation:kcFadeUp .3s ease;
+}
+.kc-devis .error-banner.show{display:flex}
+.kc-devis .error-banner svg{color:var(--terra-dark);flex-shrink:0}
+.kc-devis .error-banner-text{font-size:13.5px;color:var(--terra-dark);font-weight:500;flex:1}
+.kc-devis .error-banner-close{background:none;color:var(--terra-dark);padding:4px 8px;border-radius:6px;font-size:12px}
+.kc-devis .error-banner-close:hover{background:rgba(224,120,86,0.15)}
+
+/* NAV BUTTONS */
+.kc-devis .step-nav{display:flex;justify-content:space-between;align-items:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--border)}
+.kc-devis .btn-back{display:flex;align-items:center;gap:8px;color:var(--gray);font-family:'Roboto',sans-serif;font-size:14px;font-weight:500;padding:10px 14px;border-radius:8px;transition:all .2s}
+.kc-devis .btn-back:hover{color:var(--dark);background:var(--gray-soft)}
+.kc-devis .btn-back svg{transition:transform .2s}
+.kc-devis .btn-back:hover svg{transform:translateX(-3px)}
+.kc-devis .btn-next{background:var(--teal);color:#fff;padding:14px 36px;border-radius:10px;font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;transition:all .25s cubic-bezier(.4,0,.2,1);display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(15,167,165,0.25);position:relative;min-height:48px}
+.kc-devis .btn-next:hover:not(:disabled){background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,167,165,0.4)}
+.kc-devis .btn-next:disabled{opacity:0.35;cursor:not-allowed;transform:none;background:var(--gray);box-shadow:none}
+.kc-devis .btn-next svg{transition:transform .2s}
+.kc-devis .btn-next:hover:not(:disabled) svg{transform:translateX(2px)}
+.kc-devis .btn-next.loading .btn-text,
+.kc-devis .btn-next.loading svg{opacity:0}
+.kc-devis .btn-next .spinner{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:20px;height:20px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;display:none;animation:kcSpin .8s linear infinite}
+.kc-devis .btn-next.loading .spinner{display:block}
+@keyframes kcSpin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+/* RESULT */
+.kc-devis .result-container{display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start;margin-top:32px}
+.kc-devis .result-main{background:var(--white);border:1.5px solid var(--border);border-radius:18px;padding:40px}
+.kc-devis .result-label{font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:12px;font-weight:600;display:flex;align-items:center;gap:8px}
+.kc-devis .result-label-dot{width:6px;height:6px;background:var(--teal);border-radius:50%;animation:kcPulse 2s infinite}
+@keyframes kcPulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.kc-devis .result-price{font-family:'Fraunces',Georgia,serif;font-size:44px;font-weight:600;color:var(--dark);line-height:1;letter-spacing:-0.5px;margin-bottom:8px}
+.kc-devis .result-price em{color:var(--teal-dark);font-style:normal}
+.kc-devis .result-from{font-size:14px;color:var(--text-light);margin-bottom:32px}
+.kc-devis .result-detail{display:flex;flex-direction:column;gap:14px;padding:24px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:24px}
+.kc-devis .rd-row{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.kc-devis .rd-name{font-size:13.5px;color:var(--text);font-weight:500;margin-bottom:2px}
+.kc-devis .rd-sub{font-size:12px;color:var(--gray);line-height:1.4}
+.kc-devis .rd-amount{font-family:'Inter',sans-serif;font-size:14.5px;color:var(--dark);font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.kc-devis .result-total{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-top:2px solid var(--dark);margin-bottom:28px}
+.kc-devis .result-total-label{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:var(--dark);letter-spacing:-0.2px}
+.kc-devis .result-total-val{font-family:'Fraunces',Georgia,serif;font-size:28px;color:var(--dark);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-0.8px}
+.kc-devis .result-cta{display:flex;flex-direction:column;gap:10px}
+.kc-devis .cta-submit{display:flex;align-items:center;gap:14px;padding:16px 22px;border-radius:12px;cursor:pointer;transition:all .25s;text-align:left;width:100%;position:relative;min-height:60px}
+.kc-devis .cta-submit-primary{background:var(--teal);color:#fff;box-shadow:0 4px 16px rgba(15,167,165,0.3)}
+.kc-devis .cta-submit-primary:hover:not(:disabled){background:var(--teal-dark);transform:translateY(-1px);box-shadow:0 12px 32px rgba(15,167,165,0.45)}
+.kc-devis .cta-submit-primary:disabled{opacity:0.7;cursor:not-allowed}
+.kc-devis .cta-submit-secondary{background:var(--white);color:var(--dark);border:1.5px solid var(--border)}
+.kc-devis .cta-submit-secondary:hover{border-color:var(--teal-dark)}
+.kc-devis .cta-submit-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,0.2);display:grid;place-items:center;flex-shrink:0}
+.kc-devis .cta-submit-secondary .cta-submit-icon{background:var(--teal-light);color:var(--teal-deep)}
+.kc-devis .cta-submit-content{flex:1}
+.kc-devis .cta-submit-name{font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;letter-spacing:-0.2px;margin-bottom:2px}
+.kc-devis .cta-submit-desc{font-size:11.5px;line-height:1.4;opacity:0.85}
+.kc-devis .cta-submit .spinner{position:absolute;right:20px;top:50%;transform:translateY(-50%);width:22px;height:22px;border:2.5px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;display:none;animation:kcSpin .8s linear infinite}
+.kc-devis .cta-submit.loading .spinner{display:block}
+.kc-devis .cta-submit.loading{padding-right:60px}
+
+.kc-devis .result-aside{display:flex;flex-direction:column;gap:14px}
+.kc-devis .aside-card{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:24px}
+.kc-devis .aside-card.dark{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);color:#fff;border-color:transparent}
+.kc-devis .aside-title{font-family:'Fraunces',Georgia,serif;font-size:14px;color:var(--dark);font-weight:600;letter-spacing:-0.2px;margin-bottom:14px}
+.kc-devis .aside-card.dark .aside-title{color:#fff}
+.kc-devis .aside-list{display:flex;flex-direction:column;gap:10px}
+.kc-devis .aside-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--text-light);line-height:1.5}
+.kc-devis .aside-card.dark .aside-item{color:rgba(255,255,255,0.85)}
+.kc-devis .aside-item svg{color:var(--teal);flex-shrink:0;margin-top:2px}
+.kc-devis .aside-card .aside-item a{color:inherit;text-decoration:underline}
+.kc-devis .result-note{font-size:12.5px;color:var(--text-light);line-height:1.6;margin-top:14px;font-style:italic;text-align:center}
+
+/* PRESTA CATEGORIES */
+.kc-devis .presta-cats{display:flex;flex-direction:column;gap:28px}
+.kc-devis .presta-cat-title{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--dark);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px;padding-left:22px;position:relative}
+.kc-devis .presta-cat-title::before{content:'';position:absolute;top:50%;left:0;width:14px;height:1px;background:var(--teal);transform:translateY(-50%)}
+.kc-devis .presta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+
+/* MODAL */
+.kc-devis-modal{position:fixed;inset:0;background:rgba(13,35,64,0.65);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);z-index:9999;display:none;align-items:center;justify-content:center;padding:20px;animation:kcModalFadeIn .25s ease}
+.kc-devis-modal.show{display:flex}
+@keyframes kcModalFadeIn{from{opacity:0}to{opacity:1}}
+.kc-devis-modal-content{background:#fff;border-radius:24px;padding:48px 40px 40px;max-width:480px;width:100%;text-align:center;box-shadow:0 40px 100px rgba(13,35,64,0.3);animation:kcModalSlide .35s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;font-family:'Inter',sans-serif}
+@keyframes kcModalSlide{from{opacity:0;transform:translateY(30px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.kc-devis-modal-icon{width:84px;height:84px;background:#E6F5F5;color:#0FA7A5;border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;position:relative;animation:kcIconPop .5s cubic-bezier(.16,1,.3,1) .2s both}
+@keyframes kcIconPop{0%{transform:scale(0);opacity:0}60%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+.kc-devis-modal-icon::after{content:'';position:absolute;inset:-8px;border:3px solid #0FA7A5;border-radius:50%;opacity:0.2;animation:kcRipple 1.5s ease-out infinite}
+@keyframes kcRipple{from{transform:scale(0.9);opacity:0.6}to{transform:scale(1.4);opacity:0}}
+.kc-devis-modal h2{font-family:'Fraunces',Georgia,serif;font-size:24px;font-weight:600;color:#0D2340;letter-spacing:-0.5px;margin-bottom:12px;line-height:1.2}
+.kc-devis-modal h2 em{color:#0B8483;font-style:normal}
+.kc-devis-modal p{font-size:15px;color:#4B5563;line-height:1.65;margin-bottom:8px}
+.kc-devis-modal-recap{background:#F8F9FB;border-radius:12px;padding:18px 22px;margin:24px 0;text-align:left;font-size:13.5px;color:#1F2937}
+.kc-devis-modal-recap strong{display:block;font-family:'Inter',sans-serif;font-size:11.5px;letter-spacing:0.12em;text-transform:uppercase;color:#6B7280;margin-bottom:8px;font-weight:600}
+.kc-devis-modal-recap-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E5E7EB}
+.kc-devis-modal-recap-row:last-child{border-bottom:none}
+.kc-devis-modal-recap-row span:first-child{color:#6B7280;font-size:12.5px}
+.kc-devis-modal-recap-row span:last-child{color:#0D2340;font-weight:600}
+.kc-devis-modal-actions{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.kc-devis-modal-btn{padding:14px 28px;border-radius:10px;font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.02em;cursor:pointer;transition:all .25s;border:none}
+.kc-devis-modal-btn-primary{background:#0FA7A5;color:#fff;box-shadow:0 4px 14px rgba(15,167,165,0.3)}
+.kc-devis-modal-btn-primary:hover{background:#0B8483;transform:translateY(-1px);box-shadow:0 8px 24px rgba(15,167,165,0.4)}
+.kc-devis-modal-btn-secondary{background:transparent;color:#6B7280;border:1.5px solid #E5E7EB}
+.kc-devis-modal-btn-secondary:hover{border-color:#0D2340;color:#0D2340}
+.kc-devis-modal-close{position:absolute;top:14px;right:14px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;color:#6B7280;background:none;border:none;cursor:pointer;transition:all .2s}
+.kc-devis-modal-close:hover{background:#F3F4F6;color:#1F2937}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .kc-devis .nav-top{padding:18px 32px}
+  .kc-devis .progress-section{padding:14px 32px}
+  .kc-devis .resume-banner{padding:10px 32px}
+  .kc-devis .step-container{padding:40px 24px 100px}
+  .kc-devis .step-title{font-size:clamp(24px,3.5vw,34px);letter-spacing:normal}
+  .kc-devis .options-grid.cols-3,.kc-devis .options-grid.cols-4{grid-template-columns:repeat(2,1fr)}
+  .kc-devis .result-container{grid-template-columns:1fr;gap:20px}
+  .kc-devis .result-main{padding:28px}
+  .kc-devis .result-price{font-size:38px}
+}
+@media(max-width:768px){
+  .kc-devis .nav-top{padding:16px 20px;flex-wrap:wrap;gap:8px}
+  .kc-devis .nav-logo{font-size:18px}
+  .kc-devis .resume-banner{padding:8px 20px;flex-direction:column;gap:8px;text-align:center}
+  .kc-devis .progress-section{padding:12px 20px}
+  .kc-devis .step-container{padding:32px 18px 80px}
+  .kc-devis .step-title{font-size:1.6rem;letter-spacing:normal}
+  .kc-devis .options-grid{grid-template-columns:1fr !important}
+  .kc-devis .options-grid.cols-2{grid-template-columns:1fr 1fr !important}
+  .kc-devis .presta-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .kc-devis .form-row{grid-template-columns:1fr;gap:10px}
+  .kc-devis .form-block{padding:22px}
+  .kc-devis .result-price{font-size:34px}
+  .kc-devis .zone-map{height:300px;max-width:380px}
+  .kc-devis .zone-c-77{width:120px;height:120px;font-size:18px;top:70px}
+  .kc-devis .zone-c-78{width:105px;height:105px;font-size:17px;top:85px}
+  .kc-devis .zone-c-91{width:100px;height:100px;font-size:16px}
+  .kc-devis .zone-c-95{width:88px;height:88px;font-size:15px}
+  .kc-devis .zone-c-75{width:58px;height:58px;font-size:14px;top:125px}
+  .kc-devis .zone-c-92{width:46px;height:46px;font-size:12px;top:138px}
+  .kc-devis .zone-c-93{width:50px;height:50px;font-size:12px;top:92px}
+  .kc-devis .zone-c-94{width:46px;height:46px;font-size:12px;top:180px}
+}
+@media(max-width:480px){
+  .kc-devis .options-grid.cols-2{grid-template-columns:1fr !important}
+  .kc-devis .presta-grid{grid-template-columns:1fr}
+}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+  .kc-devis *,.kc-devis *::before,.kc-devis *::after{
+    animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;
+  }
+}
+
+/* PRINT */
+@media print{
+  .kc-devis .progress-section,.kc-devis .resume-banner,.kc-devis .step-nav,
+  .kc-devis .result-cta,.kc-devis .nav-top{display:none !important}
+  .kc-devis .step:not(#step-result){display:none !important}
+}
+
+/* ════════════════════════════════════════════════════════
+   V4 · FINITIONS PRO & TOUCHES FUTURISTES — surcouche additive
+   Glassmorphism subtil · ombres douces multi-couches · accents
+   dégradés teal · glow sur sélection · scroll reveal · barre de
+   progression animée · soulignement animé du mot accentué.
+   ► Fond clair conservé · charte teal #0FA7A5 · lisibilité d'abord
+   ► prefers-reduced-motion respecté · fallback @supports (verre)
+   ════════════════════════════════════════════════════════ */
+
+/* — Tokens : easing soigné, ombres multi-couches, glow, verre — */
+.kc-devis{
+  --ease:cubic-bezier(.16,1,.3,1);
+  --shadow-sm:0 1px 2px rgba(13,35,64,.04),0 2px 6px rgba(13,35,64,.05);
+  --shadow-md:0 2px 6px rgba(13,35,64,.05),0 14px 30px rgba(13,35,64,.07);
+  --shadow-lg:0 10px 24px rgba(13,35,64,.08),0 28px 56px rgba(13,35,64,.10);
+  --glow-teal:0 0 0 1.5px rgba(15,167,165,.6),0 12px 30px rgba(15,167,165,.32),0 0 46px rgba(15,167,165,.24);
+  --glass:rgba(255,255,255,.72);
+  --glass-brd:rgba(13,35,64,.07);
+  /* — Réglages rapides : 1 valeur à changer — */
+  --kc-photo-ratio:4 / 3;  /* hauteur des photos (16/10 = plus court, 1/1 = carré) */
+  --kc-glass-blur:16px;     /* intensité du flou « verre dépoli » */
+  --kc-reveal-dur:.5s;      /* vitesse des apparitions (scroll reveal) */
+  /* Aura teal très douce derrière le verre — le fond reste clair */
+  background:
+    radial-gradient(60rem 32rem at 6% -10%, rgba(15,167,165,.10), transparent 60%),
+    radial-gradient(52rem 30rem at 110% 2%, rgba(15,167,165,.08), transparent 58%),
+    radial-gradient(46rem 40rem at 50% 118%, rgba(11,132,131,.06), transparent 60%),
+    var(--bg);
+}
+
+/* — Plus d'air : grille & espacements + lignes d'accent en dégradé — */
+.kc-devis .step-desc{margin-bottom:48px}
+.kc-devis .presta-cats{gap:34px}
+.kc-devis .presta-grid{gap:16px}
+.kc-devis .options-grid{gap:16px}
+.kc-devis .step-tag::before{background:linear-gradient(90deg,var(--teal),var(--teal-deep))}
+.kc-devis .presta-cat-title::before{width:18px;background:linear-gradient(90deg,var(--teal),var(--teal-deep))}
+
+/* — Entrée d'étape en fondu doux (le glissé est géré par le reveal) — */
+@keyframes kcFadeSoft{from{opacity:0}to{opacity:1}}
+.kc-devis .step{animation-name:kcFadeSoft}
+
+/* — Glassmorphism subtil sur les surfaces — */
+.kc-devis .option-card,
+.kc-devis .slider-block,
+.kc-devis .form-block,
+.kc-devis .opt-row,
+.kc-devis .zone-checkbox-card,
+.kc-devis .result-main,
+.kc-devis .aside-card,
+.kc-devis .cta-submit-secondary{
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(var(--kc-glass-blur)) saturate(1.4);
+  backdrop-filter:blur(var(--kc-glass-blur)) saturate(1.4);
+  border:1px solid var(--glass-brd);
+  box-shadow:var(--shadow-md);
+}
+/* Fallback : backdrop-filter non géré → surfaces opaques (zéro perte de lisibilité) */
+@supports not ((-webkit-backdrop-filter:blur(1px)) or (backdrop-filter:blur(1px))){
+  .kc-devis .option-card,.kc-devis .slider-block,.kc-devis .form-block,
+  .kc-devis .opt-row,.kc-devis .zone-checkbox-card,.kc-devis .result-main,
+  .kc-devis .aside-card,.kc-devis .cta-submit-secondary{background:var(--white)}
+}
+/* La carte « garanties » conserve son accent foncé d'origine (non flouté) */
+.kc-devis .aside-card.dark{background:linear-gradient(135deg,var(--dark) 0%,var(--dark-light) 100%);border-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* — Bordure dégradé teal au survol (amélioration progressive ; masquée si non gérée) — */
+.kc-devis .option-card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;
+  background:linear-gradient(135deg,var(--teal),var(--teal-deep));
+  opacity:0;transition:opacity .3s var(--ease);pointer-events:none;z-index:1;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+}
+@supports ((-webkit-mask-composite:xor) or (mask-composite:exclude)){
+  .kc-devis .option-card:hover::before{opacity:.85}
+}
+
+/* — États clairs : survol / actif / sélection (lift + ombres + glow teal) — */
+.kc-devis .option-card{transition:transform .28s var(--ease),box-shadow .28s var(--ease),border-color .28s var(--ease),background .28s var(--ease)}
+.kc-devis .option-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:rgba(15,167,165,.35)}
+.kc-devis .option-card:active{transform:translateY(-1px) scale(.992)}
+.kc-devis .option-card.selected{box-shadow:var(--glow-teal);transform:translateY(-2px) scale(1.015)}
+.kc-devis .opt-row{transition:transform .22s var(--ease),box-shadow .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease)}
+.kc-devis .opt-row:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);border-color:rgba(15,167,165,.35)}
+.kc-devis .opt-row.selected{box-shadow:0 0 0 1px rgba(15,167,165,.4),var(--shadow-md)}
+.kc-devis .zone-checkbox-card.checked{box-shadow:var(--glow-teal)}
+
+/* — Boutons : dégradé teal + micro-interactions — */
+.kc-devis .btn-next{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.kc-devis .btn-next:hover:not(:disabled){background:linear-gradient(135deg,var(--teal-dark),var(--teal-deep));transform:translateY(-2px);box-shadow:0 14px 30px rgba(15,167,165,.40)}
+.kc-devis .btn-next:active:not(:disabled){transform:translateY(0)}
+.kc-devis .cta-submit-primary{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+.kc-devis .cta-submit-primary:hover:not(:disabled){background:linear-gradient(135deg,var(--teal-dark),var(--teal-deep));transform:translateY(-1px);box-shadow:0 12px 32px rgba(15,167,165,.45)}
+
+/* — Barre de progression : dégradé + glow + reflet animé (shimmer) — */
+.kc-devis .pb-progress{height:6px;background:rgba(13,35,64,.06)}
+.kc-devis .pb-progress-fill{position:relative;overflow:hidden;background:linear-gradient(90deg,var(--teal-deep),var(--teal) 55%,var(--teal-dark));box-shadow:0 0 14px rgba(15,167,165,.45);transition:width .6s var(--ease)}
+.kc-devis .pb-progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-100%);animation:kcShimmer 2.6s ease-in-out infinite}
+@keyframes kcShimmer{0%{transform:translateX(-100%)}55%,100%{transform:translateX(120%)}}
+
+/* — Titre : surbrillance dégradé animée du mot accentué — */
+.kc-devis .step-title em::after{height:10px;bottom:3px;opacity:.20;background:linear-gradient(90deg,var(--teal),var(--teal-deep));transform:scaleX(0);transform-origin:left center;transition:transform .7s var(--ease) .15s}
+.kc-devis .step.active .step-title em::after{transform:scaleX(1)}
+
+/* — Scroll reveal (piloté par JS ; sans JS → contenu visible) — */
+.kc-devis .kc-reveal{opacity:0;transform:translateY(16px);transition:opacity var(--kc-reveal-dur) var(--ease),transform var(--kc-reveal-dur) var(--ease);transition-delay:var(--kc-rev-delay,0ms)}
+.kc-devis .kc-reveal.kc-in{opacity:1;transform:none}
+
+/* — Cartes prestation AVEC photo (premium, verre, glow) — */
+.kc-devis .presta-card{padding:0;gap:0;overflow:hidden;border-radius:18px}
+.kc-devis .presta-card .oc-photo{position:relative;width:100%;aspect-ratio:var(--kc-photo-ratio);overflow:hidden;background:linear-gradient(135deg,var(--teal-deep) 0%,var(--teal) 55%,var(--teal-dark) 100%)}
+.kc-devis .presta-card .oc-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .6s var(--ease)}
+.kc-devis .presta-card:hover .oc-photo img{transform:scale(1.06)}
+.kc-devis .presta-card .oc-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,35,64,0) 45%,rgba(13,35,64,.42) 100%);transition:background .3s var(--ease);pointer-events:none}
+.kc-devis .presta-card:hover .oc-photo::after{background:linear-gradient(180deg,rgba(15,167,165,.12) 0%,rgba(13,35,64,.5) 100%)}
+/* Badge icône frosté teal, flottant sur la photo */
+.kc-devis .presta-card .oc-icon{position:absolute;top:12px;left:12px;z-index:2;margin:0;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.92);color:var(--teal-deep);box-shadow:0 6px 18px rgba(13,35,64,.25);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+/* Corps texte sous la photo */
+.kc-devis .presta-card .oc-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:5px;width:100%;min-width:0}
+/* Anti-troncature : titres & descriptions s'affichent EN ENTIER (retour à la ligne).
+   La carte peut grandir en hauteur ; seuls les coins de la photo gardent overflow:hidden. */
+.kc-devis .presta-card .oc-body,
+.kc-devis .presta-card .oc-title,
+.kc-devis .presta-card .oc-desc{white-space:normal;overflow:visible;text-overflow:clip;max-height:none;height:auto;overflow-wrap:anywhere;word-break:break-word;hyphens:auto}
+/* Fallback élégant si pas de photo (ex. commerces) ou image cassée */
+.kc-devis .presta-card .oc-photo.no-photo::after{display:none}
+.kc-devis .presta-card .oc-photo.no-photo{display:grid;place-items:center}
+.kc-devis .presta-card .oc-photo.no-photo .oc-icon{position:static;width:64px;height:64px;border-radius:18px;background:rgba(255,255,255,.95);box-shadow:0 12px 28px rgba(13,35,64,.2)}
+.kc-devis .presta-card .oc-photo.no-photo .oc-icon svg{width:28px;height:28px}
+/* État sélectionné : photo conservée (pas de fond teal plein) + glow + check */
+.kc-devis .presta-card.selected{background:var(--white);color:var(--text);transform:translateY(-3px) scale(1.012);box-shadow:var(--glow-teal)}
+.kc-devis .presta-card.selected .oc-title{color:var(--dark)}
+.kc-devis .presta-card.selected .oc-desc{color:var(--gray)}
+.kc-devis .presta-card.selected .oc-icon{background:#fff;color:var(--teal-deep)}
+.kc-devis .presta-card.selected .oc-photo::after{background:linear-gradient(180deg,rgba(15,167,165,.18) 0%,rgba(13,35,64,.42) 100%)}
+.kc-devis .presta-card.selected::after{top:12px;right:12px;width:30px;height:30px;background:var(--teal);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>');background-size:17px;background-position:center;background-repeat:no-repeat;box-shadow:0 6px 16px rgba(15,167,165,.55);z-index:3}
+/* La bordure dégradé ::before passe au-dessus de la photo proprement */
+.kc-devis .presta-card::before{z-index:4}
+/* Photos un peu plus courtes sur mobile (réduit le scroll) */
+@media(max-width:768px){.kc-devis{--kc-photo-ratio:16 / 10}}
+
+/* — Cartes « Sur devis » : LIENS vers la demande de devis (pas d'estimation) — */
+.kc-devis .presta-devis-intro{font-size:14px;color:var(--text-light);line-height:1.6;margin:-6px 0 16px;max-width:680px}
+.kc-devis a.presta-devis{text-decoration:none}
+.kc-devis a.presta-devis .oc-photo{aspect-ratio:auto;min-height:120px}
+.kc-devis a.presta-devis .oc-photo.no-photo{display:grid;place-items:center}
+
+/* — prefers-reduced-motion : neutralise tous les effets animés ajoutés — */
+@media (prefers-reduced-motion: reduce){
+  .kc-devis .kc-reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  .kc-devis .pb-progress-fill::after{display:none !important}
+  .kc-devis .step-title em::after{transition:none !important;transform:scaleX(1)}
+  .kc-devis .step{animation:none !important}
+}
+</style>
+
+<div class="kc-devis">
+
+<!-- BANDEAU REPRISE SAUVEGARDE -->
+<div class="resume-banner" id="resume-banner" role="status">
+  <span style="display:inline-flex;align-items:center;gap:8px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>Une demande non terminée a été retrouvée.</span>
+  <div class="resume-banner-actions">
+    <button type="button" id="btn-resume">Reprendre</button>
+    <button type="button" id="btn-discard">Recommencer</button>
+  </div>
+</div>
+
+<!-- NAV TOP -->
+<div class="nav-top">
+  <div class="nav-logo">Kayli <em>Clinn</em></div>
+  <div class="nav-subtitle">Devis personnalisé · sans engagement</div>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-section">
+  <div class="progress-bar">
+    <button class="pb-back" id="pb-back-btn" type="button" style="visibility:hidden" aria-label="Étape précédente">
+      <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Précédent
+    </button>
+    <div class="pb-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Progression du devis">
+      <div class="pb-progress-fill" id="pb-fill"></div>
+    </div>
+    <div class="pb-counter" aria-live="polite" aria-atomic="true">
+      Étape <strong id="pb-current">1</strong> / <span id="pb-total">8</span>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS CONTAINER -->
+<div class="step-container">
+
+<style>
+  /* ── Compléments V5 (catalogue v2) — réutilise le design existant ── */
+  /* ── Repli des prestations sur devis ── */
+  .kc-devis .kcfold-toggle{
+    width:100%;background:var(--white);border:1.5px dashed var(--gray-light);
+    border-radius:14px;padding:18px 22px;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;color:var(--teal-deep);
+    transition:border-color .2s,background .2s;margin-top:4px;
+  }
+  .kc-devis .kcfold-toggle:hover{border-color:var(--teal-dark);background:var(--teal-soft)}
+  .kc-devis .kcfold-toggle .kcfold-ico{font-size:18px;line-height:1;font-weight:700}
+  .kc-devis .kcfold-toggle[aria-expanded="true"]{border-color:var(--teal);background:var(--teal-soft)}
+  .kc-devis .kcfold-zone[hidden]{display:none}
+  .kc-devis .kcfold-zone{display:flex;flex-direction:column;gap:34px;margin-top:34px}
+  .kc-devis a.presta-devis .oc-photo:not(.no-photo){aspect-ratio:var(--kc-photo-ratio);min-height:0}
+  .kc-devis .funnel-tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:100px;margin-left:10px;vertical-align:middle}
+  .kc-devis .funnel-tag.online{background:var(--teal-light);color:var(--teal-deep)}
+  .kc-devis .funnel-tag.estimate{background:#EEF4FF;color:#3B5BDB}
+  .kc-devis .funnel-tag.audit{background:#FFF4E6;color:#B25E09}
+  .kc-devis .acompte-panel{background:var(--teal-soft);border:1px solid var(--teal-light);border-radius:14px;padding:18px 20px;margin-top:18px}
+  .kc-devis .acompte-panel .ap-row{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:6px 0}
+  .kc-devis .acompte-panel .ap-row strong{font-variant-numeric:tabular-nums}
+  .kc-devis .acompte-panel .ap-row.main{font-size:16px;font-weight:700;color:var(--teal-deep)}
+  .kc-devis .result-audit-badge{display:inline-block;background:#FFF4E6;color:#B25E09;font-weight:700;font-size:12.5px;border-radius:100px;padding:7px 16px;margin-bottom:14px}
+  .kc-devis .inline-result-err{display:none;background:#FDF1EE;border:1px solid #E07856;color:#C45A38;border-radius:12px;padding:12px 16px;margin-top:14px;font-size:13.5px;font-weight:600;line-height:1.5}
+  .kc-devis .inline-result-err.show{display:block}
+  /* Stepper de quantité (options au lit / à l'heure / au m²) */
+  .kc-devis .opt-qty{display:flex;align-items:center;gap:10px}
+  .kc-devis .opt-qty button{width:30px;height:30px;border-radius:9px;border:1.5px solid var(--border);background:var(--white);font-size:17px;font-weight:700;color:var(--dark);cursor:pointer;line-height:1;display:grid;place-items:center;transition:all .15s}
+  .kc-devis .opt-qty button:hover:not(:disabled){border-color:var(--teal);color:var(--teal-dark)}
+  .kc-devis .opt-qty button:disabled{opacity:.35;cursor:default}
+  .kc-devis .opt-qty .oq-val{min-width:54px;text-align:center;font-weight:700;font-variant-numeric:tabular-nums;font-size:14px;color:var(--dark)}
+</style>
+
+  <!-- ÉTAPE 0 : PRESTATION -->
+  <div class="step active" id="step-presta" data-step="presta">
+    <div class="step-tag">01 · Type de prestation</div>
+    <h2 class="step-title">Quelle <em>prestation</em> vous intéresse ?</h2>
+    <p class="step-desc">Trois parcours selon votre besoin : réservation immédiate à prix fixe, estimation indicative, ou devis après visite gratuite.</p>
+
+    <div class="presta-cats">
+      <div>
+        <h2 class="presta-cat-title">Particuliers — prix fixe TTC<span class="funnel-tag online">Réservation en ligne</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Forfaits réservables en ligne">
+          <button type="button" class="option-card presta-card" data-presta="airbnb">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Turnover Airbnb</div>
+              <div class="oc-desc">Rotation entre deux locations · dès 55 € TTC</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="fin-de-bail">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Fin de bail / déménagement</div>
+              <div class="oc-desc">Logement vide, tout inclus · dès 160 € TTC</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="vitrerie">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Vitres classiques</div>
+              <div class="oc-desc">Plain-pied / intérieur · dès 70 € TTC</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2 class="presta-cat-title">Estimation immédiate<span class="funnel-tag estimate">Prix confirmé après audit gratuit</span></h2>
+        <div class="presta-grid" role="radiogroup" aria-label="Prestations en estimation indicative">
+          <button type="button" class="option-card presta-card" data-presta="fin-chantier">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Nettoyage fin de chantier</div>
+              <div class="oc-desc">Après travaux · dès 4,50 €/m² HT</div>
+            </div>
+          </button>
+          <button type="button" class="option-card presta-card" data-presta="bureaux">
+            <div class="oc-photo">
+              <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/></svg></div>
+            </div>
+            <div class="oc-body">
+              <div class="oc-title">Entretien de bureaux</div>
+              <div class="oc-desc">Entretien régulier · à partir de 2 €/m²/mois HT</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="kcfold-toggle" id="kcfold-toggle" aria-expanded="false" aria-controls="kcfold-zone">
+        <span class="kcfold-ico" id="kcfold-ico" aria-hidden="true">+</span>
+        <span id="kcfold-label">Voir les prestations sur devis (nuisibles, Diogène, commerces…)</span>
+      </button>
+
+      <div class="kcfold-zone" id="kcfold-zone" hidden>
+        <div>
+          <h2 class="presta-cat-title">Sur devis<span class="funnel-tag audit">Visite gratuite</span></h2>
+          <p class="presta-devis-intro">Pas de prix en ligne pour ces prestations : choisissez la vôtre, nous établissons un devis gratuit (rappel ou visite).</p>
+          <div class="presta-grid" aria-label="Prestations sur devis">
+            <a href="/demande-de-devis/?presta=parties-communes-immeubles" class="option-card presta-card presta-devis" data-img="parties-communes">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5M9 11h.01M15 11h.01"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Parties communes d'immeubles</div>
+                <div class="oc-desc">Halls, escaliers, locaux — syndics &amp; bailleurs</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=commerces-retail" class="option-card presta-card presta-devis" data-img="commerces-retail">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l1-5h16l1 5M3 9h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9zM9 21v-6h6v6"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Commerces &amp; Retail</div>
+                <div class="oc-desc">Surfaces de vente, vitrines, horaires décalés</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=etablissements-sensibles" class="option-card presta-card presta-devis" data-img="etablissements-sensibles">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Établissements sensibles</div>
+                <div class="oc-desc">Santé, crèches, écoles — protocoles renforcés</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=remise-en-etat" class="option-card presta-card presta-devis" data-img="remise-en-etat">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Remise en état</div>
+                <div class="oc-desc">Logements/bureaux dégradés, avant relocation</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=decapage-cristallisation-sols" class="option-card presta-card presta-devis" data-img="decapage">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Décapage / cristallisation des sols</div>
+                <div class="oc-desc">Carrelage, marbre, pierre, PVC</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=shampouinage-moquettes" class="option-card presta-card presta-devis" data-img="shampouinage">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 7h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 7l2-3h14l2 3M7 12v3M12 12v3M17 12v3"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Shampouinage de moquettes</div>
+                <div class="oc-desc">Injection-extraction, tapis &amp; textiles</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=nettoyage-haute-pression" class="option-card presta-card presta-devis" data-img="haute-pression">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M7 21V10l5-3 5 3v11M10 7V4h4v3M5 14h.01M5 17h.01"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Nettoyage haute pression</div>
+                <div class="oc-desc">Façades, terrasses, parkings</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=pieces-blanches" class="option-card presta-card presta-devis" data-img="pieces-blanches">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v1H6a2 2 0 0 0-2 2v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9a2 2 0 0 0-2-2h-2V6a4 4 0 0 0-4-4zM9 12h6M9 16h6"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Pièces blanches</div>
+                <div class="oc-desc">Salles blanches, environnements contrôlés</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="presta-cat-title">Interventions spécialisées<span class="funnel-tag audit">Partenaires certifiés</span></h2>
+          <p class="presta-devis-intro">Interventions réglementées ou sensibles, réalisées avec nos partenaires spécialisés certifiés et assurés. Choisissez la vôtre : nous établissons un devis gratuit. <!-- 👉 À VALIDER (propriétaire) : mention du partenariat de sous-traitance --></p>
+          <div class="presta-grid" aria-label="Interventions spécialisées sur devis (partenaires certifiés)">
+            <a href="/demande-de-devis/?presta=deratisation" class="option-card presta-card presta-devis" data-img="deratisation">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 6a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0v-3a5 5 0 0 1 5-5zM12 6V3M9 4l3 2 3-2M7 11H3M7 15H3M21 11h-4M21 15h-4"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Dératisation</div>
+                <div class="oc-desc">Rats, souris — diagnostic &amp; traitement</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=desinsectisation" class="option-card presta-card presta-devis" data-img="desinsectisation">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 7a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 7V4M9 3l3 2 3-2M6 12H3M6 16H3M21 12h-3M21 16h-3"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Désinsectisation</div>
+                <div class="oc-desc">Cafards, fourmis, guêpes…</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=punaises-de-lit" class="option-card presta-card presta-devis" data-img="punaises-de-lit">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 18v2M21 18v2M7 12h4"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Punaises de lit</div>
+                <div class="oc-desc">Détection &amp; traitement</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=syndrome-de-diogene" class="option-card presta-card presta-devis" data-img="diogene">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Syndrome de Diogène</div>
+                <div class="oc-desc">Accompagnement confidentiel</div>
+              </div>
+            </a>
+            <a href="/demande-de-devis/?presta=scenes-sensibles" class="option-card presta-card presta-devis" data-img="scenes-sensibles">
+              <div class="oc-photo no-photo">
+                <div class="oc-icon" aria-hidden="true"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+              </div>
+              <div class="oc-body">
+                <div class="oc-title">Scènes sensibles</div>
+                <div class="oc-desc">Après sinistre ou décès — discrétion</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÉTAPE 1 : ZONE IDF -->
+  <div class="step" id="step-zone" data-step="zone">
+    <!-- =========================================================
+     KAYLI CLINN — Bloc "Zone d'intervention" (carte Île-de-France)
+     Préfixe CSS unique : kcidf-
+     Contours géographiques réels (data.gouv / france-geojson), projetés en SVG.
+     Le département choisi est stocké dans window.kcReservation.departement
+     et dans un champ caché #kcidf-input pour récupération par l'étape suivante.
+     ========================================================= -->
+<section class="kcidf-wrap" aria-labelledby="kcidf-title">
+  <div class="kcidf-head">
+    <p class="kcidf-eyebrow">Zone d'intervention</p>
+    <h2 class="kcidf-title" id="kcidf-title">Votre bien est-il en <span>Île-de-France</span> ?</h2>
+    <p class="kcidf-sub">Kayli Clinn intervient exclusivement sur les 8 départements franciliens. Sélectionnez le vôtre pour continuer.</p>
+  </div>
+
+  <div class="kcidf-mapbox">
+    <svg viewBox="0 0 900 760" class="kcidf-svg" role="group" aria-label="Carte cliquable des départements d'Île-de-France">
+      <path class="kcidf-dep" data-code="77" data-nom="Seine-et-Marne" tabindex="0" role="button" aria-label="Departement 77 Seine-et-Marne" d="M530.8,492.5L530.3,490.6L535.3,488.9L530.1,484.8L530.3,483.8L529.2,481.1L531.0,478.1L532.4,478.5L534.1,471.8L534.9,472.4L536.7,468.9L538.6,467.5L539.1,466.2L541.0,465.7L540.8,463.1L541.3,462.5L539.6,461.9L539.1,460.2L536.9,459.0L539.7,455.1L541.7,455.2L544.4,450.9L543.1,449.7L542.3,446.3L544.6,447.4L550.0,445.9L550.3,445.1L548.4,439.7L546.5,437.0L544.0,437.3L540.2,439.2L538.6,438.9L537.5,437.6L537.0,434.1L538.3,434.4L538.3,431.2L539.6,430.8L539.8,429.6L541.2,429.8L540.8,427.6L543.3,423.1L540.3,421.3L539.9,420.0L541.8,415.6L540.0,414.7L541.8,412.4L541.0,405.4L540.0,403.7L539.7,401.1L537.7,402.4L537.0,399.1L537.5,396.9L531.8,383.8L535.9,382.4L535.3,380.4L537.3,379.3L538.0,376.9L537.8,375.9L533.6,375.8L531.1,373.9L529.0,375.3L530.4,373.0L529.2,371.1L529.2,369.6L529.9,368.9L530.7,366.0L529.4,364.9L527.8,364.8L525.8,363.0L525.3,361.4L526.8,359.3L527.5,359.7L528.6,358.4L530.1,358.8L531.0,357.4L533.0,357.6L536.2,355.8L537.6,356.4L537.6,353.6L538.5,353.2L536.4,350.1L540.0,347.1L538.4,345.9L539.3,344.3L538.4,338.2L540.8,335.0L544.6,332.5L544.3,329.0L544.8,327.0L541.6,326.3L540.6,320.5L538.9,316.3L537.1,313.9L536.2,313.9L526.7,299.2L527.2,298.1L533.9,299.0L533.1,295.6L535.1,294.4L534.2,291.6L534.9,291.3L532.6,284.7L531.6,284.2L530.6,282.1L529.6,282.3L529.8,281.0L527.7,281.1L527.5,279.9L530.3,279.7L529.5,277.4L528.4,277.5L528.2,276.6L524.8,276.8L522.5,278.3L522.6,276.9L521.1,276.7L520.7,275.0L519.0,275.1L519.0,277.0L517.0,277.1L516.2,276.3L515.5,272.5L514.3,272.4L514.5,268.9L519.0,269.8L528.3,265.6L528.4,263.3L529.6,262.9L529.4,261.6L529.9,261.1L529.1,258.7L533.2,253.8L540.9,253.1L538.0,251.3L536.6,249.5L537.4,247.4L537.1,245.9L531.9,248.4L530.5,244.1L536.1,237.6L539.2,231.2L542.5,229.8L544.9,227.0L547.0,224.2L548.0,220.9L550.9,221.6L553.6,220.5L554.5,218.3L554.2,217.3L555.7,216.5L555.5,216.0L557.0,215.9L558.2,211.9L559.7,212.7L559.0,214.4L559.6,215.1L559.4,216.3L561.5,216.8L561.8,218.1L565.7,217.1L568.5,218.5L569.7,220.1L570.7,219.7L571.3,221.8L576.0,223.7L577.8,225.4L578.4,227.3L585.7,234.5L583.4,239.4L586.9,241.5L590.2,241.1L597.0,234.4L597.1,231.4L598.8,230.7L598.9,234.1L601.0,234.5L602.3,237.5L602.8,242.9L603.5,244.2L611.7,244.0L617.4,241.3L621.3,237.2L622.6,237.6L626.7,234.0L618.3,228.8L627.5,229.1L625.3,225.2L629.7,223.7L636.5,219.2L641.2,226.0L645.6,228.4L647.4,229.0L652.4,227.7L653.9,229.9L654.7,232.6L656.9,235.5L656.7,237.6L663.7,237.6L666.3,235.0L667.8,235.3L668.3,233.7L669.7,233.6L671.4,231.3L674.7,233.0L677.6,227.4L687.3,232.6L691.6,230.4L692.4,230.4L692.1,231.6L695.0,232.9L696.0,232.2L696.8,229.9L697.3,225.5L702.2,227.3L703.1,225.8L706.0,223.5L707.5,223.3L707.5,224.8L708.7,224.9L707.9,227.3L709.1,227.5L708.9,228.6L710.5,234.9L711.2,234.8L711.4,235.9L715.6,237.0L716.2,235.9L716.5,230.8L717.5,228.3L719.3,227.3L719.8,225.8L721.2,226.0L721.8,224.6L723.2,225.1L724.1,226.6L725.2,223.2L728.3,223.4L735.5,227.2L736.0,224.9L739.1,226.5L742.2,226.5L744.1,227.6L745.7,227.1L745.9,225.4L747.0,226.2L747.5,225.2L750.4,227.5L749.5,223.9L747.0,221.6L746.2,219.9L746.4,217.2L746.6,216.1L747.9,216.0L747.8,215.0L749.3,213.3L749.6,211.0L751.3,209.9L751.5,207.8L752.6,206.8L752.4,205.7L753.4,205.7L756.4,207.7L756.1,208.7L757.5,209.5L759.7,209.2L763.3,210.4L763.6,209.6L767.1,212.1L769.4,212.5L772.9,212.6L773.1,211.8L775.5,211.2L777.4,213.5L782.9,212.7L785.5,216.2L789.0,217.6L795.0,217.7L792.0,225.8L789.8,228.8L795.6,232.4L800.0,238.0L802.2,242.6L801.8,247.6L802.5,249.6L806.0,249.5L806.4,252.8L805.7,253.9L801.7,254.9L801.4,256.1L802.8,256.8L801.9,258.8L800.9,259.2L801.5,262.0L800.0,262.7L800.2,264.2L798.9,265.7L797.6,264.8L794.3,267.0L793.1,268.6L794.0,271.5L795.3,271.0L796.3,273.7L795.9,276.6L801.8,276.2L805.3,278.7L809.3,279.2L808.7,281.7L810.0,281.0L811.8,284.3L813.6,284.5L814.6,289.1L821.4,291.0L821.0,291.6L821.5,293.5L823.4,292.7L822.5,294.7L822.5,297.1L823.9,297.5L823.8,299.7L824.3,300.6L830.1,300.5L832.4,302.2L834.3,305.7L835.0,310.5L836.9,316.4L835.9,316.9L838.5,319.3L837.2,322.1L838.9,324.1L839.3,325.9L842.4,327.0L843.3,326.1L848.1,325.0L857.1,319.5L860.7,329.7L860.8,338.0L866.8,343.7L868.4,346.5L870.2,345.1L871.2,346.1L872.2,344.3L875.6,340.9L876.8,341.9L877.4,340.2L878.8,342.1L881.9,339.9L884.3,336.7L884.7,337.1L885.3,333.7L887.0,336.1L886.7,339.8L889.0,345.8L888.8,347.3L886.8,348.8L885.6,356.6L890.5,359.9L892.2,359.8L892.5,360.8L891.0,361.2L892.0,362.7L891.0,363.2L891.8,365.4L890.8,366.1L891.2,371.5L893.2,371.0L895.7,372.0L896.5,371.3L896.4,368.9L902.1,368.6L902.1,372.0L900.3,372.3L899.7,374.1L899.8,375.2L901.3,376.6L905.2,376.6L906.2,375.6L907.9,375.5L908.6,374.4L910.1,374.3L911.6,377.8L913.0,378.8L915.3,379.6L919.8,379.1L922.7,381.8L921.0,384.0L921.9,386.8L920.3,387.1L919.6,390.6L925.8,391.9L926.5,393.1L928.9,391.1L930.8,385.4L937.4,384.7L940.1,396.4L937.3,402.9L938.3,409.5L935.5,411.5L932.5,407.4L932.8,406.7L930.8,405.7L925.9,407.6L926.4,409.5L922.4,410.9L920.9,412.2L920.2,411.4L917.9,411.9L917.8,411.0L913.8,411.5L906.8,407.7L901.3,413.5L904.4,417.2L908.4,417.5L909.7,419.2L916.4,416.8L918.2,417.3L917.2,421.0L918.4,423.2L918.0,424.1L918.4,425.2L919.0,425.5L918.1,431.6L917.6,431.7L917.2,430.3L916.4,429.8L914.9,431.1L914.5,432.7L912.6,433.6L911.6,433.3L910.2,430.4L906.0,430.2L905.2,431.1L903.4,430.6L902.7,434.7L897.6,447.2L899.1,450.1L899.7,449.7L903.5,451.9L905.8,450.3L911.0,450.4L912.1,447.8L915.7,451.3L916.3,455.7L915.6,457.7L919.1,462.5L922.5,462.9L923.1,461.5L930.5,461.6L929.5,463.4L929.2,467.7L929.7,475.7L928.5,479.1L929.4,481.4L928.1,482.2L930.8,486.2L931.9,485.9L934.1,488.5L931.7,488.6L930.9,491.2L931.7,493.1L931.2,493.7L932.2,494.8L931.4,496.8L930.3,496.3L927.3,496.9L923.7,499.2L920.6,502.5L921.5,503.5L918.5,505.7L920.0,509.5L917.5,511.6L919.8,512.6L922.1,515.8L926.3,518.8L924.2,522.6L924.8,522.9L924.1,524.8L924.5,526.1L923.3,527.1L922.6,529.0L923.2,530.2L922.2,531.2L925.2,531.7L925.3,531.1L929.7,529.6L933.5,529.4L933.3,528.9L937.7,526.1L939.3,523.0L940.8,522.5L951.7,525.3L958.8,523.2L957.0,524.3L957.2,525.4L953.3,529.1L951.7,529.5L952.4,532.0L953.9,532.6L958.2,532.2L960.9,533.2L965.3,536.5L966.8,539.0L968.4,539.7L970.0,542.1L970.0,543.1L969.3,543.9L962.1,543.7L961.8,546.0L959.4,547.6L945.4,551.5L949.4,557.1L951.0,561.4L940.9,561.1L937.4,567.7L932.1,570.1L928.6,574.4L931.5,578.9L932.5,578.5L932.6,581.4L933.7,583.2L933.7,584.6L933.0,585.1L933.4,586.9L934.6,587.9L936.7,588.2L937.7,590.1L937.6,591.5L934.7,591.3L935.8,594.0L933.1,594.1L924.8,602.0L922.0,602.6L921.5,601.4L920.3,602.5L917.3,602.8L914.3,602.3L912.9,600.8L911.3,601.2L909.9,599.3L906.3,600.2L905.8,599.4L901.9,603.1L909.9,612.0L911.1,616.3L915.1,624.6L914.3,626.5L914.9,628.5L910.0,628.4L909.5,627.3L908.6,627.5L908.1,628.7L906.9,628.5L906.0,630.6L904.3,630.4L903.8,631.6L903.2,631.4L902.8,629.6L901.7,629.7L901.2,631.4L899.4,630.5L898.6,631.2L899.7,632.4L899.2,633.0L896.6,632.5L896.1,634.4L892.0,635.8L893.3,637.3L894.3,637.3L895.5,641.9L897.6,641.8L898.0,643.1L899.3,643.7L899.6,644.6L896.8,645.9L897.0,647.1L899.7,649.2L899.7,650.6L902.3,654.0L902.2,656.9L901.3,660.5L901.7,662.8L900.1,664.0L900.2,665.3L897.3,664.5L898.1,666.1L898.0,667.3L897.0,668.0L897.5,668.7L897.1,670.5L895.9,671.2L895.7,673.7L898.3,672.8L899.9,673.2L899.7,674.2L901.6,673.5L904.7,675.0L904.6,677.6L903.3,677.5L902.9,678.9L900.5,677.5L900.6,679.1L905.5,679.8L906.3,678.8L909.3,678.5L909.4,680.7L906.2,692.3L906.0,695.9L902.3,696.3L902.1,695.4L900.4,696.3L899.4,694.7L897.4,694.5L897.1,692.4L894.2,691.3L894.1,690.5L889.6,690.0L888.5,690.2L887.6,693.7L884.9,693.2L882.9,701.1L882.8,704.9L883.0,705.6L884.2,705.6L883.9,708.1L880.1,708.8L880.1,703.9L877.6,703.8L876.5,707.4L871.1,707.6L870.7,709.5L868.7,707.5L864.9,707.2L863.9,705.8L860.3,704.7L859.1,704.9L859.8,707.6L857.2,707.7L857.1,706.9L855.7,706.9L855.5,706.0L854.6,705.9L855.0,703.9L850.3,705.7L851.1,702.8L847.3,701.8L847.1,704.5L843.0,704.8L842.6,703.6L840.7,704.2L840.9,705.6L840.2,705.6L840.3,707.2L837.5,707.6L837.9,710.7L835.6,711.1L835.7,712.0L834.7,712.0L834.6,712.9L832.5,712.6L831.8,711.3L824.7,710.1L825.1,709.4L821.0,709.3L810.6,713.8L808.7,710.6L806.1,709.0L803.7,710.8L802.7,707.4L801.4,705.7L797.9,704.4L795.7,709.2L791.3,708.1L790.7,709.4L789.3,708.6L788.4,709.9L787.4,709.7L786.7,712.5L784.2,710.4L783.7,707.8L780.4,710.0L778.4,709.8L778.8,711.5L775.9,710.5L773.6,711.9L772.0,714.1L769.9,719.3L767.5,723.4L765.8,722.0L766.4,718.7L765.4,717.8L760.9,718.2L756.3,715.5L752.7,717.5L748.4,718.1L745.6,716.0L743.5,716.2L743.0,717.5L742.0,717.7L738.0,728.1L739.1,728.7L737.8,729.7L737.7,733.2L740.4,734.9L740.8,736.3L738.1,737.9L737.7,739.2L734.0,742.2L734.3,743.4L733.1,743.9L733.5,745.3L731.4,747.3L728.0,752.6L730.1,754.6L733.6,754.8L733.6,756.5L729.8,760.3L734.7,766.3L733.2,769.0L732.5,772.9L741.7,776.5L742.0,779.1L740.5,782.4L741.5,784.2L742.6,790.7L740.6,790.9L737.3,789.9L735.4,791.2L733.1,795.8L733.7,796.2L729.7,800.5L730.6,801.1L729.8,802.8L731.6,803.7L726.5,810.2L724.5,814.4L725.2,816.0L723.5,819.6L720.1,819.4L718.3,821.2L716.5,818.1L712.5,820.4L709.4,820.4L708.7,823.5L709.8,825.2L709.7,826.4L708.7,827.7L703.0,830.1L701.6,829.2L694.9,835.6L693.4,835.6L692.3,840.4L693.1,848.9L662.7,853.6L658.7,859.7L654.6,863.9L653.3,863.9L652.9,864.8L651.1,865.5L648.5,868.6L643.2,868.7L641.7,871.6L638.5,870.4L637.0,871.2L633.0,870.4L631.0,863.5L632.9,858.2L631.5,857.1L633.7,854.0L636.4,852.0L636.3,851.1L637.5,848.6L637.0,847.0L633.2,848.3L632.7,848.0L632.5,845.7L631.3,846.2L630.3,845.0L628.9,848.1L623.1,846.1L619.8,850.0L618.2,849.2L617.8,847.8L614.0,848.9L614.5,849.9L612.5,851.1L611.4,849.5L610.4,849.7L604.1,846.9L606.2,851.2L607.4,852.2L608.2,851.9L608.4,853.0L611.8,855.7L612.6,858.3L612.5,860.8L597.0,866.7L596.2,869.4L591.2,874.1L590.3,876.1L586.4,874.6L585.3,874.5L584.7,875.4L578.2,874.9L577.9,874.1L575.8,874.9L575.2,876.7L574.0,877.5L572.2,877.7L563.3,866.4L561.1,865.3L552.8,867.3L549.2,869.4L544.6,870.4L534.8,869.8L532.2,870.5L530.3,864.1L524.8,863.5L515.6,864.4L508.5,873.2L507.6,873.3L508.6,874.7L506.1,873.7L494.6,873.7L488.2,871.6L486.5,872.6L485.2,871.9L484.6,873.2L483.3,872.0L478.6,876.5L476.3,874.4L474.1,875.3L473.4,874.5L474.1,870.4L477.3,869.9L477.5,868.4L481.1,866.8L484.4,859.1L487.6,858.7L487.3,855.1L487.9,853.8L489.4,854.5L490.5,849.3L491.4,848.1L501.7,853.5L506.3,846.9L504.4,843.9L505.8,841.2L502.1,837.9L507.0,831.0L506.5,830.3L505.0,830.6L504.7,828.9L509.2,827.6L509.1,823.8L507.1,823.3L508.3,819.7L506.5,817.6L506.6,814.5L505.2,814.5L505.7,812.3L504.8,807.8L507.1,805.6L502.0,806.7L502.3,802.1L501.7,798.2L493.0,797.1L491.8,797.9L488.4,794.2L489.5,790.8L488.2,790.3L488.4,789.7L485.1,786.9L476.7,790.5L475.0,787.0L472.3,788.3L471.6,787.3L467.9,786.8L467.0,786.0L466.4,783.9L464.9,783.5L463.3,779.3L463.8,778.6L462.4,775.5L463.2,773.6L462.3,771.0L463.4,766.8L464.7,765.2L464.8,760.3L463.9,759.3L463.8,757.7L462.8,755.7L460.4,752.2L458.4,750.6L458.6,750.1L456.3,746.7L455.4,742.2L454.0,741.6L451.5,738.7L451.9,735.1L451.4,732.3L453.2,734.1L455.4,734.6L459.4,732.2L466.2,731.4L467.3,731.5L469.4,733.5L469.0,730.1L467.4,725.3L467.7,724.4L469.8,720.3L472.5,722.0L474.0,718.1L472.4,718.1L471.2,715.8L469.2,716.8L467.7,715.0L473.5,709.9L475.3,710.9L475.3,712.1L476.9,711.5L475.6,707.8L477.3,706.3L485.2,705.2L492.1,700.5L487.2,695.8L491.0,693.2L491.6,691.2L496.2,692.3L498.3,691.5L500.2,694.1L508.2,688.2L508.5,686.0L514.3,686.5L519.8,688.3L511.1,678.8L506.6,670.9L501.1,669.2L502.0,668.6L502.1,665.7L501.4,665.5L502.2,663.7L499.0,662.0L501.9,658.1L500.5,656.6L502.2,655.0L499.2,652.1L499.5,651.4L498.0,650.8L498.7,649.6L501.5,648.1L499.7,644.3L502.1,642.4L499.9,640.7L501.1,639.3L499.4,636.8L500.9,635.7L499.7,632.2L503.4,629.8L503.2,627.5L504.8,623.6L503.8,622.7L505.4,620.2L505.7,617.8L505.0,615.5L502.9,616.5L502.1,613.0L502.8,610.6L497.8,610.3L497.6,608.0L498.2,607.8L498.7,604.9L497.7,604.8L498.1,603.4L499.2,603.5L500.0,600.5L500.6,600.7L501.3,599.7L500.2,598.7L502.0,597.4L503.7,592.9L498.6,593.0L498.6,591.4L500.2,590.9L501.7,587.3L505.8,581.1L507.7,579.8L508.1,577.4L507.4,574.7L512.5,574.2L513.0,572.3L508.6,572.6L508.7,569.9L507.6,568.4L507.0,565.1L512.3,562.9L513.9,561.6L514.6,559.5L517.1,558.5L518.4,552.0L517.0,546.9L510.4,545.7L510.8,540.1L510.1,540.1L505.9,535.0L510.2,532.2L515.1,533.6L515.7,532.2L517.3,532.7L517.7,532.1L517.1,526.7L518.4,523.7L517.6,523.4L520.2,521.1L520.0,519.7L517.2,519.8L513.9,515.9L515.9,514.3L514.4,512.7L516.7,511.2L518.2,508.2L519.2,507.6L518.8,506.6L520.1,506.2L520.9,508.0L522.0,506.5L522.3,504.5L524.4,503.5L526.7,508.1L529.4,509.6L530.8,508.2L530.5,504.1L534.4,502.1L536.3,502.5L537.1,501.3L534.6,496.4L535.4,494.1L532.4,492.5L530.8,492.5Z"/>
+      <path class="kcidf-dep" data-code="78" data-nom="Yvelines" tabindex="0" role="button" aria-label="Departement 78 Yvelines" d="M99.9,228.8L103.1,234.0L102.7,234.5L104.6,236.8L111.4,232.1L116.3,231.7L116.4,230.7L117.4,230.1L124.7,230.1L128.1,231.7L130.7,231.9L138.9,237.5L141.3,240.1L141.2,244.0L140.1,246.5L140.5,247.1L146.5,249.8L149.0,252.9L150.3,251.8L153.3,254.6L157.1,250.9L158.7,252.1L165.6,252.4L165.1,248.8L168.3,245.6L166.5,244.6L169.6,242.2L172.8,245.8L175.7,246.5L180.5,246.6L181.1,245.9L184.8,245.7L183.9,244.0L185.8,243.1L185.2,242.2L187.3,241.4L185.8,236.2L189.0,235.1L192.1,235.7L194.5,233.3L200.1,233.5L205.4,238.2L205.8,241.2L207.4,243.1L208.2,243.7L210.6,242.6L216.5,246.2L214.7,251.5L213.8,256.9L212.0,261.4L210.5,261.2L210.2,262.4L213.6,263.0L213.9,268.8L216.4,270.3L214.1,273.3L214.8,275.3L217.8,273.4L218.7,271.9L220.8,273.3L221.7,271.9L223.8,271.7L223.8,266.0L225.0,264.0L224.4,262.2L229.2,259.7L228.0,258.4L232.6,256.5L232.3,255.6L235.7,252.5L238.1,254.0L237.4,256.7L242.5,261.5L248.7,270.2L251.6,268.9L252.1,267.4L253.4,267.0L253.9,268.4L256.3,268.4L257.3,270.2L260.4,267.7L261.6,269.6L264.8,271.8L266.7,272.2L272.8,270.8L281.7,281.7L282.1,283.9L286.9,286.3L289.0,283.9L295.3,284.5L305.0,279.4L308.3,283.8L309.9,283.4L309.7,280.6L312.7,278.9L314.2,275.0L325.4,279.0L325.6,277.9L330.3,272.6L332.7,276.7L332.9,278.4L331.3,282.5L330.1,289.4L331.6,289.2L331.4,290.6L332.9,292.2L345.3,294.5L350.1,297.0L353.5,301.3L355.2,306.9L356.1,308.0L355.1,313.9L353.4,316.4L354.6,317.3L355.6,315.7L361.0,317.4L360.8,318.4L368.0,318.8L367.9,325.2L366.6,325.5L366.6,326.9L364.9,328.6L367.1,333.6L367.8,337.4L365.0,339.5L367.0,342.6L364.6,344.2L365.6,346.5L362.1,349.1L354.9,352.1L351.3,355.6L349.1,360.1L349.1,363.7L346.8,365.4L342.8,372.5L342.4,373.6L346.3,372.8L344.8,376.3L345.3,376.7L343.6,378.9L343.8,379.9L343.3,380.6L343.5,381.9L347.5,387.7L344.6,386.8L343.5,387.4L341.2,391.6L341.3,395.5L343.8,405.3L343.3,407.1L343.8,408.3L348.8,411.4L350.5,411.4L351.7,409.0L354.2,409.5L355.0,410.3L354.9,412.3L357.8,416.2L356.7,416.5L357.3,419.3L359.6,419.3L357.8,421.6L366.6,420.8L367.3,422.5L369.8,423.9L370.5,425.6L369.4,428.1L370.5,427.7L373.9,429.6L375.8,429.2L377.2,432.2L375.9,432.8L376.1,434.7L377.2,435.8L378.3,439.7L370.8,438.8L369.8,440.5L367.7,440.1L365.7,438.5L365.9,436.1L361.4,436.5L359.1,438.3L361.0,439.0L361.5,442.2L362.3,443.5L361.6,445.8L362.1,446.5L361.7,448.1L360.9,448.9L361.2,450.0L360.1,450.8L359.2,450.8L356.8,447.7L351.1,448.8L348.0,453.5L343.7,450.4L339.7,454.5L339.4,456.0L337.3,456.5L338.6,458.7L336.4,462.1L332.5,461.7L332.3,460.2L329.5,458.6L328.0,459.6L328.1,460.4L322.0,461.8L320.2,463.4L320.4,464.3L322.5,465.1L322.1,466.6L324.8,468.9L326.4,471.7L323.6,474.1L325.5,477.4L321.2,485.2L319.5,485.3L319.1,487.0L320.1,487.4L319.4,488.9L319.9,491.2L318.3,490.7L318.2,489.5L317.0,489.2L316.9,488.0L315.9,488.4L314.5,490.8L315.5,491.8L312.9,496.9L306.8,493.7L306.3,494.7L305.2,494.9L306.0,496.0L305.3,496.3L296.7,495.5L295.2,498.8L295.8,499.2L295.3,500.6L291.4,501.0L291.2,504.8L289.3,511.2L288.9,516.0L286.4,515.1L285.6,515.8L281.4,514.2L281.7,519.9L280.8,522.0L283.1,522.7L284.7,524.2L283.6,526.9L290.3,525.9L293.3,527.0L291.9,529.3L292.8,532.2L291.7,533.1L294.5,533.8L294.4,535.9L295.3,537.5L296.9,537.8L296.9,540.1L300.3,540.6L300.6,542.5L303.2,542.7L303.5,544.0L302.0,545.6L301.7,546.8L301.0,546.3L300.5,546.9L300.8,549.2L298.5,549.1L291.6,551.0L291.4,554.6L290.4,558.6L291.7,558.9L292.5,560.3L292.3,562.1L289.5,564.1L289.9,564.9L289.4,565.8L286.4,568.1L286.7,568.9L286.0,569.5L286.7,570.6L284.2,575.1L283.4,575.5L284.0,576.4L283.7,580.5L284.2,583.1L275.8,584.7L274.8,583.6L272.3,584.3L269.5,582.6L266.9,585.8L263.9,582.3L261.8,581.3L254.7,582.0L253.4,580.8L248.7,579.5L248.0,581.0L248.3,583.6L247.2,590.1L249.6,591.2L250.4,591.9L250.1,592.9L251.2,593.5L253.5,592.6L253.9,594.6L255.2,595.1L255.1,595.9L262.7,600.2L262.9,598.4L261.8,597.5L263.5,596.4L264.5,596.8L266.0,597.9L266.8,604.6L265.6,604.9L265.2,603.9L262.0,604.5L262.3,603.0L259.9,602.8L257.3,605.1L257.0,606.6L252.2,609.9L253.0,612.5L251.5,613.2L252.6,614.9L250.0,617.4L247.1,624.8L246.5,629.0L247.2,629.2L246.4,631.7L246.4,635.2L243.0,634.7L238.6,639.5L239.1,640.2L238.3,642.6L239.9,642.9L239.1,646.8L240.1,647.5L239.9,648.4L242.0,648.9L242.2,653.4L241.1,657.2L237.1,657.2L237.0,658.7L235.0,658.8L234.7,662.3L233.9,662.4L233.8,663.3L228.2,662.2L219.3,662.6L216.9,661.0L215.8,661.1L215.7,659.4L213.1,658.6L213.0,657.8L207.3,658.3L207.8,657.4L207.6,656.1L207.0,656.1L207.0,654.3L205.0,654.1L205.1,651.3L203.2,646.5L203.6,644.1L188.0,644.8L188.7,642.8L187.9,641.1L188.8,640.4L185.2,637.1L183.6,634.6L185.7,632.6L183.6,630.9L183.8,630.1L181.0,628.6L183.2,624.1L182.4,623.6L182.5,621.9L179.8,621.8L178.4,615.5L177.0,615.7L176.7,612.2L177.7,610.0L176.6,603.3L179.4,595.4L178.9,595.0L180.3,591.7L180.1,590.5L181.7,585.7L177.6,586.5L177.9,585.8L177.0,584.6L173.1,582.2L170.8,578.1L171.1,576.7L170.5,576.4L171.9,575.2L168.4,571.4L166.5,571.7L163.3,570.6L162.4,573.1L161.9,572.6L159.2,573.2L157.0,571.0L155.0,573.0L147.0,569.4L147.4,567.1L143.7,564.7L146.9,557.7L149.1,555.9L149.0,554.8L151.2,550.7L150.5,549.5L151.1,547.9L150.3,547.6L149.4,544.7L144.1,546.6L139.5,544.7L138.8,545.0L138.2,546.7L137.1,547.0L135.0,544.0L138.7,542.8L136.1,541.2L133.5,541.9L131.5,544.6L128.6,543.0L128.3,545.0L127.8,545.3L122.9,539.2L124.3,535.9L123.5,535.2L123.7,534.6L120.4,532.8L120.8,529.3L115.4,524.1L117.9,522.2L117.6,520.0L112.3,521.9L108.5,520.4L107.8,521.1L104.1,517.9L102.2,514.8L99.7,512.5L98.9,508.5L101.9,505.8L100.4,503.8L103.1,497.0L103.6,494.2L100.7,494.4L95.8,490.6L94.4,492.2L92.5,490.5L90.4,489.8L91.7,487.6L88.0,485.4L94.6,481.9L94.7,481.2L92.8,480.0L95.7,476.3L97.0,472.9L98.9,473.3L100.0,470.4L102.8,467.7L105.4,462.8L107.4,462.9L108.8,459.2L108.0,458.9L110.2,454.8L102.7,448.3L102.1,446.2L91.9,445.5L90.7,445.1L91.6,444.5L90.1,443.0L92.8,437.5L90.8,436.0L91.3,435.1L89.6,434.9L89.9,433.3L87.9,431.2L87.7,428.2L88.1,427.3L87.3,425.7L89.9,423.9L88.3,422.7L89.1,422.2L88.6,420.6L89.4,419.8L88.2,416.2L90.3,416.1L91.0,414.9L89.2,413.7L89.8,412.6L90.9,412.5L94.4,409.7L93.7,406.6L91.3,401.8L89.0,399.9L91.3,397.8L95.6,397.0L97.4,393.4L95.2,392.8L95.4,392.1L92.4,390.6L88.2,389.8L88.7,386.6L91.2,378.9L88.6,378.7L84.7,375.5L80.8,374.0L80.0,376.4L78.4,375.9L74.4,370.9L75.4,368.5L76.7,369.1L78.9,364.3L80.4,364.4L81.4,361.0L81.0,360.6L82.2,358.6L77.6,356.9L77.6,355.4L76.5,354.9L76.1,353.2L74.4,351.5L73.2,351.7L72.5,349.9L71.3,349.0L70.9,346.6L72.2,346.7L74.0,345.0L74.0,343.6L72.0,341.0L70.9,337.2L62.1,335.2L60.1,337.5L57.1,333.7L57.6,331.4L58.8,330.8L59.2,329.1L54.5,324.7L58.7,316.2L56.4,316.0L56.3,317.1L54.3,316.8L51.6,314.0L53.3,313.9L53.0,311.9L53.5,311.6L50.2,308.9L52.3,305.6L62.0,299.5L59.4,299.3L57.3,295.9L53.9,297.7L53.1,299.0L46.8,298.6L45.4,299.5L44.3,298.0L42.7,298.7L43.8,300.5L40.9,301.9L39.4,298.8L38.7,295.8L36.4,294.1L36.8,292.4L41.2,291.9L40.1,289.3L42.4,286.5L43.4,286.8L44.4,285.7L44.1,285.2L45.1,284.1L44.9,279.8L42.3,278.4L44.0,275.6L42.7,273.0L40.5,272.0L35.0,267.2L35.1,261.4L30.0,253.7L31.5,252.8L32.8,250.8L30.4,248.8L34.7,245.9L36.8,241.7L38.7,244.8L40.0,244.5L41.6,246.0L42.2,247.9L45.1,249.9L48.2,250.1L48.4,248.9L51.1,246.5L55.3,245.1L58.3,239.7L58.1,237.4L60.2,231.4L56.7,227.8L57.4,227.4L59.3,228.4L60.9,230.4L61.9,232.5L61.4,233.7L63.3,238.8L72.2,235.2L72.8,236.0L76.5,236.0L79.7,238.3L84.6,235.5L85.1,233.4L86.5,232.0L89.0,232.2L89.7,231.3L93.7,230.2L94.9,229.0L100.6,227.5L101.5,228.2L99.9,228.8Z"/>
+      <path class="kcidf-dep" data-code="91" data-nom="Essonne" tabindex="0" role="button" aria-label="Departement 91 Essonne" d="M377.2,435.8L378.9,437.3L379.0,439.1L380.1,440.5L380.1,442.5L382.6,442.3L383.6,444.2L386.3,446.1L387.3,445.5L393.0,446.8L395.3,445.1L396.1,445.3L395.9,446.2L396.9,446.2L396.3,448.3L399.3,449.0L398.8,449.9L400.8,451.3L403.4,455.1L403.1,456.4L398.9,460.4L400.9,465.1L411.0,459.6L410.6,462.7L411.6,467.3L416.3,466.6L416.7,464.6L418.2,462.2L418.0,461.6L416.4,462.3L415.7,461.4L417.5,459.6L416.3,458.0L418.1,456.8L419.1,454.3L420.0,454.7L421.8,452.7L424.9,455.6L426.7,458.0L426.4,458.7L428.4,459.9L431.1,459.2L435.0,461.4L436.3,458.6L437.9,457.4L437.9,456.1L440.7,456.1L441.4,473.5L444.0,474.1L444.7,473.1L447.7,474.2L448.5,473.0L449.9,473.1L450.7,471.9L453.3,472.9L455.4,469.2L458.9,469.8L459.9,472.4L461.4,473.1L460.3,474.5L460.7,475.1L465.8,471.8L472.3,470.0L472.7,470.9L473.8,470.7L473.2,472.6L476.1,477.1L476.9,476.5L475.7,475.0L475.9,472.4L478.5,473.4L478.1,472.0L478.5,470.5L481.1,471.1L481.3,469.5L483.3,468.8L483.8,467.2L484.6,469.2L489.4,468.5L501.7,463.1L502.3,464.8L503.5,463.8L505.9,467.6L506.6,476.4L508.9,480.5L512.0,481.8L511.6,484.5L512.7,487.3L514.9,486.6L515.0,489.1L517.4,487.1L518.6,488.2L517.9,489.2L518.6,490.7L519.6,490.4L519.2,491.7L521.5,493.5L521.3,494.9L530.8,492.5L532.4,492.5L535.4,494.1L534.6,496.4L537.1,501.3L536.3,502.5L534.4,502.1L530.5,504.1L530.8,508.2L529.4,509.6L526.7,508.1L524.4,503.5L523.5,503.4L522.3,504.5L521.6,507.4L520.9,508.0L520.1,506.2L518.8,506.6L519.2,507.6L518.2,508.2L516.7,511.2L514.4,512.7L515.9,514.3L513.9,515.9L517.2,519.8L520.0,519.7L520.2,521.1L517.6,523.4L518.4,523.7L517.1,526.7L517.1,529.1L517.7,529.8L517.3,532.7L515.7,532.2L515.1,533.6L510.2,532.2L505.9,535.0L510.1,540.1L510.8,540.1L510.4,545.7L517.0,546.9L518.4,552.0L517.1,558.5L514.6,559.5L513.9,561.6L512.3,562.9L507.0,565.1L507.6,568.4L508.7,569.9L508.6,572.6L513.0,572.3L512.5,574.2L507.4,574.7L508.1,577.4L507.7,579.8L505.8,581.1L501.7,587.3L500.2,590.9L498.6,591.4L498.6,593.0L503.7,592.9L502.0,597.4L500.2,598.7L501.3,599.7L500.6,600.7L500.0,600.5L499.2,603.5L498.1,603.4L497.7,604.8L498.7,604.9L498.2,607.8L497.6,608.0L497.8,610.3L502.8,610.6L502.1,613.0L502.9,616.5L505.0,615.5L505.7,617.8L505.4,620.2L503.8,622.7L504.8,623.6L503.2,627.5L503.4,629.8L499.7,632.2L500.9,635.7L499.4,636.8L501.1,639.3L499.9,640.7L502.1,642.4L499.7,644.3L501.5,648.1L498.7,649.6L498.0,650.8L499.5,651.4L499.2,652.1L502.2,655.0L500.5,656.6L501.9,658.1L499.0,662.0L502.2,663.7L501.4,665.5L502.1,665.7L502.0,668.6L501.1,669.2L506.6,670.9L511.1,678.8L519.8,688.3L514.3,686.5L508.5,686.0L508.2,688.2L500.2,694.1L498.3,691.5L496.2,692.3L491.6,691.2L491.0,693.2L487.2,695.8L492.1,700.5L485.2,705.2L477.3,706.3L475.6,707.8L476.9,711.5L475.3,712.1L475.3,710.9L473.5,709.9L467.7,715.0L469.2,716.8L471.2,715.8L472.4,718.1L474.0,718.1L472.5,722.0L469.8,720.3L467.7,724.4L467.4,725.3L469.0,730.1L469.4,733.5L467.3,731.5L466.2,731.4L459.4,732.2L455.4,734.6L453.2,734.1L451.4,732.3L451.9,735.1L451.5,738.7L455.6,742.8L453.7,744.2L454.4,746.2L448.3,748.8L441.0,750.9L439.8,748.6L435.8,751.1L433.7,747.1L430.3,745.9L430.4,745.1L428.6,745.4L425.4,738.3L422.4,739.0L422.8,737.2L422.1,734.5L421.7,736.8L420.8,736.8L420.4,734.9L417.9,736.4L417.5,735.5L415.5,736.0L415.7,737.3L414.9,737.3L410.6,746.3L410.2,746.2L409.3,748.7L410.0,749.2L408.0,751.3L402.4,748.3L397.6,748.7L397.5,747.4L396.0,747.7L396.1,746.6L395.2,746.9L393.2,749.8L394.4,750.5L392.9,752.1L391.6,751.9L389.2,756.6L385.5,757.9L385.4,755.3L386.2,753.0L386.1,750.8L387.3,745.8L382.3,745.7L385.1,739.5L385.9,735.7L384.5,734.6L384.1,735.7L382.2,735.2L380.3,736.1L381.2,737.0L380.7,738.0L377.6,736.8L378.4,735.6L378.1,734.6L377.3,734.8L376.0,732.2L374.1,732.8L373.3,734.2L372.4,733.7L372.4,731.7L370.6,730.7L371.0,729.4L368.6,728.6L368.5,726.5L366.4,726.7L366.2,727.7L367.6,728.3L366.7,730.5L361.2,734.8L360.0,735.0L360.1,737.9L357.4,740.4L357.4,742.3L358.5,741.4L358.7,742.5L356.8,748.9L352.8,746.0L351.6,748.2L344.1,746.0L343.9,747.4L345.7,753.7L348.0,753.7L349.2,757.8L336.9,757.3L325.6,758.8L327.0,751.9L323.6,751.6L320.8,753.5L320.1,755.0L316.9,757.4L316.1,760.0L314.3,760.8L299.8,759.8L299.5,762.9L294.7,767.3L292.8,766.0L293.0,764.7L287.5,764.0L287.2,764.9L285.3,765.1L285.3,766.2L279.6,767.1L278.4,767.0L277.8,766.0L272.0,765.1L271.8,765.9L268.1,764.7L267.8,765.5L264.2,764.7L265.0,761.6L267.6,762.0L268.5,759.8L265.4,759.4L265.0,760.9L263.6,761.1L264.2,759.0L260.9,760.0L259.1,753.6L259.6,753.0L258.0,752.3L258.5,751.7L258.2,750.9L264.6,746.0L265.0,748.3L267.1,748.2L267.1,744.3L267.8,744.1L265.0,741.2L268.5,737.7L262.4,728.9L263.3,728.3L262.9,727.6L265.4,726.6L264.5,719.2L271.5,713.9L269.5,712.9L269.3,710.7L266.6,710.4L267.6,709.4L267.4,708.4L268.1,707.8L268.4,706.3L267.5,706.3L267.6,704.0L266.5,703.8L265.8,702.7L261.6,702.6L262.2,700.1L262.7,700.2L264.9,696.2L264.5,692.2L266.2,689.9L265.9,689.7L266.7,688.0L263.7,688.3L259.6,686.4L252.5,685.1L246.2,687.1L244.5,685.3L246.4,682.2L243.4,680.8L244.2,678.4L246.1,678.4L246.2,675.6L249.5,676.2L250.0,672.2L248.5,671.6L248.3,670.6L249.0,670.0L248.2,669.1L248.2,668.3L249.3,667.8L249.3,666.3L248.0,665.9L250.9,661.7L247.7,661.9L246.5,661.0L247.2,659.8L245.9,659.2L246.5,655.9L244.6,655.0L245.5,653.2L244.3,652.6L245.0,651.0L241.7,650.5L242.0,648.9L239.9,648.4L240.1,647.5L239.1,646.8L239.9,642.9L238.3,642.6L239.1,640.2L238.6,639.5L243.0,634.7L246.4,635.2L246.4,631.7L247.2,629.2L246.5,629.0L247.1,624.8L250.0,617.4L252.6,614.9L251.5,613.2L253.0,612.5L252.2,609.9L257.0,606.6L257.3,605.1L259.9,602.8L262.3,603.0L262.0,604.5L265.2,603.9L265.6,604.9L266.8,604.6L266.5,599.7L266.0,597.9L263.5,596.4L261.8,597.5L262.9,598.4L262.7,600.2L255.1,595.9L255.2,595.1L253.9,594.6L253.5,592.6L251.2,593.5L250.1,592.9L250.4,591.9L249.6,591.2L247.2,590.1L248.3,583.6L248.0,581.0L248.7,579.5L253.4,580.8L254.7,582.0L261.8,581.3L263.9,582.3L266.9,585.8L269.5,582.6L272.3,584.3L274.8,583.6L275.8,584.7L284.2,583.1L283.7,580.5L284.0,576.4L283.4,575.5L284.2,575.1L286.7,570.6L286.0,569.5L286.7,568.9L286.4,568.1L289.4,565.8L289.9,564.9L289.5,564.1L292.3,562.1L292.5,560.3L291.7,558.9L290.4,558.6L291.4,554.6L291.6,551.0L298.5,549.1L300.8,549.2L300.5,546.9L301.0,546.3L301.7,546.8L302.0,545.6L303.5,544.0L303.2,542.7L300.6,542.5L300.3,540.6L296.9,540.1L296.9,537.8L295.3,537.5L294.4,535.9L294.5,533.8L291.7,533.1L292.8,532.2L291.9,529.3L293.3,527.0L290.3,525.9L283.6,526.9L284.7,524.2L283.1,522.7L280.8,522.0L281.7,519.9L281.4,514.2L285.6,515.8L286.4,515.1L288.9,516.0L289.3,511.2L291.2,504.8L291.4,501.0L295.3,500.6L295.8,499.2L295.2,498.8L296.7,495.5L305.3,496.3L306.0,496.0L305.2,494.9L306.3,494.7L306.8,493.7L312.9,496.9L315.5,491.8L314.5,490.8L315.9,488.4L316.9,488.0L317.0,489.2L318.2,489.5L318.3,490.7L319.9,491.2L319.4,488.9L320.1,487.4L319.1,487.0L319.5,485.3L321.2,485.2L325.5,477.4L323.6,474.1L326.4,471.7L324.8,468.9L322.1,466.6L322.5,465.1L320.4,464.3L320.2,463.4L322.0,461.8L328.1,460.4L328.0,459.6L329.5,458.6L332.3,460.2L332.5,461.7L336.4,462.1L338.6,458.7L337.3,456.5L339.4,456.0L339.7,454.5L343.7,450.4L348.0,453.5L351.1,448.8L353.6,448.1L356.8,447.7L359.2,450.8L361.2,450.0L360.9,448.9L361.7,448.1L362.1,446.5L361.6,445.8L362.3,443.5L361.5,442.2L361.0,439.0L359.1,438.3L361.4,436.5L365.9,436.1L365.7,438.5L367.7,440.1L369.8,440.5L370.8,438.8L378.3,439.7L377.2,435.8Z"/>
+      <path class="kcidf-dep" data-code="95" data-nom="Val-d'Oise" tabindex="0" role="button" aria-label="Departement 95 Val-d'Oise" d="M539.2,231.2L536.1,237.6L530.5,244.1L531.9,248.4L537.1,245.9L537.4,247.4L536.6,249.5L538.0,251.3L540.9,253.1L533.2,253.8L529.1,258.7L529.9,261.1L529.4,261.6L529.6,262.9L528.4,263.3L528.3,265.6L519.0,269.8L514.5,268.9L514.3,272.4L515.5,272.5L516.2,276.3L517.0,277.1L519.0,277.0L519.0,275.1L520.7,275.0L521.1,276.7L522.6,276.9L522.5,280.4L520.6,280.4L520.8,282.9L520.3,282.9L520.2,281.6L518.6,281.7L518.5,281.1L514.8,281.4L514.7,280.5L513.2,281.4L512.5,283.6L509.7,287.4L509.1,290.4L507.3,291.1L507.3,293.2L506.4,293.3L506.5,294.2L504.5,294.4L505.5,296.9L501.1,299.2L500.5,298.8L499.1,299.9L499.9,300.7L499.1,301.6L497.0,301.8L498.0,302.5L497.1,303.3L495.7,302.1L493.7,304.4L494.5,305.0L493.0,307.0L490.3,305.3L489.0,307.4L487.8,306.6L485.3,309.8L484.4,309.0L481.5,312.9L480.9,315.2L476.8,315.3L474.5,314.0L470.4,315.1L466.9,312.5L462.8,313.4L462.2,312.2L460.3,313.4L458.7,313.3L457.7,314.5L453.5,312.0L447.5,304.5L439.3,302.4L438.9,303.1L437.3,302.6L436.0,303.3L433.9,308.0L429.5,306.3L426.6,311.3L426.8,311.9L424.6,314.9L422.2,312.1L420.0,313.5L415.7,310.4L414.5,310.7L413.9,309.5L412.1,310.3L409.4,307.6L405.4,310.9L404.7,313.0L406.4,317.7L396.0,320.9L392.5,323.0L379.2,333.6L370.6,342.7L365.6,346.5L364.6,344.2L367.0,342.6L365.0,339.5L367.8,337.4L367.1,333.6L364.9,328.6L366.6,326.9L366.6,325.5L367.9,325.2L368.0,318.8L360.8,318.4L361.0,317.4L355.6,315.7L354.6,317.3L353.4,316.4L355.1,313.9L356.1,308.0L355.2,306.9L353.5,301.3L350.1,297.0L345.3,294.5L332.9,292.2L331.4,290.6L331.6,289.2L330.1,289.4L331.3,282.5L332.9,278.4L332.7,276.7L330.3,272.6L325.6,277.9L325.4,279.0L314.2,275.0L312.7,278.9L309.7,280.6L309.9,283.4L308.3,283.8L305.0,279.4L295.3,284.5L289.0,283.9L286.9,286.3L282.1,283.9L281.7,281.7L272.8,270.8L266.7,272.2L264.8,271.8L261.6,269.6L260.4,267.7L257.3,270.2L256.3,268.4L253.9,268.4L253.4,267.0L252.1,267.4L251.6,268.9L248.7,270.2L242.5,261.5L237.4,256.7L238.1,254.0L235.7,252.5L232.3,255.6L232.6,256.5L228.0,258.4L229.2,259.7L224.4,262.2L225.0,264.0L223.8,266.0L223.8,271.7L221.7,271.9L220.8,273.3L218.7,271.9L217.8,273.4L214.8,275.3L214.1,273.3L216.4,270.3L213.9,268.8L213.6,263.0L210.2,262.4L210.5,261.2L212.0,261.4L213.8,256.9L214.7,251.5L216.5,246.2L210.6,242.6L208.2,243.7L207.4,243.1L205.8,241.2L205.4,238.2L200.1,233.5L194.5,233.3L192.1,235.7L189.0,235.1L185.8,236.2L187.3,241.4L185.2,242.2L185.8,243.1L183.9,244.0L184.8,245.7L181.1,245.9L180.5,246.6L175.7,246.5L172.8,245.8L169.6,242.2L166.5,244.6L168.3,245.6L165.1,248.8L165.6,252.4L158.7,252.1L157.1,250.9L153.3,254.6L150.3,251.8L149.0,252.9L146.5,249.8L140.5,247.1L140.1,246.5L141.2,244.0L141.3,240.1L138.9,237.5L130.7,231.9L128.1,231.7L124.7,230.1L117.4,230.1L116.4,230.7L116.3,231.7L111.4,232.1L104.6,236.8L102.7,234.5L103.1,234.0L102.3,232.4L108.7,226.9L106.8,225.2L108.7,223.7L108.6,222.0L106.1,221.6L106.6,219.5L107.6,219.1L108.1,216.8L110.6,215.4L110.4,214.1L111.5,212.4L111.5,210.8L113.1,210.1L112.9,209.2L113.9,207.9L118.2,205.1L119.1,203.1L119.3,200.9L120.5,200.5L121.8,197.6L124.0,196.0L123.5,192.1L122.4,192.8L121.9,191.7L122.0,187.4L123.4,184.8L124.3,184.5L124.7,182.9L127.0,181.5L125.5,178.5L126.3,177.5L127.1,173.1L129.6,170.7L127.9,165.7L128.5,165.2L128.4,163.9L130.3,163.0L129.1,159.1L130.1,156.2L129.8,154.6L131.5,152.6L132.4,150.0L132.6,148.0L130.5,145.9L131.7,142.4L132.6,142.2L132.8,141.1L136.6,138.0L137.9,137.7L139.0,136.0L139.1,134.3L142.2,133.6L142.3,132.6L144.7,130.3L144.0,129.1L145.1,127.0L146.8,126.2L147.3,123.8L147.0,122.3L148.5,122.3L148.7,126.5L148.2,127.8L149.7,127.7L156.0,130.4L160.8,134.3L158.0,135.8L158.6,139.3L157.2,139.6L157.8,142.7L155.7,143.7L152.6,143.4L151.8,145.5L149.4,145.2L149.8,148.3L151.0,148.2L151.7,149.1L152.7,148.4L152.9,149.4L154.0,149.6L154.8,153.5L159.5,153.7L159.1,154.9L160.6,155.4L161.2,159.8L162.7,161.4L161.0,163.1L167.6,167.2L176.6,161.1L180.6,159.7L181.4,160.8L181.3,161.5L183.3,163.7L184.8,163.3L184.5,161.1L185.3,160.0L188.5,160.3L188.9,163.6L193.5,164.9L193.9,166.3L192.4,167.2L192.6,167.9L194.5,167.7L194.3,167.1L196.1,166.3L196.0,165.7L199.3,163.8L199.8,164.9L202.6,166.5L204.0,168.2L202.8,173.7L203.6,174.0L207.2,170.0L211.8,169.0L213.3,170.4L217.6,169.1L221.5,166.7L221.6,169.3L224.4,172.8L224.1,175.4L226.3,174.9L226.2,174.1L229.6,173.8L229.4,173.0L239.1,169.4L242.5,168.8L242.8,168.0L247.1,167.9L247.4,170.3L250.7,170.3L252.0,169.3L254.0,170.1L259.8,167.2L264.5,161.0L268.5,162.6L269.2,163.8L271.2,164.3L272.1,165.8L277.2,166.3L286.1,157.7L291.3,158.1L294.0,154.7L297.0,152.5L297.5,151.1L302.5,150.1L308.4,147.3L309.7,144.2L310.7,144.4L310.8,143.6L312.4,143.1L312.5,145.5L313.2,146.3L314.6,145.9L315.6,144.0L316.9,144.3L316.7,149.0L317.4,149.3L316.5,151.2L317.4,151.6L317.6,153.0L316.2,152.8L316.2,154.4L317.6,154.1L319.9,157.4L321.8,156.5L322.5,157.6L325.2,156.4L325.8,158.9L326.8,159.2L330.7,157.7L332.4,156.0L332.2,155.2L333.4,154.5L335.0,156.4L336.5,156.0L337.3,164.2L339.0,164.3L338.9,159.7L341.8,158.1L342.4,160.3L346.7,162.1L348.2,163.9L349.6,163.8L349.8,164.6L346.6,168.6L349.3,173.0L351.5,174.4L352.5,173.7L352.6,171.9L356.2,169.9L357.5,170.1L356.4,168.2L354.2,166.9L354.7,166.3L357.3,167.8L363.4,168.2L365.0,166.8L365.9,167.5L369.7,166.6L373.7,163.1L376.0,167.7L379.1,169.8L381.1,172.3L376.3,175.5L372.7,180.6L375.6,182.5L378.5,182.9L383.9,182.7L384.0,181.5L389.3,182.0L393.1,178.2L395.7,180.0L399.7,177.8L403.8,177.1L403.2,173.2L404.3,173.1L404.1,172.2L405.2,171.7L404.9,169.8L407.3,169.2L408.4,166.2L409.6,166.4L410.4,161.0L414.6,160.3L414.7,159.3L419.6,160.6L418.6,162.0L421.3,164.4L428.2,173.7L430.5,175.8L434.6,181.6L433.7,183.0L436.3,185.6L437.6,182.1L438.7,182.3L439.7,179.9L441.1,179.2L441.4,178.0L443.9,177.7L445.7,178.4L450.5,184.2L460.2,182.2L461.2,182.6L461.2,183.9L465.7,184.2L472.6,186.6L470.1,194.6L475.3,193.5L480.3,189.8L482.2,191.1L481.8,193.3L484.5,193.4L485.5,194.2L486.2,193.6L488.0,196.5L488.9,196.6L488.0,198.4L498.6,202.5L500.3,205.7L495.2,209.9L494.4,213.2L501.2,215.0L503.6,214.7L512.7,217.8L513.6,204.4L517.1,202.5L518.2,203.0L518.3,204.2L516.0,205.0L516.6,206.4L519.9,206.6L520.0,203.9L520.7,202.7L522.6,200.9L524.3,201.5L523.8,205.6L521.8,209.0L523.7,211.4L524.8,215.0L524.8,218.6L526.2,219.6L526.9,219.2L528.6,221.4L530.5,220.7L533.9,222.9L534.5,224.4L533.5,225.6L534.5,226.5L534.0,228.0L535.7,229.3L535.8,230.6L539.2,231.2Z"/>
+      <path class="kcidf-dep" data-code="94" data-nom="Val-de-Marne" tabindex="0" role="button" aria-label="Departement 94 Val-de-Marne" d="M424.1,408.3L430.9,408.9L433.2,407.2L434.9,409.0L437.9,408.9L455.5,399.8L459.3,403.0L467.4,403.8L471.1,407.5L480.6,408.1L482.3,406.9L483.8,401.3L483.1,401.1L483.3,399.2L485.1,396.9L485.4,395.1L483.4,392.0L480.2,390.4L475.0,389.4L475.1,388.9L472.5,388.8L472.5,389.8L471.3,389.6L470.9,392.2L465.3,391.5L464.1,389.8L463.2,390.4L463.1,391.8L464.2,395.6L460.4,397.0L459.8,396.5L461.7,386.5L467.4,386.9L467.5,385.4L469.7,385.5L470.0,383.8L473.1,384.1L475.4,385.2L476.1,383.7L478.4,382.3L484.3,381.5L484.1,379.3L484.8,378.8L490.3,379.2L490.7,378.3L494.9,378.7L495.2,379.5L497.2,378.8L497.3,379.8L496.7,380.1L497.3,381.9L501.3,381.2L505.0,385.9L505.9,385.1L507.3,387.3L510.0,386.7L511.7,390.2L514.2,389.2L514.8,390.8L516.8,393.2L515.2,393.8L515.9,394.9L518.6,396.1L520.0,395.4L525.8,400.3L526.2,401.9L531.0,403.8L529.4,407.4L530.1,409.6L541.8,415.6L539.9,420.0L540.3,421.3L543.3,423.1L540.8,427.6L541.2,429.8L539.8,429.6L539.6,430.8L538.3,431.2L538.3,434.4L537.0,434.1L537.5,437.6L538.6,438.9L540.2,439.2L544.0,437.3L546.5,437.0L548.4,439.7L550.3,445.1L550.0,445.9L544.6,447.4L542.3,446.3L543.1,449.7L544.4,450.9L541.7,455.2L539.7,455.1L536.9,459.0L539.1,460.2L539.6,461.9L541.3,462.5L540.8,463.1L541.0,465.7L539.1,466.2L538.6,467.5L536.7,468.9L534.9,472.4L534.1,471.8L532.4,478.5L531.0,478.1L529.2,481.1L530.3,483.8L530.1,484.8L535.3,488.9L530.3,490.6L530.8,492.5L528.3,492.7L522.9,495.0L521.3,494.9L521.5,493.5L519.2,491.7L519.6,490.4L518.6,490.7L517.9,489.2L518.6,488.2L517.4,487.1L515.0,489.1L514.9,486.6L512.7,487.3L511.6,484.5L512.0,481.8L508.9,480.5L506.6,476.4L505.9,467.6L503.5,463.8L502.3,464.8L501.7,463.1L489.4,468.5L484.6,469.2L483.8,467.2L483.3,468.8L481.3,469.5L481.1,471.1L478.5,470.5L478.1,472.0L478.5,473.4L475.9,472.4L475.7,475.0L476.9,476.5L476.1,477.1L473.2,472.6L473.8,470.7L472.7,470.9L472.3,470.0L465.8,471.8L460.7,475.1L460.3,474.5L461.4,473.1L459.9,472.4L458.9,469.8L455.4,469.2L453.3,472.9L450.7,471.9L449.9,473.1L448.5,473.0L447.7,474.2L444.7,473.1L444.0,474.1L441.4,473.5L440.7,456.1L437.9,456.1L437.9,457.4L436.3,458.6L435.0,461.4L431.1,459.2L428.4,459.9L426.4,458.7L426.7,458.0L424.9,455.6L421.8,452.7L420.0,454.7L414.4,452.0L415.1,451.4L415.0,450.5L413.8,449.8L415.8,446.6L416.9,442.1L421.7,434.1L420.8,433.8L421.4,431.9L420.8,431.7L421.1,429.0L418.2,427.8L421.4,415.2L420.6,416.1L418.0,415.7L417.8,414.1L418.4,413.0L421.2,413.3L424.1,408.3Z"/>
+      <path class="kcidf-dep" data-code="93" data-nom="Seine-Saint-Denis" tabindex="0" role="button" aria-label="Departement 93 Seine-Saint-Denis" d="M522.5,278.3L524.8,276.8L528.2,276.6L528.4,277.5L529.5,277.4L530.3,279.7L527.5,279.9L527.7,281.1L529.8,281.0L529.6,282.3L530.6,282.1L531.6,284.2L532.6,284.7L534.9,291.3L534.2,291.6L535.1,294.4L533.1,295.6L533.9,299.0L527.2,298.1L526.7,299.2L536.2,313.9L537.1,313.9L538.9,316.3L540.6,320.5L541.6,326.3L544.8,327.0L544.3,329.0L544.6,332.5L540.8,335.0L538.4,338.2L539.3,344.3L538.4,345.9L540.0,347.1L536.4,350.1L538.5,353.2L537.6,353.6L537.6,356.4L536.2,355.8L533.0,357.6L531.0,357.4L530.1,358.8L528.6,358.4L527.5,359.7L526.8,359.3L525.3,361.4L525.8,363.0L527.8,364.8L529.4,364.9L530.7,366.0L529.9,368.9L529.2,369.6L529.2,371.1L530.4,373.0L529.0,375.3L531.1,373.9L533.6,375.8L537.8,375.9L538.0,376.9L537.3,379.3L535.3,380.4L535.9,382.4L531.8,383.8L537.5,396.9L537.0,399.1L537.7,402.4L539.7,401.1L540.0,403.7L541.0,405.4L541.8,412.4L540.0,414.7L539.1,413.7L535.6,412.8L530.1,409.6L529.4,407.4L531.0,403.8L526.2,401.9L525.8,400.3L520.0,395.4L518.6,396.1L515.9,394.9L515.2,393.8L516.8,393.2L514.8,390.8L514.2,389.2L511.7,390.2L510.0,386.7L507.3,387.3L505.9,385.1L505.0,385.9L501.3,381.2L497.3,381.9L496.7,380.1L497.3,379.8L497.2,378.8L495.2,379.5L494.9,378.7L490.7,378.3L490.3,379.2L484.8,378.8L484.1,379.3L484.3,381.5L478.4,382.3L476.1,383.7L475.4,385.2L473.1,384.1L470.0,383.8L469.7,385.5L467.5,385.4L467.4,386.9L461.7,386.5L459.9,368.5L458.6,365.7L456.2,364.9L454.5,363.2L453.9,362.0L453.3,356.0L452.1,353.4L450.1,351.6L447.8,351.0L418.7,352.0L419.2,349.2L416.0,342.9L418.7,341.6L424.3,334.6L426.1,330.5L426.3,328.5L425.7,324.9L424.2,322.9L421.9,321.7L410.8,318.5L405.9,318.0L406.4,317.7L404.7,313.0L405.4,310.9L409.4,307.6L412.1,310.3L413.9,309.5L414.5,310.7L415.7,310.4L420.0,313.5L422.2,312.1L424.6,314.9L426.8,311.9L426.6,311.3L429.5,306.3L433.9,308.0L436.0,303.3L437.3,302.6L438.9,303.1L439.3,302.4L447.5,304.5L453.5,312.0L457.7,314.5L458.7,313.3L460.3,313.4L462.2,312.2L462.8,313.4L466.9,312.5L470.4,315.1L474.5,314.0L476.8,315.3L480.9,315.2L481.5,312.9L484.4,309.0L485.3,309.8L487.8,306.6L489.0,307.4L490.3,305.3L493.0,307.0L494.5,305.0L493.7,304.4L495.7,302.1L497.1,303.3L498.0,302.5L497.0,301.8L499.1,301.6L499.9,300.7L499.1,299.9L500.5,298.8L501.1,299.2L505.5,296.9L504.5,294.4L506.5,294.2L506.4,293.3L507.3,293.2L507.3,291.1L509.1,290.4L509.7,287.4L512.5,283.6L513.2,281.4L514.7,280.5L514.8,281.4L518.5,281.1L518.6,281.7L520.2,281.6L520.3,282.9L520.8,282.9L520.6,280.4L522.5,280.4L522.5,278.3Z"/>
+      <path class="kcidf-dep" data-code="92" data-nom="Hauts-de-Seine" tabindex="0" role="button" aria-label="Departement 92 Hauts-de-Seine" d="M405.9,318.0L410.8,318.5L421.9,321.7L424.2,322.9L425.7,324.9L426.3,328.5L426.1,330.5L424.3,334.6L418.7,341.6L416.0,342.9L419.2,349.2L418.7,352.0L403.5,361.4L401.4,363.9L401.0,366.8L399.9,367.2L391.4,365.5L390.0,369.7L385.7,368.2L383.7,370.9L379.5,373.2L377.9,375.8L376.2,383.7L388.7,389.1L388.2,390.8L388.4,393.6L389.9,396.3L395.3,396.4L396.6,397.5L395.3,398.5L395.4,401.0L397.8,400.9L400.6,397.8L406.4,401.4L424.3,407.4L421.2,413.3L418.4,413.0L417.8,414.1L418.0,415.7L420.6,416.1L421.4,415.2L418.2,427.8L421.1,429.0L420.8,431.7L421.4,431.9L420.8,433.8L421.7,434.1L416.9,442.1L415.8,446.6L413.8,449.8L415.0,450.5L415.1,451.4L414.4,452.0L419.1,454.3L418.1,456.8L416.3,458.0L417.5,459.6L415.7,461.4L416.4,462.3L418.0,461.6L418.2,462.2L416.7,464.6L416.3,466.6L413.4,467.4L411.6,467.3L410.6,462.7L411.0,459.6L400.9,465.1L398.9,460.4L403.1,456.4L403.4,455.1L400.8,451.3L398.8,449.9L399.3,449.0L396.3,448.3L396.9,446.2L395.9,446.2L396.1,445.3L395.3,445.1L393.0,446.8L387.3,445.5L386.3,446.1L383.6,444.2L382.6,442.3L380.1,442.5L380.1,440.5L379.0,439.1L378.9,437.3L376.1,434.7L375.9,432.8L377.2,432.2L375.8,429.2L373.9,429.6L370.5,427.7L369.4,428.1L370.5,425.6L369.8,423.9L367.3,422.5L366.6,420.8L357.8,421.6L359.6,419.3L357.3,419.3L356.7,416.5L357.8,416.2L354.9,412.3L355.0,410.3L354.2,409.5L351.7,409.0L350.5,411.4L348.8,411.4L343.8,408.3L343.3,407.1L343.8,405.3L341.3,395.5L341.2,391.6L343.5,387.4L344.6,386.8L347.5,387.7L343.5,381.9L343.3,380.6L343.8,379.9L343.6,378.9L345.3,376.7L344.8,376.3L346.3,372.8L342.4,373.6L346.8,365.4L349.1,363.7L349.1,360.1L351.3,355.6L354.9,352.1L362.1,349.1L368.1,345.0L379.2,333.6L392.5,323.0L396.0,320.9L405.9,318.0Z"/>
+      <path class="kcidf-dep" data-code="75" data-nom="Paris" tabindex="0" role="button" aria-label="Departement 75 Paris" d="M424.1,408.3L424.3,407.4L406.4,401.4L400.6,397.8L397.8,400.9L395.4,401.0L395.3,398.5L396.6,397.5L395.3,396.4L389.9,396.3L388.4,393.6L388.2,390.8L388.7,389.1L376.2,383.7L376.3,381.6L377.9,375.8L379.5,373.2L383.7,370.9L385.7,368.2L390.0,369.7L391.4,365.5L399.9,367.2L401.0,366.8L401.4,363.9L403.5,361.4L419.1,351.8L447.8,351.0L450.1,351.6L452.1,353.4L453.3,356.0L453.9,362.0L454.5,363.2L456.2,364.9L458.6,365.7L459.9,368.5L461.7,386.5L459.8,396.5L462.1,396.7L464.2,395.6L463.1,391.8L463.2,390.4L464.1,389.8L465.3,391.5L470.9,392.2L471.3,389.6L472.5,389.8L472.5,388.8L482.1,391.1L485.4,395.1L485.1,396.9L483.3,399.2L483.1,401.1L483.8,401.3L482.3,406.9L479.9,408.3L471.1,407.5L467.4,403.8L459.3,403.0L455.5,399.8L437.9,408.9L434.9,409.0L433.2,407.2L430.9,408.9L424.1,408.3Z"/>
+      <g class="kcidf-lbl" data-for="75" aria-hidden="true">
+        <line class="kcidf-leader" x1="429.0" y1="381.6" x2="300" y2="300"/>
+        <g transform="translate(300,300)">
+          <rect class="kcidf-pillbg" x="-35" y="-15" width="70" height="30" rx="15"/>
+          <text class="kcidf-pillnum" x="-21" y="5">75</text>
+          <text class="kcidf-pillnom" x="-5" y="4">Paris</text>
+        </g>
+      </g>
+      <g class="kcidf-lbl" data-for="92" aria-hidden="true">
+        <line class="kcidf-leader" x1="385.9" y1="387.6" x2="150" y2="470"/>
+        <g transform="translate(150,470)">
+          <rect class="kcidf-pillbg" x="-62" y="-15" width="124" height="30" rx="15"/>
+          <text class="kcidf-pillnum" x="-48" y="5">92</text>
+          <text class="kcidf-pillnom" x="-32" y="4">Hauts-de-Seine</text>
+        </g>
+      </g>
+      <g class="kcidf-lbl" data-for="93" aria-hidden="true">
+        <line class="kcidf-leader" x1="489.3" y1="340.4" x2="655" y2="250"/>
+        <g transform="translate(655,250)">
+          <rect class="kcidf-pillbg" x="-72" y="-15" width="145" height="30" rx="15"/>
+          <text class="kcidf-pillnum" x="-58" y="5">93</text>
+          <text class="kcidf-pillnom" x="-42" y="4">Seine-Saint-Denis</text>
+        </g>
+      </g>
+      <g class="kcidf-lbl" data-for="94" aria-hidden="true">
+        <line class="kcidf-leader" x1="485.2" y1="434.9" x2="675" y2="360"/>
+        <g transform="translate(675,360)">
+          <rect class="kcidf-pillbg" x="-55" y="-15" width="110" height="30" rx="15"/>
+          <text class="kcidf-pillnum" x="-41" y="5">94</text>
+          <text class="kcidf-pillnom" x="-25" y="4">Val-de-Marne</text>
+        </g>
+      </g>
+      <g class="kcidf-biglbl" data-for="77" aria-hidden="true">
+        <text class="kcidf-bignum" x="700" y="510">77</text>
+        <text class="kcidf-bignom" x="700" y="532">Seine-et-Marne</text>
+      </g>
+      <g class="kcidf-biglbl" data-for="78" aria-hidden="true">
+        <text class="kcidf-bignum" x="150" y="380">78</text>
+        <text class="kcidf-bignom" x="150" y="402">Yvelines</text>
+      </g>
+      <g class="kcidf-biglbl" data-for="91" aria-hidden="true">
+        <text class="kcidf-bignum" x="350" y="575">91</text>
+        <text class="kcidf-bignom" x="350" y="597">Essonne</text>
+      </g>
+      <g class="kcidf-biglbl" data-for="95" aria-hidden="true">
+        <text class="kcidf-bignum" x="375" y="195">95</text>
+        <text class="kcidf-bignom" x="375" y="217">Val-d'Oise</text>
+      </g>
+    </svg>
+
+    <div class="kcidf-readout" aria-live="polite">
+      <span class="kcidf-readout-empty">Aucun département sélectionné</span>
+      <span class="kcidf-readout-val" hidden></span>
+    </div>
+
+    <input type="hidden" id="kcidf-input" name="departement" value="">
+  </div>
+</section>
+
+<style>
+.kcidf-wrap{font-family:'Inter',system-ui,sans-serif;background:#F7F8FA;padding:48px 20px;color:#0D2340;box-sizing:border-box}
+.kcidf-wrap *{box-sizing:border-box}
+.kcidf-head{text-align:center;max-width:560px;margin:0 auto}
+.kcidf-eyebrow{font-family:'Inter',sans-serif;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#0B8483;margin:0 0 14px}
+.kcidf-title{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,38px);line-height:1.12;margin:0 0 14px;color:#0D2340}
+.kcidf-title span{color:#0FA7A5}
+.kcidf-sub{font-size:16px;line-height:1.6;color:#5b6b7d;margin:0}
+.kcidf-mapbox{margin-top:28px;max-width:640px;margin-left:auto;margin-right:auto}
+.kcidf-svg{width:100%;height:auto;display:block}
+.kcidf-dep{fill:#fff;stroke:#d7dde4;stroke-width:1.4;cursor:pointer;transition:fill .18s ease,stroke .18s ease;outline:none}
+.kcidf-dep:hover{fill:#E1F5EE;stroke:#0FA7A5}
+.kcidf-dep:focus-visible{stroke:#0FA7A5;stroke-width:2}
+.kcidf-dep.kcidf-active{fill:#0FA7A5;stroke:#0B8483;stroke-width:2}
+.kcidf-leader{stroke:#b9c2cc;stroke-width:1;stroke-dasharray:3 3}
+.kcidf-pillbg{fill:#fff;stroke:#d7dde4;stroke-width:1}
+.kcidf-pillnum{font-family:'Inter',sans-serif;font-weight:700;font-size:14px;fill:#0FA7A5}
+.kcidf-pillnom{font-family:'Inter',sans-serif;font-weight:500;font-size:11px;fill:#0D2340}
+.kcidf-bignum{font-family:'Inter',sans-serif;font-weight:700;font-size:22px;fill:#0D2340;text-anchor:middle}
+.kcidf-bignom{font-family:'Inter',sans-serif;font-weight:500;font-size:12px;fill:#5b6b7d;text-anchor:middle}
+.kcidf-lbl,.kcidf-biglbl{pointer-events:none}
+.kcidf-readout{text-align:center;margin-top:22px;font-size:15px;min-height:24px}
+.kcidf-readout-empty{color:#9aa6b2}
+.kcidf-readout-val{color:#0B8483;font-weight:600}
+</style>
+
+<script>
+(function(){
+  var NAMES={'75':'Paris','77':'Seine-et-Marne','78':'Yvelines','91':'Essonne','92':'Hauts-de-Seine','93':'Seine-Saint-Denis','94':'Val-de-Marne','95':"Val-d'Oise"};
+  var deps=document.querySelectorAll('.kcidf-dep');
+  var rEmpty=document.querySelector('.kcidf-readout-empty');
+  var rVal=document.querySelector('.kcidf-readout-val');
+  var input=document.getElementById('kcidf-input');
+  window.kcReservation=window.kcReservation||{};
+
+  function select(p){
+    deps.forEach(function(x){x.classList.remove('kcidf-active');x.setAttribute('aria-pressed','false');});
+    p.classList.add('kcidf-active');p.setAttribute('aria-pressed','true');
+    var c=p.getAttribute('data-code');
+    rEmpty.hidden=true;rVal.hidden=false;
+    rVal.textContent='Département '+c+' — '+NAMES[c];
+    if(input) input.value=c;
+    window.kcReservation.departement=c;
+    document.dispatchEvent(new CustomEvent('kcidf:select',{detail:{code:c,nom:NAMES[c]}}));
+  }
+
+  deps.forEach(function(p){
+    p.addEventListener('click',function(){select(p);});
+    p.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();select(p);}
+    });
+  });
+})();
+</script>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : TYPOLOGIE (rendu dynamique selon le forfait) -->
+  <div class="step" id="step-taille" data-step="taille">
+    <div class="step-tag">03 · Typologie</div>
+    <h2 class="step-title">Quelle est la <em>typologie</em> du logement ?</h2>
+    <p class="step-desc" id="taille-desc">Le tarif est forfaitaire selon la typologie — aucun supplément surprise. Au-delà, une visite gratuite permet d'établir un devis précis.</p>
+    <div class="options-grid cols-3" id="taille-grid" role="radiogroup" aria-label="Typologie du logement"></div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : LOGEMENT VIDÉ ? (fin de bail) -->
+  <div class="step" id="step-vide" data-step="vide">
+    <div class="step-tag">04 · État du logement</div>
+    <h2 class="step-title">Le logement sera-t-il <em>entièrement vidé</em> ?</h2>
+    <p class="step-desc">Le forfait fin de bail s'entend pour un logement vide. S'il reste des meubles ou des affaires, une majoration de 15 % s'applique.</p>
+    <div class="options-grid cols-2" role="radiogroup" aria-label="Logement vidé ou non">
+      <button type="button" class="option-card" data-key="vide" data-value="oui">
+        <div class="oc-num">01</div><div class="oc-title">Oui, entièrement vidé</div><div class="oc-desc">Meubles et affaires évacués avant notre passage</div>
+        <span class="oc-badge">Tarif grille</span>
+      </button>
+      <button type="button" class="option-card" data-key="vide" data-value="non">
+        <div class="oc-num">02</div><div class="oc-title">Non, pas complètement</div><div class="oc-desc">Il restera des meubles ou des affaires</div>
+        <span class="oc-badge">+15 %</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : ÉTAT (grand ménage — coefficient ou bascule devis) -->
+  <div class="step" id="step-etat" data-step="etat">
+    <div class="step-tag">04 · État du logement</div>
+    <h2 class="step-title">Quel est l'<em>état actuel</em> du logement ?</h2>
+    <p class="step-desc">Soyez honnête : c'est ce qui nous permet de prévoir l'équipe et le matériel adaptés, sans mauvaise surprise sur place.</p>
+    <div class="options-grid cols-3" role="radiogroup" aria-label="État du logement">
+      <button type="button" class="option-card" data-key="etat" data-value="courant">
+        <div class="oc-num">01</div><div class="oc-title">État courant</div><div class="oc-desc">Entretien régulier, salissures normales</div>
+        <span class="oc-badge">Tarif grille</span>
+      </button>
+      <button type="button" class="option-card" data-key="etat" data-value="tres-encrasse">
+        <div class="oc-num">02</div><div class="oc-title">Très encrassé</div><div class="oc-desc">Plus de 6 mois sans entretien</div>
+        <span class="oc-badge">+30 %</span>
+      </button>
+      <button type="button" class="option-card" data-key="etat" data-value="tres-degrade">
+        <div class="oc-num">03</div><div class="oc-title">Très dégradé</div><div class="oc-desc">Encombrement important, état sanitaire douteux</div>
+        <span class="oc-badge">Visite gratuite</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : NIVEAU DE CHANTIER (fin de chantier) -->
+  <div class="step" id="step-niveau" data-step="niveau">
+    <div class="step-tag">03 · Niveau de chantier</div>
+    <h2 class="step-title">Quel <em>type de chantier</em> venez-vous de terminer ?</h2>
+    <p class="step-desc">Le niveau d'empoussièrement détermine le temps de travail. L'estimation est indicative : le prix est confirmé après audit gratuit ou envoi de photos.</p>
+    <div class="options-grid cols-3" role="radiogroup" aria-label="Niveau de chantier">
+      <button type="button" class="option-card" data-key="niveau" data-value="rafraichissement" data-mult="4.5">
+        <div class="oc-num">01</div><div class="oc-title">Rafraîchissement</div><div class="oc-desc">Peinture seule, sols protégés</div>
+        <span class="oc-badge">4,50 €/m² HT</span>
+      </button>
+      <button type="button" class="option-card" data-key="niveau" data-value="standard" data-mult="7">
+        <div class="oc-num">02</div><div class="oc-title">Rénovation standard</div><div class="oc-desc">Dépoussiérage complet, vitres, traces</div>
+        <span class="oc-badge">7 €/m² HT</span>
+      </button>
+      <button type="button" class="option-card" data-key="niveau" data-value="lourd" data-mult="11">
+        <div class="oc-num">03</div><div class="oc-title">Chantier lourd</div><div class="oc-desc">Construction neuve, voiles de ciment, gravats</div>
+        <span class="oc-badge">11 €/m² HT</span>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : TYPE DE BIEN (parcours devis, rendu dynamique) -->
+  <div class="step" id="step-bien" data-step="bien">
+    <div class="step-tag">03 · Type de bien</div>
+    <h2 class="step-title">Quel <em>type de bien</em> est concerné ?</h2>
+    <p class="step-desc">Le type de bien détermine l'approche technique, le matériel nécessaire et le temps d'intervention.</p>
+    <div class="options-grid cols-3" id="bien-grid" role="radiogroup" aria-label="Type de bien"></div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : SURFACE -->
+  <div class="step" id="step-surface" data-step="surface">
+    <div class="step-tag">04 · Surface</div>
+    <h2 class="step-title" id="surface-title">Quelle est la <em>surface</em> à traiter ?</h2>
+    <p class="step-desc" id="surface-desc">La surface est le critère principal de l'estimation. Une valeur approximative suffit : le devis ferme est confirmé ensuite.</p>
+    <div class="slider-block">
+      <div class="slider-value" aria-live="polite">
+        <em id="surf-val">80</em>
+        <span class="slider-value-unit">m²</span>
+      </div>
+      <div class="slider-hint">Glissez pour ajuster la surface</div>
+      <label for="surf-input" class="sr-only">Surface en m²</label>
+      <input type="range" min="20" max="1000" value="80" step="10" id="surf-input" aria-valuemin="20" aria-valuemax="1000" aria-valuenow="80">
+      <div class="slider-marks" aria-hidden="true">
+        <span>20 m²</span><span>250 m²</span><span>500 m²</span><span>750 m²</span><span>1000 m²</span>
+      </div>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" data-action="next">
+        <span class="btn-text">Continuer</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : OPTIONS (rendu dynamique, quantités) -->
+  <div class="step" id="step-options" data-step="options">
+    <div class="step-tag">05 · Options</div>
+    <h2 class="step-title">Souhaitez-vous des <em>prestations complémentaires</em> ?</h2>
+    <p class="step-desc">Tarifs officiels TTC. Vous pouvez aussi ne rien cocher si le forfait standard suffit.</p>
+    <div class="opts-grid" id="options-grid" role="group" aria-label="Options complémentaires"></div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" data-action="next">
+        <span class="btn-text">Continuer</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : DÉLAI, JOUR & ACCÈS (majorations et frais officiels) -->
+  <div class="step" id="step-delai" data-step="delai">
+    <div class="step-tag">06 · Délai &amp; accès</div>
+    <h2 class="step-title">Quand et <em>dans quelles conditions</em> ?</h2>
+    <p class="step-desc">Intervention standard sous 48 h à 7 jours. Les majorations ci-dessous sont cumulables et s'appliquent au total ; les frais d'accès sont fixes.</p>
+    <div class="opts-grid" role="group" aria-label="Majorations et frais">
+      <button type="button" class="opt-row" id="major-urgence" role="checkbox" aria-checked="false">
+        <div class="opt-left">
+          <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="opt-info">
+            <div class="opt-name">Urgence — sous 48 h</div>
+            <div class="opt-desc-txt">Selon nos disponibilités</div>
+          </div>
+        </div>
+        <div class="opt-right"><div class="opt-price">+30 %</div><div class="opt-check" aria-hidden="true">✓</div></div>
+      </button>
+      <button type="button" class="opt-row" id="major-dimanche" role="checkbox" aria-checked="false">
+        <div class="opt-left">
+          <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></div>
+          <div class="opt-info">
+            <div class="opt-name">Dimanche ou jour férié</div>
+            <div class="opt-desc-txt">Intervention hors jours ouvrés</div>
+          </div>
+        </div>
+        <div class="opt-right"><div class="opt-price">+25 %</div><div class="opt-check" aria-hidden="true">✓</div></div>
+      </button>
+      <button type="button" class="opt-row" id="frais-etage" role="checkbox" aria-checked="false">
+        <div class="opt-left">
+          <div class="opt-icon" aria-hidden="true"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M4 22V8l8-6 8 6v14M4 14h16M4 18h16M4 10h16"/></svg></div>
+          <div class="opt-info">
+            <div class="opt-name">Étage 3 et + sans ascenseur</div>
+            <div class="opt-desc-txt">Frais fixe d'accès (matériel à porter)</div>
+          </div>
+        </div>
+        <div class="opt-right"><div class="opt-price">+15 €</div><div class="opt-check" aria-hidden="true">✓</div></div>
+      </button>
+    </div>
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" data-action="next">
+        <span class="btn-text">Continuer</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : COORDONNÉES -->
+  <div class="step" id="step-contact" data-step="contact">
+    <div class="step-tag">07 · Vos coordonnées</div>
+    <h2 class="step-title">Quelques <em>informations</em> pour finaliser</h2>
+    <p class="step-desc" id="contact-desc">Ces données nous permettent de vous envoyer le récapitulatif et d'organiser l'intervention.</p>
+
+    <!-- Bannière d'erreur (au lieu d'alert) -->
+    <div class="error-banner" id="form-error-banner" role="alert">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span class="error-banner-text" id="form-error-text">Veuillez corriger les champs invalides ci-dessous.</span>
+      <button type="button" class="error-banner-close" id="error-banner-close" aria-label="Fermer">✕</button>
+    </div>
+
+    <form id="kc-devis-form" novalidate class="form-block">
+      <!-- HONEYPOT anti-spam -->
+      <div class="honeypot" aria-hidden="true">
+        <label for="kc-website-d">Ne pas remplir</label>
+        <input type="text" id="kc-website-d" name="website" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="form-row">
+        <div class="form-field" id="ff-firstname">
+          <label for="c-firstname">Prénom <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="text" id="c-firstname" name="firstname" placeholder="Jean" autocomplete="given-name" maxlength="40" required aria-required="true" aria-invalid="false" aria-describedby="err-firstname">
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-firstname">Prénom requis</span>
+          </div>
+        </div>
+        <div class="form-field" id="ff-lastname">
+          <label for="c-lastname">Nom <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="text" id="c-lastname" name="lastname" placeholder="Dupont" autocomplete="family-name" maxlength="40" required aria-required="true" aria-invalid="false" aria-describedby="err-lastname">
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-lastname">Nom requis</span>
+          </div>
+        </div>
+        <div class="form-field" id="ff-email">
+          <label for="c-email">Email <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="email" id="c-email" name="email" placeholder="jean.dupont@exemple.fr" autocomplete="email" inputmode="email" maxlength="80" required aria-required="true" aria-invalid="false" aria-describedby="err-email">
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-email">Email invalide</span>
+          </div>
+        </div>
+        <div class="form-field" id="ff-phone">
+          <label for="c-phone">Téléphone <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="tel" id="c-phone" name="phone" placeholder="06 12 34 56 78" autocomplete="tel" inputmode="tel" maxlength="17" required aria-required="true" aria-invalid="false" aria-describedby="err-phone">
+          <div class="form-helper">Format mobile (06/07) ou fixe (01-05)</div>
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-phone">Numéro français requis</span>
+          </div>
+        </div>
+        <div class="form-field full" id="ff-address">
+          <label for="c-address">Adresse du bien <span class="req" aria-hidden="true">*</span><span class="sr-only">obligatoire</span></label>
+          <input type="text" id="c-address" name="address" placeholder="12 rue de la Paix, 75011 Paris" autocomplete="street-address" maxlength="150" required aria-required="true" aria-invalid="false" aria-describedby="err-address addr-helper">
+          <div class="form-helper" id="addr-helper"><strong>Île-de-France uniquement</strong> (75, 77, 78, 91, 92, 93, 94, 95)</div>
+          <div class="form-error" role="alert">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span id="err-address">Adresse incomplète</span>
+          </div>
+        </div>
+        <div class="form-field full">
+          <label for="c-message">Précisions complémentaires <span style="color:var(--gray);font-weight:500">(optionnel)</span></label>
+          <textarea id="c-message" name="message" placeholder="Contraintes d'accès, planning, particularités…" maxlength="1000" aria-describedby="msg-helper"></textarea>
+          <div class="form-helper" id="msg-helper">
+            <span>Maximum 1000 caractères</span>
+            <span class="char-counter" id="char-counter" aria-live="polite" aria-atomic="true">0 / 1000</span>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Retour
+      </button>
+      <button type="button" class="btn-next" id="btn-show-result">
+        <span class="btn-text">Voir mon estimation</span>
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ÉTAPE : RÉSULTAT -->
+  <div class="step" id="step-result" data-step="result">
+    <div class="step-tag" id="result-tag">Votre tarif · grille officielle</div>
+    <h2 class="step-title" id="result-title">Votre demande, <em>chiffrée</em>.</h2>
+    <p class="step-desc" id="result-desc"></p>
+
+    <div class="result-container">
+      <div class="result-main">
+        <div class="result-audit-badge" id="r-audit-badge" style="display:none">Sur devis — visite gratuite</div>
+        <div class="result-label" id="r-label">
+          <span class="result-label-dot" aria-hidden="true"></span>
+          <span id="r-label-txt">Votre tarif</span>
+        </div>
+        <div class="result-price" aria-live="polite" id="r-price-line"><em id="r-total">0</em><span id="r-unit"> €</span></div>
+        <div class="result-from" id="r-from">prestation personnalisée</div>
+        <div class="result-detail" id="r-detail"></div>
+        <div class="result-total" id="r-total-row">
+          <div class="result-total-label" id="r-total-label">Total</div>
+          <div class="result-total-val" id="r-total-2" aria-live="polite">0 €</div>
+        </div>
+
+        <div class="acompte-panel" id="r-acompte-panel" style="display:none">
+          <div class="ap-row main"><span>À régler aujourd'hui (acompte 30 %)</span><strong id="r-acompte">—</strong></div>
+          <div class="ap-row"><span>Solde après l'intervention</span><strong id="r-solde">—</strong></div>
+        </div>
+
+        <div class="result-cta">
+          <button type="button" class="cta-submit cta-submit-primary" id="cta-pay" style="display:none">
+            <div class="cta-submit-icon" aria-hidden="true">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24" stroke="#fff"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="cta-submit-content">
+              <div class="cta-submit-name">Réserver mon créneau en ligne</div>
+              <div class="cta-submit-desc" id="cta-pay-desc">Acompte 30 % sécurisé par Stripe · confirmation immédiate</div>
+            </div>
+          </button>
+
+          <button type="button" class="cta-submit cta-submit-primary" id="cta-audit" style="display:none">
+            <div class="cta-submit-icon" aria-hidden="true">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24" stroke="#fff"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div class="cta-submit-content">
+              <div class="cta-submit-name" id="cta-audit-name">Réserver ma visite d'audit gratuite</div>
+              <div class="cta-submit-desc">Choisissez votre créneau dans notre agenda · sans engagement</div>
+            </div>
+          </button>
+
+          <button type="button" class="cta-submit cta-submit-secondary" id="cta-email">
+            <div class="cta-submit-icon" aria-hidden="true">
+              <svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="cta-submit-content">
+              <div class="cta-submit-name" id="cta-email-name">Recevoir le récapitulatif par email</div>
+              <div class="cta-submit-desc">Gratuit, sans engagement</div>
+            </div>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="inline-result-err" id="result-error" role="alert"></div>
+        <div class="result-note" id="result-note">Tarif issu de notre grille officielle.</div>
+      </div>
+
+      <aside class="result-aside">
+        <div class="aside-card dark">
+          <h2 class="aside-title">Vos garanties</h2>
+          <div class="aside-list">
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Tarifs officiels, sans surprise</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Visite gratuite si nécessaire</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Aucun engagement requis</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Garantie satisfait</div>
+            <div class="aside-item"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>RC Pro AXA 5M€</div>
+          </div>
+        </div>
+        <div class="aside-card">
+          <h2 class="aside-title">Besoin d'un échange direct ?</h2>
+          <div class="aside-list">
+            <div class="aside-item">
+              <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:+33670012061">06 70 01 20 61</a>
+            </div>
+            <div class="aside-item">
+              <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:contact@kayliclinn.fr">contact@kayliclinn.fr</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" data-action="prev">
+        <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Modifier ma demande
+      </button>
+      <span></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL DE SUCCÈS -->
+<div class="kc-devis-modal" id="kc-success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-d-title" aria-describedby="modal-d-desc">
+  <div class="kc-devis-modal-content">
+    <button class="kc-devis-modal-close" id="modal-close-btn" aria-label="Fermer la fenêtre">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="kc-devis-modal-icon" aria-hidden="true">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+    </div>
+    <h2 id="modal-d-title">Demande <em>envoyée</em> avec succès</h2>
+    <p id="modal-d-desc">Le récapitulatif vient de vous être envoyé par email. Nous vous recontactons sous <strong>24 h ouvrées</strong>.</p>
+    <div class="kc-devis-modal-recap">
+      <strong>Récapitulatif</strong>
+      <div class="kc-devis-modal-recap-row"><span>Prestation</span><span id="recap-presta">—</span></div>
+      <div class="kc-devis-modal-recap-row"><span>Estimation</span><span id="recap-price">—</span></div>
+      <div class="kc-devis-modal-recap-row"><span>Email</span><span id="recap-email">—</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--gray);font-style:italic;">Vérifiez votre boîte mail (et vos spams) dans les prochaines minutes.</p>
+    <div class="kc-devis-modal-actions">
+      <button class="kc-devis-modal-btn kc-devis-modal-btn-primary" id="modal-ok-btn">Parfait, merci !</button>
+    </div>
+  </div>
+</div>
+
+</div>
+<script>
+(function(){
+  'use strict';
+
+  /* ════════════════════════════════════════════════════════
+     CONFIGURATION
+     ─────────────────────────────────────────────────────────
+     L'envoi du devis par email passe par l'extension WordPress
+     kc-devis (admin-ajax, action « kc_devis »). Le plugin doit
+     injecter window.kcDevis = { ajaxUrl, nonce } sur cette page.
+     ════════════════════════════════════════════════════════ */
+  const KC_CONFIG = {
+    reservationURL: '/reservation/',
+    sessionStorageKey: 'kc_devis_progress',
+    handoffKey: 'kc_reservation_handoff',
+    sessionExpiry: 24 * 60 * 60 * 1000, // 24h
+    version: 5
+  };
+
+  /* ════════════════════════════════════════════════════════
+     GRILLE TARIFAIRE OFFICIELLE v2 (miroir de KC_Pricing côté
+     serveur — le serveur reste seul juge au moment du paiement)
+     total = (base + options) × (1 + majorations) + frais fixes
+     ════════════════════════════════════════════════════════ */
+  const KC_TARIFS = {
+    forfaits: {
+      'airbnb':       { studio:55,  t2:75,  t3:95,  t4:120 },
+      'fin-de-bail':  { studio:160, t2:220, t3:290, t4:360, t5:430 },
+      'grand-menage': { studio:140, t2:190, t3:250, t4:320 },
+      'vitrerie':     { studio:70,  t2:70,  t3:95,  t4:95,  t5:130 }
+    },
+    tailles: { studio:'Studio / T1', t2:'T2', t3:'T3', t4:'T4', t5:'T5' },
+    options: {
+      'four':         { nom:'Four en profondeur',                 prix:35,  type:'fixe',  compat:['airbnb','grand-menage'] },
+      'frigo':        { nom:'Réfrigérateur / congélateur',        prix:25,  type:'fixe',  compat:['airbnb','grand-menage'] },
+      'vitres-int':   { nom:'Vitres intérieures',                 prix:20,  type:'fixe',  compat:['airbnb','grand-menage'] },
+      'placards':     { nom:'Intérieur des placards',             prix:25,  type:'fixe',  compat:['grand-menage'] },
+      'consommables': { nom:'Réassort consommables',              prix:10,  type:'fixe',  compat:['airbnb'] },
+      'cave-box':     { nom:'Cave / box',                         prix:25,  type:'fixe',  compat:['fin-de-bail'] },
+      'kit-linge':    { nom:'Kit linge complet',                  prix:18,  type:'unite', unite:'lit', max:10,  compat:['airbnb'], desc:'Location, lavage, livraison — par lit' },
+      'repassage':    { nom:'Repassage',                          prix:35,  type:'unite', unite:'h',   max:8,   compat:['airbnb','grand-menage'], desc:'Par heure' },
+      'balcon':       { nom:'Balcon / terrasse',                  prix:2,   type:'unite', unite:'m²',  max:150, minTotal:20,  compat:['fin-de-bail','grand-menage'], desc:'2 €/m² · minimum 20 €' },
+      'moquette':     { nom:'Moquette injection-extraction',      prix:5,   type:'unite', unite:'m²',  max:300, minTotal:100, compat:['fin-de-bail'], desc:'5 €/m² · minimum 100 €' },
+      'canape-2p':    { nom:'Canapé 2 places',                    prix:80,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'canape-3p':    { nom:'Canapé 3 places',                    prix:100, type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'canape-4p':    { nom:'Canapé 4 places',                    prix:110, type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'fauteuil':     { nom:'Fauteuil',                           prix:50,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
+      'matelas':      { nom:'Matelas 2 places',                   prix:75,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] }
+    },
+    majorations: {
+      'urgence':        { nom:'Urgence — sous 48 h',                          taux:0.30 },
+      'dimanche-ferie': { nom:'Dimanche ou jour férié',                       taux:0.25 },
+      'non-vide':       { nom:'Logement non vidé',                            taux:0.15 },
+      'tres-encrasse':  { nom:'Très encrassé / plus de 6 mois sans entretien', taux:0.30 }
+    },
+    frais: { 'etage': { nom:'Étage 3 et + sans ascenseur', prix:15 } },
+    acomptePct: 30,
+    chantier: { taux:{ rafraichissement:4.5, standard:7, lourd:11 }, min:300, marge:0.15 },
+    bureaux:  { tauxMin:1.5, tauxMax:3, position:2 }
+  };
+
+  /* Mots-clés sensibles → bascule automatique vers la visite (garde-fou) */
+  const KC_MOTS_SENSIBLES = /sinistre|insalubr|d[ée]c[èe]s|gravats|diog[èe]ne|inond|incendie/i;
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS DES CARTES (Médiathèque WordPress) — '' = icône stylée
+     ════════════════════════════════════════════════════════ */
+  const KC_PRESTA_IMAGES = {
+    /* ── Prestations estimables (déjà en place) ── */
+    'airbnb':        { url:'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png', alt:'Nettoyage et remise en état d’un logement Airbnb entre deux locations' },
+    'fin-de-bail':   { url:'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg', alt:'Ménage de fin de bail dans un logement vidé avant l’état des lieux' },
+    'grand-menage':  { url:'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp', alt:'Grand ménage en profondeur d’un logement meublé occupé' },
+    'vitrerie':      { url:'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg', alt:'Nettoyage de vitres intérieures en plain-pied' },
+    'fin-chantier':  { url:'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp', alt:'Nettoyage de fin de chantier après travaux de rénovation' },
+    'bureaux':       { url:'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp', alt:'Entretien régulier de bureaux professionnels' },
+    'copropriete':   { url:'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg', alt:'Nettoyage des parties communes d’une copropriété' },
+    'commerces':     { url:'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg', alt:'Nettoyage d’une surface de vente commerciale' },
+    'remise-lourde': { url:'', alt:'Remise en état lourde d’un local dégradé' },
+
+    /* ── Prestations « Sur devis » — url À REMPLIR quand la photo sera en ligne ── */
+    'parties-communes':         { url:'', alt:'Nettoyage des parties communes d’immeuble : hall et escaliers' },
+    'commerces-retail':         { url:'', alt:'Nettoyage de commerce et surface de vente' },
+    'etablissements-sensibles': { url:'', alt:'Nettoyage désinfectant d’un établissement sensible (santé, crèche, école)' },
+    'remise-en-etat':           { url:'', alt:'Remise en état d’un logement ou bureau dégradé avant relocation' },
+    'decapage':                 { url:'', alt:'Décapage et cristallisation de sols en marbre, pierre ou carrelage' },
+    'shampouinage':             { url:'', alt:'Shampouinage de moquette par injection-extraction' },
+    'haute-pression':           { url:'', alt:'Nettoyage haute pression de façade, terrasse ou parking' },
+    'pieces-blanches':          { url:'', alt:'Nettoyage de salle blanche et environnement contrôlé' },
+
+    /* ── Interventions spécialisées (partenaires) — url À REMPLIR ── */
+    'deratisation':     { url:'', alt:'Dératisation professionnelle contre rats et souris' },
+    'desinsectisation': { url:'', alt:'Désinsectisation professionnelle contre cafards, fourmis et guêpes' },
+    'punaises-de-lit':  { url:'', alt:'Traitement professionnel contre les punaises de lit' },
+    'diogene':          { url:'', alt:'Accompagnement confidentiel pour syndrome de Diogène' },
+    'scenes-sensibles': { url:'', alt:'Nettoyage de scènes sensibles après sinistre ou décès, en toute discrétion' },
+  };
+
+  /* ════════════════════════════════════════════════════════
+     LE CATALOGUE — 3 parcours :
+     • forfait  : prix fixe TTC → réservation + paiement en ligne
+     • estimate : fourchette indicative (chantier HT, bureaux HT/mois)
+                  → audit gratuit pour prix ferme
+     • audit    : devis pur, aucun chiffre → visite gratuite
+     ════════════════════════════════════════════════════════ */
+  const STEP_LABELS = {
+    presta:'Type de prestation', zone:'Zone d\'intervention', taille:'Typologie',
+    vide:'Logement vidé ?', etat:'État du logement', niveau:'Niveau de chantier',
+    bien:'Type de bien', surface:'Surface', options:'Options',
+    delai:'Délai & accès', contact:'Vos coordonnées', result:'Résultat'
+  };
+
+  const KC_PRESTAS = {
+    /* ── Forfaits B2C (prix fixe en ligne) ── */
+    'airbnb': { nom:'Turnover Airbnb', funnel:'forfait',
+      flow:['presta','zone','taille','options','delai','contact','result'],
+      horsGrille:{ label:'T5 / maison / plus de 90 m²', desc:'Sur devis · visite gratuite',
+        reason:'Grand logement ou maison — devis personnalisé après visite gratuite' } },
+    'fin-de-bail': { nom:'Ménage fin de bail / déménagement', funnel:'forfait',
+      flow:['presta','zone','taille','vide','options','delai','contact','result'],
+      inclus:'Électroménager, vitres intérieures et placards inclus',
+      horsGrille:{ label:'Maison / plus de 110 m²', desc:'Sur devis · visite gratuite',
+        reason:'Grande surface ou maison — devis personnalisé après visite gratuite' } },
+    'grand-menage': { nom:'Grand ménage (meublé occupé)', funnel:'forfait',
+      flow:['presta','zone','taille','etat','options','delai','contact','result'],
+      horsGrille:{ label:'T5 et + / maison', desc:'Sur devis · visite gratuite',
+        reason:'Grand logement — devis personnalisé après visite gratuite' } },
+    'vitrerie': { nom:'Vitres classiques', funnel:'forfait',
+      flow:['presta','zone','taille','options','delai','contact','result'],
+      inclus:'Vitres plain-pied et intérieures accessibles',
+      horsGrille:{ label:'Hauteur / vitrine / verrière', desc:'Sur devis · visite gratuite',
+        reason:'Travaux en hauteur ou vitrine — devis personnalisé après visite gratuite' } },
+
+    /* ── Estimation indicative (Flux A enrichi) ── */
+    'fin-chantier': { nom:'Nettoyage fin de chantier', funnel:'estimate', kind:'chantier',
+      flow:['presta','zone','niveau','surface','contact','result'],
+      surface:{ min:20, max:1000, step:10, def:60, unit:'m²',
+        title:'Quelle est la <em>surface</em> du chantier ?',
+        desc:'Estimation indicative ± 15 % — le prix est confirmé après audit gratuit ou envoi de photos.' } },
+    'bureaux': { nom:'Entretien de bureaux', funnel:'estimate', kind:'bureaux',
+      flow:['presta','zone','surface','contact','result'],
+      surface:{ min:20, max:2000, step:10, def:100, unit:'m²',
+        title:'Quelle est la <em>surface</em> de vos locaux ?',
+        desc:'Simulateur de budget indicatif — le devis ferme est établi après audit gratuit (fréquences, horaires, cahier des charges).' } },
+
+    /* ── Devis pur (aucun chiffre en ligne) ── */
+    'copropriete': { nom:'Copropriétés / parties communes', funnel:'audit',
+      flow:['presta','zone','bien','contact','result'],
+      bienOptions:[{nom:'Immeuble résidentiel'},{nom:'Copropriété avec ascenseur'},{nom:'Résidence services'}] },
+    'commerces': { nom:'Commerces / ERP', funnel:'audit',
+      flow:['presta','zone','bien','contact','result'],
+      bienOptions:[{nom:'Boutique'},{nom:'Restaurant / café'},{nom:'Hôtel / réception'}] },
+    'remise-lourde': { nom:'Remise en état lourde', funnel:'audit', strict:true,
+      flow:['presta','zone','bien','contact','result'],
+      bienOptions:[{nom:'Logement insalubre'},{nom:'Après sinistre (eau, incendie)'},{nom:'Après décès'}],
+      note:'Intervention sensible réalisée en toute discrétion (équipements de protection, évacuation des déchets, coordination assurance si besoin). Visite sous 48 h.' }
+  };
+
+  /* ════════════════════════════════════════════════════════
+     VALIDATEURS
+     ════════════════════════════════════════════════════════ */
+  const VALIDATORS = {
+    firstname:{regex:/^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ\s\-'.]{1,39}$/,msg:'Prénom requis (lettres uniquement, min. 2)'},
+    lastname:{regex:/^[A-Za-zÀ-ÖØ-öø-ÿ][A-Za-zÀ-ÖØ-öø-ÿ\s\-'.]{1,39}$/,msg:'Nom requis (lettres uniquement, min. 2)'},
+    email:{regex:/^[a-zA-Z0-9](?:[a-zA-Z0-9._%+\-]{0,62}[a-zA-Z0-9])?@(?:[a-zA-Z0-9](?:[a-zA-Z0-9\-]{0,61}[a-zA-Z0-9])?\.){1,3}[a-zA-Z]{2,24}$/,msg:'Email invalide',custom:v=>{if(v.includes('..'))return{valid:false,msg:'Email invalide (points consécutifs interdits)'};if(v.length>80)return{valid:false,msg:'Email trop long'};return{valid:true};}},
+    phone:{regex:/^(?:(?:\+33|0033)\s?[1-9](?:[\s.\-]?\d{2}){4}|0[1-9](?:[\s.\-]?\d{2}){4})$/,msg:'Numéro français valide requis'},
+    address:{regex:/^.{10,}/,msg:'Adresse incomplète',custom:v=>{if(v.length<10)return{valid:false,msg:'Adresse trop courte'};const cp=v.match(/\b(\d{5})\b/);if(!cp)return{valid:false,msg:'Code postal manquant (5 chiffres)'};const dept=cp[1].substring(0,2);const idf=['75','77','78','91','92','93','94','95'];if(!idf.includes(dept))return{valid:false,msg:`Code postal ${cp[1]} hors Île-de-France`};return{valid:true};}}
+  };
+
+  /* ════════════════════════════════════════════════════════
+     STATE
+     ════════════════════════════════════════════════════════ */
+  const state = { currentStep:0, selectedPresta:null, data:{}, stepsFlow:[], forcedAudit:false, auditReason:'' };
+  const euro = n => Number(n).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:2});
+  const el = id => document.getElementById(id);
+
+  /* ════════════════════════════════════════════════════════
+     SCROLL REVEAL
+     ════════════════════════════════════════════════════════ */
+  const KC_REDUCE = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  let kcIO = null;
+  function kcSetupReveal(){
+    if(KC_REDUCE || !('IntersectionObserver' in window)) return;
+    kcIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('kc-in'); kcIO.unobserve(en.target); }
+      });
+    }, { threshold:0.08, rootMargin:'0px 0px -4% 0px' });
+  }
+  function kcRevealStep(stepEl){
+    if(!stepEl || KC_REDUCE || !kcIO) return;
+    const sel = '.step-tag, .step-title, .step-desc, .presta-cat-title, .option-card, .opt-row, .slider-block, .form-block, .error-banner, .zone-checkbox-card, .zone-map, .zone-map-label, .result-main, .result-aside, .step-nav';
+    let i = 0;
+    stepEl.querySelectorAll(sel).forEach(function(elm){
+      if(elm.classList.contains('kc-in')) return;
+      elm.style.setProperty('--kc-rev-delay', (i < 7 ? i*50 : 0) + 'ms');
+      elm.classList.add('kc-reveal');
+      kcIO.observe(elm);
+      i++;
+    });
+    clearTimeout(stepEl._kcRevealT);
+    stepEl._kcRevealT = setTimeout(function(){
+      stepEl.querySelectorAll('.kc-reveal:not(.kc-in)').forEach(function(elm){ elm.classList.add('kc-in'); });
+    }, 1600);
+  }
+
+  /* ════════════════════════════════════════════════════════
+     SAUVEGARDE / RESTAURATION (sessionStorage)
+     ════════════════════════════════════════════════════════ */
+  function saveProgress(){
+    if(!state.selectedPresta) return;
+    try{
+      sessionStorage.setItem(KC_CONFIG.sessionStorageKey, JSON.stringify({ state, v:KC_CONFIG.version, timestamp:Date.now() }));
+    } catch(e){}
+  }
+  function loadProgress(){
+    try{
+      const raw = sessionStorage.getItem(KC_CONFIG.sessionStorageKey);
+      if(!raw) return null;
+      const data = JSON.parse(raw);
+      if(data.v !== KC_CONFIG.version || Date.now() - data.timestamp > KC_CONFIG.sessionExpiry){
+        sessionStorage.removeItem(KC_CONFIG.sessionStorageKey);
+        return null;
+      }
+      if(!data.state || !KC_PRESTAS[data.state.selectedPresta]) return null;
+      return data.state;
+    } catch(e){ return null; }
+  }
+  function clearProgress(){
+    try{ sessionStorage.removeItem(KC_CONFIG.sessionStorageKey); } catch(e){}
+  }
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS PRESTATIONS — injection + repli élégant
+     ════════════════════════════════════════════════════════ */
+  function injectPrestaImages(){
+    document.querySelectorAll('#step-presta .presta-card').forEach(function(card){
+      const photo = card.querySelector('.oc-photo');
+      if(!photo || photo.querySelector('img')) return;
+      const key = card.dataset.presta || card.dataset.img;
+      const entry = key ? KC_PRESTA_IMAGES[key] : null;
+      const url = entry && entry.url;
+      if(!url){ photo.classList.add('no-photo'); return; }
+      photo.classList.remove('no-photo');
+      const img = document.createElement('img');
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.alt = entry.alt || '';
+      img.addEventListener('error', function(){ photo.classList.add('no-photo'); img.remove(); });
+      img.src = url;
+      photo.insertBefore(img, photo.firstChild);
+    });
+  }
+
+  /* ════════════════════════════════════════════════════════
+     NAVIGATION & FLUX
+     ════════════════════════════════════════════════════════ */
+  function switchToAudit(reason){
+    state.forcedAudit = true;
+    state.auditReason = reason || '';
+    const done = state.stepsFlow.slice(0, state.currentStep + 1);
+    state.stepsFlow = done.concat(['contact','result']);
+  }
+  function selectPresta(card, prestaKey){
+    const presta = KC_PRESTAS[prestaKey];
+    if(!presta) return;
+    document.querySelectorAll('#step-presta .option-card').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-checked','false');
+    });
+    card.classList.add('selected');
+    card.setAttribute('aria-checked','true');
+    state.selectedPresta = prestaKey;
+    state.data = { presta: prestaKey, options:{}, majorations:{}, frais:{} };
+    state.stepsFlow = presta.flow.slice();
+    state.forcedAudit = false;
+    state.auditReason = '';
+    state.currentStep = 0;
+    saveProgress();
+    setTimeout(() => goNext(), 450);
+  }
+  function selectOption(card, key, value, mult){
+    card.parentElement.querySelectorAll('.option-card').forEach(c => {
+      c.classList.remove('selected');
+      c.setAttribute('aria-checked','false');
+    });
+    card.classList.add('selected');
+    card.setAttribute('aria-checked','true');
+    state.data[key] = value;
+    if(mult !== undefined) state.data[key + '_mult'] = parseFloat(mult) || 0;
+
+    if(key === 'taille' && value === 'hors-grille'){
+      switchToAudit(KC_PRESTAS[state.selectedPresta].horsGrille.reason);
+    }
+    if(key === 'vide'){
+      if(value === 'non') state.data.majorations['non-vide'] = true;
+      else delete state.data.majorations['non-vide'];
+    }
+    if(key === 'etat'){
+      delete state.data.majorations['tres-encrasse'];
+      if(value === 'tres-encrasse'){
+        state.data.majorations['tres-encrasse'] = true;
+      } else if(value === 'tres-degrade'){
+        switchToAudit('Logement très dégradé — votre demande mérite une étude personnalisée, avec une visite gratuite');
+      }
+      if(value !== 'tres-degrade' && state.forcedAudit && state.data.taille !== 'hors-grille'){
+        state.forcedAudit = false; state.auditReason = '';
+        state.stepsFlow = KC_PRESTAS[state.selectedPresta].flow.slice();
+      }
+    }
+    saveProgress();
+    setTimeout(() => goNext(), 450);
+  }
+  function goNext(){
+    if(state.currentStep < state.stepsFlow.length - 1){
+      state.currentStep++;
+      showStep(state.stepsFlow[state.currentStep]);
+      updateProgress();
+      saveProgress();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  }
+  function goPrev(){
+    if(state.currentStep > 0){
+      state.currentStep--;
+      showStep(state.stepsFlow[state.currentStep]);
+      updateProgress();
+      saveProgress();
+      window.scrollTo({top:0, behavior:'smooth'});
+    }
+  }
+  var _kcZoneTimer = null;
+  function confirmZone(code){
+    if(state.stepsFlow[state.currentStep] !== 'zone') return;
+    state.data.zone = 'idf';
+    if(code) state.data.departement = code;
+    saveProgress();
+    if(_kcZoneTimer) clearTimeout(_kcZoneTimer);
+    _kcZoneTimer = setTimeout(function(){ goNext(); }, 550);
+  }
+  function showStep(stepKey){
+    document.querySelectorAll('.kc-devis .step').forEach(s => s.classList.remove('active'));
+    const stepEl = el('step-'+stepKey);
+    if(!stepEl) return;
+    stepEl.classList.add('active');
+    const tag = stepEl.querySelector('.step-tag');
+    if(tag && stepKey !== 'result'){
+      tag.textContent = String(state.currentStep + 1).padStart(2,'0') + ' · ' + (STEP_LABELS[stepKey] || '');
+    }
+    const h1 = stepEl.querySelector('.step-title');
+    if(h1){ h1.setAttribute('tabindex','-1'); h1.focus({preventScroll:true}); }
+    if(stepKey === 'taille') renderTaille();
+    if(stepKey === 'bien') renderBienOptions();
+    if(stepKey === 'surface') setupSurface();
+    if(stepKey === 'options') renderOptionsList();
+    if(stepKey === 'result') renderResult();
+    kcRevealStep(stepEl);
+  }
+  function updateProgress(){
+    const total = state.stepsFlow.length || 8;
+    const current = state.currentStep + 1;
+    const fill = (current / total) * 100;
+    el('pb-fill').style.width = fill + '%';
+    document.querySelector('.pb-progress').setAttribute('aria-valuenow', Math.round(fill));
+    el('pb-current').textContent = current;
+    el('pb-total').textContent = total;
+    el('pb-back-btn').style.visibility = (state.currentStep === 0) ? 'hidden' : 'visible';
+  }
+
+  /* ════════════════════════════════════════════════════════
+     RENDUS DYNAMIQUES
+     ════════════════════════════════════════════════════════ */
+  function renderTaille(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const grille = KC_TARIFS.forfaits[state.selectedPresta];
+    if(!presta || !grille) return;
+    const grid = el('taille-grid');
+    grid.textContent = '';
+    el('taille-desc').textContent = (presta.inclus ? presta.inclus + '. ' : '')
+      + 'Le tarif est forfaitaire selon la typologie — aucun supplément surprise.';
+    let i = 0;
+    Object.keys(grille).forEach(key => {
+      i++;
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'option-card';
+      btn.setAttribute('role','radio');
+      const sel = state.data.taille === key;
+      btn.setAttribute('aria-checked', sel ? 'true' : 'false');
+      if(sel) btn.classList.add('selected');
+      btn.innerHTML = '<div class="oc-num"></div><div class="oc-title"></div><div class="oc-desc"></div><span class="oc-badge"></span>';
+      btn.querySelector('.oc-num').textContent = String(i).padStart(2,'0');
+      btn.querySelector('.oc-title').textContent = KC_TARIFS.tailles[key];
+      btn.querySelector('.oc-desc').textContent = 'Forfait tout compris';
+      btn.querySelector('.oc-badge').textContent = euro(grille[key]) + ' € TTC';
+      btn.addEventListener('click', () => selectOption(btn, 'taille', key));
+      grid.appendChild(btn);
+    });
+    // Carte « hors grille » → bascule devis (garde-fou officiel)
+    if(presta.horsGrille){
+      i++;
+      const btn = document.createElement('button');
+      btn.type = 'button'; btn.className = 'option-card';
+      btn.setAttribute('role','radio'); btn.setAttribute('aria-checked','false');
+      btn.innerHTML = '<div class="oc-num"></div><div class="oc-title"></div><div class="oc-desc"></div><span class="oc-badge">Visite gratuite</span>';
+      btn.querySelector('.oc-num').textContent = String(i).padStart(2,'0');
+      btn.querySelector('.oc-title').textContent = presta.horsGrille.label;
+      btn.querySelector('.oc-desc').textContent = presta.horsGrille.desc;
+      btn.addEventListener('click', () => selectOption(btn, 'taille', 'hors-grille'));
+      grid.appendChild(btn);
+    }
+    grid.className = 'options-grid cols-3';
+  }
+  function renderBienOptions(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    if(!presta || !presta.bienOptions) return;
+    const grid = el('bien-grid');
+    grid.textContent = '';
+    presta.bienOptions.forEach((opt, i) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option-card';
+      btn.setAttribute('role','radio');
+      btn.setAttribute('aria-checked', state.data.bien === opt.nom ? 'true' : 'false');
+      if(state.data.bien === opt.nom) btn.classList.add('selected');
+      const num = document.createElement('div'); num.className='oc-num'; num.textContent = String(i+1).padStart(2,'0');
+      const title = document.createElement('div'); title.className='oc-title'; title.textContent = opt.nom;
+      btn.appendChild(num); btn.appendChild(title);
+      btn.addEventListener('click', () => selectOption(btn, 'bien', opt.nom));
+      grid.appendChild(btn);
+    });
+    grid.className = 'options-grid cols-3';
+  }
+  function setupSurface(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const cfg = (presta && presta.surface) || { min:20, max:1000, step:10, def:80, unit:'m²',
+      title:'Quelle est la <em>surface</em> à traiter ?',
+      desc:'La surface est le critère principal de l\'estimation.' };
+    const input = el('surf-input');
+    input.min = cfg.min; input.max = cfg.max; input.step = cfg.step;
+    input.setAttribute('aria-valuemin', cfg.min);
+    input.setAttribute('aria-valuemax', cfg.max);
+    const val = state.data.surface || cfg.def;
+    input.value = val;
+    el('surface-title').innerHTML = cfg.title;
+    el('surface-desc').textContent = cfg.desc;
+    document.querySelector('.slider-value-unit').textContent = cfg.unit;
+    const marks = document.querySelector('.slider-marks');
+    marks.textContent = '';
+    [0,0.25,0.5,0.75,1].forEach(p => {
+      const s = document.createElement('span');
+      s.textContent = Math.round(cfg.min + (cfg.max-cfg.min)*p) + ' ' + cfg.unit;
+      marks.appendChild(s);
+    });
+    updateSurf(val);
+  }
+  function updateSurf(val){
+    el('surf-val').textContent = val;
+    el('surf-input').setAttribute('aria-valuenow', val);
+    state.data.surface = parseInt(val, 10);
+    saveProgress();
+  }
+  function renderOptionsList(){
+    const grid = el('options-grid');
+    grid.textContent = '';
+    const presta = state.selectedPresta;
+    Object.entries(KC_TARIFS.options).forEach(([key, opt]) => {
+      if(!opt.compat.includes(presta)) return;
+      const row = document.createElement('button');
+      row.type = 'button';
+      row.className = 'opt-row';
+      row.dataset.key = key;
+      const qty = Number(state.data.options[key] || 0);
+      row.setAttribute('role','checkbox');
+      row.setAttribute('aria-checked', qty > 0 ? 'true' : 'false');
+      if(qty > 0) row.classList.add('selected');
+      row.innerHTML = '<div class="opt-left"><div class="opt-icon" aria-hidden="true">' +
+        '<svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>' +
+        '<div class="opt-info"><div class="opt-name"></div><div class="opt-desc-txt"></div></div></div>' +
+        '<div class="opt-right"></div>';
+      row.querySelector('.opt-name').textContent = opt.nom;
+      row.querySelector('.opt-desc-txt').textContent = opt.desc || '';
+      const right = row.querySelector('.opt-right');
+      if(opt.type === 'unite'){
+        right.innerHTML = '<div class="opt-price"></div><div class="opt-qty">' +
+          '<button type="button" class="oq-minus" aria-label="Diminuer">−</button>' +
+          '<span class="oq-val"></span>' +
+          '<button type="button" class="oq-plus" aria-label="Augmenter">+</button></div>';
+        right.querySelector('.opt-price').textContent = euro(opt.prix) + ' €/' + opt.unite;
+        const updateRow = () => {
+          const q = Number(state.data.options[key] || 0);
+          right.querySelector('.oq-val').textContent = q + ' ' + opt.unite;
+          right.querySelector('.oq-minus').disabled = q <= 0;
+          right.querySelector('.oq-plus').disabled = q >= opt.max;
+          row.classList.toggle('selected', q > 0);
+          row.setAttribute('aria-checked', q > 0 ? 'true' : 'false');
+        };
+        right.querySelector('.oq-minus').addEventListener('click', e => {
+          e.stopPropagation();
+          const q = Math.max(0, Number(state.data.options[key] || 0) - 1);
+          if(q === 0) delete state.data.options[key]; else state.data.options[key] = q;
+          updateRow(); saveProgress();
+        });
+        right.querySelector('.oq-plus').addEventListener('click', e => {
+          e.stopPropagation();
+          const q = Math.min(opt.max, Number(state.data.options[key] || 0) + 1);
+          state.data.options[key] = q;
+          updateRow(); saveProgress();
+        });
+        row.addEventListener('click', () => {
+          const q = Number(state.data.options[key] || 0);
+          if(q === 0){ state.data.options[key] = 1; } else { delete state.data.options[key]; }
+          updateRow(); saveProgress();
+        });
+        updateRow();
+      } else {
+        right.innerHTML = '<div class="opt-price"></div><div class="opt-check" aria-hidden="true">✓</div>';
+        right.querySelector('.opt-price').textContent = '+' + euro(opt.prix) + ' €';
+        row.addEventListener('click', () => {
+          const sel = !row.classList.contains('selected');
+          row.classList.toggle('selected', sel);
+          row.setAttribute('aria-checked', sel ? 'true' : 'false');
+          if(sel) state.data.options[key] = 1; else delete state.data.options[key];
+          saveProgress();
+        });
+      }
+      grid.appendChild(row);
+    });
+  }
+  function toggleMajoration(row, key){
+    const sel = row.classList.toggle('selected');
+    row.setAttribute('aria-checked', sel ? 'true' : 'false');
+    if(sel) state.data.majorations[key] = true;
+    else delete state.data.majorations[key];
+    saveProgress();
+  }
+  function toggleFrais(row, key){
+    const sel = row.classList.toggle('selected');
+    row.setAttribute('aria-checked', sel ? 'true' : 'false');
+    if(sel) state.data.frais[key] = true;
+    else delete state.data.frais[key];
+    saveProgress();
+  }
+
+  /* ════════════════════════════════════════════════════════
+     FORMATAGE TÉLÉPHONE / COMPTEUR / VALIDATION
+     ════════════════════════════════════════════════════════ */
+  function formatPhone(input){
+    const cursorAtEnd = input.selectionStart === input.value.length;
+    let v = input.value;
+    if(v.startsWith('+')){
+      v = '+' + v.substring(1).replace(/[^\d]/g,'');
+      if(v.startsWith('+33')){
+        const d = v.substring(3);
+        let f = '+33';
+        if(d.length>0) f += ' '+d.substring(0,1);
+        if(d.length>1) f += ' '+d.substring(1,3);
+        if(d.length>3) f += ' '+d.substring(3,5);
+        if(d.length>5) f += ' '+d.substring(5,7);
+        if(d.length>7) f += ' '+d.substring(7,9);
+        v = f.substring(0,17);
+      }
+    } else {
+      const d = v.replace(/[^\d]/g,'').substring(0,10);
+      let f = '';
+      for(let i=0; i<d.length; i++){ if(i>0 && i%2===0) f += ' '; f += d[i]; }
+      v = f;
+    }
+    if(input.value !== v){
+      input.value = v;
+      if(cursorAtEnd) input.setSelectionRange(v.length, v.length);
+    }
+  }
+  function updateCharCounter(textarea){
+    const counter = el('char-counter');
+    if(!counter) return;
+    const len = textarea.value.length;
+    const max = 1000;
+    counter.textContent = len + ' / ' + max;
+    counter.classList.remove('warning','danger');
+    if(len > max*0.95) counter.classList.add('danger');
+    else if(len > max*0.8) counter.classList.add('warning');
+  }
+  function validateField(type, input, showIfEmpty){
+    const wrap = input.closest('.form-field');
+    const errMsg = el('err-'+type);
+    const validator = VALIDATORS[type];
+    const value = input.value.trim();
+    if(value === ''){
+      wrap.classList.remove('valid','invalid');
+      input.setAttribute('aria-invalid','false');
+      if(showIfEmpty){
+        wrap.classList.add('invalid');
+        input.setAttribute('aria-invalid','true');
+        if(errMsg) errMsg.textContent = validator.msg;
+      }
+      return false;
+    }
+    if(!validator || !validator.regex.test(value)){
+      wrap.classList.remove('valid');
+      wrap.classList.add('invalid');
+      input.setAttribute('aria-invalid','true');
+      if(errMsg) errMsg.textContent = validator.msg;
+      return false;
+    }
+    if(validator.custom){
+      const r = validator.custom(value);
+      if(!r.valid){
+        wrap.classList.remove('valid');
+        wrap.classList.add('invalid');
+        input.setAttribute('aria-invalid','true');
+        if(errMsg) errMsg.textContent = r.msg || validator.msg;
+        return false;
+      }
+    }
+    wrap.classList.remove('invalid');
+    wrap.classList.add('valid');
+    input.setAttribute('aria-invalid','false');
+    return true;
+  }
+  function validateAllFields(){
+    const fields = ['firstname','lastname','email','phone','address'];
+    let firstInvalid = null;
+    let count = 0;
+    for(const f of fields){
+      const input = el('c-'+f);
+      const valid = validateField(f, input, true);
+      if(!valid){ count++; if(!firstInvalid) firstInvalid = input; }
+    }
+    if(firstInvalid){
+      const banner = el('form-error-banner');
+      el('form-error-text').textContent = `${count} champ(s) à corriger ci-dessous.`;
+      banner.classList.add('show');
+      firstInvalid.focus();
+      firstInvalid.scrollIntoView({behavior:'smooth', block:'center'});
+      return false;
+    }
+    el('form-error-banner').classList.remove('show');
+    return true;
+  }
+
+  /* ════════════════════════════════════════════════════════
+     CALCULS — miroir exact de KC_Pricing (le serveur revalide
+     systématiquement au moment du paiement)
+     ════════════════════════════════════════════════════════ */
+  function currentFunnel(){
+    if(state.forcedAudit) return 'audit';
+    return KC_PRESTAS[state.selectedPresta].funnel;
+  }
+  function calcForfait(){
+    const grille = KC_TARIFS.forfaits[state.selectedPresta];
+    const taille = state.data.taille;
+    const base = grille && grille[taille];
+    if(!base) return null;
+    const baseCents = Math.round(base * 100);
+    const lignes = [{ nom: KC_PRESTAS[state.selectedPresta].nom + ' — ' + KC_TARIFS.tailles[taille], montant: base }];
+
+    let optionsCents = 0;
+    Object.entries(state.data.options || {}).forEach(([key, qty]) => {
+      const o = KC_TARIFS.options[key];
+      if(!o || !o.compat.includes(state.selectedPresta)) return;
+      const q = o.type === 'fixe' ? 1 : Math.min(Number(qty)||0, o.max);
+      if(q < 1) return;
+      let cents = Math.round(o.prix * q * 100);
+      if(o.minTotal) cents = Math.max(cents, Math.round(o.minTotal * 100));
+      optionsCents += cents;
+      lignes.push({ nom: o.nom + (o.type==='unite' ? ' × '+q+' '+o.unite : ''), montant: cents/100 });
+    });
+
+    const sousTotalCents = baseCents + optionsCents;
+    let taux = 0;
+    Object.keys(state.data.majorations || {}).forEach(key => {
+      const m = KC_TARIFS.majorations[key];
+      if(!m) return;
+      taux += m.taux;
+      lignes.push({ nom: m.nom + ' (+' + Math.round(m.taux*100) + ' %)', montant: Math.round(sousTotalCents*m.taux)/100 });
+    });
+    let totalCents = Math.round(sousTotalCents * (1 + taux));
+
+    Object.keys(state.data.frais || {}).forEach(key => {
+      const f = KC_TARIFS.frais[key];
+      if(!f) return;
+      totalCents += Math.round(f.prix * 100);
+      lignes.push({ nom: f.nom, montant: f.prix });
+    });
+
+    const acompteCents = Math.round(totalCents * KC_TARIFS.acomptePct / 100);
+    return { total: totalCents/100, acompte: acompteCents/100, solde: (totalCents-acompteCents)/100, lignes };
+  }
+  function calcChantier(){
+    const taux = Number(state.data.niveau_mult) || KC_TARIFS.chantier.taux.standard;
+    const s = Math.min(Math.max(Number(state.data.surface) || 0, 10), 5000);
+    const central = Math.max(KC_TARIFS.chantier.min, Math.round(taux * s));
+    const min = Math.round(central * (1 - KC_TARIFS.chantier.marge));
+    const max = Math.round(central * (1 + KC_TARIFS.chantier.marge));
+    return { min, max, central, unite:'€ HT',
+      detail: s + ' m² × ' + euro(taux) + ' €/m² HT (minimum ' + KC_TARIFS.chantier.min + ' € HT) · fourchette ± 15 %' };
+  }
+  function calcBureaux(){
+    const s = Math.min(Math.max(Number(state.data.surface) || 0, 10), 10000);
+    return { min: Math.round(s * KC_TARIFS.bureaux.tauxMin), max: Math.round(s * KC_TARIFS.bureaux.tauxMax),
+      unite:'€ HT/mois', position: KC_TARIFS.bureaux.position,
+      detail: s + ' m² × 1,50 – 3 €/m²/mois HT selon fréquence et cahier des charges' };
+  }
+
+  /* ════════════════════════════════════════════════════════
+     RÉSULTAT — affichage selon le parcours
+     ════════════════════════════════════════════════════════ */
+  function renderDetailLines(lignes){
+    const wrap = el('r-detail');
+    wrap.textContent = '';
+    (lignes || []).forEach((d, idx) => {
+      const row = document.createElement('div'); row.className = 'rd-row';
+      const left = document.createElement('div'); left.className = 'rd-left';
+      const name = document.createElement('div'); name.className = 'rd-name'; name.textContent = d.nom;
+      left.appendChild(name);
+      const amount = document.createElement('div'); amount.className = 'rd-amount';
+      if(d.montant == null) amount.textContent = '✓';
+      else amount.textContent = (idx === 0 ? '' : '+') + euro(d.montant) + ' €';
+      row.appendChild(left); row.appendChild(amount);
+      wrap.appendChild(row);
+    });
+  }
+  function renderResult(){
+    const funnel = currentFunnel();
+    const presta = KC_PRESTAS[state.selectedPresta];
+    el('r-audit-badge').style.display = 'none';
+    el('r-acompte-panel').style.display = 'none';
+    el('cta-pay').style.display = 'none';
+    el('cta-audit').style.display = 'none';
+    el('r-price-line').style.display = '';
+    el('r-total-row').style.display = '';
+    el('result-error').classList.remove('show');
+    el('r-from').textContent = presta.nom.toLowerCase();
+
+    if(funnel === 'forfait'){
+      const r = calcForfait();
+      if(!r) return;
+      state.lastResult = { funnel, ...r };
+      el('result-tag').textContent = 'Votre tarif · grille officielle';
+      el('result-title').innerHTML = 'Votre tarif, <em>ferme et sans surprise</em>.';
+      el('result-desc').textContent = 'Prix TTC issu de notre grille officielle. Réservez votre créneau en ligne avec un acompte de 30 % — le solde se règle après la prestation.';
+      el('r-label-txt').textContent = 'Total TTC';
+      el('r-total').textContent = euro(r.total);
+      el('r-unit').textContent = ' € TTC';
+      el('r-total-label').textContent = 'Total TTC';
+      el('r-total-2').textContent = euro(r.total) + ' € TTC';
+      renderDetailLines(r.lignes);
+      el('r-acompte-panel').style.display = '';
+      el('r-acompte').textContent = euro(r.acompte) + ' €';
+      el('r-solde').textContent = euro(r.solde) + ' €';
+      el('cta-pay').style.display = 'flex';
+      el('cta-pay-desc').textContent = 'Acompte de ' + euro(r.acompte) + ' € sécurisé par Stripe · confirmation immédiate';
+      el('cta-email-name').textContent = 'Recevoir ce tarif par email';
+      el('result-note').textContent = (presta.inclus ? presta.inclus + '. ' : '')
+        + 'Tarif ferme pour la configuration déclarée. Paiement sécurisé Stripe, annulation possible par téléphone.';
+    }
+    else if(funnel === 'estimate' && presta.kind === 'chantier'){
+      const r = calcChantier();
+      state.lastResult = { funnel:'estimate', ...r };
+      el('result-tag').textContent = 'Estimation indicative · ± 15 %';
+      el('result-title').innerHTML = 'Votre estimation <em>indicative</em>.';
+      el('result-desc').textContent = 'Prix confirmé après audit gratuit ou envoi de photos — l\'empoussièrement réel ne se vérifie pas en ligne.';
+      el('r-label-txt').textContent = 'Fourchette indicative HT';
+      el('r-total').textContent = euro(r.min) + ' – ' + euro(r.max);
+      el('r-unit').textContent = ' € HT';
+      el('r-total-label').textContent = 'Fourchette estimée';
+      el('r-total-2').textContent = euro(r.min) + ' – ' + euro(r.max) + ' € HT';
+      renderDetailLines([{ nom:r.detail, montant:null }]);
+      el('cta-audit').style.display = 'flex';
+      el('cta-audit-name').textContent = 'Réserver mon audit gratuit';
+      el('cta-email-name').textContent = 'Recevoir cette estimation par email';
+      el('result-note').textContent = 'Estimation indicative, jamais un prix ferme : le tarif définitif est confirmé après audit gratuit ou envoi de photos. Minimum d\'intervention 300 € HT.';
+    }
+    else if(funnel === 'estimate'){
+      const r = calcBureaux();
+      state.lastResult = { funnel:'estimate', ...r };
+      el('result-tag').textContent = 'Budget indicatif';
+      el('result-title').innerHTML = 'Votre budget mensuel <em>indicatif</em>.';
+      el('result-desc').textContent = 'À partir de 2 €/m²/mois HT selon la fréquence, les horaires et le cahier des charges. Le devis ferme est établi après audit gratuit de vos locaux.';
+      el('r-label-txt').textContent = 'Budget mensuel estimé';
+      el('r-total').textContent = euro(r.min) + ' – ' + euro(r.max);
+      el('r-unit').textContent = ' € HT/mois';
+      el('r-total-label').textContent = 'Budget mensuel estimé';
+      el('r-total-2').textContent = euro(r.min) + ' – ' + euro(r.max) + ' € HT/mois';
+      renderDetailLines([{ nom:r.detail, montant:null }]);
+      el('cta-audit').style.display = 'flex';
+      el('cta-audit-name').textContent = 'Réserver mon audit gratuit';
+      el('cta-email-name').textContent = 'Recevoir ce budget par email';
+      el('result-note').textContent = 'Indicatif uniquement — le devis ferme suit l\'audit gratuit (fréquences, horaires, prestations annexes).';
+    }
+    else {
+      state.lastResult = { funnel:'audit' };
+      el('result-tag').textContent = 'Devis sur mesure';
+      el('result-title').innerHTML = 'Votre devis mérite <em>une visite</em>.';
+      el('result-desc').textContent = state.auditReason
+        ? state.auditReason + '. Réservez votre visite gratuite : devis ferme sous 24 à 48 h.'
+        : (presta.strict
+          ? 'Ce type d\'intervention se chiffre uniquement sur place. Réservez une visite gratuite — sous 48 h — pour un devis ferme et adapté.'
+          : 'Cette prestation se chiffre sur place : réservez une visite d\'audit gratuite, le devis ferme vous est remis sous 24 à 48 h.');
+      el('r-audit-badge').style.display = 'inline-block';
+      el('r-price-line').style.display = 'none';
+      el('r-total-row').style.display = 'none';
+      el('r-label-txt').textContent = 'Visite gratuite · sans engagement';
+      renderDetailLines([
+        { nom:'Visite d\'audit gratuite à votre adresse', montant:null },
+        { nom:'Devis ferme sous 24 à 48 h après la visite', montant:null },
+        { nom:'Aucun engagement, aucun frais d\'étude', montant:null }
+      ]);
+      el('cta-audit').style.display = 'flex';
+      el('cta-audit-name').textContent = 'Choisir mon créneau de visite gratuite';
+      el('cta-email-name').textContent = 'Être recontacté par email';
+      el('result-note').textContent = presta.note || 'La visite permet d\'évaluer précisément le travail : vous recevez un devis ferme, sans surprise.';
+    }
+  }
+  function showResult(){
+    if(!validateAllFields()) return;
+    state.data.contact = {
+      firstname: el('c-firstname').value.trim(),
+      lastname: el('c-lastname').value.trim(),
+      email: el('c-email').value.trim(),
+      phone: el('c-phone').value.trim(),
+      address: el('c-address').value.trim(),
+      message: el('c-message').value.trim()
+    };
+    // Garde-fou : mots-clés sensibles dans le champ libre → visite gratuite
+    if(currentFunnel() === 'forfait' && KC_MOTS_SENSIBLES.test(state.data.contact.message)){
+      switchToAudit('Votre demande mérite une étude personnalisée');
+    }
+    state.currentStep++;
+    showStep('result');
+    updateProgress();
+    saveProgress();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  /* ════════════════════════════════════════════════════════
+     ACTIONS FINALES — réservation (handoff) & devis par email
+     ════════════════════════════════════════════════════════ */
+  function buildHandoff(){
+    const funnel = currentFunnel();
+    const presta = KC_PRESTAS[state.selectedPresta];
+    const h = {
+      version: 2,
+      funnel: funnel === 'forfait' ? 'forfait' : 'audit',
+      presta: state.selectedPresta,
+      label: presta.nom,
+      zone: state.data.zone || '',
+      departement: state.data.departement || '',
+      contact: state.data.contact || {},
+      ts: Date.now()
+    };
+    if(funnel === 'forfait'){
+      const r = calcForfait();
+      h.booking = {
+        forfait: state.selectedPresta,
+        taille: state.data.taille,
+        options: Object.assign({}, state.data.options),
+        majorations: Object.keys(state.data.majorations || {}),
+        frais: Object.keys(state.data.frais || {})
+      };
+      h.result = { total:r.total, acompte:r.acompte, solde:r.solde,
+        lignes: r.lignes.map(l => ({ nom:l.nom, montant:l.montant })) };
+    } else {
+      h.details = {
+        typeBien: state.data.bien || (state.data.taille && state.data.taille !== 'hors-grille'
+          ? KC_TARIFS.tailles[state.data.taille] : (state.data.taille === 'hors-grille' && presta.horsGrille ? presta.horsGrille.label : '')),
+        surface: state.data.surface || '',
+        description: (state.auditReason ? state.auditReason + '. ' : '') + ((state.data.contact && state.data.contact.message) || '')
+      };
+      if(funnel === 'estimate' && state.lastResult && state.lastResult.min != null){
+        h.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
+          detail:state.lastResult.detail, surface:state.data.surface || '', niveau:state.data.niveau || '' };
+      }
+    }
+    return h;
+  }
+  function goReservation(){
+    try { sessionStorage.setItem(KC_CONFIG.handoffKey, JSON.stringify(buildHandoff())); } catch(e){}
+    window.location.href = KC_CONFIG.reservationURL;
+  }
+  function resultError(msg){
+    const e = el('result-error');
+    e.textContent = msg;
+    e.classList.add('show');
+  }
+  async function sendQuoteEmail(){
+    const honeypot = el('kc-website-d');
+    // Honeypot rempli = robot : on simule un succès sans rien envoyer
+    if(honeypot && honeypot.value !== ''){ showSuccessModal(); return; }
+
+    const btn = el('cta-email');
+    btn.classList.add('loading'); btn.disabled = true;
+    el('result-error').classList.remove('show');
+    const funnel = currentFunnel();
+    const payload = {
+      kind: funnel === 'forfait' ? 'forfait' : (funnel === 'estimate' ? 'estimation' : 'audit'),
+      presta: state.selectedPresta,
+      prestation: KC_PRESTAS[state.selectedPresta].nom,
+      contact: state.data.contact
+    };
+    if(funnel === 'forfait'){
+      payload.booking = buildHandoff().booking;
+      payload.result = state.lastResult ? { total:state.lastResult.total, acompte:state.lastResult.acompte,
+        solde:state.lastResult.solde, lignes:state.lastResult.lignes } : null;
+    } else if(funnel === 'estimate' && state.lastResult){
+      payload.estimation = { min:state.lastResult.min, max:state.lastResult.max, unite:state.lastResult.unite,
+        detail:state.lastResult.detail, surface:state.data.surface || '', frequence:'' };
+    } else {
+      payload.details = buildHandoff().details || null;
+    }
+
+    const wpConfig = window.kcDevis;
+    if(!wpConfig || !wpConfig.ajaxUrl){
+      // Pas de fausse confirmation : on informe honnêtement et on garde la saisie
+      btn.classList.remove('loading'); btn.disabled = false;
+      resultError('L\'envoi par email n\'est pas encore activé sur cette page (module kc-devis). '
+        + 'Réservez directement votre créneau ci-dessus, ou appelez-nous au 06 70 01 20 61.');
+      return;
+    }
+
+    try{
+      const params = new URLSearchParams();
+      params.append('action','kc_devis');
+      params.append('_wpnonce', wpConfig.nonce);
+      params.append('payload', JSON.stringify(payload));
+      const res = await fetch(wpConfig.ajaxUrl, {
+        method:'POST',
+        credentials:'same-origin',
+        headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: params
+      });
+      const data = await res.json().catch(() => ({}));
+      if(!res.ok || !data.success) throw new Error((data.data && data.data.message) || 'HTTP '+res.status);
+      clearProgress();
+      showSuccessModal();
+    }catch(err){
+      resultError('L\'envoi a échoué (' + (err.message || 'erreur réseau') + '). Réessayez, ou appelez-nous au 06 70 01 20 61.');
+    }finally{
+      btn.classList.remove('loading'); btn.disabled = false;
+    }
+  }
+
+  /* ════════════════════════════════════════════════════════
+     MODALE (focus trap accessible)
+     ════════════════════════════════════════════════════════ */
+  let lastFocusedElement = null;
+  function getFocusable(c){ return c.querySelectorAll('button:not(:disabled), [href], input:not(:disabled), select:not(:disabled), textarea:not(:disabled), [tabindex]:not([tabindex="-1"])'); }
+  function trapFocus(e, modal){
+    if(e.key !== 'Tab') return;
+    const f = getFocusable(modal);
+    if(f.length === 0) return;
+    if(e.shiftKey && document.activeElement === f[0]){ e.preventDefault(); f[f.length-1].focus(); }
+    else if(!e.shiftKey && document.activeElement === f[f.length-1]){ e.preventDefault(); f[0].focus(); }
+  }
+  function showSuccessModal(){
+    const presta = KC_PRESTAS[state.selectedPresta];
+    el('recap-presta').textContent = presta ? presta.nom : '—';
+    let prix = '—';
+    if(state.lastResult){
+      if(state.lastResult.funnel === 'forfait') prix = euro(state.lastResult.total) + ' € TTC';
+      else if(state.lastResult.min != null) prix = euro(state.lastResult.min) + ' – ' + euro(state.lastResult.max) + ' ' + state.lastResult.unite;
+      else prix = 'Sur devis après visite gratuite';
+    }
+    el('recap-price').textContent = prix;
+    el('recap-email').textContent = (state.data.contact && state.data.contact.email) || '—';
+    const modal = el('kc-success-modal');
+    lastFocusedElement = document.activeElement;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => el('modal-ok-btn') && el('modal-ok-btn').focus(), 100);
+  }
+  function closeSuccessModal(){
+    el('kc-success-modal').classList.remove('show');
+    document.body.style.overflow = '';
+    if(lastFocusedElement && typeof lastFocusedElement.focus === 'function') lastFocusedElement.focus();
+  }
+
+  /* ════════════════════════════════════════════════════════
+     INIT
+     ════════════════════════════════════════════════════════ */
+  function init(){
+    injectPrestaImages();
+    (function(){
+      var t = el('kcfold-toggle'); if(!t) return;
+      var zone = el('kcfold-zone'), ico = el('kcfold-ico'), lab = el('kcfold-label');
+      t.addEventListener('click', function(){
+        var open = t.getAttribute('aria-expanded') === 'true';
+        open = !open;
+        t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        zone.hidden = !open;
+        ico.textContent = open ? '−' : '+';
+        lab.textContent = open ? 'Masquer les prestations sur devis' : 'Voir les prestations sur devis (nuisibles, Diogène, commerces…)';
+      });
+    })();
+    document.querySelectorAll('#step-presta .presta-card:not(.presta-devis)').forEach(card => {
+      card.setAttribute('role','radio');
+      card.setAttribute('aria-checked','false');
+      card.addEventListener('click', () => selectPresta(card, card.dataset.presta));
+    });
+    document.querySelectorAll('.option-card[data-key]').forEach(card => {
+      if(card.dataset.presta) return;
+      card.setAttribute('role','radio');
+      card.setAttribute('aria-checked','false');
+      card.addEventListener('click', () => selectOption(card, card.dataset.key, card.dataset.value, card.dataset.mult));
+    });
+    document.addEventListener('kcidf:select', function(e){ confirmZone(e.detail && e.detail.code); });
+    document.querySelectorAll('[data-action="prev"]').forEach(b => b.addEventListener('click', goPrev));
+    document.querySelectorAll('[data-action="next"]').forEach(b => b.addEventListener('click', goNext));
+    el('pb-back-btn').addEventListener('click', goPrev);
+    const surf = el('surf-input');
+    if(surf) surf.addEventListener('input', e => updateSurf(e.target.value));
+    el('major-urgence').addEventListener('click', () => toggleMajoration(el('major-urgence'), 'urgence'));
+    el('major-dimanche').addEventListener('click', () => toggleMajoration(el('major-dimanche'), 'dimanche-ferie'));
+    el('frais-etage').addEventListener('click', () => toggleFrais(el('frais-etage'), 'etage'));
+    ['firstname','lastname','email','address'].forEach(f => {
+      const input = el('c-'+f);
+      if(!input) return;
+      input.addEventListener('input', () => validateField(f, input, false));
+      input.addEventListener('blur', () => validateField(f, input, true));
+    });
+    const phone = el('c-phone');
+    if(phone){
+      phone.addEventListener('input', () => { formatPhone(phone); validateField('phone', phone, false); });
+      phone.addEventListener('blur', () => validateField('phone', phone, true));
+    }
+    const msg = el('c-message');
+    if(msg){ msg.addEventListener('input', () => updateCharCounter(msg)); updateCharCounter(msg); }
+    el('btn-show-result').addEventListener('click', showResult);
+    el('cta-pay').addEventListener('click', goReservation);
+    el('cta-audit').addEventListener('click', goReservation);
+    el('cta-email').addEventListener('click', sendQuoteEmail);
+    el('error-banner-close').addEventListener('click', () => el('form-error-banner').classList.remove('show'));
+    el('modal-close-btn').addEventListener('click', closeSuccessModal);
+    el('modal-ok-btn').addEventListener('click', closeSuccessModal);
+    el('kc-success-modal').addEventListener('click', e => {
+      if(e.target.id === 'kc-success-modal') closeSuccessModal();
+    });
+    document.addEventListener('keydown', e => {
+      const m = el('kc-success-modal');
+      if(m && m.classList.contains('show')){
+        if(e.key === 'Escape') closeSuccessModal();
+        else trapFocus(e, m);
+      }
+    });
+    updateProgress();
+    kcSetupReveal();
+
+    // Reprise d'une demande sauvegardée
+    const saved = loadProgress();
+    if(saved && saved.selectedPresta){
+      const banner = el('resume-banner');
+      banner.classList.add('show');
+      el('btn-resume').addEventListener('click', () => {
+        Object.assign(state, saved);
+        state.data.options = state.data.options || {};
+        state.data.majorations = state.data.majorations || {};
+        state.data.frais = state.data.frais || {};
+        const prestaCard = document.querySelector(`[data-presta="${state.selectedPresta}"]`);
+        if(prestaCard){ prestaCard.classList.add('selected'); prestaCard.setAttribute('aria-checked','true'); }
+        if(state.data.contact){
+          Object.keys(state.data.contact).forEach(k => {
+            const inp = el('c-'+k);
+            if(inp) inp.value = state.data.contact[k];
+          });
+        }
+        showStep(state.stepsFlow[state.currentStep]);
+        updateProgress();
+        banner.classList.remove('show');
+      });
+      el('btn-discard').addEventListener('click', () => {
+        clearProgress();
+        banner.classList.remove('show');
+      });
+    }
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+<!-- ════════════════════════════════════════════════════════
+   COMPLÉMENT PAGE DEVIS — Kayli Clinn
+   À ajouter comme NOUVEAU bloc « HTML personnalisé » sur la page /devis/
+   (en bas de la page, après le bloc principal). Ne modifie pas le code existant.
+
+   • Masque le logo en double du bloc devis (le thème affiche déjà le logo).
+   • Descend tout le bloc devis JUSTE SOUS l'en-tête du site (mesuré
+     automatiquement) → la bannière « Une demande retrouvée… » et tout
+     le reste ne chevauchent plus l'en-tête. Repli CSS si le JS ne tourne pas.
+   • Masque le bouton « Estimation en ligne » du header sur cette page.
+   ════════════════════════════════════════════════════════ -->
+<style>
+  /* Logo en double masqué + repli d'espace si le JavaScript ne s'exécute pas */
+  .kc-devis .nav-top{ display:none !important; }
+  .kc-devis{ padding-top:100px; }
+</style>
+<script>
+(function(){
+  /* 1) Masquer le bouton « Estimation en ligne » du header sur cette page */
+  function hideEstimateCTA(){
+    try{
+      document.querySelectorAll('a, button').forEach(function(el){
+        if(el.closest('.kc-devis')) return;            /* ne pas toucher au bloc devis */
+        if((el.textContent || '').trim().toLowerCase() === 'estimation en ligne'){
+          var li = el.closest('li');
+          (li || el).style.display = 'none';
+        }
+      });
+    }catch(e){}
+  }
+
+  /* 2) Caler le bloc devis juste sous l'en-tête fixe du thème (mesure auto) */
+  function pushBelowHeader(){
+    var block = document.querySelector('.kc-devis');
+    if(!block) return;
+    try{
+      block.style.paddingTop = '0px';
+      var blockTop = block.getBoundingClientRect().top + window.scrollY;
+      var hb = 0, els = document.body.getElementsByTagName('*');
+      for(var i=0;i<els.length;i++){
+        var el = els[i];
+        if(block.contains(el)) continue;
+        var cs = getComputedStyle(el);
+        if(cs.position!=='fixed' && cs.position!=='sticky' && cs.position!=='absolute') continue;
+        if(cs.display==='none' || cs.visibility==='hidden') continue;
+        var r = el.getBoundingClientRect();
+        if(r.top<=5 && r.height>=24 && r.height<=260 && r.width>=window.innerWidth*0.5){
+          var b = r.bottom + window.scrollY; if(b>hb) hb=b;
+        }
+      }
+      var pad = (hb > blockTop ? (hb - blockTop) : 0) + 24;
+      block.style.paddingTop = Math.ceil(pad) + 'px';
+    }catch(e){ block.style.paddingTop = ''; }
+  }
+
+  function run(){ hideEstimateCTA(); pushBelowHeader(); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+  window.addEventListener('load', pushBelowHeader);
+  window.addEventListener('resize', pushBelowHeader);
+})();
+</script>

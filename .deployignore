@@ -1,0 +1,15 @@
+# Déploiement GitHub → WordPress.com (destination : /wp-content)
+# Seul le dossier plugins/ doit partir sur le site. Tout le reste est
+# de la documentation, des pages à coller à la main, ou des archives.
+api/
+lib/
+site/
+wordpress/
+node_modules/
+.claude/
+*.md
+package.json
+package-lock.json
+.mcp.json
+.gitignore
+.deployignore

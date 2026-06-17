@@ -1,0 +1,519 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE 3D : DÉRATISATION (RATS · SOURIS) — KAYLI CLINN
+   Lutte contre les rongeurs · Île-de-France · URL : /deratisation/
+   ────────────────────────────────────────────────────────
+   ⚠️ SUJET GÊNANT POUR LE CLIENT. Ton professionnel, rassurant, DISCRET. Vouvoiement.
+   ⚠️ AUCUN PRIX, AUCUNE RÉSERVATION EN LIGNE. Partout : « sur devis » / « devis après diagnostic ».
+   ⚠️ CTA = /demande-de-devis/?presta=deratisation et tel:+33670012061 (un /contact/ secondaire toléré).
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 2 variables --photo-* ci-dessous.
+   Remplacez UNIQUEMENT l'URL entre url('…'). Images SOBRES et NEUTRES.
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Intérieur sain et remis en ordre — Kayli Clinn,
+   │   dératisation discrète en Île-de-France »
+   │   URL placeholder : https://kayliclinn.fr/wp-content/uploads/placeholder/deratisation-hero.jpg
+   │ --photo-banner ... bandeau institutionnel au milieu de page
+   │   ALT : « Équipe équipée intervenant avec discrétion en Île-de-France
+   │   pour la lutte contre les rongeurs — Kayli Clinn »
+   │   URL placeholder : https://kayliclinn.fr/wp-content/uploads/placeholder/deratisation-banner.jpg
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   👉 À COMPLÉTER : visuels validés par la propriétaire
+   🔗 Liens internes : /devis/ · /contact/
+   ☎️ +33670012061 · PAS DE PRIX EN LIGNE
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* PHOTOS — A MODIFIER ICI UNIQUEMENT (placeholders) */
+.kc-derat{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/placeholder/deratisation-hero.jpg');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/placeholder/deratisation-banner.jpg');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+.kc-derat{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-derat *,.kc-derat *::before,.kc-derat *::after{box-sizing:border-box}
+.kc-derat img{max-width:100%;display:block}
+.kc-derat a{color:inherit;text-decoration:none}
+.kc-derat .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-derat .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-derat .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-derat .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+.kc-derat section{padding:clamp(78px,10vw,140px) 6%}
+.kc-derat-wrap{max-width:1180px;margin:0 auto}
+.kc-derat-header{text-align:center;max-width:760px;margin:0 auto clamp(52px,7vw,84px)}
+.kc-derat .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
+.kc-derat .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+.kc-derat .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(1.9rem,3.6vw,2.9rem);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-derat .section-title em,.kc-derat h2 em,.kc-derat h3 em,.kc-derat .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-derat .section-desc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:400}
+.kc-derat svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-btn-primary svg{transition:transform .3s}
+.kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+.kc-hero{position:relative;min-height:78vh;padding:clamp(140px,17vh,196px) 6% clamp(64px,9vh,104px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.86) 0%,rgba(13,35,64,0.62) 48%,rgba(13,35,64,0.38) 100%),var(--photo-hero);background-color:var(--navy);background-size:cover;background-position:center}
+.kc-hero-wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(34px,4vw,52px)}
+.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.9rem,3.8vw,3.4rem);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
+.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-hero-sub{font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.88);line-height:1.75;margin-bottom:clamp(34px,4vw,48px);max-width:620px;font-weight:300}
+.kc-hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+.kc-trust{background:var(--navy-2);padding:28px 6%}
+.kc-trust-wrap{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 36px;flex-wrap:wrap}
+.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.84);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-trust-item svg{color:var(--teal);flex-shrink:0}
+.kc-cases{background:var(--cream-2)}
+.kc-cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kc-case-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:36px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-case-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-case-card:hover .kc-case-icon{background:var(--teal);color:#fff}
+.kc-case-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.25}
+.kc-case-card p{font-size:14px;color:var(--muted);line-height:1.7}
+.kc-approach{background:var(--white)}
+.kc-steps{display:flex;flex-direction:column;gap:0;max-width:880px;margin:0 auto;position:relative}
+.kc-step{display:grid;grid-template-columns:auto 1fr;gap:26px;padding:0 0 38px;position:relative}
+.kc-step:last-child{padding-bottom:0}
+.kc-step::before{content:'';position:absolute;left:23px;top:52px;bottom:-4px;width:1px;background:var(--line)}
+.kc-step:last-child::before{display:none}
+.kc-step-num{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:17px;font-weight:560;flex-shrink:0;position:relative;z-index:1}
+.kc-step-body{padding-top:4px}
+.kc-step-body h3{font-family:'Fraunces',serif;font-weight:560;font-size:18.5px;color:var(--navy);margin-bottom:8px;letter-spacing:-0.01em}
+.kc-step-body p{font-size:14.5px;color:var(--muted);line-height:1.75}
+.kc-banner{position:relative;min-height:440px;padding:clamp(80px,10vw,130px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.92) 0%,rgba(13,35,64,0.74) 100%),var(--photo-banner);background-color:var(--navy);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-banner-content{max-width:840px}
+.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.14;letter-spacing:-0.018em;margin-bottom:22px;color:#fff}
+.kc-banner h2 em{font-style:italic;color:#fff}
+.kc-banner p{font-size:16.5px;line-height:1.8;color:rgba(255,255,255,0.9);max-width:640px;margin:0 auto;font-weight:300}
+.kc-commit{background:var(--cream)}
+.kc-commit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kc-commit-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:40px 34px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-commit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-commit-icon{width:52px;height:52px;background:var(--teal-wash);color:var(--teal-deep);border-radius:13px;display:grid;place-items:center;margin-bottom:22px;transition:all .4s}
+.kc-commit-card:hover .kc-commit-icon{background:var(--teal);color:#fff}
+.kc-commit-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em}
+.kc-commit-card p{font-size:14px;color:var(--muted);line-height:1.75}
+.kc-coord{background:var(--white)}
+.kc-coord-block{background:var(--navy);border-radius:26px;padding:clamp(40px,5.5vw,76px);color:#fff;position:relative;overflow:hidden}
+.kc-coord-block::before{content:'';position:absolute;top:-120px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(15,167,165,0.14) 0%,transparent 70%);pointer-events:none}
+.kc-coord-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center;position:relative;z-index:1}
+.kc-coord .eyebrow{color:var(--teal)}
+.kc-coord .eyebrow::before{background:var(--teal)}
+.kc-coord h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.7rem,2.8vw,2.4rem);line-height:1.14;letter-spacing:-0.015em;margin-bottom:18px;color:#fff}
+.kc-coord h2 em{color:var(--teal)}
+.kc-coord-text{font-size:15px;color:rgba(255,255,255,0.74);line-height:1.8}
+.kc-coord-list{display:flex;flex-direction:column;gap:13px;margin:0;padding:0;list-style:none}
+.kc-coord-list li{display:flex;gap:15px;padding:18px 20px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .3s}
+.kc-coord-list li:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4)}
+.kc-coord-list .kc-coord-li-icon{width:38px;height:38px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-coord-list strong{display:block;font-family:'Fraunces',serif;font-size:14.5px;font-weight:560;color:#fff;margin-bottom:3px}
+.kc-coord-list span{font-size:12.5px;color:rgba(255,255,255,0.62);line-height:1.6}
+.kc-faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
+.kc-faq-q{padding:24px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:22px}
+.kc-faq-q-text{font-family:'Fraunces',serif;font-size:16.5px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.4}
+.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-faq-item.open .kc-faq-a{max-height:560px}
+.kc-faq-a-content{padding:0 28px 28px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-faq-a-content strong{color:var(--navy);font-weight:600}
+.kc-zones{background:var(--cream-2)}
+.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:44px}
+.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-zone:hover span{color:rgba(255,255,255,0.75)}
+.kc-final-cta{background:var(--navy);color:#fff;text-align:center;padding:clamp(68px,9vw,112px) 6%;position:relative;overflow:hidden}
+.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:660px;height:660px;background:radial-gradient(circle,rgba(15,167,165,0.12) 0%,transparent 62%);pointer-events:none}
+.kc-final-cta-wrap{position:relative;z-index:1;max-width:740px;margin:0 auto}
+.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:24px}
+.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:var(--teal)}
+.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.85rem,3.4vw,2.8rem);line-height:1.14;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-final-cta h2 em{font-style:italic;color:var(--teal)}
+.kc-final-cta p{font-size:16px;color:rgba(255,255,255,0.84);line-height:1.75;margin:0 auto 32px;max-width:560px;font-weight:300}
+.kc-final-cta .kc-phone{display:block;font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);color:#fff;margin-bottom:30px;letter-spacing:-0.01em}
+.kc-final-cta .kc-phone a{border-bottom:1px solid rgba(15,167,165,0.5)}
+.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-fade.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1000px){
+  .kc-cases-grid,.kc-commit-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-coord-grid{grid-template-columns:1fr}
+}
+@media(max-width:760px){
+  .kc-hero{min-height:auto}
+  .kc-cases-grid,.kc-commit-grid{grid-template-columns:1fr}
+  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-trust-wrap{justify-content:flex-start;gap:14px 24px}
+}
+@media(max-width:540px){
+  .kc-derat section{padding:60px 6%}
+  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-coord-block,.kc-final-cta{border-radius:18px}
+  .kc-btn{width:100%;justify-content:center}
+  .kc-hero-ctas,.kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-derat *,.kc-derat *::before,.kc-derat *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-derat .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-derat">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-fade">
+      <span class="kc-hero-eyebrow">Dératisation 3D · Île-de-France</span>
+      <h1 class="kc-hero-title">Dératisation : éliminer rats et souris, <em>durablement</em></h1>
+      <p class="kc-hero-sub">Vous suspectez la présence de rongeurs chez vous, dans vos locaux ou dans votre immeuble&nbsp;? Nous intervenons avec discrétion et méthode&nbsp;: diagnostic sur place, plan de lutte adapté, puis passages de suivi pour éviter le retour. Le devis est établi après le diagnostic.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Demander un diagnostic
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Nous appeler
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 👉 À VALIDER (propriétaire) : formulation du partenariat de sous-traitance. Possibilité d'indiquer le nom du/des partenaire(s) et leur certification (ex. Certibiocide) si souhaité. -->
+<section class="kc-commit">
+  <div class="kc-derat-wrap">
+    <div class="kc-derat-header kc-fade">
+      <span class="eyebrow">Prestation assurée en partenariat</span>
+      <p class="section-desc">Pour ces interventions spécialisées, Kayli Clinn coordonne votre projet et le confie à des prestataires partenaires certifiés et assurés. Vous gardez un interlocuteur unique, du devis jusqu'au compte rendu.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Diagnostic sur place</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>Intervention discrète</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Postes d'appâtage sécurisés</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Particuliers, pros &amp; copropriétés</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg><span>Devis après diagnostic</span></div>
+  </div>
+</div>
+
+<!-- 3 · SIGNES / QUAND INTERVENIR -->
+<section class="kc-cases">
+  <div class="kc-derat-wrap">
+    <div class="kc-derat-header kc-fade">
+      <span class="eyebrow">Reconnaître une infestation</span>
+      <h2 class="section-title">Les signes qui doivent vous <em>alerter</em></h2>
+      <p class="section-desc">Les rongeurs restent souvent discrets. Quelques indices suffisent pourtant à repérer leur présence&nbsp;: plus l'on agit tôt, plus la situation reste simple à maîtriser. Au moindre doute, un diagnostic sur place lève l'incertitude.</p>
+    </div>
+    <div class="kc-cases-grid">
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+        <h3>Bruits et grattements</h3>
+        <p>Des grattements, trottinements ou couinements derrière les cloisons, dans les combles ou les faux plafonds, surtout la nuit, trahissent fréquemment un passage de rats ou de souris.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="6" cy="9" r="1.3"/><circle cx="11.5" cy="7" r="1.3"/><circle cx="16.5" cy="9.5" r="1.3"/><circle cx="9" cy="13.5" r="1.3"/><circle cx="15" cy="14.5" r="1.3"/><circle cx="12" cy="18" r="1.3"/></svg></div>
+        <h3>Excréments et traces</h3>
+        <p>De petites déjections sombres le long des plinthes, dans les placards ou près des réserves alimentaires, ainsi que des traces grasses sur les passages, sont des indices très révélateurs.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.3 7l8.7 5 8.7-5M12 22V12"/></svg></div>
+        <h3>Emballages rongés</h3>
+        <p>Paquets entamés, sachets percés, denrées grignotées&nbsp;: les rongeurs s'attaquent volontiers aux réserves de nourriture, dans une cuisine, un cellier comme dans un stock professionnel.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><polyline points="13 2 5 13 11 13 9 22 19 10 13 10 13 2"/></svg></div>
+        <h3>Câbles et isolation endommagés</h3>
+        <p>Les rongeurs rongent gaines électriques, tuyaux et isolants. Au-delà de la gêne, ces dégâts peuvent fragiliser une installation et exiger une intervention rapide.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M5.5 12c2.5 0 2.5-3 5-3s2.5 3 5 3M4 16c3 0 3-2.2 5.5-2.2S12 16 14.5 16s2.5-2.2 5-2.2"/><path d="M9 8c0-1.5 1-3 3-3s3 1.5 3 3"/></svg></div>
+        <h3>Odeurs persistantes</h3>
+        <p>Une odeur d'urine tenace ou de renfermé dans une pièce peu ventilée peut signaler la présence d'un nid ou un foyer d'activité installé depuis plusieurs jours.</p>
+      </div>
+      <div class="kc-case-card kc-fade">
+        <div class="kc-case-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></div>
+        <h3>Locaux pros et parties communes</h3>
+        <p>Cuisines, réserves, locaux à poubelles, sous-sols et parties communes de copropriété sont des points sensibles. Une présence y appelle une intervention discrète et coordonnée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · NOTRE MÉTHODE -->
+<section class="kc-approach">
+  <div class="kc-derat-wrap">
+    <div class="kc-derat-header kc-fade">
+      <span class="eyebrow">Notre méthode</span>
+      <h2 class="section-title">Une démarche claire, <em>du diagnostic au suivi</em></h2>
+      <p class="section-desc">Chaque site est différent. Notre méthode, elle, reste constante&nbsp;: comprendre la situation, agir avec rigueur, puis vérifier que le problème ne revient pas.</p>
+    </div>
+    <div class="kc-steps">
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">1</div>
+        <div class="kc-step-body">
+          <h3>Diagnostic et inspection sur place</h3>
+          <p>Nous identifions l'espèce en cause (rat ou souris), repérons les points d'entrée et les zones d'activité, et évaluons l'ampleur de la situation. Ce constat est la base du devis&nbsp;: jamais d'estimation à l'aveugle.</p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">2</div>
+        <div class="kc-step-body">
+          <h3>Plan de lutte adapté et devis</h3>
+          <p>Nous définissons un protocole adapté au site et à son usage, puis vous remettons un devis clair, établi après le diagnostic et sans engagement. La mise en œuvre s'appuie sur des produits professionnels adaptés, manipulés par des équipes équipées.
+          <!-- 👉 À COMPLÉTER : nature des produits biocides à préciser avec le partenaire --></p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">3</div>
+        <div class="kc-step-body">
+          <h3>Pose de postes d'appâtage sécurisés</h3>
+          <p>Nous installons des postes d'appâtage en boîtes verrouillables, sécurisées vis-à-vis des enfants et des animaux non ciblés, placées aux endroits stratégiques. Le plan de pose est consigné pour assurer le suivi.</p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">4</div>
+        <div class="kc-step-body">
+          <h3>Obturation et prévention</h3>
+          <p>Nous colmatons les points d'entrée identifiés et vous transmettons des conseils d'hygiène et des mesures concrètes pour limiter les sources de nourriture et d'abri, afin d'éviter une nouvelle installation.</p>
+        </div>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-num">5</div>
+        <div class="kc-step-body">
+          <h3>Passages de suivi et contrôle</h3>
+          <p>Nous revenons pour vérifier l'évolution, réapprovisionner si nécessaire et dresser un bilan de l'intervention. Des passages de suivi sont prévus selon le protocole défini après le diagnostic.
+          <!-- 👉 À COMPLÉTER : nombre/cadence des passages --></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU institutionnel -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Agir tôt, c'est agir mieux</span>
+    <h2>Plus l'on intervient vite,<br>plus la situation reste <em>maîtrisable</em></h2>
+    <p>Les rongeurs se reproduisent rapidement&nbsp;: une présence ignorée devient vite une infestation. Notre intervention, discrète et méthodique, vise à enrayer la prolifération tout en veillant à la sécurité des occupants et des lieux.</p>
+  </div>
+</section>
+
+<!-- 5 · NOS ENGAGEMENTS -->
+<section class="kc-commit">
+  <div class="kc-derat-wrap">
+    <div class="kc-derat-header kc-fade">
+      <span class="eyebrow">Nos engagements</span>
+      <h2 class="section-title">Ce à quoi nous nous <em>engageons</em></h2>
+      <p class="section-desc">Sur ce type d'intervention, la confiance compte autant que l'efficacité. Voici les principes qui guident chacun de nos gestes.</p>
+    </div>
+    <div class="kc-commit-grid">
+      <div class="kc-commit-card kc-fade">
+        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 21s-7-4.35-9-9.5C1.5 7 3.5 4 7 4c1.9 0 3.5 1.1 5 3 1.5-1.9 3.1-3 5-3 3.5 0 5.5 3 4 7.5-2 5.15-9 9.5-9 9.5z"/></svg></div>
+        <h3>Discrétion avant tout</h3>
+        <p>Nous privilégions des véhicules sobres et une intervention organisée vis-à-vis du voisinage. Votre situation ne fait l'objet d'aucune communication&nbsp;: l'entourage n'a pas à savoir.</p>
+      </div>
+      <div class="kc-commit-card kc-fade">
+        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3>Sécurité des occupants et des animaux</h3>
+        <p>Les postes d'appâtage sont verrouillés et sécurisés vis-à-vis des enfants et des animaux non ciblés. Les produits sont manipulés par des équipes équipées et formées, selon le protocole défini après diagnostic.
+        <!-- 👉 À COMPLÉTER : certifications du partenaire à afficher si souhaité --></p>
+      </div>
+      <div class="kc-commit-card kc-fade">
+        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Respect des occupants et du lieu</h3>
+        <p>Nous intervenons sans précipitation, en tenant compte de votre quotidien et de votre activité. Le lieu vous est rendu propre et en ordre, avec des consignes claires pour la suite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · POUR QUI / COORDINATION -->
+<section class="kc-coord">
+  <div class="kc-derat-wrap kc-fade">
+    <div class="kc-coord-block">
+      <div class="kc-coord-grid">
+        <div>
+          <span class="eyebrow">Pour qui</span>
+          <h2>Un interlocuteur unique, <em>quel que soit le lieu</em></h2>
+          <p class="kc-coord-text">Que vous soyez un particulier, un professionnel ou un gestionnaire d'immeuble, nous adaptons l'intervention à votre situation. Un seul interlocuteur coordonne le diagnostic, la mise en œuvre et le suivi, avec la même discrétion. Le devis est établi après diagnostic.</p>
+        </div>
+        <ul class="kc-coord-list">
+          <li>
+            <div class="kc-coord-li-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+            <div><strong>Particuliers</strong><span>Maison, appartement, cave ou box&nbsp;: une intervention mesurée et discrète à votre domicile.</span></div>
+          </li>
+          <li>
+            <div class="kc-coord-li-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></div>
+            <div><strong>Professionnels</strong><span>Restauration, commerces, bureaux et stocks&nbsp;: interventions organisées pour préserver votre activité et votre image.</span></div>
+          </li>
+          <li>
+            <div class="kc-coord-li-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div><strong>Copropriétés &amp; bailleurs</strong><span>Parties communes, locaux techniques et caves&nbsp;: une prise en charge globale et coordonnée.</span></div>
+          </li>
+          <li>
+            <div class="kc-coord-li-icon"><svg class="kc-icon" width="20" height="20" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+            <div><strong>Gestionnaires &amp; syndics</strong><span>Une intervention coordonnée et discrète, avec un suivi clair et un interlocuteur dédié.</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · FAQ -->
+<section class="kc-faq">
+  <div class="kc-derat-wrap">
+    <div class="kc-derat-header kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Les questions que l'on nous <em>pose</em></h2>
+      <p class="section-desc">Quelques réponses claires pour aborder la situation plus sereinement.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment se passe la première intervention&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Tout commence par un <strong>diagnostic sur place</strong>&nbsp;: nous identifions l'espèce, repérons les points d'entrée et les zones d'activité, puis évaluons l'ampleur de la situation. Ce constat nous permet d'établir un <strong>devis adapté</strong>, sans engagement, avant toute intervention.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Combien coûte une dératisation&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le <strong>devis est établi après le diagnostic</strong>&nbsp;: nous ne communiquons jamais de tarif en ligne. Le montant dépend notamment de la surface, du niveau d'infestation et des conditions d'accès. Cette démarche garantit une proposition juste, adaptée à la réalité de votre situation.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Les produits sont-ils dangereux pour mes enfants ou mes animaux&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La sécurité des occupants est une priorité. Les <strong>postes d'appâtage sont verrouillés et sécurisés</strong> vis-à-vis des enfants et des animaux non ciblés, et les produits sont manipulés par des <strong>équipes équipées</strong>, selon le protocole défini après diagnostic.
+        <!-- 👉 À COMPLÉTER : précisions produits après Certibiocide --></div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Combien de passages faut-il&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Cela dépend du <strong>niveau d'infestation</strong> et de la configuration du lieu. Le nombre et la cadence des passages de suivi sont définis <strong>selon le protocole établi après le diagnostic</strong>, afin de contrôler la situation puis de prévenir le retour.
+        <!-- 👉 À COMPLÉTER : cadence --></div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Intervenez-vous en copropriété ou pour les professionnels&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Nous intervenons pour les <strong>particuliers, les professionnels et les copropriétés</strong>&nbsp;: parties communes, locaux techniques, cuisines, réserves et stocks. L'intervention est <strong>coordonnée et discrète</strong>, avec un interlocuteur dédié pour les syndics et gestionnaires.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment éviter le retour des rongeurs&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La prévention est essentielle&nbsp;: nous procédons à l'<strong>obturation des points d'entrée</strong>, vous transmettons des conseils d'hygiène pour limiter les sources de nourriture et d'abri, et assurons des <strong>passages de suivi</strong> pour vérifier que la situation reste sous contrôle.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-derat-wrap">
+    <div class="kc-derat-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes interviennent dans les huit départements franciliens.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Diagnostic sur place · Devis sans engagement</span>
+    <h2>Reprenez la main sur <em>votre tranquillité</em></h2>
+    <p>Au moindre doute, ne laissez pas la situation s'installer. Contactez-nous&nbsp;: nous réalisons un diagnostic sur place, puis nous établissons un devis adapté, sans engagement.</p>
+    <span class="kc-phone"><a href="tel:+33670012061">+33 6 70 01 20 61</a></span>
+    <div class="kc-final-ctas">
+      <a href="/demande-de-devis/?presta=deratisation" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
+      <a href="/devis/" class="kc-btn kc-btn-secondary">
+        Demander un diagnostic
+        <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">
+        <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Nous appeler
+      </a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-derat .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service 3D dératisation, SANS offers chiffrées (devis après diagnostic) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Dératisation à Paris et en Île-de-France",
+  "serviceType": "Lutte contre les rongeurs (rats, souris)",
+  "description": "Dératisation professionnelle pour particuliers, professionnels et copropriétés en Île-de-France : diagnostic sur place, plan de lutte, postes d'appâtage sécurisés, obturation des points d'entrée et passages de suivi. Devis établi après diagnostic.",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {"@type": "ContactPoint", "telephone": "+33670012061", "contactType": "customer service", "areaServed": "FR", "availableLanguage": "French"}
+  }
+}
+</script>

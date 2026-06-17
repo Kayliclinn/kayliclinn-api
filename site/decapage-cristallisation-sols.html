@@ -1,0 +1,777 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE PRESTATION PONCTUELLE : DÉCAPAGE, MÉTALLISATION & CRISTALLISATION DES SOLS — KAYLI CLINN
+   Page technique · SANS PRIX · sur devis après visite · WordPress-ready
+   URL : /decapage-cristallisation-sols/
+   Catégorie menu : « Prestation ponctuelle »
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous (URLs placeholder).
+   Remplacez UNIQUEMENT l'URL entre url('…').
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Sol en marbre remis à neuf et lustré par Kayli Clinn après cristallisation »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Décapage mécanique d'un sol carrelé par une équipe Kayli Clinn en Île-de-France »
+   │ --photo-split-1 .. section procédé (gauche)
+   │   ALT : « Application d'une protection durable sur un sol PVC après décapage »
+   │ --photo-split-2 .. section avant / après (cristallisation)
+   │   ALT : « Sol en pierre naturelle brillant après cristallisation par Kayli Clinn »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   👉 À COMPLÉTER : remplacer les URLs placeholder par des visuels validés par la propriétaire.
+   👉 À COMPLÉTER : visuels « avant / après » réels (pour l'instant placeholders).
+   🔗 CTA : /devis/ uniquement (pas de lien vers d'autres pages prestations).
+   ☎️ Téléphone : +33670012061 · AUCUN PRIX EN LIGNE (montants non validés — sur devis).
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT (placeholders)
+   ════════════════════════════════════════════════════════ */
+.kc-dec{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/placeholder/decapage-hero.jpg');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/placeholder/decapage-banner.jpg');
+  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/placeholder/decapage-procede.jpg');
+  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/placeholder/decapage-cristallisation.jpg');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME (tokens & composants clonés de prestation.html)
+   ════════════════════════════════════════════════════════ */
+.kc-dec{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-dec *,.kc-dec *::before,.kc-dec *::after{box-sizing:border-box}
+.kc-dec img{max-width:100%;display:block}
+.kc-dec a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-dec .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-dec .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-dec .kc-promise-text .kc-link,.kc-dec .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-dec .kc-promise-text .kc-link:hover,.kc-dec .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-dec section{padding:clamp(84px,11vw,152px) 6%}
+.kc-dec-wrap{max-width:1240px;margin:0 auto}
+.kc-dec-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
+
+/* — sur-titre éditorial — */
+.kc-dec .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
+.kc-dec .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres — */
+.kc-dec .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-dec .section-title em,.kc-dec h2 em,.kc-dec h3 em,.kc-dec .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-dec .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-dec svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-dec .kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-dec .kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-dec .kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-dec .kc-btn-primary svg{transition:transform .3s}
+.kc-dec .kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-dec .kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-dec .kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-dec .kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-dec .kc-hero-content{max-width:none}
+.kc-dec .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
+.kc-dec .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-dec .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-dec .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-dec .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:560px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
+.kc-dec .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.kc-dec .kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-dec .kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande de réassurance — */
+.kc-dec .kc-trust{background:var(--navy);padding:30px 6%}
+.kc-dec .kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
+.kc-dec .kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-dec .kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   POUR QUI / SOLS TRAITÉS (grille de cartes)
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-target{background:var(--cream-2)}
+.kc-dec .kc-target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-dec .kc-target-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-dec .kc-target-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-dec .kc-target-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
+.kc-dec .kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
+.kc-dec .kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
+.kc-dec .kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   PROMESSE
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-promise-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
+.kc-dec .kc-promise-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-dec .kc-promise-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
+.kc-dec .kc-promise .eyebrow{color:var(--teal)}
+.kc-dec .kc-promise .eyebrow::before{background:var(--teal)}
+.kc-dec .kc-promise h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
+.kc-dec .kc-promise h2 em{color:var(--teal)}
+.kc-dec .kc-promise-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
+.kc-dec .kc-promise-text:last-child{margin-bottom:0}
+.kc-dec .kc-promise-text strong{color:#fff;font-weight:600}
+.kc-dec .kc-promise-points{display:flex;flex-direction:column;gap:14px}
+.kc-dec .kc-promise-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
+.kc-dec .kc-promise-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
+.kc-dec .kc-promise-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-dec .kc-promise-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
+.kc-dec .kc-promise-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-banner{position:relative;min-height:540px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-dec .kc-banner-content{max-width:900px}
+.kc-dec .kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-dec .kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-dec .kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
+.kc-dec .kc-banner h2 em{font-style:italic;color:#fff}
+.kc-dec .kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   INCLUS / BÉNÉFICES — fiches au trait
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-included{background:var(--cream)}
+.kc-dec .kc-included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kc-dec .kc-incl-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-dec .kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-dec .kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
+.kc-dec .kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
+.kc-dec .kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-dec .kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   SPLIT
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-split{background:var(--white)}
+.kc-dec .kc-split.alt{background:var(--cream-2)}
+.kc-dec .kc-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
+.kc-dec .kc-split.reverse .kc-split-grid{direction:rtl}
+.kc-dec .kc-split.reverse .kc-split-grid>*{direction:ltr}
+.kc-dec .kc-split-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-split-1);background-size:cover;background-position:center;box-shadow:var(--shadow)}
+.kc-dec .kc-split.alt .kc-split-img{background-image:var(--photo-split-2)}
+.kc-dec .kc-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
+.kc-dec .kc-split-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
+.kc-dec .kc-split-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:24px}
+.kc-dec .kc-split-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.kc-dec .kc-split-text p:last-of-type{margin-bottom:0}
+.kc-dec .kc-split-text strong{color:var(--navy);font-weight:600}
+.kc-dec .kc-split-quote{margin-top:32px;padding:26px 30px;background:transparent;border-left:2px solid var(--teal);border-radius:0;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--navy);font-size:17px;line-height:1.6}
+.kc-dec .kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   PROCÉDÉ EN ÉTAPES (rangées numérotées)
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-steps{background:var(--white)}
+.kc-dec .kc-steps-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.kc-dec .kc-step-row{display:flex;gap:22px;padding:30px 32px;background:var(--cream-2);border:1px solid var(--line);border-radius:16px;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.kc-dec .kc-step-row:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent;background:var(--white)}
+.kc-dec .kc-step-num{width:54px;height:54px;flex-shrink:0;background:var(--navy);color:#fff;border-radius:13px;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:19px;font-weight:560;transition:all .35s}
+.kc-dec .kc-step-row:hover .kc-step-num{background:var(--teal);box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-dec .kc-step-body h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-dec .kc-step-body p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   AVANT / APRÈS (placeholders visuels)
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-ba{background:var(--cream-2)}
+.kc-dec .kc-ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.kc-dec .kc-ba-card{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-sm);background:var(--white)}
+.kc-dec .kc-ba-card .kc-ba-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--faint);background:linear-gradient(135deg,#eef1f5 0%,#e3e8ee 100%)}
+.kc-dec .kc-ba-card.is-after .kc-ba-ph{background:linear-gradient(135deg,var(--teal-wash) 0%,#d9eeed 100%);color:var(--teal-deep)}
+.kc-dec .kc-ba-card .kc-ba-ph svg{opacity:.55}
+.kc-dec .kc-ba-card .kc-ba-ph span{font-size:12.5px;font-weight:500;letter-spacing:0.02em;text-align:center;padding:0 20px;line-height:1.5}
+.kc-dec .kc-ba-tag{position:absolute;top:20px;left:20px;z-index:2;padding:8px 16px;background:rgba(13,35,64,0.92);backdrop-filter:blur(18px);border-radius:100px;font-size:11px;font-weight:600;color:#fff;letter-spacing:0.06em;text-transform:uppercase}
+.kc-dec .kc-ba-card.is-after .kc-ba-tag{background:var(--teal)}
+.kc-dec .kc-ba-note{text-align:center;font-size:12.5px;color:var(--faint);font-style:italic;margin-top:30px}
+
+/* ════════════════════════════════════════════════════════
+   PROCESS (parcours devis)
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-process{background:var(--cream)}
+.kc-dec .kc-process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}
+.kc-dec .kc-process-grid::before{content:'';position:absolute;top:34px;left:15%;right:15%;height:1px;background:var(--line);z-index:0}
+.kc-dec .kc-process-step{position:relative;z-index:1;text-align:center}
+.kc-dec .kc-process-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
+.kc-dec .kc-process-step:hover .kc-process-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-dec .kc-process-step h4{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-dec .kc-process-step p{font-size:13px;color:var(--muted);line-height:1.65}
+.kc-dec .kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   TÉMOIGNAGES
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-dec .kc-testi{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-dec .kc-testi:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-dec .kc-testi-quote-mark{position:absolute;top:26px;right:30px;font-family:'Fraunces',serif;font-size:54px;font-weight:560;color:var(--teal);opacity:0.14;line-height:1}
+.kc-dec .kc-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:18px}
+.kc-dec .kc-testi-text{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:26px;font-style:italic;font-weight:400}
+.kc-dec .kc-testi-author{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line-soft)}
+.kc-dec .kc-testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:0.02em;flex-shrink:0}
+.kc-dec .kc-testi-info strong{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
+.kc-dec .kc-testi-info span{font-size:12.5px;color:var(--faint);margin-top:2px;display:block}
+.kc-dec .kc-testi-badge{display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px}
+
+/* ════════════════════════════════════════════════════════
+   POURQUOI NOUS
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-why{background:var(--cream)}
+.kc-dec .kc-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-dec .kc-why-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-dec .kc-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.kc-dec .kc-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-dec .kc-why-card:hover::before{transform:scaleX(1)}
+.kc-dec .kc-why-num{font-family:'Fraunces',serif;font-size:14px;font-weight:560;color:var(--teal-deep);letter-spacing:0.1em;margin-bottom:26px;display:block}
+.kc-dec .kc-why-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-dec .kc-why-card:hover .kc-why-icon{background:var(--teal);color:#fff}
+.kc-dec .kc-why-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:13px;letter-spacing:-0.01em}
+.kc-dec .kc-why-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ════════════════════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-dec .kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-dec .kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
+.kc-dec .kc-faq-q{padding:26px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.kc-dec .kc-faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.35}
+.kc-dec .kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-dec .kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-dec .kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-dec .kc-faq-item.open .kc-faq-a{max-height:520px}
+.kc-dec .kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-dec .kc-faq-a-content strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   ZONES
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-zones{background:var(--cream-2)}
+.kc-dec .kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
+.kc-dec .kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-dec .kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-dec .kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-dec .kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
+.kc-dec .kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
+.kc-dec .kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kc-dec .kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
+.kc-dec .kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
+.kc-dec .kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-dec .kc-final-cta h2 em{font-style:italic;color:#fff}
+.kc-dec .kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
+.kc-dec .kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-dec .kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
+.kc-dec .kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
+.kc-dec .kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-dec .kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-dec .kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-dec .kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-dec .kc-target-grid,.kc-dec .kc-included-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-dec .kc-promise-grid,.kc-dec .kc-steps-grid{grid-template-columns:1fr}
+  .kc-dec .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-dec .kc-hero{min-height:90vh}
+  .kc-dec .kc-split-grid{grid-template-columns:1fr}
+  .kc-dec .kc-split.reverse .kc-split-grid{direction:ltr}
+  .kc-dec .kc-ba-grid{grid-template-columns:1fr}
+  .kc-dec .kc-process-grid{grid-template-columns:1fr;gap:24px}
+  .kc-dec .kc-process-grid::before{display:none}
+  .kc-dec .kc-testi-grid,.kc-dec .kc-why-grid{grid-template-columns:1fr}
+  .kc-dec .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-dec .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
+}
+@media(max-width:560px){
+  .kc-dec section{padding:64px 6%}
+  .kc-dec .kc-hero{min-height:auto;padding:130px 6% 64px}
+  .kc-dec .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-dec .kc-target-grid,.kc-dec .kc-included-grid{grid-template-columns:1fr}
+  .kc-dec .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-dec .kc-promise-block{border-radius:20px}
+  .kc-dec .kc-btn{width:100%;justify-content:center}
+  .kc-dec .kc-hero-ctas,.kc-dec .kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-dec *,.kc-dec *::before,.kc-dec *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-dec .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-dec">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Décapage &amp; cristallisation · Île-de-France</span>
+      <h1 class="kc-hero-title">Vos Sols, <em>Comme Au Premier Jour</em></h1>
+      <p class="kc-hero-sub">Décapage, métallisation et cristallisation des sols : carrelage, pierre, marbre, terrazzo, PVC ou béton retrouvent leur éclat et reçoivent une protection durable. Une remise à neuf technique, réalisée après visite sur place.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Demander un devis
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>Procédés adaptés à chaque revêtement</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg><span>Lustrage &amp; protection durable</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v3H3zM5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/></svg><span>Pierre, marbre, carrelage, PVC, béton</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg><span>Devis établi après visite &amp; échantillon</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4 8 4v14M9 9v8M15 9v8"/></svg><span>Logements, commerces &amp; bâtiments tertiaires</span></div>
+  </div>
+</div>
+
+<!-- 3 · TYPES DE SOLS TRAITÉS -->
+<section class="kc-target">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Sols traités</span>
+      <h2 class="section-title">Chaque revêtement a <em>son traitement</em></h2>
+      <p class="section-desc">Pierre, marbre, carrelage, terrazzo, PVC, béton… Chaque sol appelle un procédé, des produits et un niveau de protection spécifiques. Nous déterminons la bonne méthode après examen sur place.</p>
+    </div>
+    <div class="kc-target-grid">
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l9 4.9V17L12 22 3 17V6.9z"/><path d="M3 7l9 5 9-5M12 12v10"/></svg></div>
+        <h3>Pierre &amp; marbre</h3>
+        <p>Cristallisation, ponçage léger et lustrage : on raviive la brillance et on referme la surface des pierres calcaires sensibles.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg></div>
+        <h3>Carrelage &amp; grès</h3>
+        <p>Décrassage en profondeur, traitement des joints encrassés et protection pour faciliter l'entretien au quotidien.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M4 20h16M5 20V8h14v12M8 12h.01M12 12h.01M16 12h.01M10 16h.01M14 16h.01"/></svg></div>
+        <h3>Terrazzo &amp; granito</h3>
+        <p>Remise en valeur des sols à granulats : décapage des anciennes couches, lustrage et protection adaptée à la composition.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 10h18M7 6v12M11 6v12M15 6v12"/></svg></div>
+        <h3>Sols souples PVC &amp; lino</h3>
+        <p>Décapage des cires usées puis métallisation : plusieurs couches de protection redonnent un fini net et résistant.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h6M9 4v5M15 9h6M15 14H9M15 9v11"/></svg></div>
+        <h3>Béton &amp; béton ciré</h3>
+        <p>Nettoyage en profondeur et protection des sols béton : on limite la porosité et on uniformise l'aspect.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 12h20M2 12l4-7h12l4 7M6 12v7h12v-7"/></svg></div>
+        <h3>Halls, commerces &amp; ERP</h3>
+        <p>Sols très fréquentés : décapage des marques de passage et protection renforcée pour tenir dans la durée.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Logements &amp; copropriétés</h3>
+        <p>Entrées d'immeuble, parties communes, appartements anciens : on redonne vie aux sols d'origine.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div>
+        <h3>Cas particuliers</h3>
+        <p>Sol abîmé, ancien, à l'historique inconnu ? On réalise un test sur une zone discrète avant tout traitement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PROMESSE -->
+<section>
+  <div class="kc-dec-wrap kc-fade">
+    <div class="kc-promise-block kc-promise">
+      <div class="kc-promise-grid">
+        <div>
+          <span class="eyebrow">Notre approche</span>
+          <h2>Un sol remis à neuf, <em>protégé pour durer</em></h2>
+          <p class="kc-promise-text">Décaper, c'est retirer les anciennes couches et l'encrassement accumulé. <strong>Métalliser ou cristalliser</strong>, c'est ensuite reconstituer une protection qui ferme la surface, ravive la couleur et facilite l'entretien quotidien. Mal exécutées, ces opérations peuvent marquer un sol fragile — d'où l'importance du bon procédé.</p>
+          <p class="kc-promise-text">Nous identifions la nature exacte du revêtement, testons sur une zone discrète, puis appliquons un traitement adapté. Objectif : un rendu <strong>homogène et durable</strong>, sans risque pour votre sol. <!-- 👉 À COMPLÉTER : durée de tenue / garantie éventuelle — ne rien chiffrer sans validation propriétaire. --></p>
+        </div>
+        <div class="kc-promise-points">
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Diagnostic du revêtement</strong><span>Nature du sol, état, porosité : on adapte produits et procédé à votre support</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Test sur zone discrète</strong><span>Un échantillon avant l'intervention pour valider le rendu avec vous</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Brillance &amp; uniformité</strong><span>Lustrage final pour un éclat homogène sur toute la surface</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Protection durable</strong><span>Une couche de protection qui simplifie l'entretien et ralentit l'usure</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Un savoir-faire technique</span>
+    <h2>Un sol terne peut redevenir<br>un sol <em>éclatant</em></h2>
+    <p>Avec le temps, les sols se rayent, ternissent et perdent leur protection d'origine. Décapage, métallisation et cristallisation leur rendent leur aspect d'origine et les protègent à nouveau — sans remplacement, sans gros travaux.</p>
+  </div>
+</section>
+
+<!-- 5 · LE PROCÉDÉ EN ÉTAPES -->
+<section class="kc-steps">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Le procédé</span>
+      <h2 class="section-title">Du décapage <em>au lustrage final</em></h2>
+      <p class="section-desc">Quatre temps techniques s'enchaînent pour passer d'un sol encrassé à une surface protégée et brillante. Le détail varie selon le revêtement et l'état constaté lors de la visite.</p>
+    </div>
+    <div class="kc-steps-grid">
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">01</div>
+        <div class="kc-step-body">
+          <h3>Décapage</h3>
+          <p>Retrait mécanique et chimique des anciennes couches, cires usées, taches et encrassement incrusté. Le sol est mis à nu pour repartir sur une base propre.</p>
+        </div>
+      </div>
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">02</div>
+        <div class="kc-step-body">
+          <h3>Rinçage &amp; neutralisation</h3>
+          <p>Rinçage complet et neutralisation des produits, puis séchage. Cette étape garantit l'accroche de la protection et évite les traces.</p>
+        </div>
+      </div>
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">03</div>
+        <div class="kc-step-body">
+          <h3>Protection / cristallisation</h3>
+          <p>Selon le sol : <strong>métallisation</strong> (couches de protection sur sols souples) ou <strong>cristallisation</strong> (durcissement de surface sur pierre et marbre). La couleur est ravivée, la surface refermée.</p>
+        </div>
+      </div>
+      <div class="kc-step-row kc-fade">
+        <div class="kc-step-num">04</div>
+        <div class="kc-step-body">
+          <h3>Lustrage &amp; contrôle</h3>
+          <p>Lustrage final pour un éclat homogène, puis contrôle de l'uniformité. Le sol est rendu propre, protégé et prêt à l'usage.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · SPLIT (cristallisation) -->
+<section class="kc-split">
+  <div class="kc-dec-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Décapage en profondeur</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">Le bon procédé au bon sol</span>
+        <h2>Métallisation, cristallisation : <em>ce n'est pas la même chose</em></h2>
+        <p>La <strong>métallisation</strong> consiste à appliquer plusieurs couches d'une protection filmogène sur les sols souples (PVC, lino) ou certains carrelages : elle uniformise l'aspect et protège de l'usure.</p>
+        <p>La <strong>cristallisation</strong> s'adresse aux pierres calcaires (marbre, pierre naturelle) : une réaction de surface durcit et fait briller le sol en profondeur, sans pellicule rapportée. Choisir l'une ou l'autre dépend entièrement de votre revêtement — c'est tout l'objet de notre visite préalable.</p>
+        <div class="kc-split-quote">Un même geste appliqué au mauvais sol peut l'abîmer durablement. Notre métier, c'est de choisir le bon traitement, pas d'appliquer une recette unique.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · AVANT / APRÈS -->
+<section class="kc-ba">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Avant / après</span>
+      <h2 class="section-title">La différence se voit <em>immédiatement</em></h2>
+      <p class="section-desc">Quelques exemples de sols repris : du revêtement terne et encrassé à la surface ravivée et protégée.</p>
+    </div>
+    <!-- 👉 À COMPLÉTER : remplacer ces deux blocs par de vrais visuels avant/après validés (cf. panneau photos). -->
+    <div class="kc-ba-grid">
+      <div class="kc-ba-card kc-fade">
+        <span class="kc-ba-tag">Avant</span>
+        <div class="kc-ba-ph">
+          <svg class="kc-icon" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Photo « avant » à insérer<br>Sol terne, encrassé, sans protection</span>
+        </div>
+      </div>
+      <div class="kc-ba-card is-after kc-fade">
+        <span class="kc-ba-tag">Après</span>
+        <div class="kc-ba-ph">
+          <svg class="kc-icon" width="40" height="40" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+          <span>Photo « après » à insérer<br>Sol ravivé, lustré et protégé</span>
+        </div>
+      </div>
+    </div>
+    <p class="kc-ba-note">Visuels d'illustration — les rendus réels varient selon le revêtement et son état initial.</p>
+  </div>
+</section>
+
+<!-- 8 · BÉNÉFICES -->
+<section class="kc-included">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Bénéfices</span>
+      <h2 class="section-title">Pourquoi traiter <em>plutôt que remplacer</em></h2>
+      <p class="section-desc">Une remise en état des sols prolonge leur vie, valorise vos espaces et simplifie l'entretien — pour une fraction du coût d'une rénovation lourde.</p>
+    </div>
+    <div class="kc-included-grid">
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div><h4>Éclat retrouvé</h4><p>Le sol récupère sa brillance et sa couleur d'origine, comme au premier jour.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div><h4>Surface protégée</h4><p>Une protection durable ralentit l'usure, les rayures et l'encrassement.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div><h4>Entretien simplifié</h4><p>Un sol protégé se nettoie plus facilement et garde son aspect plus longtemps.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div><h4>Valeur préservée</h4><p>Des sols soignés valorisent un commerce, un hall ou un logement, sans gros travaux.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></div><h4>Moins de poussière</h4><p>Une surface refermée retient moins la poussière et les salissures.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div><h4>Aspect uniforme</h4><p>On gomme les zones de passage et les disparités pour un rendu homogène.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 17a3 3 0 1 0 0 0M7 7a3 3 0 1 0 0 0"/></svg></div><h4>Solution sur mesure</h4><p>Procédé, produits et niveau de protection choisis selon votre sol et votre usage.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div><h4>Sans gros chantier</h4><p>Une alternative légère au remplacement complet du revêtement.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · PROCESS DEVIS -->
+<section class="kc-process">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Comment ça se passe</span>
+      <h2 class="section-title">De la visite <em>à l'intervention</em></h2>
+      <p class="section-desc">Une prestation technique se chiffre après examen du sol. Notre démarche tient en trois temps, sans engagement.</p>
+    </div>
+    <div class="kc-process-grid">
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Visite &amp; échantillon</h4><p>Nous examinons le revêtement, son état et sa surface, et réalisons si besoin un test sur une zone discrète.</p><span class="kc-process-step-duration">Sur place</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Devis détaillé</h4><p>Vous recevez une proposition claire : procédé retenu, surfaces, protection et déroulé de l'intervention.</p><span class="kc-process-step-duration">Après visite</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Intervention</h4><p>Nous réalisons le décapage, la protection et le lustrage, puis contrôlons le rendu avec vous.</p><span class="kc-process-step-duration">Sur rendez-vous</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · SPLIT (alt) -->
+<section class="kc-split alt reverse">
+  <div class="kc-dec-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Cristallisation pierre &amp; marbre</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">Un rendu maîtrisé</span>
+        <h2>Une protection qui <em>tient dans le temps</em></h2>
+        <p>Une cristallisation ou une métallisation bien réalisée ne se contente pas de faire briller : elle <strong>protège durablement</strong> et facilite l'entretien quotidien pendant des mois.</p>
+        <p>Nous vous remettons nos <strong>conseils d'entretien</strong> adaptés au traitement appliqué, pour préserver le résultat le plus longtemps possible. <a href="/devis/" class="kc-link">Demandez votre devis</a> après une visite gratuite de votre sol.</p>
+        <div class="kc-split-quote">Le bon traitement, c'est celui qui tient. On préfère un rendu durable à un effet immédiat qui s'efface en quelques semaines.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · TÉMOIGNAGES -->
+<section>
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2 class="section-title">Ce qu'en disent <em>nos clients</em></h2>
+      <p class="section-desc">Quelques retours de clients particuliers et professionnels accompagnés en Île-de-France.</p>
+    </div>
+    <div class="kc-testi-grid">
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span class="kc-testi-badge">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Le marbre de l'entrée avait perdu tout son éclat. Après cristallisation, on dirait un sol neuf. Travail soigné et conseils d'entretien très utiles.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">LM</div><div class="kc-testi-info"><strong>Laurent M.</strong><span>Copropriété · Paris 16e</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span class="kc-testi-badge">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Nos sols PVC de magasin étaient marqués par le passage. Décapage et métallisation impeccables, l'aspect est redevenu uniforme. Intervention propre et organisée.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">NB</div><div class="kc-testi-info"><strong>Nadia B.</strong><span>Commerce · Hauts-de-Seine</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span class="kc-testi-badge">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Visite et test avant de s'engager, devis clair, résultat à la hauteur. Le carrelage ancien de la cuisine a retrouvé une vraie brillance.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">JF</div><div class="kc-testi-info"><strong>Julien F.</strong><span>Particulier · Val-de-Marne</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · POURQUOI NOUS -->
+<section class="kc-why">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Pourquoi Kayli Clinn</span>
+      <h2 class="section-title">Une remise en état <em>maîtrisée</em></h2>
+      <p class="section-desc">Le traitement des sols est un métier technique. Nous l'abordons avec méthode, prudence et le souci du résultat durable.</p>
+    </div>
+    <div class="kc-why-grid">
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">01 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z"/></svg></div>
+        <h3>Diagnostic avant tout</h3>
+        <p>On identifie le revêtement et on teste avant d'agir : pas de traitement appliqué à l'aveugle.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">02 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 17l-6.3 4.4L8 14 2 9.4h7.6z"/></svg></div>
+        <h3>Matériel professionnel</h3>
+        <p>Monobrosses, disques et produits adaptés à chaque support pour un rendu net et homogène.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">03 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+        <h3>Résultat durable</h3>
+        <p>On vise une protection qui tient et on vous remet les conseils d'entretien pour la préserver.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · FAQ -->
+<section>
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
+      <p class="section-desc">Les questions que l'on nous pose le plus souvent sur le décapage et la cristallisation des sols.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcDecToggleFaq(this)"><span class="kc-faq-q-text">Quelle est la différence entre métallisation et cristallisation ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La <strong>métallisation</strong> applique des couches de protection sur les sols souples (PVC, lino) et certains carrelages. La <strong>cristallisation</strong> est une réaction de surface réservée aux pierres calcaires (marbre, pierre naturelle), qui durcit et fait briller le sol sans pellicule rapportée. Le bon procédé dépend de votre revêtement : c'est ce que nous déterminons lors de la visite.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcDecToggleFaq(this)"><span class="kc-faq-q-text">Pourquoi faut-il une visite avant le devis ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le prix dépend de la <strong>nature du sol</strong>, de la <strong>surface</strong>, de l'état d'encrassement et du procédé nécessaire. Un même tarif ne peut pas couvrir un marbre fragile et un sol PVC très encrassé. La visite nous permet de tester le support et de vous remettre un <strong>devis juste et adapté</strong>, sans mauvaise surprise.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcDecToggleFaq(this)"><span class="kc-faq-q-text">Le traitement risque-t-il d'abîmer mon sol ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">C'est précisément pour l'éviter que nous procédons par étapes : <strong>identification du revêtement</strong>, puis <strong>test sur une zone discrète</strong> avant toute intervention. Nous n'appliquons un procédé que lorsqu'il est adapté au support. Sur les sols anciens ou à l'historique inconnu, cette précaution est systématique.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcDecToggleFaq(this)"><span class="kc-faq-q-text">Combien de temps le résultat tient-il ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">La tenue dépend du procédé, du revêtement et de la fréquentation des lieux. Un sol très passant s'use plus vite qu'un sol résidentiel. Nous vous remettons des <strong>conseils d'entretien adaptés</strong> pour préserver le résultat le plus longtemps possible, et nous pouvons planifier des passages d'entretien si besoin. <!-- 👉 À COMPLÉTER : durée moyenne de tenue par type de sol — à valider avant publication. --></div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcDecToggleFaq(this)"><span class="kc-faq-q-text">Intervenez-vous chez les professionnels comme chez les particuliers ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content"><strong>Les deux.</strong> Nous traitons aussi bien les sols de logements et de copropriétés (entrées, parties communes, marbre ancien) que ceux des commerces, halls et bâtiments tertiaires (sols souples très passants). L'approche reste la même : diagnostic, procédé adapté, protection durable.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcDecToggleFaq(this)"><span class="kc-faq-q-text">Faut-il libérer les lieux pendant l'intervention ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Les zones traitées doivent être <strong>dégagées et accessibles</strong>, et le sol doit pouvoir sécher avant remise en service. Nous organisons l'intervention avec vous pour limiter la gêne (par zones, en horaires décalés pour les commerces). Les modalités précises sont définies lors de la visite.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-dec-wrap">
+    <div class="kc-dec-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes interviennent sur le décapage et la cristallisation des sols dans les huit départements franciliens.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Devis gratuit · Après visite</span>
+    <h2>Redonnez vie à vos sols,<br>en toute <em>sérénité</em></h2>
+    <p>Décrivez-nous votre sol et votre projet : nous organisons une visite, testons le support et vous remettons un devis adapté. Aucune intervention sans diagnostic.</p>
+    <div class="kc-final-ctas">
+      <a href="/demande-de-devis/?presta=decapage-cristallisation-sols" class="kc-btn kc-btn-primary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
+      <a href="/devis/" class="kc-btn kc-btn-secondary">Demander un devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcDecToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-dec .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service Décapage & cristallisation des sols (SANS prix : prestation sur devis) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Décapage, métallisation et cristallisation des sols",
+  "serviceType": "Remise à neuf et protection des sols (carrelage, pierre, marbre, terrazzo, PVC, béton)",
+  "description": "Décapage, métallisation et cristallisation des sols en Île-de-France : remise à neuf, lustrage et protection durable des revêtements (carrelage, pierre, marbre, terrazzo, PVC, béton). Diagnostic et test sur zone discrète, puis devis établi après visite.",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "availableChannel": {
+    "@type": "ServiceChannel",
+    "servicePhone": {"@type": "ContactPoint", "telephone": "+33670012061", "contactType": "customer service", "areaServed": "FR", "availableLanguage": "French"}
+  }
+}
+</script>

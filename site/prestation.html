@@ -1,0 +1,812 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE PRESTATION : TURNOVER AIRBNB — KAYLI CLINN
+   Refonte « studio premium » · WordPress-ready
+   URL : /turnover-airbnb/
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous.
+   Remplacez UNIQUEMENT l'URL entre url('…').
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Chambre d'appartement Airbnb préparée par
+   │   Kayli Clinn — lit fait façon hôtel, intérieur lumineux »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Couloir d'appartement moderne nettoyé pour une
+   │   location courte durée en Île-de-France »
+   │ --photo-split-1 .. section « turnover carré » (gauche)
+   │   ALT : « Contrôle qualité Kayli Clinn après un turnover
+   │   Airbnb — vérification des surfaces »
+   │ --photo-split-2 .. section « synchronisés calendrier »
+   │   ALT : « Appartement propre prêt à accueillir des
+   │   voyageurs après le passage de Kayli Clinn »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   🔗 Liens internes : /devis/ · /nettoyage-apres-demenagement-etat-des-lieux/
+       /entretien-professionnel/ · /nettoyage-fin-de-chantier/
+   ☎️ Téléphone : +33670012061 · Prix : grille officielle v2 (12/06/2026).
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
+   ════════════════════════════════════════════════════════ */
+.kc-page{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_airy_modern_minimalist_bedroom_kitchen_batch_1.png');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_wide_well_lit_interior_corridor_scene_in_a_modern_batch_5.png');
+  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png');
+  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_clean_modern_apartment_interior_photographed_in_batch_2.png');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME
+   ════════════════════════════════════════════════════════ */
+.kc-page{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-page *,.kc-page *::before,.kc-page *::after{box-sizing:border-box}
+.kc-page img{max-width:100%;display:block}
+.kc-page a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-page .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-page .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-page .kc-promise-text .kc-link,.kc-page .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-page .kc-promise-text .kc-link:hover,.kc-page .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-page section{padding:clamp(84px,11vw,152px) 6%}
+.kc-page-wrap{max-width:1240px;margin:0 auto}
+.kc-page-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
+
+/* — sur-titre éditorial (filet + petites capitales) — */
+.kc-page .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
+.kc-page .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres : Fraunces serif + accents italiques — */
+.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-page .section-title em,.kc-page h2 em,.kc-page h3 em,.kc-page .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-page .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-page svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-btn-primary svg{transition:transform .3s}
+.kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO — plein cadre, très aéré
+   ════════════════════════════════════════════════════════ */
+.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-hero-content{max-width:none}
+.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
+.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(1.8rem,4.2vw,4rem);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:540px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
+.kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande de réassurance — */
+.kc-trust{background:var(--navy);padding:30px 6%}
+.kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
+.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
+.kc-trust-item svg{color:var(--teal);flex-shrink:0}
+
+/* ════════════════════════════════════════════════════════
+   POUR QUI
+   ════════════════════════════════════════════════════════ */
+.kc-target{background:var(--cream-2)}
+.kc-target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-target-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-target-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-target-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
+.kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
+.kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
+.kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   PROMESSE
+   ════════════════════════════════════════════════════════ */
+.kc-promise-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
+.kc-promise-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-promise-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
+.kc-promise .eyebrow{color:var(--teal)}
+.kc-promise .eyebrow::before{background:var(--teal)}
+.kc-promise h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
+.kc-promise h2 em{color:var(--teal)}
+.kc-promise-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
+.kc-promise-text:last-child{margin-bottom:0}
+.kc-promise-text strong{color:#fff;font-weight:600}
+.kc-promise-points{display:flex;flex-direction:column;gap:14px}
+.kc-promise-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
+.kc-promise-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
+.kc-promise-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-promise-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
+.kc-promise-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU
+   ════════════════════════════════════════════════════════ */
+.kc-banner{position:relative;min-height:540px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-banner-content{max-width:900px}
+.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
+.kc-banner h2 em{font-style:italic;color:#fff}
+.kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   INCLUS — fiches au trait
+   ════════════════════════════════════════════════════════ */
+.kc-included{background:var(--cream)}
+.kc-included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kc-incl-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
+.kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
+.kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ════════════════════════════════════════════════════════
+   SPLIT
+   ════════════════════════════════════════════════════════ */
+.kc-split{background:var(--white)}
+.kc-split.alt{background:var(--cream-2)}
+.kc-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
+.kc-split.reverse .kc-split-grid{direction:rtl}
+.kc-split.reverse .kc-split-grid>*{direction:ltr}
+.kc-split-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-split-1);background-size:cover;background-position:center;box-shadow:var(--shadow)}
+.kc-split.alt .kc-split-img{background-image:var(--photo-split-2)}
+.kc-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
+.kc-split-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
+.kc-split-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:24px}
+.kc-split-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
+.kc-split-text p:last-of-type{margin-bottom:0}
+.kc-split-text strong{color:var(--navy);font-weight:600}
+.kc-split-quote{margin-top:32px;padding:26px 30px;background:transparent;border-left:2px solid var(--teal);border-radius:0;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--navy);font-size:17px;line-height:1.6}
+.kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   OPTIONS
+   ════════════════════════════════════════════════════════ */
+.kc-options-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.kc-option-row{display:flex;align-items:center;gap:20px;padding:24px 28px;background:var(--white);border:1px solid var(--line);border-radius:13px;transition:all .3s}
+.kc-option-row:hover{border-color:var(--teal);transform:translateX(3px);box-shadow:var(--shadow-sm)}
+.kc-option-icon{width:46px;height:46px;background:var(--teal-wash);color:var(--teal-deep);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+.kc-option-info{flex:1;min-width:0}
+.kc-option-name{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:3px;letter-spacing:-0.01em}
+.kc-option-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
+.kc-option-price{font-family:'Inter',sans-serif;color:var(--teal-deep);font-weight:600;font-size:14px;white-space:nowrap}
+
+/* ── 5b · Linge & consommables — services intégrés (pas de page dédiée) ── */
+.kc-lingec-panel{background:var(--navy);border-radius:28px;padding:clamp(40px,5.5vw,72px);color:#fff;position:relative;overflow:hidden;scroll-margin-top:96px}
+.kc-lingec-panel::before{content:'';position:absolute;top:-130px;left:-130px;width:460px;height:460px;background:radial-gradient(circle,rgba(15,167,165,0.15) 0%,transparent 70%);pointer-events:none}
+.kc-lingec-head{position:relative;z-index:1;max-width:660px;margin-bottom:36px}
+.kc-lingec-head .eyebrow{color:var(--teal)}
+.kc-lingec-head .eyebrow::before{background:var(--teal)}
+.kc-lingec-head h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.12;letter-spacing:-0.015em;color:#fff;margin-bottom:14px}
+.kc-lingec-head h2 em{color:var(--teal)}
+.kc-lingec-head p{font-size:15px;color:rgba(255,255,255,0.72);line-height:1.75}
+.kc-lingec-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;position:relative;z-index:1}
+.kc-lingec-card{background:rgba(255,255,255,0.045);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:30px 30px 26px;transition:all .3s}
+.kc-lingec-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(15,167,165,0.45);transform:translateY(-3px)}
+.kc-lingec-card-top{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.kc-lingec-card-icon{width:46px;height:46px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:12px;display:grid;place-items:center;flex-shrink:0}
+.kc-lingec-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:#fff;letter-spacing:-0.01em;flex:1;min-width:140px}
+.kc-lingec-price{font-family:'Inter',sans-serif;font-weight:600;font-size:13px;color:var(--teal);background:rgba(15,167,165,0.13);border:1px solid rgba(15,167,165,0.35);border-radius:999px;padding:6px 13px;white-space:nowrap}
+.kc-lingec-card>p{font-size:13.5px;color:rgba(255,255,255,0.66);line-height:1.7;margin-bottom:16px}
+.kc-lingec-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin:0;padding:0}
+.kc-lingec-list li{display:flex;gap:11px;font-size:13.5px;color:rgba(255,255,255,0.82);line-height:1.55}
+.kc-lingec-list svg{flex-shrink:0;margin-top:3px;color:var(--teal)}
+.kc-lingec-foot{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:20px 28px;flex-wrap:wrap;margin-top:30px;padding-top:26px;border-top:1px solid rgba(255,255,255,0.10)}
+.kc-lingec-foot p{font-size:13.5px;color:rgba(255,255,255,0.68);line-height:1.7;max-width:560px}
+.kc-lingec-foot p strong{color:#fff;font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   PROCESS
+   ════════════════════════════════════════════════════════ */
+.kc-process{background:var(--cream)}
+.kc-process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;position:relative}
+.kc-process-grid::before{content:'';position:absolute;top:34px;left:9%;right:9%;height:1px;background:var(--line);z-index:0}
+.kc-process-step{position:relative;z-index:1;text-align:center}
+.kc-process-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
+.kc-process-step:hover .kc-process-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-process-step h4{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-process-step p{font-size:13px;color:var(--muted);line-height:1.65}
+.kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
+
+/* ════════════════════════════════════════════════════════
+   PRICING
+   ════════════════════════════════════════════════════════ */
+.kc-pricing{background:var(--cream-2)}
+.kc-pricing-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:clamp(48px,7vw,92px);align-items:center}
+.kc-pricing-left h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.1;letter-spacing:-0.015em;margin-bottom:22px}
+.kc-pricing-left p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:18px}
+.kc-pricing-left strong{color:var(--navy);font-weight:600}
+.kc-pricing-table{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:clamp(28px,3vw,42px);box-shadow:var(--shadow)}
+.kc-pricing-table-title{font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:26px}
+.kc-price-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid var(--line-soft)}
+.kc-price-row:last-of-type{border-bottom:none;padding-bottom:0}
+.kc-price-label{font-size:14.5px;color:var(--ink);font-weight:500}
+.kc-price-label small{display:block;font-size:11.5px;color:var(--faint);font-weight:400;margin-top:3px}
+.kc-price-value{font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:18px;white-space:nowrap}
+.kc-price-value em{font-style:italic;color:var(--teal-deep)}
+.kc-price-disclaimer{font-size:12px;color:var(--faint);font-style:italic;margin-top:24px;padding-top:22px;border-top:1px solid var(--line-soft);line-height:1.65}
+
+/* ════════════════════════════════════════════════════════
+   TÉMOIGNAGES
+   ════════════════════════════════════════════════════════ */
+.kc-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-testi{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-testi:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-testi-quote-mark{position:absolute;top:26px;right:30px;font-family:'Fraunces',serif;font-size:54px;font-weight:560;color:var(--teal);opacity:0.14;line-height:1}
+.kc-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:18px}
+.kc-testi-text{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:26px;font-style:italic;font-weight:400}
+.kc-testi-author{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line-soft)}
+.kc-testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:0.02em;flex-shrink:0}
+.kc-testi-info strong{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
+.kc-testi-info span{font-size:12.5px;color:var(--faint);margin-top:2px;display:block}
+
+/* ════════════════════════════════════════════════════════
+   POURQUOI NOUS — éditorial
+   ════════════════════════════════════════════════════════ */
+.kc-why{background:var(--cream)}
+.kc-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.kc-why-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.kc-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-why-card:hover::before{transform:scaleX(1)}
+.kc-why-num{font-family:'Fraunces',serif;font-size:14px;font-weight:560;color:var(--teal-deep);letter-spacing:0.1em;margin-bottom:26px;display:block}
+.kc-why-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-why-card:hover .kc-why-icon{background:var(--teal);color:#fff}
+.kc-why-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:13px;letter-spacing:-0.01em}
+.kc-why-card p{font-size:14px;color:var(--muted);line-height:1.75}
+
+/* ════════════════════════════════════════════════════════
+   FAQ
+   ════════════════════════════════════════════════════════ */
+.kc-faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
+.kc-faq-q{padding:26px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
+.kc-faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.35}
+.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
+.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
+.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.kc-faq-item.open .kc-faq-a{max-height:480px}
+.kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
+.kc-faq-a-content strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   ZONES
+   ════════════════════════════════════════════════════════ */
+.kc-zones{background:var(--cream-2)}
+.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
+.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
+.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
+.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
+.kc-zone:hover span{color:rgba(255,255,255,0.75)}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL — vert uni
+   ════════════════════════════════════════════════════════ */
+.kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
+.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
+.kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
+.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
+.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-final-cta h2 em{font-style:italic;color:#fff}
+.kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
+.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
+.kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
+.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-target-grid,.kc-included-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-promise-grid,.kc-pricing-grid{grid-template-columns:1fr}
+  .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-hero{min-height:90vh}
+  .kc-split-grid{grid-template-columns:1fr}
+  .kc-split.reverse .kc-split-grid{direction:ltr}
+  .kc-options-grid{grid-template-columns:1fr}
+  .kc-lingec-grid{grid-template-columns:1fr}
+  .kc-process-grid{grid-template-columns:repeat(3,1fr);gap:24px}
+  .kc-process-grid::before{display:none}
+  .kc-testi-grid,.kc-why-grid{grid-template-columns:1fr}
+  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
+  .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
+}
+@media(max-width:560px){
+  .kc-page section{padding:64px 6%}
+  .kc-lingec-panel{padding:44px 26px;border-radius:20px}
+  .kc-hero{min-height:auto;padding:130px 6% 64px}
+  .kc-hero-title{white-space:normal;font-size:clamp(1.9rem,8.5vw,2.6rem)}
+  .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
+  .kc-process-grid{grid-template-columns:1fr;gap:18px}
+  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
+  .kc-promise-block{border-radius:20px}
+  .kc-btn{width:100%;justify-content:center}
+  .kc-hero-ctas,.kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-page *,.kc-page *::before,.kc-page *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-page .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-page">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Turnover Airbnb · Île-de-France</span>
+      <h1 class="kc-hero-title">Un Logement Prêt À <em>Accueillir</em></h1>
+      <p class="kc-hero-sub">Le turnover Airbnb clé en main, entre chaque départ et chaque arrivée : ménage complet, linge frais, lits façon hôtel et réassort des consommables. Vos voyageurs entrent dans un logement impeccable.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Réserver Mon Créneau
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#tarifs" class="kc-btn kc-btn-secondary">Voir Les Tarifs</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · RÉASSURANCE -->
+<div class="kc-trust">
+  <div class="kc-trust-wrap">
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro AXA · 5M€</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Turnover le jour même</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 6h18l-2 13H5L3 6zM3 6l-.5-3H1M16 10a4 4 0 0 1-8 0"/></svg><span>Linge & réassort consommables</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg><span>Reporting photo après turnover</span></div>
+    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.6 7.6a5 5 0 1 1-7 7 5 5 0 0 1 7-7zM15 7l3 3M17 5l3 3"/></svg><span>Gestion des clés & accès</span></div>
+  </div>
+</div>
+
+<!-- 3 · POUR QUI -->
+<section class="kc-target">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Pour qui</span>
+      <h2 class="section-title">Le partenaire turnover de votre <em>location courte durée</em></h2>
+      <p class="section-desc">Une prestation pour tous ceux dont la note voyageurs et le taux d'occupation dépendent d'un logement irréprochable, livré à l'heure entre deux réservations.</p>
+    </div>
+    <div class="kc-target-grid">
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+        <h3>Hôtes Airbnb & Booking</h3>
+        <p>Un ou deux logements à gérer en plus de votre quotidien. On s'occupe du turnover entre voyageurs, vous gardez la tête tranquille.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <h3>Conciergeries</h3>
+        <p>Un sous-traitant turnover fiable et homogène sur tout votre parc : interlocuteur unique, qualité constante, facturation centralisée.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div>
+        <h3>Investisseurs locatifs</h3>
+        <p>Plusieurs biens en courte durée. Standard hôtelier régulier pour protéger vos avis, vos revenus et la valeur de vos appartements.</p>
+      </div>
+      <div class="kc-target-card kc-fade">
+        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
+        <h3>Multipropriétaires</h3>
+        <p>Résidences secondaires, pieds-à-terre loués ponctuellement. Remise en état entre deux occupations, sans que vous soyez sur place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PROMESSE -->
+<section>
+  <div class="kc-page-wrap kc-fade">
+    <div class="kc-promise-block kc-promise">
+      <div class="kc-promise-grid">
+        <div>
+          <span class="eyebrow">Notre promesse</span>
+          <h2>Un turnover <em>carré</em>, entre chaque réservation</h2>
+          <p class="kc-promise-text">Entre un départ à 11h et une arrivée à 15h, tout doit être fait : ménage complet, <strong>linge changé</strong>, lits refaits, salle de bain comme neuve, <strong>consommables réassortis</strong> et logement présenté pour les photos. Un détail oublié, et c'est l'avis voyageur qui en pâtit.</p>
+          <p class="kc-promise-text">Nous traitons chaque turnover avec une <strong>checklist standardisée</strong>, un signalement systématique des dégâts ou objets oubliés, et un <strong>reporting photo</strong> après chaque passage. Au-delà de la courte durée, nous assurons aussi le <a href="/nettoyage-apres-demenagement-etat-des-lieux/" class="kc-link">nettoyage de fin de bail</a> et l'entretien régulier de vos biens.</p>
+        </div>
+        <div class="kc-promise-points">
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Synchronisé avec votre calendrier</strong><span>On se cale sur vos départs / arrivées pour intervenir dans la fenêtre serrée du turnover</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M3 6h18l-2 13H5L3 6zM3 6l-.5-3H1M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Linge & lits façon hôtel</strong><span>Parures changées, lits refaits au carré, serviettes pliées — finition hôtelière</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Réassort & kit d'accueil</strong><span>Papier toilette, savon, café, thé, sel… reconstitués à chaque passage</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Reporting & signalement</strong><span>Photos après turnover, dégâts et objets oubliés signalés immédiatement</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Le ménage qui protège vos avis</span>
+    <h2>Un turnover Airbnb<br>n'a rien d'un <em>ménage ordinaire</em></h2>
+    <p>La propreté est le premier critère noté par les voyageurs. Linge frais, salle de bain irréprochable, aucune trace du précédent séjour : c'est ce niveau d'exigence, répété à chaque réservation, qui maintient vos 5 étoiles et votre taux d'occupation.</p>
+  </div>
+</section>
+
+<!-- 5 · INCLUS -->
+<section class="kc-included">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Prestation de base</span>
+      <h2 class="section-title">Tout ce que comprend <em>un turnover complet</em></h2>
+      <p class="section-desc">Notre forfait standard couvre l'ensemble des opérations pour remettre votre logement au niveau « prêt à accueillir » entre deux voyageurs.</p>
+    </div>
+    <div class="kc-included-grid">
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div><h4>Ménage complet</h4><p>Toutes les pièces : sols, surfaces, poussière, miroirs et points de contact. Le logement remis à neuf de la chambre au salon.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 7l9-4 9 4v3H3zM5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9M9 14h6"/></svg></div><h4>Linge & lits façon hôtel</h4><p>Draps, housses et taies changés, lits refaits au carré. Finition soignée, prête pour la photo et l'arrivée des voyageurs.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><circle cx="12" cy="17" r="2"/></svg></div><h4>Salle de bain & sanitaires</h4><p>Désinfection, détartrage, douche, WC et robinetterie comme neufs. Serviettes propres pliées et présentées.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/></svg></div><h4>Cuisine & vaisselle</h4><p>Plan de travail, électroménager, vaisselle lavée et rangée, frigo vidé et nettoyé. Cuisine prête à l'emploi.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div><h4>Réassort des consommables</h4><p>Papier toilette, savon, café, thé, sel, sacs poubelle… Le kit d'accueil est reconstitué à chaque passage.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></div><h4>Poubelles & tri</h4><p>Sortie des déchets, sacs changés, tri respecté. Le logement est laissé net, sans odeur du séjour précédent.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 3-9 2 4h3"/></svg></div><h4>Aération & mise en ambiance</h4><p>Logement aéré, senteur neutre et agréable, présentation soignée : coussins, rideaux, détails prêts pour le check-in.</p></div>
+      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Contrôle & signalement</h4><p>Vérification des équipements, objets oubliés mis de côté, dégâts photographiés et signalés à l'hôte sans délai.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 1 -->
+<section class="kc-split">
+  <div class="kc-page-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Finition hôtelière</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">L'effet « 5 étoiles »</span>
+        <h2>Le détail qui fait <em>la note parfaite</em></h2>
+        <p>Un voyageur juge votre logement dans les premières secondes : un lit impeccable, des serviettes pliées, aucune poussière sur la table de nuit. Ce sont ces <strong>détails répétés à chaque séjour</strong> qui transforment un bon avis en commentaire 5 étoiles.</p>
+        <p>Nous appliquons une <strong>checklist identique</strong> à chaque turnover, quel que soit l'agent qui intervient. Résultat : une <strong>qualité constante</strong>, des voyageurs qui ne voient jamais la trace du séjour précédent, et des avis qui protègent votre classement.</p>
+        <div class="kc-split-quote">Depuis qu'ils gèrent mes turnovers, je ne reçois plus un seul commentaire sur la propreté. Mon annonce est repassée en « Coup de cœur voyageurs ».<span class="kc-split-quote-author">— Camille R., Hôte Superhost · Paris 11e</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5b · LINGE & CONSOMMABLES — services intégrés au turnover (pas de page dédiée : ancre #linge-consommables pour les menus) -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-lingec-panel kc-fade" id="linge-consommables">
+      <div class="kc-lingec-head">
+        <span class="eyebrow">Services intégrés au turnover</span>
+        <h2>Gestion du linge & réassort des consommables, <em>sans y penser</em></h2>
+        <p>Deux services à part entière, intégrés à chaque turnover : pas de prestataire supplémentaire, pas de devis séparé. Vous les ajoutez à votre forfait en un clic au moment du devis.</p>
+      </div>
+      <div class="kc-lingec-grid">
+        <div class="kc-lingec-card">
+          <div class="kc-lingec-card-top">
+            <div class="kc-lingec-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 6h18l-2 13H5L3 6zM3 6l-.5-3H1M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>Gestion du linge</h3>
+            <div class="kc-lingec-price">18 € / lit · par passage</div>
+          </div>
+          <p>Ne touchez plus une machine : nous apportons le linge propre et repartons avec le linge sale, à chaque rotation.</p>
+          <ul class="kc-lingec-list">
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Kit complet par lit : parure (draps, housse de couette, taies) et serviettes</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Collecte, lavage professionnel et repassage</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Lits refaits façon hôtel — la réfection est déjà incluse au forfait turnover</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Stock de parures de rotation possible, pour ne jamais bloquer un turnover</span></li>
+          </ul>
+        </div>
+        <div class="kc-lingec-card">
+          <div class="kc-lingec-card-top">
+            <div class="kc-lingec-card-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div>
+            <h3>Réassort des consommables</h3>
+            <div class="kc-lingec-price">10 € · par passage</div>
+          </div>
+          <p>Vos voyageurs ne trouvent jamais un distributeur vide : le kit d'accueil est complet à chaque check-in.</p>
+          <ul class="kc-lingec-list">
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Papier toilette, savon, sacs poubelle</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Café, capsules, thé, sel, produits d'accueil</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Suivi du stock laissé sur place et signalement avant la rupture</span></li>
+            <li><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Kit reconstitué avant chaque arrivée, vérifié à la checklist qualité</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="kc-lingec-foot">
+        <p><strong>Pas de page dédiée, pas de démarche en plus :</strong> ces deux services s'ajoutent directement dans le devis en ligne — le linge se compte par lit, le réassort s'ajoute par passage.</p>
+        <a href="/devis/" class="kc-btn kc-btn-primary">Ajouter À Mon Devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 · OPTIONS -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Options additionnelles</span>
+      <h2 class="section-title">Pour aller <em>plus loin</em></h2>
+      <p class="section-desc">Selon votre logement et votre mode de gestion, ces prestations complètent le turnover de base pour une délégation totale.</p>
+    </div>
+    <div class="kc-options-grid">
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.6 7.6a5 5 0 1 1-7 7 5 5 0 0 1 7-7zM15 7l3 3M17 5l3 3"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Gestion des clés & accès</div><div class="kc-option-desc">Boîte à clés, remise/dépôt, accueil voyageurs ponctuel sur demande</div></div><div class="kc-option-price">Sur devis</div></div>
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Vitres intérieures</div><div class="kc-option-desc">Vitrages et baies accessibles, côté intérieur</div></div><div class="kc-option-price">20 €</div></div>
+      <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Petit dépannage & relais maintenance</div><div class="kc-option-desc">Ampoules, petites réparations, signalement et coordination technique</div></div><div class="kc-option-price">Sur devis</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · PROCESS -->
+<section class="kc-process">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Notre méthode</span>
+      <h2 class="section-title">Cinq étapes, <em>du départ au prochain check-in</em></h2>
+      <p class="section-desc">Un déroulé fluide, synchronisé avec votre calendrier de réservations, pour ne jamais faire attendre un voyageur.</p>
+    </div>
+    <div class="kc-process-grid">
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Notification du départ</h4><p>Vous nous transmettez le calendrier ou chaque départ ; on bloque le créneau de turnover.</p><span class="kc-process-step-duration">À la demande</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Intervention express</h4><p>Entre le check-out et le check-in, dans la fenêtre serrée (souvent 11h–15h).</p><span class="kc-process-step-duration">Le jour J</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Contrôle qualité</h4><p>Checklist complète : ménage, linge, salle de bain, consommables, état du logement.</p><span class="kc-process-step-duration">Systématique</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">04</div><h4>Réassort & mise en scène</h4><p>Kit d'accueil reconstitué, présentation soignée, logement prêt pour les photos.</p><span class="kc-process-step-duration">Inclus</span></div>
+      <div class="kc-process-step kc-fade"><div class="kc-process-num">05</div><h4>Reporting & feu vert</h4><p>Compte-rendu photo, signalement éventuel, logement validé « prêt à accueillir ».</p><span class="kc-process-step-duration">Après turnover</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · PRICING -->
+<section class="kc-pricing" id="tarifs">
+  <div class="kc-page-wrap">
+    <div class="kc-pricing-grid">
+      <div class="kc-pricing-left kc-fade">
+        <span class="eyebrow">Tarification claire</span>
+        <h3>Un forfait <em>par turnover et par logement</em></h3>
+        <p>Le prix dépend de la <strong>taille du logement</strong>, du <strong>volume de linge</strong>, de la <strong>fréquence des réservations</strong> et des options choisies (blanchisserie, clés, consommables).</p>
+        <p>Pour les <strong>conciergeries et investisseurs multi-biens</strong>, un tarif dégressif s'applique selon le volume mensuel. Un seul interlocuteur, une qualité homogène, une facturation centralisée.</p>
+        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:18px">Estimer Mon Turnover<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      </div>
+      <div class="kc-pricing-table kc-fade">
+        <div class="kc-pricing-table-title">Forfaits officiels par turnover</div>
+        <div class="kc-price-row"><div class="kc-price-label">Studio / T1<small>Jusqu'à 35 m² · ~ 1 h 45</small></div><div class="kc-price-value"><em>55 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T2<small>35–50 m² · ~ 2 h 15</small></div><div class="kc-price-value"><em>75 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T3<small>50–70 m² · ~ 2 h 45</small></div><div class="kc-price-value"><em>95 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T4<small>70–90 m² · ~ 3 h 30</small></div><div class="kc-price-value"><em>120 €</em> TTC</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">Kit linge complet<small>Location, lavage, livraison — par lit</small></div><div class="kc-price-value"><em>18 €</em>/lit</div></div>
+        <div class="kc-price-row"><div class="kc-price-label">Réassort consommables<small>Kit d'accueil reconstitué — par passage</small></div><div class="kc-price-value"><em>10 €</em></div></div>
+        <div class="kc-price-row"><div class="kc-price-label">T5, maison, plus de 90 m² / multi-biens<small>Visite gratuite · tarif dégressif au volume</small></div><div class="kc-price-value">Sur devis</div></div>
+        <div class="kc-price-disclaimer">Tarifs officiels TTC pour un logement en état d'usage normal, réservables en ligne avec un acompte de 30 %. Options (four 35 €, frigo 25 €, vitres intérieures 20 €…) et majorations cumulables (urgence +30 %, dimanche/férié +25 %) selon la grille.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · TÉMOIGNAGES -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Ils nous font confiance</span>
+      <h2 class="section-title">Ce qu'en disent <em>hôtes & conciergeries</em></h2>
+      <p class="section-desc">Quelques retours de propriétaires et gestionnaires de location courte durée que nous accompagnons en Île-de-France.</p>
+    </div>
+    <div class="kc-testi-grid">
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">Réactifs et carrés. Ils gèrent mes deux appartements, jamais un turnover raté même en haute saison. Les photos après ménage me rassurent quand je suis loin.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">CR</div><div class="kc-testi-info"><strong>Camille R.</strong><span>Hôte Superhost · Paris 11e</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">On leur sous-traite les turnovers sur une trentaine de logements. Qualité constante d'un agent à l'autre, un seul contact, une facture par mois. Exactement ce qu'il nous fallait.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">YM</div><div class="kc-testi-info"><strong>Yanis M.</strong><span>Conciergerie courte durée · Paris &amp; 92</span></div></div>
+      </div>
+      <div class="kc-testi kc-fade">
+        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
+        <p class="kc-testi-text">J'ai 4 biens en courte durée. Depuis qu'ils s'occupent du linge et des turnovers, je ne gère plus rien sur place et mes notes propreté sont au maximum. Un vrai soulagement.</p>
+        <div class="kc-testi-author"><div class="kc-testi-avatar">SL</div><div class="kc-testi-info"><strong>Sarah L.</strong><span>Investisseuse locative · Val-de-Marne</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT 2 -->
+<section class="kc-split alt reverse">
+  <div class="kc-page-wrap">
+    <div class="kc-split-grid">
+      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Synchronisation calendrier</span></div>
+      <div class="kc-split-text kc-fade">
+        <span class="eyebrow">Réactivité & timing</span>
+        <h2>Synchronisés avec <em>votre calendrier</em></h2>
+        <p>En courte durée, la fenêtre entre deux réservations est parfois de quelques heures à peine. Un turnover en retard, et c'est un voyageur qui attend devant la porte — ou une réservation que vous ne pouvez pas accepter.</p>
+        <p>On se cale sur vos départs et arrivées, on intervient <strong>le jour même</strong>, week-ends et jours fériés inclus. Vous pouvez tout déléguer et vous concentrer sur le reste, en suivant chaque passage grâce au reporting. <a href="/devis/" class="kc-link">Obtenez votre devis en ligne</a> en quelques minutes.</p>
+        <div class="kc-split-quote">Un turnover ne devrait jamais faire attendre un voyageur. Tenir vos créneaux, c'est notre métier — pas seulement nettoyer.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · POURQUOI NOUS -->
+<section class="kc-why">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Pourquoi Kayli Clinn</span>
+      <h2 class="section-title">Ce qui nous différencie <em>sur vos turnovers</em></h2>
+      <p class="section-desc">La location courte durée a ses propres exigences. Nous avons bâti notre offre autour de la fiabilité, du timing et du standard hôtelier.</p>
+    </div>
+    <div class="kc-why-grid">
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">01 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h3>Fiabilité & timing</h3>
+        <p>Intervention le jour même, 7j/7. On tient la fenêtre du turnover pour que vos voyageurs ne patientent jamais.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">02 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Qualité constante</h3>
+        <p>Une checklist identique à chaque passage : même standard hôtelier quel que soit l'agent, sur tout votre parc.</p>
+      </div>
+      <div class="kc-why-card kc-fade">
+        <span class="kc-why-num">03 / 03</span>
+        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        <h3>Transparence totale</h3>
+        <p>Reporting photo, signalement des dégâts, facturation centralisée. Vous gardez la main à distance, en confiance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · FAQ -->
+<section>
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
+      <p class="section-desc">Les questions que se posent hôtes et conciergeries avant de déléguer leurs turnovers Airbnb.</p>
+    </div>
+    <div class="kc-faq-list">
+      <div class="kc-faq-item open kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">En combien de temps intervenez-vous entre deux réservations ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous intervenons <strong>le jour même</strong>, dans la fenêtre serrée entre le check-out et le check-in (souvent 11h–15h), <strong>7j/7</strong> week-ends et jours fériés inclus. Plus vous nous transmettez votre calendrier tôt, plus nous garantissons le bon créneau, même en haute saison.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Gérez-vous le linge ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Le <strong>changement et la réfection des lits</strong> sont inclus dans le turnover de base. En option (<strong>kit linge complet, 18 € par lit et par passage</strong>), nous prenons en charge la <strong>blanchisserie complète</strong> (collecte, lavage, repassage) et pouvons gérer un <strong>stock de parures de rotation</strong> pour ne jamais bloquer un turnover faute de linge propre.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Que faites-vous si vous trouvez un dégât ou un objet oublié ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Tout dégât est <strong>photographié et signalé immédiatement</strong> dans le reporting — utile pour une éventuelle réclamation auprès de la plateforme. Les <strong>objets oubliés</strong> sont mis de côté et nous vous prévenons pour organiser la restitution au voyageur.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Gérez-vous plusieurs logements et les conciergeries ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content"><strong>Oui, c'est l'une de nos spécialités.</strong> Pour les conciergeries et investisseurs multi-biens : <strong>interlocuteur unique</strong>, qualité homogène sur tout le parc, <strong>tarif dégressif</strong> selon le volume et facturation centralisée. Pour un suivi hors courte durée, voyez aussi notre entretien professionnel régulier.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Comment accédez-vous au logement ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Au plus simple pour vous : <strong>boîte à clés sécurisée</strong>, serrure à code, ou jeu de clés déposé. Nous pouvons aussi assurer la <strong>gestion des clés</strong> et, sur demande, un accueil voyageurs ponctuel. Tout est défini en amont pour un fonctionnement sans friction.</div></div>
+      </div>
+      <div class="kc-faq-item kc-fade">
+        <div class="kc-faq-q" onclick="kcToggleFaq(this)"><span class="kc-faq-q-text">Réassortissez-vous les consommables ?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. La remise en place du <strong>stock que vous laissez sur place</strong> fait partie du turnover. Avec l'<strong>option réassort (10 € par passage)</strong>, nous suivons le stock, reconstituons le <strong>kit d'accueil</strong> complet (papier toilette, savon, café, capsules, thé, produits d'accueil…) avant chaque arrivée et vous signalons les rachats à prévoir. Vous décidez du niveau de délégation.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · ZONES -->
+<section class="kc-zones">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Zones d'intervention</span>
+      <h2 class="section-title">Présents partout en <em>Île-de-France</em></h2>
+      <p class="section-desc">Nos équipes interviennent sur vos locations courte durée dans les huit départements franciliens.</p>
+    </div>
+    <div class="kc-zones-list">
+      <div class="kc-zone kc-fade">75<span>Paris</span></div>
+      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
+      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
+      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
+      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
+      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
+      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
+      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Devis gratuit · Réponse rapide</span>
+    <h2>Prêt à déléguer vos turnovers<br>en toute <em>tranquillité</em> ?</h2>
+    <p>Obtenez un devis personnalisé en ligne en quelques minutes. Intervention le jour même, standard hôtelier, reporting photo après chaque turnover.</p>
+    <div class="kc-final-ctas">
+      <a href="/devis/" class="kc-btn kc-btn-primary">Déléguer Mes Turnovers<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+function kcToggleFaq(el){
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
+  if(!wasOpen) item.classList.add('open');
+}
+(function(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+    });
+  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
+  document.querySelectorAll('.kc-page .kc-fade').forEach(el => observer.observe(el));
+})();
+</script>
+<!-- Données structurées SEO — service Turnover Airbnb (grille officielle v2) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Turnover Airbnb — ménage entre deux locations",
+  "serviceType": "Nettoyage de location courte durée",
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Kayli Clinn",
+    "url": "https://kayliclinn.fr/",
+    "telephone": "+33670012061"
+  },
+  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
+  "offers": [
+    {"@type": "Offer", "name": "Studio / T1", "price": 55, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T2", "price": 75, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T3", "price": 95, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "T4", "price": 120, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "Gestion du linge — kit complet par lit", "price": 18, "priceCurrency": "EUR"},
+    {"@type": "Offer", "name": "Réassort des consommables", "price": 10, "priceCurrency": "EUR"}
+  ]
+}
+</script>

@@ -1,0 +1,567 @@
+<!-- ════════════════════════════════════════════════════════
+   PAGE « QUALITÉ & QSE » — KAYLI CLINN
+   Qualité · Sécurité · Environnement · WordPress-ready
+   URL : /qualite-qse/
+   ────────────────────────────────────────────────────────
+   📸 PANNEAU PHOTOS — les 2 variables --photo-* ci-dessous.
+   Remplacez UNIQUEMENT l'URL entre url('…').
+   │ --photo-hero ..... grand fond du haut de page
+   │   ALT : « Agent Kayli Clinn en intervention soignée —
+   │   démarche qualité et sécurité en Île-de-France »
+   │ --photo-banner ... bandeau immersif au milieu de page
+   │   ALT : « Équipe Kayli Clinn équipée et organisée sur un
+   │   chantier de nettoyage en Île-de-France »
+   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
+   🔗 Liens internes : /devis/ · /contact/ · /prestations/
+       /a-propos/
+   ☎️ Téléphone : +33670012061
+   ⚠️ PAGE NON COMMERCIALE : aucun prix, aucune réservation.
+      Aucune norme/label/assureur n'est inventé — voir les
+      blocs « 👉 À COMPLÉTER » avant publication.
+   ════════════════════════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
+   ════════════════════════════════════════════════════════ */
+.kc-qse{
+  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_airy_modern_minimalist_bedroom_kitchen_batch_1.png');
+  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_wide_well_lit_interior_corridor_scene_in_a_modern_batch_5.png');
+}
+</style>
+<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+<style>
+
+/* ════════════════════════════════════════════════════════
+   SYSTÈME (mêmes tokens que prestation.html)
+   ════════════════════════════════════════════════════════ */
+.kc-qse{
+  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
+  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
+  --navy:#0D2340; --navy-2:#14294a;
+  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
+  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
+  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
+  --amber:#D89B3C;
+  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
+  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:16px; line-height:1.65; color:var(--ink);
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+.kc-qse *,.kc-qse *::before,.kc-qse *::after{box-sizing:border-box}
+.kc-qse img{max-width:100%;display:block}
+.kc-qse a{color:inherit;text-decoration:none}
+
+/* — liens texte — */
+.kc-qse .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
+.kc-qse .kc-link:hover{color:var(--teal);border-color:var(--teal)}
+.kc-qse .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
+.kc-qse .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+
+/* — rythme — */
+.kc-qse section{padding:clamp(84px,11vw,152px) 6%}
+.kc-qse-wrap{max-width:1240px;margin:0 auto}
+.kc-qse-header{text-align:center;max-width:780px;margin:0 auto clamp(56px,7vw,92px)}
+
+/* — sur-titre éditorial — */
+.kc-qse .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
+.kc-qse .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+
+/* — titres Fraunces — */
+.kc-qse .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(2rem,4vw,3.15rem);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
+.kc-qse .section-title em,.kc-qse h2 em,.kc-qse h3 em,.kc-qse .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
+.kc-qse .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
+
+.kc-qse svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+
+/* — boutons — */
+.kc-qse .kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
+.kc-qse .kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
+.kc-qse .kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
+.kc-qse .kc-btn-primary svg{transition:transform .3s}
+.kc-qse .kc-btn-primary:hover svg{transform:translateX(3px)}
+.kc-qse .kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.kc-qse .kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+
+/* ════════════════════════════════════════════════════════
+   HERO éditorial
+   ════════════════════════════════════════════════════════ */
+.kc-hero{position:relative;min-height:88vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(7,18,33,0.78) 0%,rgba(13,35,64,0.5) 42%,rgba(13,35,64,0.18) 72%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
+.kc-hero-content{max-width:760px}
+.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(36px,5vw,56px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
+.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
+.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(2.1rem,5vw,4rem);color:#fff;line-height:1.05;letter-spacing:-0.02em;margin-bottom:clamp(28px,4vw,38px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
+.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
+.kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:rgba(255,255,255,0.92);line-height:1.7;margin-bottom:clamp(40px,5vw,52px);max-width:600px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
+.kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
+.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+
+/* — bande des 3 piliers QSE — */
+.kc-pillars{background:var(--navy);padding:0 6%}
+.kc-pillars-wrap{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr)}
+.kc-pillar{display:flex;gap:18px;padding:38px 30px;border-right:1px solid rgba(255,255,255,0.08)}
+.kc-pillar:last-child{border-right:none}
+.kc-pillar-icon{width:46px;height:46px;border-radius:11px;background:rgba(15,167,165,0.16);color:var(--teal);display:grid;place-items:center;flex-shrink:0}
+.kc-pillar-title{font-family:'Fraunces',serif;font-weight:560;font-size:16px;color:#fff;letter-spacing:-0.01em;margin-bottom:4px}
+.kc-pillar-text{font-size:13px;color:rgba(255,255,255,0.66);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   INTRO éditoriale
+   ════════════════════════════════════════════════════════ */
+.kc-intro{background:var(--white)}
+.kc-intro-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(48px,7vw,96px);align-items:start}
+.kc-intro-left h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3.4vw,2.7rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em}
+.kc-intro-right p{font-size:16px;color:var(--muted);line-height:1.85;margin-bottom:18px}
+.kc-intro-right p:last-child{margin-bottom:0}
+.kc-intro-right strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   SECTION GÉNÉRIQUE (Qualité / Sécurité / Environnement)
+   ════════════════════════════════════════════════════════ */
+.kc-block{background:var(--cream)}
+.kc-block.alt{background:var(--white)}
+.kc-block-head{max-width:780px;margin:0 auto clamp(48px,6vw,72px);text-align:center}
+.kc-feat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.kc-feat-grid.cols-3{grid-template-columns:repeat(3,1fr)}
+.kc-feat{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:34px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-block.alt .kc-feat{background:var(--cream)}
+.kc-feat:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.kc-feat-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
+.kc-feat:hover .kc-feat-icon{background:var(--teal);color:#fff}
+.kc-feat h3{font-family:'Fraunces',serif;font-weight:560;font-size:17px;color:var(--navy);margin-bottom:10px;letter-spacing:-0.01em;line-height:1.25}
+.kc-feat p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* — note / placeholder discret en bas de section — */
+.kc-note{max-width:880px;margin:clamp(40px,5vw,56px) auto 0;padding:24px 28px;background:var(--teal-soft);border:1px solid var(--line);border-left:2px solid var(--teal);border-radius:12px;font-size:14px;color:var(--muted);line-height:1.7}
+.kc-note strong{color:var(--navy);font-weight:600}
+
+/* ════════════════════════════════════════════════════════
+   PANNEAU SÉCURITÉ — fond navy (mise en avant RC Pro)
+   ════════════════════════════════════════════════════════ */
+.kc-secure-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
+.kc-secure-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
+.kc-secure-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
+.kc-secure .eyebrow{color:var(--teal)}
+.kc-secure .eyebrow::before{background:var(--teal)}
+.kc-secure h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
+.kc-secure h2 em{color:var(--teal)}
+.kc-secure-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
+.kc-secure-text:last-child{margin-bottom:0}
+.kc-secure-text strong{color:#fff;font-weight:600}
+.kc-secure-points{display:flex;flex-direction:column;gap:14px}
+.kc-secure-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
+.kc-secure-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
+.kc-secure-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
+.kc-secure-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
+.kc-secure-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
+
+/* ════════════════════════════════════════════════════════
+   BANDEAU immersif
+   ════════════════════════════════════════════════════════ */
+.kc-banner{position:relative;min-height:480px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.86) 0%,rgba(11,132,131,0.68) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
+.kc-banner-content{max-width:900px}
+.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
+.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
+.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
+.kc-banner h2 em{font-style:italic;color:#fff}
+.kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:700px;margin:0 auto;font-weight:300}
+
+/* ════════════════════════════════════════════════════════
+   AMÉLIORATION CONTINUE — boucle en étapes
+   ════════════════════════════════════════════════════════ */
+.kc-loop{background:var(--cream)}
+.kc-loop-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;position:relative}
+.kc-loop-grid::before{content:'';position:absolute;top:34px;left:11%;right:11%;height:1px;background:var(--line);z-index:0}
+.kc-loop-step{position:relative;z-index:1;text-align:center}
+.kc-loop-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
+.kc-loop-step:hover .kc-loop-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
+.kc-loop-step h3{font-family:'Fraunces',serif;font-weight:560;font-size:16px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-loop-step p{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ════════════════════════════════════════════════════════
+   CERTIFICATIONS / LABELS — placeholders uniquement
+   ════════════════════════════════════════════════════════ */
+.kc-certs{background:var(--white)}
+.kc-certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.kc-cert{background:var(--cream);border:1px dashed var(--line);border-radius:14px;padding:34px 30px;text-align:center}
+.kc-cert-slot{width:64px;height:64px;margin:0 auto 20px;border-radius:14px;background:var(--white);border:1px solid var(--line);display:grid;place-items:center;color:var(--faint)}
+.kc-cert h3{font-family:'Fraunces',serif;font-weight:560;font-size:16px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
+.kc-cert p{font-size:13px;color:var(--muted);line-height:1.65}
+.kc-cert-tag{display:inline-block;margin-top:16px;padding:5px 13px;background:var(--teal-wash);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase}
+
+/* ════════════════════════════════════════════════════════
+   CTA FINAL — vert uni
+   ════════════════════════════════════════════════════════ */
+.kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
+.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
+.kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
+.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
+.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
+.kc-final-cta h2 em{font-style:italic;color:#fff}
+.kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
+.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
+.kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
+.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
+.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
+
+/* ════════════════════════════════════════════════════════
+   ANIMATIONS
+   ════════════════════════════════════════════════════════ */
+.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.kc-fade.visible{opacity:1;transform:translateY(0)}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .kc-feat-grid,.kc-feat-grid.cols-3{grid-template-columns:repeat(2,1fr)}
+  .kc-intro-grid,.kc-secure-grid{grid-template-columns:1fr;gap:40px}
+  .kc-certs-grid{grid-template-columns:1fr}
+  .kc-banner{background-attachment:scroll}
+}
+@media(max-width:900px){
+  .kc-hero{min-height:auto}
+  .kc-pillars-wrap{grid-template-columns:1fr}
+  .kc-pillar{border-right:none;border-bottom:1px solid rgba(255,255,255,0.08)}
+  .kc-pillar:last-child{border-bottom:none}
+  .kc-loop-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .kc-loop-grid::before{display:none}
+}
+@media(max-width:560px){
+  .kc-qse section{padding:64px 6%}
+  .kc-hero{min-height:auto;padding:130px 6% 64px}
+  .kc-feat-grid,.kc-feat-grid.cols-3{grid-template-columns:1fr}
+  .kc-loop-grid{grid-template-columns:1fr;gap:18px}
+  .kc-secure-block{border-radius:20px}
+  .kc-qse .kc-btn{width:100%;justify-content:center}
+  .kc-hero-ctas,.kc-final-ctas{width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+  .kc-qse *,.kc-qse *::before,.kc-qse *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+  .kc-qse .kc-fade{opacity:1;transform:none}
+}
+</style>
+
+<div class="kc-qse">
+
+<!-- 1 · HERO -->
+<section class="kc-hero">
+  <div class="kc-hero-wrap">
+    <div class="kc-hero-content kc-fade">
+      <span class="kc-hero-eyebrow">Qualité · Sécurité · Environnement</span>
+      <h1 class="kc-hero-title">Une exigence <em>tenue</em>, à chaque intervention</h1>
+      <p class="kc-hero-sub">Chez Kayli Clinn, la qualité ne tient pas au hasard. Contrôles, sécurité du personnel et respect de l'environnement forment une même démarche : vous livrer un espace impeccable, en travaillant proprement et en confiance.</p>
+      <div class="kc-hero-ctas">
+        <a href="/devis/" class="kc-btn kc-btn-primary">
+          Demander un devis
+          <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/contact/" class="kc-btn kc-btn-secondary">Nous contacter</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · LES TROIS PILIERS -->
+<div class="kc-pillars">
+  <div class="kc-pillars-wrap">
+    <div class="kc-pillar">
+      <div class="kc-pillar-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <div>
+        <div class="kc-pillar-title">Qualité</div>
+        <div class="kc-pillar-text">Contrôles, reporting et engagement « satisfait ou repassé ».</div>
+      </div>
+    </div>
+    <div class="kc-pillar">
+      <div class="kc-pillar-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div>
+        <div class="kc-pillar-title">Sécurité</div>
+        <div class="kc-pillar-text">Personnel déclaré et formé, équipements de protection, prévention.</div>
+      </div>
+    </div>
+    <div class="kc-pillar">
+      <div class="kc-pillar-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
+      <div>
+        <div class="kc-pillar-title">Environnement</div>
+        <div class="kc-pillar-text">Produits adaptés, dosage maîtrisé, tri et déplacements optimisés.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 3 · INTRO ÉDITORIALE -->
+<section class="kc-intro">
+  <div class="kc-qse-wrap">
+    <div class="kc-intro-grid">
+      <div class="kc-intro-left kc-fade">
+        <span class="eyebrow">Notre démarche</span>
+        <h2>La qualité comme méthode, pas comme promesse</h2>
+      </div>
+      <div class="kc-intro-right kc-fade">
+        <p>Un nettoyage réussi se mesure à ce qui reste invisible : aucune trace, aucun oubli, aucune mauvaise surprise. Pour obtenir ce résultat de façon régulière, nous nous appuyons sur une <strong>méthode constante</strong> plutôt que sur la bonne volonté du jour.</p>
+        <p>Concrètement, cela veut dire des <strong>prestations cadrées</strong>, un contrôle en fin d'intervention, un interlocuteur qui connaît votre dossier et la possibilité de revenir si un point n'est pas conforme. C'est aussi travailler en sécurité pour nos équipes et avec respect pour les lieux comme pour l'environnement.</p>
+        <p>Cette page détaille nos engagements Qualité, Sécurité et Environnement. Pour une situation particulière, parlez-en avec nous : nous adaptons toujours la prestation à votre <a href="/prestations/" class="kc-link">besoin réel</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · ENGAGEMENT QUALITÉ -->
+<section class="kc-block">
+  <div class="kc-qse-wrap">
+    <div class="kc-block-head kc-fade">
+      <span class="eyebrow">Qualité</span>
+      <h2 class="section-title">Un résultat <em>contrôlé</em>, pas seulement espéré</h2>
+      <p class="section-desc">Nous ne livrons pas une intervention sans l'avoir vérifiée. Chaque prestation suit le même fil : préparation, exécution soignée, contrôle final et suivi de votre satisfaction.</p>
+    </div>
+    <div class="kc-feat-grid">
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Contrôle en fin d'intervention</h3>
+        <p>Une vérification des points clés est réalisée avant de quitter les lieux, pour que rien ne soit laissé au hasard.</p>
+      </div>
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
+        <h3>Reporting photo</h3>
+        <p>Sur demande et selon la prestation, des photos après passage vous permettent de constater le travail à distance.</p>
+      </div>
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9M3 3v6h6"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>Satisfait ou repassé</h3>
+        <p>Un point qui n'est pas conforme nous est signalé, et nous revenons le corriger dans des délais raisonnables.</p>
+      </div>
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11l-3 3-2-2"/></svg></div>
+        <h3>Interlocuteur unique</h3>
+        <p>Un seul contact qui connaît votre dossier : pas de standard impersonnel, des échanges directs et un suivi clair.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · SÉCURITÉ — panneau navy avec RC Pro -->
+<section class="kc-secure">
+  <div class="kc-qse-wrap kc-fade">
+    <div class="kc-secure-block">
+      <div class="kc-secure-grid">
+        <div>
+          <span class="eyebrow">Sécurité</span>
+          <h2>Travailler <em>proprement</em> et en règle</h2>
+          <p class="kc-secure-text">La sécurité protège nos équipes autant que vos espaces. Nous intervenons avec du <strong>personnel déclaré</strong>, formé aux gestes du métier et aux produits utilisés, et équipé pour chaque type de chantier.</p>
+          <p class="kc-secure-text">Avant une intervention sensible, nous évaluons les risques (accès, hauteurs, produits, sols glissants) et adaptons nos moyens. C'est cette <strong>prévention</strong> qui évite les incidents et garantit un travail serein chez vous.</p>
+        </div>
+        <div class="kc-secure-points">
+          <div class="kc-secure-point">
+            <div class="kc-secure-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+            <div class="kc-secure-point-content"><strong>Personnel déclaré &amp; formé</strong><span>Des intervenants en règle, formés aux gestes métier et aux produits employés</span></div>
+          </div>
+          <div class="kc-secure-point">
+            <div class="kc-secure-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="kc-secure-point-content"><strong>Équipements de protection</strong><span>Gants, chaussures adaptées et matériel approprié selon le type de chantier</span></div>
+          </div>
+          <div class="kc-secure-point">
+            <div class="kc-secure-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+            <div class="kc-secure-point-content"><strong>Prévention des risques</strong><span>Repérage des dangers avant l'intervention et adaptation des moyens</span></div>
+          </div>
+          <!-- 👉 À COMPLÉTER : assureur & montant RC Pro — remplir une fois la garantie connue.
+               Tant que ce n'est pas confirmé, on reste sur une formulation neutre, sans nom d'assureur ni montant. -->
+          <div class="kc-secure-point">
+            <div class="kc-secure-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
+            <div class="kc-secure-point-content"><strong>Responsabilité civile professionnelle</strong><span>Notre activité est couverte par une assurance responsabilité civile professionnelle <!-- 👉 À COMPLÉTER : préciser « auprès de [assureur] » et « à hauteur de [montant] » une fois validé --></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANDEAU -->
+<section class="kc-banner">
+  <div class="kc-banner-content kc-fade">
+    <span class="eyebrow">Une exigence partagée</span>
+    <h2>La même rigueur,<br>du <em>premier geste</em> au contrôle final</h2>
+    <p>Quel que soit le chantier, nos équipes appliquent les mêmes principes : préparation soignée, sécurité, respect des lieux et vérification du résultat. C'est cette constance qui fait la différence d'une intervention à l'autre.</p>
+  </div>
+</section>
+
+<!-- 6 · ENVIRONNEMENT -->
+<section class="kc-block alt">
+  <div class="kc-qse-wrap">
+    <div class="kc-block-head kc-fade">
+      <span class="eyebrow">Environnement</span>
+      <h2 class="section-title">Nettoyer efficacement, en <em>limitant l'empreinte</em></h2>
+      <p class="section-desc">Un nettoyage de qualité n'oblige pas à gaspiller. Nous cherchons le meilleur résultat avec des produits adaptés, des dosages maîtrisés et une organisation qui réduit déchets et déplacements.</p>
+    </div>
+    <div class="kc-feat-grid">
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
+        <h3>Produits adaptés</h3>
+        <p>Nous privilégions des produits adaptés à chaque surface et, lorsque c'est pertinent, des références plus respectueuses de l'environnement.</p>
+      </div>
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 2v6L3 14v8h18v-8l-6-6V2z"/><line x1="7" y1="2" x2="17" y2="2"/></svg></div>
+        <h3>Dosage maîtrisé</h3>
+        <p>Le bon produit, à la bonne dose : un dosage juste nettoie aussi bien tout en limitant la consommation et les rejets.</p>
+      </div>
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></div>
+        <h3>Tri &amp; limitation des déchets</h3>
+        <p>Sur site, nous respectons le tri en place et cherchons à réduire les déchets générés par chaque intervention.</p>
+      </div>
+      <div class="kc-feat kc-fade">
+        <div class="kc-feat-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+        <h3>Déplacements optimisés</h3>
+        <p>Une organisation des tournées en Île-de-France pensée pour limiter les trajets inutiles et leur impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · AMÉLIORATION CONTINUE -->
+<section class="kc-loop">
+  <div class="kc-qse-wrap">
+    <div class="kc-block-head kc-fade">
+      <span class="eyebrow">Amélioration continue</span>
+      <h2 class="section-title">Écouter, mesurer, <em>progresser</em></h2>
+      <p class="section-desc">Nous considérons chaque retour comme une occasion de faire mieux. Notre démarche qualité n'est pas figée : elle se nourrit du terrain et de vos remarques.</p>
+    </div>
+    <div class="kc-loop-grid">
+      <div class="kc-loop-step kc-fade">
+        <div class="kc-loop-num">1</div>
+        <h3>Écouter</h3>
+        <p>Vos retours après prestation et les observations de nos équipes sur le terrain.</p>
+      </div>
+      <div class="kc-loop-step kc-fade">
+        <div class="kc-loop-num">2</div>
+        <h3>Analyser</h3>
+        <p>Nous identifions ce qui peut être amélioré, dans la méthode comme dans l'organisation.</p>
+      </div>
+      <div class="kc-loop-step kc-fade">
+        <div class="kc-loop-num">3</div>
+        <h3>Ajuster</h3>
+        <p>Nous adaptons nos façons de faire, nos produits et la préparation des interventions.</p>
+      </div>
+      <div class="kc-loop-step kc-fade">
+        <div class="kc-loop-num">4</div>
+        <h3>Vérifier</h3>
+        <p>Nous nous assurons que les ajustements tiennent dans la durée, intervention après intervention.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · CERTIFICATIONS / LABELS — PLACEHOLDERS UNIQUEMENT -->
+<!-- 👉 À COMPLÉTER : certifications / labels / agréments réellement détenus.
+     N'AFFICHER AUCUN logo ni norme tant qu'une certification n'est pas obtenue et vérifiée.
+     Ne JAMAIS écrire ISO 9001/14001, Qualibat, Ecolabel… sans justificatif.
+     Tant que rien n'est confirmé, ce bloc reste en « démarche / à venir ». -->
+<section class="kc-certs">
+  <div class="kc-qse-wrap">
+    <div class="kc-block-head kc-fade">
+      <span class="eyebrow">Certifications &amp; labels</span>
+      <h2 class="section-title">Une démarche <em>qui se construit</em></h2>
+      <p class="section-desc">Nous bâtissons notre démarche qualité dans la durée. Les reconnaissances officielles seront publiées ici dès qu'elles seront obtenues — sans rien afficher avant.</p>
+    </div>
+    <div class="kc-certs-grid">
+      <div class="kc-cert kc-fade">
+        <div class="kc-cert-slot"><svg class="kc-icon" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg></div>
+        <h3>Certification qualité</h3>
+        <p>Emplacement réservé à une éventuelle certification qualité, affichée uniquement une fois obtenue.</p>
+        <span class="kc-cert-tag">À venir</span>
+      </div>
+      <div class="kc-cert kc-fade">
+        <div class="kc-cert-slot"><svg class="kc-icon" width="26" height="26" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/></svg></div>
+        <h3>Label environnemental</h3>
+        <p>Emplacement réservé à un éventuel label environnemental ou produit, publié sur justificatif.</p>
+        <span class="kc-cert-tag">À venir</span>
+      </div>
+      <div class="kc-cert kc-fade">
+        <div class="kc-cert-slot"><svg class="kc-icon" width="26" height="26" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+        <h3>Agrément / qualification</h3>
+        <p>Emplacement réservé à un agrément ou une qualification professionnelle, le cas échéant.</p>
+        <span class="kc-cert-tag">À venir</span>
+      </div>
+    </div>
+    <div class="kc-note kc-fade">
+      <strong>Notre engagement&nbsp;:</strong> nous n'affichons que des éléments vérifiables. Plutôt que des promesses, vous trouverez ici les reconnaissances réellement obtenues, à mesure de l'avancement de notre démarche.
+    </div>
+  </div>
+</section>
+
+<!-- 9 · CTA FINAL -->
+<section class="kc-final-cta">
+  <div class="kc-final-cta-wrap kc-fade">
+    <span class="kc-final-cta-tag">Parlons de votre projet</span>
+    <h2>Une exigence que vous pouvez <em>vérifier</em></h2>
+    <p>Décrivez-nous votre besoin&nbsp;: nous vous proposons une prestation cadrée, réalisée avec sérieux et contrôlée. Devis gratuit, échange direct, sans engagement.</p>
+    <div class="kc-final-ctas">
+      <a href="/devis/" class="kc-btn kc-btn-primary">
+        Demander un devis gratuit
+        <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/contact/" class="kc-btn kc-btn-secondary">Nous contacter</a>
+      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">
+        <svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        06 70 01 20 61
+      </a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<!-- ANIMATIONS .kc-fade -->
+<script>
+(function(){
+  var els = document.querySelectorAll('.kc-qse .kc-fade');
+  if(!els.length) return;
+  if(!('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        en.target.classList.add('visible');
+        io.unobserve(en.target);
+      }
+    });
+  },{threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){ io.observe(el); });
+})();
+</script>
+
+<!-- JSON-LD — champs connus uniquement (cf. accueil.html). Aucune certification/note inventée. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CleaningService",
+  "@id": "https://kayliclinn.fr/#organisation",
+  "name": "Kayli Clinn",
+  "url": "https://kayliclinn.fr/",
+  "telephone": "+33670012061",
+  "email": "contact@kayliclinn.fr",
+  "description": "Démarche Qualité, Sécurité et Environnement de Kayli Clinn, entreprise de nettoyage professionnel en Île-de-France : contrôles et reporting, personnel déclaré et formé, produits adaptés et limitation des déchets.",
+  "knowsLanguage": "fr",
+  "areaServed": [
+    {"@type": "AdministrativeArea", "name": "Paris (75)"},
+    {"@type": "AdministrativeArea", "name": "Seine-et-Marne (77)"},
+    {"@type": "AdministrativeArea", "name": "Yvelines (78)"},
+    {"@type": "AdministrativeArea", "name": "Essonne (91)"},
+    {"@type": "AdministrativeArea", "name": "Hauts-de-Seine (92)"},
+    {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis (93)"},
+    {"@type": "AdministrativeArea", "name": "Val-de-Marne (94)"},
+    {"@type": "AdministrativeArea", "name": "Val-d'Oise (95)"}
+  ]
+}
+</script>

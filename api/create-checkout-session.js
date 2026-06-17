@@ -1,23 +1,25 @@
 import Stripe from 'stripe';
+import { computeForfait, ACOMPTE_PCT } from '../lib/pricing.js';
+import { setCors, validateContact, validateDateSlot, rateLimit } from '../lib/helpers.js';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
-// Seuls ces sites ont le droit d'appeler cette API (sécurité)
-const ALLOWED_ORIGINS = [
-  'https://kayliclinn.fr',
-  'https://www.kayliclinn.fr',
-  'http://localhost:3000', // pour d'éventuels tests en local
-];
-
-function setCors(req, res) {
-  const origin = req.headers.origin;
-  if (ALLOWED_ORIGINS.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-}
-
+// ════════════════════════════════════════════════════════════
+// POST /api/create-checkout-session
+// Crée une session de paiement Stripe pour un forfait logement.
+//
+// SÉCURITÉ : le navigateur n'envoie JAMAIS de montant. Il décrit la
+// réservation (forfait, taille, options, majorations) et le serveur
+// recalcule le prix à partir de la grille officielle (lib/pricing.js).
+//
+// Corps attendu :
+// {
+//   booking: { forfait, taille, options: [], majorations: [] },
+//   mode: "acompte" | "total",
+//   contact: { firstname, lastname, email, phone, address, message? },
+//   date: "YYYY-MM-DD", slot: "HH:MM"
+// }
+// ════════════════════════════════════════════════════════════
 export default async function handler(req, res) {
   setCors(req, res);
 
@@ -28,30 +30,38 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  if (!rateLimit(req, { max: 8, windowMs: 60_000 })) {
+    return res.status(429).json({ error: 'Trop de tentatives, réessayez dans une minute.' });
+  }
+
   try {
-    const {
-      amount,    // montant à payer en euros (ex: 285)
-      mode,      // "acompte" ou "total"
-      contact = {},
-      service = {},
-      date,
-      slot,
-      totalTTC,  // prix total de la prestation (pour calculer le solde)
-    } = req.body || {};
+    const { booking = {}, mode, contact = {}, date, slot } = req.body || {};
 
     // ─── Validations ───
-    if (!amount || Number(amount) < 1) {
-      return res.status(400).json({ error: 'Montant invalide' });
+    const contactErrors = validateContact(contact);
+    if (contactErrors.length) {
+      return res.status(400).json({ error: contactErrors.join(' · ') });
     }
-    if (!contact.email || !contact.firstname) {
-      return res.status(400).json({ error: 'Coordonnées incomplètes' });
+    const dateError = validateDateSlot(date, slot);
+    if (dateError) {
+      return res.status(400).json({ error: dateError });
     }
 
-    const amountCents = Math.round(Number(amount) * 100);
-    const isAcompte = mode === 'acompte';
-    const balanceDue = totalTTC
-      ? Math.max(0, Number(totalTTC) - Number(amount))
-      : 0;
+    // ─── Prix : recalculé côté serveur, jamais reçu du client ───
+    let devis;
+    try {
+      devis = computeForfait({
+        forfait: booking.forfait,
+        taille: booking.taille,
+        options: Array.isArray(booking.options) ? booking.options : [],
+        majorations: Array.isArray(booking.majorations) ? booking.majorations : [],
+      });
+    } catch (e) {
+      return res.status(400).json({ error: `Réservation invalide : ${e.message}` });
+    }
+
+    const isAcompte = mode !== 'total'; // acompte 30 % par défaut
+    const amountCents = isAcompte ? devis.acompteCents : devis.totalCents;
     const siteUrl = process.env.SITE_URL || 'https://kayliclinn.fr';
 
     const session = await stripe.checkout.sessions.create({
@@ -66,43 +76,50 @@ export default async function handler(req, res) {
             unit_amount: amountCents,
             product_data: {
               name: isAcompte
-                ? 'Acompte 30% — Prestation de ménage Kayli Clinn'
-                : 'Prestation de ménage Kayli Clinn',
-              description:
-                [
-                  service.type ? `Type : ${service.type}` : null,
-                  service.surface ? `Surface : ${service.surface} m²` : null,
-                  date ? `Date : ${date}${slot ? ' à ' + slot : ''}` : null,
-                ]
-                  .filter(Boolean)
-                  .join(' · ') || undefined,
+                ? `Acompte ${ACOMPTE_PCT} % — ${devis.label}`
+                : devis.label,
+              description: [
+                devis.taille,
+                date ? `Le ${date}${slot ? ' à ' + slot : ''}` : null,
+              ].filter(Boolean).join(' · '),
             },
           },
         },
       ],
       // Les metadata sont transmises au webhook après le paiement
       metadata: {
-        mode: mode || 'total',
-        amount: String(amount),
-        total_ttc: String(totalTTC || amount),
-        balance_due: String(balanceDue),
-        client_firstname: contact.firstname || '',
-        client_lastname: contact.lastname || '',
-        client_email: contact.email || '',
-        client_phone: contact.phone || '',
-        client_address: [contact.address, contact.zip, contact.city]
-          .filter(Boolean)
-          .join(', '),
-        service_type: service.type || '',
-        service_surface: String(service.surface || ''),
-        intervention_date: date || '',
-        intervention_slot: slot || '',
+        mode: isAcompte ? 'acompte' : 'total',
+        amount: String(amountCents / 100),
+        total_ttc: String(devis.total),
+        balance_due: String(isAcompte ? devis.soldeCents / 100 : 0),
+        forfait: String(booking.forfait),
+        client_firstname: String(contact.firstname || '').slice(0, 40),
+        client_lastname: String(contact.lastname || '').slice(0, 40),
+        client_email: String(contact.email || '').slice(0, 80),
+        client_phone: String(contact.phone || '').slice(0, 20),
+        client_address: String(contact.address || '').slice(0, 200),
+        service_type: devis.label,
+        service_taille: devis.taille,
+        service_options: devis.lignes.slice(1).map((l) => l.label).join(' · ').slice(0, 480) || 'Aucune',
+        intervention_date: String(date),
+        intervention_slot: String(slot),
+        client_message: String(contact.message || '').slice(0, 480),
       },
-      success_url: `${siteUrl}/confirmation?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${siteUrl}/reservation?paiement=annule`,
+      success_url: `${siteUrl}/reservation/?paiement=succes&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${siteUrl}/reservation/?paiement=annule`,
     });
 
-    return res.status(200).json({ url: session.url });
+    return res.status(200).json({
+      url: session.url,
+      // Renvoyé à titre informatif : le front affiche ce que le serveur a calculé
+      devis: {
+        total: devis.total,
+        acompte: devis.acompte,
+        solde: devis.solde,
+        montantRegle: amountCents / 100,
+        lignes: devis.lignes,
+      },
+    });
   } catch (err) {
     console.error('Erreur create-checkout-session:', err);
     return res
