@@ -518,9 +518,7 @@
         var to=parseInt(el.getAttribute('data-to'),10);
         var suf=el.getAttribute('data-suf')||'';
         if(!Number.isFinite(to)) return;
-        var cur=0, step=Math.max(1,Math.round(to/32));
-        el.textContent='0'+suf;
-        var t=setInterval(function(){ cur+=step; if(cur>=to){cur=to; clearInterval(t);} el.textContent=cur+suf; },22);
+        el.textContent=to+suf;
       });
     }
     function revealAll(){ items.forEach(function(it){it.classList.add('ka-in');}); startCount(); }
@@ -674,6 +672,9 @@
 .kh4-step.kh4-in{opacity:1;transform:none;}
 .kh4-card{
   position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   height:100%;
   min-height:245px;
   padding:88px 20px 24px;
@@ -732,7 +733,7 @@
 .kh4-step.kh4-pulse .kh4-dot svg{animation:kh4pop .62s cubic-bezier(.34,1.56,.64,1);}
 @keyframes kh4pop{0%{transform:scale(.4) rotate(-10deg);}62%{transform:scale(1.16) rotate(4deg);}100%{transform:scale(1) rotate(0);}}
 .kh4-t{position:relative;color:var(--ink);font-size:17.5px;font-weight:800;line-height:1.25;margin:0 0 10px;letter-spacing:-.2px;}
-.kh4-p{position:relative;color:var(--muted);font-size:13.8px;line-height:1.65;margin:0 auto;max-width:245px;}
+.kh4-p{position:relative;color:var(--muted);font-size:13.8px;line-height:1.65;margin:0 auto;max-width:245px;flex:1;}
 .kh4-mini{
   position:relative;
   display:inline-flex;
@@ -2212,6 +2213,13 @@
 </section>
 
 <!-- ════════════════ POURQUOI NOUS CHOISIR ════════════════ -->
+<style id="kcw2-figs-style">
+.kcw2-figs{max-width:1000px;margin:0 auto 38px;display:flex;flex-wrap:wrap;justify-content:center;gap:20px 48px;position:relative;z-index:2}
+.kcw2-fig{text-align:center;min-width:120px}
+.kcw2-fig-num{display:block;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(34px,4vw,46px);color:#fff;line-height:1;letter-spacing:-.5px}
+.kcw2-fig-lab{display:block;margin-top:8px;color:rgba(255,255,255,.72);font-size:14px;font-weight:500}
+</style>
+
 <section class="kcw2" aria-labelledby="kcw2-title">
   <div class="kcw2-head">
     <div class="kcw2-eye">Pourquoi nous choisir</div>
@@ -2219,6 +2227,13 @@
     <p class="kcw2-sub">
       Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée :<br>vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
     </p>
+  </div>
+
+  <div class="kcw2-figs" aria-label="Kayli Clinn en chiffres">
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="75" data-suf="+">0+</span><span class="kcw2-fig-lab">Chantiers livrés</span></div>
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="8" data-suf="">0</span><span class="kcw2-fig-lab">Départements couverts</span></div>
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="24" data-suf="H">0H</span><span class="kcw2-fig-lab">Délai de devis</span></div>
+    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="100" data-suf="%">0%</span><span class="kcw2-fig-lab">Satisfait ou repassé</span></div>
   </div>
 
   <div class="kcw2-trustbar" aria-label="Garanties Kayli Clinn">
@@ -2594,6 +2609,28 @@
 .kczn2-map.reveal.show{transform:none}
 @media(max-width:900px){.kczn2-wrap{grid-template-columns:1fr;gap:42px}.kczn2-map{order:-1;max-width:440px;margin:0 auto}}
 </style>
+<script>
+(function(){
+  var sec=document.querySelector('.kcw2'); if(!sec) return;
+  var figs=sec.querySelector('.kcw2-figs'); if(!figs) return;
+  var counted=false;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function startCount(){
+    if(counted)return; counted=true;
+    figs.querySelectorAll('.kcw2-fig-num').forEach(function(el){
+      var to=parseInt(el.getAttribute('data-to'),10)||0, suffix=el.getAttribute('data-suf')||'';
+      if(reduce){ el.textContent=to+suffix; return; }
+      var begin=null, duration=950;
+      function tick(ts){ if(!begin)begin=ts; var pr=Math.min((ts-begin)/duration,1); var eased=1-Math.pow(1-pr,3); el.textContent=Math.round(to*eased)+suffix; if(pr<1)requestAnimationFrame(tick); }
+      requestAnimationFrame(tick);
+    });
+  }
+  if(!('IntersectionObserver' in window)){ startCount(); return; }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){startCount();io.unobserve(e.target);}});},{threshold:.25});
+  io.observe(figs);
+})();
+</script>
+
 <section class="kczn2">
   <div class="kczn2-wrap">
     <div class="kczn2-left">
