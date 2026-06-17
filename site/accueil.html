@@ -1240,225 +1240,6 @@
 })();
 </script>
 <!-- ════════════════════════════════════════════════════════
-   KAYLI CLINN — BLOC 2 : Chiffres / Engagement
-   Bloc autonome · à coller dans un bloc « HTML personnalisé »
-   Fond bleu nuit (sans halo vert) · accents turquoise/menthe.
-   ════════════════════════════════════════════════════════ -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-
-<style id="kn-style">
-.kn-section{
-  --ink:#0D2340;
-  --teal:#0FA7A5;
-  --teal-ink:#0B7A78;
-  --mint:#19E3DF;
-  position:relative;
-  isolation:isolate;
-  overflow:hidden;
-  background:linear-gradient(140deg,#16163F 0%,#0D1330 55%,#0B1130 100%);
-  padding:76px 24px 72px;
-  font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif;
-}
-.kn-section::before{
-  content:"";
-  position:absolute;
-  inset:18px;
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:32px;
-  pointer-events:none;
-  z-index:-1;
-}
-.kn-wrap{position:relative;max-width:1180px;margin:0 auto;}
-.kn-head{text-align:center;max-width:790px;margin:0 auto 46px;}
-.kn-eyebrow{display:inline-block;color:#19E3DF;font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:16px;}
-.kn-h2{font-family:'Fraunces',Georgia,serif;color:#fff;font-size:clamp(28px,3.4vw,46px);font-weight:600;line-height:1.12;margin:0 0 14px;letter-spacing:-.6px;}
-.kn-h2 span{color:#19E3DF;}
-.kn-subtitle{color:rgba(255,255,255,.68);font-size:16px;line-height:1.7;margin:0 auto;max-width:640px;}
-.kn-panel{
-  position:relative;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:1px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:28px;
-  background:rgba(255,255,255,.08);
-  box-shadow:0 30px 80px -42px rgba(0,0,0,.72);
-}
-.kn-stat{
-  position:relative;
-  min-height:232px;
-  padding:34px 26px 30px;
-  text-align:center;
-  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));
-  opacity:0;
-  transform:translateY(26px);
-  transition:opacity .55s ease,transform .62s cubic-bezier(.22,1,.36,1),background .35s ease;
-  transition-delay:calc(var(--ni)*.06s);
-}
-.kn-stat::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:radial-gradient(260px 140px at 50% 0%,rgba(255,255,255,.06),transparent 66%);
-  opacity:0;
-  transition:opacity .35s ease;
-}
-.kn-stat.kn-in{opacity:1;transform:none;}
-.kn-stat:hover{background:linear-gradient(180deg,rgba(255,255,255,.11),rgba(255,255,255,.045));}
-.kn-stat:hover::before{opacity:1;}
-.kn-ic{
-  position:relative;
-  width:58px;
-  height:58px;
-  margin:0 auto 20px;
-  border-radius:18px;
-  background:rgba(15,167,165,.15);
-  border:1px solid rgba(25,227,223,.16);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#19E3DF;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 16px 34px -24px rgba(25,227,223,.75);
-  transition:background .35s ease,transform .35s ease,color .35s ease,border-color .35s ease;
-}
-.kn-ic svg{width:27px;height:27px;}
-.kn-stat:hover .kn-ic{background:#0FA7A5;color:#fff;border-color:rgba(25,227,223,.36);transform:translateY(-4px);}
-.kn-num{position:relative;display:block;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(42px,4.6vw,58px);color:#fff;line-height:.96;letter-spacing:-0.5px;transition:color .35s ease;}
-.kn-stat:hover .kn-num{color:#19E3DF;}
-.kn-lab{position:relative;display:block;color:#fff;font-weight:750;font-size:15.5px;margin-top:14px;}
-.kn-sub{position:relative;display:block;color:rgba(255,255,255,.58);font-size:13px;line-height:1.5;margin-top:5px;}
-.kn-footer{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  margin-top:28px;
-  color:rgba(255,255,255,.72);
-  font-size:13.5px;
-  text-align:center;
-}
-.kn-footer svg{width:17px;height:17px;color:#19E3DF;flex:0 0 auto;}
-.kn-rev{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1);}
-.kn-rev.kn-in{opacity:1;transform:none;}
-.kn-head .kn-rev:nth-child(2){transition-delay:.08s;}
-.kn-head .kn-rev:nth-child(3){transition-delay:.16s;}
-
-@media(max-width:940px){
-  .kn-section{padding:66px 20px;}
-  .kn-panel{grid-template-columns:repeat(2,1fr);}
-}
-@media(max-width:560px){
-  .kn-section{padding:58px 18px;}
-  .kn-section::before{inset:10px;border-radius:24px;}
-  .kn-head{margin-bottom:34px;}
-  .kn-panel{grid-template-columns:1fr;border-radius:24px;}
-  .kn-stat{min-height:0;padding:30px 22px;}
-  .kn-footer{align-items:flex-start;text-align:left;}
-}
-@media (prefers-reduced-motion: reduce){
-  .kn-section *{animation:none!important;transition:none!important;}
-  .kn-rev,.kn-stat{opacity:1!important;transform:none!important;}
-}
-</style>
-
-<section class="kn-section" aria-labelledby="kn-title">
-  <div class="kn-wrap">
-    <div class="kn-head">
-      <span class="kn-eyebrow kn-rev">Notre engagement en chiffres</span>
-      <h2 class="kn-h2 kn-rev" id="kn-title">Une équipe locale engagée pour <span>votre tranquillité</span></h2>
-      <p class="kn-subtitle kn-rev">Des indicateurs simples, une promesse claire : réactivité, couverture locale et qualité vérifiée à chaque intervention.</p>
-    </div>
-
-    <div class="kn-panel">
-      <article class="kn-stat" style="--ni:0">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></span>
-        <span class="kn-num" data-to="75" data-suf="+">0+</span>
-        <span class="kn-lab">Chantiers livrés</span>
-        <span class="kn-sub">particuliers et professionnels en Île-de-France</span>
-      </article>
-
-      <article class="kn-stat" style="--ni:1">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/><path d="M12 9v4M10 11h4"/></svg></span>
-        <span class="kn-num" data-to="8" data-suf="">0</span>
-        <span class="kn-lab">Départements couverts</span>
-        <span class="kn-sub">une présence locale sur l’ensemble de l’IDF</span>
-      </article>
-
-      <article class="kn-stat" style="--ni:2">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l3 2"/></svg></span>
-        <span class="kn-num" data-to="24" data-suf="H">0H</span>
-        <span class="kn-lab">Délai de devis</span>
-        <span class="kn-sub">réponse rapide pour organiser votre prestation</span>
-      </article>
-
-      <article class="kn-stat" style="--ni:3">
-        <span class="kn-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
-        <span class="kn-num" data-to="100" data-suf="%">0%</span>
-        <span class="kn-lab">Satisfait ou repassé</span>
-        <span class="kn-sub">une garantie qualité qui vous rassure vraiment</span>
-      </article>
-    </div>
-
-    <p class="kn-footer kn-rev"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Chaque intervention est préparée, suivie et validée pour garantir un résultat propre, fiable et durable.</p>
-  </div>
-</section>
-
-<script>
-(function(){
-  function initKn(){
-    var sec=document.querySelector(".kn-section");
-    if(!sec)return setTimeout(initKn,150);
-
-    var counted=false;
-    var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    function startCount(){
-      if(counted)return;
-      counted=true;
-      sec.querySelectorAll(".kn-num").forEach(function(el){
-        var to=parseInt(el.getAttribute("data-to"),10)||0;
-        var suffix=el.getAttribute("data-suf")||"";
-        if(reduce){ el.textContent=to+suffix; return; }
-        var start=0, duration=950, begin=null;
-        function tick(timestamp){
-          if(!begin)begin=timestamp;
-          var progress=Math.min((timestamp-begin)/duration,1);
-          var eased=1-Math.pow(1-progress,3);
-          el.textContent=Math.round(start+(to-start)*eased)+suffix;
-          if(progress<1)requestAnimationFrame(tick);
-        }
-        requestAnimationFrame(tick);
-      });
-    }
-
-    var observer=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add("kn-in");
-          if(entry.target.classList.contains("kn-stat"))startCount();
-          observer.unobserve(entry.target);
-        }
-      });
-    },{threshold:.16});
-
-    sec.querySelectorAll(".kn-rev,.kn-stat").forEach(function(el){observer.observe(el);});
-
-    setTimeout(function(){
-      var rect=sec.getBoundingClientRect();
-      if(rect.top<window.innerHeight){
-        sec.querySelectorAll(".kn-rev,.kn-stat").forEach(function(el){el.classList.add("kn-in");});
-        startCount();
-      }
-    },500);
-  }
-  initKn();
-})();
-</script>
-<!-- ════════════════════════════════════════════════════════
    KAYLI CLINN — RÉALISATIONS (AVANT/APRÈS) + POURQUOI NOUS CHOISIR
    ════════════════════════════════════════════════════════
 
@@ -2852,9 +2633,9 @@
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
       <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb : quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
       <div class="kczn2-stats reveal">
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="8">0</div><div class="kczn2-lab">Départements</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">0</div><div class="kczn2-lab">Communes accessibles</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">0</div><div class="kczn2-lab">Délai max</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="8">8</div><div class="kczn2-lab">Départements</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">1 281</div><div class="kczn2-lab">Communes accessibles</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">48 h</div><div class="kczn2-lab">Délai max</div></div>
       </div>
       <div class="kczn2-cta reveal">
         <!-- 👉 BOUTON DEVIS -->
@@ -2890,7 +2671,7 @@
   function run(){if(done)return;done=true;
     document.querySelectorAll('.kczn2 .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('show');},i*110);});
     setTimeout(function(){document.querySelectorAll('.kczn2-pin').forEach(function(p,i){setTimeout(function(){p.classList.add('on');},i*160);});},600);
-    setTimeout(function(){document.querySelectorAll('.kczn2-num').forEach(animCount);},650);
+    /* compteurs zone statiques (aeration) */
   }
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)run();});},{threshold:.2});
   io.observe(sec);
@@ -3400,7 +3181,6 @@
       padding-top: 104px !important;
       padding-bottom: 104px !important;
     }
-    .kn-section{ padding-top: 88px !important; padding-bottom: 84px !important; }
   }
   @media (max-width: 767px){
     .ka-section, .kh4-section, .kcp-section, .kr-section,
