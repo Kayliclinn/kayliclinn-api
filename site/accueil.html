@@ -318,7 +318,7 @@
   .kc-home .ka-stats{display:grid; grid-template-columns:1fr}
   .kc-home .ka-img{aspect-ratio:4/3; border-radius:20px}
   .kc-home .ka-media::after{border-radius:20px}
-  .kc-home .ka-badge-float{left:14px; bottom:14px; padding:15px 20px}
+  .kc-home .ka-badge-float{left:18px; bottom:18px; padding:13px 18px}
   .kc-home .ka-actions{align-items:stretch}
   .kc-home .ka-link{align-self:center}
 }
@@ -354,7 +354,7 @@
       </h1>
 
       <p class="kh-para">
-        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés :<br>Kayli Clinn intervient rapidement avec une équipe fiable, discrète et un résultat soigné.<br>Demandez votre devis en quelques clics.
+        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés.<br>Kayli Clinn intervient rapidement en Île-de-France — demandez votre devis en quelques clics.
       </p>
 
       <div class="kh-cta" aria-label="Actions principales">
@@ -396,21 +396,6 @@
           <li>Une équipe discrète, organisée et attentive aux détails.</li>
           <li>Un résultat contrôlé, avec reprise possible si nécessaire.</li>
         </ul>
-
-        <div class="ka-stats ka-rev" aria-label="Chiffres clés de Kayli Clinn">
-          <div class="ka-stat">
-            <span class="ka-num" data-to="75" data-suf="+">0+</span>
-            <span class="ka-lab">Interventions réalisées</span>
-          </div>
-          <div class="ka-stat">
-            <span class="ka-num" data-to="8" data-suf="">0</span>
-            <span class="ka-lab">Départements couverts</span>
-          </div>
-          <div class="ka-stat">
-            <span class="ka-num" data-to="100" data-suf="%">0%</span>
-            <span class="ka-lab">Satisfaction vérifiée</span>
-          </div>
-        </div>
 
         <div class="ka-actions ka-rev">
           <a class="ka-btn" href="/devis/">
@@ -1790,6 +1775,8 @@
 
   .kcw2-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
     flex: 0 0 430px;
     min-height: 300px;
     padding: 36px 34px 34px;
@@ -1885,7 +1872,9 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin-top: 24px;
+    margin-top: auto;
+    padding-top: 24px;
+    align-self: flex-start;
     color: #19E3DF;
     font-size: 12px;
     font-weight: 850;
@@ -2170,7 +2159,7 @@
 .kcw2-fig:first-child{border-left:none}
 .kcw2-fig-num{display:block;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(32px,3.8vw,44px);color:#fff;line-height:1;letter-spacing:-.5px}
 .kcw2-fig-lab{display:block;margin-top:8px;color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500}
-@media(max-width:640px){.kcw2-figs{max-width:430px;padding:18px 12px}.kcw2-fig{flex-basis:42%;border-left:none;padding:14px 10px}}
+@media(max-width:640px){.kcw2-figs{width:calc(100% - 32px);max-width:430px;padding:18px 12px}.kcw2-fig{flex-basis:42%;border-left:none;padding:14px 10px}.kcw2-trustbar{gap:8px;padding:0 16px}.kcw2-pill{padding:8px 12px;font-size:12px}}
 </style>
 
 <section class="kcw2" aria-labelledby="kcw2-title">
@@ -2178,7 +2167,7 @@
     <div class="kcw2-eye">Pourquoi nous choisir</div>
     <h2 class="kcw2-title" id="kcw2-title">Une entreprise de nettoyage pensée pour <em>votre tranquillité</em></h2>
     <p class="kcw2-sub">
-      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée :<br>vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
+      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée.<br>Vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
     </p>
   </div>
 
@@ -2662,13 +2651,13 @@
 .kcav2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 16px}
 .kcav2-sub{font-size:17px;color:#5a647c;line-height:1.65;margin:0}
 .kcav2-grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:2}
-.kcav2-card{background:#fff;border:1px solid #eceef3;border-radius:24px;padding:34px 32px;position:relative;box-shadow:0 24px 50px -34px rgba(22,22,63,.22);transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s}
+.kcav2-card{background:#fff;border:1px solid #eceef3;border-radius:24px;padding:34px 32px;position:relative;display:flex;flex-direction:column;box-shadow:0 24px 50px -34px rgba(22,22,63,.22);transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s}
 /* MODIF : ombre verte au survol neutralisée (→ navy) */
 .kcav2-card:hover{transform:translateY(-8px);box-shadow:0 32px 60px -28px rgba(22,22,63,.30)}
 .kcav2-quote{position:absolute;top:22px;right:30px;font-size:64px;line-height:1;color:rgba(15,167,165,.13);font-family:Georgia,serif;font-weight:700}
 .kcav2-stars{display:flex;gap:3px;margin-bottom:18px}
 .kcav2-stars svg{width:19px;height:19px;fill:#F5B638}
-.kcav2-txt{font-size:15.5px;line-height:1.7;color:#3c4360;margin:0 0 26px;position:relative;z-index:1}
+.kcav2-txt{font-size:15.5px;line-height:1.7;color:#3c4360;margin:0 0 26px;position:relative;z-index:1;flex:1}
 .kcav2-foot{display:flex;align-items:center;gap:14px;border-top:1px solid #f0f2f6;padding-top:20px}
 .kcav2-av{width:50px;height:50px;border-radius:50%;background:linear-gradient(150deg,#0FA7A5,#19E3DF);color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 18px -8px rgba(15,167,165,.6)}
 .kcav2-name{font-size:16px;font-weight:700;color:#16163F;margin:0}
