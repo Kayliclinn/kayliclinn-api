@@ -1491,7 +1491,11 @@ function kc_stripe_verify_sig($payload, $sig_header, $secret) {
         if ($kv[0] === 'v1') $v1 = $kv[1];
     }
     if (!$t || !$v1) return false;
-    return hash_equals(hash_hmac('sha256', $t . '.' . $payload, $secret), $v1);
+    if (!hash_equals(hash_hmac('sha256', $t . '.' . $payload, $secret), $v1)) return false;
+    // Anti-rejeu : on refuse un horodatage hors tolérance (5 min, comme la
+    // librairie officielle Stripe) pour empêcher la relecture d'un webhook capté.
+    if (abs(time() - (int) $t) > 300) return false;
+    return true;
 }
 
 /* ──────── Routes REST ──────── */
