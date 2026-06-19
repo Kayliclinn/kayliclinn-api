@@ -109,6 +109,8 @@
 /* PAY OPTIONS */
 .kc-resa .pay-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:16px}
 .kc-resa .pay-card{background:var(--paper);border:1.5px solid var(--border);border-radius:20px;padding:26px 24px;text-align:left;position:relative;min-width:0;overflow-wrap:break-word;transition:all .25s cubic-bezier(.16,.84,.44,1)}
+/* le thème/Elementor peut forcer white-space:nowrap sur les <button> : on rétablit l'enroulement du texte dans les cartes */
+.kc-resa .pay-card,.kc-resa .pay-card *{white-space:normal !important;overflow-wrap:break-word}
 .kc-resa .pay-card:hover{border-color:var(--border-strong);transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .kc-resa .pay-card.active{border-color:var(--teal);background:var(--teal-soft);box-shadow:0 10px 26px rgba(15,167,165,.14)}
 .kc-resa .pay-card.active::after{content:'';position:absolute;top:16px;right:16px;width:24px;height:24px;border-radius:50%;background:var(--grad-teal);background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>');background-size:13px;background-position:center;background-repeat:no-repeat;box-shadow:var(--shadow-teal);animation:kcPop .3s cubic-bezier(.34,1.56,.64,1)}
