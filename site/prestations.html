@@ -3,10 +3,10 @@
    Index des services · WordPress-ready (bloc « HTML personnalisé »)
    URL : /prestations/  ·  ⚠️ /nos-services/ doit REDIRIGER ici
    ────────────────────────────────────────────────────────
-   📸 Cette page n'utilise PAS de photo (catalogue à icônes SVG).
-      Si un jour vous voulez un hero illustré, ajoutez une variable
-      --photo-hero dans .kc-page (cf. site/prestation.html) puis
-      réappliquez le motif .kc-hero du gabarit.
+   📸 IMAGES DES CARTES : chaque carte de catalogue peut afficher une
+      photo. Décommentez la variable --ps-photo-* correspondante dans
+      le bloc <style> juste avant <div class="kc-page">. Sans image :
+      un dégradé de marque s'affiche (rien ne casse). Hero : sans photo.
    💶 Prix : grille officielle v2 (12/06/2026). Ne JAMAIS inventer.
       « à partir de » uniquement sur les forfaits validés ; partout
       ailleurs : « sur devis ».
@@ -101,11 +101,14 @@
    ════════════════════════════════════════════════════════ */
 .kc-cat{background:var(--cream)}
 .kc-cat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
-.kc-svc{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 36px 30px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-page{--ps-grad:linear-gradient(135deg,#143a6b 0%,#0e7c7a 100%)}
+.kc-svc{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:0;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-svc-media{aspect-ratio:16/9;width:100%;background-color:#143a6b;background-size:cover;background-position:center;background-repeat:no-repeat}
+.kc-svc-body{display:flex;flex-direction:column;flex:1;padding:0 32px 28px}
 .kc-svc::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .kc-svc:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
 .kc-svc:hover::before{transform:scaleX(1)}
-.kc-svc-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
+.kc-svc-icon{width:56px;height:56px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-top:-28px;margin-bottom:18px;border:4px solid var(--white);box-shadow:var(--shadow-sm);position:relative;z-index:1;transition:all .4s}
 .kc-svc:hover .kc-svc-icon{background:var(--teal);color:#fff}
 .kc-svc h3{font-family:'Fraunces',serif;font-weight:560;font-size:21px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
 .kc-svc p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px;flex:1}
@@ -235,6 +238,30 @@
 }
 </style>
 
+<style>
+/* ════════════════════════════════════════════════════════
+   📸 IMAGES DES CARTES (optionnel) — décommentez une ligne et
+   remplacez l'URL pour afficher une photo sur la carte concernée.
+   Sans image : un dégradé de marque s'affiche (rien ne casse).
+   ════════════════════════════════════════════════════════ */
+.kc-page{
+  /* --ps-photo-turnover:    url('https://kayliclinn.fr/wp-content/uploads/...turnover.jpg'); */
+  /* --ps-photo-vitres:      url('https://kayliclinn.fr/wp-content/uploads/...vitres.jpg'); */
+  /* --ps-photo-etat:        url('https://kayliclinn.fr/wp-content/uploads/...etat-des-lieux.jpg'); */
+  /* --ps-photo-bureaux:     url('https://kayliclinn.fr/wp-content/uploads/...bureaux.jpg'); */
+  /* --ps-photo-copro:       url('https://kayliclinn.fr/wp-content/uploads/...copropriete.jpg'); */
+  /* --ps-photo-commerces:   url('https://kayliclinn.fr/wp-content/uploads/...commerce.jpg'); */
+  /* --ps-photo-sensibles:   url('https://kayliclinn.fr/wp-content/uploads/...etablissement.jpg'); */
+  /* --ps-photo-chantier:    url('https://kayliclinn.fr/wp-content/uploads/...fin-de-chantier.jpg'); */
+  /* --ps-photo-remise:      url('https://kayliclinn.fr/wp-content/uploads/...remise-en-etat.jpg'); */
+  /* --ps-photo-decapage:    url('https://kayliclinn.fr/wp-content/uploads/...decapage.jpg'); */
+  /* --ps-photo-moquettes:   url('https://kayliclinn.fr/wp-content/uploads/...moquettes.jpg'); */
+  /* --ps-photo-pression:    url('https://kayliclinn.fr/wp-content/uploads/...haute-pression.jpg'); */
+  /* --ps-photo-blanches:    url('https://kayliclinn.fr/wp-content/uploads/...pieces-blanches.jpg'); */
+}
+</style>
+<!-- ↑ Images isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
+
 <div class="kc-page">
 
 <!-- 1 · HERO CATALOGUE -->
@@ -263,84 +290,263 @@
   </div>
 </div>
 
-<!-- 3 · GRILLE DES PRESTATIONS COURANTES (forfaits) -->
+<!-- 3 · FORFAITS RÉSERVABLES EN LIGNE -->
 <section class="kc-cat">
   <div class="kc-page-wrap">
     <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Prestations courantes</span>
-      <h2 class="section-title">Des forfaits clairs pour vos <em>besoins du quotidien</em></h2>
-      <p class="section-desc">Pour ces prestations, le prix de départ est annoncé&nbsp;:<br>vous savez à quoi vous attendre avant même le devis.<br>Le tarif final dépend de la surface, de la typologie et des options choisies.</p>
+      <span class="eyebrow">Forfaits réservables en ligne</span>
+      <h2 class="section-title">Des prix fermes, <em>réservables en ligne</em></h2>
+      <p class="section-desc">Pour ces prestations, le prix de départ est annoncé&nbsp;:<br>vous estimez et réservez votre créneau directement en ligne.<br>Le tarif final dépend de la surface, de la typologie et des options.</p>
     </div>
-
     <div class="kc-cat-grid">
 
-      <!-- Turnover Airbnb -->
       <a class="kc-svc kc-fade" href="/turnover-airbnb/">
-        <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
-        <h3>Turnover Airbnb</h3>
-        <p>Ménage complet entre deux locations courte durée&nbsp;: linge frais, lits façon hôtel, salle de bain impeccable et réassort des consommables. Vos voyageurs entrent dans un logement irréprochable.</p>
-        <div class="kc-svc-foot">
-          <div class="kc-svc-price">
-            <span class="kc-svc-amount">dès <em>55 €</em> TTC</span>
-            <span class="kc-svc-tag">par rotation · studio / T1</span>
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-turnover,var(--ps-grad))" role="img" aria-label="Turnover Airbnb"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+          <h3>Turnover Airbnb</h3>
+          <p>Ménage complet entre deux locations courte durée&nbsp;: linge frais, lits façon hôtel, salle de bain impeccable et réassort des consommables. Vos voyageurs entrent dans un logement irréprochable.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">dès <em>55 €</em> TTC</span>
+              <span class="kc-svc-tag">par rotation · studio / T1</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
-          <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <!-- Ménage fin de bail / après déménagement -->
-      <a class="kc-svc kc-fade" href="/nettoyage-apres-demenagement-etat-des-lieux/">
-        <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
-        <h3>Ménage fin de bail / après déménagement</h3>
-        <p>Logement vide remis à neuf pour l'état des lieux de sortie. Électroménager, vitres intérieures et placards inclus dans le forfait&nbsp;: tout est prêt pour récupérer votre dépôt de garantie.</p>
-        <div class="kc-svc-foot">
-          <div class="kc-svc-price">
-            <span class="kc-svc-amount">dès <em>160 €</em> TTC</span>
-            <span class="kc-svc-tag">forfait tout inclus · studio</span>
-          </div>
-          <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
-        </div>
-      </a>
-
-      <!-- Nettoyage de vitres résidentiel -->
       <a class="kc-svc kc-fade" href="/vitres-classiques/">
-        <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div>
-        <h3>Nettoyage de vitres résidentiel</h3>
-        <p>Vitres, baies et encadrements sans traces, intérieur et extérieur accessibles. Un rendu lumineux pour votre appartement ou votre maison, à la prestation ou en passage régulier.</p>
-        <div class="kc-svc-foot">
-          <div class="kc-svc-price">
-            <span class="kc-svc-amount">dès <em>70 €</em> TTC</span>
-            <span class="kc-svc-tag">forfait par typologie</span>
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-vitres,var(--ps-grad))" role="img" aria-label="Nettoyage de vitres résidentiel"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div>
+          <h3>Nettoyage de vitres résidentiel</h3>
+          <p>Vitres, baies et encadrements sans traces, intérieur et extérieur accessibles. Un rendu lumineux pour votre appartement ou votre maison, à la prestation ou en passage régulier.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">dès <em>70 €</em> TTC</span>
+              <span class="kc-svc-tag">forfait par typologie</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
-          <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <!-- Nettoyage fin de chantier -->
-      <a class="kc-svc kc-fade" href="/nettoyage-fin-de-chantier/">
-        <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg></div>
-        <h3>Nettoyage de fin de chantier</h3>
-        <p>Après travaux ou rénovation&nbsp;: dépoussiérage fin, retrait des traces de peinture et de plâtre, protections enlevées. Le local livré propre, prêt à être habité ou exploité.</p>
-        <div class="kc-svc-foot">
-          <div class="kc-svc-price">
-            <span class="kc-svc-amount">Sur devis</span>
-            <span class="kc-svc-tag">estimation indicative HT après audit</span>
+      <a class="kc-svc kc-fade" href="/nettoyage-apres-demenagement-etat-des-lieux/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-etat,var(--ps-grad))" role="img" aria-label="Ménage fin de bail / après déménagement"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05M12 22.08V12"/></svg></div>
+          <h3>Ménage fin de bail / après déménagement</h3>
+          <p>Logement vide remis à neuf pour l'état des lieux de sortie. Électroménager, vitres intérieures et placards inclus dans le forfait&nbsp;: tout est prêt pour récupérer votre dépôt de garantie.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">dès <em>160 €</em> TTC</span>
+              <span class="kc-svc-tag">forfait tout inclus · studio</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
-          <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
       </a>
 
-      <!-- Entretien de bureaux -->
+    </div>
+  </div>
+</section>
+
+<!-- 4 · PROPRETÉ RÉCURRENTE -->
+<section class="kc-cat" style="background:var(--white)">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Propreté récurrente</span>
+      <h2 class="section-title">Des contrats d'entretien <em>sur la durée</em></h2>
+      <p class="section-desc">Un passage régulier, des équipes attitrées et un interlocuteur unique&nbsp;:<br>la propreté de vos locaux, maîtrisée dans le temps.<br>Tarif établi sur devis, après visite.</p>
+    </div>
+    <div class="kc-cat-grid">
+
       <a class="kc-svc kc-fade" href="/entretien-de-bureaux/">
-        <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6M13 8h5M13 12h5M13 16h3"/></svg></div>
-        <h3>Entretien de bureaux</h3>
-        <p>Nettoyage régulier de vos espaces de travail&nbsp;: open-spaces, salles de réunion, sanitaires et parties communes. Horaires adaptés à votre activité, qualité constante et interlocuteur unique.</p>
-        <div class="kc-svc-foot">
-          <div class="kc-svc-price">
-            <span class="kc-svc-amount">à partir de <em>2 €</em> /m²/mois HT</span>
-            <span class="kc-svc-tag">budget indicatif · sur devis</span>
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-bureaux,var(--ps-grad))" role="img" aria-label="Entretien de bureaux"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M3 9h6M3 15h6M13 8h5M13 12h5M13 16h3"/></svg></div>
+          <h3>Entretien de bureaux</h3>
+          <p>Nettoyage régulier de vos espaces de travail&nbsp;: open-spaces, salles de réunion, sanitaires et parties communes. Horaires adaptés à votre activité, qualité constante et interlocuteur unique.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">à partir de <em>2 €</em> /m²/mois HT</span>
+              <span class="kc-svc-tag">budget indicatif · sur devis</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </div>
-          <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/parties-communes-immeubles/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-copro,var(--ps-grad))" role="img" aria-label="Parties communes & copropriétés"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 21h18M6 21V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v16M10 8h.01M14 8h.01M10 12h.01M14 12h.01M10 16h.01M14 16h.01"/></svg></div>
+          <h3>Parties communes & copropriétés</h3>
+          <p>Entretien des halls, escaliers, ascenseurs et locaux techniques de votre copropriété. Carnet de passage, contrôles qualité et suivi pour rendre compte en assemblée.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">contrat récurrent · syndic</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/commerces-retail/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-commerces,var(--ps-grad))" role="img" aria-label="Commerces & retail"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 9l1.5-5h15L21 9M4 9v10a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M3 9h18M9 20v-6h6v6"/></svg></div>
+          <h3>Commerces & retail</h3>
+          <p>Nettoyage de votre boutique, surface de vente ou point de vente, avant ou après ouverture, sans gêner votre clientèle. Vitrines, sols et sanitaires soignés.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">selon surface & passages</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/etablissements-sensibles/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-sensibles,var(--ps-grad))" role="img" aria-label="Établissements sensibles"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 11l2 2 4-4"/></svg></div>
+          <h3>Établissements sensibles</h3>
+          <p>Nettoyage et hygiène en milieu sensible&nbsp;: plan par zone, produits adaptés au public et équipes formées. Traçabilité, contrôles et discrétion sur la durée.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">cahier des charges dédié</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5 · PRESTATION PONCTUELLE -->
+<section class="kc-cat">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Prestation ponctuelle</span>
+      <h2 class="section-title">Une intervention <em>quand vous en avez besoin</em></h2>
+      <p class="section-desc">Des prestations à la demande, pour un besoin précis&nbsp;:<br>nous évaluons le travail puis nous établissons un devis adapté.<br>Sans engagement de durée.</p>
+    </div>
+    <div class="kc-cat-grid">
+
+      <a class="kc-svc kc-fade" href="/nettoyage-fin-de-chantier/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-chantier,var(--ps-grad))" role="img" aria-label="Nettoyage de fin de chantier"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg></div>
+          <h3>Nettoyage de fin de chantier</h3>
+          <p>Après travaux ou rénovation&nbsp;: dépoussiérage fin, retrait des traces de peinture et de plâtre, protections enlevées. Le local livré propre, prêt à être habité ou exploité.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">estimation indicative HT après audit</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/remise-en-etat/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-remise,var(--ps-grad))" role="img" aria-label="Remise en état"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6zM18 15l.9 2.4L22 18l-3.1.6L18 22l-.9-3.4L14 18l3.1-.6z"/></svg></div>
+          <h3>Remise en état</h3>
+          <p>Remise à neuf de logements ou locaux très dégradés&nbsp;: nettoyage en profondeur, traitement des surfaces et résultat soigné avant relocation.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">après visite</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/decapage-cristallisation-sols/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-decapage,var(--ps-grad))" role="img" aria-label="Décapage & cristallisation des sols"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5zM2 12l10 5 10-5M2 17l10 5 10-5"/></svg></div>
+          <h3>Décapage & cristallisation des sols</h3>
+          <p>Décapage, métallisation et cristallisation des sols&nbsp;: pierre, marbre, carrelage, PVC ou béton. Méthode et protection adaptées à chaque revêtement, après examen.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">selon le revêtement</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/shampouinage-moquettes/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-moquettes,var(--ps-grad))" role="img" aria-label="Shampouinage moquettes & textiles"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M4 11V8a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3M3 11h18a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1zM6 18v2M18 18v2"/></svg></div>
+          <h3>Shampouinage moquettes & textiles</h3>
+          <p>Shampouinage et injection-extraction des moquettes, tapis, canapés et textiles. Taches, allergènes et odeurs traités en profondeur.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">moquettes, tapis, canapés</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+      <a class="kc-svc kc-fade" href="/nettoyage-haute-pression/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-pression,var(--ps-grad))" role="img" aria-label="Nettoyage haute pression"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2s6 7 6 11a6 6 0 0 1-12 0c0-4 6-11 6-11z"/></svg></div>
+          <h3>Nettoyage haute pression</h3>
+          <p>Décrassage haute pression des façades, terrasses, cours, allées et sols extérieurs. Réglage adapté au support et traitement anti-mousse possible.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">façades, terrasses, sols ext.</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 6 · SPÉCIFIQUE -->
+<section class="kc-cat" style="background:var(--white)">
+  <div class="kc-page-wrap">
+    <div class="kc-page-header kc-fade">
+      <span class="eyebrow">Spécifique</span>
+      <h2 class="section-title">Des environnements <em>maîtrisés</em></h2>
+      <p class="section-desc">Des prestations techniques, soumises à des exigences particulières&nbsp;:<br>méthode documentée et respect strict de vos consignes de site.</p>
+    </div>
+    <div class="kc-cat-grid">
+
+      <a class="kc-svc kc-fade" href="/pieces-blanches/">
+        <div class="kc-svc-media" style="background-image:var(--ps-photo-blanches,var(--ps-grad))" role="img" aria-label="Nettoyage de pièces blanches"></div>
+        <div class="kc-svc-body">
+          <div class="kc-svc-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-4.6 8.1A2 2 0 0 0 7.1 20h9.8a2 2 0 0 0 1.7-2.9L14 9V3M8 15h8"/></svg></div>
+          <h3>Nettoyage de pièces blanches</h3>
+          <p>Nettoyage de salles blanches et environnements maîtrisés&nbsp;: habillage au sas, méthode documentée et respect de vos procédures et niveaux d'empoussièrement.</p>
+          <div class="kc-svc-foot">
+            <div class="kc-svc-price">
+              <span class="kc-svc-amount">Sur devis</span>
+              <span class="kc-svc-tag">salles propres · consignes ISO</span>
+            </div>
+            <span class="kc-svc-go">Découvrir <svg class="kc-icon" width="15" height="15" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </div>
         </div>
       </a>
 
