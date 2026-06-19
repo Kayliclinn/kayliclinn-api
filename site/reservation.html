@@ -65,8 +65,8 @@
 .kc-resa .back-link svg{transition:transform .25s}
 .kc-resa .back-link:hover svg{transform:translateX(-3px)}
 
-.kc-resa .grid{display:grid;grid-template-columns:minmax(360px,1.12fr) minmax(0,1fr);gap:34px;align-items:start}
-.kc-resa .col-main{order:2;display:flex;flex-direction:column;gap:28px}
+.kc-resa .grid{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);gap:34px;align-items:start}
+.kc-resa .col-main{order:2;display:flex;flex-direction:column;gap:28px;min-width:0}
 
 /* SECTIONS */
 .kc-resa .sec{background:var(--paper);border:1px solid var(--border);border-radius:26px;padding:36px 38px;box-shadow:var(--shadow-md);transition:box-shadow .3s,border-color .3s,opacity .3s;animation:kcUp .65s cubic-bezier(.16,.84,.44,1) both}
@@ -107,7 +107,7 @@
 .kc-resa .slots-empty{grid-column:1/-1;font-size:14px;color:var(--text-light);padding:18px;font-style:italic;background:var(--gray-soft);border-radius:14px;border:1px dashed var(--border-strong);line-height:1.55}
 
 /* PAY OPTIONS */
-.kc-resa .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.kc-resa .pay-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
 .kc-resa .pay-card{background:var(--paper);border:1.5px solid var(--border);border-radius:20px;padding:26px 24px;text-align:left;position:relative;transition:all .25s cubic-bezier(.16,.84,.44,1)}
 .kc-resa .pay-card:hover{border-color:var(--border-strong);transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .kc-resa .pay-card.active{border-color:var(--teal);background:var(--teal-soft);box-shadow:0 10px 26px rgba(15,167,165,.14)}
@@ -118,7 +118,7 @@
 .kc-resa .pay-hint{font-size:12px;color:var(--text-light);margin-top:11px;line-height:1.5}
 
 /* RECAP ASIDE (order summary) */
-.kc-resa .aside{display:flex;flex-direction:column;gap:18px;position:sticky;top:24px;order:1}
+.kc-resa .aside{display:flex;flex-direction:column;gap:18px;position:sticky;top:24px;order:1;min-width:0}
 .kc-resa .recap{background:var(--paper);border:1px solid var(--border);border-radius:26px;padding:0;overflow:hidden;box-shadow:var(--shadow-md);animation:kcUp .65s cubic-bezier(.16,.84,.44,1) .2s both}
 .kc-resa .recap-inner{padding:36px 34px 30px}
 .kc-resa .recap-presta{font-family:'Fraunces',serif;font-size:23px;font-weight:600;color:var(--ink);letter-spacing:-0.3px;line-height:1.18;margin-bottom:6px}
