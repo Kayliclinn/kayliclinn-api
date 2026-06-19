@@ -478,7 +478,7 @@
       <div class="kc-faq-list">
 
         <div class="kc-faq-item open kc-fade">
-          <div class="kc-faq-q" onclick="kcToggleFaq(this)">
+          <div class="kc-faq-q">
             <span class="kc-faq-q-text">Comment se passe la première intervention&nbsp;?</span>
             <span class="kc-faq-toggle"><svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
           </div>
@@ -488,7 +488,7 @@
         </div>
 
         <div class="kc-faq-item kc-fade">
-          <div class="kc-faq-q" onclick="kcToggleFaq(this)">
+          <div class="kc-faq-q">
             <span class="kc-faq-q-text">Combien coûte une désinsectisation&nbsp;?</span>
             <span class="kc-faq-toggle"><svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
           </div>
@@ -498,7 +498,7 @@
         </div>
 
         <div class="kc-faq-item kc-fade">
-          <div class="kc-faq-q" onclick="kcToggleFaq(this)">
+          <div class="kc-faq-q">
             <span class="kc-faq-q-text">Faut-il quitter le logement pendant le traitement&nbsp;?</span>
             <span class="kc-faq-toggle"><svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
           </div>
@@ -509,7 +509,7 @@
         </div>
 
         <div class="kc-faq-item kc-fade">
-          <div class="kc-faq-q" onclick="kcToggleFaq(this)">
+          <div class="kc-faq-q">
             <span class="kc-faq-q-text">Traitez-vous les nids de guêpes et de frelons&nbsp;?</span>
             <span class="kc-faq-toggle"><svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
           </div>
@@ -520,7 +520,7 @@
         </div>
 
         <div class="kc-faq-item kc-fade">
-          <div class="kc-faq-q" onclick="kcToggleFaq(this)">
+          <div class="kc-faq-q">
             <span class="kc-faq-q-text">Un seul passage suffit-il&nbsp;?</span>
             <span class="kc-faq-toggle"><svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
           </div>
@@ -530,7 +530,7 @@
         </div>
 
         <div class="kc-faq-item kc-fade">
-          <div class="kc-faq-q" onclick="kcToggleFaq(this)">
+          <div class="kc-faq-q">
             <span class="kc-faq-q-text">Intervenez-vous pour les professionnels de l'alimentaire&nbsp;?</span>
             <span class="kc-faq-toggle"><svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
           </div>
@@ -584,13 +584,15 @@
 </div>
 
 <script>
-function kcToggleFaq(el){
-  const item = el.parentElement;
-  const wasOpen = item.classList.contains('open');
-  el.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(i => i.classList.remove('open'));
-  if(!wasOpen) item.classList.add('open');
-}
 (function(){
+  document.querySelectorAll('.kc-faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      const item = q.parentElement;
+      const wasOpen = item.classList.contains('open');
+      q.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(function(i){ i.classList.remove('open'); });
+      if(!wasOpen) item.classList.add('open');
+    });
+  });
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
