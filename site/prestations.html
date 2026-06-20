@@ -148,9 +148,11 @@
    ════════════════════════════════════════════════════════ */
 .kc-spec{background:var(--cream-2)}
 .kc-spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.kc-spec-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:34px 30px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-spec-card{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
+.kc-spec-media{aspect-ratio:16/9;width:100%;background-color:#143a6b;background-size:cover;background-position:center;background-repeat:no-repeat}
+.kc-spec-body{display:flex;flex-direction:column;flex:1;padding:0 30px 26px}
 .kc-spec-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.kc-spec-icon{width:48px;height:48px;background:var(--cream);color:var(--navy);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;border:1px solid var(--line-soft);transition:all .35s}
+.kc-spec-icon{width:52px;height:52px;background:var(--cream);color:var(--navy);border-radius:12px;display:grid;place-items:center;margin-top:-26px;margin-bottom:18px;border:4px solid var(--white);box-shadow:var(--shadow-sm);position:relative;z-index:1;transition:all .35s}
 .kc-spec-card:hover .kc-spec-icon{background:var(--navy);color:#fff;border-color:var(--navy)}
 .kc-spec-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:10px;letter-spacing:-0.01em;line-height:1.25}
 .kc-spec-card p{font-size:13.5px;color:var(--muted);line-height:1.7;margin-bottom:22px;flex:1}
@@ -258,6 +260,13 @@
   /* --ps-photo-moquettes:   url('https://kayliclinn.fr/wp-content/uploads/...moquettes.jpg'); */
   /* --ps-photo-pression:    url('https://kayliclinn.fr/wp-content/uploads/...haute-pression.jpg'); */
   /* --ps-photo-blanches:    url('https://kayliclinn.fr/wp-content/uploads/...pieces-blanches.jpg'); */
+  /* — Interventions spécialisées — */
+  /* --ps-photo-deratisation:     url('https://kayliclinn.fr/wp-content/uploads/...deratisation.jpg'); */
+  /* --ps-photo-desinsectisation: url('https://kayliclinn.fr/wp-content/uploads/...desinsectisation.jpg'); */
+  /* --ps-photo-punaises:         url('https://kayliclinn.fr/wp-content/uploads/...punaises.jpg'); */
+  /* ⚠️ Diogène / scènes sensibles : images SOBRES et NEUTRES uniquement (intérieurs apaisés). JAMAIS d'image choc. */
+  /* --ps-photo-diogene:          url('https://kayliclinn.fr/wp-content/uploads/...diogene.jpg'); */
+  /* --ps-photo-scenes:           url('https://kayliclinn.fr/wp-content/uploads/...scenes.jpg'); */
 }
 </style>
 <!-- ↑ Images isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
@@ -554,6 +563,8 @@
     <div class="kc-spec-grid">
 
       <a class="kc-spec-card kc-fade" href="/deratisation/">
+        <div class="kc-spec-media" style="background-image:var(--ps-photo-deratisation,var(--ps-grad))" role="img" aria-label="Dératisation"></div>
+        <div class="kc-spec-body">
         <div class="kc-spec-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 6a5 5 0 0 1 5 5v3a5 5 0 0 1-10 0v-3a5 5 0 0 1 5-5zM12 6V3M9 4l3 2 3-2M7 11H3M7 15H3M21 11h-4M21 15h-4"/></svg></div>
         <h3>Dératisation</h3>
         <p>Rats et souris&nbsp;: diagnostic, traitement et prévention, réalisés par nos partenaires certifiés.</p>
@@ -561,9 +572,12 @@
           <span class="kc-spec-price">Sur devis, sur étude</span>
           <span class="kc-spec-go">En savoir plus <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
+      </div>
       </a>
 
       <a class="kc-spec-card kc-fade" href="/desinsectisation/">
+        <div class="kc-spec-media" style="background-image:var(--ps-photo-desinsectisation,var(--ps-grad))" role="img" aria-label="Désinsectisation"></div>
+        <div class="kc-spec-body">
         <div class="kc-spec-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 7a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 7V4M9 3l3 2 3-2M6 12H3M6 16H3M21 12h-3M21 16h-3"/></svg></div>
         <h3>Désinsectisation</h3>
         <p>Cafards, fourmis, guêpes, puces… traitement ciblé selon le nuisible et prévention.</p>
@@ -571,9 +585,12 @@
           <span class="kc-spec-price">Sur devis, sur étude</span>
           <span class="kc-spec-go">En savoir plus <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
+      </div>
       </a>
 
       <a class="kc-spec-card kc-fade" href="/punaises-de-lit/">
+        <div class="kc-spec-media" style="background-image:var(--ps-photo-punaises,var(--ps-grad))" role="img" aria-label="Punaises de lit"></div>
+        <div class="kc-spec-body">
         <div class="kc-spec-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 18v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 18h18M3 18v2M21 18v2M7 12h4"/></svg></div>
         <h3>Punaises de lit</h3>
         <p>Détection, traitement complet et contrôle de suivi, avec conseils de préparation.</p>
@@ -581,9 +598,12 @@
           <span class="kc-spec-price">Sur devis, sur étude</span>
           <span class="kc-spec-go">En savoir plus <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
+      </div>
       </a>
 
       <a class="kc-spec-card kc-fade" href="/syndrome-de-diogene/">
+        <div class="kc-spec-media" style="background-image:var(--ps-photo-diogene,var(--ps-grad))" role="img" aria-label="Syndrome de Diogène"></div>
+        <div class="kc-spec-body">
         <div class="kc-spec-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
         <h3>Syndrome de Diogène</h3>
         <p>Débarras, nettoyage en profondeur et remise en état, dans le respect des personnes et en toute confidentialité.</p>
@@ -591,9 +611,12 @@
           <span class="kc-spec-price">Sur devis, sur étude</span>
           <span class="kc-spec-go">En savoir plus <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
+      </div>
       </a>
 
       <a class="kc-spec-card kc-fade" href="/scenes-sensibles/">
+        <div class="kc-spec-media" style="background-image:var(--ps-photo-scenes,var(--ps-grad))" role="img" aria-label="Scènes sensibles"></div>
+        <div class="kc-spec-body">
         <div class="kc-spec-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <h3>Scènes sensibles</h3>
         <p>Après sinistre ou décès&nbsp;: intervention discrète, respectueuse et coordonnée.</p>
@@ -601,6 +624,7 @@
           <span class="kc-spec-price">Sur devis, sur étude</span>
           <span class="kc-spec-go">En savoir plus <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
+      </div>
       </a>
 
     </div>
