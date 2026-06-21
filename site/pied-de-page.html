@@ -1,0 +1,365 @@
+<!-- ════════════════════════════════════════════════════════
+   PIED DE PAGE GLOBAL — KAYLI CLINN
+   3 colonnes : Marque + Prestations + Société
+
+   ⚠️ À COLLER UNE SEULE FOIS dans le pied de page GLOBAL du thème
+   (Apparence → Éditeur → Modèles → Pied de page, ou Elementor →
+   Theme Builder → Footer), surtout PAS dans chaque page : il
+   s'affiche alors automatiquement sur tout le site.
+
+   Typographie alignée sur le reste du site : Fraunces (titres) +
+   Inter (texte) — Montserrat/Roboto retirés (non chargés ailleurs).
+   ════════════════════════════════════════════════════════ -->
+
+<!-- Polices Google Fonts (identiques aux autres pages) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+.kc-footer{
+  background:#0D2340;
+  color:rgba(255,255,255,0.7);
+  font-family:'Inter',-apple-system,sans-serif;
+  font-size:14px;
+  position:relative;
+  overflow:hidden;
+}
+
+/* Élément décoratif subtil en arrière-plan */
+.kc-footer::before{
+  content:'';
+  position:absolute;
+  top:-150px;
+  right:-150px;
+  width:400px;
+  height:400px;
+  background:radial-gradient(circle,rgba(15,167,165,0.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* PARTIE PRINCIPALE */
+.kc-footer-main{
+  max-width:1320px;
+  margin:0 auto;
+  padding:70px 5% 40px;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:50px;
+  position:relative;
+  z-index:1;
+}
+
+/* COLONNE BRAND */
+.kc-footer-brand{}
+
+.kc-footer-brand-name{
+  font-family:'Fraunces',Georgia,serif;
+  font-optical-sizing:auto;
+  font-weight:600;
+  color:#FFFFFF;
+  font-size:1.9rem;
+  letter-spacing:-0.5px;
+  margin-bottom:18px;
+  line-height:1;
+}
+
+.kc-footer-tagline{
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  line-height:1.7;
+  color:rgba(255,255,255,0.65);
+  margin:0 0 22px 0;
+}
+
+/* CONTACT DIRECT */
+.kc-footer-contact{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  margin-bottom:22px;
+}
+.kc-footer-contact-item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:rgba(255,255,255,0.8);
+  text-decoration:none;
+  font-family:'Inter',sans-serif;
+  font-size:14px;
+  transition:color .2s;
+}
+.kc-footer-contact-item:hover{color:#0FA7A5}
+.kc-footer-contact-icon{
+  width:32px;
+  height:32px;
+  background:rgba(15,167,165,0.15);
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.kc-footer-contact-item strong{
+  display:block;
+  color:#FFFFFF;
+  font-weight:600;
+  font-size:14px;
+  font-family:'Inter',sans-serif;
+}
+.kc-footer-contact-item span{
+  font-size:12px;
+  color:rgba(255,255,255,0.55);
+}
+
+/* COLONNES LIENS */
+.kc-footer-col h5{
+  font-family:'Fraunces',Georgia,serif;
+  font-optical-sizing:auto;
+  color:#FFFFFF;
+  font-size:1rem;
+  font-weight:600;
+  margin:0 0 20px 0;
+  letter-spacing:0.01em;
+  position:relative;
+  padding-bottom:12px;
+}
+.kc-footer-col h5::after{
+  content:'';
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:30px;
+  height:2px;
+  background:#0FA7A5;
+  border-radius:2px;
+}
+
+.kc-footer-col ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.kc-footer-col li{margin:0;padding:0}
+.kc-footer-col a{
+  color:rgba(255,255,255,0.65);
+  text-decoration:none;
+  font-family:'Inter',sans-serif;
+  font-size:13px;
+  font-weight:400;
+  transition:all .2s;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+}
+.kc-footer-col a:hover{
+  color:#0FA7A5;
+  padding-left:4px;
+}
+
+.kc-footer-col a .badge{
+  background:#0FA7A5;
+  color:#FFFFFF;
+  font-size:9px;
+  font-weight:700;
+  padding:2px 6px;
+  border-radius:100px;
+  margin-left:6px;
+  text-transform:uppercase;
+  letter-spacing:0.05em;
+}
+
+/* BANDEAU BAS */
+.kc-footer-bottom{
+  border-top:1px solid rgba(255,255,255,0.1);
+  padding:24px 5%;
+  position:relative;
+  z-index:1;
+}
+.kc-footer-bottom-wrapper{
+  max-width:1320px;
+  margin:0 auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
+}
+
+.kc-footer-legal{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  color:rgba(255,255,255,0.5);
+}
+.kc-footer-legal a{
+  color:rgba(255,255,255,0.5);
+  text-decoration:none;
+  transition:color .2s;
+}
+.kc-footer-legal a:hover{color:#0FA7A5}
+.kc-footer-legal-sep{
+  width:1px;
+  height:12px;
+  background:rgba(255,255,255,0.2);
+}
+
+.kc-footer-payment{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-family:'Inter',sans-serif;
+  font-size:12px;
+  color:rgba(255,255,255,0.5);
+}
+.kc-footer-payment-icons{
+  display:flex;
+  gap:6px;
+}
+.kc-footer-payment-icon{
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:6px;
+  padding:4px 8px;
+  font-family:'Inter',sans-serif;
+  font-size:10px;
+  font-weight:700;
+  color:rgba(255,255,255,0.7);
+  letter-spacing:0.05em;
+}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .kc-footer-main{
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    padding:50px 5% 30px;
+  }
+  .kc-footer-brand{grid-column:1/-1}
+}
+@media(max-width:540px){
+  .kc-footer-main{
+    grid-template-columns:1fr;
+    gap:36px;
+  }
+  .kc-footer-bottom-wrapper{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .kc-footer-legal{font-size:11px;gap:12px}
+}
+</style>
+
+<footer class="kc-footer">
+
+  <!-- PARTIE PRINCIPALE -->
+  <div class="kc-footer-main">
+
+    <!-- COLONNE BRAND -->
+    <div class="kc-footer-brand">
+
+      <div class="kc-footer-brand-name">Kayli Clinn</div>
+
+      <p class="kc-footer-tagline">Spécialiste du nettoyage professionnel en Île&#8209;de&#8209;France. Particuliers, professionnels, syndics, Airbnb, BTP. Devis sous 24h, intervention rapide, équipe formée et assurée.</p>
+
+      <div class="kc-footer-contact">
+        <a href="tel:+33670012061" class="kc-footer-contact-item">
+          <div class="kc-footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0FA7A5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div>
+            <strong>06 70 01 20 61</strong>
+            <span>Lun-Sam 8h-19h</span>
+          </div>
+        </a>
+        <a href="mailto:contact@kayliclinn.fr" class="kc-footer-contact-item">
+          <div class="kc-footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0FA7A5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></div>
+          <div>
+            <strong>contact@kayliclinn.fr</strong>
+            <span>Réponse sous 2h ouvrées</span>
+          </div>
+        </a>
+        <div class="kc-footer-contact-item">
+          <div class="kc-footer-contact-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0FA7A5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div>
+            <strong>Île&#8209;de&#8209;France</strong>
+            <span>Intervention rapide 7j/7</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- COLONNE PRESTATIONS -->
+    <div class="kc-footer-col">
+      <h5>Prestations</h5>
+      <ul>
+        <li><a href="/entretien-de-bureaux/">Entretien de bureaux</a></li>
+        <li><a href="/commerces-retail/">Commerces &amp; Retail</a></li>
+        <li><a href="/nettoyage-fin-de-chantier/">Nettoyage fin de chantier</a></li>
+        <li><a href="/nettoyage-apres-demenagement-etat-des-lieux/">Nettoyage après déménagement / état des lieux</a></li>
+        <li><a href="/syndrome-de-diogene/">Syndrome de Diogène</a></li>
+        <li><a href="/deratisation/">Dératisation</a></li>
+        <li><a href="/turnover-airbnb/">Turnover Airbnb</a></li>
+        <li><a href="/parties-communes-immeubles/">Copropriétés &amp; Syndics</a></li>
+        <li><a href="/etablissements-sensibles/">Sites sensibles (bio-nettoyage)</a></li>
+        <li><a href="/urgence/">Urgences (Diogène / insalubre / scènes sensibles) <span class="badge">24h</span></a></li>
+      </ul>
+    </div>
+
+    <!-- COLONNE SOCIÉTÉ -->
+    <div class="kc-footer-col">
+      <h5>Société</h5>
+      <ul>
+        <li><a href="/a-propos/">À propos</a></li>
+        <li><a href="/realisations/">Réalisations</a></li>
+        <li><a href="/qualite-qse/">Qualité &amp; QSE</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li><a href="/politique-de-confidentialite/">Politique de confidentialité</a></li>
+        <li><a href="/cookies/">Cookies</a></li>
+        <li><a href="/mentions-legales/">Mentions légales</a></li>
+        <li><a href="/cgv/">CGV</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- BANDEAU BAS -->
+  <div class="kc-footer-bottom">
+    <div class="kc-footer-bottom-wrapper">
+
+      <div class="kc-footer-legal">
+        <span>© 2026 Kayli Clinn</span>
+        <span class="kc-footer-legal-sep"></span>
+        <span>SAS au capital de 1 000 €</span>
+        <span class="kc-footer-legal-sep"></span>
+        <span>RCS Paris</span>
+        <span class="kc-footer-legal-sep"></span>
+        <a href="/mentions-legales/">Mentions légales</a>
+        <span class="kc-footer-legal-sep"></span>
+        <a href="/cgv/">CGV</a>
+        <span class="kc-footer-legal-sep"></span>
+        <a href="/politique-de-confidentialite/">Confidentialité</a>
+        <span class="kc-footer-legal-sep"></span>
+        <a href="/cookies/">Cookies</a>
+      </div>
+
+      <div class="kc-footer-payment">
+        <span>Paiements acceptés&nbsp;:</span>
+        <div class="kc-footer-payment-icons">
+          <span class="kc-footer-payment-icon">CB</span>
+          <span class="kc-footer-payment-icon">VISA</span>
+          <span class="kc-footer-payment-icon">MC</span>
+          <span class="kc-footer-payment-icon">SEPA</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</footer>
