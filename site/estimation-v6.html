@@ -68,9 +68,11 @@
 .kce-cat:first-child{margin-top:0}
 .kce-cat::after{content:'';flex:1;height:1px;background:var(--bord)}
 .kce-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.kce-svc{background:#fff;border:1px solid var(--bord);border-radius:14px;padding:22px;text-align:left;cursor:pointer;transition:.2s;position:relative;font-family:inherit}
+.kce-svc{background:#fff;border:1px solid var(--bord);border-radius:14px;padding:0;overflow:hidden;text-align:left;cursor:pointer;transition:.2s;position:relative;font-family:inherit}
 .kce-svc:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(13,35,64,.12);border-color:transparent}
-.kce-svc-ic{width:46px;height:46px;border-radius:11px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.kce-svc-media{aspect-ratio:16/9;width:100%;background:linear-gradient(135deg,#143a6b 0%,#0e7c7a 100%);background-size:cover;background-position:center;background-repeat:no-repeat}
+.kce-svc-body{padding:0 22px 22px}
+.kce-svc-ic{width:46px;height:46px;border-radius:11px;background:#fff;border:4px solid #fff;box-shadow:0 4px 12px rgba(13,35,64,.14);display:flex;align-items:center;justify-content:center;margin-top:-26px;margin-bottom:12px;position:relative;z-index:1}
 .kce-svc-ic svg{width:24px;height:24px;color:var(--teal-d)}
 .kce-svc h3{font-size:1.1rem;margin-bottom:6px;color:var(--navy)}
 .kce-svc p{color:var(--gris);font-size:.9rem;line-height:1.45}
@@ -299,6 +301,26 @@
     devisURL:'/demande-de-devis/',
     handoffKey:'kc_reservation_handoff',
     motsSensibles:/sinistre|insalubr|d[ée]c[èe]s|gravats|diog[èe]ne|inond|incendie|punaise/i
+  };
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS DES CARTES (médiathèque WordPress) — '' = dégradé + icône.
+     Collez l'URL de votre image entre les guillemets pour l'afficher.
+     URLs reprises du tunnel V5 là où elles existent déjà.
+     ════════════════════════════════════════════════════════ */
+  const KC_IMAGES = {
+    'airbnb':       'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png',
+    'fin-de-bail':  'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg',
+    'vitrerie':     'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg',
+    'fin-chantier': 'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp',
+    'bureaux':      'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp',
+    'parties-communes':'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg',
+    'commerces':    'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg',
+    /* — à compléter quand les photos seront en ligne (sinon dégradé + icône) — */
+    'etablissements-sensibles':'', 'remise-en-etat':'', 'decapage':'', 'shampouinage':'',
+    'haute-pression':'', 'pieces-blanches':'',
+    /* ⚠️ Spécialisées : images SOBRES et NEUTRES uniquement (jamais d'image choc) */
+    'deratisation':'', 'desinsectisation':'', 'punaises-de-lit':'', 'diogene':'', 'scenes-sensibles':''
   };
 
   /* Icônes (trait fin, charte Kayli — aucune emoji) */
@@ -532,9 +554,12 @@
     CATS.forEach(c=>{
       const list=SERVICES.filter(s=>s.cat===c); if(!list.length) return;
       h+='<h2 class="kce-cat">'+c+'</h2><div class="kce-grid">';
-      list.forEach(s=>{ h+='<button class="kce-svc" data-id="'+s.id+'">'+badge(s.funnel)
-        +'<span class="kce-svc-ic">'+svg(I[s.icon]||I.vitres)+'</span>'
-        +'<h3>'+s.title+'</h3><p>'+s.desc+'</p></button>'; });
+      list.forEach(s=>{ const img=KC_IMAGES[s.id]||'';
+        h+='<button class="kce-svc" data-id="'+s.id+'">'
+          +'<div class="kce-svc-media"'+(img?' style="background-image:url(\''+img+'\'),linear-gradient(135deg,#143a6b 0%,#0e7c7a 100%)"':'')+' role="img" aria-label="'+esc(s.title)+'"></div>'
+          +badge(s.funnel)
+          +'<div class="kce-svc-body"><span class="kce-svc-ic">'+svg(I[s.icon]||I.vitres)+'</span>'
+          +'<h3>'+s.title+'</h3><p>'+s.desc+'</p></div></button>'; });
       h+='</div>';
     });
     stage.innerHTML=h;
