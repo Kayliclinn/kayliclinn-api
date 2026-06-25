@@ -1,0 +1,947 @@
+<!-- ==================================================================
+     KAYLI CLINN — « Estimer & réserver » (tunnel V6, style enrichi)
+     Reproduit la structure du tunnel d'estimation LKH, avec les
+     DONNÉES et la CHARTE Kayli Clinn (navy/teal, Fraunces/Inter).
+
+     À coller dans un bloc « HTML personnalisé » WordPress (page /devis/
+     OU une page de test). NE PAS recréer header/logo (gérés par le thème).
+     Préfixe CSS unique : kce-
+
+     RÈGLES KAYLI CLINN respectées :
+     • Prix UNIQUEMENT issus de la grille v2 validée (miroir de KC_Pricing) ;
+       le serveur reste seul juge à l'encaissement. Aucun prix inventé :
+       les prestations « sur devis » n'affichent jamais de chiffre.
+     • Forfaits → réservation + paiement en ligne via /reservation/
+       (relais sessionStorage « kc_reservation_handoff » v2, compatible kc-booking).
+     • Sur devis → /demande-de-devis/ (visite gratuite) ; e-mail via kc-devis.
+     • Aucun secret côté client. Icônes SVG, jamais d'emoji. Vouvoiement.
+     ================================================================== -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+.kce{
+  --navy:#0D2340;--navy-2:#143a6b;
+  --teal:#0FA7A5;--teal-d:#0B8483;--teal-deep:#076b69;--teal-soft:#E6F5F5;--teal-tint:#F0FAFA;
+  --encre:#1B2433;--gris:#5B6675;--creme:#F6F8FA;--blanc:#fff;--bord:#E5E9EF;
+  --serif:'Fraunces',Georgia,serif;
+  font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--encre)}
+.kce *{box-sizing:border-box;margin:0;padding:0}
+.kce{background:var(--creme);overflow-x:hidden}
+.kce-wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.kce h1,.kce h2,.kce h3{font-family:var(--serif);font-optical-sizing:auto;font-weight:600;line-height:1.14;letter-spacing:-.01em}
+.kce-eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-weight:700}
+
+.kce-btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:600;font-size:1rem;
+  padding:15px 26px;border-radius:10px;text-decoration:none;cursor:pointer;border:0;transition:.2s;font-family:inherit}
+.kce-cta{background:var(--teal);color:#fff}.kce-cta:hover{background:var(--teal-d)}
+.kce-cta:disabled{opacity:.4;cursor:not-allowed}
+.kce-ghost{background:transparent;color:var(--encre);border:1.5px solid var(--bord)}
+.kce-ghost:hover{border-color:var(--teal)}
+.kce-full{width:100%}
+
+.kce-top{background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;padding:60px 0 66px;text-align:center}
+.kce-top h1{font-size:clamp(2rem,5vw,3.2rem);margin:14px 0 10px}
+.kce-top h1 .a{color:var(--teal)}
+.kce-top p{color:#C7D2E0;max-width:560px;margin:0 auto;font-size:1.06rem;line-height:1.6}
+.kce-main{padding:44px 0 80px;min-height:60vh}
+
+.kce-how{background:#fff;border:1px solid var(--bord);border-radius:18px;padding:26px 28px;margin-bottom:34px;box-shadow:0 10px 30px rgba(13,35,64,.05)}
+.kce-how-h{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.kce-how-h .ic{width:34px;height:34px;border-radius:9px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kce-how-h .ic svg{width:19px;height:19px;color:var(--teal-d)}
+.kce-how-h h2{font-size:1.3rem;color:var(--navy)}
+.kce-how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.kce-how-step{display:flex;gap:12px;align-items:flex-start}
+.kce-how-num{width:30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;font-family:var(--serif);font-weight:600;font-size:.95rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kce-how-step h3{font-size:.98rem;margin-bottom:3px;color:var(--navy)}
+.kce-how-step p{color:var(--gris);font-size:.86rem;line-height:1.45}
+.kce-how-note{margin-top:18px;padding-top:16px;border-top:1px solid var(--bord);display:flex;gap:18px;flex-wrap:wrap;font-size:.84rem;color:var(--gris)}
+.kce-how-note span{display:inline-flex;align-items:center;gap:6px}
+.kce-how-note svg{width:15px;height:15px;color:var(--teal);flex-shrink:0}
+.kce-how-note b{color:var(--encre);font-weight:600}
+@media(max-width:760px){.kce-how-steps{grid-template-columns:1fr}.kce-how{padding:22px 18px}}
+
+.kce-cat{font-size:1.45rem;color:var(--navy);margin:34px 0 16px;display:flex;align-items:center;gap:12px}
+.kce-cat:first-child{margin-top:0}
+.kce-cat::after{content:'';flex:1;height:1px;background:var(--bord)}
+.kce-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.kce-svc{background:#fff;border:1px solid var(--bord);border-radius:14px;padding:0;overflow:hidden;text-align:left;cursor:pointer;transition:.2s;position:relative;font-family:inherit}
+.kce-svc:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(13,35,64,.12);border-color:transparent}
+.kce-svc-media{aspect-ratio:16/9;width:100%;background:linear-gradient(135deg,#143a6b 0%,#0e7c7a 100%);background-size:cover;background-position:center;background-repeat:no-repeat}
+.kce-svc-body{padding:0 22px 22px}
+.kce-svc-ic{width:46px;height:46px;border-radius:11px;background:#fff;border:4px solid #fff;box-shadow:0 4px 12px rgba(13,35,64,.14);display:flex;align-items:center;justify-content:center;margin-top:-26px;margin-bottom:12px;position:relative;z-index:1}
+.kce-svc-ic svg{width:24px;height:24px;color:var(--teal-d)}
+.kce-svc h3{font-size:1.1rem;margin-bottom:6px;color:var(--navy)}
+.kce-svc p{color:var(--gris);font-size:.9rem;line-height:1.45}
+.kce-badge{position:absolute;top:14px;right:14px;font-size:.62rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:5px 9px;border-radius:20px}
+.kce-badge.book{background:var(--teal);color:#fff}
+.kce-badge.est{background:var(--teal-soft);color:var(--teal-deep)}
+.kce-badge.dev{background:#EEF1F5;color:var(--gris)}
+
+.kce-quiz{background:#fff;border:1px solid var(--bord);border-radius:18px;max-width:760px;margin:0 auto;overflow:hidden;box-shadow:0 16px 40px rgba(13,35,64,.08)}
+.kce-qhead{background:var(--navy);color:#fff;padding:22px 30px;display:flex;align-items:center;gap:14px}
+.kce-qhead .lkbox{display:flex;align-items:center;gap:14px;flex:1}
+.kce-qhead .ic{width:42px;height:42px;border-radius:10px;background:rgba(15,167,165,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.kce-qhead .ic svg{width:22px;height:22px;color:var(--teal)}
+.kce-qhead h2{font-size:1.35rem}
+.kce-qhead .sub{color:#AEBBD0;font-size:.85rem;margin-top:2px}
+.kce-hback{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;padding:7px 13px;font-size:.85rem;font-weight:600;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:6px;transition:.15s;margin-right:auto}
+.kce-hback:hover{background:rgba(15,167,165,.28);border-color:var(--teal)}
+.kce-prog{height:5px;background:#EEF1F5}
+.kce-prog span{display:block;height:100%;background:var(--teal);width:0;transition:.35s}
+.kce-qbody{padding:30px}
+.kce-q{font-family:var(--serif);font-size:1.3rem;margin-bottom:6px;color:var(--navy)}
+.kce-hint{color:var(--gris);font-size:.92rem;margin-bottom:18px;line-height:1.5}
+.kce-info{background:var(--teal-tint);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:12px 15px;font-size:.88rem;color:var(--teal-deep);margin-bottom:18px;line-height:1.5}
+
+.kce-opts{display:grid;gap:11px}
+.kce-opt{display:flex;align-items:center;gap:13px;border:1.5px solid var(--bord);border-radius:11px;padding:15px 17px;cursor:pointer;transition:.15s;font-size:1rem}
+.kce-opt:hover{border-color:var(--teal);background:var(--teal-tint)}
+.kce-opt.sel{border-color:var(--teal);background:var(--teal-soft)}
+.kce-opt .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--bord);flex-shrink:0;position:relative}
+.kce-opt.sel .dot{border-color:var(--teal)}
+.kce-opt.sel .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--teal)}
+.kce-opt.multi .dot{border-radius:5px}
+.kce-opt.multi.sel .dot::after{border-radius:2px}
+.kce-opt .osub{display:block;font-size:.82rem;color:var(--gris);margin-top:2px}
+
+.kce-choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.kce-choice{border:1.5px solid var(--bord);border-radius:14px;padding:20px;cursor:pointer;transition:.15s;background:#fff;position:relative;text-align:left}
+.kce-choice:hover{border-color:var(--teal);background:var(--teal-tint)}
+.kce-choice.sel{border-color:var(--teal);background:var(--teal-soft)}
+.kce-choice .ct{font-family:var(--serif);font-size:1.12rem;font-weight:600;margin-bottom:7px;line-height:1.2;color:var(--navy)}
+.kce-choice .cd{color:var(--gris);font-size:.88rem;line-height:1.4;margin-bottom:10px}
+.kce-choice .cn{font-size:.8rem;color:var(--teal-deep);font-weight:600}
+.kce-choice .chk{position:absolute;top:14px;right:14px;width:22px;height:22px;border-radius:50%;background:var(--teal);display:none;align-items:center;justify-content:center}
+.kce-choice.sel .chk{display:flex}.kce-choice .chk svg{width:13px;height:13px;color:#fff}
+
+.kce-slider-wrap{padding:6px 2px 2px}
+.kce-slider-val{display:flex;align-items:baseline;justify-content:center;gap:8px;margin-bottom:14px}
+.kce-slider-val .num{font-family:var(--serif);font-size:2.5rem;color:var(--teal-deep);line-height:1}
+.kce-slider-val .u{font-size:1rem;color:var(--gris);font-weight:600}
+.kce-slider{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:6px;background:#E6EAF0;outline:none;margin:6px 0}
+.kce-slider::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--teal);cursor:pointer;box-shadow:0 2px 8px rgba(15,167,165,.5);border:3px solid #fff}
+.kce-slider::-moz-range-thumb{width:28px;height:28px;border-radius:50%;background:var(--teal);cursor:pointer;border:3px solid #fff}
+.kce-slider-ends{display:flex;justify-content:space-between;font-size:.78rem;color:var(--gris);margin-top:2px}
+.kce-slider-manual{display:flex;align-items:center;gap:8px;justify-content:center;margin-top:16px;font-size:.85rem;color:var(--gris)}
+.kce-slider-manual input{width:110px;text-align:center;border:1.5px solid var(--bord);border-radius:9px;padding:9px;font-size:1rem;font-family:inherit}
+.kce-slider-manual input:focus{outline:0;border-color:var(--teal)}
+
+.kce-livebar{display:flex;align-items:center;justify-content:space-between;gap:12px;background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;border-radius:12px;padding:14px 18px;margin-bottom:20px}
+.kce-livebar .ll{font-size:.74rem;color:#AEBBD0;letter-spacing:.04em;text-transform:uppercase}
+.kce-livebar .lv{font-family:var(--serif);font-size:1.3rem;color:var(--teal);font-weight:600}
+.kce-livebar .lp{font-size:.72rem;color:#8493A8;text-align:right;max-width:42%;line-height:1.3}
+
+.kce-field label{display:block;font-weight:600;margin-bottom:8px;font-size:.95rem;color:var(--navy)}
+.kce-field input,.kce-field textarea{width:100%;border:1.5px solid var(--bord);border-radius:10px;padding:14px 15px;font-size:1rem;font-family:inherit;background:#fff;color:var(--encre)}
+.kce-field input:focus,.kce-field textarea:focus{outline:0;border-color:var(--teal)}
+.kce-field .err{color:#B3261E;font-size:.82rem;margin-top:6px;display:none}
+.kce-field.invalid input{border-color:#B3261E}
+.kce-field.invalid .err{display:block}
+.kce-field+.kce-field{margin-top:16px}
+.kce-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.kce-qnav{display:flex;justify-content:space-between;align-items:center;padding:20px 30px;border-top:1px solid var(--bord);background:#FBFCFD}
+.kce-back{background:none;border:0;color:var(--gris);font-weight:600;cursor:pointer;font-size:.95rem;font-family:inherit;padding:8px 4px}
+.kce-back:hover{color:var(--encre)}
+
+.kce-drop{border:2px dashed var(--bord);border-radius:14px;padding:28px 20px;text-align:center;cursor:pointer;transition:.15s;background:#FBFCFD}
+.kce-drop:hover,.kce-drop.over{border-color:var(--teal);background:var(--teal-tint)}
+.kce-drop .di{width:52px;height:52px;border-radius:13px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.kce-drop .di svg{width:26px;height:26px;color:var(--teal-d)}
+.kce-drop .dt{font-weight:600;font-size:1rem;margin-bottom:4px;color:var(--navy)}
+.kce-drop .ds{color:var(--gris);font-size:.85rem;line-height:1.4}
+.kce-photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px;margin-top:16px}
+.kce-thumb{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;background:#EEF1F5;border:1px solid var(--bord)}
+.kce-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.kce-thumb .rm{position:absolute;top:5px;right:5px;width:24px;height:24px;border-radius:50%;background:rgba(13,35,64,.78);border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.kce-thumb .rm svg{width:13px;height:13px;color:#fff}
+.kce-pcount{font-size:.82rem;color:var(--gris);margin-top:10px}
+.kce-pcount b{color:var(--encre)}
+
+.kce-result{display:grid;grid-template-columns:1.4fr 1fr;gap:30px;align-items:start}
+.kce-result-main{min-width:0}
+.kce-pill{display:inline-flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-deep);border:1px solid rgba(15,167,165,.4);border-radius:30px;padding:7px 15px;margin-bottom:16px}
+.kce-pill .d{width:7px;height:7px;border-radius:50%;background:var(--teal)}
+.kce-bigprice{font-family:var(--serif);font-size:clamp(2.8rem,8vw,4.4rem);color:var(--teal-deep);line-height:1;border-left:4px solid var(--teal);padding-left:22px;margin-bottom:14px}
+.kce-range{color:var(--gris);font-size:1rem;line-height:1.5;margin-bottom:24px}
+.kce-range b{color:var(--encre)}
+.kce-bd{border-top:1px solid var(--bord);padding:14px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.kce-bd-l .t{font-weight:600;font-size:1rem}
+.kce-bd-l .s{color:var(--gris);font-size:.86rem;margin-top:3px}
+.kce-bd-p{font-weight:700;font-size:1.02rem;white-space:nowrap}
+.kce-bd.opt .kce-bd-p{color:var(--teal-deep)}
+.kce-bd.total{border-top:2px solid var(--navy);border-bottom:0;padding-top:16px}
+.kce-bd.total .t{font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--navy)}
+.kce-bd.total .kce-bd-p{font-family:var(--serif);font-size:1.4rem;color:var(--navy)}
+.kce-acompte{background:var(--teal-tint);border:1px solid var(--teal-soft);border-radius:12px;padding:16px 18px;margin-top:16px}
+.kce-acompte .ar{display:flex;justify-content:space-between;font-size:.92rem;padding:3px 0}
+.kce-acompte .ar.main{font-weight:700;color:var(--navy)}
+.kce-result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.kce-result-actions .kce-btn{flex:1;min-width:190px}
+.kce-result-note{color:var(--gris);font-size:.85rem;font-style:italic;margin-top:14px;line-height:1.5}
+
+.kce-adjust{background:#fff;border:1px solid var(--bord);border-radius:16px;padding:22px;position:sticky;top:16px}
+.kce-adjust h3{font-size:1.2rem;margin-bottom:6px;color:var(--navy)}
+.kce-adjust .intro{color:var(--gris);font-size:.85rem;margin-bottom:16px;line-height:1.45}
+.kce-adjust .grp{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--gris);margin:14px 0 2px}
+.kce-optrow{display:flex;gap:12px;padding:13px 0;border-top:1px solid var(--bord);cursor:pointer;align-items:flex-start}
+.kce-optbox{width:22px;height:22px;border-radius:6px;border:2px solid var(--bord);flex-shrink:0;margin-top:2px;position:relative;transition:.15s}
+.kce-optrow.sel .kce-optbox{border-color:var(--teal);background:var(--teal)}
+.kce-optrow.sel .kce-optbox::after{content:'';position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.kce-optinfo{flex:1;min-width:0}
+.kce-optinfo .ol{font-weight:600;font-size:.96rem;line-height:1.25}
+.kce-optinfo .od{color:var(--gris);font-size:.8rem;line-height:1.4;margin-top:3px}
+.kce-optadd{font-size:.82rem;color:var(--teal-deep);font-weight:700;white-space:nowrap;flex-shrink:0}
+.kce-qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+.kce-qty button{width:30px;height:30px;border-radius:8px;border:1.5px solid var(--bord);background:#fff;cursor:pointer;font-size:1.1rem;color:var(--encre);line-height:1}
+.kce-qty button:hover{border-color:var(--teal);color:var(--teal-d)}
+.kce-qty .qv{min-width:42px;text-align:center;font-weight:600}
+
+.kce-res{padding:6px 0;text-align:center}
+.kce-res .ok{width:60px;height:60px;border-radius:50%;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.kce-res .ok svg{width:30px;height:30px;color:var(--teal-d)}
+.kce-res h2{font-size:1.6rem;margin-bottom:8px;color:var(--navy)}
+.kce-res .lead{color:var(--gris);max-width:500px;margin:0 auto 8px;line-height:1.6}
+.kce-partner{background:var(--teal-tint);border:1px solid var(--teal-soft);border-radius:12px;padding:14px 16px;font-size:.86rem;color:var(--teal-deep);line-height:1.5;max-width:520px;margin:16px auto 0;text-align:left;display:flex;gap:10px}
+.kce-partner svg{width:18px;height:18px;flex-shrink:0;margin-top:1px}
+.kce-recap{max-width:520px;margin:22px auto 0;text-align:left}
+.kce-recap h4{font-size:1rem;margin-bottom:10px;text-align:center;color:var(--navy)}
+.kce-recap dl{background:#FBFCFD;border:1px solid var(--bord);border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;font-size:.9rem}
+.kce-recap dt{color:var(--gris)}.kce-recap dd{text-align:right;font-weight:600}
+
+.kce-flow{max-width:520px;margin:0 auto}
+.kce-flow .stepname{text-align:center;color:var(--teal-deep);font-weight:700;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.kce-flow h3{text-align:center;font-size:1.4rem;margin-bottom:6px;color:var(--navy)}
+.kce-flow .sub{text-align:center;color:var(--gris);margin-bottom:22px;line-height:1.55}
+.kce-pills{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.kce-pill-opt{border:1.5px solid var(--bord);background:#fff;border-radius:40px;padding:13px 26px;font-size:1rem;font-weight:500;cursor:pointer;transition:.15s;font-family:inherit;color:var(--encre)}
+.kce-pill-opt:hover{border-color:var(--teal);background:var(--teal-tint)}
+.kce-pill-opt.sel{border-color:var(--teal);background:var(--teal-soft);font-weight:600;box-shadow:0 4px 14px rgba(15,167,165,.18)}
+.kce-deps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.kce-dep{border:1.5px solid var(--bord);background:#fff;border-radius:12px;padding:16px 10px;text-align:center;cursor:pointer;transition:.15s;font-family:inherit}
+.kce-dep:hover{border-color:var(--teal);background:var(--teal-tint)}
+.kce-dep.sel{border-color:var(--teal);background:var(--teal-soft);box-shadow:0 4px 14px rgba(15,167,165,.18)}
+.kce-dep .num{font-family:var(--serif);font-size:1.45rem;font-weight:600;line-height:1;color:var(--navy)}
+.kce-dep .lbl{color:var(--gris);font-size:.78rem;margin-top:5px;line-height:1.2}
+.kce-inline-err{color:#B3261E;font-size:.88rem;margin-top:10px;text-align:center;display:none}
+.kce-inline-err.show{display:block}
+.kce-done{text-align:center;color:var(--teal-deep);font-weight:600;margin-top:16px;line-height:1.5}
+
+@media(max-width:820px){
+  .kce-result{grid-template-columns:1fr}
+  .kce-adjust{position:static;order:2}
+}
+@media(max-width:760px){
+  .kce-grid{grid-template-columns:1fr}
+  .kce-qbody{padding:24px 18px}.kce-qhead{padding:18px}.kce-qnav{padding:16px 18px}
+  .kce-choices{grid-template-columns:1fr}
+}
+@media(max-width:600px){.kce-deps{grid-template-columns:repeat(2,1fr)}.kce-row{grid-template-columns:1fr}}
+</style>
+
+<div class="kce" id="kce-app">
+  <div class="kce-top">
+    <div class="kce-wrap">
+      <span class="kce-eyebrow">Nettoyage professionnel · Île&#8209;de&#8209;France</span>
+      <h1>Estimez votre <span class="a">prestation</span> en ligne</h1>
+      <p>Choisissez une prestation et répondez à quelques questions. Tarif ferme et réservation immédiate pour les forfaits, devis gratuit après visite pour le reste.</p>
+    </div>
+  </div>
+  <div class="kce-main"><div class="kce-wrap" id="kce-stage"></div></div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ════════════════════════════════════════════════════════
+     GRILLE TARIFAIRE v2 — miroir EXACT de KC_Pricing (serveur).
+     Le serveur recalcule et reste seul juge à l'encaissement.
+     ════════════════════════════════════════════════════════ */
+  const T = {
+    forfaits:{
+      'airbnb':      { studio:55,  t2:75,  t3:95,  t4:120 },
+      'fin-de-bail': { studio:160, t2:220, t3:290, t4:360, t5:430 },
+      'vitrerie':    { studio:70,  t2:70,  t3:95,  t4:95,  t5:130 }
+    },
+    tailles:{ studio:'Studio / T1', t2:'T2', t3:'T3', t4:'T4', t5:'T5' },
+    options:{
+      'four':         { nom:'Four en profondeur',           prix:35,  type:'fixe',  compat:['airbnb'] },
+      'frigo':        { nom:'Réfrigérateur / congélateur',  prix:25,  type:'fixe',  compat:['airbnb'] },
+      'vitres-int':   { nom:'Vitres intérieures',           prix:20,  type:'fixe',  compat:['airbnb'] },
+      'consommables': { nom:'Réassort consommables',        prix:10,  type:'fixe',  compat:['airbnb'] },
+      'kit-linge':    { nom:'Kit linge complet',            prix:18,  type:'unite', unite:'lit', max:10, compat:['airbnb'], desc:'Location, lavage, livraison — par lit' },
+      'repassage':    { nom:'Repassage',                    prix:35,  type:'unite', unite:'h',   max:8,  compat:['airbnb'], desc:'Par heure' },
+      'cave-box':     { nom:'Cave / box',                   prix:25,  type:'fixe',  compat:['fin-de-bail'] },
+      'balcon':       { nom:'Balcon / terrasse',            prix:2,   type:'unite', unite:'m²',  max:150, minTotal:20, compat:['fin-de-bail'], desc:'2 €/m² · minimum 20 €' },
+      'moquette':     { nom:'Moquette injection-extraction',prix:5,   type:'unite', unite:'m²',  max:300, minTotal:100, compat:['fin-de-bail'], desc:'5 €/m² · minimum 100 €' },
+      'canape-2p':    { nom:'Canapé 2 places',              prix:80,  type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'canape-3p':    { nom:'Canapé 3 places',              prix:100, type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'canape-4p':    { nom:'Canapé 4 places',              prix:110, type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'fauteuil':     { nom:'Fauteuil',                     prix:50,  type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'matelas':      { nom:'Matelas 2 places',             prix:75,  type:'fixe',  compat:['fin-de-bail','vitrerie'] }
+    },
+    majorations:{
+      'urgence':        { nom:'Urgence — sous 48 h',        taux:0.30 },
+      'dimanche-ferie': { nom:'Dimanche ou jour férié',     taux:0.25 },
+      'non-vide':       { nom:'Logement non vidé',          taux:0.15 }
+    },
+    frais:{ 'etage':{ nom:'Étage 3 et + sans ascenseur', prix:15 } },
+    acomptePct:30,
+    chantier:{ taux:{ rafraichissement:4.5, standard:7, lourd:11 }, min:300, marge:0.15 },
+    bureaux:{ tauxMin:1.5, tauxMax:3, position:2 }
+  };
+
+  const KC_CONFIG = {
+    reservationURL:'/reservation/',
+    devisURL:'/demande-de-devis/',
+    handoffKey:'kc_reservation_handoff',
+    motsSensibles:/sinistre|insalubr|d[ée]c[èe]s|gravats|diog[èe]ne|inond|incendie|punaise/i
+  };
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS DES CARTES (médiathèque WordPress) — '' = dégradé + icône.
+     Collez l'URL de votre image entre les guillemets pour l'afficher.
+     URLs reprises du tunnel V5 là où elles existent déjà.
+     ════════════════════════════════════════════════════════ */
+  const KC_IMAGES = {
+    'airbnb':       'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png',
+    'fin-de-bail':  'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg',
+    'vitrerie':     'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg',
+    'fin-chantier': 'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp',
+    'bureaux':      'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp',
+    'parties-communes':'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1224155006-612x612-1.jpg',
+    'commerces':    'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-polina-zimmerman-4008518.jpg',
+    /* — à compléter quand les photos seront en ligne (sinon dégradé + icône) — */
+    'etablissements-sensibles':'', 'remise-en-etat':'', 'decapage':'', 'shampouinage':'',
+    'haute-pression':'', 'pieces-blanches':'',
+    /* ⚠️ Spécialisées : images SOBRES et NEUTRES uniquement (jamais d'image choc) */
+    'deratisation':'', 'desinsectisation':'', 'punaises-de-lit':'', 'diogene':'', 'scenes-sensibles':''
+  };
+
+  /* Icônes (trait fin, charte Kayli — aucune emoji) */
+  const I = {
+    airbnb:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>',
+    bail:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/>',
+    vitres:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/>',
+    chantier:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+    bureaux:'<path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v14M9 9h6M9 13h6M9 17h6"/>',
+    copro:'<path d="M3 21h18M6 21V8l6-4 6 4v13M10 21v-5h4v5M9 11h.01M15 11h.01"/>',
+    commerce:'<path d="M3 9l1-5h16l1 5M4 9v11a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9M3 9h18"/>',
+    sante:'<path d="M12 21s-8-5-8-12a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 7-8 12-8 12z"/><path d="M12 8v6M9 11h6"/>',
+    remise:'<path d="M3 21h18M6 21V11l6-5 6 5v10M10 21v-5h4v5"/>',
+    sols:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>',
+    moquette:'<path d="M3 7h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 7l2-3h14l2 3M7 12v3M12 12v3M17 12v3"/>',
+    pression:'<path d="M3 21h18M7 21V10l5-3 5 3v11M10 7V4h4v3M5 14h.01M5 17h.01"/>',
+    blanche:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 3v18M4 9h5M15 12h5"/>',
+    rat:'<circle cx="9" cy="13" r="5"/><path d="M13 10a4 4 0 0 1 6 3M6 9l-2-2M11 9l1-3"/>',
+    insecte:'<path d="M12 7a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 7V4M9 3l3 2 3-2M6 12H3M6 16H3M21 12h-3M21 16h-3"/>',
+    diogene:'<path d="M3 21h18M5 21v-8h14v8M7 13V8h10v5M9 8V4h6v4"/>',
+    scenes:'<path d="M12 21s-8-5-8-12a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 7-8 12-8 12z"/>'
+  };
+
+  /* ════════════════════════════════════════════════════════
+     CATALOGUE — funnel : 'forfait' | 'estimate' | 'audit'
+     ════════════════════════════════════════════════════════ */
+  const TAILLES_BAIL = [["studio","Studio / T1"],["t2","T2"],["t3","T3"],["t4","T4"],["t5","T5"],["hors-grille","Maison / + de 110 m²","Sur devis · visite gratuite"]];
+  const TAILLES_AIRBNB = [["studio","Studio / T1"],["t2","T2"],["t3","T3"],["t4","T4"],["hors-grille","T5 / maison","Sur devis · visite gratuite"]];
+  const TAILLES_VITRES = [["studio","Studio / T1"],["t2","T2"],["t3","T3"],["t4","T4"],["t5","T5"],["hors-grille","Hauteur / vitrine / verrière","Sur devis · visite gratuite"]];
+  const DELAI = ["Urgence — sous 48 h","Sous une semaine","Flexible / à convenir"];
+
+  const SERVICES = [
+    /* ---- FORFAITS (prix ferme TTC, réservation + paiement en ligne) ---- */
+    { id:"airbnb", cat:"Forfaits — réservables en ligne", funnel:"forfait", icon:"airbnb",
+      title:"Turnover Airbnb", desc:"Rotation entre deux locations · dès 55 € TTC",
+      q:[
+        {k:"taille", t:"Quelle est la typologie du logement ?", kind:"typo", opts:TAILLES_AIRBNB},
+        {k:"delai",  t:"Sous quel délai souhaitez-vous l'intervention ?", h:"Une intervention sous 48 h applique une majoration d'urgence (+30 %).", kind:"single", opts:DELAI}
+      ]},
+    { id:"fin-de-bail", cat:"Forfaits — réservables en ligne", funnel:"forfait", icon:"bail",
+      title:"Fin de bail / déménagement", desc:"Logement vide, tout inclus · dès 160 € TTC",
+      inclus:"Électroménager, vitres intérieures et placards inclus.",
+      q:[
+        {k:"taille", t:"Quelle est la typologie du logement ?", kind:"typo", opts:TAILLES_BAIL},
+        {k:"vide",   t:"Le logement sera-t-il entièrement vidé ?", h:"Un logement encore meublé ou occupé applique +15 %.", kind:"single", opts:["Oui, entièrement vidé","Non, encore meublé / occupé"]},
+        {k:"delai",  t:"Sous quel délai ?", h:"Sous 48 h : majoration d'urgence (+30 %).", kind:"single", opts:DELAI}
+      ]},
+    { id:"vitrerie", cat:"Forfaits — réservables en ligne", funnel:"forfait", icon:"vitres",
+      title:"Vitres classiques", desc:"Plain-pied / intérieur · dès 70 € TTC",
+      inclus:"Vitres plain-pied et intérieures accessibles.",
+      q:[
+        {k:"taille", t:"Quelle est la typologie du logement ?", kind:"typo", opts:TAILLES_VITRES},
+        {k:"delai",  t:"Sous quel délai ?", h:"Sous 48 h : majoration d'urgence (+30 %).", kind:"single", opts:DELAI}
+      ]},
+
+    /* ---- ESTIMATION indicative HT (→ audit gratuit) ---- */
+    { id:"fin-chantier", cat:"Estimation immédiate", funnel:"estimate", kind:"chantier", icon:"chantier",
+      title:"Nettoyage fin de chantier", desc:"Après travaux · dès 4,50 €/m² HT",
+      q:[
+        {k:"surface", t:"Quelle surface de chantier ?", h:"Estimation indicative ± 15 % — prix confirmé après audit gratuit ou photos.", kind:"slider", unit:"m²", min:20, max:1000, step:10, default:60, openMax:true},
+        {k:"niveau", t:"Quel niveau d'empoussièrement ?", kind:"choice",
+          opts:[["Rafraîchissement","Poussière légère, finitions.","≈ 4,50 €/m² HT"],["Standard","Chantier classique après travaux.","≈ 7 €/m² HT"],["Lourd","Gravats, traces, salissures tenaces.","≈ 11 €/m² HT"]]}
+      ]},
+    { id:"bureaux", cat:"Estimation immédiate", funnel:"estimate", kind:"bureaux", icon:"bureaux",
+      title:"Entretien de bureaux", desc:"Entretien régulier · à partir de 2 €/m²/mois HT",
+      q:[
+        {k:"surface", t:"Quelle est la surface de vos locaux ?", h:"Budget mensuel indicatif — devis ferme après audit (fréquences, horaires, cahier des charges).", kind:"slider", unit:"m²", min:20, max:2000, step:10, default:100, openMax:true}
+      ]},
+
+    /* ---- SUR DEVIS (aucun chiffre en ligne) ---- */
+    { id:"parties-communes", slug:"parties-communes-immeubles", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"copro",
+      title:"Copropriétés & parties communes", desc:"Halls, escaliers, locaux communs.",
+      q:[
+        {k:"bien", t:"Type de site ?", kind:"single", opts:["Immeuble résidentiel","Copropriété avec ascenseur","Résidence services"]},
+        {k:"frequence", t:"Fréquence souhaitée ?", kind:"single", opts:["Quotidienne","Plusieurs fois / semaine","Hebdomadaire","Ponctuelle"]},
+        {k:"detail", t:"Précisions (étages, surfaces, contraintes)", kind:"text"}
+      ]},
+    { id:"commerces", slug:"commerces-retail", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"commerce",
+      title:"Commerces & ERP", desc:"Boutiques, restaurants, hôtels.",
+      q:[
+        {k:"bien", t:"Type d'établissement ?", kind:"single", opts:["Boutique / retail","Restaurant / café","Hôtel / réception","Autre ERP"]},
+        {k:"frequence", t:"Fréquence souhaitée ?", kind:"single", opts:["Quotidienne","Plusieurs fois / semaine","Hebdomadaire","Ponctuelle"]},
+        {k:"detail", t:"Précisions (surface, horaires, contraintes)", kind:"text"}
+      ]},
+    { id:"etablissements-sensibles", slug:"etablissements-sensibles", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"sante",
+      title:"Établissements sensibles", desc:"Santé, crèches, écoles — bio-nettoyage.",
+      q:[
+        {k:"bien", t:"Type d'établissement ?", kind:"single", opts:["Cabinet / santé","Crèche","École","Laboratoire / autre"]},
+        {k:"detail", t:"Précisions (protocoles, surfaces, fréquence)", kind:"text"}
+      ]},
+    { id:"remise-en-etat", slug:"remise-en-etat", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"remise",
+      title:"Remise en état lourde", desc:"Logement ou local très dégradé.",
+      q:[
+        {k:"bien", t:"Quelle situation ?", kind:"single", opts:["Logement insalubre","Après sinistre (eau, incendie)","Après décès","Local très encrassé"]},
+        {k:"detail", t:"Décrivez la situation", h:"Intervention sensible, réalisée en toute discrétion.", kind:"text"}
+      ]},
+    { id:"decapage", slug:"decapage-cristallisation-sols", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"sols",
+      title:"Décapage / cristallisation des sols", desc:"Marbre, pierre, carrelage, PVC.",
+      q:[
+        {k:"sol", t:"Type de sol ?", kind:"single", opts:["Marbre / pierre","Carrelage","PVC / lino","Béton","Je ne sais pas"]},
+        {k:"detail", t:"Précisions (surface, état)", kind:"text"}
+      ]},
+    { id:"shampouinage", slug:"shampouinage-moquettes", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"moquette",
+      title:"Shampouinage de moquettes", desc:"Moquettes, tapis, textiles.",
+      q:[
+        {k:"support", t:"Quel support ?", kind:"single", opts:["Moquette","Tapis","Canapé / fauteuil","Plusieurs"]},
+        {k:"detail", t:"Précisions (surface, taches)", kind:"text"}
+      ]},
+    { id:"haute-pression", slug:"nettoyage-haute-pression", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"pression",
+      title:"Nettoyage haute pression", desc:"Façades, terrasses, parkings.",
+      q:[
+        {k:"zone", t:"Quelle zone ?", kind:"single", opts:["Façade","Terrasse / cour","Parking / sol extérieur","Plusieurs"]},
+        {k:"detail", t:"Précisions (surface, accès)", kind:"text"}
+      ]},
+    { id:"pieces-blanches", slug:"pieces-blanches", cat:"Sur devis — visite gratuite", funnel:"audit", icon:"blanche",
+      title:"Pièces blanches", desc:"Salles blanches, environnements contrôlés.",
+      q:[
+        {k:"classe", t:"Classe / environnement ?", kind:"single", opts:["Laboratoire","Salle blanche ISO","Industrie / agroalimentaire","Je ne sais pas"]},
+        {k:"detail", t:"Précisions (surface, protocole)", kind:"text"}
+      ]},
+
+    /* ---- INTERVENTIONS SPÉCIALISÉES (partenaires certifiés) ---- */
+    { id:"deratisation", slug:"deratisation", cat:"Interventions spécialisées", funnel:"audit", partner:true, icon:"rat",
+      title:"Dératisation", desc:"Rats, souris — partenaire certifié.",
+      q:[
+        {k:"lieu", t:"Quel type de lieu ?", kind:"single", opts:["Logement","Commerce / restaurant","Immeuble / copropriété","Local professionnel"]},
+        {k:"detail", t:"Décrivez la situation", kind:"text"}
+      ]},
+    { id:"desinsectisation", slug:"desinsectisation", cat:"Interventions spécialisées", funnel:"audit", partner:true, icon:"insecte",
+      title:"Désinsectisation", desc:"Cafards, fourmis, guêpes — partenaire certifié.",
+      q:[
+        {k:"nuisible", t:"Quel nuisible ?", kind:"single", opts:["Cafards / blattes","Fourmis","Guêpes / frelons","Autre / je ne sais pas"]},
+        {k:"detail", t:"Décrivez la situation", kind:"text"}
+      ]},
+    { id:"punaises-de-lit", slug:"punaises-de-lit", cat:"Interventions spécialisées", funnel:"audit", partner:true, icon:"insecte",
+      title:"Punaises de lit", desc:"Traitement professionnel — partenaire certifié.",
+      q:[
+        {k:"lieu", t:"Quel type de lieu ?", kind:"single", opts:["Logement","Hôtel / hébergement","Immeuble","Local professionnel"]},
+        {k:"detail", t:"Décrivez la situation", kind:"text"}
+      ]},
+    { id:"diogene", slug:"syndrome-de-diogene", cat:"Interventions spécialisées", funnel:"audit", partner:true, icon:"diogene",
+      title:"Syndrome de Diogène", desc:"Accompagnement confidentiel.",
+      q:[
+        {k:"bien", t:"Type de lieu ?", kind:"single", opts:["Appartement","Maison","Local"]},
+        {k:"detail", t:"Précisions (en toute discrétion)", kind:"text"}
+      ]},
+    { id:"scenes-sensibles", slug:"scenes-sensibles", cat:"Interventions spécialisées", funnel:"audit", partner:true, icon:"scenes",
+      title:"Scènes sensibles", desc:"Après sinistre ou décès, en toute discrétion.",
+      q:[
+        {k:"detail", t:"Décrivez la situation", h:"Intervention discrète, réalisée avec un partenaire spécialisé certifié.", kind:"text"}
+      ]}
+  ];
+
+  const CATS = ["Forfaits — réservables en ligne","Estimation immédiate","Sur devis — visite gratuite","Interventions spécialisées"];
+
+  /* ════════════════════════════════════════════════════════
+     ÉTAT + utilitaires
+     ════════════════════════════════════════════════════════ */
+  const stage = document.getElementById('kce-stage');
+  const svg = p => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+p+'</svg>';
+  const euro = n => Number(n).toLocaleString('fr-FR',{minimumFractionDigits:0,maximumFractionDigits:2});
+  const esc = s => String(s).replace(/"/g,'&quot;');
+  let cur=null, idx=0, answers={}, phase='quiz';
+  let curOptions={}, curMaj={}, curFrais={}, curPhotos=[], contact={}, forcedAudit=false, auditReason='';
+
+  function opt(o){ return Array.isArray(o)?{val:o[0],sub:o[1]}:{val:o,sub:null}; }
+  function opt3(o){ return Array.isArray(o)?{val:o[0],desc:o[1]||null,note:o[2]||null}:{val:o,desc:null,note:null}; }
+  function isForfait(){ return cur.funnel==='forfait' && !forcedAudit && answers.taille && answers.taille!=='hors-grille'; }
+
+  /* ---- moteur de prix (miroir KC_Pricing) ---- */
+  function activeMaj(){
+    const m={};
+    if(answers.delai==='Urgence — sous 48 h') m['urgence']=true;
+    if(answers.vide==='Non, encore meublé / occupé') m['non-vide']=true;
+    if(curMaj['dimanche-ferie']) m['dimanche-ferie']=true;
+    return m;
+  }
+  function calcForfait(){
+    const grille=T.forfaits[cur.id]; const taille=answers.taille;
+    if(!grille || taille==='hors-grille' || !grille[taille]) return null;
+    const base=grille[taille]; let cents=Math.round(base*100);
+    const lignes=[{nom:cur.title+' — '+T.tailles[taille], montant:base}];
+    let optCents=0;
+    Object.keys(curOptions).forEach(k=>{
+      const o=T.options[k]; if(!o || !o.compat.includes(cur.id)) return;
+      const q=o.type==='fixe'?1:Math.min(Number(curOptions[k])||0,o.max); if(q<1) return;
+      let c=Math.round(o.prix*q*100); if(o.minTotal) c=Math.max(c,Math.round(o.minTotal*100));
+      optCents+=c; lignes.push({nom:o.nom+(o.type==='unite'?' × '+q+' '+o.unite:''), montant:c/100});
+    });
+    const sous=cents+optCents; let taux=0; const majs=activeMaj();
+    Object.keys(majs).forEach(k=>{ const m=T.majorations[k]; taux+=m.taux;
+      lignes.push({nom:m.nom+' (+'+Math.round(m.taux*100)+' %)', montant:Math.round(sous*m.taux)/100}); });
+    let total=Math.round(sous*(1+taux));
+    if(curFrais['etage']){ total+=Math.round(T.frais.etage.prix*100); lignes.push({nom:T.frais.etage.nom, montant:T.frais.etage.prix}); }
+    const ac=Math.round(total*T.acomptePct/100);
+    return { total:total/100, acompte:ac/100, solde:(total-ac)/100, lignes };
+  }
+  function calcChantier(){
+    const taux=T.chantier.taux[answers.niveau_key] || T.chantier.taux.standard;
+    const s=Math.min(Math.max(Number(answers.surface)||0,20),5000);
+    const central=Math.max(T.chantier.min, Math.round(taux*s));
+    return { min:Math.round(central*(1-T.chantier.marge)), max:Math.round(central*(1+T.chantier.marge)),
+      unite:'€ HT', detail:s+' m² × '+euro(taux)+' €/m² HT (minimum '+T.chantier.min+' € HT) · ± 15 %' };
+  }
+  function calcBureaux(){
+    const s=Math.min(Math.max(Number(answers.surface)||0,20),10000);
+    return { min:Math.round(s*T.bureaux.tauxMin), max:Math.round(s*T.bureaux.tauxMax), unite:'€ HT/mois',
+      detail:s+' m² × 1,50 – 3 €/m²/mois HT selon fréquence et cahier des charges' };
+  }
+
+  /* ════════════════════════════════════════════════════════
+     ÉCRAN — liste des prestations
+     ════════════════════════════════════════════════════════ */
+  function badge(f){
+    if(f==='forfait') return '<span class="kce-badge book">Réservable en ligne</span>';
+    if(f==='estimate') return '<span class="kce-badge est">Estimation</span>';
+    return '<span class="kce-badge dev">Sur devis</span>';
+  }
+  function screenList(){
+    cur=null; phase='quiz';
+    let h='<div class="kce-how"><div class="kce-how-h"><span class="ic">'
+      +svg('<path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>')
+      +'</span><h2>Comment ça marche</h2></div><div class="kce-how-steps">'
+      +'<div class="kce-how-step"><span class="kce-how-num">1</span><div><h3>Choisissez une prestation</h3><p>Sélectionnez votre besoin dans la liste ci-dessous.</p></div></div>'
+      +'<div class="kce-how-step"><span class="kce-how-num">2</span><div><h3>Répondez aux questions</h3><p>Quelques étapes simples. Le tarif s\'affiche en direct pour les forfaits.</p></div></div>'
+      +'<div class="kce-how-step"><span class="kce-how-num">3</span><div><h3>Réservez ou demandez un devis</h3><p>Paiement en ligne pour les forfaits, visite gratuite pour le reste.</p></div></div>'
+      +'</div><div class="kce-how-note">'
+      +'<span>'+svg('<path d="M20 6L9 17l-5-5"/>')+'<b>Forfait</b>&nbsp;: prix ferme TTC, réservation immédiate.</span>'
+      +'<span>'+svg('<path d="M20 6L9 17l-5-5"/>')+'<b>Sur devis</b>&nbsp;: chiffrage gratuit après visite.</span>'
+      +'<span>'+svg('<path d="M20 6L9 17l-5-5"/>')+'Sans engagement.</span></div></div>';
+    CATS.forEach(c=>{
+      const list=SERVICES.filter(s=>s.cat===c); if(!list.length) return;
+      h+='<h2 class="kce-cat">'+c+'</h2><div class="kce-grid">';
+      list.forEach(s=>{ const img=KC_IMAGES[s.id]||'';
+        h+='<button class="kce-svc" data-id="'+s.id+'">'
+          +'<div class="kce-svc-media"'+(img?' style="background-image:url(\''+img+'\'),linear-gradient(135deg,#143a6b 0%,#0e7c7a 100%)"':'')+' role="img" aria-label="'+esc(s.title)+'"></div>'
+          +badge(s.funnel)
+          +'<div class="kce-svc-body"><span class="kce-svc-ic">'+svg(I[s.icon]||I.vitres)+'</span>'
+          +'<h3>'+s.title+'</h3><p>'+s.desc+'</p></div></button>'; });
+      h+='</div>';
+    });
+    stage.innerHTML=h;
+    stage.querySelectorAll('.kce-svc').forEach(b=>b.onclick=()=>{
+      cur=SERVICES.find(s=>s.id===b.dataset.id); idx=0; answers={}; curOptions={}; curMaj={}; curFrais={};
+      curPhotos=[]; contact={}; forcedAudit=false; auditReason=''; phase='quiz'; render();
+    });
+    stage.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  /* ════════════════════════════════════════════════════════
+     ROUTAGE
+     ════════════════════════════════════════════════════════ */
+  function render(){
+    if(phase==='quiz' && idx<cur.q.length) return renderQ();
+    if(phase==='quiz' && idx===cur.q.length) return renderPhotos();
+    if(phase==='quiz'){ phase='result'; }
+    if(phase==='result') return renderResult();
+    if(phase==='profil') return renderProfil();
+    if(phase==='zone') return renderZone();
+    if(phase==='contact') return renderContact();
+  }
+  function shell(sub,body,nav,pct){
+    stage.innerHTML='<div class="kce-quiz"><div class="kce-qhead">'
+      +'<button class="kce-hback" id="hback">'+svg('<path d="M15 18l-6-6 6-6"/>')+'Retour</button>'
+      +'<div class="lkbox"><span class="ic">'+svg(I[cur.icon]||I.vitres)+'</span><div><h2>'+cur.title+'</h2><div class="sub">'+sub+'</div></div></div></div>'
+      +'<div class="kce-prog"><span style="width:'+pct+'%"></span></div>'
+      +'<div class="kce-qbody">'+body+'</div>'+(nav||'')+'</div>';
+    const hb=document.getElementById('hback'); if(hb) hb.onclick=goBack;
+    document.querySelector('.kce-quiz').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+  function goBack(){
+    if(phase==='contact'){phase='zone';return render();}
+    if(phase==='zone'){phase='profil';return render();}
+    if(phase==='profil'){phase='result';return render();}
+    if(phase==='result'){phase='quiz';idx=cur.q.length;return render();}
+    if(phase==='quiz'){ if(idx===0) return screenList(); idx--; return render(); }
+  }
+
+  /* ---- aperçu de prix en direct (forfait uniquement) ---- */
+  function liveBarHTML(){
+    if(cur.funnel!=='forfait') return '';
+    return '<div class="kce-livebar"><div><div class="ll">Votre tarif</div><div class="lv" id="liveval">—</div></div>'
+      +'<div class="lp">Prix ferme TTC, mis à jour à chaque réponse</div></div>';
+  }
+  function refreshLive(){
+    const lv=document.getElementById('liveval'); if(!lv) return;
+    if(answers.taille==='hors-grille'){ lv.textContent='Sur devis'; return; }
+    const r=isForfait()?calcForfait():null;
+    lv.textContent = r ? euro(r.total)+' € TTC' : '—';
+  }
+
+  /* ════════════════════════════════════════════════════════
+     QUESTION
+     ════════════════════════════════════════════════════════ */
+  function renderQ(){
+    const q=cur.q[idx];
+    let b=liveBarHTML();
+    if(cur.inclus && idx===0) b+='<div class="kce-info">'+cur.inclus+'</div>';
+    b+='<div class="kce-q">'+q.t+'</div>'+(q.h?'<div class="kce-hint">'+q.h+'</div>':'<div style="height:6px"></div>');
+
+    if(q.kind==='typo'){
+      b+='<div class="kce-choices">';
+      q.opts.forEach(o=>{ const on=answers[q.k]===o[0];
+        b+='<div class="kce-choice'+(on?' sel':'')+'" data-v="'+esc(o[0])+'"><span class="chk">'+svg('<path d="M20 6L9 17l-5-5"/>')+'</span>'
+          +'<div class="ct">'+o[1]+'</div>'+(o[2]?'<div class="cn">'+o[2]+'</div>':'')+'</div>'; });
+      b+='</div>';
+    } else if(q.kind==='choice'){
+      b+='<div class="kce-choices">';
+      q.opts.forEach(o=>{ const x=opt3(o); const on=answers[q.k]===x.val;
+        b+='<div class="kce-choice'+(on?' sel':'')+'" data-v="'+esc(x.val)+'"><span class="chk">'+svg('<path d="M20 6L9 17l-5-5"/>')+'</span>'
+          +'<div class="ct">'+x.val+'</div>'+(x.desc?'<div class="cd">'+x.desc+'</div>':'')+(x.note?'<div class="cn">'+x.note+'</div>':'')+'</div>'; });
+      b+='</div>';
+    } else if(q.kind==='single'||q.kind==='multi'){
+      const sel=answers[q.k]||(q.kind==='multi'?[]:null);
+      b+='<div class="kce-opts">';
+      q.opts.forEach(o=>{ const x=opt(o); const on=q.kind==='multi'?sel.includes(x.val):sel===x.val;
+        b+='<div class="kce-opt '+(q.kind==='multi'?'multi ':'')+(on?'sel':'')+'" data-v="'+esc(x.val)+'"><span class="dot"></span><span>'+x.val+(x.sub?'<span class="osub">'+x.sub+'</span>':'')+'</span></div>'; });
+      b+='</div>';
+    } else if(q.kind==='slider'){
+      const mn=q.min||0,mx=q.max||200,st=q.step||1;
+      const val=(answers[q.k]!=null&&answers[q.k]!=='')?answers[q.k]:(q.default!=null?q.default:mn);
+      b+='<div class="kce-slider-wrap"><div class="kce-slider-val"><span class="num" id="sl-num">'+val+'</span><span class="u">'+(q.unit||'')+'</span></div>'
+        +'<input type="range" class="kce-slider" id="sl" min="'+mn+'" max="'+mx+'" step="'+st+'" value="'+val+'">'
+        +'<div class="kce-slider-ends"><span>'+mn+' '+(q.unit||'')+'</span><span>'+mx+(q.openMax?'+':'')+' '+(q.unit||'')+'</span></div>'
+        +'<div class="kce-slider-manual">Valeur exacte&nbsp;: <input type="number" id="sl-in" min="'+mn+'" value="'+val+'"> '+(q.unit||'')+'</div></div>';
+    } else {
+      b+='<div class="kce-field"><textarea id="in" rows="4" placeholder="Votre message…">'+(answers[q.k]||'')+'</textarea></div>';
+    }
+
+    const totalSteps=cur.q.length+1;
+    const nav='<div class="kce-qnav"><button class="kce-back">'+(idx===0?'← Changer de prestation':'← Précédent')
+      +'</button><button class="kce-btn kce-cta" id="next" disabled>Continuer →</button></div>';
+    shell('Étape '+(idx+1)+' / '+totalSteps, b, nav, Math.round(idx/totalSteps*100));
+
+    const next=document.getElementById('next');
+    const isMulti=q.kind==='multi';
+    const ok=()=>{ const val=answers[q.k];
+      next.disabled = isMulti ? !(val&&val.length) : (q.kind==='text' ? false : (val===undefined||val===''||val===null)); };
+    if(q.kind==='text') next.disabled=false;
+    if(q.kind==='slider' && (answers[q.k]==null||answers[q.k]==='')) answers[q.k]=(q.default!=null?q.default:(q.min||0));
+
+    stage.querySelectorAll('.kce-choice,.kce-opt').forEach(el=>el.onclick=()=>{
+      const val=el.getAttribute('data-v');
+      if(isMulti){ let a=answers[q.k]||[]; a.includes(val)?a=a.filter(x=>x!==val):a.push(val); answers[q.k]=a; el.classList.toggle('sel'); }
+      else{ answers[q.k]=val; stage.querySelectorAll('.kce-choice,.kce-opt').forEach(o=>o.classList.remove('sel')); el.classList.add('sel'); }
+      if(q.k==='niveau'){ answers.niveau_key = val==='Rafraîchissement'?'rafraichissement':(val==='Lourd'?'lourd':'standard'); }
+      refreshLive(); ok();
+    });
+    const sl=document.getElementById('sl');
+    if(sl){ const num=document.getElementById('sl-num'), man=document.getElementById('sl-in');
+      sl.oninput=()=>{ answers[q.k]=+sl.value; if(num)num.textContent=sl.value; if(man)man.value=sl.value; refreshLive(); ok(); };
+      if(man) man.oninput=()=>{ let val=man.value===''?'':+man.value; if(val!==''){ if(val<+sl.min)val=+sl.min; sl.value=Math.min(val,+sl.max); } answers[q.k]=val===''?'':val; if(num)num.textContent=(val===''?'—':val); refreshLive(); ok(); }; }
+    const inp=document.getElementById('in');
+    if(inp) inp.oninput=()=>{ answers[q.k]=inp.value; ok(); };
+
+    refreshLive(); ok();
+    document.querySelector('.kce-back').onclick=()=>{ if(idx===0) screenList(); else { idx--; render(); } };
+    next.onclick=()=>{
+      // garde-fou : typologie hors grille → bascule en sur devis
+      if(q.k==='taille' && answers.taille==='hors-grille'){ forcedAudit=true; auditReason='Typologie hors grille — devis personnalisé après visite gratuite'; }
+      idx++; render();
+    };
+  }
+
+  /* ════════════════════════════════════════════════════════
+     PHOTOS (facultatif)
+     ════════════════════════════════════════════════════════ */
+  function renderPhotos(){
+    const totalSteps=cur.q.length+1;
+    const nextLabel = (cur.funnel==='forfait'&&!forcedAudit) ? 'Voir mon tarif →' : (cur.funnel==='estimate' ? 'Voir mon estimation →' : 'Voir le récapitulatif →');
+    let b='<div class="kce-q">Ajoutez des photos (facultatif)</div>'
+      +'<div class="kce-hint">Une ou plusieurs photos de la zone concernée nous aident à préparer un devis plus précis. JPG/PNG, 6 photos maximum.</div>'
+      +'<div class="kce-drop" id="drop"><div class="di">'+svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>')
+      +'</div><div class="dt">Déposez vos photos ici</div><div class="ds">ou cliquez pour parcourir vos fichiers</div></div>'
+      +'<input type="file" id="fileinput" accept="image/*" multiple style="display:none">'
+      +'<div class="kce-photos" id="thumbs"></div><div class="kce-pcount" id="pcount"></div>';
+    const nav='<div class="kce-qnav"><button class="kce-back">← Précédent</button><button class="kce-btn kce-cta" id="next">'+nextLabel+'</button></div>';
+    shell('Étape '+totalSteps+' / '+totalSteps, b, nav, Math.round(cur.q.length/totalSteps*100));
+
+    const drop=document.getElementById('drop'), fi=document.getElementById('fileinput'),
+          thumbs=document.getElementById('thumbs'), pcount=document.getElementById('pcount');
+    const MAX=6, MAXW=1280;
+    function draw(){
+      thumbs.innerHTML=curPhotos.map((p,i)=>'<div class="kce-thumb"><img src="'+p+'" alt=""><button class="rm" data-i="'+i+'">'+svg('<path d="M18 6L6 18M6 6l12 12"/>')+'</button></div>').join('');
+      pcount.innerHTML=curPhotos.length?('<b>'+curPhotos.length+'</b> photo'+(curPhotos.length>1?'s':'')+' · '+(MAX-curPhotos.length)+' restante'+((MAX-curPhotos.length)>1?'s':'')):'';
+      thumbs.querySelectorAll('.rm').forEach(btn=>btn.onclick=()=>{ curPhotos.splice(+btn.getAttribute('data-i'),1); draw(); });
+    }
+    function compress(file){ return new Promise(res=>{ const r=new FileReader();
+      r.onload=e=>{ const img=new Image(); img.onload=()=>{ let w=img.width,h=img.height; if(w>MAXW){h=Math.round(h*MAXW/w);w=MAXW;}
+        const c=document.createElement('canvas'); c.width=w;c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); res(c.toDataURL('image/jpeg',0.72)); };
+        img.onerror=()=>res(null); img.src=e.target.result; }; r.onerror=()=>res(null); r.readAsDataURL(file); }); }
+    async function add(files){ for(const f of files){ if(curPhotos.length>=MAX) break; if(!f.type.startsWith('image/')) continue; const d=await compress(f); if(d) curPhotos.push(d); draw(); } }
+    drop.onclick=()=>fi.click();
+    fi.onchange=()=>{ add(Array.from(fi.files)); fi.value=''; };
+    ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+    ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over');}));
+    drop.addEventListener('drop',e=>{ if(e.dataTransfer&&e.dataTransfer.files) add(Array.from(e.dataTransfer.files)); });
+    draw();
+    document.querySelector('.kce-back').onclick=()=>{ idx=cur.q.length-1; phase='quiz'; render(); };
+    document.getElementById('next').onclick=()=>{ phase='result'; render(); };
+  }
+
+  function recapDL(){
+    return '<dl>'+cur.q.map(q=>{ let val=answers[q.k]; if(Array.isArray(val)) val=val.join(', ');
+      if(val==null||val==='') return ''; if(q.kind==='typo') val=(T.tailles[val]||val);
+      return '<dt>'+q.t.replace(/\s*\?$/,'')+'</dt><dd>'+val+(q.kind==='slider'&&q.unit?' '+q.unit:'')+'</dd>'; }).join('')+'</dl>';
+  }
+
+  /* ════════════════════════════════════════════════════════
+     RÉSULTAT — 3 modes : forfait / estimate / audit
+     ════════════════════════════════════════════════════════ */
+  function adjustPanel(){
+    const opts=Object.keys(T.options).filter(k=>T.options[k].compat.includes(cur.id));
+    let h='<div class="kce-adjust"><h3>Ajuster le tarif</h3><p class="intro">Ajoutez des prestations complémentaires&nbsp;: le prix se met à jour en direct.</p>';
+    if(opts.length){ h+='<div class="grp">Options</div>';
+      opts.forEach(k=>{ const o=T.options[k]; const on=o.type==='fixe'?!!curOptions[k]:(+curOptions[k]>0);
+        const price = o.type==='fixe'?('+ '+euro(o.prix)+' €'):('+ '+euro(o.prix)+' €/'+o.unite+(o.minTotal?' · min '+o.minTotal+' €':''));
+        h+='<div class="kce-optrow'+(on?' sel':'')+'" data-opt="'+k+'"'+(o.type==='unite'?' data-unite="1"':'')+'><span class="kce-optbox"></span>'
+          +'<div class="kce-optinfo"><div class="ol">'+o.nom+'</div>'+(o.desc?'<div class="od">'+o.desc+'</div>':'')
+          +(o.type==='unite'&&on?'<div class="kce-qty"><button data-q="-">−</button><span class="qv">'+(+curOptions[k]||1)+' '+o.unite+'</span><button data-q="+">+</button></div>':'')
+          +'</div><span class="kce-optadd">'+price+'</span></div>'; });
+    }
+    h+='<div class="grp">Majoration</div>'
+      +'<div class="kce-optrow'+(curMaj['dimanche-ferie']?' sel':'')+'" data-maj="dimanche-ferie"><span class="kce-optbox"></span><div class="kce-optinfo"><div class="ol">Dimanche ou jour férié</div></div><span class="kce-optadd">+ 25 %</span></div>'
+      +'<div class="grp">Frais</div>'
+      +'<div class="kce-optrow'+(curFrais['etage']?' sel':'')+'" data-frais="etage"><span class="kce-optbox"></span><div class="kce-optinfo"><div class="ol">Étage 3 et + sans ascenseur</div></div><span class="kce-optadd">+ 15 €</span></div>'
+      +'</div>';
+    return h;
+  }
+  function bindAdjust(){
+    stage.querySelectorAll('.kce-optrow[data-opt]').forEach(row=>{
+      const k=row.getAttribute('data-opt'), unite=row.getAttribute('data-unite');
+      row.querySelectorAll('[data-q]').forEach(btn=>btn.onclick=ev=>{ ev.stopPropagation();
+        let q=+curOptions[k]||1; q+= (btn.getAttribute('data-q')==='+'?1:-1); const o=T.options[k];
+        if(q<1){ delete curOptions[k]; } else { curOptions[k]=Math.min(q,o.max); } renderResult(); });
+      row.onclick=()=>{ const o=T.options[k];
+        if(o.type==='fixe'){ curOptions[k]?delete curOptions[k]:curOptions[k]=1; }
+        else { curOptions[k]? delete curOptions[k] : curOptions[k]=1; }
+        renderResult(); };
+    });
+    stage.querySelectorAll('.kce-optrow[data-maj]').forEach(row=>row.onclick=()=>{ const k=row.getAttribute('data-maj'); curMaj[k]?delete curMaj[k]:curMaj[k]=true; renderResult(); });
+    stage.querySelectorAll('.kce-optrow[data-frais]').forEach(row=>row.onclick=()=>{ const k=row.getAttribute('data-frais'); curFrais[k]?delete curFrais[k]:curFrais[k]=true; renderResult(); });
+  }
+
+  function renderResult(){
+    // FORFAIT (prix ferme)
+    if(isForfait()){
+      const r=calcForfait();
+      const lignesHTML=r.lignes.map((l,i)=>'<div class="kce-bd'+(i>0?' opt':'')+'"><div class="kce-bd-l"><div class="t">'+l.nom+'</div></div><div class="kce-bd-p">'+(i===0?'':'+ ')+euro(l.montant)+' €</div></div>').join('');
+      const main='<div class="kce-result-main"><div class="kce-pill"><span class="d"></span>Tarif ferme · grille officielle</div>'
+        +'<div class="kce-bigprice">'+euro(r.total)+' €</div>'
+        +'<div class="kce-range">Prix <b>TTC</b>, ferme pour la configuration déclarée. Réservez en ligne avec un acompte de 30 %&nbsp;; le solde se règle après la prestation.</div>'
+        +lignesHTML
+        +'<div class="kce-bd total"><div class="kce-bd-l"><div class="t">Total TTC</div></div><div class="kce-bd-p">'+euro(r.total)+' €</div></div>'
+        +'<div class="kce-acompte"><div class="ar main"><span>À régler aujourd\'hui (acompte 30 %)</span><strong>'+euro(r.acompte)+' €</strong></div><div class="ar"><span>Solde après l\'intervention</span><strong>'+euro(r.solde)+' €</strong></div></div>'
+        +'<div class="kce-result-actions"><button class="kce-btn kce-ghost" id="restart">← Autre prestation</button>'
+        +'<button class="kce-btn kce-cta" id="toBook">Réserver en ligne →</button></div>'
+        +'<button class="kce-btn kce-ghost kce-full" id="toEmail" style="margin-top:12px">Recevoir ce tarif par email</button>'
+        +'<div class="kce-result-note">'+(cur.inclus?cur.inclus+' ':'')+'Paiement sécurisé Stripe, annulation possible par téléphone. Le montant est revérifié au paiement.</div></div>';
+      shell('Votre tarif', '<div class="kce-result">'+main+adjustPanel()+'</div>', '', 100);
+      bindAdjust();
+      document.getElementById('toBook').onclick=()=>goReservation();
+      document.getElementById('toEmail').onclick=()=>{ phase='profil'; render(); };
+      document.getElementById('restart').onclick=screenList;
+      return;
+    }
+    // ESTIMATE (fourchette indicative HT)
+    if(cur.funnel==='estimate' && !forcedAudit){
+      const r = cur.kind==='chantier'?calcChantier():calcBureaux();
+      const main='<div class="kce-result-main"><div class="kce-pill"><span class="d"></span>'+(cur.kind==='bureaux'?'Budget indicatif':'Estimation indicative · ± 15 %')+'</div>'
+        +'<div class="kce-bigprice">'+euro(r.min)+' – '+euro(r.max)+'</div>'
+        +'<div class="kce-range">'+r.unite+'. '+(cur.kind==='bureaux'?'À partir de 2 €/m²/mois HT selon la fréquence et le cahier des charges.':'L\'empoussièrement réel ne se vérifie pas en ligne.')+' Le devis ferme est établi <b>après audit gratuit</b>.</div>'
+        +'<div class="kce-bd"><div class="kce-bd-l"><div class="t">'+cur.title+'</div><div class="s">'+r.detail+'</div></div></div>'
+        +'<div class="kce-result-actions"><button class="kce-btn kce-ghost" id="restart">← Autre prestation</button>'
+        +'<button class="kce-btn kce-cta" id="toVisite">Réserver ma visite gratuite →</button></div>'
+        +'<button class="kce-btn kce-ghost kce-full" id="toEmail" style="margin-top:12px">Recevoir cette estimation par email</button>'
+        +'<div class="kce-result-note">Estimation indicative, jamais un prix ferme&nbsp;: le tarif définitif est confirmé après audit gratuit ou envoi de photos. Minimum d\'intervention 300 € HT.</div></div>';
+      shell('Estimation', '<div class="kce-result" style="grid-template-columns:1fr;max-width:640px;margin:0 auto">'+main+'</div>', '', 100);
+      document.getElementById('toVisite').onclick=()=>goDevis(true);
+      document.getElementById('toEmail').onclick=()=>{ phase='profil'; render(); };
+      document.getElementById('restart').onclick=screenList;
+      return;
+    }
+    // AUDIT (sur devis — aucun chiffre)
+    const reason = forcedAudit && auditReason ? auditReason+'. ' : '';
+    let b='<div class="kce-res"><div class="ok">'+svg('<path d="M20 6L9 17l-5-5"/>')+'</div>'
+      +'<h2>Votre devis mérite une visite</h2>'
+      +'<p class="lead">'+reason+'Cette prestation se chiffre sur mesure&nbsp;: nous établissons un devis gratuit, sans engagement — après une visite ou un échange.</p>';
+    if(cur.partner) b+='<div class="kce-partner">'+svg('<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/>')+'<span>Intervention réglementée, réalisée avec un partenaire spécialisé certifié. Kayli Clinn coordonne votre dossier.</span></div>';
+    b+='<div class="kce-recap"><h4>Récapitulatif de votre demande</h4>'+recapDL()+'</div>'
+      +'<div class="kce-flow" style="margin-top:24px"><button class="kce-btn kce-cta kce-full" id="toDevis">Demander mon devis gratuit →</button>'
+      +'<button class="kce-btn kce-ghost kce-full" id="toVisite" style="margin-top:12px">Réserver une visite gratuite</button>'
+      +'<div style="text-align:center;margin-top:14px"><button class="kce-back" id="restart">← Estimer une autre prestation</button></div></div></div>';
+    shell('Devis sur mesure', b, '', 100);
+    document.getElementById('toDevis').onclick=()=>goDevis(false);
+    document.getElementById('toVisite').onclick=()=>goDevis(true);
+    document.getElementById('restart').onclick=screenList;
+  }
+
+  /* ════════════════════════════════════════════════════════
+     CONTACT (profil → zone → coordonnées) puis envoi e-mail
+     ════════════════════════════════════════════════════════ */
+  const DEPS=[["75","Paris"],["77","Seine-et-Marne"],["78","Yvelines"],["91","Essonne"],["92","Hauts-de-Seine"],["93","Seine-Saint-Denis"],["94","Val-de-Marne"],["95","Val-d'Oise"]];
+  function renderProfil(){
+    const opts=["Particulier","Professionnel","Syndic de copropriété","Autre"]; const c=contact.profil||'';
+    const b='<div class="kce-flow"><div class="stepname">Étape 1 sur 3 · Votre profil</div><h3>Vous êtes…</h3>'
+      +'<p class="sub">Cela nous permet d\'adapter notre proposition (TTC particuliers, HT professionnels).</p>'
+      +'<div class="kce-pills">'+opts.map(o=>'<button class="kce-pill-opt'+(c===o?' sel':'')+'" data-p="'+esc(o)+'">'+o+'</button>').join('')+'</div>'
+      +'<button class="kce-btn kce-cta kce-full" id="p-next" style="margin-top:26px"'+(c?'':' disabled')+'>Continuer →</button>'
+      +'<div style="text-align:center;margin-top:12px"><button class="kce-back" id="p-back">← Retour au résultat</button></div></div>';
+    shell('Profil', b, '', 100);
+    stage.querySelectorAll('.kce-pill-opt').forEach(el=>el.onclick=()=>{ contact.profil=el.getAttribute('data-p');
+      stage.querySelectorAll('.kce-pill-opt').forEach(x=>x.classList.remove('sel')); el.classList.add('sel'); document.getElementById('p-next').disabled=false; });
+    document.getElementById('p-back').onclick=()=>{ phase='result'; render(); };
+    document.getElementById('p-next').onclick=()=>{ phase='zone'; render(); };
+  }
+  function renderZone(){
+    const c=contact.dep||'';
+    const b='<div class="kce-flow" style="max-width:760px"><div class="stepname">Étape 2 sur 3 · Localisation</div><h3>Où se situe l\'intervention&nbsp;?</h3>'
+      +'<p class="sub">Nous intervenons dans toute l\'Île&#8209;de&#8209;France.</p>'
+      +'<div class="kce-deps">'+DEPS.map(d=>'<button class="kce-dep'+(c===d[0]?' sel':'')+'" data-d="'+d[0]+'"><div class="num">'+d[0]+'</div><div class="lbl">'+d[1]+'</div></button>').join('')+'</div>'
+      +'<button class="kce-btn kce-cta kce-full" id="z-next" style="margin-top:24px"'+(c?'':' disabled')+'>Continuer →</button>'
+      +'<div style="text-align:center;margin-top:12px"><button class="kce-back" id="z-back">← Retour au profil</button></div></div>';
+    shell('Localisation', b, '', 100);
+    stage.querySelectorAll('.kce-dep').forEach(el=>el.onclick=()=>{ contact.dep=el.getAttribute('data-d');
+      stage.querySelectorAll('.kce-dep').forEach(x=>x.classList.remove('sel')); el.classList.add('sel'); document.getElementById('z-next').disabled=false; });
+    document.getElementById('z-back').onclick=()=>{ phase='profil'; render(); };
+    document.getElementById('z-next').onclick=()=>{ phase='contact'; render(); };
+  }
+  function renderContact(){
+    const cp=contact.cp||(contact.dep||'');
+    const b='<div class="kce-flow"><div class="stepname">Étape 3 sur 3 · Vos coordonnées</div><h3>Où vous envoyer votre devis&nbsp;?</h3>'
+      +'<p class="sub">Vos informations restent confidentielles et ne servent qu\'à traiter votre demande.</p>'
+      +'<div class="kce-field" id="f-nom"><label>Nom et prénom *</label><input type="text" id="c-nom" value="'+esc(contact.nom||'')+'" placeholder="Ex. Marie Durand"><div class="err">Nom requis.</div></div>'
+      +'<div class="kce-row"><div class="kce-field" id="f-mail"><label>Email *</label><input type="email" id="c-mail" value="'+esc(contact.mail||'')+'" placeholder="vous@email.fr"><div class="err">Email invalide.</div></div>'
+      +'<div class="kce-field" id="f-tel"><label>Téléphone *</label><input type="tel" id="c-tel" value="'+esc(contact.tel||'')+'" placeholder="06 12 34 56 78"><div class="err">Numéro français requis.</div></div></div>'
+      +'<div class="kce-row"><div class="kce-field" id="f-cp"><label>Code postal *</label><input type="text" id="c-cp" value="'+esc(cp)+'" placeholder="75000"><div class="err">Code postal Île-de-France requis.</div></div>'
+      +'<div class="kce-field"><label>Ville</label><input type="text" id="c-ville" value="'+esc(contact.ville||'')+'" placeholder="Paris"></div></div>'
+      +'<div class="kce-field" style="margin-top:16px"><label>Précisions (facultatif)</label><textarea id="c-msg" rows="3" placeholder="Accès, étage, contraintes…">'+esc(contact.msg||'')+'</textarea></div>'
+      +'<button class="kce-btn kce-cta kce-full" id="c-send" style="margin-top:16px">Envoyer ma demande →</button>'
+      +'<div class="kce-inline-err" id="c-err"></div><div class="kce-done" id="c-done" style="display:none"></div>'
+      +'<div style="text-align:center;margin-top:12px"><button class="kce-back" id="c-back">← Retour à la localisation</button></div></div>';
+    shell('Coordonnées', b, '', 100);
+    document.getElementById('c-back').onclick=()=>{ phase='zone'; render(); };
+    document.getElementById('c-send').onclick=submitEmail;
+  }
+
+  /* validation légère + IDF */
+  const idf=['75','77','78','91','92','93','94','95'];
+  function validContact(){
+    const get=id=>{ const e=document.getElementById(id); return e?e.value.trim():''; };
+    const nom=get('c-nom'), mail=get('c-mail'), tel=get('c-tel'), cp=get('c-cp');
+    let okAll=true;
+    const mark=(fid,cond)=>{ const f=document.getElementById(fid); if(!f) return; f.classList.toggle('invalid',!cond); if(!cond) okAll=false; };
+    mark('f-nom', nom.length>=2);
+    mark('f-mail', /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(mail));
+    mark('f-tel', /^(?:\+33|0)[1-9](?:[\s.\-]?\d{2}){4}$/.test(tel));
+    mark('f-cp', /^\d{5}$/.test(cp) && idf.includes(cp.substring(0,2)));
+    contact.nom=nom; contact.mail=mail; contact.tel=tel; contact.cp=cp;
+    contact.ville=get('c-ville'); contact.msg=get('c-msg');
+    return okAll;
+  }
+
+  /* ════════════════════════════════════════════════════════
+     ENVOI — réservation (handoff), devis, e-mail
+     ════════════════════════════════════════════════════════ */
+  function buildHandoff(){
+    const forfait=isForfait();
+    const h={ version:2, funnel:forfait?'forfait':'audit', presta:cur.slug||cur.id, label:cur.title,
+      zone:'', departement:contact.dep||'', contact:{ firstname:contact.nom||'', email:contact.mail||'', phone:contact.tel||'', address:((contact.cp||'')+' '+(contact.ville||'')).trim(), message:contact.msg||'' }, ts:Date.now() };
+    if(forfait){ const r=calcForfait();
+      h.booking={ forfait:cur.id, taille:answers.taille, options:Object.assign({},curOptions),
+        majorations:Object.keys(activeMaj()), frais:Object.keys(curFrais) };
+      h.result={ total:r.total, acompte:r.acompte, solde:r.solde, lignes:r.lignes.map(l=>({nom:l.nom,montant:l.montant})) };
+    } else {
+      h.details={ description:(auditReason?auditReason+'. ':'')+(contact.msg||''), reponses:answers };
+    }
+    return h;
+  }
+  function goReservation(){
+    try{ sessionStorage.setItem(KC_CONFIG.handoffKey, JSON.stringify(buildHandoff())); }catch(e){}
+    window.location.href = KC_CONFIG.reservationURL;
+  }
+  function goDevis(visite){
+    const slug=cur.slug||cur.id;
+    if(visite){
+      try{ sessionStorage.setItem(KC_CONFIG.handoffKey, JSON.stringify(buildHandoff())); }catch(e){}
+      window.location.href = KC_CONFIG.reservationURL+'?visite='+encodeURIComponent(slug);
+    } else {
+      window.location.href = KC_CONFIG.devisURL+'?presta='+encodeURIComponent(slug);
+    }
+  }
+  function submitEmail(){
+    const err=document.getElementById('c-err'), done=document.getElementById('c-done'), btn=document.getElementById('c-send');
+    if(!validContact()){ err.textContent='Merci de corriger les champs en rouge.'; err.classList.add('show'); return; }
+    err.classList.remove('show');
+    // garde-fou mots sensibles → bascule visite
+    if(isForfait() && KC_CONFIG.motsSensibles.test(contact.msg||'')){ forcedAudit=true; auditReason='Votre demande mérite une étude personnalisée'; }
+    const funnel = isForfait()?'forfait':(cur.funnel==='estimate'&&!forcedAudit?'estimate':'audit');
+    const payload={ kind:funnel==='forfait'?'forfait':(funnel==='estimate'?'estimation':'audit'),
+      presta:cur.slug||cur.id, prestation:cur.title,
+      contact:{ firstname:contact.nom, email:contact.mail, phone:contact.tel, address:((contact.cp||'')+' '+(contact.ville||'')).trim(), message:contact.msg, profil:contact.profil, departement:contact.dep },
+      reponses:answers };
+    if(funnel==='forfait'){ const r=calcForfait(); payload.result={ total:r.total, acompte:r.acompte, solde:r.solde, lignes:r.lignes }; }
+    else if(funnel==='estimate'){ const r=cur.kind==='chantier'?calcChantier():calcBureaux(); payload.estimation={ min:r.min, max:r.max, unite:r.unite, detail:r.detail }; }
+    if(curPhotos.length) payload.photosCount=curPhotos.length;
+
+    const wp=window.kcDevis;
+    if(!wp||!wp.ajaxUrl){
+      done.style.display='block';
+      done.innerHTML='L\'envoi par email n\'est pas encore activé sur cette page (module kc-devis).<br>Réservez directement ci-dessus, ou appelez-nous au 06 70 01 20 61.';
+      return;
+    }
+    btn.disabled=true; done.style.display='block'; done.textContent='Envoi en cours…';
+    const params=new URLSearchParams(); params.append('action','kc_devis'); params.append('_wpnonce',wp.nonce); params.append('payload',JSON.stringify(payload));
+    fetch(wp.ajaxUrl,{ method:'POST', credentials:'same-origin', headers:{'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8'}, body:params })
+      .then(r=>r.json().catch(()=>({}))).then(d=>{ if(d&&d.success){ done.textContent='Demande envoyée ! Nous revenons vers vous très vite.'; }
+        else throw new Error((d&&d.data&&d.data.message)||'Erreur'); })
+      .catch(()=>{ btn.disabled=false; done.textContent='L\'envoi a échoué. Réessayez, ou appelez-nous au 06 70 01 20 61.'; });
+  }
+
+  screenList();
+})();
+</script>
