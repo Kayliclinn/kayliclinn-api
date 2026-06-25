@@ -511,6 +511,47 @@
   .kc-devis .step-title em::after{transition:none !important;transform:scaleX(1)}
   .kc-devis .step{animation:none !important}
 }
+
+/* ════════════════════════════════════════════════════════
+   SUGGESTIONS COMPLÉMENTAIRES — encart « Vous pourriez aussi… »
+   sur l'écran résultat. Préfixe kcsug- conservé (intégré depuis
+   l'ancien bloc séparé) pour éviter toute collision.
+   ════════════════════════════════════════════════════════ */
+.kcsug{
+  --kcsug-teal:#0FA7A5;--kcsug-teal-dark:#0B8483;--kcsug-teal-soft:#F0FAFA;--kcsug-teal-light:#E6F5F5;
+  --kcsug-navy:#0D2340;--kcsug-gray:#6B7280;--kcsug-border:#E5E7EB;--kcsug-white:#fff;
+  font-family:'Inter',-apple-system,sans-serif;
+}
+.kcsug[hidden]{display:none}
+.kcsug-wrap{margin:26px 0 4px;border:1.5px solid var(--kcsug-border);border-radius:16px;background:var(--kcsug-white);padding:24px 26px;box-shadow:0 2px 6px rgba(13,35,64,.05),0 14px 30px rgba(13,35,64,.06)}
+.kcsug-head{display:flex;align-items:center;gap:11px;margin-bottom:6px}
+.kcsug-head .kcsug-ic{width:36px;height:36px;border-radius:10px;background:var(--kcsug-teal-light);color:var(--kcsug-teal-dark);display:grid;place-items:center;flex-shrink:0}
+.kcsug-head .kcsug-ic svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kcsug-head h3{font-family:'Fraunces',Georgia,serif;font-size:18px;font-weight:600;color:var(--kcsug-navy);letter-spacing:-.3px;margin:0}
+.kcsug-sub{font-size:13.5px;color:var(--kcsug-gray);line-height:1.55;margin:0 0 18px}
+.kcsug-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:560px){.kcsug-grid{grid-template-columns:1fr}}
+.kcsug-card{display:flex;align-items:center;gap:13px;width:100%;text-align:left;background:var(--kcsug-white);
+  border:1.5px solid var(--kcsug-border);border-radius:12px;padding:15px 16px;cursor:pointer;
+  transition:border-color .2s,background .2s,box-shadow .2s,transform .2s;font-family:inherit}
+.kcsug-card:hover{border-color:var(--kcsug-teal-dark);transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,167,165,.10)}
+.kcsug-card.kcsug-on{border-color:var(--kcsug-teal);background:var(--kcsug-teal-soft);box-shadow:0 0 0 1px rgba(15,167,165,.35)}
+.kcsug-card-ic{width:38px;height:38px;border-radius:10px;background:var(--kcsug-teal-light);color:var(--kcsug-teal-dark);display:grid;place-items:center;flex-shrink:0;transition:background .2s,color .2s}
+.kcsug-card.kcsug-on .kcsug-card-ic{background:var(--kcsug-teal);color:#fff}
+.kcsug-card-ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kcsug-card-txt{flex:1;min-width:0;display:flex;flex-direction:column}
+.kcsug-card-name{font-size:14.5px;font-weight:700;color:var(--kcsug-navy);line-height:1.25;letter-spacing:-.2px}
+.kcsug-card-desc{font-size:12px;color:var(--kcsug-gray);line-height:1.4;margin-top:2px}
+.kcsug-card-check{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--kcsug-border);
+  display:grid;place-items:center;flex-shrink:0;transition:border-color .2s,background .2s}
+.kcsug-card.kcsug-on .kcsug-card-check{border-color:var(--kcsug-teal);background:var(--kcsug-teal)}
+.kcsug-card-check svg{width:13px;height:13px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;transition:opacity .15s}
+.kcsug-card.kcsug-on .kcsug-card-check svg{opacity:1}
+.kcsug-note{margin-top:14px;font-size:12px;color:var(--kcsug-gray);font-style:italic;line-height:1.5}
+@media (prefers-reduced-motion: reduce){
+  .kcsug-card{transition:none}
+  .kcsug-card:hover{transform:none}
+}
 </style>
 
 <div class="kc-devis">
@@ -1319,6 +1360,9 @@
       </aside>
     </div>
 
+    <!-- Suggestions complémentaires — encart rempli par renderResult() / renderSuggestions() -->
+    <div class="kcsug" id="kcsug-result" hidden></div>
+
     <div class="step-nav">
       <button type="button" class="btn-back" data-action="prev">
         <svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
@@ -1385,26 +1429,24 @@
     forfaits: {
       'airbnb':       { studio:55,  t2:75,  t3:95,  t4:120 },
       'fin-de-bail':  { studio:160, t2:220, t3:290, t4:360, t5:430 },
-      'grand-menage': { studio:140, t2:190, t3:250, t4:320 },
       'vitrerie':     { studio:70,  t2:70,  t3:95,  t4:95,  t5:130 }
     },
     tailles: { studio:'Studio / T1', t2:'T2', t3:'T3', t4:'T4', t5:'T5' },
     options: {
-      'four':         { nom:'Four en profondeur',                 prix:35,  type:'fixe',  compat:['airbnb','grand-menage'] },
-      'frigo':        { nom:'Réfrigérateur / congélateur',        prix:25,  type:'fixe',  compat:['airbnb','grand-menage'] },
-      'vitres-int':   { nom:'Vitres intérieures',                 prix:20,  type:'fixe',  compat:['airbnb','grand-menage'] },
-      'placards':     { nom:'Intérieur des placards',             prix:25,  type:'fixe',  compat:['grand-menage'] },
+      'four':         { nom:'Four en profondeur',                 prix:35,  type:'fixe',  compat:['airbnb'] },
+      'frigo':        { nom:'Réfrigérateur / congélateur',        prix:25,  type:'fixe',  compat:['airbnb'] },
+      'vitres-int':   { nom:'Vitres intérieures',                 prix:20,  type:'fixe',  compat:['airbnb'] },
       'consommables': { nom:'Réassort consommables',              prix:10,  type:'fixe',  compat:['airbnb'] },
       'cave-box':     { nom:'Cave / box',                         prix:25,  type:'fixe',  compat:['fin-de-bail'] },
       'kit-linge':    { nom:'Kit linge complet',                  prix:18,  type:'unite', unite:'lit', max:10,  compat:['airbnb'], desc:'Location, lavage, livraison — par lit' },
-      'repassage':    { nom:'Repassage',                          prix:35,  type:'unite', unite:'h',   max:8,   compat:['airbnb','grand-menage'], desc:'Par heure' },
-      'balcon':       { nom:'Balcon / terrasse',                  prix:2,   type:'unite', unite:'m²',  max:150, minTotal:20,  compat:['fin-de-bail','grand-menage'], desc:'2 €/m² · minimum 20 €' },
+      'repassage':    { nom:'Repassage',                          prix:35,  type:'unite', unite:'h',   max:8,   compat:['airbnb'], desc:'Par heure' },
+      'balcon':       { nom:'Balcon / terrasse',                  prix:2,   type:'unite', unite:'m²',  max:150, minTotal:20,  compat:['fin-de-bail'], desc:'2 €/m² · minimum 20 €' },
       'moquette':     { nom:'Moquette injection-extraction',      prix:5,   type:'unite', unite:'m²',  max:300, minTotal:100, compat:['fin-de-bail'], desc:'5 €/m² · minimum 100 €' },
-      'canape-2p':    { nom:'Canapé 2 places',                    prix:80,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
-      'canape-3p':    { nom:'Canapé 3 places',                    prix:100, type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
-      'canape-4p':    { nom:'Canapé 4 places',                    prix:110, type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
-      'fauteuil':     { nom:'Fauteuil',                           prix:50,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] },
-      'matelas':      { nom:'Matelas 2 places',                   prix:75,  type:'fixe',  compat:['fin-de-bail','grand-menage','vitrerie'] }
+      'canape-2p':    { nom:'Canapé 2 places',                    prix:80,  type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'canape-3p':    { nom:'Canapé 3 places',                    prix:100, type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'canape-4p':    { nom:'Canapé 4 places',                    prix:110, type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'fauteuil':     { nom:'Fauteuil',                           prix:50,  type:'fixe',  compat:['fin-de-bail','vitrerie'] },
+      'matelas':      { nom:'Matelas 2 places',                   prix:75,  type:'fixe',  compat:['fin-de-bail','vitrerie'] }
     },
     majorations: {
       'urgence':        { nom:'Urgence — sous 48 h',                          taux:0.30 },
@@ -1428,7 +1470,6 @@
     /* ── Prestations estimables (déjà en place) ── */
     'airbnb':        { url:'https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png', alt:'Nettoyage et remise en état d’un logement Airbnb entre deux locations' },
     'fin-de-bail':   { url:'https://kayliclinn.fr/wp-content/uploads/2026/06/pexels-tima-miroshnichenko-6196566.jpg', alt:'Ménage de fin de bail dans un logement vidé avant l’état des lieux' },
-    'grand-menage':  { url:'https://kayliclinn.fr/wp-content/uploads/2026/03/istockphoto-1480372898-612x612-1.webp', alt:'Grand ménage en profondeur d’un logement meublé occupé' },
     'vitrerie':      { url:'https://kayliclinn.fr/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg', alt:'Nettoyage de vitres intérieures en plain-pied' },
     'fin-chantier':  { url:'https://kayliclinn.fr/wp-content/uploads/2026/02/istockphoto-1408477638-612x612-1.webp', alt:'Nettoyage de fin de chantier après travaux de rénovation' },
     'bureaux':       { url:'https://kayliclinn.fr/wp-content/uploads/2026/02/nettoyagebureau.webp', alt:'Entretien régulier de bureaux professionnels' },
@@ -1479,10 +1520,6 @@
       inclus:'Électroménager, vitres intérieures et placards inclus',
       horsGrille:{ label:'Maison / plus de 110 m²', desc:'Sur devis · visite gratuite',
         reason:'Grande surface ou maison — devis personnalisé après visite gratuite' } },
-    'grand-menage': { nom:'Grand ménage (meublé occupé)', funnel:'forfait',
-      flow:['presta','zone','taille','etat','options','delai','contact','result'],
-      horsGrille:{ label:'T5 et + / maison', desc:'Sur devis · visite gratuite',
-        reason:'Grand logement — devis personnalisé après visite gratuite' } },
     'vitrerie': { nom:'Vitres classiques', funnel:'forfait',
       flow:['presta','zone','taille','options','delai','contact','result'],
       inclus:'Vitres plain-pied et intérieures accessibles',
@@ -2169,7 +2206,95 @@
       el('cta-email-name').textContent = 'Être recontacté par email';
       el('result-note').textContent = presta.note || 'La visite permet d\'évaluer précisément le travail : vous recevez un devis ferme, sans surprise.';
     }
+    renderSuggestions();
   }
+
+  /* ════════════════════════════════════════════════════════
+     SUGGESTIONS COMPLÉMENTAIRES (encart « Vous pourriez aussi… »)
+     Intégré dans le V5 (ex-bloc séparé kcsug-). Accroche directe via
+     state.selectedPresta ; un clic note la prestation dans #c-message
+     ET dans state.data.contact.message (lu par l'email / la réservation),
+     sans aucun calcul de prix. Coches réinitialisées à chaque rendu.
+     ════════════════════════════════════════════════════════ */
+  const KCSUG_NOTE = 'Souhaite aussi un devis pour : ';
+  const KCSUG_NOTE_RE = /\n*Souhaite aussi un devis pour\s*:[^\n]*/gi;
+  const KCSUG_ICONS = {
+    vitres:'<rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/>',
+    moquette:'<path d="M3 7h18v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1zM3 7l2-3h14l2 3M7 12v3M12 12v3M17 12v3"/>',
+    sols:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>',
+    pression:'<path d="M3 21h18M7 21V10l5-3 5 3v11M10 7V4h4v3M5 14h.01M5 17h.01"/>',
+    insecte:'<path d="M12 7a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 7V4M9 3l3 2 3-2M6 12H3M6 16H3M21 12h-3M21 16h-3"/>'
+  };
+  const KCSUG_MAP = {
+    'airbnb':           [ {nom:'Vitres classiques', desc:'Vitres intérieures et plain-pied', icon:'vitres'}, {nom:'Shampouinage de moquettes', desc:'Tapis, moquettes, textiles', icon:'moquette'} ],
+    'fin-de-bail':      [ {nom:'Vitres classiques', desc:'Vitres intérieures et plain-pied', icon:'vitres'}, {nom:'Décapage / cristallisation des sols', desc:'Carrelage, marbre, pierre, PVC', icon:'sols'} ],
+    'fin-chantier':     [ {nom:'Vitres classiques', desc:'Vitres intérieures et plain-pied', icon:'vitres'}, {nom:'Nettoyage haute pression', desc:'Façades, terrasses, parkings', icon:'pression'} ],
+    'bureaux':          [ {nom:'Vitres classiques', desc:'Vitres intérieures et plain-pied', icon:'vitres'}, {nom:'Décapage / cristallisation des sols', desc:'Sols techniques de bureaux', icon:'sols'} ],
+    'deratisation':     [ {nom:'Désinsectisation', desc:'Cafards, fourmis, guêpes…', icon:'insecte'} ],
+    'desinsectisation': [ {nom:'Dératisation', desc:'Rats, souris — diagnostic & traitement', icon:'insecte'} ]
+  };
+  const kcsugSvg = p => '<svg viewBox="0 0 24 24" aria-hidden="true">' + p + '</svg>';
+  let kcsugSelected = {};
+
+  function kcsugStripNote(value){ return (value || '').replace(KCSUG_NOTE_RE, '').trim(); }
+
+  function kcsugSyncMessage(){
+    const msg = el('c-message');
+    if(!msg) return;
+    const noms = Object.keys(kcsugSelected).filter(k => kcsugSelected[k]);
+    const base = kcsugStripNote(msg.value);
+    msg.value = noms.length ? (base ? base + '\n' + KCSUG_NOTE + noms.join(', ') + '.' : KCSUG_NOTE + noms.join(', ') + '.') : base;
+    state.data.contact = state.data.contact || {};
+    state.data.contact.message = msg.value;
+    msg.dispatchEvent(new Event('input', { bubbles:true }));  // resync compteur
+    saveProgress();                                            // resync sauvegarde
+  }
+
+  function renderSuggestions(){
+    const root = el('kcsug-result');
+    if(!root) return;
+    kcsugSelected = {};                       // coches réinitialisées à chaque rendu
+    const msg = el('c-message');              // cohérence : retire toute note auto résiduelle
+    if(msg){
+      const cleaned = kcsugStripNote(msg.value);
+      if(cleaned !== msg.value){
+        msg.value = cleaned;
+        state.data.contact = state.data.contact || {};
+        state.data.contact.message = cleaned;
+        msg.dispatchEvent(new Event('input', { bubbles:true }));
+      }
+    }
+    const liste = KCSUG_MAP[state.selectedPresta];
+    if(!liste || !liste.length){ root.hidden = true; root.innerHTML = ''; return; }
+    root.innerHTML =
+      '<div class="kcsug-wrap">'
+      + '<div class="kcsug-head"><span class="kcsug-ic">'
+      + kcsugSvg('<path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4-6.3-4.6L5.7 21l2.3-7.4-6-4.4h7.6z"/>')
+      + '</span><h3>Vous pourriez aussi avoir besoin de…</h3></div>'
+      + '<p class="kcsug-sub">Ajoutez une prestation à votre demande&nbsp;: nous l\'inclurons dans votre devis ou en parlerons lors de notre échange. Sans engagement.</p>'
+      + '<div class="kcsug-grid">'
+      + liste.map(s =>
+          '<button type="button" class="kcsug-card" data-nom="' + s.nom.replace(/"/g,'&quot;') + '" aria-pressed="false">'
+          + '<span class="kcsug-card-ic">' + kcsugSvg(KCSUG_ICONS[s.icon] || KCSUG_ICONS.vitres) + '</span>'
+          + '<span class="kcsug-card-txt"><span class="kcsug-card-name">' + s.nom + '</span>'
+          + '<span class="kcsug-card-desc">' + s.desc + '</span></span>'
+          + '<span class="kcsug-card-check">' + kcsugSvg('<polyline points="20 6 9 17 4 12"/>') + '</span>'
+          + '</button>'
+        ).join('')
+      + '</div>'
+      + '<p class="kcsug-note">Ces prestations complémentaires sont notées sur votre demande&nbsp;; leur tarif vous sera précisé séparément.</p>'
+      + '</div>';
+    root.hidden = false;
+    root.querySelectorAll('.kcsug-card').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const on = btn.classList.toggle('kcsug-on');
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        kcsugSelected[btn.getAttribute('data-nom')] = on;
+        kcsugSyncMessage();
+      });
+    });
+  }
+
   function showResult(){
     if(!validateAllFields()) return;
     state.data.contact = {
