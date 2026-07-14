@@ -114,6 +114,10 @@
   --remise-1:url(/wp-content/uploads/2026/03/Image2.webp);
   --remise-2:url(/wp-content/uploads/2026/05/pexels-bnwtake0405-8931489.jpg?fit=683%2C1024&ssl=1);
   --remise-3:url(/wp-content/uploads/2026/04/pexels-matilda-wormwood-4097740.jpg?fit=683%2C1024&ssl=1);
+  /* 07 · Syndrome de Diogène (photo à venir) */
+  --photo-card-diogene:url('');
+  /* 08 · Entretien d'immeubles / parties communes (photo à venir) */
+  --photo-card-immeuble:url('');
 
   /* 4 · RÉALISATIONS AVANT / APRÈS (6 comparateurs · placeholder Image6.webp) */
   /* R1 · Appartement Paris 11e */
@@ -158,6 +162,7 @@
 @keyframes khSheen{0%{left:-120%}60%,100%{left:120%}}
 @keyframes khBeam{0%{transform:translateX(-60%) rotate(8deg);opacity:0}15%{opacity:.5}50%{opacity:.5}85%{opacity:0}100%{transform:translateX(160%) rotate(8deg);opacity:0}}
 @keyframes khScroll{0%{transform:translateY(0);opacity:1}70%{transform:translateY(14px);opacity:0}100%{opacity:0}}
+@keyframes khSheenText{0%{background-position:130% 0}100%{background-position:-30% 0}}
 
 /* ════════ HERO ════════ */
 .kc-home .kh-hero{
@@ -210,14 +215,31 @@
 .kc-home .kh-dot{width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:var(--kc-primary-light)}
 .kc-home .kh-title{
   max-width:60ch; margin:22px auto 0; color:var(--kc-white);
-  font-family:'Fraunces',Georgia,serif; font-size:clamp(28px,4.7vw,56px);
-  font-weight:600; line-height:1.07; letter-spacing:-.6px;
+  font-family:'Fraunces',Georgia,serif; font-size:clamp(23px,3.9vw,46px);
+  font-weight:600; line-height:1.07; letter-spacing:.03em; text-transform:uppercase;
   text-shadow:0 2px 24px rgba(8,12,30,.58);
 }
 .kc-home .kh-w{display:inline-block; overflow:hidden; vertical-align:top}
 .kc-home .kh-w>span{display:inline-block; opacity:1}
+/* ════ SLOGAN BRILLANT (sous le H1, fond sombre → teal→mint) ════ */
+.kc-home .kh-slogan{
+  display:inline-block; margin:12px auto 0;
+  font-family:'Fraunces',Georgia,serif; font-style:italic; font-weight:600;
+  font-size:clamp(16px,1.85vw,23px); letter-spacing:.04em;
+  color:#0FA7A5;                 /* fallback couleur unie si background-clip non supporté */
+  opacity:0; animation:khUp .9s .5s ease forwards;
+}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .kc-home .kh-slogan{
+    background-image:linear-gradient(100deg,#0FA7A5 0%,#0FA7A5 28%,#5FF0EC 50%,#19E3DF 72%,#19E3DF 100%);
+    background-size:220% 100%; background-position:130% 0;
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:khUp .9s .5s ease forwards, khSheenText 9s 1.3s linear infinite;
+  }
+}
 .kc-home .kh-para{
-  max-width:54ch; margin:24px auto 0; color:rgba(255,255,255,.90);
+  max-width:64ch; margin:24px auto 0; color:rgba(255,255,255,.90);
   font-size:clamp(16px,1.35vw,19px); line-height:1.68;
   text-shadow:0 1px 14px rgba(8,12,30,.52);
   opacity:0; animation:khUp .9s 1.05s ease forwards;
@@ -277,7 +299,7 @@
 .kc-home .ka-content .ka-rev:nth-child(5){transition-delay:.32s}
 .kc-home .ka-content .ka-rev:nth-child(6){transition-delay:.40s}
 .kc-home .ka-eyebrow{display:inline-block; margin-bottom:16px; color:var(--kc-primary); font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase}
-.kc-home .ka-h2{margin:0 0 20px; color:var(--kc-navy); font-family:'Fraunces',Georgia,serif; font-size:clamp(28px,3.2vw,42px); font-weight:600; line-height:1.15; letter-spacing:-.3px}
+.kc-home .ka-h2{margin:0 0 20px; color:var(--kc-navy); font-family:'Fraunces',Georgia,serif; font-size:clamp(28px,3.2vw,42px); font-weight:600; line-height:1.15; letter-spacing:.03em; text-transform:uppercase}
 .kc-home .ka-h2 span{color:var(--kc-primary)}
 .kc-home .ka-p{max-width:62ch; margin:0 0 28px; color:var(--kc-text); font-size:16.5px; line-height:1.75}
 .kc-home .ka-proof-line{display:grid; gap:10px; margin:0 0 30px; padding:0; list-style:none; color:var(--kc-navy); font-weight:700; font-size:15px}
@@ -302,8 +324,9 @@
   .kc-home .kh-hero{min-height:auto; padding:118px 0 72px}
   .kc-home .kh-inner{padding:0 20px}
   .kc-home .kh-badge{max-width:100%; font-size:11.5px; line-height:1.35; letter-spacing:.08em; text-align:left}
-  .kc-home .kh-title{max-width:none; font-size:clamp(26px,7.4vw,38px)}
-  .kc-home .kh-para{max-width:34ch; font-size:16px; line-height:1.6}
+  .kc-home .kh-title{max-width:none; font-size:clamp(22px,6.1vw,32px)}
+  .kc-home .kh-slogan{font-size:clamp(15px,4.6vw,20px)}
+  .kc-home .kh-para{max-width:38ch; font-size:16px; line-height:1.6}
   .kc-home .kh-cta{width:100%; gap:12px; margin-top:30px}
   .kc-home .kh-btn,
   .kc-home .ka-btn{width:100%; padding:15px 22px}
@@ -325,6 +348,7 @@
 @media (prefers-reduced-motion:reduce){
   .kc-home *,.kc-home *::before,.kc-home *::after{animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important}
   .kc-home .kh-bg,.kc-home .kh-glow,.kc-home .ka-img,.kc-home .kh-beam{transform:none !important}
+  .kc-home .kh-slogan{opacity:1 !important; background-position:0 0 !important}
 }
 </style>
 
@@ -345,16 +369,13 @@
 
       <h1 class="kh-title">
         <span class="kh-w" style="--wi:0"><span>Nettoyage</span></span>
-        <span class="kh-w" style="--wi:1"><span>professionnel</span></span><br>
-        <span class="kh-w" style="--wi:2"><span>en</span></span>
-        <span class="kh-w" style="--wi:3"><span>Île&#8209;de&#8209;France,</span></span><br>
-        <span class="kh-w" style="--wi:4"><span>rapide</span></span>
-        <span class="kh-w" style="--wi:5"><span>et</span></span>
-        <span class="kh-w" style="--wi:6"><span>impeccable.</span></span>
+        <span class="kh-w" style="--wi:1"><span>professionnel</span></span>
       </h1>
 
+      <p class="kh-slogan">L’éclat en plus.</p>
+
       <p class="kh-para">
-        Bureaux, fins de chantier, locations Airbnb, déménagements ou copropriétés.<br>Kayli Clinn intervient rapidement en Île&#8209;de&#8209;France — demandez votre devis en quelques clics.
+        Kayli Clinn nettoie bureaux, chantiers, Airbnb et copropriétés.<br>Pour les particuliers comme pour les professionnels.<br>Partout en Île&#8209;de&#8209;France, avec la même exigence de qualité.
       </p>
 
       <div class="kh-cta" aria-label="Actions principales">
@@ -396,6 +417,12 @@
           <li>Une équipe discrète, organisée et attentive aux détails.</li>
           <li>Un résultat contrôlé, avec reprise possible si nécessaire.</li>
         </ul>
+
+        <!-- TODO 1.4 — HORAIRES : aucun horaire d'ouverture n'est encore affiché sur le site.
+             Règle projet : ne jamais inventer de données métier (horaires inclus).
+             Dès qu'un horaire réel sera fourni, l'insérer ici puis le mettre en valeur via
+             <strong class="ka-hours">…</strong> (fond clair → couleur #0B8483). -->
+        <style>.kc-home .ka-hours{font-weight:800; color:#0B8483}</style>
 
         <div class="ka-actions ka-rev">
           <a class="ka-btn" href="/devis/">
@@ -563,7 +590,8 @@
   font-weight:800;
   line-height:1.12;
   margin:0 0 16px;
-  letter-spacing:-.5px;
+  letter-spacing:.03em;
+  text-transform:uppercase;
 }
 .kh4-h2 span{
   background:linear-gradient(90deg,var(--teal),var(--mint));
@@ -992,15 +1020,20 @@
 .kcp-card[data-i="5"] .kcp-slide:nth-child(1){background-image:var(--remise-1)}
 .kcp-card[data-i="5"] .kcp-slide:nth-child(2){background-image:var(--remise-2)}
 .kcp-card[data-i="5"] .kcp-slide:nth-child(3){background-image:var(--remise-3)}
+.kcp-card[data-i="6"] .kcp-slide:nth-child(1){background-image:var(--photo-card-diogene)}
+.kcp-card[data-i="7"] .kcp-slide:nth-child(1){background-image:var(--photo-card-immeuble)}
+/* Cartes 07 & 08 : fond navy de repli propre tant que la photo n'est pas fournie */
+.kcp-card[data-i="6"] .kcp-media,
+.kcp-card[data-i="7"] .kcp-media{background:#16163F}
 
 .kcp-section{position:relative;background:#F7F8FA;padding:90px 24px 100px;font-family:'Inter',sans-serif;overflow:hidden}
 .kcp-head{max-width:760px;margin:0 auto 54px;text-align:center}
 .kcp-eyebrow{display:inline-block;color:#0FA7A5;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
 .kcp-eyebrow:before{content:"—  "}
-.kcp-h2{font-size:clamp(28px,4vw,44px);line-height:1.12;font-weight:800;color:#0D2340;margin:0 0 18px}
+.kcp-h2{font-size:clamp(28px,4vw,44px);line-height:1.12;font-weight:800;color:#0D2340;margin:0 0 18px;text-transform:uppercase;letter-spacing:.03em}
 .kcp-h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .kcp-sub{font-size:17px;line-height:1.65;color:#5a647c;margin:0}
-.kcp-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kcp-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 @media(max-width:1100px){.kcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.kcp-grid{grid-template-columns:1fr}}
 .kcp-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none;box-shadow:0 10px 30px -18px rgba(13,35,64,.25);border:1px solid #eef1f5;opacity:1;transform:none;transition:opacity .3s,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;animation:kcpIn .45s ease both}
@@ -1133,6 +1166,34 @@
         <p class="kcp-d">Remise à neuf de logements ou locaux très dégradés&nbsp;: nettoyage en profondeur, traitement des surfaces, résultat soigné avant relocation.</p>
         <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Visite conseillée</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
+      </div>
+    </a>
+
+    <!-- 07 · Syndrome de Diogène (photo → variable --photo-card-diogene en haut) -->
+    <!-- TODO: lien définitif — page dédiée à venir ; /demande-de-devis/ en attendant -->
+    <a class="kcp-card" href="/demande-de-devis/" data-i="6">
+      <div class="kcp-media">
+        <div class="kcp-slide is-active"></div>
+        <div class="kcp-shade"></div><span class="kcp-num">07</span>
+      </div>
+      <div class="kcp-body">
+        <h3 class="kcp-t">Syndrome de Diogène</h3>
+        <p class="kcp-d">Débarras, désinfection et remise en état complète, en toute discrétion et avec bienveillance.</p>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Intervention discrète</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+      </div>
+    </a>
+
+    <!-- 08 · Entretien d’immeubles / parties communes (photo → variable --photo-card-immeuble en haut) -->
+    <!-- TODO: lien définitif — page dédiée à venir ; /demande-de-devis/ en attendant -->
+    <a class="kcp-card" href="/demande-de-devis/" data-i="7">
+      <div class="kcp-media">
+        <div class="kcp-slide is-active"></div>
+        <div class="kcp-shade"></div><span class="kcp-num">08</span>
+      </div>
+      <div class="kcp-body">
+        <h3 class="kcp-t">Entretien d’immeubles</h3>
+        <p class="kcp-d">Halls, escaliers, ascenseurs et locaux poubelles&nbsp;: des parties communes impeccables pour vos résidents.</p>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Sur devis</span><span class="kcp-tag">Copropriétés</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
       </div>
     </a>
 
@@ -1302,7 +1363,8 @@
     color: #16163F;
     font-size: clamp(32px, 4vw, 52px);
     font-weight: 850;
-    letter-spacing: -.045em;
+    letter-spacing: .03em;
+    text-transform: uppercase;
     line-height: 1.06;
     margin: 0 0 18px;
   }
@@ -1708,7 +1770,8 @@
     font-family:'Fraunces',Georgia,serif;
     font-size: clamp(32px, 4.2vw, 54px);
     font-weight: 850;
-    letter-spacing: -.045em;
+    letter-spacing: .03em;
+    text-transform: uppercase;
     color: #fff;
     line-height: 1.06;
   }
@@ -2518,7 +2581,7 @@
 .kczn2-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative;z-index:2}
 .kczn2-eye{display:inline-flex;align-items:center;gap:10px;color:#0FA7A5;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
 .kczn2-eye:before{content:"";width:34px;height:2px;background:#0FA7A5;display:inline-block}
-.kczn2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 20px}
+.kczn2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 20px;text-transform:uppercase;letter-spacing:.03em}
 .kczn2-p{font-size:16px;color:#5a647c;line-height:1.7;margin:0 0 26px;max-width:520px}
 .kczn2-sub{font-size:20px;font-weight:700;color:#16163F;margin:0 0 12px}
 .kczn2-stats{display:flex;gap:14px;margin:34px 0 34px;flex-wrap:wrap}
@@ -2584,11 +2647,6 @@
       <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens.<br>Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
       <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb&nbsp;:<br>quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
-      <div class="kczn2-stats reveal">
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="8">8</div><div class="kczn2-lab">Départements</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">1 281</div><div class="kczn2-lab">Communes accessibles</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">48 h</div><div class="kczn2-lab">Délai max</div></div>
-      </div>
       <div class="kczn2-cta reveal">
         <!-- 👉 BOUTON DEVIS -->
         <a class="kczn2-btn" href="/devis/">Demander une intervention <span>→</span></a>
@@ -2651,7 +2709,7 @@
 .kcav2-head{max-width:720px;margin:0 auto 34px;text-align:center;position:relative;z-index:2}
 .kcav2-eye{display:inline-flex;align-items:center;gap:10px;color:#0FA7A5;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
 .kcav2-eye:before,.kcav2-eye:after{content:"";width:30px;height:2px;background:#0FA7A5;display:inline-block}
-.kcav2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 16px}
+.kcav2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 16px;text-transform:uppercase;letter-spacing:.03em}
 .kcav2-sub{font-size:17px;color:#5a647c;line-height:1.65;margin:0}
 .kcav2-grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:2}
 .kcav2-card{background:#fff;border:1px solid #eceef3;border-radius:24px;padding:34px 32px;position:relative;display:flex;flex-direction:column;box-shadow:0 24px 50px -34px rgba(22,22,63,.22);transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s}
@@ -2665,10 +2723,10 @@
 .kcav2-av{width:50px;height:50px;border-radius:50%;background:linear-gradient(150deg,#0FA7A5,#19E3DF);color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 18px -8px rgba(15,167,165,.6)}
 .kcav2-name{font-size:16px;font-weight:700;color:#16163F;margin:0}
 .kcav2-role{font-size:13px;color:#6b7488;margin:3px 0 0}
-.kcav2-cta{max-width:880px;margin:34px auto 0;background:linear-gradient(135deg,#0B1130,#16163F);border-radius:24px;padding:30px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;z-index:2;overflow:hidden}
+.kcav2-cta{max-width:880px;margin:34px auto 0;background:linear-gradient(135deg,#0B1130,#16163F);border-radius:24px;padding:18px 34px;display:flex;align-items:center;justify-content:space-between;gap:24px 32px;flex-wrap:wrap;position:relative;z-index:2;overflow:hidden}
 .kcav2-cta:before{content:"";position:absolute;top:-80px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(25,227,223,.22),transparent 70%);pointer-events:none}
 .kcav2-cta-txt{position:relative;z-index:1}
-.kcav2-cta-txt h3{font-size:21px;font-weight:700;color:#fff;margin:0 0 8px}
+.kcav2-cta-txt h3{font-size:20px;font-weight:700;color:#fff;margin:0 0 5px}
 .kcav2-cta-txt p{font-size:15px;color:#aab2cc;margin:0;max-width:420px;line-height:1.6}
 .kcav2-cta-btns{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
 .kcav2-bg{display:inline-flex;align-items:center;gap:9px;background:#0FA7A5;color:#fff;font-weight:600;font-size:14px;padding:14px 22px;border-radius:11px;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 12px 26px -14px rgba(15,167,165,.7)}
@@ -2677,7 +2735,8 @@
 .kcav2-bw:hover{border-color:#19E3DF;background:rgba(25,227,223,.08)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
 .reveal.show{opacity:1;transform:none}
-@media(max-width:900px){.kcav2-grid{grid-template-columns:1fr;max-width:460px}.kcav2-cta{flex-direction:column;text-align:center;padding:34px 28px}.kcav2-cta-txt p{margin:0 auto}}
+@media(max-width:900px){.kcav2-grid{grid-template-columns:1fr;max-width:460px}}
+@media(max-width:768px){.kcav2-cta{flex-direction:column;text-align:center;padding:26px 26px;gap:18px}.kcav2-cta-txt p{margin:0 auto}.kcav2-cta-btns{justify-content:center}}
 </style>
 <section class="kcav2">
   <div class="kcav2-head">
@@ -2762,7 +2821,7 @@
 .kcfq-eyebrow::before{content:'';width:24px;height:1px;background:var(--kc-teal);opacity:.5}
 .kcfq-title{
   font-family:'Inter',sans-serif;font-size:clamp(1.7rem,3.4vw,2.55rem);
-  font-weight:800;color:var(--kc-ink);line-height:1.16;letter-spacing:-1px;margin:0 0 16px;
+  font-weight:800;color:var(--kc-ink);line-height:1.16;letter-spacing:.03em;text-transform:uppercase;margin:0 0 16px;
 }
 .kcfq-title span{background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .kcfq-sub{font-size:16px;color:var(--kc-ink-soft);line-height:1.7;max-width:580px;margin:0 auto;font-weight:400}
@@ -3075,7 +3134,7 @@
 .kcct2 .kcct2-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(15,167,165,.12);border:1px solid rgba(25,227,223,.30);color:#19E3DF;font-weight:700;font-size:11px;letter-spacing:1.4px;text-transform:uppercase;padding:7px 15px;border-radius:100px;margin-bottom:20px}
 .kcct2 .kcct2-badge .dot{width:7px;height:7px;border-radius:50%;background:#19E3DF;box-shadow:0 0 0 0 rgba(25,227,223,.6)}
 @keyframes kcctPulse{0%{box-shadow:0 0 0 0 rgba(25,227,223,.55)}70%{box-shadow:0 0 0 9px rgba(25,227,223,0)}100%{box-shadow:0 0 0 0 rgba(25,227,223,0)}}
-.kcct2 h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12;font-weight:800;color:#fff;margin:0 0 14px}
+.kcct2 h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12;font-weight:800;color:#fff;margin:0 0 14px;text-transform:uppercase;letter-spacing:.03em}
 .kcct2 h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .kcct2 .kcct2-sub{font-size:16px;line-height:1.6;color:#b4bdd2;max-width:500px;margin:0 auto 28px}
 .kcct2 .kcct2-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
