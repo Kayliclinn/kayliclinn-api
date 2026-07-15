@@ -38,6 +38,8 @@
   --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-banner.png');
   --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-split-1.png');
   --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-bureaux-split-2.png');
+  /* Cartes « Pour qui » — photos à venir (Brief 3) */
+  --photo-pourqui-1: url(''); --photo-pourqui-2: url(''); --photo-pourqui-3: url(''); --photo-pourqui-4: url('');
 }
 </style>
 <!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
@@ -102,7 +104,7 @@
 /* ════════════════════════════════════════════════════════
    HERO — plein cadre, très aéré
    ════════════════════════════════════════════════════════ */
-.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.72) 0%,rgba(13,35,64,0.55) 60%,rgba(13,35,64,0.4) 100%),var(--photo-hero);background-size:cover;background-position:center}
 .kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
 .kc-hero-content{max-width:none}
 .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
@@ -132,6 +134,15 @@
 .kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
 .kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
 .kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+/* 3.2 — image en tête des cartes « Pour qui » (Brief 3) · repli navy + icône si photo absente */
+.kc-target-media{position:relative;aspect-ratio:3/2;border-radius:11px;overflow:hidden;background:var(--navy);margin-bottom:24px;display:grid;place-items:center}
+.kc-target-media::after{content:'';position:absolute;inset:0;z-index:1;background-size:cover;background-position:center}
+.kc-target-media-ico{position:relative;z-index:0;color:rgba(255,255,255,0.82);display:grid;place-items:center}
+.kc-target-media-ico svg{width:32px;height:32px}
+.kc-target-card[data-p="1"] .kc-target-media::after{background-image:var(--photo-pourqui-1)}
+.kc-target-card[data-p="2"] .kc-target-media::after{background-image:var(--photo-pourqui-2)}
+.kc-target-card[data-p="3"] .kc-target-media::after{background-image:var(--photo-pourqui-3)}
+.kc-target-card[data-p="4"] .kc-target-media::after{background-image:var(--photo-pourqui-4)}
 
 /* ════════════════════════════════════════════════════════
    PROMESSE
@@ -395,23 +406,23 @@
       <p class="section-desc">Une prestation récurrente sur mesure pour toutes les organisations dont l'image et le confort de travail dépendent d'espaces irréprochables, jour après jour.</p>
     </div>
     <div class="kc-target-grid">
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="1">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></span></div>
         <h3>Entreprises & sièges</h3>
         <p>Open spaces, bureaux fermés, salles de réunion. Un entretien régulier qui maintient des espaces de travail sains et accueillants.</p>
       </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="2">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></span></div>
         <h3>Cabinets & professions libérales</h3>
         <p>Avocats, experts-comptables, professionnels de santé. Des locaux d'accueil impeccables, dans le respect de la confidentialité.</p>
       </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 7l10-4 10 4-10 4-10-4zM2 7v10l10 4 10-4V7M7 9v6"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="3">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 7l10-4 10 4-10 4-10-4zM2 7v10l10 4 10-4V7M7 9v6"/></svg></span></div>
         <h3>Coworkings & centres d'affaires</h3>
         <p>Espaces partagés à fort passage. Une présence régulière pour tenir un niveau de propreté constant tout au long de la journée.</p>
       </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="4">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg></span></div>
         <h3>Showrooms & agences</h3>
         <p>Espaces de réception et de vente où chaque détail compte. Une propreté soignée qui reflète directement votre marque.</p>
       </div>
@@ -446,6 +457,10 @@
           <div class="kc-promise-point">
             <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
             <div class="kc-promise-point-content"><strong>Un suivi qualité régulier</strong><span>Cahier des charges, contrôles et points réguliers pour ajuster la prestation</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8.5l2.5 2.5L14 6.5"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Suivi qualité Kayli Clinn Connect</strong><span>Selon votre formule — Essentiel, Confort ou Premium — bénéficiez d'un suivi de qualité dédié grâce à notre outil Kayli Clinn Connect.</span></div>
           </div>
         </div>
       </div>

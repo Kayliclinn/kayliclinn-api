@@ -39,6 +39,8 @@
   --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_wide_well_lit_interior_corridor_scene_in_a_modern_batch_5.png');
   --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_bright_indoor_real_estate_cleaning_inspection_st_batch_4.png');
   --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/mnt_data_a_clean_modern_apartment_interior_photographed_in_batch_2.png');
+  /* Cartes « Pour qui » — photos à venir (Brief 3) */
+  --photo-pourqui-1: url(''); --photo-pourqui-2: url(''); --photo-pourqui-3: url(''); --photo-pourqui-4: url('');
 }
 </style>
 <!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
@@ -100,7 +102,7 @@
 /* ════════════════════════════════════════════════════════
    HERO — plein cadre, très aéré
    ════════════════════════════════════════════════════════ */
-.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
+.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.72) 0%,rgba(13,35,64,0.55) 60%,rgba(13,35,64,0.4) 100%),var(--photo-hero);background-size:cover;background-position:center}
 .kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
 .kc-hero-content{max-width:none}
 .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
@@ -130,6 +132,15 @@
 .kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
 .kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
 .kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
+/* 3.2 — image en tête des cartes « Pour qui » (Brief 3) · repli navy + icône si photo absente */
+.kc-target-media{position:relative;aspect-ratio:3/2;border-radius:11px;overflow:hidden;background:var(--navy);margin-bottom:24px;display:grid;place-items:center}
+.kc-target-media::after{content:'';position:absolute;inset:0;z-index:1;background-size:cover;background-position:center}
+.kc-target-media-ico{position:relative;z-index:0;color:rgba(255,255,255,0.82);display:grid;place-items:center}
+.kc-target-media-ico svg{width:32px;height:32px}
+.kc-target-card[data-p="1"] .kc-target-media::after{background-image:var(--photo-pourqui-1)}
+.kc-target-card[data-p="2"] .kc-target-media::after{background-image:var(--photo-pourqui-2)}
+.kc-target-card[data-p="3"] .kc-target-media::after{background-image:var(--photo-pourqui-3)}
+.kc-target-card[data-p="4"] .kc-target-media::after{background-image:var(--photo-pourqui-4)}
 
 /* ════════════════════════════════════════════════════════
    PROMESSE
@@ -413,23 +424,23 @@
       <p class="section-desc">Une prestation pour tous ceux qui doivent livrer ou récupérer un bien parfaitement propre une fois les travaux terminés, sans poussière ni trace de chantier.</p>
     </div>
     <div class="kc-target-grid">
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l5-3 5 3M14 20V4l6 3v13M7 9v0M7 13v0M7 17v0"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="1">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M2 20h20M4 20V8l5-3 5 3M14 20V4l6 3v13M7 9v0M7 13v0M7 17v0"/></svg></span></div>
         <h3>Artisans & entreprises du bâtiment</h3>
         <p>Maçons, plaquistes, peintres, électriciens&nbsp;: nous prenons le relais du nettoyage final pour que vous livriez un chantier impeccable, sans y consacrer vos équipes.</p>
       </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="2">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></span></div>
         <h3>Particuliers en rénovation</h3>
         <p>Après vos travaux, vous récupérez un logement prêt à habiter, débarrassé de la poussière fine et des résidus que laisse tout chantier.</p>
       </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v0M9 13v0M9 17v0"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="3">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3M9 9v0M9 13v0M9 17v0"/></svg></span></div>
         <h3>Promoteurs & maîtres d'ouvrage</h3>
         <p>Livraison de logements neufs ou réhabilités&nbsp;: remise en état avant remise des clés, pour une réception sans réserve sur la propreté.</p>
       </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8h5v13M13 21V3h5v18M8.5 11v0M8.5 15v0M15.5 7v0M15.5 11v0M15.5 15v0"/></svg></div>
+      <div class="kc-target-card kc-fade" data-p="4">
+        <div class="kc-target-media"><span class="kc-target-media-ico"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M6 21V8h5v13M13 21V3h5v18M8.5 11v0M8.5 15v0M15.5 7v0M15.5 11v0M15.5 15v0"/></svg></span></div>
         <h3>Bureaux, commerces & locaux pro</h3>
         <p>Aménagement ou rénovation de surfaces tertiaires&nbsp;: nettoyage de réception pour ouvrir vos espaces propres et opérationnels.</p>
       </div>
@@ -464,6 +475,10 @@
           <div class="kc-promise-point">
             <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg></div>
             <div class="kc-promise-point-content"><strong>Reporting de réception</strong><span>Photos avant / après et état des lieux de propreté transmis à la livraison</span></div>
+          </div>
+          <div class="kc-promise-point">
+            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8.5l2.5 2.5L14 6.5"/></svg></div>
+            <div class="kc-promise-point-content"><strong>Suivi qualité Kayli Clinn Connect</strong><span>Selon votre formule — Essentiel, Confort ou Premium — bénéficiez d'un suivi de qualité dédié grâce à notre outil Kayli Clinn Connect.</span></div>
           </div>
         </div>
       </div>
