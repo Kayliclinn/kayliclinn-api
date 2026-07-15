@@ -322,6 +322,131 @@
   </div>
 </section>
 
+<!-- ════════════════════════════════════════════════════════
+     AJOUT BRIEF 2 : méthodologie + Kayli Clinn Connect
+     Styles scopés sous .kc-about (aucune fuite globale).
+     ════════════════════════════════════════════════════════ -->
+<style>
+/* — Titres de section en majuscules (cohérence avec l'accueil) — */
+.kc-about .section-title,
+.kc-about .kc-hero-title,
+.kc-about .kc-intro-text h2,
+.kc-about .kc-commit h2,
+.kc-about .kc-banner h2,
+.kc-about .kc-final-cta h2,
+.kc-about .kc-method-title,
+.kc-about .kc-connect-title{text-transform:uppercase;letter-spacing:0.03em}
+
+/* ════════ NOTRE MÉTHODE EN 4 ÉTAPES ════════ */
+.kc-about .kc-method{background:var(--cream)}
+.kc-about .kc-method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.kc-about .kc-step{position:relative;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:38px 30px 34px;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.kc-about .kc-step:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
+.kc-about .kc-step::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-wash));opacity:0;transition:opacity .4s}
+.kc-about .kc-step:hover::before{opacity:1}
+.kc-about .kc-step-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.kc-about .kc-step-num{font-family:'Fraunces',serif;font-weight:560;font-size:15px;letter-spacing:0.14em;color:var(--teal-deep)}
+.kc-about .kc-step-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;transition:all .4s}
+.kc-about .kc-step:hover .kc-step-icon{background:var(--teal);color:#fff}
+.kc-about .kc-step h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
+.kc-about .kc-step p{font-size:13.5px;color:var(--muted);line-height:1.7}
+
+/* ════════ KAYLI CLINN CONNECT — panneau navy, accents mint ════════ */
+.kc-about .kc-connect{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.kc-about .kc-connect::before{content:'';position:absolute;top:-140px;right:-120px;width:460px;height:460px;background:radial-gradient(circle,rgba(25,227,223,0.14) 0%,transparent 70%);pointer-events:none}
+.kc-about .kc-connect-wrap{max-width:1240px;margin:0 auto;position:relative;z-index:1}
+.kc-about .kc-connect-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(48px,6vw,84px);align-items:center}
+.kc-about .kc-connect .eyebrow{color:#19E3DF}
+.kc-about .kc-connect .eyebrow::before{background:#19E3DF}
+.kc-about .kc-connect-title{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:#fff;line-height:1.08;margin-bottom:22px}
+.kc-about .kc-connect-title em{font-style:italic;color:#19E3DF}
+.kc-about .kc-connect-lead{font-size:15.5px;color:rgba(255,255,255,0.78);line-height:1.8;margin-bottom:16px}
+.kc-about .kc-connect-lead strong{color:#19E3DF;font-weight:600}
+.kc-about .kc-formulas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.kc-about .kc-formula{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;background:rgba(25,227,223,0.06);border:1px solid rgba(25,227,223,0.32);border-radius:100px;font-size:14px;font-weight:600;color:#fff;letter-spacing:0.01em}
+.kc-about .kc-formula i{width:7px;height:7px;border-radius:50%;background:#19E3DF;flex-shrink:0}
+.kc-about .kc-connect-note{margin-top:20px;font-size:13px;color:rgba(255,255,255,0.55);line-height:1.6}
+.kc-about .kc-connect-visual{position:relative;aspect-ratio:4/3;border-radius:20px;padding:26px;background:linear-gradient(160deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.1);display:grid;place-items:center;box-shadow:var(--shadow)}
+.kc-about .kc-connect-visual svg{width:100%;height:auto;max-width:360px}
+
+@media(max-width:1100px){
+  .kc-about .kc-method-grid{grid-template-columns:repeat(2,1fr)}
+  .kc-about .kc-connect-grid{grid-template-columns:1fr}
+  .kc-about .kc-connect-visual{max-width:440px}
+}
+@media(max-width:560px){
+  .kc-about .kc-method-grid{grid-template-columns:1fr}
+}
+</style>
+
+<!-- 3b · NOTRE MÉTHODE EN 4 ÉTAPES -->
+<section class="kc-method">
+  <div class="kc-about-wrap">
+    <div class="kc-about-header kc-fade">
+      <span class="eyebrow">Notre méthode</span>
+      <h2 class="section-title kc-method-title">Un lieu impeccable, <em>ça se construit</em></h2>
+      <p class="section-desc">Un résultat régulier ne tient pas au hasard&nbsp;:<br>il repose sur une méthode claire, appliquée à chaque site, du premier contact au suivi dans la durée.</p>
+    </div>
+    <div class="kc-method-grid">
+      <div class="kc-step kc-fade">
+        <div class="kc-step-head"><span class="kc-step-num">01</span><span class="kc-step-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span></div>
+        <h3>Diagnostic sur site</h3>
+        <p>Un audit gratuit chez vous&nbsp;: nous écoutons vos besoins, observons les lieux et identifions les contraintes réelles du terrain.</p>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-head"><span class="kc-step-num">02</span><span class="kc-step-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13l2 2 4-4"/></svg></span></div>
+        <h3>Protocole sur mesure</h3>
+        <p>Chaque site reçoit son cahier des charges&nbsp;: zones, fréquences, consignes, produits adaptés. Rien de générique.</p>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-head"><span class="kc-step-num">03</span><span class="kc-step-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
+        <h3>Équipe dédiée et formée</h3>
+        <p>Les mêmes intervenants, formés à nos protocoles, respectueux des lieux et de leurs occupants. La régularité fait la qualité.</p>
+      </div>
+      <div class="kc-step kc-fade">
+        <div class="kc-step-head"><span class="kc-step-num">04</span><span class="kc-step-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span></div>
+        <h3>Contrôle et suivi continus</h3>
+        <p>Des vérifications qualité régulières et des ajustements dans la durée. La prestation ne s'arrête pas quand l'équipe repart.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3c · KAYLI CLINN CONNECT — notre idée innovante -->
+<section class="kc-connect">
+  <div class="kc-connect-wrap">
+    <div class="kc-connect-grid">
+      <div class="kc-fade">
+        <span class="eyebrow">Notre idée innovante</span>
+        <h2 class="kc-connect-title">Kayli Clinn <em>Connect</em></h2>
+        <p class="kc-connect-lead">Le suivi qualité ne devrait pas être une boîte noire. Avec <strong>Kayli Clinn Connect</strong>, notre outil de suivi digital, vous savez ce qui est fait, quand, et par qui.</p>
+        <p class="kc-connect-lead">Selon la formule choisie, vous bénéficiez d'un niveau de suivi adapté à vos exigences. La transparence n'est pas une option&nbsp;: c'est notre façon de travailler.</p>
+        <div class="kc-formulas">
+          <span class="kc-formula"><i></i>Essentiel</span>
+          <span class="kc-formula"><i></i>Confort</span>
+          <span class="kc-formula"><i></i>Premium</span>
+        </div>
+        <p class="kc-connect-note">Trois niveaux de suivi&nbsp;: nous définissons ensemble celui qui correspond à vos exigences.</p>
+      </div>
+      <div class="kc-connect-visual kc-fade" aria-hidden="true">
+        <svg viewBox="0 0 220 168" width="100%" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="18" y="14" width="184" height="120" rx="11" stroke="rgba(255,255,255,0.42)" stroke-width="2"/>
+          <line x1="18" y1="42" x2="202" y2="42" stroke="rgba(255,255,255,0.22)" stroke-width="1.6"/>
+          <circle cx="34" cy="28" r="3.4" stroke="rgba(255,255,255,0.45)" stroke-width="1.6"/>
+          <line x1="46" y1="28" x2="118" y2="28" stroke="rgba(255,255,255,0.3)" stroke-width="1.6"/>
+          <path d="M35 63l6 6 12-13" stroke="#19E3DF" stroke-width="2.2"/>
+          <line x1="66" y1="63" x2="178" y2="63" stroke="rgba(255,255,255,0.34)" stroke-width="1.8"/>
+          <path d="M35 90l6 6 12-13" stroke="#19E3DF" stroke-width="2.2"/>
+          <line x1="66" y1="90" x2="178" y2="90" stroke="rgba(255,255,255,0.34)" stroke-width="1.8"/>
+          <circle cx="41" cy="115" r="6.5" stroke="rgba(255,255,255,0.4)" stroke-width="1.8"/>
+          <line x1="66" y1="115" x2="146" y2="115" stroke="rgba(255,255,255,0.28)" stroke-width="1.8"/>
+          <line x1="88" y1="148" x2="132" y2="148" stroke="rgba(255,255,255,0.3)" stroke-width="2.4"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 4 · NOS VALEURS -->
 <section class="kc-values">
   <div class="kc-about-wrap">
