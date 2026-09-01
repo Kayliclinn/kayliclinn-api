@@ -1,793 +1,977 @@
-<!-- ════════════════════════════════════════════════════════
-   PAGE PRESTATION : NETTOYAGE DE VITRES RÉSIDENTIEL — KAYLI CLINN
-   Refonte « studio premium » · WordPress-ready
-   URL : /vitres-classiques/   (menu : « Vitres classiques »)
-   ────────────────────────────────────────────────────────
-   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous.
-   Remplacez UNIQUEMENT l'URL entre url('…').
-   │ --photo-hero ..... grand fond du haut de page
-   │   ALT : « Baie vitrée d'appartement nettoyée par Kayli Clinn —
-   │   vitres sans traces, intérieur baigné de lumière »
-   │ --photo-banner ... bandeau immersif au milieu de page
-   │   ALT : « Salon lumineux aux fenêtres impeccables après le
-   │   passage de Kayli Clinn en Île-de-France »
-   │ --photo-split-1 .. section « lumière retrouvée » (gauche)
-   │   ALT : « Agent Kayli Clinn nettoyant une fenêtre côté
-   │   intérieur à la raclette professionnelle »
-   │ --photo-split-2 .. section « plain-pied / sécurité »
-   │   ALT : « Vitrage intérieur d'appartement parfaitement
-   │   transparent après nettoyage Kayli Clinn »
-   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
-   🔗 Liens internes : /devis/ · /turnover-airbnb/
-       /nettoyage-apres-demenagement-etat-des-lieux/ · /entretien-professionnel/
-   ☎️ Téléphone : +33670012061 · Prix : grille officielle v2 (12/06/2026).
-   ⚠️ Forfaits FERMES TTC réservables en ligne (plain-pied / vitres intérieures) :
-       Studio/T1 70 € · T2 70 € · T3 95 € · T4 95 € · T5 130 €.
-       BASCULE SUR DEVIS (jamais de prix ferme en ligne) :
-       vitres en hauteur, vitrine, véranda/verrière, ou besoin pro/récurrent.
-   ════════════════════════════════════════════════════════ -->
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nettoyage de vitres résidentiel en Île-de-France, au forfait | Kayli Clinn</title>
+<meta name="description" content="Vitres intérieures de plain-pied, encadrements et rebords nettoyés sans trace en Île-de-France. Forfait TTC dès 70 € selon la typologie, réservable en ligne.">
+<link rel="canonical" href="https://kayliclinn.fr/vitres-classiques/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#fff}</style>
+</head>
+<body>
+<!-- ═══ APERÇU UNIQUEMENT — ne pas copier au-dessus de cette ligne ═══ -->
 
+<!-- ============================================================
+     KAYLI CLINN — PAGE « Nettoyage de vitres résidentiel en Île-de-France, au forfait » — BLOC À COLLER DANS UN BLOC "HTML PERSONNALISÉ"
+     URL : /vitres-classiques/
+     Styles scopés sous .kcl : aucun impact sur le reste du thème.
+     Le thème gère l'en-tête et le pied de page : ne pas les recréer ici.
+     Titre SEO et méta-description (extension SEO) :
+       Nettoyage de vitres résidentiel en Île-de-France, au forfait | Kayli Clinn
+       Vitres intérieures de plain-pied, encadrements et rebords nettoyés sans trace en Île-de-France. Forfait TTC dès 70 € selon la typologie, réservable en ligne.
+     ------------------------------------------------------------
+     PHOTO DU HERO : remplacer l'URL dans style="--hero:url('…')" du <header>.
+     ============================================================ -->
 <style>
-/* ════════════════════════════════════════════════════════
-   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
-   ════════════════════════════════════════════════════════ */
-.kc-page{
-  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-hero.png');
-  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-banner.png');
-  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-split-1.png');
-  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-split-2.png');
+.kcl{
+  --navy:#0D2340; --navy-soft:#1a3a5c;
+  --teal:#0FA7A5; --teal-soft:#4CC3C1; --teal-pale:#E6F5F5; --teal-ink:#0B8483; --teal-deep:#076E6D;
+  --ivory:#F7F8FA; --paper:#FBFCFD;
+  --line:#E5E7EB; --line-soft:#EEF0F3;
+  --body:#4a5568; --muted:#6B7280;
+  --r:14px; --r-lg:20px;
+  font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  color:var(--body); background:#fff; line-height:1.68;
+  font-size:16.5px; -webkit-font-smoothing:antialiased;
+}
+.kcl *,.kcl *::before,.kcl *::after{box-sizing:border-box}
+.kcl img{max-width:100%;display:block}
+.kcl h1,.kcl h2,.kcl h3,.kcl h4{
+  font-family:'Fraunces','Playfair Display',Georgia,'Times New Roman',serif;
+  color:var(--navy); font-weight:600; line-height:1.16; margin:0 0 .5em;
+  letter-spacing:-.01em;
+}
+.kcl h1{font-size:clamp(30.4px,3.8vw,48px)}
+.kcl h2{font-size:clamp(24px,2.6vw,33.6px)}
+.kcl h3{font-size:18.56px;line-height:1.35}
+.kcl p{margin:0 0 1.1em}
+.kcl a{color:var(--teal-ink);text-decoration:none}
+.kcl a:hover{color:var(--teal-deep)}
+.kcl ul{margin:0 0 1.1em;padding-left:1.1em}
+.kcl li{margin-bottom:.4em}
+.kcl strong{color:var(--navy);font-weight:600}
+
+/* ---------- Structure ---------- */
+.kcl-wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.kcl-wrap--narrow{max-width:840px}
+.kcl-sec{padding:60px 0}
+.kcl-sec--tight{padding:46px 0}
+.kcl-sec--ivory{background:var(--ivory)}
+.kcl-sec--paper{background:var(--paper)}
+.kcl-sec--dark{background:var(--navy);color:#c5cfdb}
+.kcl-sec--dark h2,.kcl-sec--dark h3{color:#fff}
+.kcl-sec--dark a{color:var(--teal-soft)}
+.kcl-sec--dark .kcl-lead{color:#e3e9f0}
+
+/* ---------- Éléments de titre ---------- */
+.kcl-eyebrow{
+  font-size:11.52px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal-deep);font-weight:600;margin:0 0 14px
+}
+.kcl-sec--dark .kcl-eyebrow,.kcl-hero .kcl-eyebrow{color:var(--teal-soft)}
+.kcl-lead{font-size:16.96px;color:var(--body);max-width:66ch}
+.kcl-head{max-width:70ch;margin-bottom:34px}
+.kcl-head--center{margin-left:auto;margin-right:auto;text-align:center}
+.kcl-rule{width:52px;height:2px;background:var(--teal);border:0;margin:0 0 26px}
+.kcl-head--center .kcl-rule{margin-left:auto;margin-right:auto}
+
+/* ---------- Fil d'Ariane ---------- */
+.kcl-bread{padding:20px 0 4px;font-size:13.28px;color:var(--muted)}
+.kcl-bread a{color:#5b6b7d}
+.kcl-bread a:hover{color:var(--teal-ink)}
+.kcl-bread span{color:var(--navy)}
+.kcl-bread i{font-style:normal;padding:0 8px;color:var(--line)}
+
+/* ---------- Boutons ---------- */
+.kcl .kcl-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 26px;border-radius:999px;border:1px solid var(--teal);
+  background:var(--teal);color:#fff;font-size:15.2px;font-weight:600;
+  cursor:pointer;transition:background .25s ease,border-color .25s ease,transform .25s ease;
+  font-family:inherit;text-align:center;
+}
+.kcl .kcl-btn:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-1px)}
+.kcl .kcl-btn--ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+.kcl .kcl-btn--ghost:hover{background:transparent;color:var(--navy);border-color:var(--teal)}
+.kcl-sec--dark .kcl-btn--ghost{color:#fff;border-color:rgba(255,255,255,.28)}
+.kcl-sec--dark .kcl-btn--ghost:hover{border-color:var(--teal-soft);color:#fff}
+.kcl-btns{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 0}
+.kcl-arrow{transition:transform .25s ease}
+.kcl-btn:hover .kcl-arrow{transform:translateX(3px)}
+
+/* ---------- Hero avec photo de fond ---------- */
+.kcl-hero{
+  position:relative;background-color:var(--navy);
+  background-image:
+    linear-gradient(100deg,rgba(13,35,64,.94) 0%,rgba(13,35,64,.86) 42%,rgba(13,35,64,.42) 100%),
+    var(--hero);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  padding:78px 0 70px;color:#d3dbe6;
+  border-bottom:3px solid var(--teal);
+}
+.kcl-hero::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:38%;pointer-events:none;
+  background:linear-gradient(to top,rgba(13,35,64,.55),transparent)
+}
+.kcl-hero-inner{position:relative;z-index:1}
+.kcl-hero-text{max-width:660px}
+.kcl-hero h1{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.kcl-hero .kcl-lead{color:#e3e9f0}
+.kcl-hero .kcl-btn--ghost{color:#fff;border-color:rgba(255,255,255,.32)}
+.kcl-hero .kcl-btn--ghost:hover{border-color:var(--teal-soft)}
+.kcl-hero-tag{
+  margin:36px 0 0;max-width:540px;font-size:14.88px;color:#fff;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;
+  padding:16px 24px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)
+}
+.kcl-reassure{
+  display:inline-flex;flex-wrap:wrap;gap:10px 16px;margin-top:28px;
+  font-size:13.92px;color:#4b5563;letter-spacing:.01em
+}
+.kcl-reassure b{color:var(--navy);font-weight:500}
+.kcl-hero .kcl-reassure{color:#d3dbe6}
+.kcl-hero .kcl-reassure b{color:#fff}
+.kcl-sec--dark .kcl-reassure{color:#c5cfdb}
+.kcl-sec--dark .kcl-reassure b{color:#fff}
+
+/* ---------- Images / emplacements ---------- */
+.kcl-ph{
+  position:relative;width:100%;border-radius:var(--r);overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(15,167,165,.16),rgba(13,35,64,.72)),
+    repeating-linear-gradient(45deg,#16304d 0 14px,#122a45 14px 28px);
+  display:flex;align-items:flex-end;
+}
+.kcl-ph::after{
+  content:attr(data-legend);
+  display:block;width:100%;padding:14px 16px;
+  font-size:12.16px;line-height:1.45;color:rgba(255,255,255,.82);
+  background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0));
+  font-family:'Inter',sans-serif;
+}
+
+/* ---------- Grilles & cartes ---------- */
+.kcl-grid{display:grid;gap:20px}
+.kcl-g2{grid-template-columns:repeat(2,1fr)}
+.kcl-g3{grid-template-columns:repeat(3,1fr)}
+.kcl-g4{grid-template-columns:repeat(4,1fr)}
+.kcl-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:26px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+}
+.kcl-card:hover{border-color:var(--teal-soft);box-shadow:0 16px 38px rgba(13,35,64,.07);transform:translateY(-2px)}
+.kcl-card p:last-child{margin-bottom:0}
+.kcl-sec--dark .kcl-card{background:var(--navy-soft);border-color:rgba(255,255,255,.14)}
+.kcl-sec--dark .kcl-card:hover{border-color:rgba(76,195,193,.55);box-shadow:none}
+.kcl-sec--ivory .kcl-card{background:#fff}
+
+/* Cartes prestations */
+.kcl-presta{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+  animation:kclIn .4s ease both
+}
+.kcl-presta:hover{border-color:var(--teal-soft)}
+.kcl-presta figure{margin:0}
+.kcl-presta-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.kcl-presta-body h3{margin-bottom:10px}
+.kcl-presta-body p{font-size:15.2px}
+.kcl-presta-detail{font-size:14.4px;color:#5b6b7d;margin:0 0 14px!important}
+.kcl-presta-tags{font-size:14.08px;color:var(--teal-deep);margin:auto 0 0!important;padding-top:6px}
+.kcl .kcl-link{
+  margin-top:auto;font-weight:600;font-size:14.72px;display:inline-flex;
+  align-items:center;gap:8px;color:var(--teal-deep)
+}
+.kcl-link .kcl-arrow{display:inline-block}
+.kcl-link:hover .kcl-arrow{transform:translateX(4px)}
+.kcl-presta.is-off{display:none}
+@keyframes kclIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Visuel des cartes prestations et de l'encart */
+.kcl-vis{
+  display:block;width:100%;height:180px;background:var(--ivory);
+  border-bottom:1px solid var(--line)
+}
+.kcl-illus{
+  display:block;width:100%;height:auto;margin:0 0 24px;
+  background:#fff;border:1px solid var(--line);border-radius:10px
+}
+.kcl-illus .t,.kcl-vis .t{fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.kcl-illus .d,.kcl-vis .d{fill:none;stroke:#d7dce3;stroke-width:1.1;stroke-linecap:round}
+.kcl-illus .f,.kcl-vis .f{fill:var(--teal-pale);stroke:none}
+.kcl-illus .s,.kcl-vis .s{fill:var(--navy);stroke:none}
+
+/* Intertitres de famille */
+.kcl-famtitre{
+  grid-column:1 / -1;margin:8px 0 -8px;font-family:'Fraunces',Georgia,serif;
+  font-size:15.2px;color:var(--navy);font-weight:600;
+  display:flex;align-items:center;gap:16px;letter-spacing:.01em
+}
+.kcl-famtitre::after{content:"";flex:1;height:1px;background:var(--line)}
+.kcl-famtitre:first-child{margin-top:0}
+.kcl-famtitre.is-off{display:none}
+
+/* Filtre des prestations */
+.kcl-filtre{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:30px}
+.kcl-f{
+  font-family:inherit;font-size:14.4px;font-weight:500;color:var(--body);cursor:pointer;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 20px;
+  transition:border-color .25s ease,color .25s ease,background .25s ease
+}
+.kcl-f:hover{border-color:var(--teal-soft);color:var(--navy)}
+.kcl-f.is-on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}
+.kcl-compte{margin-left:auto;font-size:13.6px;color:#5b6b7d}
+
+/* ---------- Listes à puces ---------- */
+.kcl-check{list-style:none;padding:0;margin:0}
+.kcl-check li{position:relative;padding-left:26px;margin-bottom:11px;font-size:15.52px}
+.kcl-check li::before{
+  content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;
+  border:1.5px solid var(--teal);border-radius:50%;
+}
+.kcl-check--dense li{margin-bottom:7px;font-size:15.04px}
+
+/* ---------- Deux colonnes texte / encadré ---------- */
+.kcl-split{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.kcl-panel{
+  background:var(--ivory);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px
+}
+.kcl-panel h3{font-size:16.8px;margin-bottom:16px}
+.kcl-panel--accent{background:var(--teal-pale);border-color:var(--teal-soft)}
+.kcl .kcl-panel .kcl-link{color:var(--teal-deep)}
+
+/* ---------- Citation ---------- */
+.kcl-quote{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(21.6px,2.4vw,29.6px);
+  line-height:1.34;color:var(--navy);border-left:3px solid var(--teal);
+  padding:6px 0 6px 26px;margin:0 0 30px;max-width:24ch;font-weight:500
+}
+.kcl-sec--dark .kcl-quote{color:#fff}
+.kcl-quote--wide{max-width:34ch}
+
+/* ---------- Profils compacts ---------- */
+.kcl-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.kcl-meta span{
+  font-size:13.6px;color:var(--body);background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px
+}
+
+/* ---------- Sélecteur « votre situation ressemble à… » ---------- */
+.kcl-picks{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;padding:0;list-style:none}
+.kcl-pick{
+  font-family:inherit;font-size:14.4px;text-align:left;color:var(--body);cursor:pointer;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 17px;
+  display:inline-flex;align-items:center;gap:9px;line-height:1.25;
+  transition:border-color .22s ease,background .22s ease,color .22s ease,transform .22s ease
+}
+.kcl-pick::before{
+  content:"";width:13px;height:13px;flex:none;border:1.5px solid var(--line);border-radius:50%;
+  transition:border-color .22s ease,box-shadow .22s ease
+}
+.kcl-pick:active{transform:scale(.97)}
+.kcl-pick:hover{border-color:var(--teal-soft)}
+.kcl-pick.is-on{border-color:var(--teal);background:var(--teal-pale);color:var(--navy);font-weight:600}
+.kcl-pick.is-on::before{border-color:var(--teal);box-shadow:inset 0 0 0 3px var(--teal)}
+.kcl-pick-cta{width:100%;justify-content:center;transition:background .25s ease}
+.kcl-pick-cta [data-cta-txt]{transition:opacity .2s ease}
+.kcl-pick-cta.is-maj [data-cta-txt]{opacity:0}
+
+/* ---------- Trois preuves / principes ---------- */
+.kcl-preuves{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.kcl-preuve{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px 28px;
+  border-top:3px solid var(--teal)
+}
+.kcl-preuve span{
+  display:block;font-family:'Fraunces',Georgia,serif;font-size:24px;color:var(--teal-ink);
+  margin-bottom:14px;font-weight:600
+}
+.kcl-preuve h3{font-size:17.92px;margin-bottom:10px}
+.kcl-preuve p{margin:0;font-size:15.2px}
+
+/* ---------- Cartes d'inquiétudes ---------- */
+.kcl-sec--inq{background:var(--ivory)}
+.kcl-inq{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kcl-inq article{
+  background:#fff;border:1px solid var(--line);border-top:3px solid var(--teal);
+  border-radius:var(--r-lg);padding:24px 22px
+}
+.kcl-inq h3{color:var(--navy);font-size:16.64px;margin-bottom:10px}
+.kcl-inq p{color:var(--body);font-size:14.56px;margin-bottom:14px}
+.kcl-inq .kcl-rep{color:var(--navy);font-size:14.88px;margin:0;padding-top:13px;border-top:1px solid var(--line-soft)}
+.kcl-inq .kcl-rep b{color:var(--teal-deep)}
+
+/* ---------- Méthode : six étapes toutes visibles ---------- */
+.kcl-etapes-s{display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px}
+.kcl-etape-s{border-top:2px solid var(--line);padding:24px 0 30px;position:relative}
+.kcl-etape-s::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;
+  border-radius:50%;background:var(--teal);border:2px solid var(--teal)}
+.kcl-etape-s b{display:block;font-family:'Fraunces',Georgia,serif;font-size:13.76px;
+  color:var(--teal-deep);letter-spacing:.08em;margin-bottom:8px}
+.kcl-etape-s h3{font-size:16.96px;margin-bottom:8px}
+.kcl-etape-s p{margin:0;font-size:14.72px}
+
+/* ---------- Trois parcours, tous visibles ---------- */
+.kcl-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.kcl-pack{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:32px 30px 30px;position:relative
+}
+.kcl-pack--reco{
+  border:2px solid var(--teal);box-shadow:0 18px 44px rgba(13,35,64,.09);
+  background:var(--paper);padding:31px 29px 29px
+}
+.kcl-pack-badge{
+  display:inline-block;align-self:flex-start;background:var(--navy);color:#fff;
+  font-size:11.2px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  padding:6px 14px;border-radius:999px;margin:0 0 12px;line-height:1.3;max-width:100%
+}
+.kcl-pack-mention{
+  font-size:11.2px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);
+  font-weight:700;margin:0 0 12px;height:30px;display:flex;align-items:center
+}
+.kcl-pack h3{font-size:19.52px;margin-bottom:12px;line-height:1.25}
+.kcl-pack-profil{
+  font-size:14.4px;color:var(--body);background:var(--ivory);border-radius:10px;
+  padding:14px 16px;margin-bottom:22px
+}
+.kcl-pack--reco .kcl-pack-profil{background:#fff;border:1px solid var(--teal-soft)}
+.kcl-pack-plus{
+  font-size:13.12px;font-weight:700;color:var(--teal-deep);text-transform:uppercase;
+  letter-spacing:.08em;margin:0 0 12px
+}
+.kcl-pack ul{margin:0 0 22px;padding:0;list-style:none}
+.kcl-pack li{position:relative;padding:0 0 11px 26px;font-size:14.88px;line-height:1.5}
+.kcl-pack li::before{
+  content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;
+  border:1.5px solid var(--teal);border-radius:50%
+}
+.kcl-pack--reco li::before{background:var(--teal)}
+.kcl-pack-benef{
+  font-size:14.88px;color:var(--navy);border-left:3px solid var(--teal-soft);
+  padding:2px 0 2px 16px;margin:0 0 24px
+}
+.kcl-pack .kcl-btn{margin-top:auto;justify-content:center;width:100%}
+.kcl-pack .kcl-btn--ghost{border-color:var(--line)}
+.kcl-tarif{font-size:13.44px;color:#5b6b7d;margin:0 0 18px;line-height:1.5}
+.kcl .kcl-tarif a{color:var(--teal-deep)}
+.kcl-conseil{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  background:var(--teal-pale);border:1px solid var(--teal-soft);border-radius:var(--r-lg);
+  padding:30px 34px;margin-top:36px
+}
+.kcl-conseil h3{font-size:18.4px;margin-bottom:8px}
+.kcl-conseil p{margin:0;font-size:15.2px;max-width:80ch}
+
+/* ---------- Fiche d'identification ---------- */
+.kcl-fiche{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin:0 0 34px
+}
+.kcl-fiche div{background:#fff;padding:22px 22px}
+.kcl-fiche dt{
+  font-size:11.52px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:7px
+}
+.kcl-fiche dd{margin:0;font-family:'Fraunces',Georgia,serif;font-size:16.32px;
+  color:var(--navy);line-height:1.35}
+
+/* ---------- FAQ ---------- */
+.kcl-faq{max-width:880px;margin:0 auto}
+.kcl-faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.kcl-faq summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-family:'Fraunces',Georgia,serif;font-size:17.28px;color:var(--navy);font-weight:600
+}
+.kcl-faq summary::-webkit-details-marker{display:none}
+.kcl-faq summary::after{
+  content:"+";position:absolute;right:6px;top:19px;font-family:'Inter',sans-serif;
+  font-size:24px;color:var(--teal);font-weight:300;transition:transform .3s ease
+}
+.kcl-faq details[open] summary::after{transform:rotate(45deg)}
+.kcl-faq summary:hover{color:var(--teal-ink)}
+.kcl-faq-a{padding:0 40px 24px 0;font-size:15.68px}
+.kcl-faq-a p:last-child{margin-bottom:0}
+
+/* ---------- Bande « visite gratuite », après la FAQ ---------- */
+.kcl-visite{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  background:var(--navy);border-radius:var(--r-lg);padding:32px 36px
+}
+.kcl-visite p.kcl-eyebrow{color:var(--teal-soft);margin-bottom:10px}
+.kcl-visite h2{color:#fff;font-size:clamp(19.2px,2vw,24.8px);margin-bottom:8px}
+.kcl-visite p:not(.kcl-eyebrow){color:#c5cfdb;margin:0;max-width:74ch;font-size:15.36px}
+.kcl-visite .kcl-btn{white-space:nowrap}
+
+/* ---------- Bandeau liens internes ---------- */
+.kcl-cross{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:20px}
+.kcl-cross a{
+  display:block;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;
+  background:#fff;color:var(--navy);transition:border-color .25s ease,transform .25s ease
+}
+.kcl-cross a:hover{border-color:var(--teal);transform:translateY(-2px);color:var(--navy)}
+.kcl-cross b{display:block;font-family:'Fraunces',Georgia,serif;font-size:16.8px;margin-bottom:5px}
+.kcl-cross span{font-size:14.4px;color:#5b6b7d}
+
+/* ---------- Notes secondaires ---------- */
+.kcl-note{font-size:14.4px;color:#5b6b7d;max-width:78ch}
+.kcl-sec--dark .kcl-note{color:#c5cfdb}
+
+/* ---------- Animations ---------- */
+.kcl-anim .kcl-rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.kcl-anim .kcl-rv.is-in{opacity:1;transform:none}
+.kcl-anim .kcl-hero-text > *,.kcl-anim .kcl-hero-tag{animation:kclUp .8s cubic-bezier(.22,.8,.3,1) both}
+.kcl-anim .kcl-hero-text > *:nth-child(2){animation-delay:.08s}
+.kcl-anim .kcl-hero-text > *:nth-child(3){animation-delay:.16s}
+.kcl-anim .kcl-hero-text > *:nth-child(4){animation-delay:.24s}
+.kcl-anim .kcl-hero-text > *:nth-child(5){animation-delay:.32s}
+.kcl-anim .kcl-hero-tag{animation-delay:.42s}
+@keyframes kclUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- Accessibilité ---------- */
+.kcl a:focus-visible,.kcl button:focus-visible,.kcl summary:focus-visible{
+  outline:2px solid var(--teal);outline-offset:3px;border-radius:4px
+}
+@media (prefers-reduced-motion:reduce){
+  .kcl *{transition:none!important;animation:none!important}
+  .kcl-anim .kcl-rv{opacity:1;transform:none}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1040px){
+  .kcl-g4{grid-template-columns:repeat(2,1fr)}
+  .kcl-preuves,.kcl-inq,.kcl-packs{grid-template-columns:1fr}
+  .kcl-pack-mention{min-height:0}
+  .kcl-etapes-s{grid-template-columns:repeat(2,1fr)}
+  .kcl-fiche{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .kcl-sec{padding:46px 0}
+  .kcl-hero{
+    padding:60px 0 52px;
+    background-image:
+      linear-gradient(180deg,rgba(13,35,64,.9) 0%,rgba(13,35,64,.82) 55%,rgba(13,35,64,.62) 100%),
+      var(--hero);
+  }
+  .kcl-split{grid-template-columns:1fr;gap:38px}
+  .kcl-g3,.kcl-cross{grid-template-columns:repeat(2,1fr)}
+  .kcl-conseil{grid-template-columns:1fr;gap:20px}
+  .kcl-visite{grid-template-columns:1fr;padding:26px 24px}
+}
+@media (max-width:620px){
+  .kcl{font-size:16px}
+  .kcl-wrap{padding:0 18px}
+  .kcl-g2,.kcl-g3,.kcl-g4,.kcl-cross,.kcl-etapes-s,.kcl-fiche{grid-template-columns:1fr}
+  .kcl-card,.kcl-panel{padding:24px}
+  .kcl-btns{flex-direction:column;align-items:stretch}
+  .kcl-btn{justify-content:center}
+  .kcl-hero-tag{max-width:100%}
+  .kcl-quote{max-width:none}
+  .kcl-f{padding:9px 16px;font-size:13.6px}
+  .kcl-compte{margin-left:0;width:100%}
+  .kcl-pack{padding:26px 22px 24px}
+  .kcl-conseil{padding:24px 22px}
 }
 </style>
-<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
-<style>
 
-/* ════════════════════════════════════════════════════════
-   SYSTÈME
-   ════════════════════════════════════════════════════════ */
-.kc-page{
-  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
-  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
-  --navy:#0D2340; --navy-2:#14294a;
-  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
-  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
-  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
-  --amber:#D89B3C;
-  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
-  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-  font-size:16px; line-height:1.65; color:var(--ink);
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  overflow-x:clip;
-}
-.kc-page *,.kc-page *::before,.kc-page *::after{box-sizing:border-box}
-.kc-page img{max-width:100%;display:block}
-.kc-page a{color:inherit;text-decoration:none}
+<div class="kcl" id="kcl-vitres-classiques">
 
-/* — liens texte — */
-.kc-page .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
-.kc-page .kc-link:hover{color:var(--teal);border-color:var(--teal)}
-.kc-page .kc-promise-text .kc-link,.kc-page .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
-.kc-page .kc-promise-text .kc-link:hover,.kc-page .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+  <!-- ─────────── 1. FIL D'ARIANE ─────────── -->
+  <nav class="kcl-wrap kcl-bread" aria-label="Fil d’Ariane">
+    <a href="/">Accueil</a><i>›</i><a href="/prestations/">Prestations</a><i>›</i><span>Vitres classiques</span>
+  </nav>
 
-/* — rythme — */
-.kc-page section{padding:clamp(84px,11vw,152px) 6%}
-.kc-page-wrap{max-width:1240px;margin:0 auto}
-.kc-page-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
-
-/* — sur-titre éditorial (filet + petites capitales) — */
-.kc-page .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
-.kc-page .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
-
-/* — titres : Fraunces serif + accents italiques — */
-.kc-page .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
-.kc-page .section-title em,.kc-page h2 em,.kc-page h3 em,.kc-page .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
-.kc-page .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
-
-.kc-page svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-
-/* — boutons — */
-.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
-.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
-.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
-.kc-btn-primary svg{transition:transform .3s}
-.kc-btn-primary:hover svg{transform:translateX(3px)}
-.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
-.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
-
-/* ════════════════════════════════════════════════════════
-   HERO — plein cadre, très aéré
-   ════════════════════════════════════════════════════════ */
-.kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
-.kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
-.kc-hero-content{max-width:none}
-.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
-@media(max-width:600px){.kc-hero-eyebrow{letter-spacing:0.1em !important;font-size:11px !important;gap:9px !important}}
-.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(28px,4.7vw,56px);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);white-space:nowrap;text-shadow:0 2px 30px rgba(0,0,0,0.5)}
-.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
-.kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:540px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
-.kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
-.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
-.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
-
-/* — bande de réassurance — */
-.kc-trust{background:var(--navy);padding:30px 6%}
-.kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
-.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
-.kc-trust-item svg{color:var(--teal);flex-shrink:0}
-
-/* ════════════════════════════════════════════════════════
-   POUR QUI
-   ════════════════════════════════════════════════════════ */
-.kc-target{background:var(--cream-2)}
-.kc-target-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.kc-target-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.kc-target-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
-.kc-target-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
-.kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
-.kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
-.kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
-
-/* ════════════════════════════════════════════════════════
-   PROMESSE
-   ════════════════════════════════════════════════════════ */
-.kc-promise-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
-.kc-promise-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
-.kc-promise-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
-.kc-promise .eyebrow{color:var(--teal)}
-.kc-promise .eyebrow::before{background:var(--teal)}
-.kc-promise h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
-.kc-promise h2 em{color:var(--teal)}
-.kc-promise-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
-.kc-promise-text:last-child{margin-bottom:0}
-.kc-promise-text strong{color:#fff;font-weight:600}
-.kc-promise-points{display:flex;flex-direction:column;gap:14px}
-.kc-promise-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
-.kc-promise-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
-.kc-promise-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
-.kc-promise-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
-.kc-promise-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
-
-/* ════════════════════════════════════════════════════════
-   BANDEAU
-   ════════════════════════════════════════════════════════ */
-.kc-banner{position:relative;min-height:540px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
-.kc-banner-content{max-width:900px}
-.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
-.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
-.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
-.kc-banner h2 em{font-style:italic;color:#fff}
-.kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
-
-/* ════════════════════════════════════════════════════════
-   INCLUS — fiches au trait
-   ════════════════════════════════════════════════════════ */
-.kc-included{background:var(--cream)}
-.kc-included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
-.kc-incl-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
-.kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
-.kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
-.kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
-.kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
-
-/* ════════════════════════════════════════════════════════
-   SPLIT
-   ════════════════════════════════════════════════════════ */
-.kc-split{background:var(--white)}
-.kc-split.alt{background:var(--cream-2)}
-.kc-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
-.kc-split.reverse .kc-split-grid{direction:rtl}
-.kc-split.reverse .kc-split-grid>*{direction:ltr}
-.kc-split-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-split-1);background-size:cover;background-position:center;box-shadow:var(--shadow)}
-.kc-split.alt .kc-split-img{background-image:var(--photo-split-2)}
-.kc-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
-.kc-split-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
-.kc-split-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:24px}
-.kc-split-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
-.kc-split-text p:last-of-type{margin-bottom:0}
-.kc-split-text strong{color:var(--navy);font-weight:600}
-.kc-split-quote{margin-top:32px;padding:26px 30px;background:transparent;border-left:2px solid var(--teal);border-radius:0;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--navy);font-size:17px;line-height:1.6}
-.kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
-
-/* ════════════════════════════════════════════════════════
-   POUR ALLER PLUS LOIN — bascules devis + options
-   ════════════════════════════════════════════════════════ */
-.kc-further-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(32px,4vw,56px);align-items:stretch}
-.kc-further-panel{background:var(--navy);border-radius:24px;padding:clamp(34px,4vw,52px);color:#fff;position:relative;overflow:hidden}
-.kc-further-panel::before{content:'';position:absolute;bottom:-130px;right:-130px;width:420px;height:420px;background:radial-gradient(circle,rgba(15,167,165,0.15) 0%,transparent 70%);pointer-events:none}
-.kc-further-panel .eyebrow{color:var(--teal)}
-.kc-further-panel .eyebrow::before{background:var(--teal)}
-.kc-further-panel h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.14;letter-spacing:-0.015em;color:#fff;margin-bottom:14px;position:relative;z-index:1}
-.kc-further-panel h3 em{color:var(--teal)}
-.kc-further-panel>p{font-size:14.5px;color:rgba(255,255,255,0.72);line-height:1.75;margin-bottom:26px;position:relative;z-index:1}
-.kc-further-list{list-style:none;display:flex;flex-direction:column;gap:13px;margin:0;padding:0;position:relative;z-index:1}
-.kc-further-list li{display:flex;gap:14px;align-items:flex-start;font-size:14px;color:rgba(255,255,255,0.84);line-height:1.6}
-.kc-further-list svg{flex-shrink:0;margin-top:2px;width:24px;height:24px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:8px;padding:4px}
-.kc-further-list strong{color:#fff;font-weight:600;display:block;margin-bottom:1px}
-.kc-further-note{position:relative;z-index:1;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.10);font-size:13px;color:rgba(255,255,255,0.66);line-height:1.7}
-.kc-further-note strong{color:#fff;font-weight:600}
-.kc-further-opts{display:flex;flex-direction:column;gap:16px}
-.kc-further-opts-head{margin-bottom:4px}
-.kc-further-opts-head .eyebrow{margin-bottom:14px}
-.kc-further-opts-head h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.5rem,2.3vw,2rem);line-height:1.14;letter-spacing:-0.015em;color:var(--navy);margin-bottom:10px}
-.kc-further-opts-head h3 em{font-style:italic;color:var(--teal-deep)}
-.kc-further-opts-head p{font-size:14px;color:var(--muted);line-height:1.7}
-
-/* ════════════════════════════════════════════════════════
-   OPTIONS
-   ════════════════════════════════════════════════════════ */
-.kc-option-row{display:flex;align-items:center;gap:20px;padding:24px 28px;background:var(--white);border:1px solid var(--line);border-radius:13px;transition:all .3s}
-.kc-option-row:hover{border-color:var(--teal);transform:translateX(3px);box-shadow:var(--shadow-sm)}
-.kc-option-icon{width:46px;height:46px;background:var(--teal-wash);color:var(--teal-deep);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
-.kc-option-info{flex:1;min-width:0}
-.kc-option-name{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:3px;letter-spacing:-0.01em}
-.kc-option-desc{font-size:12.5px;color:var(--muted);line-height:1.55}
-.kc-option-price{font-family:'Inter',sans-serif;color:var(--teal-deep);font-weight:600;font-size:14px;white-space:nowrap}
-
-/* ════════════════════════════════════════════════════════
-   PROCESS
-   ════════════════════════════════════════════════════════ */
-.kc-process{background:var(--cream)}
-.kc-process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;position:relative}
-.kc-process-grid::before{content:'';position:absolute;top:34px;left:9%;right:9%;height:1px;background:var(--line);z-index:0}
-.kc-process-step{position:relative;z-index:1;text-align:center}
-.kc-process-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
-.kc-process-step:hover .kc-process-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
-.kc-process-step h4{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
-.kc-process-step p{font-size:13px;color:var(--muted);line-height:1.65}
-.kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
-
-/* ════════════════════════════════════════════════════════
-   PRICING
-   ════════════════════════════════════════════════════════ */
-.kc-pricing{background:var(--cream-2)}
-.kc-pricing-grid{display:grid;grid-template-columns:1fr 1.18fr;gap:clamp(48px,7vw,92px);align-items:center}
-.kc-pricing-left h3{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.1;letter-spacing:-0.015em;margin-bottom:22px}
-.kc-pricing-left p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:18px}
-.kc-pricing-left strong{color:var(--navy);font-weight:600}
-.kc-pricing-table{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:clamp(28px,3vw,42px);box-shadow:var(--shadow)}
-.kc-pricing-table-title{font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:26px}
-.kc-price-row{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:18px 0;border-bottom:1px solid var(--line-soft)}
-.kc-price-row:last-of-type{border-bottom:none;padding-bottom:0}
-.kc-price-label{font-size:14.5px;color:var(--ink);font-weight:500}
-.kc-price-label small{display:block;font-size:11.5px;color:var(--faint);font-weight:400;margin-top:3px}
-.kc-price-value{font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:18px;white-space:nowrap}
-.kc-price-value em{font-style:italic;color:var(--teal-deep)}
-.kc-price-disclaimer{font-size:12px;color:var(--faint);font-style:italic;margin-top:24px;padding-top:22px;border-top:1px solid var(--line-soft);line-height:1.65}
-
-/* ════════════════════════════════════════════════════════
-   TÉMOIGNAGES
-   ════════════════════════════════════════════════════════ */
-.kc-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.kc-testi{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:38px 34px;position:relative;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
-.kc-testi:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.kc-testi-quote-mark{position:absolute;top:26px;right:30px;font-family:'Fraunces',serif;font-size:54px;font-weight:560;color:var(--teal);opacity:0.14;line-height:1}
-.kc-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:18px}
-.kc-testi-text{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.65;margin-bottom:26px;font-style:italic;font-weight:400}
-.kc-testi-author{display:flex;align-items:center;gap:14px;padding-top:22px;border-top:1px solid var(--line-soft)}
-.kc-testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Inter',sans-serif;font-weight:600;font-size:13.5px;letter-spacing:0.02em;flex-shrink:0}
-.kc-testi-info strong{display:block;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
-.kc-testi-info span{font-size:12.5px;color:var(--faint);margin-top:2px;display:block}
-
-/* ════════════════════════════════════════════════════════
-   POURQUOI NOUS — éditorial
-   ════════════════════════════════════════════════════════ */
-.kc-why{background:var(--cream)}
-.kc-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.kc-why-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.kc-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.kc-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
-.kc-why-card:hover::before{transform:scaleX(1)}
-.kc-why-num{font-family:'Fraunces',serif;font-size:14px;font-weight:560;color:var(--teal-deep);letter-spacing:0.1em;margin-bottom:26px;display:block}
-.kc-why-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
-.kc-why-card:hover .kc-why-icon{background:var(--teal);color:#fff}
-.kc-why-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:13px;letter-spacing:-0.01em}
-.kc-why-card p{font-size:14px;color:var(--muted);line-height:1.75}
-
-/* ════════════════════════════════════════════════════════
-   FAQ
-   ════════════════════════════════════════════════════════ */
-.kc-faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
-.kc-faq-q{padding:26px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
-.kc-faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.35}
-.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
-.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
-.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.kc-faq-item.open .kc-faq-a{max-height:480px}
-.kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
-.kc-faq-a-content strong{color:var(--navy);font-weight:600}
-
-/* ════════════════════════════════════════════════════════
-   ZONES
-   ════════════════════════════════════════════════════════ */
-.kc-zones{background:var(--cream-2)}
-.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
-.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
-.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
-.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
-.kc-zone:hover span{color:rgba(255,255,255,0.75)}
-
-/* ════════════════════════════════════════════════════════
-   CTA FINAL — vert uni
-   ════════════════════════════════════════════════════════ */
-.kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
-.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
-.kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
-.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
-.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
-.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
-.kc-final-cta h2 em{font-style:italic;color:#fff}
-.kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
-.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
-.kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
-.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
-.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
-
-/* ════════════════════════════════════════════════════════
-   ANIMATIONS
-   ════════════════════════════════════════════════════════ */
-.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
-.kc-fade.visible{opacity:1;transform:translateY(0)}
-
-/* ════════════════════════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════════════════════════ */
-@media(max-width:1100px){
-  .kc-target-grid,.kc-included-grid{grid-template-columns:repeat(2,1fr)}
-  .kc-promise-grid,.kc-pricing-grid,.kc-further-grid{grid-template-columns:1fr}
-  .kc-banner{background-attachment:scroll}
-}
-@media(max-width:900px){
-  .kc-hero{min-height:90vh}
-  .kc-split-grid{grid-template-columns:1fr}
-  .kc-split.reverse .kc-split-grid{direction:ltr}
-  .kc-process-grid{grid-template-columns:repeat(3,1fr);gap:24px}
-  .kc-process-grid::before{display:none}
-  .kc-testi-grid,.kc-why-grid{grid-template-columns:1fr}
-  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
-  .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
-}
-@media(max-width:560px){
-  .kc-page section{padding:64px 6%}
-  .kc-further-panel{padding:34px 26px;border-radius:20px}
-  .kc-hero{min-height:auto;padding:130px 6% 64px}
-  .kc-hero-title{white-space:normal;font-size:clamp(28px,4.7vw,56px)}
-  .kc-target-grid,.kc-included-grid{grid-template-columns:1fr}
-  .kc-process-grid{grid-template-columns:1fr;gap:18px}
-  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
-  .kc-promise-block{border-radius:20px}
-  .kc-btn{width:100%;justify-content:center}
-  .kc-hero-ctas,.kc-final-ctas{width:100%}
-}
-@media(prefers-reduced-motion:reduce){
-  .kc-page *,.kc-page *::before,.kc-page *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
-  .kc-page .kc-fade{opacity:1;transform:none}
-}
-</style>
-
-<div class="kc-page">
-
-<!-- 1 · HERO -->
-<style>
-/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
-.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
-.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
-.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
-</style>
-<section class="kc-hero">
-  <div class="kc-hero-wrap">
-    <div class="kc-hero-content kc-fade">
-      <span class="kc-hero-eyebrow">Nettoyage de vitres · Île&#8209;de&#8209;France</span>
-      <h1 class="kc-hero-title">Des Vitres <em>Impeccables</em>, Sans Une Trace</h1>
-      <p class="kc-hero-sub">Le nettoyage de vitres résidentiel pour votre appartement ou votre maison de plain-pied&nbsp;:<br>vitrages intérieurs, encadrements, rebords et miroirs traités à la raclette professionnelle.<br>Vous retrouvez la lumière, sans reflet ni traînée.</p>
-      <div class="kc-hero-ctas">
-        <a href="/devis/" class="kc-btn kc-btn-primary">Estimer mes vitres<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#tarifs" class="kc-btn kc-btn-secondary">Voir Les Tarifs</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 2 · RÉASSURANCE -->
-<div class="kc-trust">
-  <div class="kc-trust-wrap">
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro AXA · 5M€</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 2 2 7v6c0 5 4 8 10 9 6-1 10-4 10-9V7z"/><path d="m9 12 2 2 4-4"/></svg><span>Finition sans traces garantie</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg><span>Vitres, encadrements & rebords</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Forfaits fixes dès 70 € TTC</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Réservation en ligne en 2 min</span></div>
-  </div>
-</div>
-
-<!-- 3 · POUR QUI -->
-<section class="kc-target">
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Pour qui</span>
-      <h2 class="section-title">Pour celles et ceux qui veulent <em>retrouver la lumière</em></h2>
-      <p class="section-desc">Une prestation simple et au prix ferme, pensée pour les vitres accessibles de plain-pied — appartements, maisons et locations en Île&#8209;de&#8209;France.</p>
-    </div>
-    <div class="kc-target-grid">
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
-        <h3>Particuliers & familles</h3>
-        <p>Appartement ou maison de plain-pied. Des vitres nettes pour faire entrer la lumière, sans y passer votre week-end.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3>Avant une vente ou visite</h3>
-        <p>Des vitrages éclatants valorisent un bien et soignent la première impression lors des visites et des photos d'annonce.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
-        <h3>Locations & propriétaires</h3>
-        <p>Remise en état d'un logement entre deux occupants&nbsp;: vitres, miroirs et encadrements remis à neuf, sans organisation lourde.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 2v6M5 8l2 2M19 8l-2 2M3 14h18M5 14l1 7h12l1-7"/></svg></div>
-        <h3>En complément d'un nettoyage complet</h3>
-        <p>À combiner avec un nettoyage approfondi pour un logement vraiment impeccable, du sol jusqu'aux fenêtres.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4 · PROMESSE -->
-<section>
-  <div class="kc-page-wrap kc-fade">
-    <div class="kc-promise-block kc-promise">
-      <div class="kc-promise-grid">
-        <div>
-          <span class="eyebrow">Notre promesse</span>
-          <h2>Le « <em>sans trace</em> » n'est pas un détail</h2>
-          <p class="kc-promise-text">Une vitre mal nettoyée se voit au premier rayon de soleil&nbsp;:<br>auréoles, traînées, peluches dans les angles.<br>Nous travaillons à la <strong>raclette professionnelle</strong>, avec une finition à la microfibre et un produit adapté, pour un vitrage <strong>net sur toute la surface</strong>, jusqu'aux bords.</p>
-          <p class="kc-promise-text">Nos forfaits couvrent les <strong>vitres accessibles de plain-pied</strong> (côté intérieur), encadrements et rebords compris.<br>Pour un logement complet, pensez à notre <a href="/nettoyage-apres-demenagement-etat-des-lieux/" class="kc-link">nettoyage de fin de bail</a> ou à un entretien régulier de vos surfaces vitrées.</p>
+  <!-- ─────────── 2. HERO ─────────── -->
+  <!-- IMAGE : baie vitrée d'appartement nettoyée par Kayli Clinn (photo déjà dans la médiathèque, à remplacer par un cliché réel) -->
+  <header class="kcl-hero" style="--hero:url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-vitres-hero.png')">
+    <div class="kcl-wrap kcl-hero-inner">
+      <div class="kcl-hero-text">
+        <p class="kcl-eyebrow">Vitres classiques · Vitrerie résidentielle · Île-de-France</p>
+        <h1>Des vitres sans trace, de plain-pied, au prix de la grille.</h1>
+        <p class="kcl-lead">Fenêtres, baies vitrées, portes-fenêtres et miroirs accessibles de plain-pied, côté intérieur, nettoyés à la raclette professionnelle, encadrements et rebords compris. Le prix est celui de la grille pour la typologie de votre logement, affiché TTC et réservable en ligne.</p>
+        <div class="kcl-btns">
+          <a class="kcl-btn" href="/devis/" data-track="estimation_click">Estimer et réserver en ligne <span class="kcl-arrow">→</span></a>
         </div>
-        <div class="kc-promise-points">
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Finition sans traces</strong><span>Raclette pro + microfibre&nbsp;: vitres nettes jusque dans les angles, même à contre-jour</span></div>
-          </div>
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Encadrements & rebords inclus</strong><span>Montants, traverses et appuis de fenêtre nettoyés, pas seulement le verre</span></div>
-          </div>
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Prix ferme, annoncé d'avance</strong><span>Un forfait fixe selon la taille du logement — pas de surprise à la fin</span></div>
-          </div>
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Sécurité & assurance</strong><span>Intervention de plain-pied, RC Pro, matériel adapté — la hauteur passe par un devis dédié</span></div>
-          </div>
+        <p class="kcl-reassure"><b>Forfait à partir de 70 € TTC</b> • <b>Encadrements et rebords compris</b> • <b>Contrôle à contre-jour avant de partir</b></p>
+      </div>
+      <p class="kcl-hero-tag">Une vitre est vraiment propre quand on ne la voit plus.</p>
+    </div>
+  </header>
+
+  <!-- ─────────── 3. LA PRESTATION ─────────── -->
+  <section class="kcl-sec kcl-sec--paper">
+    <div class="kcl-wrap kcl-split kcl-rv">
+      <div>
+        <p class="kcl-eyebrow">La prestation</p>
+        <h2>Une vitre mal nettoyée se voit au premier rayon de soleil.</h2>
+        <hr class="kcl-rule">
+        <p>Le nettoyage de vitres résidentiel couvre toutes les surfaces vitrées que l’on atteint sans équipement de hauteur, depuis l’intérieur du logement : fenêtres, baies vitrées, portes-fenêtres, portes vitrées intérieures et miroirs, avec leurs encadrements, montants et rebords. Nous apportons la raclette, les microfibres et le produit adapté au verre.</p>
+        <p>Un coup d’éponge laisse presque toujours un voile, des auréoles et des peluches dans les angles, invisibles jusqu’à ce que le soleil donne. <strong>Une vitre n’est terminée que lorsqu’elle a été contrôlée face à la lumière, jusque dans les angles.</strong></p>
+        <div class="kcl-meta"><span>Particuliers et familles</span><span>Avant une vente ou des visites</span><span>Propriétaires entre deux occupants</span><span>En complément d’un ménage complet</span></div>
+      </div>
+      <aside class="kcl-panel"><svg class="kcl-illus" viewBox="0 0 400 180" role="img" aria-label="Fenêtre à quatre carreaux nettoyée à la raclette, rebord et lumière entrante">
+  <path class="d" d="M18 152h364"/>
+  <path class="t" d="M60 30h200v112H60z"/>
+  <path class="d" d="M160 30v112M60 86h200"/>
+  <path class="f" d="M68 38h84v40H68z"/>
+  <path class="t" d="M50 142h220v10H50z"/>
+  <path class="d" d="M78 50l22-8M78 62l34-12"/>
+  <path class="t" d="M300 60h48v10h-48zM324 70v72"/>
+  <path class="s" d="M300 60h48v4h-48z"/>
+  <path class="d" d="M290 100h68"/>
+  <path class="d" d="M46 166h308M46 162v8M354 162v8"/>
+</svg>
+        <h3>Votre situation ressemble à…</h3>
+        <div class="kcl-picks" data-picks role="group"><button class="kcl-pick" type="button" data-val="Studio ou T1" aria-pressed="false">Studio ou T1</button><button class="kcl-pick" type="button" data-val="T2 ou T3" aria-pressed="false">T2 ou T3</button><button class="kcl-pick" type="button" data-val="T4 ou T5" aria-pressed="false">T4 ou T5</button><button class="kcl-pick" type="button" data-val="Maison de plain-pied" aria-pressed="false">Maison de plain-pied</button><button class="kcl-pick" type="button" data-val="Vitres en hauteur, véranda ou verrière (visite gratuite)" aria-pressed="false">Hauteur ou verrière</button><button class="kcl-pick" type="button" data-val="Vitrine de commerce (visite gratuite)" aria-pressed="false">Vitrine</button></div>
+        <a class="kcl-btn kcl-pick-cta" data-track="estimation_click" data-verbe="Estimer" href="/devis/?presta=vitres-classiques"><span data-cta-txt>Estimer et réserver en ligne</span> <span class="kcl-arrow">→</span></a></aside>
+    </div>
+  </section>
+
+  <!-- ─────────── 4. LES PRESTATIONS ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Ce que couvre le forfait</p>
+        <h2>Le verre, mais aussi tout ce qui l’entoure.</h2>
+      </div>
+      <div class="kcl-filtre kcl-rv" data-filtre><button class="kcl-f is-on" type="button" data-f="*">Tout voir</button><button class="kcl-f" type="button" data-f="0">Surfaces vitrées</button><button class="kcl-f" type="button" data-f="1">Finitions et contrôle</button><button class="kcl-f" type="button" data-f="2">Hors forfait : après visite</button><span class="kcl-compte">9 prestations</span></div>
+      <div class="kcl-grid kcl-g3">
+        <p class="kcl-famtitre" data-fam="0">Surfaces vitrées</p>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Fenêtre et baie vitrée nettoyées côté intérieur, sans trace">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 30h120v110H40z"/>
+<path class="d" d="M100 30v110M40 85h120"/>
+<path class="f" d="M48 38h44v40H48z"/>
+<path class="t" d="M30 140h140v8H30z"/>
+<path class="t" d="M190 30h70v128h-70z"/>
+<path class="d" d="M190 94h70"/>
+<path class="d" d="M56 52l18-6M56 62l26-8"/></svg></figure><div class="kcl-presta-body"><h3>Fenêtres et baies vitrées</h3><p>Toutes les fenêtres et baies vitrées accessibles de plain-pied, nettoyées côté intérieur à la raclette, lame essuyée à chaque passage.</p><p class="kcl-presta-tags">Côté intérieur · Raclette · Sans trace</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Porte-fenêtre et porte vitrée intérieure nettoyées des deux côtés">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M60 30h80v128H60z"/>
+<path class="d" d="M60 94h80"/>
+<path class="f" d="M68 38h64v48H68z"/>
+<path class="s" d="M124 96h8v6h-8z"/>
+<path class="t" d="M170 40h70v118h-70z"/>
+<path class="d" d="M170 100h70M205 40v60"/>
+<path class="d" d="M76 50l20-6"/></svg></figure><div class="kcl-presta-body"><h3>Portes-fenêtres et portes vitrées</h3><p>Portes-fenêtres et séparations vitrées intérieures accessibles, traitées des deux côtés lorsque c’est possible de plain-pied.</p><p class="kcl-presta-tags">Portes-fenêtres · Séparations · Deux faces</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Miroir mural de salle de bain nettoyé et lustré, sans halo">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M70 30h100v90H70z"/>
+<path class="f" d="M78 38h84v74H78z"/>
+<path class="d" d="M90 50l30-10M90 64l40-14"/>
+<path class="t" d="M60 130h120v8H60z"/>
+<path class="t" d="M200 100h60v20h-60z"/>
+<path class="t" d="M210 120v38M250 120v38"/>
+<path class="t" d="M230 100V84"/></svg></figure><div class="kcl-presta-body"><h3>Miroirs</h3><p>Miroirs muraux des pièces de vie et de la salle de bain nettoyés et lustrés, sans halo ni projection.</p><p class="kcl-presta-tags">Salle de bain · Pièces de vie · Lustrage</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <p class="kcl-famtitre" data-fam="1">Finitions et contrôle</p>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Encadrement et montants de fenêtre dépoussiérés et nettoyés">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M60 30h180v110H60z"/>
+<path class="t" d="M72 42h156v86H72z"/>
+<path class="d" d="M150 42v86M72 85h156"/>
+<path class="s" d="M60 30h180v6H60zM60 30h6v110h-6zM234 30h6v110h-6z"/>
+<path class="f" d="M80 50h60v30H80z"/></svg></figure><div class="kcl-presta-body"><h3>Encadrements et montants</h3><p>Cadres, montants et traverses dépoussiérés et nettoyés, pour une finition propre tout autour du verre, pas seulement sur le verre.</p><p class="kcl-presta-tags">Cadres · Montants · Traverses</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Rebord et appui de fenêtre essuyés, poussière et dépôts retirés">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M70 30h160v90H70z"/>
+<path class="d" d="M150 30v90"/>
+<path class="f" d="M50 120h200v14H50z"/>
+<path class="t" d="M50 120h200v14H50z"/>
+<path class="t" d="M60 134v24M240 134v24"/>
+<path class="d" d="M100 146h100"/>
+<path class="s" d="M180 108h30v8h-30z"/></svg></figure><div class="kcl-presta-body"><h3>Rebords et appuis</h3><p>Appuis de fenêtre et rebords intérieurs essuyés : poussière, dépôts et traces du quotidien retirés en même temps que le verre.</p><p class="kcl-presta-tags">Appuis · Rebords · Dépôts</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Traces de doigts et de pluie séchée reprises à la microfibre">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M50 30h200v110H50z"/>
+<path class="d" d="M150 30v110M50 85h200"/>
+<path class="d" d="M70 50a6 6 0 1 0 0.1 0M100 66a4 4 0 1 0 0.1 0M180 54a5 5 0 1 0 0.1 0"/>
+<path class="f" d="M160 96h80v36h-80z"/>
+<path class="t" d="M160 96h80v36h-80z"/>
+<path class="t" d="M40 140h220v8H40z"/></svg></figure><div class="kcl-presta-body"><h3>Traces tenaces</h3><p>Doigts, projections, gouttes de pluie séchées : les marques tenaces sont reprises à la microfibre pour un verre vraiment net.</p><p class="kcl-presta-tags">Doigts · Projections · Microfibre</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Contrôle de chaque vitre à contre-jour avant le départ">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M80 30h140v110H80z"/>
+<path class="d" d="M150 30v110M80 85h140"/>
+<path class="d" d="M150 10v14M150 146v12M40 85h34M226 85h34M60 40l20 14M240 40l-20 14M60 130l20-14M240 130l-20-14"/>
+<path class="f" d="M88 38h54v40H88z"/>
+<path class="s" d="M196 120h16v10h-16z"/></svg></figure><div class="kcl-presta-body"><h3>Contrôle à contre-jour</h3><p>Chaque vitre est vérifiée face à la lumière avant de partir : c’est le test le plus exigeant pour repérer la moindre trace.</p><p class="kcl-presta-tags">Contre-jour · Vitre par vitre · Avant de partir</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <p class="kcl-famtitre" data-fam="2">Hors forfait : après visite</p>
+
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Vitres en hauteur nécessitant perche ou nacelle, chiffrées après visite">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 24h100v134H40z"/>
+<path class="d" d="M40 68h100M40 112h100M90 24v134"/>
+<path class="t" d="M180 158V70l30-20M210 50h20"/>
+<path class="t" d="M180 158h40"/>
+<path class="f" d="M48 32h34v28H48z"/>
+<path class="d" d="M236 100h34v58h-34z"/></svg></figure><div class="kcl-presta-body"><h3>Vitres en hauteur</h3><p>Étages, façades et vitrages inaccessibles de plain-pied : perche, échafaudage ou nacelle selon les accès. Aucun prix ferme en ligne, visite gratuite d’abord.</p><p class="kcl-presta-tags">Étages · Façades · Visite gratuite</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Vitrine de commerce et verrière, chiffrées après visite">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 60h120v98H40z"/>
+<path class="d" d="M100 60v98"/>
+<path class="s" d="M34 50h132v10H34z"/>
+<path class="f" d="M48 70h44v40H48z"/>
+<path class="t" d="M190 100l40-50 40 50z"/>
+<path class="d" d="M210 100l20-25 20 25M230 50v50"/>
+<path class="t" d="M190 100h80v58h-80z"/></svg></figure><div class="kcl-presta-body"><h3>Vitrines, vérandas et verrières</h3><p>Devantures de commerce, toitures vitrées et vérandas : surfaces, accès et sécurité spécifiques, comme les besoins professionnels ou récurrents. Devis après visite.</p><p class="kcl-presta-tags">Vitrines · Verrières · Professionnels</p><a class="kcl-link" href="/devis/" data-track="estimation_click">Estimer cette prestation <span class="kcl-arrow">→</span></a></div></article>
+      </div>
+      <div class="kcl-panel kcl-panel--accent kcl-rv" style="margin-top:30px">
+        <h3>Une règle que nous ne contournons pas</h3>
+        <p style="margin:0">Aucun prix ferme n’est annoncé en ligne pour des vitres en hauteur, une vitrine, une véranda ou une verrière. Ces surfaces demandent d’évaluer les accès et parfois un équipement spécifique ; les chiffrer à l’aveugle, c’est prendre un risque sur la sécurité de l’intervenant et sur le résultat. L’estimation en ligne détecte ces cas et vous oriente vers une visite gratuite.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 5. INQUIÉTUDES → RÉPONSES ─────────── -->
+  <section class="kcl-sec kcl-sec--inq">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Ce qui vous inquiète, et ce que nous en faisons</p>
+        <h2>Sur des vitres, le résultat se juge en plein soleil.</h2>
+        <p class="kcl-lead">Trois situations que nos clients nous citent le plus souvent, et la manière dont nous les traitons.</p>
+      </div>
+      <div class="kcl-inq kcl-rv">
+        <article>
+          <h3>Des traces qui réapparaissent au premier rayon</h3>
+          <p>Le verre semblait propre au moment du départ, puis le soleil révèle auréoles et traînées.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Raclette professionnelle, lame essuyée à chaque passage, reprise des angles à la microfibre, puis contrôle de chaque vitre à contre-jour avant de partir.</p>
+        </article>
+        <article>
+          <h3>Un prix qui gonfle une fois sur place</h3>
+          <p>Un tarif annoncé au téléphone, puis un supplément par fenêtre ou par pièce découvert à la fin.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Le forfait dépend de la typologie du logement, pas du nombre de vitres. Il s’affiche TTC dans l’estimation, avec les options éventuelles, avant que vous ne réserviez.</p>
+        </article>
+        <article>
+          <h3>Un intervenant en équilibre sur un rebord</h3>
+          <p>Une vitre d’étage ou une verrière nettoyée sans équipement, au risque d’une chute ou d’une casse.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Le forfait en ligne s’arrête aux vitres accessibles de plain-pied. La hauteur passe toujours par une visite, avec le matériel et les précautions qui s’imposent.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 6. LA MÉTHODE ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">La méthode Kayli Clinn</p>
+        <h2>De l’estimation au contre-jour, une méthode claire à chaque étape</h2>
+      </div>
+      <div class="kcl-etapes-s kcl-rv">
+        <div class="kcl-etape-s"><b>01 · Échange</b><h3>Estimation en ligne</h3><p>Typologie du logement, options éventuelles et date : le prix de la grille s’affiche avant de valider.</p></div>
+        <div class="kcl-etape-s"><b>02 · Réservation</b><h3>Créneau et acompte</h3><p>Vous réservez votre créneau en ligne avec un acompte de 30 %. Le devis récapitulatif vous est envoyé par e-mail.</p></div>
+        <div class="kcl-etape-s"><b>03 · Préparation</b><h3>Accès aux fenêtres</h3><p>Les abords des fenêtres sont dégagés et le sol protégé si besoin avant de commencer.</p></div>
+        <div class="kcl-etape-s"><b>04 · Nettoyage</b><h3>Raclette, pièce après pièce</h3><p>Vitrages, encadrements et rebords traités à la raclette professionnelle, avec un produit adapté au verre.</p></div>
+        <div class="kcl-etape-s"><b>05 · Finitions</b><h3>Reprise des détails</h3><p>Angles, bords, miroirs et traces tenaces repris à la microfibre pour une finition homogène.</p></div>
+        <div class="kcl-etape-s"><b>06 · Contrôle</b><h3>Contre-jour avant de partir</h3><p>Chaque vitre est vérifiée face à la lumière. Une trace subsiste : elle est reprise avant le départ.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 7. LE SUIVI ─────────── -->
+  <section class="kcl-sec kcl-sec--dark">
+    <div class="kcl-wrap">
+      <div class="kcl-split kcl-rv">
+      <div>
+        <p class="kcl-eyebrow">Le suivi Kayli Clinn</p>
+        <h2>Le même geste sur chaque fenêtre, du salon à la salle de bain.</h2>
+        <p class="kcl-quote kcl-quote--wide">Une pièce avec des vitres propres n’est plus la même pièce : la lumière revient, l’espace paraît plus grand.</p>
+        <p class="kcl-lead">Le nettoyage de vitres est une prestation courte, et c’est justement là que la rigueur se voit. Chaque fenêtre reçoit le même traitement, encadrements et rebords compris, et chacune est contrôlée à contre-jour avant que nous ne quittions le logement.</p>
+        <div class="kcl-btns">
+          <a class="kcl-btn" href="/realisations/">Voir nos réalisations <span class="kcl-arrow">→</span></a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- BANDEAU -->
-<section class="kc-banner">
-  <div class="kc-banner-content kc-fade">
-    <span class="eyebrow">La lumière change tout</span>
-    <h2>Une pièce avec des vitres propres<br>n'est plus <em>la même pièce</em></h2>
-    <p>On finit par ne plus voir le voile qui s'installe sur les vitres.<br>Puis vient le nettoyage&nbsp;:<br>la lumière revient, les couleurs ressortent, l'espace paraît plus grand.<br>C'est ce qu'un vitrage parfaitement transparent apporte à votre intérieur.</p>
-    <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:28px">Réserver mes vitres<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-  </div>
-</section>
-
-<!-- 5 · INCLUS -->
-<section class="kc-included">
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Prestation de base</span>
-      <h2 class="section-title">Ce que comprend <em>votre forfait vitres</em></h2>
-      <p class="section-desc">Notre forfait couvre l'ensemble des surfaces vitrées accessibles de plain-pied, côté intérieur, pour un rendu net et homogène.</p>
-    </div>
-    <div class="kc-included-grid">
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg></div><h4>Vitres intérieures</h4><p>Toutes les fenêtres et baies vitrées accessibles, nettoyées côté intérieur à la raclette, sans trace ni traînée.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="1"/><rect x="8" y="8" width="8" height="8"/></svg></div><h4>Encadrements & montants</h4><p>Cadres, montants et traverses des fenêtres dépoussiérés et nettoyés, pour une finition propre tout autour du verre.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 17h18M5 17V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v10"/><line x1="3" y1="21" x2="21" y2="21"/></svg></div><h4>Rebords & appuis</h4><p>Appuis de fenêtre et rebords intérieurs essuyés&nbsp;: poussière, dépôts et traces du quotidien éliminés.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"/><path d="M9 6h6"/></svg></div><h4>Miroirs</h4><p>Miroirs muraux des pièces de vie et de la salle de bain nettoyés et lustrés, sans halo ni projection.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M21 4H3v16h18zM3 9h18M8 4v5"/></svg></div><h4>Portes vitrées intérieures</h4><p>Portes-fenêtres et séparations vitrées accessibles, traitées des deux côtés lorsque c'est possible de plain-pied.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6c0 4 6 12 6 12s6-8 6-12a6 6 0 0 0-6-6z"/><circle cx="12" cy="9" r="2"/></svg></div><h4>Traitement des traces</h4><p>Doigts, projections, gouttes de pluie séchées&nbsp;: les marques tenaces sont reprises pour un verre vraiment net.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div><h4>Produits & matériel fournis</h4><p>Raclette professionnelle, microfibres et produit adapté au verre&nbsp;: vous n'avez rien à préparer.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Contrôle final à contre-jour</h4><p>Vérification de chaque vitre face à la lumière avant de partir, pour s'assurer qu'aucune trace ne subsiste.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SPLIT 1 -->
-<section class="kc-split">
-  <div class="kc-page-wrap">
-    <div class="kc-split-grid">
-      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Finition sans traces</span></div>
-      <div class="kc-split-text kc-fade">
-        <span class="eyebrow">Le geste qui fait la différence</span>
-        <h2>La transparence, <em>jusque dans les angles</em></h2>
-        <p>Un coup d'éponge laisse presque toujours un voile, surtout visible quand le soleil donne. Nous travaillons à la <strong>raclette professionnelle</strong>, lame essuyée à chaque passage, puis reprise des bords et des angles à la microfibre.</p>
-        <p>Résultat&nbsp;: un verre <strong>net sur toute sa surface</strong>, sans auréole ni peluche, encadrements et rebords compris. La même rigueur sur chaque fenêtre, du salon à la salle de bain.</p>
-        <div class="kc-split-quote">Une vitre n'est vraiment propre que lorsqu'on ne la voit plus. C'est exactement l'effet que nous recherchons à chaque passage.</div>
-        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:26px">Estimer mes vitres<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6 · POUR ALLER PLUS LOIN — bascules devis + options -->
-<section>
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Pour aller plus loin</span>
-      <h2 class="section-title">Quand on passe <em>sur devis</em>, et ce que l'on peut ajouter</h2>
-      <p class="section-desc">Le forfait en ligne couvre les vitres simples de plain-pied.<br>Certains besoins demandent une visite, et quelques prestations viennent compléter votre intervention.</p>
-    </div>
-    <div class="kc-further-grid">
-      <div class="kc-further-panel kc-fade">
-        <span class="eyebrow">Visite & devis sur mesure</span>
-        <h3>Ces situations passent <em>par un devis</em></h3>
-        <p>Par souci de sécurité et de qualité, nous ne fixons jamais de prix ferme en ligne pour ces cas — ils nécessitent une évaluation, parfois du matériel spécifique&nbsp;:</p>
-        <ul class="kc-further-list">
-          <li><svg viewBox="0 0 24 24"><path d="M12 2v20M5 9l7-7 7 7"/></svg><span><strong>Vitres en hauteur</strong>Étages, vitrages inaccessibles de plain-pied, nécessitant perche, échafaudage ou nacelle</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M3 21V7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14M3 21h18M7 21v-6h4v6M14 9h3v3h-3z"/></svg><span><strong>Vitrines</strong>Devantures de commerce, grandes surfaces vitrées exposées sur rue</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M3 21 12 4l9 17M3 21h18M7 21l1.5-5h7L17 21M12 8v8"/></svg><span><strong>Véranda & verrière</strong>Toitures vitrées, verrières et vérandas — surfaces, accès et sécurité spécifiques</span></li>
-          <li><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 21v-4h4v4"/></svg><span><strong>Besoin professionnel ou récurrent</strong>Bureaux, locaux, copropriétés ou passages réguliers programmés</span></li>
+      <div class="kcl-card">
+        <h3 style="margin-bottom:18px">Ce que vous obtenez</h3>
+        <ul class="kcl-check">
+          <li>Un prix <strong style="color:#fff">fixé par la typologie</strong>, pas par le nombre de vitres</li>
+          <li>Encadrements, montants, rebords et miroirs compris dans le forfait</li>
+          <li>Produits et matériel fournis : vous n’avez rien à préparer</li>
+          <li>Chaque vitre contrôlée à contre-jour avant le départ</li>
         </ul>
-        <div class="kc-further-note">Dans tous ces cas, nous organisons une <strong>visite ou un échange</strong> pour établir un devis précis. <a href="/devis/" class="kc-link" style="color:#fff;border-color:rgba(255,255,255,0.45)">Demandez votre devis en ligne</a> ou appelez-nous.</div>
-      </div>
-      <div class="kc-further-opts">
-        <div class="kc-further-opts-head kc-fade">
-          <span class="eyebrow">Options compatibles</span>
-          <h3>Profitez du déplacement pour <em>en faire plus</em></h3>
-          <p>Au moment de réserver vos vitres, vous pouvez ajouter le nettoyage en profondeur de vos textiles. Tarifs TTC, ajoutés en un clic dans le devis.</p>
         </div>
-        <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 11V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v3M2 11h20v6a1 1 0 0 1-1 1h-1v2M4 18v2M4 18h16M4 14h16"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Nettoyage de canapé</div><div class="kc-option-desc">Injection-extraction en profondeur · 2, 3 ou 4 places</div></div><div class="kc-option-price">80 / 100 / 110 €</div></div>
-        <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M6 12V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4M4 12h16v5h-1v3M5 17v3M5 17h14"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Nettoyage de fauteuil</div><div class="kc-option-desc">Shampouinage en profondeur des tissus</div></div><div class="kc-option-price">50 €</div></div>
-        <div class="kc-option-row kc-fade"><div class="kc-option-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 18v-6a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v6M3 14h18M5 18v2M19 18v2"/></svg></div><div class="kc-option-info"><div class="kc-option-name">Nettoyage de matelas</div><div class="kc-option-desc">Désincrustation et assainissement en profondeur</div></div><div class="kc-option-price">75 €</div></div>
-        <!-- 👉 Ces 3 options (canapé / fauteuil / matelas) sont celles déclarées compatibles avec la vitrerie dans la grille v2. Ajouter d'autres options ici uniquement si la propriétaire les valide. -->
       </div>
+      <p class="kcl-note" style="margin:26px 0 0">Nos prestations sont réalisées par nos propres équipes, formées et assurées. <a href="/a-propos/">Qui nous sommes</a>.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 7 · PROCESS -->
-<section class="kc-process">
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Notre méthode</span>
-      <h2 class="section-title">Cinq étapes, <em>de la réservation au contre-jour</em></h2>
-      <p class="section-desc">Un déroulé simple et cadré, du devis en ligne jusqu'au contrôle final de chaque vitre face à la lumière.</p>
-    </div>
-    <div class="kc-process-grid">
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Réservation en ligne</h4><p>Vous choisissez la taille de votre logement et votre créneau, le prix ferme s'affiche immédiatement.</p><span class="kc-process-step-duration">En 2 min</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Préparation des accès</h4><p>On dégage les abords des fenêtres et on protège le sol si besoin avant d'intervenir.</p><span class="kc-process-step-duration">Sur place</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Nettoyage des vitres</h4><p>Vitrages, encadrements et rebords traités à la raclette pro, pièce après pièce.</p><span class="kc-process-step-duration">Le jour J</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">04</div><h4>Reprise des détails</h4><p>Angles, miroirs et traces tenaces repris à la microfibre pour une finition homogène.</p><span class="kc-process-step-duration">Systématique</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">05</div><h4>Contrôle à contre-jour</h4><p>Chaque vitre vérifiée face à la lumière avant le départ&nbsp;: aucune trace ne doit subsister.</p><span class="kc-process-step-duration">Avant de partir</span></div>
-    </div>
-  </div>
-</section>
+  <!-- ─────────── 8. LES TROIS FAÇONS D'OBTENIR UN PRIX ─────────── -->
+  <section class="kcl-sec kcl-sec--paper" id="prix">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Obtenir un prix</p>
+        <h2>Trois façons d’obtenir un prix. Un seul niveau d’exigence.</h2>
+        <p class="kcl-lead">La raclette professionnelle, l’équipe formée et le contrôle à contre-jour sont identiques quelle que soit la porte d’entrée. Ce qui change, c’est la manière dont le prix est établi : prix ferme de la grille, options et majorations ajoutées ligne par ligne, ou visite gratuite quand les vitres sortent de la grille.</p>
+      </div>
+      <div class="kcl-packs kcl-rv">
 
-<!-- 8 · PRICING -->
-<section class="kc-pricing" id="tarifs">
-  <div class="kc-page-wrap">
-    <div class="kc-pricing-grid">
-      <div class="kc-pricing-left kc-fade">
-        <span class="eyebrow">Tarification claire</span>
-        <h3>Un forfait fixe, <em>selon la taille du logement</em></h3>
-        <p>Le prix dépend de la <strong>typologie de votre logement</strong> (du studio au T5) et couvre les <strong>vitres accessibles de plain-pied</strong>, côté intérieur, encadrements et rebords compris. Aucun chiffrage au nombre de vitres.</p>
-        <p>Les <strong>vitres en hauteur, vitrines, vérandas et verrières</strong>, ainsi que tout besoin professionnel ou récurrent, passent par une <strong>visite et un devis</strong> — jamais de prix ferme en ligne.</p>
-        <a href="/devis/" class="kc-btn kc-btn-primary" style="margin-top:18px">Réserver mes vitres<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="kc-pricing-table kc-fade">
-        <div class="kc-pricing-table-title">Forfaits officiels · vitrerie résidentielle</div>
-        <div class="kc-price-row"><div class="kc-price-label">Studio / T1<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>70 €</em> TTC</div></div>
-        <div class="kc-price-row"><div class="kc-price-label">T2<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>70 €</em> TTC</div></div>
-        <div class="kc-price-row"><div class="kc-price-label">T3<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>95 €</em> TTC</div></div>
-        <div class="kc-price-row"><div class="kc-price-label">T4<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>95 €</em> TTC</div></div>
-        <div class="kc-price-row"><div class="kc-price-label">T5<small>Vitres intérieures de plain-pied</small></div><div class="kc-price-value"><em>130 €</em> TTC</div></div>
-        <div class="kc-price-row"><div class="kc-price-label">Hauteur, vitrine, véranda / verrière<small>Étages, devantures, toitures vitrées, besoin pro ou récurrent</small></div><div class="kc-price-value">Sur devis</div></div>
-        <div class="kc-price-disclaimer">Tarifs officiels TTC pour les particuliers, vitres accessibles de plain-pied (côté intérieur) en état d'usage normal — réservables en ligne avec un acompte de 30 %. Options textiles compatibles&nbsp;: canapé 80/100/110 €, fauteuil 50 €, matelas 75 € (TTC). Vitres en hauteur, vitrines, vérandas/verrières et besoins professionnels ou récurrents&nbsp;: sur devis uniquement.</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Forfait en ligne -->
+        <article class="kcl-pack kcl-pack--reco">
+          <p class="kcl-pack-mention"><span class="kcl-pack-badge">Recommandé pour les vitres de plain-pied</span></p>
+          <h3>Forfait — Prix de la grille</h3>
+          <p class="kcl-pack-profil">Pour un appartement du studio au T5 ou une maison de plain-pied, vitres accessibles côté intérieur, en état d’usage normal.</p>
+          <p class="kcl-pack-plus">Ce que comprend le forfait :</p>
+          <ul>
+            <li>Studio ou T1 : à partir de 70 € TTC</li>
+            <li>T2 : à partir de 70 € TTC</li>
+            <li>T3 : à partir de 95 € TTC</li>
+            <li>T4 : à partir de 95 € TTC</li>
+            <li>T5 : à partir de 130 € TTC</li>
+            <li>Encadrements, rebords et miroirs compris, aucun chiffrage au nombre de vitres</li>
+            <li>Réservation du créneau en ligne, acompte de 30 %, paiement sécurisé</li>
+          </ul>
+          <p class="kcl-pack-benef">Vous connaissez le montant avant de réserver, sans appel ni visite.</p>
+          <a class="kcl-btn" href="/devis/" data-track="estimation_click" data-pack="forfait">Estimer et réserver en ligne <span class="kcl-arrow">→</span></a>
+        </article>
 
-<!-- 9 · TÉMOIGNAGES -->
-<section>
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Ils nous font confiance</span>
-      <h2 class="section-title">Ce qu'en disent <em>nos clients</em></h2>
-      <p class="section-desc">Quelques retours de particuliers dont nous avons redonné de l'éclat aux fenêtres, partout en Île&#8209;de&#8209;France.</p>
-    </div>
-    <div class="kc-testi-grid">
-      <div class="kc-testi kc-fade">
-        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
-        <p class="kc-testi-text">Je n'avais jamais réussi à enlever les traces sur ma baie vitrée. Là, c'est transparent, même en plein soleil. Le salon paraît plus grand et plus lumineux.</p>
-        <div class="kc-testi-author"><div class="kc-testi-avatar">ML</div><div class="kc-testi-info"><strong>Marie L.</strong><span>Appartement T3 · Paris 15e</span></div></div>
-      </div>
-      <div class="kc-testi kc-fade">
-        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
-        <p class="kc-testi-text">Prix annoncé d'avance, réservation en deux minutes, et un résultat impeccable jusque dans les angles. Les rebords aussi étaient nickel. Je referai sans hésiter.</p>
-        <div class="kc-testi-author"><div class="kc-testi-avatar">TD</div><div class="kc-testi-info"><strong>Thomas D.</strong><span>Maison de plain-pied · Essonne</span></div></div>
-      </div>
-      <div class="kc-testi kc-fade">
-        <div class="kc-testi-quote-mark">"</div><span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:8px">Exemple</span><div class="kc-testi-stars">★★★★★</div>
-        <p class="kc-testi-text">J'ai fait nettoyer les vitres avant des visites pour vendre. L'appartement est tout de suite plus lumineux sur les photos. J'ai ajouté le canapé, parfait aussi.</p>
-        <div class="kc-testi-author"><div class="kc-testi-avatar">SB</div><div class="kc-testi-info"><strong>Sophie B.</strong><span>Appartement T2 · Hauts-de-Seine</span></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Options et majorations -->
+        <article class="kcl-pack">
+          <p class="kcl-pack-mention">Ajoutées ligne par ligne, avant de valider</p>
+          <h3>Options et majorations</h3>
+          <p class="kcl-pack-profil">Pour profiter du déplacement ou adapter le forfait à votre calendrier. Chaque ligne s’affiche dans l’estimation avant le paiement.</p>
+          <!-- 👉 Ces 3 options (canapé / fauteuil / matelas) sont celles déclarées compatibles avec la vitrerie dans la grille v2. Ajouter d'autres options ici uniquement si la propriétaire les valide. -->
+          <ul>
+            <li>Canapé 2, 3 ou 4 places : 80 / 100 / 110 €</li>
+            <li>Fauteuil : 50 € · Matelas : 75 €</li>
+            <li>Urgence sous 48 h : +30 % · Dimanche et jour férié : +25 %</li>
+            <li>Frais d’étage sans ascenseur selon la grille en vigueur</li>
+          </ul>
+          <p class="kcl-pack-benef">Total = (forfait + options) × (1 + majorations) + frais fixes. Montants TTC.</p>
+          <a class="kcl-btn kcl-btn--ghost" href="/devis/" data-track="estimation_click" data-pack="options">Estimer avec mes options</a>
+        </article>
 
-<!-- SPLIT 2 -->
-<section class="kc-split alt reverse">
-  <div class="kc-page-wrap">
-    <div class="kc-split-grid">
-      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Sécurité & plain-pied</span></div>
-      <div class="kc-split-text kc-fade">
-        <span class="eyebrow">Une intervention maîtrisée</span>
-        <h2>De plain-pied <em>et en toute sécurité</em></h2>
-        <p>Nos forfaits en ligne concernent les vitres que l'on peut atteindre <strong>sans équipement de hauteur</strong>, depuis l'intérieur. C'est la garantie d'une intervention rapide, propre et sûre.</p>
-        <p>Dès qu'il faut prendre de la hauteur — étage, vitrine, véranda ou verrière — nous passons par une <strong>visite et un devis adaptés</strong>, avec le matériel et les précautions qui s'imposent. <a href="/devis/" class="kc-link">Demandez votre devis en ligne</a> en quelques minutes.</p>
-        <div class="kc-split-quote">Travailler en sécurité, c'est non négociable. C'est pourquoi la hauteur ne se chiffre jamais à l'aveugle, mais toujours après une visite.</div>
+        <!-- Hors grille -->
+        <article class="kcl-pack">
+          <p class="kcl-pack-mention">Quand les vitres sortent de la grille</p>
+          <h3>Hors grille — Visite gratuite</h3>
+          <p class="kcl-pack-profil">Pour des vitres en hauteur, une vitrine, une véranda ou une verrière, et pour tout besoin professionnel ou récurrent.</p>
+          <ul>
+            <li>L’estimation en ligne détecte ces cas et vous oriente vers une visite</li>
+            <li>Relevé sur place des surfaces, des accès et des contraintes de sécurité</li>
+            <li>Devis écrit après la visite, aucun engagement</li>
+            <li>Aucun prix ferme annoncé sans avoir vu les lieux</li>
+          </ul>
+          <p class="kcl-pack-benef">Le prix repose sur ce que nous avons vu, pas sur une moyenne au mètre carré.</p>
+          <a class="kcl-btn kcl-btn--ghost" href="/devis/" data-track="estimation_click" data-pack="visite">Commencer l’estimation</a>
+        </article>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- 11 · POURQUOI NOUS -->
-<section class="kc-why">
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Pourquoi Kayli Clinn</span>
-      <h2 class="section-title">Ce qui nous différencie <em>sur vos vitres</em></h2>
-      <p class="section-desc">Une prestation simple à réserver, un prix clair et une finition exigeante&nbsp;:<br>voilà ce que nous mettons dans chaque nettoyage de vitres.</p>
-    </div>
-    <div class="kc-why-grid">
-      <div class="kc-why-card kc-fade">
-        <span class="kc-why-num">01 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h3>Finition exigeante</h3>
-        <p>Raclette professionnelle, reprise des angles et contrôle à contre-jour. Le « sans trace » est notre standard, pas une option.</p>
-      </div>
-      <div class="kc-why-card kc-fade">
-        <span class="kc-why-num">02 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg></div>
-        <h3>Prix clair, réservation simple</h3>
-        <p>Un forfait fixe selon la taille du logement, affiché avant de réserver. Tout se fait en ligne, en quelques minutes.</p>
-      </div>
-      <div class="kc-why-card kc-fade">
-        <span class="kc-why-num">03 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg></div>
-        <h3>Sécurité & assurance</h3>
-        <p>Intervention de plain-pied, RC Pro, matériel adapté. La hauteur et les surfaces complexes passent toujours par un devis.</p>
-      </div>
-    </div>
-  </div>
-</section>
+      <p class="kcl-tarif" style="text-align:center;margin-top:26px;max-width:92ch;margin-left:auto;margin-right:auto">Vitres classiques, prix TTC de la grille : à partir de 70 € pour un studio, un T1 ou un T2, 95 € pour un T3 ou un T4, 130 € pour un T5, vitres accessibles de plain-pied côté intérieur, encadrements et rebords compris. Vitres en hauteur, vitrines, vérandas et verrières : visite gratuite et devis. Le tarif final dépend de la typologie, des options retenues et des majorations éventuelles (urgence sous 48 h +30 %, dimanche et jour férié +25 %). Acompte de 30 % à la réservation. Montants toutes taxes comprises, pour un logement en état d’usage normal.</p>
 
-<!-- 12 · FAQ -->
-<section>
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Questions fréquentes</span>
-      <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
-      <p class="section-desc">Les questions que se posent nos clients avant de réserver un nettoyage de vitres résidentiel.</p>
-    </div>
-    <div class="kc-faq-list">
-      <div class="kc-faq-item open kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Quelles vitres sont comprises dans le forfait&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Le forfait couvre <strong>toutes les vitres accessibles de plain-pied, côté intérieur</strong>&nbsp;: fenêtres, baies vitrées et portes-fenêtres, avec leurs <strong>encadrements et rebords</strong>, ainsi que les <strong>miroirs</strong> des pièces. Les vitres en hauteur, les vitrines et les vérandas/verrières font l'objet d'un <strong>devis dédié</strong>.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Pourquoi les vitres en hauteur ne sont-elles pas au forfait&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Pour des raisons de <strong>sécurité et de matériel</strong>. Les vitres inaccessibles de plain-pied (étages, façades), les <strong>vitrines</strong> et les <strong>vérandas ou verrières</strong> demandent une évaluation des accès et parfois un équipement spécifique (perche, échafaudage…). Nous établissons donc un <strong>devis précis après visite</strong>, sans jamais annoncer de prix ferme à l'aveugle.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Les prix affichés sont-ils bien tout compris&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Les forfaits (70 €, 95 €, 130 € selon la typologie) sont des <strong>prix fermes TTC pour les particuliers</strong>, pour un logement en état d'usage normal. La réservation se fait en ligne avec un <strong>acompte de 30 %</strong>. Seules les options choisies (canapé, fauteuil, matelas) s'ajoutent au tarif, en toute transparence.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Comment garantissez-vous l'absence de traces&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous travaillons à la <strong>raclette professionnelle</strong>, lame essuyée à chaque passage, avec un produit adapté au verre, puis nous reprenons <strong>angles et bords à la microfibre</strong>. Avant de partir, chaque vitre est <strong>contrôlée à contre-jour</strong>&nbsp;: c'est le test le plus exigeant pour repérer la moindre trace.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Puis-je ajouter d'autres prestations à mon rendez-vous&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Au moment de réserver, vous pouvez ajouter le nettoyage en profondeur de vos textiles&nbsp;: <strong>canapé (80/100/110 € selon 2, 3 ou 4 places), fauteuil (50 €) et matelas (75 €)</strong>, tous en TTC. Pratique pour profiter du déplacement et faire d'une pierre deux coups.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Intervenez-vous aussi pour les professionnels&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui, mais hors forfait en ligne. Les <strong>besoins professionnels ou récurrents</strong> (bureaux, locaux commerciaux, copropriétés, passages programmés) sont chiffrés sur mesure. Découvrez notre entretien professionnel régulier ou demandez un devis adapté à votre rythme.</div></div>
+      <div class="kcl-conseil">
+        <div>
+          <h3>Quel parcours choisir ?</h3>
+          <p>Pour des vitres de plain-pied dans un appartement ou une maison, l’estimation en ligne est le point de départ : le prix de la grille s’affiche selon votre typologie, vous ajoutez éventuellement un canapé, un fauteuil ou un matelas, puis vous réservez le créneau. Si vos vitres sont en hauteur, s’il s’agit d’une vitrine ou d’une verrière, ou d’un besoin professionnel, la même estimation vous oriente vers une visite gratuite. Dans tous les cas, vous commencez au même endroit.</p>
+        </div>
+        <a class="kcl-btn" href="/devis/" data-track="estimation_click">Estimer et réserver en ligne <span class="kcl-arrow">→</span></a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 13 · ZONES -->
-<section class="kc-zones">
-  <div class="kc-page-wrap">
-    <div class="kc-page-header kc-fade">
-      <span class="eyebrow">Zones d'intervention</span>
-      <h2 class="section-title">Présents partout en <em>Île&#8209;de&#8209;France</em></h2>
-      <p class="section-desc">Nos équipes redonnent de l'éclat à vos vitres dans les huit départements franciliens.</p>
+  <!-- ─────────── 9. FAQ ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-head--center kcl-rv">
+        <p class="kcl-eyebrow">Questions fréquentes</p>
+        <h2>Vitres classiques : vos questions</h2>
+      </div>
+      <div class="kcl-faq kcl-rv">
+        <details><summary>Quelles vitres sont comprises dans le forfait ?</summary><div class="kcl-faq-a"><p>Le forfait couvre toutes les vitres accessibles de plain-pied, côté intérieur : fenêtres, baies vitrées et portes-fenêtres, avec leurs encadrements et rebords, ainsi que les miroirs des pièces. Les vitres en hauteur, les vitrines et les vérandas ou verrières font l’objet d’un devis après visite.</p></div></details>
+        <details><summary>Pourquoi les vitres en hauteur ne sont-elles pas au forfait ?</summary><div class="kcl-faq-a"><p>Pour des raisons de sécurité et de matériel. Les vitres inaccessibles de plain-pied (étages, façades), les vitrines et les vérandas ou verrières demandent une évaluation des accès et parfois un équipement spécifique (perche, échafaudage). Nous établissons donc un devis après visite, sans jamais annoncer de prix ferme à l’aveugle.</p></div></details>
+        <details><summary>Les prix affichés sont-ils bien tout compris ?</summary><div class="kcl-faq-a"><p>Oui. Les forfaits (à partir de 70 €, 95 € ou 130 € TTC selon la typologie) sont des prix de la grille pour les particuliers, pour un logement en état d’usage normal. La réservation se fait en ligne avec un acompte de 30 %. Seules les options choisies (canapé, fauteuil, matelas) et les majorations éventuelles (urgence sous 48 h, dimanche ou jour férié) s’ajoutent au tarif, ligne par ligne, avant que vous ne validiez.</p></div></details>
+        <details><summary>Comment garantissez-vous l’absence de traces ?</summary><div class="kcl-faq-a"><p>Nous travaillons à la raclette professionnelle, lame essuyée à chaque passage, avec un produit adapté au verre, puis nous reprenons angles et bords à la microfibre. Avant de partir, chaque vitre est contrôlée à contre-jour : c’est le test le plus exigeant pour repérer la moindre trace.</p></div></details>
+        <details><summary>Puis-je ajouter d’autres prestations à ma réservation ?</summary><div class="kcl-faq-a"><p>Oui. Au moment de réserver, vous pouvez ajouter le nettoyage en profondeur de vos textiles : canapé (80, 100 ou 110 € selon 2, 3 ou 4 places), fauteuil (50 €) et matelas (75 €), tous en TTC. Pratique pour profiter du déplacement et faire d’une pierre deux coups.</p></div></details>
+        <details><summary>Intervenez-vous aussi pour les professionnels ?</summary><div class="kcl-faq-a"><p>Oui, mais hors forfait en ligne. Les besoins professionnels ou récurrents (bureaux, locaux commerciaux, copropriétés, passages programmés) sont chiffrés sur devis après visite. Voyez aussi notre entretien de bureaux si vos vitres s’inscrivent dans un contrat régulier.</p></div></details>
+      </div>
     </div>
-    <div class="kc-zones-list">
-      <div class="kc-zone kc-fade">75<span>Paris</span></div>
-      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
-      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
-      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
-      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
-      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
-      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
-      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- 14 · CTA FINAL -->
-<section class="kc-final-cta">
-  <div class="kc-final-cta-wrap kc-fade">
-    <span class="kc-final-cta-tag">Forfait fixe · Réservation en ligne</span>
-    <h2>Prêt à retrouver<br>des vitres <em>impeccables</em>&nbsp;?</h2>
-    <p>Choisissez la taille de votre logement, votre créneau, et réservez en ligne en quelques minutes.<br>Prix ferme TTC, finition sans traces, contrôle à contre-jour avant chaque départ.</p>
-    <div class="kc-final-ctas">
-      <a href="/devis/" class="kc-btn kc-btn-primary">Estimer mes vitres<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+  <!-- ─────────── 10. PRIX FERME ─────────── -->
+  <section class="kcl-sec kcl-sec--tight">
+    <div class="kcl-wrap">
+      <div class="kcl-visite kcl-rv">
+        <div>
+          <p class="kcl-eyebrow">Avant de réserver</p>
+          <h2>Un prix ferme, tout de suite</h2>
+          <p>Typologie du logement, options, date : l’estimation en ligne affiche le prix de la grille, TTC, avant que vous ne réserviez le créneau. Si vos vitres sortent de la grille, elle vous oriente vers une visite gratuite. Sans appel, sans engagement tant que vous n’avez pas validé.</p>
+        </div>
+        <a class="kcl-btn" href="/devis/" data-track="estimation_click">Estimer et réserver en ligne <span class="kcl-arrow">→</span></a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ─────────── 11. LIENS INTERNES ─────────── -->
+  <section class="kcl-sec kcl-sec--tight">
+    <div class="kcl-wrap">
+      <p class="kcl-eyebrow">Pour aller plus loin</p>
+      <div class="kcl-cross">
+        <a href="/nettoyage-apres-demenagement-etat-des-lieux/"><b>Fin de bail et après déménagement</b><span>Logement vide rendu propre pour l’état des lieux, vitres intérieures déjà comprises.</span></a>
+        <a href="/turnover-airbnb/"><b>Turnover Airbnb</b><span>Ménage entre deux voyageurs, lits refaits et consommables réassortis, au forfait par typologie.</span></a>
+        <a href="/entretien-de-bureaux/"><b>Entretien de bureaux</b><span>Vitres intérieures et cloisons vitrées intégrées à un contrat d’entretien régulier.</span></a>
+        <a href="/commerces-retail/"><b>Commerces et retail</b><span>Vitrines et surfaces de vente, avant ou après ouverture, sur devis après visite.</span></a>
+        <a href="/a-propos/"><b>Qui sommes-nous</b><span>Notre méthode, nos réalisations et nos informations légales.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Balisage structuré : fil d’Ariane, service et FAQ.
+       Toute modification de la FAQ visible doit être répercutée ici. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kayliclinn.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://kayliclinn.fr/prestations/"},
+        {"@type": "ListItem", "position": 3, "name": "Vitres classiques", "item": "https://kayliclinn.fr/vitres-classiques/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Vitres classiques",
+      "serviceType": "Nettoyage de vitres résidentiel de plain-pied",
+      "url": "https://kayliclinn.fr/vitres-classiques/",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Kayli Clinn",
+        "email": "contact@kayliclinn.fr",
+        "telephone": "+33670012061",
+        "url": "https://kayliclinn.fr",
+        "address": {"@type": "PostalAddress", "streetAddress": "60 rue François Ier", "addressLocality": "Paris", "postalCode": "75008", "addressCountry": "FR"}
+      },
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Paris"},
+        {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"},
+        {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis"},
+        {"@type": "AdministrativeArea", "name": "Val-de-Marne"},
+        {"@type": "AdministrativeArea", "name": "Seine-et-Marne"},
+        {"@type": "AdministrativeArea", "name": "Yvelines"},
+        {"@type": "AdministrativeArea", "name": "Essonne"},
+        {"@type": "AdministrativeArea", "name": "Val-d’Oise"}
+      ],
+      "offers": [
+        {"@type": "Offer", "name": "Vitres classiques — Studio / T1, à partir de", "price": 70, "priceCurrency": "EUR"},
+        {"@type": "Offer", "name": "Vitres classiques — T2, à partir de", "price": 70, "priceCurrency": "EUR"},
+        {"@type": "Offer", "name": "Vitres classiques — T3, à partir de", "price": 95, "priceCurrency": "EUR"},
+        {"@type": "Offer", "name": "Vitres classiques — T4, à partir de", "price": 95, "priceCurrency": "EUR"},
+        {"@type": "Offer", "name": "Vitres classiques — T5, à partir de", "price": 130, "priceCurrency": "EUR"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Quelles vitres sont comprises dans le forfait ?", "acceptedAnswer": {"@type": "Answer", "text": "Le forfait couvre toutes les vitres accessibles de plain-pied, côté intérieur : fenêtres, baies vitrées et portes-fenêtres, avec leurs encadrements et rebords, ainsi que les miroirs des pièces. Les vitres en hauteur, les vitrines et les vérandas ou verrières font l’objet d’un devis après visite."}},
+        {"@type": "Question", "name": "Pourquoi les vitres en hauteur ne sont-elles pas au forfait ?", "acceptedAnswer": {"@type": "Answer", "text": "Pour des raisons de sécurité et de matériel. Les vitres inaccessibles de plain-pied (étages, façades), les vitrines et les vérandas ou verrières demandent une évaluation des accès et parfois un équipement spécifique (perche, échafaudage). Nous établissons donc un devis après visite, sans jamais annoncer de prix ferme à l’aveugle."}},
+        {"@type": "Question", "name": "Les prix affichés sont-ils bien tout compris ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Les forfaits (à partir de 70 €, 95 € ou 130 € TTC selon la typologie) sont des prix de la grille pour les particuliers, pour un logement en état d’usage normal. La réservation se fait en ligne avec un acompte de 30 %. Seules les options choisies (canapé, fauteuil, matelas) et les majorations éventuelles (urgence sous 48 h, dimanche ou jour férié) s’ajoutent au tarif, ligne par ligne, avant que vous ne validiez."}},
+        {"@type": "Question", "name": "Comment garantissez-vous l’absence de traces ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous travaillons à la raclette professionnelle, lame essuyée à chaque passage, avec un produit adapté au verre, puis nous reprenons angles et bords à la microfibre. Avant de partir, chaque vitre est contrôlée à contre-jour : c’est le test le plus exigeant pour repérer la moindre trace."}},
+        {"@type": "Question", "name": "Puis-je ajouter d’autres prestations à ma réservation ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Au moment de réserver, vous pouvez ajouter le nettoyage en profondeur de vos textiles : canapé (80, 100 ou 110 € selon 2, 3 ou 4 places), fauteuil (50 €) et matelas (75 €), tous en TTC. Pratique pour profiter du déplacement et faire d’une pierre deux coups."}},
+        {"@type": "Question", "name": "Intervenez-vous aussi pour les professionnels ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, mais hors forfait en ligne. Les besoins professionnels ou récurrents (bureaux, locaux commerciaux, copropriétés, passages programmés) sont chiffrés sur devis après visite. Voyez aussi notre entretien de bureaux si vos vitres s’inscrivent dans un contrat régulier."}}
+      ]
+    }
+  ]
+}
+  </script>
 
 </div>
 
 <script>
+/* Kayli Clinn — page prestation. JavaScript natif, sans dépendance.
+   Aucun contenu essentiel ne dépend de ce script : sans lui, toutes les
+   prestations restent visibles, le sélecteur reste un simple groupe de boutons
+   et les liens vers l'estimation et le devis fonctionnent. */
 (function(){
-  document.querySelectorAll('.kc-faq-q').forEach(function(q){
-    q.addEventListener('click', function(){
-      const item = q.parentElement;
-      const wasOpen = item.classList.contains('open');
-      q.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(function(i){ i.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+  var root = document.currentScript.parentNode.querySelector('.kcl') || document.querySelector('.kcl');
+  if(!root) return;
+  var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1. Filtre des prestations par famille */
+  root.querySelectorAll('[data-filtre]').forEach(function(barre){
+    var zone = barre.parentNode.querySelector('.kcl-grid') || root.querySelector('.kcl-grid');
+    if(!zone) return;
+    var cartes = zone.querySelectorAll('.kcl-presta[data-fam]');
+    var titres = zone.querySelectorAll('.kcl-famtitre');
+    var compte = barre.querySelector('.kcl-compte');
+    barre.addEventListener('click', function(e){
+      var b = e.target.closest('.kcl-f');
+      if(!b) return;
+      var f = b.dataset.f, n = 0;
+      barre.querySelectorAll('.kcl-f').forEach(function(x){
+        x.classList.toggle('is-on', x === b);
+        x.setAttribute('aria-pressed', x === b);
+      });
+      titres.forEach(function(t){ t.classList.toggle('is-off', f !== '*'); });
+      cartes.forEach(function(c){
+        var ok = (f === '*') || c.dataset.fam === f;
+        c.classList.toggle('is-off', !ok);
+        if(ok) n++;
+      });
+      if(compte) compte.textContent = n + (n > 1 ? ' prestations' : ' prestation');
     });
   });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+
+  /* 2. Sélecteur « votre situation ressemble à… » */
+  root.querySelectorAll('[data-picks]').forEach(function(liste){
+    var cta = root.querySelector('.kcl-pick-cta');
+    var base = cta ? cta.getAttribute('href').split('&situation=')[0] : '';
+    liste.addEventListener('click', function(e){
+      var b = e.target.closest('.kcl-pick');
+      if(!b) return;
+      liste.querySelectorAll('.kcl-pick').forEach(function(x){
+        x.classList.toggle('is-on', x === b);
+        x.setAttribute('aria-pressed', x === b);
+      });
+      if(!cta) return;
+      cta.setAttribute('href', base + '&situation=' + encodeURIComponent(b.dataset.val || b.textContent.trim()));
+      var txt = cta.querySelector('[data-cta-txt]');
+      if(txt){
+        cta.classList.add('is-maj');
+        setTimeout(function(){
+          txt.textContent = (cta.dataset.verbe || 'Demander un devis') + ' : ' + b.textContent.trim();
+          cta.classList.remove('is-maj');
+        }, 180);
+      }
     });
-  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
-  document.querySelectorAll('.kc-page .kc-fade').forEach(el => observer.observe(el));
+  });
+
+  /* 3. Suivi de conversion — n'émet que si un dataLayer existe déjà */
+  root.addEventListener('click', function(e){
+    var a = e.target.closest('[data-track]');
+    if(!a) return;
+    if(!window.dataLayer || typeof window.dataLayer.push !== 'function') return;
+    try{ window.dataLayer.push({event:a.getAttribute('data-track'), page_name:'vitres_classiques'}); }catch(err){}
+  });
+
+  /* 4. Apparition discrète au défilement — purement décorative */
+  if(!sobre && 'IntersectionObserver' in window){
+    root.classList.add('kcl-anim');
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    root.querySelectorAll('.kcl-rv').forEach(function(el){ io.observe(el); });
+  }
 })();
 </script>
-<!-- Données structurées SEO — service Nettoyage de vitres résidentiel (grille officielle v2) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Nettoyage de vitres résidentiel",
-  "serviceType": "Nettoyage de vitres",
-  "provider": {
-    "@type": "CleaningService",
-    "name": "Kayli Clinn",
-    "url": "https://kayliclinn.fr/",
-    "telephone": "+33670012061"
-  },
-  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
-  "offers": [
-    {"@type": "Offer", "name": "Studio / T1", "price": 70, "priceCurrency": "EUR"},
-    {"@type": "Offer", "name": "T2", "price": 70, "priceCurrency": "EUR"},
-    {"@type": "Offer", "name": "T3", "price": 95, "priceCurrency": "EUR"},
-    {"@type": "Offer", "name": "T4", "price": 95, "priceCurrency": "EUR"},
-    {"@type": "Offer", "name": "T5", "price": 130, "priceCurrency": "EUR"}
-  ]
-}
-</script>
+
+<!-- ═══ FIN DU BLOC À COLLER DANS WORDPRESS ═══ -->
+</body>
+</html>

@@ -1,536 +1,986 @@
-<!-- ════════════════════════════════════════════════════════
-   PAGE PRESTATION SENSIBLE : SYNDROME DE DIOGÈNE / ACCUMULATION — KAYLI CLINN
-   Page SOBRE, institutionnelle, SANS PRIX, SANS réservation en ligne.
-   URL : /syndrome-de-diogene/
-   Registre : confidentialité · dignité · accompagnement humain.
-   ────────────────────────────────────────────────────────
-   📸 PANNEAU PHOTOS — variables --photo-* ci-dessous (URLs placeholder à remplacer).
-   Privilégier des images SOBRES et NEUTRES (intérieur remis en état, équipe équipée),
-   JAMAIS d'image misérabiliste ou stigmatisante.
-   │ --photo-hero ..... fond du haut de page
-   │   ALT : « Intérieur de logement remis en ordre et propre après une intervention discrète de Kayli Clinn »
-   │ --photo-banner ... bandeau immersif au milieu de page
-   │   ALT : « Équipe de nettoyage Kayli Clinn équipée, intervenant avec discrétion en Île-de-France »
-   👉 À COMPLÉTER : remplacer les URLs placeholder par des visuels validés par la propriétaire.
-   ☎️ Téléphone : +33670012061 · Contact confidentiel : /contact/ · PAS DE PRIX EN LIGNE.
-   ════════════════════════════════════════════════════════ -->
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Syndrome de Diogène : débarras, nettoyage et remise en état discrets en Île-de-France | Kayli Clinn</title>
+<meta name="description" content="Accumulation, encombrement, logement difficile à vivre : tri, débarras, nettoyage et remise en état, avec discrétion et sans jugement. Devis après visite.">
+<link rel="canonical" href="https://kayliclinn.fr/syndrome-de-diogene/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#fff}</style>
+</head>
+<body>
+<!-- ═══ APERÇU UNIQUEMENT — ne pas copier au-dessus de cette ligne ═══ -->
 
+<!-- ============================================================
+     KAYLI CLINN — PAGE « Syndrome de Diogène : débarras, nettoyage et remise en état discrets en Île-de-France » — BLOC À COLLER DANS UN BLOC "HTML PERSONNALISÉ"
+     URL : /syndrome-de-diogene/
+     Styles scopés sous .kcl : aucun impact sur le reste du thème.
+     Le thème gère l'en-tête et le pied de page : ne pas les recréer ici.
+     Titre SEO et méta-description (extension SEO) :
+       Syndrome de Diogène : débarras, nettoyage et remise en état discrets en Île-de-France | Kayli Clinn
+       Accumulation, encombrement, logement difficile à vivre : tri, débarras, nettoyage et remise en état, avec discrétion et sans jugement. Devis après visite.
+     ------------------------------------------------------------
+     PHOTO DU HERO : remplacer l'URL dans style="--hero:url('…')" du <header>.
+     ============================================================ -->
 <style>
-/* ════════════════════════════════════════════════════════
-   PHOTOS — A MODIFIER ICI UNIQUEMENT (placeholders)
-   ════════════════════════════════════════════════════════ */
-.kc-diog{
-  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/placeholder/diogene-hero.jpg');
-  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/placeholder/diogene-banner.jpg');
+.kcl{
+  --navy:#0D2340; --navy-soft:#1a3a5c;
+  --teal:#0FA7A5; --teal-soft:#4CC3C1; --teal-pale:#E6F5F5; --teal-ink:#0B8483; --teal-deep:#076E6D;
+  --ivory:#F7F8FA; --paper:#FBFCFD;
+  --line:#E5E7EB; --line-soft:#EEF0F3;
+  --body:#4a5568; --muted:#6B7280;
+  --r:14px; --r-lg:20px;
+  font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  color:var(--body); background:#fff; line-height:1.68;
+  font-size:16.5px; -webkit-font-smoothing:antialiased;
+}
+.kcl *,.kcl *::before,.kcl *::after{box-sizing:border-box}
+.kcl img{max-width:100%;display:block}
+.kcl h1,.kcl h2,.kcl h3,.kcl h4{
+  font-family:'Fraunces','Playfair Display',Georgia,'Times New Roman',serif;
+  color:var(--navy); font-weight:600; line-height:1.16; margin:0 0 .5em;
+  letter-spacing:-.01em;
+}
+.kcl h1{font-size:clamp(1.9rem,3.8vw,3rem)}
+.kcl h2{font-size:clamp(1.5rem,2.6vw,2.1rem)}
+.kcl h3{font-size:1.16rem;line-height:1.35}
+.kcl p{margin:0 0 1.1em}
+.kcl a{color:var(--teal-ink);text-decoration:none}
+.kcl a:hover{color:var(--teal-deep)}
+.kcl ul{margin:0 0 1.1em;padding-left:1.1em}
+.kcl li{margin-bottom:.4em}
+.kcl strong{color:var(--navy);font-weight:600}
+
+/* ---------- Structure ---------- */
+.kcl-wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.kcl-wrap--narrow{max-width:840px}
+.kcl-sec{padding:60px 0}
+.kcl-sec--tight{padding:46px 0}
+.kcl-sec--ivory{background:var(--ivory)}
+.kcl-sec--paper{background:var(--paper)}
+.kcl-sec--dark{background:var(--navy);color:#c5cfdb}
+.kcl-sec--dark h2,.kcl-sec--dark h3{color:#fff}
+.kcl-sec--dark a{color:var(--teal-soft)}
+.kcl-sec--dark .kcl-lead{color:#e3e9f0}
+
+/* ---------- Éléments de titre ---------- */
+.kcl-eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal-deep);font-weight:600;margin:0 0 14px
+}
+.kcl-sec--dark .kcl-eyebrow,.kcl-hero .kcl-eyebrow{color:var(--teal-soft)}
+.kcl-lead{font-size:1.06rem;color:var(--body);max-width:66ch}
+.kcl-head{max-width:70ch;margin-bottom:34px}
+.kcl-head--center{margin-left:auto;margin-right:auto;text-align:center}
+.kcl-rule{width:52px;height:2px;background:var(--teal);border:0;margin:0 0 26px}
+.kcl-head--center .kcl-rule{margin-left:auto;margin-right:auto}
+
+/* ---------- Fil d'Ariane ---------- */
+.kcl-bread{padding:20px 0 4px;font-size:.83rem;color:var(--muted)}
+.kcl-bread a{color:#5b6b7d}
+.kcl-bread a:hover{color:var(--teal-ink)}
+.kcl-bread span{color:var(--navy)}
+.kcl-bread i{font-style:normal;padding:0 8px;color:var(--line)}
+
+/* ---------- Boutons ---------- */
+.kcl .kcl-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 26px;border-radius:999px;border:1px solid var(--teal);
+  background:var(--teal);color:#fff;font-size:.95rem;font-weight:600;
+  cursor:pointer;transition:background .25s ease,border-color .25s ease,transform .25s ease;
+  font-family:'Roboto','Inter',Helvetica,Arial,sans-serif;text-align:center;
+}
+.kcl .kcl-btn:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-1px)}
+.kcl .kcl-btn--ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+.kcl .kcl-btn--ghost:hover{background:transparent;color:var(--navy);border-color:var(--teal)}
+.kcl-sec--dark .kcl-btn--ghost{color:#fff;border-color:rgba(255,255,255,.28)}
+.kcl-sec--dark .kcl-btn--ghost:hover{border-color:var(--teal-soft);color:#fff}
+.kcl-btns{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 0}
+.kcl-arrow{transition:transform .25s ease}
+.kcl-btn:hover .kcl-arrow{transform:translateX(3px)}
+
+/* ---------- Hero avec photo de fond ---------- */
+.kcl-hero{
+  position:relative;background-color:var(--navy);
+  background-image:
+    linear-gradient(100deg,rgba(13,35,64,.94) 0%,rgba(13,35,64,.86) 42%,rgba(13,35,64,.42) 100%),
+    var(--hero);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  padding:78px 0 70px;color:#d3dbe6;
+  border-bottom:3px solid var(--teal);
+}
+.kcl-hero::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:38%;pointer-events:none;
+  background:linear-gradient(to top,rgba(13,35,64,.55),transparent)
+}
+.kcl-hero-inner{position:relative;z-index:1}
+.kcl-hero-text{max-width:660px}
+.kcl-hero h1{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.kcl-hero .kcl-lead{color:#e3e9f0}
+.kcl-hero .kcl-btn--ghost{color:#fff;border-color:rgba(255,255,255,.32)}
+.kcl-hero .kcl-btn--ghost:hover{border-color:var(--teal-soft)}
+.kcl-hero-tag{
+  margin:36px 0 0;max-width:540px;font-size:.93rem;color:#fff;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;
+  padding:16px 24px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)
+}
+.kcl-reassure{
+  display:inline-flex;flex-wrap:wrap;gap:10px 16px;margin-top:28px;
+  font-size:.87rem;color:#4b5563;letter-spacing:.01em
+}
+.kcl-reassure b{color:var(--navy);font-weight:500}
+.kcl-hero .kcl-reassure{color:#d3dbe6}
+.kcl-hero .kcl-reassure b{color:#fff}
+.kcl-sec--dark .kcl-reassure{color:#c5cfdb}
+.kcl-sec--dark .kcl-reassure b{color:#fff}
+
+/* ---------- Images / emplacements ---------- */
+.kcl-ph{
+  position:relative;width:100%;border-radius:var(--r);overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(15,167,165,.16),rgba(13,35,64,.72)),
+    repeating-linear-gradient(45deg,#16304d 0 14px,#122a45 14px 28px);
+  display:flex;align-items:flex-end;
+}
+.kcl-ph::after{
+  content:attr(data-legend);
+  display:block;width:100%;padding:14px 16px;
+  font-size:.76rem;line-height:1.45;color:rgba(255,255,255,.82);
+  background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0));
+  font-family:'Inter',sans-serif;
+}
+
+/* ---------- Grilles & cartes ---------- */
+.kcl-grid{display:grid;gap:20px}
+.kcl-g2{grid-template-columns:repeat(2,1fr)}
+.kcl-g3{grid-template-columns:repeat(3,1fr)}
+.kcl-g4{grid-template-columns:repeat(4,1fr)}
+.kcl-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:26px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+}
+.kcl-card:hover{border-color:var(--teal-soft);box-shadow:0 16px 38px rgba(13,35,64,.07);transform:translateY(-2px)}
+.kcl-card p:last-child{margin-bottom:0}
+.kcl-sec--dark .kcl-card{background:var(--navy-soft);border-color:rgba(255,255,255,.14)}
+.kcl-sec--dark .kcl-card:hover{border-color:rgba(76,195,193,.55);box-shadow:none}
+.kcl-sec--ivory .kcl-card{background:#fff}
+
+/* Cartes prestations */
+.kcl-presta{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+  animation:kclIn .4s ease both
+}
+.kcl-presta:hover{border-color:var(--teal-soft)}
+.kcl-presta figure{margin:0}
+.kcl-presta-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.kcl-presta-body h3{margin-bottom:10px}
+.kcl-presta-body p{font-size:.95rem}
+.kcl-presta-detail{font-size:.9rem;color:#5b6b7d;margin:0 0 14px!important}
+.kcl-presta-tags{font-size:.88rem;color:var(--teal-deep);margin:auto 0 0!important;padding-top:6px}
+.kcl .kcl-link{
+  margin-top:auto;font-weight:600;font-size:.92rem;display:inline-flex;
+  align-items:center;gap:8px;color:var(--teal-deep)
+}
+.kcl-link .kcl-arrow{display:inline-block}
+.kcl-link:hover .kcl-arrow{transform:translateX(4px)}
+.kcl-presta.is-off{display:none}
+@keyframes kclIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Visuel des cartes prestations et de l'encart */
+.kcl-vis{
+  display:block;width:100%;height:180px;background:var(--ivory);
+  border-bottom:1px solid var(--line)
+}
+.kcl-illus{
+  display:block;width:100%;height:auto;margin:0 0 24px;
+  background:#fff;border:1px solid var(--line);border-radius:10px
+}
+.kcl-illus .t,.kcl-vis .t{fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.kcl-illus .d,.kcl-vis .d{fill:none;stroke:#d7dce3;stroke-width:1.1;stroke-linecap:round}
+.kcl-illus .f,.kcl-vis .f{fill:var(--teal-pale);stroke:none}
+.kcl-illus .s,.kcl-vis .s{fill:var(--navy);stroke:none}
+
+/* Intertitres de famille */
+.kcl-famtitre{
+  grid-column:1 / -1;margin:8px 0 -8px;font-family:'Fraunces',Georgia,serif;
+  font-size:.95rem;color:var(--navy);font-weight:600;
+  display:flex;align-items:center;gap:16px;letter-spacing:.01em
+}
+.kcl-famtitre::after{content:"";flex:1;height:1px;background:var(--line)}
+.kcl-famtitre:first-child{margin-top:0}
+.kcl-famtitre.is-off{display:none}
+
+/* Filtre des prestations */
+.kcl-filtre{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:30px}
+.kcl-f{
+  font-family:inherit;font-size:.9rem;font-weight:500;color:var(--body);cursor:pointer;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 20px;
+  transition:border-color .25s ease,color .25s ease,background .25s ease
+}
+.kcl-f:hover{border-color:var(--teal-soft);color:var(--navy)}
+.kcl-f.is-on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}
+.kcl-compte{margin-left:auto;font-size:.85rem;color:#5b6b7d}
+
+/* ---------- Listes à puces ---------- */
+.kcl-check{list-style:none;padding:0;margin:0}
+.kcl-check li{position:relative;padding-left:26px;margin-bottom:11px;font-size:.97rem}
+.kcl-check li::before{
+  content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;
+  border:1.5px solid var(--teal);border-radius:50%;
+}
+.kcl-check--dense li{margin-bottom:7px;font-size:.94rem}
+
+/* ---------- Deux colonnes texte / encadré ---------- */
+.kcl-split{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.kcl-panel{
+  background:var(--ivory);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px
+}
+.kcl-panel h3{font-size:1.05rem;margin-bottom:16px}
+.kcl-panel--accent{background:var(--teal-pale);border-color:var(--teal-soft)}
+.kcl .kcl-panel .kcl-link{color:var(--teal-deep)}
+
+/* ---------- Citation ---------- */
+.kcl-quote{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.35rem,2.4vw,1.85rem);
+  line-height:1.34;color:var(--navy);border-left:3px solid var(--teal);
+  padding:6px 0 6px 26px;margin:0 0 30px;max-width:24ch;font-weight:500
+}
+.kcl-sec--dark .kcl-quote{color:#fff}
+.kcl-quote--wide{max-width:34ch}
+
+/* ---------- Profils compacts ---------- */
+.kcl-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.kcl-meta span{
+  font-size:.85rem;color:var(--body);background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px
+}
+
+/* ---------- Sélecteur « votre situation ressemble à… » ---------- */
+.kcl-picks{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;padding:0;list-style:none}
+.kcl-pick{
+  font-family:inherit;font-size:.9rem;text-align:left;color:var(--body);cursor:pointer;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 17px;
+  display:inline-flex;align-items:center;gap:9px;line-height:1.25;
+  transition:border-color .22s ease,background .22s ease,color .22s ease,transform .22s ease
+}
+.kcl-pick::before{
+  content:"";width:13px;height:13px;flex:none;border:1.5px solid var(--line);border-radius:50%;
+  transition:border-color .22s ease,box-shadow .22s ease
+}
+.kcl-pick:active{transform:scale(.97)}
+.kcl-pick:hover{border-color:var(--teal-soft)}
+.kcl-pick.is-on{border-color:var(--teal);background:var(--teal-pale);color:var(--navy);font-weight:600}
+.kcl-pick.is-on::before{border-color:var(--teal);box-shadow:inset 0 0 0 3px var(--teal)}
+.kcl-pick-cta{width:100%;justify-content:center;transition:background .25s ease}
+.kcl-pick-cta [data-cta-txt]{transition:opacity .2s ease}
+.kcl-pick-cta.is-maj [data-cta-txt]{opacity:0}
+
+/* ---------- Trois preuves / principes ---------- */
+.kcl-preuves{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.kcl-preuve{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px 28px;
+  border-top:3px solid var(--teal)
+}
+.kcl-preuve span{
+  display:block;font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:var(--teal-ink);
+  margin-bottom:14px;font-weight:600
+}
+.kcl-preuve h3{font-size:1.12rem;margin-bottom:10px}
+.kcl-preuve p{margin:0;font-size:.95rem}
+
+/* ---------- Cartes d'inquiétudes ---------- */
+.kcl-sec--inq{background:var(--ivory)}
+.kcl-inq{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kcl-inq article{
+  background:#fff;border:1px solid var(--line);border-top:3px solid var(--teal);
+  border-radius:var(--r-lg);padding:24px 22px
+}
+.kcl-inq h3{color:var(--navy);font-size:1.04rem;margin-bottom:10px}
+.kcl-inq p{color:var(--body);font-size:.91rem;margin-bottom:14px}
+.kcl-inq .kcl-rep{color:var(--navy);font-size:.93rem;margin:0;padding-top:13px;border-top:1px solid var(--line-soft)}
+.kcl-inq .kcl-rep b{color:var(--teal-deep)}
+
+/* ---------- Méthode : six étapes toutes visibles ---------- */
+.kcl-etapes-s{display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px}
+.kcl-etape-s{border-top:2px solid var(--line);padding:24px 0 30px;position:relative}
+.kcl-etape-s::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;
+  border-radius:50%;background:var(--teal);border:2px solid var(--teal)}
+.kcl-etape-s b{display:block;font-family:'Fraunces',Georgia,serif;font-size:.86rem;
+  color:var(--teal-deep);letter-spacing:.08em;margin-bottom:8px}
+.kcl-etape-s h3{font-size:1.06rem;margin-bottom:8px}
+.kcl-etape-s p{margin:0;font-size:.92rem}
+
+/* ---------- Trois parcours, tous visibles ---------- */
+.kcl-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.kcl-pack{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:32px 30px 30px;position:relative
+}
+.kcl-pack--reco{
+  border:2px solid var(--teal);box-shadow:0 18px 44px rgba(13,35,64,.09);
+  background:var(--paper);padding:31px 29px 29px
+}
+.kcl-pack-badge{
+  display:inline-block;align-self:flex-start;background:var(--navy);color:#fff;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  padding:6px 14px;border-radius:999px;margin:0 0 12px;line-height:1.3;max-width:100%
+}
+.kcl-pack-mention{
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);
+  font-weight:700;margin:0 0 12px;height:30px;display:flex;align-items:center
+}
+.kcl-pack h3{font-size:1.22rem;margin-bottom:12px;line-height:1.25}
+.kcl-pack-profil{
+  font-size:.9rem;color:var(--body);background:var(--ivory);border-radius:10px;
+  padding:14px 16px;margin-bottom:22px
+}
+.kcl-pack--reco .kcl-pack-profil{background:#fff;border:1px solid var(--teal-soft)}
+.kcl-pack-plus{
+  font-size:.82rem;font-weight:700;color:var(--teal-deep);text-transform:uppercase;
+  letter-spacing:.08em;margin:0 0 12px
+}
+.kcl-pack ul{margin:0 0 22px;padding:0;list-style:none}
+.kcl-pack li{position:relative;padding:0 0 11px 26px;font-size:.93rem;line-height:1.5}
+.kcl-pack li::before{
+  content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;
+  border:1.5px solid var(--teal);border-radius:50%
+}
+.kcl-pack--reco li::before{background:var(--teal)}
+.kcl-pack-benef{
+  font-size:.93rem;color:var(--navy);border-left:3px solid var(--teal-soft);
+  padding:2px 0 2px 16px;margin:0 0 24px
+}
+.kcl-pack .kcl-btn{margin-top:auto;justify-content:center;width:100%}
+.kcl-pack .kcl-btn--ghost{border-color:var(--line)}
+.kcl-tarif{font-size:.84rem;color:#5b6b7d;margin:0 0 18px;line-height:1.5}
+.kcl .kcl-tarif a{color:var(--teal-deep)}
+.kcl-conseil{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  background:var(--teal-pale);border:1px solid var(--teal-soft);border-radius:var(--r-lg);
+  padding:30px 34px;margin-top:36px
+}
+.kcl-conseil h3{font-size:1.15rem;margin-bottom:8px}
+.kcl-conseil p{margin:0;font-size:.95rem;max-width:80ch}
+
+/* ---------- Fiche d'identification ---------- */
+.kcl-fiche{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin:0 0 34px
+}
+.kcl-fiche div{background:#fff;padding:22px 22px}
+.kcl-fiche dt{
+  font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:7px
+}
+.kcl-fiche dd{margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.02rem;
+  color:var(--navy);line-height:1.35}
+
+/* ---------- FAQ ---------- */
+.kcl-faq{max-width:880px;margin:0 auto}
+.kcl-faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.kcl-faq summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-family:'Fraunces',Georgia,serif;font-size:1.08rem;color:var(--navy);font-weight:600
+}
+.kcl-faq summary::-webkit-details-marker{display:none}
+.kcl-faq summary::after{
+  content:"+";position:absolute;right:6px;top:19px;font-family:'Inter',sans-serif;
+  font-size:1.5rem;color:var(--teal);font-weight:300;transition:transform .3s ease
+}
+.kcl-faq details[open] summary::after{transform:rotate(45deg)}
+.kcl-faq summary:hover{color:var(--teal-ink)}
+.kcl-faq-a{padding:0 40px 24px 0;font-size:.98rem}
+.kcl-faq-a p:last-child{margin-bottom:0}
+
+/* ---------- Bande « visite gratuite », après la FAQ ---------- */
+.kcl-visite{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  background:var(--navy);border-radius:var(--r-lg);padding:32px 36px
+}
+.kcl-visite p.kcl-eyebrow{color:var(--teal-soft);margin-bottom:10px}
+.kcl-visite h2{color:#fff;font-size:clamp(1.2rem,2vw,1.55rem);margin-bottom:8px}
+.kcl-visite p:not(.kcl-eyebrow){color:#c5cfdb;margin:0;max-width:74ch;font-size:.96rem}
+.kcl-visite .kcl-btn{white-space:nowrap}
+
+/* ---------- Bandeau liens internes ---------- */
+.kcl-cross{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:20px}
+.kcl-cross a{
+  display:block;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;
+  background:#fff;color:var(--navy);transition:border-color .25s ease,transform .25s ease
+}
+.kcl-cross a:hover{border-color:var(--teal);transform:translateY(-2px);color:var(--navy)}
+.kcl-cross b{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.05rem;margin-bottom:5px}
+.kcl-cross span{font-size:.9rem;color:#5b6b7d}
+
+/* ---------- Notes secondaires ---------- */
+.kcl-note{font-size:.9rem;color:#5b6b7d;max-width:78ch}
+.kcl-sec--dark .kcl-note{color:#c5cfdb}
+
+/* ---------- Animations ---------- */
+.kcl-anim .kcl-rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.kcl-anim .kcl-rv.is-in{opacity:1;transform:none}
+.kcl-anim .kcl-hero-text > *,.kcl-anim .kcl-hero-tag{animation:kclUp .8s cubic-bezier(.22,.8,.3,1) both}
+.kcl-anim .kcl-hero-text > *:nth-child(2){animation-delay:.08s}
+.kcl-anim .kcl-hero-text > *:nth-child(3){animation-delay:.16s}
+.kcl-anim .kcl-hero-text > *:nth-child(4){animation-delay:.24s}
+.kcl-anim .kcl-hero-text > *:nth-child(5){animation-delay:.32s}
+.kcl-anim .kcl-hero-tag{animation-delay:.42s}
+@keyframes kclUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- Accessibilité ---------- */
+.kcl a:focus-visible,.kcl button:focus-visible,.kcl summary:focus-visible{
+  outline:2px solid var(--teal);outline-offset:3px;border-radius:4px
+}
+@media (prefers-reduced-motion:reduce){
+  .kcl *{transition:none!important;animation:none!important}
+  .kcl-anim .kcl-rv{opacity:1;transform:none}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1040px){
+  .kcl-g4{grid-template-columns:repeat(2,1fr)}
+  .kcl-preuves,.kcl-inq,.kcl-packs{grid-template-columns:1fr}
+  .kcl-pack-mention{min-height:0}
+  .kcl-etapes-s{grid-template-columns:repeat(2,1fr)}
+  .kcl-fiche{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .kcl-sec{padding:46px 0}
+  .kcl-hero{
+    padding:60px 0 52px;
+    background-image:
+      linear-gradient(180deg,rgba(13,35,64,.9) 0%,rgba(13,35,64,.82) 55%,rgba(13,35,64,.62) 100%),
+      var(--hero);
+  }
+  .kcl-split{grid-template-columns:1fr;gap:38px}
+  .kcl-g3,.kcl-cross{grid-template-columns:repeat(2,1fr)}
+  .kcl-conseil{grid-template-columns:1fr;gap:20px}
+  .kcl-visite{grid-template-columns:1fr;padding:26px 24px}
+}
+@media (max-width:620px){
+  .kcl{font-size:16px}
+  .kcl-wrap{padding:0 18px}
+  .kcl-g2,.kcl-g3,.kcl-g4,.kcl-cross,.kcl-etapes-s,.kcl-fiche{grid-template-columns:1fr}
+  .kcl-card,.kcl-panel{padding:24px}
+  .kcl-btns{flex-direction:column;align-items:stretch}
+  .kcl-btn{justify-content:center}
+  .kcl-hero-tag{max-width:100%}
+  .kcl-quote{max-width:none}
+  .kcl-f{padding:9px 16px;font-size:.85rem}
+  .kcl-compte{margin-left:0;width:100%}
+  .kcl-pack{padding:26px 22px 24px}
+  .kcl-conseil{padding:24px 22px}
 }
 </style>
-<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
-<style>
 
-/* ════════════════════════════════════════════════════════
-   SYSTÈME (tokens clonés de prestation.html — ton sobre)
-   ════════════════════════════════════════════════════════ */
-.kc-diog{
-  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
-  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
-  --navy:#0D2340; --navy-2:#14294a;
-  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
-  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
-  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
-  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
-  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-  font-size:16px; line-height:1.65; color:var(--ink);
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  overflow-x:clip;
-}
-.kc-diog *,.kc-diog *::before,.kc-diog *::after{box-sizing:border-box}
-.kc-diog img{max-width:100%;display:block}
-.kc-diog a{color:inherit;text-decoration:none}
+<div class="kcl" id="kcl-syndrome-de-diogene">
 
-.kc-diog .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
-.kc-diog .kc-link:hover{color:var(--teal);border-color:var(--teal)}
-.kc-diog .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
-.kc-diog .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+  <!-- ─────────── 1. FIL D'ARIANE ─────────── -->
+  <nav class="kcl-wrap kcl-bread" aria-label="Fil d’Ariane">
+    <a href="/">Accueil</a><i>›</i><a href="/prestations/">Prestations</a><i>›</i><span>Syndrome de Diogène</span>
+  </nav>
 
-.kc-diog section{padding:clamp(78px,10vw,140px) 6%}
-.kc-diog-wrap{max-width:1180px;margin:0 auto}
-.kc-diog-header{text-align:center;max-width:760px;margin:0 auto clamp(52px,7vw,84px)}
+  <!-- ─────────── 2. HERO ─────────── -->
+  <!-- IMAGE : intérieur de logement remis en ordre et propre après une intervention discrète (URL placeholder reprise de la page actuelle).
+       👉 À COMPLÉTER : remplacer par un visuel validé par la propriétaire — image SOBRE et NEUTRE, jamais misérabiliste ni stigmatisante. -->
+  <header class="kcl-hero" style="--hero:url('https://kayliclinn.fr/wp-content/uploads/placeholder/diogene-hero.jpg')">
+    <div class="kcl-wrap kcl-hero-inner">
+      <div class="kcl-hero-text">
+        <p class="kcl-eyebrow">Syndrome de Diogène · Extrême · Île-de-France</p>
+        <h1>Un logement encombré, remis en état avec discrétion et sans jugement.</h1>
+        <p class="kcl-lead">Accumulation, encombrement, logement devenu difficile à vivre au quotidien : nous organisons le tri, le débarras, le nettoyage en profondeur et la remise en état, après une visite sur place et un devis confidentiel. Vous gardez un seul interlocuteur, du premier échange au compte rendu.</p>
+        <div class="kcl-btns">
+          <a class="kcl-btn" href="/demande-de-devis/?presta=syndrome-de-diogene" data-track="devis_click">Demander un devis <span class="kcl-arrow">→</span></a>
+        </div>
+        <p class="kcl-reassure"><b>Échanges confidentiels</b> • <b>Visite gratuite avant tout devis</b> • <b>Interlocuteur unique</b></p>
+      </div>
+      <p class="kcl-hero-tag">Derrière chaque logement, il y a une personne.</p>
+    </div>
+  </header>
 
-.kc-diog .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:24px}
-.kc-diog .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
+  <!-- ─────────── 3. LA PRESTATION ─────────── -->
+  <section class="kcl-sec kcl-sec--paper">
+    <div class="kcl-wrap kcl-split kcl-rv">
+      <div>
+        <!-- 👉 À VALIDER (propriétaire) : formulation du partenariat de sous-traitance. Possibilité d'indiquer le nom du/des partenaire(s) et leur certification (ex. Certibiocide) si souhaité. -->
+        <div class="kcl-panel kcl-panel--accent" style="margin-bottom:28px">
+          <h3>Prestation assurée en partenariat</h3>
+          <p style="margin:0">Pour ces interventions spécialisées, Kayli Clinn coordonne votre projet et le confie à des prestataires partenaires certifiés et assurés. Vous gardez un interlocuteur unique, du devis jusqu’au compte rendu.</p>
+        </div>
+        <p class="kcl-eyebrow">La prestation</p>
+        <h2>Quand le logement n’est plus vivable au quotidien.</h2>
+        <hr class="kcl-rule">
+        <p>Le syndrome de Diogène et les situations d’accumulation touchent des personnes de tous horizons. Le logement s’encombre au point de gêner la circulation ou l’usage des pièces, et son état peut finir par présenter un risque pour la santé. L’intervention regroupe le tri des affaires, le débarras et l’évacuation, le nettoyage en profondeur, une désinfection adaptée des surfaces si l’état du logement le demande, puis la remise en état.</p>
+        <p>Nous accompagnons les proches, les bailleurs et les professionnels avec la même discrétion. Chaque situation est unique : nous avançons par étapes, sans précipitation, en tenant compte de la personne et de son histoire autant que de l’état du logement. <strong>Notre rôle n’est pas seulement de nettoyer, mais d’accompagner avec patience et respect, sans précipiter ni juger.</strong></p>
+        <div class="kcl-meta"><span>Familles et proches</span><span>Bailleurs et copropriétés</span><span>Tuteurs et curateurs</span><span>Travailleurs sociaux</span><span>Successions et transitions</span></div>
+      </div>
+      <aside class="kcl-panel"><svg class="kcl-illus" viewBox="0 0 400 180" role="img" aria-label="Pièce d’un logement en cours de remise en ordre : cartons triés d’un côté, fenêtre et espace dégagé de l’autre">
+  <path class="d" d="M18 152h364"/>
+  <path class="t" d="M40 110h44v42H40zM92 122h36v30H92zM52 82h40v28H52z"/>
+  <path class="f" d="M40 110h44v42H40z"/>
+  <path class="d" d="M52 96h40M62 110v42"/>
+  <path class="s" d="M100 132h20v5h-20z"/>
+  <path class="t" d="M150 40v112"/>
+  <path class="t" d="M190 52h90v70h-90z"/>
+  <path class="f" d="M196 58h78v58h-78z"/>
+  <path class="d" d="M235 52v70M190 87h90"/>
+  <path class="t" d="M310 112h44v40h-44z"/>
+  <path class="d" d="M310 126h44"/>
+  <path class="t" d="M318 112V90h28v22"/>
+  <path class="d" d="M40 166h320M40 162v8M360 162v8"/>
+</svg>
+        <h3>Votre situation ressemble à…</h3>
+        <div class="kcl-picks" data-picks role="group"><button class="kcl-pick" type="button" data-val="Aide à un proche en difficulté" aria-pressed="false">Aide à un proche</button><button class="kcl-pick" type="button" data-val="Accumulation et encombrement du logement" aria-pressed="false">Accumulation</button><button class="kcl-pick" type="button" data-val="Bailleur ou copropriété, remise en état avant relocation" aria-pressed="false">Bailleur ou copropriété</button><button class="kcl-pick" type="button" data-val="Tuteur ou curateur d’une personne protégée" aria-pressed="false">Tuteur ou curateur</button><button class="kcl-pick" type="button" data-val="Hygiène et salubrité du logement" aria-pressed="false">Hygiène et salubrité</button><button class="kcl-pick" type="button" data-val="Préparation d’une transition (établissement, succession, déménagement)" aria-pressed="false">Transition ou succession</button></div>
+        <a class="kcl-btn kcl-pick-cta" data-track="devis_click" data-verbe="Demander un devis" href="/demande-de-devis/?presta=syndrome-de-diogene"><span data-cta-txt>Demander un devis</span> <span class="kcl-arrow">→</span></a></aside>
+    </div>
+  </section>
 
-.kc-diog .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.1;letter-spacing:-0.018em;margin-bottom:22px}
-.kc-diog .section-title em,.kc-diog h2 em,.kc-diog h3 em,.kc-diog .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
-.kc-diog .section-desc{font-size:16.5px;color:var(--muted);line-height:1.75;font-weight:400}
+  <!-- ─────────── 4. LES PRESTATIONS ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Ce que couvre l’intervention</p>
+        <h2>Du tri à la remise en état, étape par étape.</h2>
+      </div>
+      <div class="kcl-filtre kcl-rv" data-filtre><button class="kcl-f is-on" type="button" data-f="*">Tout voir</button><button class="kcl-f" type="button" data-f="0">Tri et débarras</button><button class="kcl-f" type="button" data-f="1">Nettoyage et assainissement</button><button class="kcl-f" type="button" data-f="2">Remise en état et suite</button><span class="kcl-compte">9 prestations</span></div>
+      <div class="kcl-grid kcl-g3">
+        <p class="kcl-famtitre" data-fam="0">Tri et débarras</p>
 
-.kc-diog svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Cartons triés et objets à conserver mis de côté">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 100h60v58H40zM110 118h50v40h-50z"/>
+<path class="f" d="M110 118h50v40h-50z"/>
+<path class="d" d="M40 118h60M70 100v58"/>
+<path class="t" d="M200 110h60v48h-60z"/>
+<path class="s" d="M220 122h20v6h-20z"/>
+<path class="d" d="M200 134h60"/>
+<path class="t" d="M120 100h30l-15-14z"/></svg></figure><div class="kcl-presta-body"><h3>Tri des affaires</h3><p>Tri étape par étape, dans le respect des affaires. Les objets et documents importants sont repérés et mis de côté ; vous nous indiquez ce qui doit être conservé en priorité.</p><p class="kcl-presta-tags">Étape par étape · Objets conservés · Documents</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=Tri%20des%20affaires" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-.kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
-.kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
-.kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
-.kc-btn-primary svg{transition:transform .3s}
-.kc-btn-primary:hover svg{transform:translateX(3px)}
-.kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
-.kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Sacs et cartons chargés sur un chariot pour l’évacuation">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M60 130h120v10H60z"/>
+<path class="t" d="M76 140a8 8 0 1 0 0.1 0M164 140a8 8 0 1 0 0.1 0"/>
+<path class="t" d="M70 90h50v40H70zM126 104h44v26h-44z"/>
+<path class="f" d="M70 90h50v40H70z"/>
+<path class="d" d="M70 110h50"/>
+<path class="t" d="M180 130V70M180 70h20"/>
+<path class="t" d="M220 100h40l-4 58h-32z"/>
+<path class="d" d="M232 114v32M248 114v32"/></svg></figure><div class="kcl-presta-body"><h3>Débarras et évacuation</h3><p>Évacuation des encombrants et des déchets avec soin, en tenant compte du volume et des contraintes d’accès relevés lors de la visite.</p><p class="kcl-presta-tags">Encombrants · Volume · Accès</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=D%C3%A9barras%20et%20%C3%A9vacuation" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — HERO sobre, voile navy dominant — */
-.kc-hero{position:relative;min-height:78vh;padding:clamp(140px,17vh,196px) 6% clamp(64px,9vh,104px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(13,35,64,0.86) 0%,rgba(13,35,64,0.62) 48%,rgba(13,35,64,0.38) 100%),var(--photo-hero);background-color:var(--navy);background-size:cover;background-position:center}
-.kc-hero-wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:2}
-.kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(34px,4vw,52px)}
-@media(max-width:600px){.kc-hero-eyebrow{letter-spacing:0.1em !important;font-size:11px !important;gap:9px !important}}
-.kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(28px,4.7vw,56px);color:#fff;line-height:1.08;letter-spacing:-0.02em;margin-bottom:clamp(26px,3vw,38px);max-width:880px}
-.kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
-.kc-hero-sub{font-size:clamp(15px,1.3vw,18px);color:rgba(255,255,255,0.88);line-height:1.75;margin-bottom:clamp(34px,4vw,48px);max-width:620px;font-weight:300}
-.kc-hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
-.kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Table et deux chaises pour un échange avec les proches">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M90 100h120v8H90z"/>
+<path class="t" d="M104 108v50M196 108v50"/>
+<path class="t" d="M46 112h26v46H46zM228 112h26v46h-26z"/>
+<path class="t" d="M46 112V80M228 112V80"/>
+<path class="d" d="M46 130h26M228 130h26"/>
+<path class="f" d="M120 80h60v14h-60z"/>
+<path class="d" d="M130 87h40"/></svg></figure><div class="kcl-presta-body"><h3>Coordination avec les proches</h3><p>Échanges réguliers, à votre rythme, pour décider ensemble des étapes. Nous avançons au rythme de la personne concernée, pour préserver le lien et sa dignité.</p><p class="kcl-presta-tags">Rythme de la personne · Étapes décidées ensemble</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=Coordination%20avec%20les%20proches" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — bande réassurance — */
-.kc-trust{background:var(--navy-2);padding:28px 6%}
-.kc-trust-wrap{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px 36px;flex-wrap:wrap}
-.kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.84);font-size:13px;font-weight:500;letter-spacing:0.01em}
-.kc-trust-item svg{color:var(--teal);flex-shrink:0}
+        <p class="kcl-famtitre" data-fam="1">Nettoyage et assainissement</p>
 
-/* — CAS : cartes au trait — */
-.kc-cases{background:var(--cream-2)}
-.kc-cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.kc-case-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:36px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.kc-case-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.kc-case-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
-.kc-case-card:hover .kc-case-icon{background:var(--teal);color:#fff}
-.kc-case-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.25}
-.kc-case-card p{font-size:14px;color:var(--muted);line-height:1.7}
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Sol et murs lavés en profondeur avec seau et balai">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 40h220v118"/>
+<path class="d" d="M40 80h220M40 120h220"/>
+<path class="f" d="M180 118h60v40h-60z"/>
+<path class="t" d="M180 118h60v40"/>
+<path class="t" d="M210 118V60M198 60h24l-5-14h-14z"/>
+<path class="t" d="M70 158V96l40-30M110 66h16"/>
+<path class="d" d="M60 158h30"/></svg></figure><div class="kcl-presta-body"><h3>Nettoyage en profondeur</h3><p>Sols, murs, sanitaires, cuisine et surfaces nettoyés en profondeur une fois le logement dégagé, pour le rendre sain, ordonné et habitable.</p><p class="kcl-presta-tags">Sols · Sanitaires · Cuisine</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=Nettoyage%20en%20profondeur" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — APPROCHE / ÉTAPES — */
-.kc-approach{background:var(--white)}
-.kc-steps{display:flex;flex-direction:column;gap:0;max-width:880px;margin:0 auto;position:relative}
-.kc-step{display:grid;grid-template-columns:auto 1fr;gap:26px;padding:0 0 38px;position:relative}
-.kc-step:last-child{padding-bottom:0}
-.kc-step::before{content:'';position:absolute;left:23px;top:52px;bottom:-4px;width:1px;background:var(--line)}
-.kc-step:last-child::before{display:none}
-.kc-step-num{width:48px;height:48px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:17px;font-weight:560;flex-shrink:0;position:relative;z-index:1}
-.kc-step-body{padding-top:4px}
-.kc-step-body h3{font-family:'Fraunces',serif;font-weight:560;font-size:18.5px;color:var(--navy);margin-bottom:8px;letter-spacing:-0.01em}
-.kc-step-body p{font-size:14.5px;color:var(--muted);line-height:1.75}
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Pulvérisateur et surface désinfectée">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M60 110h180v8H60z"/>
+<path class="t" d="M74 118v40M226 118v40"/>
+<path class="t" d="M110 60h28v50h-28z"/>
+<path class="f" d="M110 60h28v50h-28z"/>
+<path class="t" d="M118 60V48h12v12M130 48h14l4 8"/>
+<path class="d" d="M160 66l10-4M164 78l12-4M160 90l10-4"/>
+<path class="s" d="M118 90h12v6h-12z"/></svg></figure><div class="kcl-presta-body"><h3>Désinfection des surfaces</h3><p>Lorsque l’état du logement présente un risque pour la santé, une désinfection adaptée des surfaces est prévue. Les modalités sont précisées dans le devis après la visite.</p><p class="kcl-presta-tags">Selon l’état du logement · Précisé au devis</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=D%C3%A9sinfection%20des%20surfaces" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — BANDEAU sobre — */
-.kc-banner{position:relative;min-height:440px;padding:clamp(80px,10vw,130px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.92) 0%,rgba(13,35,64,0.74) 100%),var(--photo-banner);background-color:var(--navy);background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
-.kc-banner-content{max-width:840px}
-.kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
-.kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
-.kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.8rem,3.4vw,2.7rem);line-height:1.14;letter-spacing:-0.018em;margin-bottom:22px;color:#fff}
-.kc-banner h2 em{font-style:italic;color:#fff}
-.kc-banner p{font-size:16.5px;line-height:1.8;color:rgba(255,255,255,0.9);max-width:640px;margin:0 auto;font-weight:300}
+        <!-- 👉 À COMPLÉTER : détailler le périmètre 3D/biocides une fois le Certibiocide obtenu -->
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Plinthe et angle de pièce traités par un partenaire équipé">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 40v118M40 40h220"/>
+<path class="d" d="M40 146h220"/>
+<path class="t" d="M200 100h40v58h-40z"/>
+<path class="f" d="M200 100h40v58h-40z"/>
+<path class="t" d="M220 100V70M210 70h20"/>
+<path class="d" d="M80 130l14-8M100 130l14-8M120 130l14-8"/>
+<path class="s" d="M60 140h30v6H60z"/></svg></figure><div class="kcl-presta-body"><h3>Désinsectisation si nécessaire</h3><p>Une désinsectisation peut être prévue si nécessaire. Elle est confiée à un partenaire certifié et assuré, et décrite dans le devis après la visite.</p><p class="kcl-presta-tags">Si nécessaire · Partenaire certifié</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=D%C3%A9sinsectisation%20si%20n%C3%A9cessaire" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — ENGAGEMENTS — */
-.kc-commit{background:var(--cream)}
-.kc-commit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.kc-commit-card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:40px 34px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.kc-commit-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.kc-commit-icon{width:52px;height:52px;background:var(--teal-wash);color:var(--teal-deep);border-radius:13px;display:grid;place-items:center;margin-bottom:22px;transition:all .4s}
-.kc-commit-card:hover .kc-commit-icon{background:var(--teal);color:#fff}
-.kc-commit-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:18px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em}
-.kc-commit-card p{font-size:14px;color:var(--muted);line-height:1.75}
+        <p class="kcl-famtitre" data-fam="2">Remise en état et suite</p>
 
-/* — COORDINATION (panneau navy) — */
-.kc-coord{background:var(--white)}
-.kc-coord-block{background:var(--navy);border-radius:26px;padding:clamp(40px,5.5vw,76px);color:#fff;position:relative;overflow:hidden}
-.kc-coord-block::before{content:'';position:absolute;top:-120px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(15,167,165,0.14) 0%,transparent 70%);pointer-events:none}
-.kc-coord-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,72px);align-items:center;position:relative;z-index:1}
-.kc-coord .eyebrow{color:var(--teal)}
-.kc-coord .eyebrow::before{background:var(--teal)}
-.kc-coord h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.7rem,2.8vw,2.4rem);line-height:1.14;letter-spacing:-0.015em;margin-bottom:18px;color:#fff}
-.kc-coord h2 em{color:var(--teal)}
-.kc-coord-text{font-size:15px;color:rgba(255,255,255,0.74);line-height:1.8}
-.kc-coord-list{display:flex;flex-direction:column;gap:13px;margin:0;padding:0;list-style:none}
-.kc-coord-list li{display:flex;gap:15px;padding:18px 20px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:12px;transition:all .3s}
-.kc-coord-list li:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4)}
-.kc-coord-list .kc-coord-li-icon{width:38px;height:38px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
-.kc-coord-list strong{display:block;font-family:'Fraunces',serif;font-size:14.5px;font-weight:560;color:#fff;margin-bottom:3px}
-.kc-coord-list span{font-size:12.5px;color:rgba(255,255,255,0.62);line-height:1.6}
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Porte d’entrée d’un logement remis en état avant relocation">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M70 40h80v118H70z"/>
+<path class="f" d="M78 48h64v102H78z"/>
+<path class="s" d="M130 100h8v6h-8z"/>
+<path class="t" d="M190 70h60v50h-60z"/>
+<path class="d" d="M190 95h60M220 70v50"/>
+<path class="d" d="M170 158h100"/></svg></figure><div class="kcl-presta-body"><h3>Remise en état avant relocation</h3><p>Pour les bailleurs et copropriétés : remise en état d’un logement après une situation d’incurie, avant relocation ou état des lieux, discrète vis-à-vis du voisinage.</p><p class="kcl-presta-tags">Bailleurs · État des lieux · Discrétion</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=Remise%20en%20%C3%A9tat%20avant%20relocation" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — FAQ — */
-.kc-faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
-.kc-faq-q{padding:24px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:22px}
-.kc-faq-q-text{font-family:'Fraunces',serif;font-size:16.5px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.4}
-.kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
-.kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
-.kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.kc-faq-item.open .kc-faq-a{max-height:560px}
-.kc-faq-a-content{padding:0 28px 28px;color:var(--muted);font-size:14.5px;line-height:1.8}
-.kc-faq-a-content strong{color:var(--navy);font-weight:600}
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Cartons fermés prêts pour un déménagement ou une succession">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M50 108h70v50H50zM130 118h50v40h-50z"/>
+<path class="f" d="M50 108h70v50H50z"/>
+<path class="d" d="M85 108v50M50 126h70"/>
+<path class="t" d="M210 60h50v98h-50z"/>
+<path class="d" d="M210 84h50M210 108h50M210 132h50"/>
+<path class="s" d="M146 130h18v6h-18z"/></svg></figure><div class="kcl-presta-body"><h3>Préparation d’une transition</h3><p>Entrée en établissement, succession, déménagement : nous remettons le logement en état dans un calendrier serein, en lien avec les personnes concernées.</p><p class="kcl-presta-tags">Établissement · Succession · Déménagement</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=Pr%C3%A9paration%20d%E2%80%99une%20transition" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
 
-/* — ZONES — */
-.kc-zones{background:var(--cream-2)}
-.kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:44px}
-.kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
-.kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
-.kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
-.kc-zone:hover span{color:rgba(255,255,255,0.75)}
-
-/* — CTA FINAL (navy sobre, pas de vert criard) — */
-.kc-final-cta{background:var(--navy);color:#fff;text-align:center;padding:clamp(68px,9vw,112px) 6%;position:relative;overflow:hidden}
-.kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:660px;height:660px;background:radial-gradient(circle,rgba(15,167,165,0.12) 0%,transparent 62%);pointer-events:none}
-.kc-final-cta-wrap{position:relative;z-index:1;max-width:740px;margin:0 auto}
-.kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--teal);margin-bottom:24px}
-.kc-final-cta-tag::before{content:'';width:28px;height:1px;background:var(--teal)}
-.kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.85rem,3.4vw,2.8rem);line-height:1.14;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
-.kc-final-cta h2 em{font-style:italic;color:var(--teal)}
-.kc-final-cta p{font-size:16px;color:rgba(255,255,255,0.84);line-height:1.75;margin:0 auto 32px;max-width:560px;font-weight:300}
-.kc-final-cta .kc-phone{display:block;font-family:'Fraunces',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);color:#fff;margin-bottom:30px;letter-spacing:-0.01em}
-.kc-final-cta .kc-phone a{border-bottom:1px solid rgba(15,167,165,0.5)}
-.kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
-.kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
-
-/* — ANIMATIONS — */
-.kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
-.kc-fade.visible{opacity:1;transform:translateY(0)}
-
-/* — RESPONSIVE — */
-@media(max-width:1000px){
-  .kc-cases-grid,.kc-commit-grid{grid-template-columns:repeat(2,1fr)}
-  .kc-coord-grid{grid-template-columns:1fr}
-}
-@media(max-width:760px){
-  .kc-hero{min-height:auto}
-  .kc-cases-grid,.kc-commit-grid{grid-template-columns:1fr}
-  .kc-zones-list{grid-template-columns:repeat(4,1fr)}
-  .kc-trust-wrap{justify-content:flex-start;gap:14px 24px}
-}
-@media(max-width:540px){
-  .kc-diog section{padding:60px 6%}
-  .kc-zones-list{grid-template-columns:repeat(2,1fr)}
-  .kc-coord-block,.kc-final-cta{border-radius:18px}
-  .kc-btn{width:100%;justify-content:center}
-  .kc-hero-ctas,.kc-final-ctas{width:100%}
-}
-@media(prefers-reduced-motion:reduce){
-  .kc-diog *,.kc-diog *::before,.kc-diog *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
-  .kc-diog .kc-fade{opacity:1;transform:none}
-}
-</style>
-
-<div class="kc-diog">
-
-<!-- 1 · HERO -->
-<style>
-/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
-.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
-.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
-.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
-</style>
-<section class="kc-hero">
-  <div class="kc-hero-wrap">
-    <div class="kc-hero-content kc-fade">
-      <span class="kc-hero-eyebrow">Accompagnement &amp; nettoyage · Île&#8209;de&#8209;France</span>
-      <h1 class="kc-hero-title">Syndrome de Diogène&nbsp;:<br>un accompagnement <em>humain et confidentiel</em></h1>
-      <p class="kc-hero-sub">Face à une situation d'accumulation ou d'encombrement, nous intervenons avec discrétion, respect et sans jugement.<br>Débarras, nettoyage en profondeur et remise en état du logement, après une visite sur place et un devis confidentiel.</p>
-      <div class="kc-hero-ctas">
-        <a href="tel:+33670012061" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        </a>
-        <a href="/contact/" class="kc-btn kc-btn-secondary">Demande d'intervention</a>
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Calendrier de passages pour un entretien régulier après l’intervention">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M70 40h160v110H70z"/>
+<path class="d" d="M70 66h160M110 66v84M150 66v84M190 66v84M70 94h160M70 122h160"/>
+<path class="f" d="M112 96h36v24h-36z"/>
+<path class="s" d="M150 124h40v24h-40z"/>
+<path class="t" d="M100 40V28M200 40V28"/></svg></figure><div class="kcl-presta-body"><h3>Suivi et entretien régulier</h3><p>Après la remise en état, nous restons disponibles pour un suivi ou un entretien régulier, afin d’inscrire l’amélioration dans la durée.</p><p class="kcl-presta-tags">Suivi · Entretien régulier · Durée</p><a class="kcl-link" href="/demande-de-devis/?presta=syndrome-de-diogene&poste=Suivi%20et%20entretien%20r%C3%A9gulier" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+      </div>
+      <div class="kcl-panel kcl-panel--accent kcl-rv" style="margin-top:30px">
+        <h3>Une règle que nous ne contournons pas</h3>
+        <p style="margin:0">Aucun devis n’est établi sans visite sur place, et aucune information n’est partagée avec des tiers sans votre accord. Nous ne communiquons pas de tarif en ligne pour ces situations : le volume, l’état du logement et les contraintes d’accès ne se devinent pas à distance. Tout ce que vous nous confiez reste strictement confidentiel.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 👉 À VALIDER (propriétaire) : formulation du partenariat de sous-traitance. Possibilité d'indiquer le nom du/des partenaire(s) et leur certification (ex. Certibiocide) si souhaité. -->
-<section class="kc-commit">
-  <div class="kc-diog-wrap">
-    <div class="kc-diog-header kc-fade">
-      <span class="eyebrow">Prestation assurée en partenariat</span>
-      <p class="section-desc">Pour ces interventions spécialisées, Kayli Clinn coordonne votre projet et le confie à des prestataires partenaires certifiés et assurés.<br>Vous gardez un interlocuteur unique, du devis jusqu'au compte rendu.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 2 · RÉASSURANCE -->
-<div class="kc-trust">
-  <div class="kc-trust-wrap">
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>Confidentialité absolue</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Respect des personnes</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v1H7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2V5a3 3 0 0 0-3-3z"/><path d="M9 13l2 2 4-4"/></svg><span>Équipes équipées &amp; formées</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg><span>Logement remis en état</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-6 0v4M5 9h14l1 12H4L5 9z"/></svg><span>Devis après visite, sans engagement</span></div>
-  </div>
-</div>
-
-<!-- 3 · DANS QUELS CAS INTERVENIR -->
-<section class="kc-cases">
-  <div class="kc-diog-wrap">
-    <div class="kc-diog-header kc-fade">
-      <span class="eyebrow">Dans quels cas intervenir</span>
-      <h2 class="section-title">Quand le logement n'est plus <em>vivable au quotidien</em></h2>
-      <p class="section-desc">Le syndrome de Diogène et les situations d'accumulation touchent des personnes de tous horizons.<br>Nous accompagnons proches, bailleurs et professionnels avec la même discrétion, sans jamais juger la situation.</p>
-    </div>
-    <div class="kc-cases-grid">
-      <div class="kc-case-card kc-fade">
-        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zM9 22V12h6v10"/></svg></div>
-        <h3>Accumulation &amp; encombrement</h3>
-        <p>Logement encombré au point de gêner la circulation ou l'usage des pièces. Nous trions, débarrassons et nettoyons étape par étape, dans le respect des affaires.</p>
+  <!-- ─────────── 5. INQUIÉTUDES → RÉPONSES ─────────── -->
+  <section class="kcl-sec kcl-sec--inq">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Ce qui vous inquiète, et ce que nous en faisons</p>
+        <h2>Sur ces situations, c’est la manière de faire qui compte.</h2>
+        <p class="kcl-lead">Trois inquiétudes que les proches et les bailleurs nous confient le plus souvent, et la manière dont nous y répondons.</p>
       </div>
-      <div class="kc-case-card kc-fade">
-        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3>Aide à un proche</h3>
-        <p>Vous accompagnez un parent, un voisin ou un proche en difficulté. Nous avançons à son rythme, avec tact, pour préserver le lien et la dignité de la personne.</p>
-      </div>
-      <div class="kc-case-card kc-fade">
-        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01"/></svg></div>
-        <h3>Bailleurs &amp; copropriétés</h3>
-        <p>Remise en état d'un logement après une situation d'incurie, avant relocation ou état des lieux. Intervention coordonnée, discrète vis-à-vis du voisinage.</p>
-      </div>
-      <div class="kc-case-card kc-fade">
-        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h3>Tuteurs &amp; curateurs</h3>
-        <p>Vous gérez les intérêts d'une personne protégée. Nous fournissons un cadre clair (devis, déroulé, compte rendu) adapté à vos obligations.</p>
-      </div>
-      <div class="kc-case-card kc-fade">
-        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h3>Hygiène &amp; salubrité</h3>
-        <p>Lorsque l'état du logement présente un risque pour la santé, nous procédons à un nettoyage en profondeur et à une désinfection adaptée des surfaces.</p>
-      </div>
-      <div class="kc-case-card kc-fade">
-        <div class="kc-case-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
-        <h3>Préparation d'une transition</h3>
-        <p>Entrée en établissement, succession, déménagement. Nous remettons le logement en état dans un calendrier serein, en lien avec les personnes concernées.</p>
+      <div class="kcl-inq kcl-rv">
+        <article>
+          <h3>Que le voisinage s’en aperçoive</h3>
+          <p>La crainte des regards, des questions et des commentaires pèse souvent autant que l’état du logement lui-même.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Véhicules sobres, interventions organisées en toute confidentialité vis-à-vis du voisinage. Aucune information n’est partagée avec des tiers sans votre accord.</p>
+        </article>
+        <article>
+          <h3>Que la personne ne soit pas prête</h3>
+          <p>Le proche concerné refuse, repousse ou n’imagine pas que l’on touche à ses affaires.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Nous avançons toujours au rythme de la personne. Un premier échange permet souvent d’instaurer la confiance ; nous pouvons procéder par étapes et nous coordonner avec l’accompagnement déjà en place.</p>
+        </article>
+        <article>
+          <h3>Que des objets qui comptent soient jetés</h3>
+          <p>Papiers, photos, bijoux, souvenirs : dans un logement encombré, l’important se mêle au reste.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Nous trions et repérons avec soin les objets et documents importants. Vous nous indiquez ce qui doit être conservé en priorité, et rien n’est décidé sans vous.</p>
+        </article>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 4 · NOTRE APPROCHE / ÉTAPES -->
-<section class="kc-approach">
-  <div class="kc-diog-wrap">
-    <div class="kc-diog-header kc-fade">
-      <span class="eyebrow">Notre approche</span>
-      <h2 class="section-title">Une intervention <em>progressive et respectueuse</em></h2>
-      <p class="section-desc">Chaque situation est unique.<br>Nous avançons par étapes, sans précipitation, en tenant compte de la personne et de son histoire autant que de l'état du logement.</p>
+  <!-- ─────────── 6. LA MÉTHODE ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">La méthode Kayli Clinn</p>
+        <h2>Une intervention progressive, du premier échange au suivi</h2>
+      </div>
+      <div class="kcl-etapes-s kcl-rv">
+        <div class="kcl-etape-s"><b>01 · Échange</b><h3>Prise de contact confidentielle</h3><p>Un premier échange, par téléphone ou par message, pour comprendre la situation sans jugement. Tout ce que vous nous confiez reste confidentiel.</p></div>
+        <div class="kcl-etape-s"><b>02 · Visite</b><h3>Visite discrète sur place</h3><p>Nous nous déplaçons pour évaluer le volume, l’état du logement et les contraintes d’accès, sans engagement.</p></div>
+        <div class="kcl-etape-s"><b>03 · Devis</b><h3>Devis confidentiel et déroulé</h3><p>Un devis clair, sans engagement, accompagné du déroulé prévu. Le rythme et les priorités sont définis avec vous et la personne concernée.</p></div>
+        <div class="kcl-etape-s"><b>04 · Tri</b><h3>Tri et débarras</h3><p>Tri et évacuation avec soin, en repérant les objets et documents importants. Les affaires à conserver sont mises de côté.</p></div>
+        <div class="kcl-etape-s"><b>05 · Nettoyage</b><h3>Nettoyage en profondeur</h3><p>Nettoyage en profondeur et désinfection adaptée des surfaces si l’état du logement le demande. Une désinsectisation peut être prévue si nécessaire.</p></div>
+        <div class="kcl-etape-s"><b>06 · Suivi</b><h3>Remise en état et suivi</h3><p>Le logement est rendu sain, ordonné et habitable. Compte rendu, puis suivi ou entretien régulier si vous le souhaitez.</p></div>
+      </div>
     </div>
-    <div class="kc-steps">
-      <div class="kc-step kc-fade">
-        <div class="kc-step-num">1</div>
-        <div class="kc-step-body">
-          <h3>Prise de contact confidentielle</h3>
-          <p>Un premier échange, par téléphone ou par message, pour comprendre la situation sans jugement. Tout ce que vous nous confiez reste strictement confidentiel.</p>
+  </section>
+
+  <!-- ─────────── 7. LE SUIVI ─────────── -->
+  <section class="kcl-sec kcl-sec--dark">
+    <div class="kcl-wrap">
+      <div class="kcl-split kcl-rv">
+      <div>
+        <p class="kcl-eyebrow">Le suivi Kayli Clinn</p>
+        <h2>Un accompagnement qui ne s’arrête pas à la porte.</h2>
+        <p class="kcl-quote kcl-quote--wide">Derrière chaque logement, il y a une personne. Notre rôle est de permettre un nouveau départ dans un cadre apaisé.</p>
+        <p class="kcl-lead">Ces situations impliquent souvent plusieurs interlocuteurs : familles, bailleurs, syndics, tuteurs, curateurs, travailleurs sociaux. Avec votre accord, nous nous coordonnons avec les personnes de confiance pour avancer dans un cadre clair, dans l’intérêt de la personne accompagnée. Vous gardez un seul interlocuteur, du devis jusqu’au compte rendu.</p>
+        <div class="kcl-btns">
+          <a class="kcl-btn" href="/realisations/">Voir nos réalisations <span class="kcl-arrow">→</span></a>
         </div>
       </div>
-      <div class="kc-step kc-fade">
-        <div class="kc-step-num">2</div>
-        <div class="kc-step-body">
-          <h3>Visite et audit sur place</h3>
-          <p>Nous nous déplaçons pour évaluer le volume, l'état du logement et les contraintes d'accès. Cette visite, discrète, nous permet d'établir un devis précis et adapté.</p>
-        </div>
-      </div>
-      <div class="kc-step kc-fade">
-        <div class="kc-step-num">3</div>
-        <div class="kc-step-body">
-          <h3>Devis confidentiel et déroulé</h3>
-          <p>Nous vous remettons un devis clair, sans engagement, accompagné du déroulé prévu. Le rythme et les priorités sont définis avec vous (et la personne concernée).</p>
-        </div>
-      </div>
-      <div class="kc-step kc-fade">
-        <div class="kc-step-num">4</div>
-        <div class="kc-step-body">
-          <h3>Tri, débarras et nettoyage en profondeur</h3>
-          <p>Nous trions et évacuons avec soin, repérons les objets et documents importants, puis procédons à un nettoyage en profondeur. Une désinsectisation peut être prévue si nécessaire.</p>
-        </div>
-      </div>
-      <div class="kc-step kc-fade">
-        <div class="kc-step-num">5</div>
-        <div class="kc-step-body">
-          <h3>Remise en état &amp; suivi</h3>
-          <p>Le logement est rendu sain, ordonné et habitable. Nous restons disponibles pour un suivi ou un entretien régulier, afin d'inscrire l'amélioration dans la durée.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5 · BANDEAU -->
-<section class="kc-banner">
-  <div class="kc-banner-content kc-fade">
-    <span class="eyebrow">Avec mesure et dignité</span>
-    <h2>Derrière chaque logement,<br>il y a <em>une personne</em></h2>
-    <p>Nous savons combien ces situations sont sensibles.<br>Notre rôle n'est pas seulement de nettoyer, mais d'accompagner avec patience et respect, sans précipiter ni juger, pour permettre un nouveau départ dans un cadre apaisé.</p>
-    <a href="/demande-de-devis/?presta=syndrome-de-diogene" class="kc-btn kc-btn-primary" style="margin-top:28px">Réserver ma visite<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-  </div>
-</section>
-
-<!-- 6 · ENGAGEMENTS -->
-<section class="kc-commit">
-  <div class="kc-diog-wrap">
-    <div class="kc-diog-header kc-fade">
-      <span class="eyebrow">Nos engagements</span>
-      <h2 class="section-title">Discrétion, respect et <em>sécurité</em></h2>
-      <p class="section-desc">Trois principes guident chacune de nos interventions sur ces situations sensibles.</p>
-    </div>
-    <div class="kc-commit-grid">
-      <div class="kc-commit-card kc-fade">
-        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v1H7a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-2V5a3 3 0 0 0-3-3z"/></svg></div>
-        <h3>Discrétion totale</h3>
-        <p>Véhicules sobres, interventions organisées en toute confidentialité vis-à-vis du voisinage. Aucune information n'est partagée avec des tiers sans votre accord.</p>
-      </div>
-      <div class="kc-commit-card kc-fade">
-        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <h3>Respect &amp; sans jugement</h3>
-        <p>Nous avançons au rythme de la personne, préservons les objets qui comptent et veillons à la dignité de chacun à chaque étape de l'intervention.</p>
-      </div>
-      <div class="kc-commit-card kc-fade">
-        <div class="kc-commit-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <h3>Équipes équipées &amp; protégées</h3>
-        <p>Nos intervenants disposent des équipements de protection adaptés et appliquent des protocoles d'hygiène rigoureux, pour leur sécurité comme pour la vôtre.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 7 · COORDINATION -->
-<section class="kc-coord">
-  <div class="kc-diog-wrap kc-fade">
-    <div class="kc-coord-block">
-      <div class="kc-coord-grid">
-        <div>
-          <span class="eyebrow">Coordination possible</span>
-          <h2>Nous travaillons <em>aux côtés</em> des personnes concernées</h2>
-          <p class="kc-coord-text">Ces situations impliquent souvent plusieurs interlocuteurs.<br>Avec votre accord, nous nous coordonnons avec les personnes de confiance pour avancer dans un cadre clair et apaisé, dans l'intérêt de la personne accompagnée.</p>
-        </div>
-        <ul class="kc-coord-list">
-          <li>
-            <div class="kc-coord-li-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg></div>
-            <div><strong>Familles &amp; proches</strong><span>Échanges réguliers, à votre rythme, pour décider ensemble des étapes</span></div>
-          </li>
-          <li>
-            <div class="kc-coord-li-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/></svg></div>
-            <div><strong>Bailleurs &amp; syndics</strong><span>Remise en état avant relocation ou état des lieux, en toute discrétion</span></div>
-          </li>
-          <li>
-            <div class="kc-coord-li-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div>
-            <div><strong>Tuteurs &amp; curateurs</strong><span>Devis, déroulé et compte rendu adaptés au cadre de la mesure de protection</span></div>
-          </li>
-          <li>
-            <div class="kc-coord-li-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg></div>
-            <div><strong>Travailleurs sociaux</strong><span>Intervention en lien avec l'accompagnement déjà en place <!-- 👉 À COMPLÉTER : préciser les partenariats / cadres d'intervention validés par la propriétaire --></span></div>
-          </li>
+      <div class="kcl-card">
+        <h3 style="margin-bottom:18px">Ce que vous obtenez</h3>
+        <ul class="kcl-check">
+          <li>Un <strong style="color:#fff">interlocuteur unique</strong>, du premier échange au compte rendu</li>
+          <li>Un devis écrit et un déroulé prévu, définis avec vous et la personne concernée</li>
+          <li>Une coordination, avec votre accord, avec les proches, le tuteur ou curateur, le bailleur ou l’accompagnement déjà en place</li>
+          <li>Un logement rendu sain, ordonné et habitable, avec un suivi possible dans la durée</li>
         </ul>
+        </div>
       </div>
+      <!-- 👉 À COMPLÉTER : préciser les partenariats / cadres d'intervention validés par la propriétaire (travailleurs sociaux, mesures de protection). -->
+      <p class="kcl-note" style="margin:26px 0 0">Ces interventions sont coordonnées par Kayli Clinn et réalisées avec des partenaires certifiés et assurés. <a href="/a-propos/">Qui nous sommes</a>.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 8 · FAQ -->
-<section>
-  <div class="kc-diog-wrap">
-    <div class="kc-diog-header kc-fade">
-      <span class="eyebrow">Questions fréquentes</span>
-      <h2 class="section-title">Vos questions, <em>en toute confiance</em></h2>
-      <p class="section-desc">Les interrogations qui reviennent le plus souvent avant une intervention liée à une situation d'accumulation.</p>
-    </div>
-    <div class="kc-faq-list">
-      <div class="kc-faq-item open kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">L'intervention est-elle réellement confidentielle&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui, sans réserve. Nous organisons les interventions avec <strong>discrétion vis-à-vis du voisinage</strong> et ne partageons aucune information avec des tiers sans votre accord. Le respect de la personne et de sa vie privée est au cœur de notre démarche.</div></div>
+  <!-- ─────────── 8. LES TROIS FAÇONS D'OBTENIR UN PRIX ─────────── -->
+  <section class="kcl-sec kcl-sec--paper" id="prix">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Obtenir un prix</p>
+        <h2>Trois façons d’obtenir un prix. Un seul niveau d’exigence.</h2>
+        <p class="kcl-lead">La discrétion, le respect de la personne et l’interlocuteur unique sont identiques quelle que soit la porte d’entrée. Ce qui change, c’est la manière dont le prix est établi : pour cette intervention, il passe toujours par un échange confidentiel puis une visite, jamais par un prix affiché en ligne.</p>
       </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Comment obtenir un tarif&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Chaque situation étant différente, nous établissons un <strong>devis personnalisé après une visite sur place</strong>. Cette évaluation, sans engagement, tient compte du volume, de l'état du logement et des contraintes d'accès. Nous ne communiquons pas de tarif en ligne afin de rester justes et précis.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Faut-il préparer ou trier le logement avant votre venue&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Non, rien n'est attendu de votre part. Nous nous occupons du <strong>tri et du débarras</strong>, en repérant avec soin les objets et documents importants. Vous pouvez nous indiquer ce qui doit être conservé en priorité.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Pouvez-vous intervenir si la personne n'est pas encore prête&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous avançons toujours <strong>au rythme de la personne concernée</strong>. Un premier échange permet souvent d'instaurer la confiance. Nous pouvons procéder par étapes et nous coordonner avec les proches ou l'accompagnement déjà en place.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Réalisez-vous aussi une désinfection&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Selon l'état du logement, un <strong>nettoyage en profondeur et une désinfection des surfaces</strong> peuvent être prévus, ainsi qu'une désinsectisation si nécessaire. Les modalités sont précisées dans le devis après la visite. <!-- 👉 À COMPLÉTER : détailler le périmètre 3D/biocides une fois le Certibiocide obtenu --></div></div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="kcl-packs kcl-rv">
 
-<!-- 9 · ZONES -->
-<section class="kc-zones">
-  <div class="kc-diog-wrap">
-    <div class="kc-diog-header kc-fade">
-      <span class="eyebrow">Zones d'intervention</span>
-      <h2 class="section-title">Nous intervenons partout en <em>Île&#8209;de&#8209;France</em></h2>
-      <p class="section-desc">Nos équipes se déplacent dans les huit départements franciliens pour une visite et une intervention discrètes.</p>
-    </div>
-    <div class="kc-zones-list">
-      <div class="kc-zone kc-fade">75<span>Paris</span></div>
-      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
-      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
-      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
-      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
-      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
-      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
-      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
-    </div>
-  </div>
-</section>
+        <!-- Forfait en ligne -->
+        <article class="kcl-pack">
+          <p class="kcl-pack-mention">Prix ferme, réservable en ligne</p>
+          <h3>Forfait — Prix de la grille</h3>
+          <p class="kcl-pack-profil">Pour les prestations standard des particuliers : turnover Airbnb, fin de bail ou déménagement, vitrerie résidentielle. Ne concerne pas une situation d’accumulation.</p>
+          <ul>
+            <li>Prix fixé selon la typologie du logement, affiché TTC</li>
+            <li>Options ajoutées ligne par ligne, avant de valider</li>
+            <li>Réservation du créneau en ligne, paiement sécurisé</li>
+            <li>Devis récapitulatif envoyé par e-mail</li>
+          </ul>
+          <p class="kcl-pack-benef">Réservé aux logements dont l’état permet un prix de grille, sans visite.</p>
+          <a class="kcl-btn kcl-btn--ghost" href="/devis/" data-track="estimation_click" data-pack="forfait">Estimer et réserver en ligne</a>
+        </article>
 
-<!-- 10 · CTA FINAL -->
-<section class="kc-final-cta">
-  <div class="kc-final-cta-wrap kc-fade">
-    <span class="kc-final-cta-tag">Échange confidentiel · Sans engagement</span>
-    <h2>Parlons-en, <em>simplement et sans jugement</em></h2>
-    <p>Un appel suffit pour évoquer la situation et organiser une visite.<br>Nous établissons ensuite un devis confidentiel, à votre rythme.</p>
-    <div class="kc-final-ctas">
-      <a href="/demande-de-devis/?presta=syndrome-de-diogene" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
-      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></a>
+        <!-- Visite gratuite -->
+        <article class="kcl-pack">
+          <p class="kcl-pack-mention">Une visite discrète, sans engagement</p>
+          <h3>Visite gratuite — Devis sur mesure</h3>
+          <p class="kcl-pack-profil">Pour évaluer sur place le volume, l’état du logement et les contraintes d’accès, quand vous êtes prêt à ce que nous venions.</p>
+          <p class="kcl-pack-plus">Ce que comprend la visite :</p>
+          <ul>
+            <li>Relevé discret du volume, de l’état du logement et des accès</li>
+            <li>Échange sur le rythme souhaité et les objets à conserver</li>
+            <li>Déroulé prévu, étape par étape</li>
+            <li>Devis confidentiel, sans engagement</li>
+            <li>Aucun paiement pour la visite</li>
+          </ul>
+          <p class="kcl-pack-benef">Le prix repose sur ce que nous avons vu, jamais sur une estimation à distance.</p>
+          <a class="kcl-btn kcl-btn--ghost" href="/reservation/?visite=syndrome-de-diogene" data-track="visite_click" data-pack="visite">Réserver une visite gratuite</a>
+        </article>
+
+        <!-- Demande de devis -->
+        <article class="kcl-pack kcl-pack--reco">
+          <p class="kcl-pack-mention"><span class="kcl-pack-badge">Recommandé pour cette intervention</span></p>
+          <h3>Demande de devis — Être rappelé</h3>
+          <p class="kcl-pack-profil">Pour évoquer la situation par écrit, en quelques lignes, et être rappelé par votre interlocuteur au moment qui vous convient.</p>
+          <ul>
+            <li>Formulaire en quelques lignes, échange confidentiel</li>
+            <li>Rappel par votre interlocuteur Kayli Clinn, sans jugement</li>
+            <li>Proposition de visite discrète quand vous êtes prêt</li>
+            <li>Devis confidentiel avant toute intervention</li>
+          </ul>
+          <p class="kcl-pack-benef">Vous gardez la main sur le moment de l’échange et sur ce que vous partagez.</p>
+          <a class="kcl-btn" href="/demande-de-devis/?presta=syndrome-de-diogene" data-track="devis_click" data-pack="devis">Demander un devis <span class="kcl-arrow">→</span></a>
+        </article>
+      </div>
+
+      <p class="kcl-tarif" style="text-align:center;margin-top:26px;max-width:92ch;margin-left:auto;margin-right:auto">Aucun prix n’est affiché ni réservable en ligne pour cette intervention. Chaque situation étant différente, le devis est établi après une visite sur place, sans engagement, en tenant compte du volume, de l’état du logement et des contraintes d’accès. Le devis reste strictement confidentiel.</p>
+
+      <div class="kcl-conseil">
+        <div>
+          <h3>Quel parcours choisir ?</h3>
+          <p>Pour une situation d’accumulation, la demande de devis est le point de départ le plus simple : vous décrivez la situation en quelques lignes, votre interlocuteur vous rappelle et vous décidez ensemble du moment de la visite. Si vous êtes déjà prêt à ce que nous venions, vous pouvez réserver directement une visite gratuite. Les forfaits en ligne, eux, sont réservés aux prestations standard des particuliers.</p>
+        </div>
+        <a class="kcl-btn" href="/demande-de-devis/?presta=syndrome-de-diogene" data-track="devis_click">Être conseillé sur ma situation <span class="kcl-arrow">→</span></a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ─────────── 9. FAQ ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-head--center kcl-rv">
+        <p class="kcl-eyebrow">Questions fréquentes</p>
+        <h2>Syndrome de Diogène : vos questions, en toute confiance</h2>
+      </div>
+      <div class="kcl-faq kcl-rv">
+        <details><summary>L’intervention est-elle réellement confidentielle ?</summary><div class="kcl-faq-a"><p>Oui, sans réserve. Nous organisons les interventions avec discrétion vis-à-vis du voisinage et ne partageons aucune information avec des tiers sans votre accord. Le respect de la personne et de sa vie privée est au cœur de notre démarche.</p></div></details>
+        <details><summary>Comment obtenir un tarif ?</summary><div class="kcl-faq-a"><p>Chaque situation étant différente, nous établissons un devis personnalisé après une visite sur place. Cette évaluation, sans engagement, tient compte du volume, de l’état du logement et des contraintes d’accès. Nous ne communiquons pas de tarif en ligne afin de rester justes et précis.</p></div></details>
+        <details><summary>Faut-il préparer ou trier le logement avant votre venue ?</summary><div class="kcl-faq-a"><p>Non, rien n’est attendu de votre part. Nous nous occupons du tri et du débarras, en repérant avec soin les objets et documents importants. Vous pouvez nous indiquer ce qui doit être conservé en priorité.</p></div></details>
+        <details><summary>Pouvez-vous intervenir si la personne n’est pas encore prête ?</summary><div class="kcl-faq-a"><p>Nous avançons toujours au rythme de la personne concernée. Un premier échange permet souvent d’instaurer la confiance. Nous pouvons procéder par étapes et nous coordonner avec les proches ou l’accompagnement déjà en place.</p></div></details>
+        <!-- 👉 À COMPLÉTER : détailler le périmètre 3D/biocides une fois le Certibiocide obtenu -->
+        <details><summary>Réalisez-vous aussi une désinfection ?</summary><div class="kcl-faq-a"><p>Selon l’état du logement, un nettoyage en profondeur et une désinfection des surfaces peuvent être prévus, ainsi qu’une désinsectisation si nécessaire. Les modalités sont précisées dans le devis après la visite.</p></div></details>
+        <!-- 👉 À COMPLÉTER : préciser les partenariats / cadres d'intervention validés par la propriétaire -->
+        <details><summary>Pouvez-vous vous coordonner avec un tuteur, un bailleur ou un travailleur social ?</summary><div class="kcl-faq-a"><p>Oui, avec votre accord. Pour les tuteurs et curateurs, nous fournissons un cadre clair (devis, déroulé, compte rendu) adapté aux obligations de la mesure de protection. Pour les bailleurs et syndics, la remise en état avant relocation ou état des lieux est organisée en toute discrétion. Lorsqu’un accompagnement social est déjà en place, nous intervenons en lien avec lui.</p></div></details>
+        <!-- 👉 À VALIDER (propriétaire) : formulation du partenariat de sous-traitance (voir encadré en haut de page). -->
+        <details><summary>Qui réalise l’intervention ?</summary><div class="kcl-faq-a"><p>Kayli Clinn coordonne votre projet et le confie à des prestataires partenaires certifiés et assurés, spécialisés dans ces interventions. Vous gardez un interlocuteur unique chez Kayli Clinn, du devis jusqu’au compte rendu.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 10. VISITE GRATUITE ─────────── -->
+  <section class="kcl-sec kcl-sec--tight">
+    <div class="kcl-wrap">
+      <div class="kcl-visite kcl-rv">
+        <div>
+          <p class="kcl-eyebrow">Avant de chiffrer</p>
+          <h2>Une visite discrète et gratuite avant tout devis</h2>
+          <p>Volume, état du logement, contraintes d’accès, rythme souhaité : c’est ce relevé sur place qui permet un devis juste et un déroulé adapté. Sans engagement, au moment qui vous convient, et à celui de la personne concernée.</p>
+        </div>
+        <a class="kcl-btn" href="/reservation/?visite=syndrome-de-diogene" data-track="visite_click">Réserver une visite gratuite <span class="kcl-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 11. LIENS INTERNES ─────────── -->
+  <section class="kcl-sec kcl-sec--tight">
+    <div class="kcl-wrap">
+      <p class="kcl-eyebrow">Pour aller plus loin</p>
+      <div class="kcl-cross">
+        <a href="/scenes-sensibles/"><b>Scènes sensibles</b><span>Après un décès ou une contamination biologique : discrétion, constat sur place et remise en état.</span></a>
+        <a href="/remise-en-etat/"><b>Remise en état</b><span>Logement ou local très dégradé à rendre propre et présentable, sur devis après visite.</span></a>
+        <a href="/desinsectisation/"><b>Désinsectisation</b><span>Traitement des insectes par un partenaire certifié, coordonné par Kayli Clinn.</span></a>
+        <a href="/parties-communes-immeubles/"><b>Parties communes et copropriétés</b><span>Halls, escaliers et locaux techniques, avec carnet de passage pour le syndic.</span></a>
+        <a href="/a-propos/"><b>Qui sommes-nous</b><span>Notre méthode, nos réalisations et nos informations légales.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Balisage structuré : fil d’Ariane, service et FAQ.
+       Toute modification de la FAQ visible doit être répercutée ici. Service sensible, SANS offers chiffrées (devis pur). -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kayliclinn.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://kayliclinn.fr/prestations/"},
+        {"@type": "ListItem", "position": 3, "name": "Syndrome de Diogène", "item": "https://kayliclinn.fr/syndrome-de-diogene/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Accompagnement et nettoyage en situation de syndrome de Diogène",
+      "serviceType": "Nettoyage, débarras et remise en état de logement encombré",
+      "url": "https://kayliclinn.fr/syndrome-de-diogene/",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Kayli Clinn",
+        "email": "contact@kayliclinn.fr",
+        "telephone": "+33670012061",
+        "url": "https://kayliclinn.fr",
+        "address": {"@type": "PostalAddress", "streetAddress": "60 rue François Ier", "addressLocality": "Paris", "postalCode": "75008", "addressCountry": "FR"}
+      },
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Paris"},
+        {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"},
+        {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis"},
+        {"@type": "AdministrativeArea", "name": "Val-de-Marne"},
+        {"@type": "AdministrativeArea", "name": "Seine-et-Marne"},
+        {"@type": "AdministrativeArea", "name": "Yvelines"},
+        {"@type": "AdministrativeArea", "name": "Essonne"},
+        {"@type": "AdministrativeArea", "name": "Val-d’Oise"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "L’intervention est-elle réellement confidentielle ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, sans réserve. Nous organisons les interventions avec discrétion vis-à-vis du voisinage et ne partageons aucune information avec des tiers sans votre accord. Le respect de la personne et de sa vie privée est au cœur de notre démarche."}},
+        {"@type": "Question", "name": "Comment obtenir un tarif ?", "acceptedAnswer": {"@type": "Answer", "text": "Chaque situation étant différente, nous établissons un devis personnalisé après une visite sur place. Cette évaluation, sans engagement, tient compte du volume, de l’état du logement et des contraintes d’accès. Nous ne communiquons pas de tarif en ligne afin de rester justes et précis."}},
+        {"@type": "Question", "name": "Faut-il préparer ou trier le logement avant votre venue ?", "acceptedAnswer": {"@type": "Answer", "text": "Non, rien n’est attendu de votre part. Nous nous occupons du tri et du débarras, en repérant avec soin les objets et documents importants. Vous pouvez nous indiquer ce qui doit être conservé en priorité."}},
+        {"@type": "Question", "name": "Pouvez-vous intervenir si la personne n’est pas encore prête ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous avançons toujours au rythme de la personne concernée. Un premier échange permet souvent d’instaurer la confiance. Nous pouvons procéder par étapes et nous coordonner avec les proches ou l’accompagnement déjà en place."}},
+        {"@type": "Question", "name": "Réalisez-vous aussi une désinfection ?", "acceptedAnswer": {"@type": "Answer", "text": "Selon l’état du logement, un nettoyage en profondeur et une désinfection des surfaces peuvent être prévus, ainsi qu’une désinsectisation si nécessaire. Les modalités sont précisées dans le devis après la visite."}},
+        {"@type": "Question", "name": "Pouvez-vous vous coordonner avec un tuteur, un bailleur ou un travailleur social ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui, avec votre accord. Pour les tuteurs et curateurs, nous fournissons un cadre clair (devis, déroulé, compte rendu) adapté aux obligations de la mesure de protection. Pour les bailleurs et syndics, la remise en état avant relocation ou état des lieux est organisée en toute discrétion. Lorsqu’un accompagnement social est déjà en place, nous intervenons en lien avec lui."}},
+        {"@type": "Question", "name": "Qui réalise l’intervention ?", "acceptedAnswer": {"@type": "Answer", "text": "Kayli Clinn coordonne votre projet et le confie à des prestataires partenaires certifiés et assurés, spécialisés dans ces interventions. Vous gardez un interlocuteur unique chez Kayli Clinn, du devis jusqu’au compte rendu."}}
+      ]
+    }
+  ]
+}
+  </script>
 
 </div>
 
 <script>
+/* Kayli Clinn — page prestation. JavaScript natif, sans dépendance.
+   Aucun contenu essentiel ne dépend de ce script : sans lui, toutes les
+   prestations restent visibles, le sélecteur reste un simple groupe de boutons
+   et les liens vers l'estimation et le devis fonctionnent. */
 (function(){
-  document.querySelectorAll('.kc-faq-q').forEach(function(q){
-    q.addEventListener('click', function(){
-      const item = q.parentElement;
-      const wasOpen = item.classList.contains('open');
-      q.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(function(i){ i.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+  var root = document.currentScript.parentNode.querySelector('.kcl') || document.querySelector('.kcl');
+  if(!root) return;
+  var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1. Filtre des prestations par famille */
+  root.querySelectorAll('[data-filtre]').forEach(function(barre){
+    var zone = barre.parentNode.querySelector('.kcl-grid') || root.querySelector('.kcl-grid');
+    if(!zone) return;
+    var cartes = zone.querySelectorAll('.kcl-presta[data-fam]');
+    var titres = zone.querySelectorAll('.kcl-famtitre');
+    var compte = barre.querySelector('.kcl-compte');
+    barre.addEventListener('click', function(e){
+      var b = e.target.closest('.kcl-f');
+      if(!b) return;
+      var f = b.dataset.f, n = 0;
+      barre.querySelectorAll('.kcl-f').forEach(function(x){
+        x.classList.toggle('is-on', x === b);
+        x.setAttribute('aria-pressed', x === b);
+      });
+      titres.forEach(function(t){ t.classList.toggle('is-off', f !== '*'); });
+      cartes.forEach(function(c){
+        var ok = (f === '*') || c.dataset.fam === f;
+        c.classList.toggle('is-off', !ok);
+        if(ok) n++;
+      });
+      if(compte) compte.textContent = n + (n > 1 ? ' prestations' : ' prestation');
     });
   });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+
+  /* 2. Sélecteur « votre situation ressemble à… » */
+  root.querySelectorAll('[data-picks]').forEach(function(liste){
+    var cta = root.querySelector('.kcl-pick-cta');
+    var base = cta ? cta.getAttribute('href').split('&situation=')[0] : '';
+    liste.addEventListener('click', function(e){
+      var b = e.target.closest('.kcl-pick');
+      if(!b) return;
+      liste.querySelectorAll('.kcl-pick').forEach(function(x){
+        x.classList.toggle('is-on', x === b);
+        x.setAttribute('aria-pressed', x === b);
+      });
+      if(!cta) return;
+      cta.setAttribute('href', base + '&situation=' + encodeURIComponent(b.dataset.val || b.textContent.trim()));
+      var txt = cta.querySelector('[data-cta-txt]');
+      if(txt){
+        cta.classList.add('is-maj');
+        setTimeout(function(){
+          txt.textContent = (cta.dataset.verbe || 'Demander un devis') + ' : ' + b.textContent.trim();
+          cta.classList.remove('is-maj');
+        }, 180);
+      }
     });
-  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
-  document.querySelectorAll('.kc-diog .kc-fade').forEach(el => observer.observe(el));
+  });
+
+  /* 3. Suivi de conversion — n'émet que si un dataLayer existe déjà */
+  root.addEventListener('click', function(e){
+    var a = e.target.closest('[data-track]');
+    if(!a) return;
+    if(!window.dataLayer || typeof window.dataLayer.push !== 'function') return;
+    try{ window.dataLayer.push({event:a.getAttribute('data-track'), page_name:'syndrome_diogene'}); }catch(err){}
+  });
+
+  /* 4. Apparition discrète au défilement — purement décorative */
+  if(!sobre && 'IntersectionObserver' in window){
+    root.classList.add('kcl-anim');
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    root.querySelectorAll('.kcl-rv').forEach(function(el){ io.observe(el); });
+  }
 })();
 </script>
-<!-- Données structurées SEO — service sensible, SANS offers chiffrées (devis pur) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Accompagnement et nettoyage en situation de syndrome de Diogène",
-  "serviceType": "Nettoyage, débarras et remise en état de logement encombré",
-  "description": "Intervention confidentielle et respectueuse en cas de syndrome de Diogène ou d'accumulation : audit sur place, débarras, nettoyage en profondeur et remise en état. Devis établi après visite.",
-  "provider": {
-    "@type": "CleaningService",
-    "name": "Kayli Clinn",
-    "url": "https://kayliclinn.fr/",
-    "telephone": "+33670012061"
-  },
-  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"},
-  "availableChannel": {
-    "@type": "ServiceChannel",
-    "servicePhone": {"@type": "ContactPoint", "telephone": "+33670012061", "contactType": "customer service", "areaServed": "FR", "availableLanguage": "French"}
-  }
-}
-</script>
+
+<!-- ═══ FIN DU BLOC À COLLER DANS WORDPRESS ═══ -->
+</body>
+</html>

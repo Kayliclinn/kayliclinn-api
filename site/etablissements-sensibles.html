@@ -1,702 +1,989 @@
-<!-- ════════════════════════════════════════════════════════
-   PAGE PRESTATION : NETTOYAGE D'ÉTABLISSEMENTS SENSIBLES — KAYLI CLINN
-   Prestation récurrente (contrat) · B2B · WordPress-ready
-   URL : /etablissements-sensibles/  ·  Catégorie menu : Propreté récurrente
-   ────────────────────────────────────────────────────────
-   📸 PANNEAU PHOTOS — les 4 variables --photo-* ci-dessous.
-   Remplacez UNIQUEMENT l'URL entre url('…').
-   │ --photo-hero ..... grand fond du haut de page
-   │   ALT : « Couloir lumineux d'un établissement de santé entretenu
-   │   par Kayli Clinn — sols et surfaces irréprochables en Île-de-France »
-   │ --photo-banner ... bandeau immersif au milieu de page
-   │   ALT : « Salle d'attente d'un établissement médico-social nettoyée
-   │   selon un protocole d'hygiène renforcé par Kayli Clinn »
-   │ --photo-split-1 .. section « protocoles & traçabilité » (gauche)
-   │   ALT : « Agent Kayli Clinn désinfectant les points de contact d'un
-   │   établissement sensible — protocole renforcé et produits adaptés »
-   │ --photo-split-2 .. section « organisation & contrôles » (droite)
-   │   ALT : « Carnet de traçabilité et contrôle qualité d'un site sensible
-   │   par les équipes Kayli Clinn »
-   │ Format conseillé : paysage ~1600×1000 · < 300 Ko · WebP
-   👉 À COMPLÉTER : remplacer les 4 URL placeholder ci-dessous par
-      de vraies photos d'établissements sensibles (libres de droits ou maison).
-   🔗 Liens internes autorisés : /devis/ UNIQUEMENT (pas d'autres pages prestations)
-   ☎️ Téléphone : +33670012061 · Prix : AUCUN — tout sur devis (HT, clientèle pro).
-   ⚠️ NE JAMAIS INVENTER : normes, certifications, agréments, protocoles chiffrés,
-      effectifs ou délais → placeholders « 👉 À COMPLÉTER » + libellé neutre.
-   ════════════════════════════════════════════════════════ -->
-
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nettoyage d’établissements sensibles en Île-de-France | Kayli Clinn</title>
+<meta name="description" content="Nettoyage récurrent des établissements de santé, médico-sociaux, crèches, écoles et sites à fort passage en Île-de-France : plan par zone, produits adaptés au public, traçabilité. Visite gratuite avant tout devis.">
+<link rel="canonical" href="https://kayliclinn.fr/etablissements-sensibles/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..560&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Roboto:wght@500;600;700&display=swap" rel="stylesheet">
+<style>body{margin:0;background:#fff}</style>
+</head>
+<body>
+<!-- ═══ APERÇU UNIQUEMENT — ne pas copier au-dessus de cette ligne ═══ -->
 
+<!-- ============================================================
+     KAYLI CLINN — PAGE « Nettoyage d’établissements sensibles en Île-de-France » — BLOC À COLLER DANS UN BLOC "HTML PERSONNALISÉ"
+     URL : /etablissements-sensibles/
+     Styles scopés sous .kcl : aucun impact sur le reste du thème.
+     Le thème gère l'en-tête et le pied de page : ne pas les recréer ici.
+     Titre SEO et méta-description (extension SEO) :
+       Nettoyage d’établissements sensibles en Île-de-France | Kayli Clinn
+       Nettoyage récurrent des établissements de santé, médico-sociaux, crèches, écoles et sites à fort passage en Île-de-France : plan par zone, produits adaptés au public, traçabilité. Visite gratuite avant tout devis.
+     ------------------------------------------------------------
+     PHOTO DU HERO : remplacer l'URL dans style="--hero:url('…')" du <header>.
+     ============================================================ -->
 <style>
-/* ════════════════════════════════════════════════════════
-   📸 PHOTOS — À MODIFIER ICI UNIQUEMENT
-   ════════════════════════════════════════════════════════ */
-.kc-ets{
-  --photo-hero: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-etablissements-sensibles-hero.png');
-  --photo-banner: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-etablissements-sensibles-banner.png');
-  --photo-split-1: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-etablissements-sensibles-split-1.png');
-  --photo-split-2: url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-etablissements-sensibles-split-2.png');
+.kcl{
+  --navy:#0D2340; --navy-soft:#1a3a5c;
+  --teal:#0FA7A5; --teal-soft:#4CC3C1; --teal-pale:#E6F5F5; --teal-ink:#0B8483; --teal-deep:#076E6D;
+  --ivory:#F7F8FA; --paper:#FBFCFD;
+  --line:#E5E7EB; --line-soft:#EEF0F3;
+  --body:#4a5568; --muted:#6B7280;
+  --r:14px; --r-lg:20px;
+  font-family:'Inter','Helvetica Neue',Helvetica,Arial,sans-serif;
+  color:var(--body); background:#fff; line-height:1.68;
+  font-size:16.5px; -webkit-font-smoothing:antialiased;
+}
+.kcl *,.kcl *::before,.kcl *::after{box-sizing:border-box}
+.kcl img{max-width:100%;display:block}
+.kcl h1,.kcl h2,.kcl h3,.kcl h4{
+  font-family:'Fraunces','Playfair Display',Georgia,'Times New Roman',serif;
+  color:var(--navy); font-weight:600; line-height:1.16; margin:0 0 .5em;
+  letter-spacing:-.01em;
+}
+.kcl h1{font-size:clamp(1.9rem,3.8vw,3rem)}
+.kcl h2{font-size:clamp(1.5rem,2.6vw,2.1rem)}
+.kcl h3{font-size:1.16rem;line-height:1.35}
+.kcl p{margin:0 0 1.1em}
+.kcl a{color:var(--teal-ink);text-decoration:none}
+.kcl a:hover{color:var(--teal-deep)}
+.kcl ul{margin:0 0 1.1em;padding-left:1.1em}
+.kcl li{margin-bottom:.4em}
+.kcl strong{color:var(--navy);font-weight:600}
+
+/* ---------- Structure ---------- */
+.kcl-wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.kcl-wrap--narrow{max-width:840px}
+.kcl-sec{padding:60px 0}
+.kcl-sec--tight{padding:46px 0}
+.kcl-sec--ivory{background:var(--ivory)}
+.kcl-sec--paper{background:var(--paper)}
+.kcl-sec--dark{background:var(--navy);color:#c5cfdb}
+.kcl-sec--dark h2,.kcl-sec--dark h3{color:#fff}
+.kcl-sec--dark a{color:var(--teal-soft)}
+.kcl-sec--dark .kcl-lead{color:#e3e9f0}
+
+/* ---------- Éléments de titre ---------- */
+.kcl-eyebrow{
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--teal-deep);font-weight:600;margin:0 0 14px
+}
+.kcl-sec--dark .kcl-eyebrow,.kcl-hero .kcl-eyebrow{color:var(--teal-soft)}
+.kcl-lead{font-size:1.06rem;color:var(--body);max-width:66ch}
+.kcl-head{max-width:70ch;margin-bottom:34px}
+.kcl-head--center{margin-left:auto;margin-right:auto;text-align:center}
+.kcl-rule{width:52px;height:2px;background:var(--teal);border:0;margin:0 0 26px}
+.kcl-head--center .kcl-rule{margin-left:auto;margin-right:auto}
+
+/* ---------- Fil d'Ariane ---------- */
+.kcl-bread{padding:20px 0 4px;font-size:.83rem;color:var(--muted)}
+.kcl-bread a{color:#5b6b7d}
+.kcl-bread a:hover{color:var(--teal-ink)}
+.kcl-bread span{color:var(--navy)}
+.kcl-bread i{font-style:normal;padding:0 8px;color:var(--line)}
+
+/* ---------- Boutons ---------- */
+.kcl .kcl-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 26px;border-radius:999px;border:1px solid var(--teal);
+  background:var(--teal);color:#fff;font-size:.95rem;font-weight:600;
+  cursor:pointer;transition:background .25s ease,border-color .25s ease,transform .25s ease;
+  font-family:'Roboto','Inter',Helvetica,Arial,sans-serif;text-align:center;
+}
+.kcl .kcl-btn:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-1px)}
+.kcl .kcl-btn--ghost{background:transparent;color:var(--navy);border-color:var(--line)}
+.kcl .kcl-btn--ghost:hover{background:transparent;color:var(--navy);border-color:var(--teal)}
+.kcl-sec--dark .kcl-btn--ghost{color:#fff;border-color:rgba(255,255,255,.28)}
+.kcl-sec--dark .kcl-btn--ghost:hover{border-color:var(--teal-soft);color:#fff}
+.kcl-btns{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 0}
+.kcl-arrow{transition:transform .25s ease}
+.kcl-btn:hover .kcl-arrow{transform:translateX(3px)}
+
+/* ---------- Hero avec photo de fond ---------- */
+.kcl-hero{
+  position:relative;background-color:var(--navy);
+  background-image:
+    linear-gradient(100deg,rgba(13,35,64,.94) 0%,rgba(13,35,64,.86) 42%,rgba(13,35,64,.42) 100%),
+    var(--hero);
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  padding:78px 0 70px;color:#d3dbe6;
+  border-bottom:3px solid var(--teal);
+}
+.kcl-hero::after{
+  content:"";position:absolute;inset:auto 0 0 0;height:38%;pointer-events:none;
+  background:linear-gradient(to top,rgba(13,35,64,.55),transparent)
+}
+.kcl-hero-inner{position:relative;z-index:1}
+.kcl-hero-text{max-width:660px}
+.kcl-hero h1{color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.kcl-hero .kcl-lead{color:#e3e9f0}
+.kcl-hero .kcl-btn--ghost{color:#fff;border-color:rgba(255,255,255,.32)}
+.kcl-hero .kcl-btn--ghost:hover{border-color:var(--teal-soft)}
+.kcl-hero-tag{
+  margin:36px 0 0;max-width:540px;font-size:.93rem;color:#fff;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);
+  border-left:3px solid var(--teal);border-radius:0 var(--r) var(--r) 0;
+  padding:16px 24px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)
+}
+.kcl-reassure{
+  display:inline-flex;flex-wrap:wrap;gap:10px 16px;margin-top:28px;
+  font-size:.87rem;color:#4b5563;letter-spacing:.01em
+}
+.kcl-reassure b{color:var(--navy);font-weight:500}
+.kcl-hero .kcl-reassure{color:#d3dbe6}
+.kcl-hero .kcl-reassure b{color:#fff}
+.kcl-sec--dark .kcl-reassure{color:#c5cfdb}
+.kcl-sec--dark .kcl-reassure b{color:#fff}
+
+/* ---------- Images / emplacements ---------- */
+.kcl-ph{
+  position:relative;width:100%;border-radius:var(--r);overflow:hidden;
+  background:
+    linear-gradient(135deg,rgba(15,167,165,.16),rgba(13,35,64,.72)),
+    repeating-linear-gradient(45deg,#16304d 0 14px,#122a45 14px 28px);
+  display:flex;align-items:flex-end;
+}
+.kcl-ph::after{
+  content:attr(data-legend);
+  display:block;width:100%;padding:14px 16px;
+  font-size:.76rem;line-height:1.45;color:rgba(255,255,255,.82);
+  background:linear-gradient(to top,rgba(0,0,0,.55),rgba(0,0,0,0));
+  font-family:'Inter',sans-serif;
+}
+
+/* ---------- Grilles & cartes ---------- */
+.kcl-grid{display:grid;gap:20px}
+.kcl-g2{grid-template-columns:repeat(2,1fr)}
+.kcl-g3{grid-template-columns:repeat(3,1fr)}
+.kcl-g4{grid-template-columns:repeat(4,1fr)}
+.kcl-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:26px;transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+}
+.kcl-card:hover{border-color:var(--teal-soft);box-shadow:0 16px 38px rgba(13,35,64,.07);transform:translateY(-2px)}
+.kcl-card p:last-child{margin-bottom:0}
+.kcl-sec--dark .kcl-card{background:var(--navy-soft);border-color:rgba(255,255,255,.14)}
+.kcl-sec--dark .kcl-card:hover{border-color:rgba(76,195,193,.55);box-shadow:none}
+.kcl-sec--ivory .kcl-card{background:#fff}
+
+/* Cartes prestations */
+.kcl-presta{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:border-color .3s ease,box-shadow .3s ease,transform .3s ease;
+  animation:kclIn .4s ease both
+}
+.kcl-presta:hover{border-color:var(--teal-soft)}
+.kcl-presta figure{margin:0}
+.kcl-presta-body{padding:22px 24px 24px;display:flex;flex-direction:column;flex:1}
+.kcl-presta-body h3{margin-bottom:10px}
+.kcl-presta-body p{font-size:.95rem}
+.kcl-presta-detail{font-size:.9rem;color:#5b6b7d;margin:0 0 14px!important}
+.kcl-presta-tags{font-size:.88rem;color:var(--teal-deep);margin:auto 0 0!important;padding-top:6px}
+.kcl .kcl-link{
+  margin-top:auto;font-weight:600;font-size:.92rem;display:inline-flex;
+  align-items:center;gap:8px;color:var(--teal-deep)
+}
+.kcl-link .kcl-arrow{display:inline-block}
+.kcl-link:hover .kcl-arrow{transform:translateX(4px)}
+.kcl-presta.is-off{display:none}
+@keyframes kclIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Visuel des cartes prestations et de l'encart */
+.kcl-vis{
+  display:block;width:100%;height:180px;background:var(--ivory);
+  border-bottom:1px solid var(--line)
+}
+.kcl-illus{
+  display:block;width:100%;height:auto;margin:0 0 24px;
+  background:#fff;border:1px solid var(--line);border-radius:10px
+}
+.kcl-illus .t,.kcl-vis .t{fill:none;stroke:var(--teal);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.kcl-illus .d,.kcl-vis .d{fill:none;stroke:#d7dce3;stroke-width:1.1;stroke-linecap:round}
+.kcl-illus .f,.kcl-vis .f{fill:var(--teal-pale);stroke:none}
+.kcl-illus .s,.kcl-vis .s{fill:var(--navy);stroke:none}
+
+/* Intertitres de famille */
+.kcl-famtitre{
+  grid-column:1 / -1;margin:8px 0 -8px;font-family:'Fraunces',Georgia,serif;
+  font-size:.95rem;color:var(--navy);font-weight:600;
+  display:flex;align-items:center;gap:16px;letter-spacing:.01em
+}
+.kcl-famtitre::after{content:"";flex:1;height:1px;background:var(--line)}
+.kcl-famtitre:first-child{margin-top:0}
+.kcl-famtitre.is-off{display:none}
+
+/* Filtre des prestations */
+.kcl-filtre{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:30px}
+.kcl-f{
+  font-family:inherit;font-size:.9rem;font-weight:500;color:var(--body);cursor:pointer;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 20px;
+  transition:border-color .25s ease,color .25s ease,background .25s ease
+}
+.kcl-f:hover{border-color:var(--teal-soft);color:var(--navy)}
+.kcl-f.is-on{background:var(--navy);border-color:var(--navy);color:#fff;font-weight:600}
+.kcl-compte{margin-left:auto;font-size:.85rem;color:#5b6b7d}
+
+/* ---------- Listes à puces ---------- */
+.kcl-check{list-style:none;padding:0;margin:0}
+.kcl-check li{position:relative;padding-left:26px;margin-bottom:11px;font-size:.97rem}
+.kcl-check li::before{
+  content:"";position:absolute;left:0;top:.62em;width:9px;height:9px;
+  border:1.5px solid var(--teal);border-radius:50%;
+}
+.kcl-check--dense li{margin-bottom:7px;font-size:.94rem}
+
+/* ---------- Deux colonnes texte / encadré ---------- */
+.kcl-split{display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:start}
+.kcl-panel{
+  background:var(--ivory);border:1px solid var(--line);border-radius:var(--r-lg);padding:26px
+}
+.kcl-panel h3{font-size:1.05rem;margin-bottom:16px}
+.kcl-panel--accent{background:var(--teal-pale);border-color:var(--teal-soft)}
+.kcl .kcl-panel .kcl-link{color:var(--teal-deep)}
+
+/* ---------- Citation ---------- */
+.kcl-quote{
+  font-family:'Fraunces',Georgia,serif;font-size:clamp(1.35rem,2.4vw,1.85rem);
+  line-height:1.34;color:var(--navy);border-left:3px solid var(--teal);
+  padding:6px 0 6px 26px;margin:0 0 30px;max-width:24ch;font-weight:500
+}
+.kcl-sec--dark .kcl-quote{color:#fff}
+.kcl-quote--wide{max-width:34ch}
+
+/* ---------- Profils compacts ---------- */
+.kcl-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.kcl-meta span{
+  font-size:.85rem;color:var(--body);background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:7px 15px
+}
+
+/* ---------- Sélecteur « votre situation ressemble à… » ---------- */
+.kcl-picks{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 22px;padding:0;list-style:none}
+.kcl-pick{
+  font-family:inherit;font-size:.9rem;text-align:left;color:var(--body);cursor:pointer;
+  background:#fff;border:1px solid var(--line);border-radius:999px;padding:10px 17px;
+  display:inline-flex;align-items:center;gap:9px;line-height:1.25;
+  transition:border-color .22s ease,background .22s ease,color .22s ease,transform .22s ease
+}
+.kcl-pick::before{
+  content:"";width:13px;height:13px;flex:none;border:1.5px solid var(--line);border-radius:50%;
+  transition:border-color .22s ease,box-shadow .22s ease
+}
+.kcl-pick:active{transform:scale(.97)}
+.kcl-pick:hover{border-color:var(--teal-soft)}
+.kcl-pick.is-on{border-color:var(--teal);background:var(--teal-pale);color:var(--navy);font-weight:600}
+.kcl-pick.is-on::before{border-color:var(--teal);box-shadow:inset 0 0 0 3px var(--teal)}
+.kcl-pick-cta{width:100%;justify-content:center;transition:background .25s ease}
+.kcl-pick-cta [data-cta-txt]{transition:opacity .2s ease}
+.kcl-pick-cta.is-maj [data-cta-txt]{opacity:0}
+
+/* ---------- Trois preuves / principes ---------- */
+.kcl-preuves{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.kcl-preuve{
+  background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px 28px;
+  border-top:3px solid var(--teal)
+}
+.kcl-preuve span{
+  display:block;font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:var(--teal-ink);
+  margin-bottom:14px;font-weight:600
+}
+.kcl-preuve h3{font-size:1.12rem;margin-bottom:10px}
+.kcl-preuve p{margin:0;font-size:.95rem}
+
+/* ---------- Cartes d'inquiétudes ---------- */
+.kcl-sec--inq{background:var(--ivory)}
+.kcl-inq{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.kcl-inq article{
+  background:#fff;border:1px solid var(--line);border-top:3px solid var(--teal);
+  border-radius:var(--r-lg);padding:24px 22px
+}
+.kcl-inq h3{color:var(--navy);font-size:1.04rem;margin-bottom:10px}
+.kcl-inq p{color:var(--body);font-size:.91rem;margin-bottom:14px}
+.kcl-inq .kcl-rep{color:var(--navy);font-size:.93rem;margin:0;padding-top:13px;border-top:1px solid var(--line-soft)}
+.kcl-inq .kcl-rep b{color:var(--teal-deep)}
+
+/* ---------- Méthode : six étapes toutes visibles ---------- */
+.kcl-etapes-s{display:grid;grid-template-columns:repeat(3,1fr);gap:0 30px}
+.kcl-etape-s{border-top:2px solid var(--line);padding:24px 0 30px;position:relative}
+.kcl-etape-s::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;
+  border-radius:50%;background:var(--teal);border:2px solid var(--teal)}
+.kcl-etape-s b{display:block;font-family:'Fraunces',Georgia,serif;font-size:.86rem;
+  color:var(--teal-deep);letter-spacing:.08em;margin-bottom:8px}
+.kcl-etape-s h3{font-size:1.06rem;margin-bottom:8px}
+.kcl-etape-s p{margin:0;font-size:.92rem}
+
+/* ---------- Trois parcours, tous visibles ---------- */
+.kcl-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.kcl-pack{
+  display:flex;flex-direction:column;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:32px 30px 30px;position:relative
+}
+.kcl-pack--reco{
+  border:2px solid var(--teal);box-shadow:0 18px 44px rgba(13,35,64,.09);
+  background:var(--paper);padding:31px 29px 29px
+}
+.kcl-pack-badge{
+  display:inline-block;align-self:flex-start;background:var(--navy);color:#fff;
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  padding:6px 14px;border-radius:999px;margin:0 0 12px;line-height:1.3;max-width:100%
+}
+.kcl-pack-mention{
+  font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);
+  font-weight:700;margin:0 0 12px;height:30px;display:flex;align-items:center
+}
+.kcl-pack h3{font-size:1.22rem;margin-bottom:12px;line-height:1.25}
+.kcl-pack-profil{
+  font-size:.9rem;color:var(--body);background:var(--ivory);border-radius:10px;
+  padding:14px 16px;margin-bottom:22px
+}
+.kcl-pack--reco .kcl-pack-profil{background:#fff;border:1px solid var(--teal-soft)}
+.kcl-pack-plus{
+  font-size:.82rem;font-weight:700;color:var(--teal-deep);text-transform:uppercase;
+  letter-spacing:.08em;margin:0 0 12px
+}
+.kcl-pack ul{margin:0 0 22px;padding:0;list-style:none}
+.kcl-pack li{position:relative;padding:0 0 11px 26px;font-size:.93rem;line-height:1.5}
+.kcl-pack li::before{
+  content:"";position:absolute;left:0;top:.5em;width:9px;height:9px;
+  border:1.5px solid var(--teal);border-radius:50%
+}
+.kcl-pack--reco li::before{background:var(--teal)}
+.kcl-pack-benef{
+  font-size:.93rem;color:var(--navy);border-left:3px solid var(--teal-soft);
+  padding:2px 0 2px 16px;margin:0 0 24px
+}
+.kcl-pack .kcl-btn{margin-top:auto;justify-content:center;width:100%}
+.kcl-pack .kcl-btn--ghost{border-color:var(--line)}
+.kcl-tarif{font-size:.84rem;color:#5b6b7d;margin:0 0 18px;line-height:1.5}
+.kcl .kcl-tarif a{color:var(--teal-deep)}
+.kcl-conseil{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  background:var(--teal-pale);border:1px solid var(--teal-soft);border-radius:var(--r-lg);
+  padding:30px 34px;margin-top:36px
+}
+.kcl-conseil h3{font-size:1.15rem;margin-bottom:8px}
+.kcl-conseil p{margin:0;font-size:.95rem;max-width:80ch}
+
+/* ---------- Fiche d'identification ---------- */
+.kcl-fiche{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--line);
+  border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;margin:0 0 34px
+}
+.kcl-fiche div{background:#fff;padding:22px 22px}
+.kcl-fiche dt{
+  font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:7px
+}
+.kcl-fiche dd{margin:0;font-family:'Fraunces',Georgia,serif;font-size:1.02rem;
+  color:var(--navy);line-height:1.35}
+
+/* ---------- FAQ ---------- */
+.kcl-faq{max-width:880px;margin:0 auto}
+.kcl-faq details{border-bottom:1px solid var(--line);padding:4px 0}
+.kcl-faq summary{
+  list-style:none;cursor:pointer;padding:22px 44px 22px 0;position:relative;
+  font-family:'Fraunces',Georgia,serif;font-size:1.08rem;color:var(--navy);font-weight:600
+}
+.kcl-faq summary::-webkit-details-marker{display:none}
+.kcl-faq summary::after{
+  content:"+";position:absolute;right:6px;top:19px;font-family:'Inter',sans-serif;
+  font-size:1.5rem;color:var(--teal);font-weight:300;transition:transform .3s ease
+}
+.kcl-faq details[open] summary::after{transform:rotate(45deg)}
+.kcl-faq summary:hover{color:var(--teal-ink)}
+.kcl-faq-a{padding:0 40px 24px 0;font-size:.98rem}
+.kcl-faq-a p:last-child{margin-bottom:0}
+
+/* ---------- Bande « visite gratuite », après la FAQ ---------- */
+.kcl-visite{
+  display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;
+  background:var(--navy);border-radius:var(--r-lg);padding:32px 36px
+}
+.kcl-visite p.kcl-eyebrow{color:var(--teal-soft);margin-bottom:10px}
+.kcl-visite h2{color:#fff;font-size:clamp(1.2rem,2vw,1.55rem);margin-bottom:8px}
+.kcl-visite p:not(.kcl-eyebrow){color:#c5cfdb;margin:0;max-width:74ch;font-size:.96rem}
+.kcl-visite .kcl-btn{white-space:nowrap}
+
+/* ---------- Bandeau liens internes ---------- */
+.kcl-cross{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:20px}
+.kcl-cross a{
+  display:block;border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;
+  background:#fff;color:var(--navy);transition:border-color .25s ease,transform .25s ease
+}
+.kcl-cross a:hover{border-color:var(--teal);transform:translateY(-2px);color:var(--navy)}
+.kcl-cross b{display:block;font-family:'Fraunces',Georgia,serif;font-size:1.05rem;margin-bottom:5px}
+.kcl-cross span{font-size:.9rem;color:#5b6b7d}
+
+/* ---------- Notes secondaires ---------- */
+.kcl-note{font-size:.9rem;color:#5b6b7d;max-width:78ch}
+.kcl-sec--dark .kcl-note{color:#c5cfdb}
+
+/* ---------- Animations ---------- */
+.kcl-anim .kcl-rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.kcl-anim .kcl-rv.is-in{opacity:1;transform:none}
+.kcl-anim .kcl-hero-text > *,.kcl-anim .kcl-hero-tag{animation:kclUp .8s cubic-bezier(.22,.8,.3,1) both}
+.kcl-anim .kcl-hero-text > *:nth-child(2){animation-delay:.08s}
+.kcl-anim .kcl-hero-text > *:nth-child(3){animation-delay:.16s}
+.kcl-anim .kcl-hero-text > *:nth-child(4){animation-delay:.24s}
+.kcl-anim .kcl-hero-text > *:nth-child(5){animation-delay:.32s}
+.kcl-anim .kcl-hero-tag{animation-delay:.42s}
+@keyframes kclUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+/* ---------- Accessibilité ---------- */
+.kcl a:focus-visible,.kcl button:focus-visible,.kcl summary:focus-visible{
+  outline:2px solid var(--teal);outline-offset:3px;border-radius:4px
+}
+@media (prefers-reduced-motion:reduce){
+  .kcl *{transition:none!important;animation:none!important}
+  .kcl-anim .kcl-rv{opacity:1;transform:none}
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1040px){
+  .kcl-g4{grid-template-columns:repeat(2,1fr)}
+  .kcl-preuves,.kcl-inq,.kcl-packs{grid-template-columns:1fr}
+  .kcl-pack-mention{min-height:0}
+  .kcl-etapes-s{grid-template-columns:repeat(2,1fr)}
+  .kcl-fiche{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:900px){
+  .kcl-sec{padding:46px 0}
+  .kcl-hero{
+    padding:60px 0 52px;
+    background-image:
+      linear-gradient(180deg,rgba(13,35,64,.9) 0%,rgba(13,35,64,.82) 55%,rgba(13,35,64,.62) 100%),
+      var(--hero);
+  }
+  .kcl-split{grid-template-columns:1fr;gap:38px}
+  .kcl-g3,.kcl-cross{grid-template-columns:repeat(2,1fr)}
+  .kcl-conseil{grid-template-columns:1fr;gap:20px}
+  .kcl-visite{grid-template-columns:1fr;padding:26px 24px}
+}
+@media (max-width:620px){
+  .kcl{font-size:16px}
+  .kcl-wrap{padding:0 18px}
+  .kcl-g2,.kcl-g3,.kcl-g4,.kcl-cross,.kcl-etapes-s,.kcl-fiche{grid-template-columns:1fr}
+  .kcl-card,.kcl-panel{padding:24px}
+  .kcl-btns{flex-direction:column;align-items:stretch}
+  .kcl-btn{justify-content:center}
+  .kcl-hero-tag{max-width:100%}
+  .kcl-quote{max-width:none}
+  .kcl-f{padding:9px 16px;font-size:.85rem}
+  .kcl-compte{margin-left:0;width:100%}
+  .kcl-pack{padding:26px 22px 24px}
+  .kcl-conseil{padding:24px 22px}
 }
 </style>
-<!-- ↑ Photos isolees : une faute de frappe ici n'affecte QUE les images, jamais la mise en page. -->
-<style>
 
-/* ════════════════════════════════════════════════════════
-   SYSTÈME
-   ════════════════════════════════════════════════════════ */
-.kc-ets{
-  --teal:#0FA7A5; --teal-dark:#0B8483; --teal-deep:#076b69;
-  --teal-wash:#EAF6F5; --teal-soft:#F4FAF9;
-  --navy:#0D2340; --navy-2:#14294a;
-  --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
-  --cream:#F8F9FB; --cream-2:#F8F9FB; --white:#FFFFFF;
-  --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
-  --amber:#D89B3C;
-  --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
-  --shadow:0 24px 60px -22px rgba(13,35,64,0.20);
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
-  font-size:16px; line-height:1.65; color:var(--ink);
-  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  overflow-x:clip;
-}
-.kc-ets *,.kc-ets *::before,.kc-ets *::after{box-sizing:border-box}
-.kc-ets img{max-width:100%;display:block}
-.kc-ets a{color:inherit;text-decoration:none}
+<div class="kcl" id="kcl-etablissements-sensibles">
 
-/* — liens texte — */
-.kc-ets .kc-link{color:var(--teal-deep);font-weight:500;border-bottom:1px solid rgba(15,167,165,0.4);transition:border-color .2s,color .2s}
-.kc-ets .kc-link:hover{color:var(--teal);border-color:var(--teal)}
-.kc-ets .kc-promise-text .kc-link,.kc-ets .kc-banner .kc-link{color:#fff;border-color:rgba(255,255,255,0.45)}
-.kc-ets .kc-promise-text .kc-link:hover,.kc-ets .kc-banner .kc-link:hover{color:var(--teal-wash);border-color:#fff}
+  <!-- ─────────── 1. FIL D'ARIANE ─────────── -->
+  <nav class="kcl-wrap kcl-bread" aria-label="Fil d’Ariane">
+    <a href="/">Accueil</a><i>›</i><a href="/prestations/">Prestations</a><i>›</i><span>Établissements sensibles</span>
+  </nav>
 
-/* — rythme — */
-.kc-ets section{padding:clamp(84px,11vw,152px) 6%}
-.kc-ets-wrap{max-width:1240px;margin:0 auto}
-.kc-ets-header{text-align:center;max-width:760px;margin:0 auto clamp(56px,7vw,92px)}
-
-/* — sur-titre éditorial (filet + petites capitales) — */
-.kc-ets .eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:var(--teal-deep);margin-bottom:26px}
-.kc-ets .eyebrow::before{content:'';width:30px;height:1px;background:var(--teal)}
-
-/* — titres : Fraunces serif + accents italiques — */
-.kc-ets .section-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:560;font-size:clamp(28px,3.6vw,44px);color:var(--navy);line-height:1.08;letter-spacing:-0.018em;margin-bottom:22px}
-.kc-ets .section-title em,.kc-ets h2 em,.kc-ets h3 em,.kc-ets .kc-hero-title em{font-style:italic;font-weight:500;color:var(--teal-deep)}
-.kc-ets .section-desc{font-size:17px;color:var(--muted);line-height:1.75;font-weight:400}
-
-.kc-ets svg.kc-icon{display:inline-block;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-
-/* — boutons — */
-.kc-ets .kc-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:7px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;letter-spacing:0.01em;transition:all .3s cubic-bezier(.4,0,.2,1);white-space:nowrap;border:none;cursor:pointer;text-decoration:none}
-.kc-ets .kc-btn-primary{background:var(--teal);color:#fff;box-shadow:0 10px 26px -10px rgba(15,167,165,0.7)}
-.kc-ets .kc-btn-primary:hover{background:var(--teal-dark);color:#fff;transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(15,167,165,0.75)}
-.kc-ets .kc-btn-primary svg{transition:transform .3s}
-.kc-ets .kc-btn-primary:hover svg{transform:translateX(3px)}
-.kc-ets .kc-btn-secondary{background:transparent;color:var(--navy);border:1px solid var(--line)}
-.kc-ets .kc-btn-secondary:hover{border-color:var(--navy);background:transparent}
-
-/* ════════════════════════════════════════════════════════
-   HERO — plein cadre, très aéré
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-hero{position:relative;min-height:94vh;padding:clamp(150px,19vh,210px) 6% clamp(72px,10vh,120px);display:flex;flex-direction:column;justify-content:center;overflow:hidden;color:#fff;background-image:linear-gradient(90deg,rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.18) 40%,rgba(0,0,0,0) 66%),var(--photo-hero);background-size:cover;background-position:center}
-.kc-ets .kc-hero-wrap{max-width:1240px;margin:0 auto;width:100%;position:relative;z-index:2}
-.kc-ets .kc-hero-content{max-width:none}
-.kc-ets .kc-hero-eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:12px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;color:#fff;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 1px 12px rgba(0,0,0,0.55)}
-@media(max-width:600px){.kc-hero-eyebrow{letter-spacing:0.1em !important;font-size:11px !important;gap:9px !important}}
-.kc-ets .kc-hero-eyebrow::before{content:'';width:36px;height:1px;background:var(--teal)}
-.kc-ets .kc-hero-title{font-family:'Fraunces',Georgia,serif;font-optical-sizing:auto;font-weight:540;font-size:clamp(28px,4.7vw,56px);color:#fff;line-height:1.03;letter-spacing:-0.02em;margin-bottom:clamp(48px,6vw,80px);text-shadow:0 2px 30px rgba(0,0,0,0.5)}
-.kc-ets .kc-hero-title em{font-style:italic;font-weight:480;color:#fff}
-.kc-ets .kc-hero-sub{font-size:clamp(16px,1.4vw,19px);color:#fff;line-height:1.7;margin-bottom:clamp(48px,6vw,80px) !important;max-width:560px;font-weight:300;text-shadow:0 1px 16px rgba(0,0,0,0.55)}
-.kc-ets .kc-hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
-.kc-ets .kc-hero .kc-btn-secondary{background:rgba(255,255,255,0.06);color:#fff;border:1px solid rgba(255,255,255,0.45);backdrop-filter:blur(6px)}
-.kc-ets .kc-hero .kc-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
-
-/* — bande de réassurance — */
-.kc-ets .kc-trust{background:var(--navy);padding:30px 6%}
-.kc-ets .kc-trust-wrap{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:18px 40px;flex-wrap:wrap}
-.kc-ets .kc-trust-item{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,0.82);font-size:13px;font-weight:500;letter-spacing:0.01em}
-.kc-ets .kc-trust-item svg{color:var(--teal);flex-shrink:0}
-
-/* ════════════════════════════════════════════════════════
-   SECTEURS (cartes)
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-target{background:var(--cream-2)}
-.kc-ets .kc-target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.kc-ets .kc-target-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:38px 30px;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.kc-ets .kc-target-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
-.kc-ets .kc-target-icon{width:46px;height:46px;border-radius:11px;background:var(--teal-wash);color:var(--teal-deep);display:grid;place-items:center;margin-bottom:26px;transition:all .4s}
-.kc-ets .kc-target-card:hover .kc-target-icon{background:var(--teal);color:#fff}
-.kc-ets .kc-target-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:11px;letter-spacing:-0.01em;line-height:1.2}
-.kc-ets .kc-target-card p{font-size:13.5px;color:var(--muted);line-height:1.7}
-
-/* ════════════════════════════════════════════════════════
-   PROMESSE
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-promise-block{background:var(--navy);border-radius:28px;padding:clamp(44px,6vw,84px);color:#fff;position:relative;overflow:hidden}
-.kc-ets .kc-promise-block::before{content:'';position:absolute;top:-120px;right:-120px;width:440px;height:440px;background:radial-gradient(circle,rgba(15,167,165,0.16) 0%,transparent 70%);pointer-events:none}
-.kc-ets .kc-promise-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(48px,6vw,84px);align-items:center;position:relative;z-index:1}
-.kc-ets .kc-promise .eyebrow{color:var(--teal)}
-.kc-ets .kc-promise .eyebrow::before{background:var(--teal)}
-.kc-ets .kc-promise h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.85rem,3vw,2.7rem);line-height:1.1;letter-spacing:-0.015em;margin-bottom:24px;color:#fff}
-.kc-ets .kc-promise h2 em{color:var(--teal)}
-.kc-ets .kc-promise-text{font-size:15.5px;color:rgba(255,255,255,0.74);line-height:1.8;margin-bottom:18px}
-.kc-ets .kc-promise-text:last-child{margin-bottom:0}
-.kc-ets .kc-promise-text strong{color:#fff;font-weight:600}
-.kc-ets .kc-promise-points{display:flex;flex-direction:column;gap:14px}
-.kc-ets .kc-promise-point{display:flex;gap:18px;padding:20px 22px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);border-radius:13px;transition:all .3s}
-.kc-ets .kc-promise-point:hover{background:rgba(255,255,255,0.06);border-color:rgba(15,167,165,0.4);transform:translateX(4px)}
-.kc-ets .kc-promise-point-icon{width:40px;height:40px;background:rgba(15,167,165,0.16);color:var(--teal);border-radius:10px;display:grid;place-items:center;flex-shrink:0}
-.kc-ets .kc-promise-point-content strong{display:block;font-family:'Fraunces',serif;font-size:15px;font-weight:560;color:#fff;margin-bottom:4px}
-.kc-ets .kc-promise-point-content span{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6}
-
-/* ════════════════════════════════════════════════════════
-   BANDEAU
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-banner{position:relative;min-height:540px;padding:clamp(90px,12vw,150px) 6%;background-image:linear-gradient(120deg,rgba(13,35,64,0.84) 0%,rgba(11,132,131,0.66) 100%),var(--photo-banner);background-size:cover;background-position:center;background-attachment:fixed;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff}
-.kc-ets .kc-banner-content{max-width:900px}
-.kc-ets .kc-banner .eyebrow{color:rgba(255,255,255,0.92);justify-content:center}
-.kc-ets .kc-banner .eyebrow::before{background:rgba(255,255,255,0.6)}
-.kc-ets .kc-banner h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(2rem,4vw,3.1rem);line-height:1.12;letter-spacing:-0.018em;margin-bottom:24px;color:#fff}
-.kc-ets .kc-banner h2 em{font-style:italic;color:#fff}
-.kc-ets .kc-banner p{font-size:17.5px;line-height:1.75;color:rgba(255,255,255,0.9);max-width:680px;margin:0 auto;font-weight:300}
-
-/* ════════════════════════════════════════════════════════
-   EXIGENCES — fiches au trait
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-included{background:var(--cream)}
-.kc-ets .kc-included-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.kc-ets .kc-incl-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px 28px;transition:transform .35s cubic-bezier(.16,1,.3,1),box-shadow .35s,border-color .35s}
-.kc-ets .kc-incl-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
-.kc-ets .kc-incl-icon{width:48px;height:48px;background:var(--teal-wash);color:var(--teal-deep);border-radius:12px;display:grid;place-items:center;margin-bottom:22px;transition:all .35s}
-.kc-ets .kc-incl-card:hover .kc-incl-icon{background:var(--teal);color:#fff}
-.kc-ets .kc-incl-card h4{font-family:'Fraunces',serif;font-weight:560;font-size:16.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
-.kc-ets .kc-incl-card p{font-size:13px;color:var(--muted);line-height:1.7}
-
-/* ════════════════════════════════════════════════════════
-   SPLIT
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-split{background:var(--white)}
-.kc-ets .kc-split.alt{background:var(--cream-2)}
-.kc-ets .kc-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center}
-.kc-ets .kc-split.reverse .kc-split-grid{direction:rtl}
-.kc-ets .kc-split.reverse .kc-split-grid>*{direction:ltr}
-.kc-ets .kc-split-img{position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;background-image:var(--photo-split-1);background-size:cover;background-position:center;box-shadow:var(--shadow)}
-.kc-ets .kc-split.alt .kc-split-img{background-image:var(--photo-split-2)}
-.kc-ets .kc-split-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(13,35,64,0.42) 100%)}
-.kc-ets .kc-split-img-tag{position:absolute;top:22px;left:22px;padding:8px 16px;background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border-radius:100px;font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:0.04em;text-transform:uppercase;z-index:2}
-.kc-ets .kc-split-text h2{font-family:'Fraunces',serif;font-weight:560;font-size:clamp(1.75rem,3vw,2.5rem);color:var(--navy);line-height:1.12;letter-spacing:-0.015em;margin-bottom:24px}
-.kc-ets .kc-split-text p{font-size:15.5px;color:var(--muted);line-height:1.8;margin-bottom:16px}
-.kc-ets .kc-split-text p:last-of-type{margin-bottom:0}
-.kc-ets .kc-split-text strong{color:var(--navy);font-weight:600}
-.kc-ets .kc-split-quote{margin-top:32px;padding:26px 30px;background:transparent;border-left:2px solid var(--teal);border-radius:0;font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--navy);font-size:17px;line-height:1.6}
-.kc-ets .kc-split-quote-author{display:block;margin-top:14px;font-family:'Inter',sans-serif;font-style:normal;font-size:12.5px;color:var(--faint);font-weight:500;letter-spacing:0.02em}
-
-/* — liste de check sous le split — */
-.kc-ets .kc-split-checks{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
-.kc-ets .kc-split-checks li{display:flex;gap:13px;font-size:14.5px;color:var(--muted);line-height:1.55}
-.kc-ets .kc-split-checks li strong{color:var(--navy);font-weight:600}
-.kc-ets .kc-split-checks svg{flex-shrink:0;margin-top:3px;color:var(--teal-deep)}
-
-/* ════════════════════════════════════════════════════════
-   ORGANISATION (cartes au trait, sur fond crème)
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-org{background:var(--cream-2)}
-.kc-ets .kc-org-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.kc-ets .kc-org-row{display:flex;align-items:flex-start;gap:20px;padding:28px 30px;background:var(--white);border:1px solid var(--line);border-radius:13px;transition:all .3s}
-.kc-ets .kc-org-row:hover{border-color:var(--teal);transform:translateX(3px);box-shadow:var(--shadow-sm)}
-.kc-ets .kc-org-icon{width:46px;height:46px;background:var(--teal-wash);color:var(--teal-deep);border-radius:11px;display:grid;place-items:center;flex-shrink:0}
-.kc-ets .kc-org-info{flex:1;min-width:0}
-.kc-ets .kc-org-name{font-family:'Fraunces',serif;font-weight:560;font-size:16px;color:var(--navy);margin-bottom:6px;letter-spacing:-0.01em}
-.kc-ets .kc-org-desc{font-size:13.5px;color:var(--muted);line-height:1.65}
-
-/* ════════════════════════════════════════════════════════
-   PROCESS
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-process{background:var(--cream)}
-.kc-ets .kc-process-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;position:relative}
-.kc-ets .kc-process-grid::before{content:'';position:absolute;top:34px;left:9%;right:9%;height:1px;background:var(--line);z-index:0}
-.kc-ets .kc-process-step{position:relative;z-index:1;text-align:center}
-.kc-ets .kc-process-num{width:68px;height:68px;background:var(--white);border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;margin:0 auto 24px;font-family:'Fraunces',serif;font-size:21px;font-weight:560;color:var(--navy);transition:all .35s}
-.kc-ets .kc-process-step:hover .kc-process-num{border-color:var(--teal);background:var(--teal);color:#fff;box-shadow:0 14px 30px -12px rgba(15,167,165,0.8)}
-.kc-ets .kc-process-step h4{font-family:'Fraunces',serif;font-weight:560;font-size:15.5px;color:var(--navy);margin-bottom:9px;letter-spacing:-0.01em}
-.kc-ets .kc-process-step p{font-size:13px;color:var(--muted);line-height:1.65}
-.kc-ets .kc-process-step-duration{display:inline-block;margin-top:15px;padding:5px 13px;background:var(--white);border:1px solid var(--line);color:var(--teal-deep);border-radius:100px;font-size:11px;font-weight:600;letter-spacing:0.02em}
-
-/* ════════════════════════════════════════════════════════
-   POURQUOI NOUS — éditorial
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-why{background:var(--cream)}
-.kc-ets .kc-why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.kc-ets .kc-why-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
-.kc-ets .kc-why-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.kc-ets .kc-why-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent}
-.kc-ets .kc-why-card:hover::before{transform:scaleX(1)}
-.kc-ets .kc-why-num{font-family:'Fraunces',serif;font-size:14px;font-weight:560;color:var(--teal-deep);letter-spacing:0.1em;margin-bottom:26px;display:block}
-.kc-ets .kc-why-icon{width:54px;height:54px;background:var(--teal-wash);color:var(--teal-deep);border-radius:14px;display:grid;place-items:center;margin-bottom:24px;transition:all .4s}
-.kc-ets .kc-why-card:hover .kc-why-icon{background:var(--teal);color:#fff}
-.kc-ets .kc-why-card h3{font-family:'Fraunces',serif;font-weight:560;font-size:19px;color:var(--navy);margin-bottom:13px;letter-spacing:-0.01em}
-.kc-ets .kc-why-card p{font-size:14px;color:var(--muted);line-height:1.75}
-
-/* ════════════════════════════════════════════════════════
-   FAQ
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-faq-list{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.kc-ets .kc-faq-item{background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.kc-ets .kc-faq-item.open{border-color:var(--teal);box-shadow:0 16px 38px -18px rgba(15,167,165,0.5)}
-.kc-ets .kc-faq-q{padding:26px 30px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px}
-.kc-ets .kc-faq-q-text{font-family:'Fraunces',serif;font-size:17px;font-weight:560;color:var(--navy);letter-spacing:-0.01em;line-height:1.35}
-.kc-ets .kc-faq-toggle{width:32px;height:32px;background:var(--cream);color:var(--muted);border-radius:50%;display:grid;place-items:center;transition:all .3s;flex-shrink:0}
-.kc-ets .kc-faq-item.open .kc-faq-toggle{background:var(--teal);color:#fff;transform:rotate(45deg)}
-.kc-ets .kc-faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
-.kc-ets .kc-faq-item.open .kc-faq-a{max-height:520px}
-.kc-ets .kc-faq-a-content{padding:0 30px 30px;color:var(--muted);font-size:14.5px;line-height:1.8}
-.kc-ets .kc-faq-a-content strong{color:var(--navy);font-weight:600}
-
-/* ════════════════════════════════════════════════════════
-   ZONES
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-zones{background:var(--cream-2)}
-.kc-ets .kc-zones-list{display:grid;grid-template-columns:repeat(8,1fr);gap:14px;margin-top:46px}
-.kc-ets .kc-zone{padding:22px 12px;background:var(--white);border:1px solid var(--line);border-radius:13px;text-align:center;font-family:'Fraunces',serif;font-weight:560;color:var(--navy);font-size:19px;transition:all .3s;cursor:default;letter-spacing:-0.01em}
-.kc-ets .kc-zone:hover{background:var(--navy);border-color:var(--navy);color:#fff;transform:translateY(-3px)}
-.kc-ets .kc-zone span{display:block;font-family:'Inter',sans-serif;font-size:10.5px;color:var(--faint);font-weight:500;margin-top:5px;letter-spacing:0.01em}
-.kc-ets .kc-zone:hover span{color:rgba(255,255,255,0.75)}
-
-/* ════════════════════════════════════════════════════════
-   CTA FINAL — vert uni
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-final-cta{background:var(--teal-dark);color:#fff;text-align:center;padding:clamp(72px,9vw,118px) 6%;position:relative;overflow:hidden}
-.kc-ets .kc-final-cta::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:680px;height:680px;background:radial-gradient(circle,rgba(255,255,255,0.09) 0%,transparent 62%);pointer-events:none}
-.kc-ets .kc-final-cta-wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
-.kc-ets .kc-final-cta-tag{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.9);margin-bottom:24px}
-.kc-ets .kc-final-cta-tag::before{content:'';width:28px;height:1px;background:rgba(255,255,255,0.6)}
-.kc-ets .kc-final-cta h2{font-family:'Fraunces',serif;font-weight:540;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.12;margin-bottom:20px;letter-spacing:-0.018em;color:#fff}
-.kc-ets .kc-final-cta h2 em{font-style:italic;color:#fff}
-.kc-ets .kc-final-cta p{font-size:16.5px;color:rgba(255,255,255,0.85);line-height:1.7;margin:0 auto 34px;max-width:560px;font-weight:300}
-.kc-ets .kc-final-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.kc-ets .kc-final-cta .kc-btn-primary{background:#fff;color:var(--teal-dark)}
-.kc-ets .kc-final-cta .kc-btn-primary:hover{background:#fff;color:var(--teal-dark);transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(0,0,0,0.3)}
-.kc-ets .kc-final-cta .kc-btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,0.5)}
-.kc-ets .kc-final-cta .kc-btn-secondary:hover{background:rgba(255,255,255,0.1);border-color:#fff;color:#fff}
-
-/* ════════════════════════════════════════════════════════
-   ANIMATIONS
-   ════════════════════════════════════════════════════════ */
-.kc-ets .kc-fade{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.16,1,.3,1)}
-.kc-ets .kc-fade.visible{opacity:1;transform:translateY(0)}
-
-/* ════════════════════════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════════════════════════ */
-@media(max-width:1100px){
-  .kc-ets .kc-target-grid,.kc-ets .kc-included-grid{grid-template-columns:repeat(2,1fr)}
-  .kc-ets .kc-promise-grid{grid-template-columns:1fr}
-  .kc-ets .kc-banner{background-attachment:scroll}
-}
-@media(max-width:900px){
-  .kc-ets .kc-hero{min-height:90vh}
-  .kc-ets .kc-split-grid{grid-template-columns:1fr}
-  .kc-ets .kc-split.reverse .kc-split-grid{direction:ltr}
-  .kc-ets .kc-org-grid{grid-template-columns:1fr}
-  .kc-ets .kc-process-grid{grid-template-columns:repeat(3,1fr);gap:24px}
-  .kc-ets .kc-process-grid::before{display:none}
-  .kc-ets .kc-why-grid{grid-template-columns:1fr}
-  .kc-ets .kc-zones-list{grid-template-columns:repeat(4,1fr)}
-  .kc-ets .kc-trust-wrap{justify-content:flex-start;gap:14px 28px}
-}
-@media(max-width:560px){
-  .kc-ets section{padding:64px 6%}
-  .kc-ets .kc-hero{min-height:auto;padding:130px 6% 64px}
-  .kc-ets .kc-hero-title{font-size:clamp(28px,4.7vw,56px)}
-  .kc-ets .kc-target-grid,.kc-ets .kc-included-grid{grid-template-columns:1fr}
-  .kc-ets .kc-process-grid{grid-template-columns:1fr;gap:18px}
-  .kc-ets .kc-zones-list{grid-template-columns:repeat(2,1fr)}
-  .kc-ets .kc-promise-block{border-radius:20px}
-  .kc-ets .kc-btn{width:100%;justify-content:center}
-  .kc-ets .kc-hero-ctas,.kc-ets .kc-final-ctas{width:100%}
-}
-@media(prefers-reduced-motion:reduce){
-  .kc-ets *,.kc-ets *::before,.kc-ets *::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
-  .kc-ets .kc-fade{opacity:1;transform:none}
-}
-</style>
-
-<div class="kc-ets">
-
-<!-- 1 · HERO -->
-<style>
-/* Aération (text-wrap:balance) + CTA intermédiaires — cohérence accueil */
-.kc-hero-sub,.section-desc,.kc-banner p,.kc-banner h2,.kc-final-cta p,.kc-final-cta h2{text-wrap:balance}
-.kc-cta-strip{max-width:780px;margin:0 auto;padding:0 6% clamp(64px,8vw,96px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center}
-.kc-cta-strip p{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--navy);margin:0;line-height:1.18;text-wrap:balance}
-</style>
-<section class="kc-hero">
-  <div class="kc-hero-wrap">
-    <div class="kc-hero-content kc-fade">
-      <span class="kc-hero-eyebrow">Établissements sensibles · Île&#8209;de&#8209;France</span>
-      <h1 class="kc-hero-title">L'hygiène, sans <em>compromis</em></h1>
-      <p class="kc-hero-sub">Nettoyage récurrent des établissements de santé, médico-sociaux, d'accueil de la petite enfance, d'enseignement et des sites tertiaires à fort passage.<br>Protocoles renforcés, traçabilité, respect strict de vos contraintes d'accès, d'horaires et de confidentialité.</p>
-      <div class="kc-hero-ctas">
-        <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-btn kc-btn-primary">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 2 · RÉASSURANCE -->
-<div class="kc-trust">
-  <div class="kc-trust-wrap">
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro · entreprise assurée</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Équipes formées & dédiées</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Protocoles & traçabilité</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Confidentialité respectée</span></div>
-    <div class="kc-trust-item"><svg class="kc-icon" width="19" height="19" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Horaires adaptés à votre activité</span></div>
-  </div>
-</div>
-
-<!-- 3 · SECTEURS CONCERNÉS -->
-<section class="kc-target">
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Secteurs concernés</span>
-      <h2 class="section-title">Des environnements <em>exigeants</em></h2>
-      <p class="section-desc">Certains lieux accueillent des publics fragiles ou un passage intense&nbsp;:<br>l'hygiène y devient un enjeu de sécurité, de réputation et de conformité.<br>Nous adaptons nos protocoles à chaque type d'établissement.</p>
-    </div>
-    <div class="kc-target-grid">
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 6v12M6 12h12"/><rect x="3" y="3" width="18" height="18" rx="2"/></svg></div>
-        <h3>Santé & cliniques</h3>
-        <p>Cabinets médicaux, centres de soins, cliniques, laboratoires. Surfaces et points de contact traités avec des produits adaptés et un protocole renforcé.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 5.5-7 10-7 10z"/></svg></div>
-        <h3>Médico-social & EHPAD</h3>
-        <p>Résidences pour personnes âgées, foyers, établissements accueillant des publics fragiles. Une hygiène irréprochable, dans le respect des résidents.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M5 21v-1a4 4 0 0 1 4-4h6a4 4 0 0 1 4 4v1"/></svg></div>
-        <h3>Petite enfance & crèches</h3>
-        <p>Crèches, micro-crèches, haltes-garderies. Sols, jeux et sanitaires nettoyés avec des produits compatibles avec la présence de jeunes enfants.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5zM6 12v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg></div>
-        <h3>Enseignement & formation</h3>
-        <p>Écoles, centres de formation, établissements d'enseignement. Salles, sanitaires et circulations entretenus en dehors des temps de présence.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3"/><path d="M9 9v.01M9 12v.01M9 15v.01"/></svg></div>
-        <h3>Tertiaire à fort passage</h3>
-        <p>Sièges, plateaux à forte fréquentation, espaces recevant du public. Une propreté maintenue malgré un flux soutenu, sans gêner l'activité.</p>
-      </div>
-      <div class="kc-target-card kc-fade">
-        <div class="kc-target-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h3>Autres sites sensibles</h3>
-        <p>Votre établissement n'entre pas dans ces catégories&nbsp;? Décrivez-nous votre activité et vos contraintes&nbsp;: nous construisons un protocole sur mesure.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 4 · PROMESSE -->
-<section>
-  <div class="kc-ets-wrap kc-fade">
-    <div class="kc-promise-block kc-promise">
-      <div class="kc-promise-grid">
-        <div>
-          <span class="eyebrow">Notre engagement</span>
-          <h2>Une hygiène <em>maîtrisée</em>, du protocole au contrôle</h2>
-          <p class="kc-promise-text">Dans un établissement sensible, le nettoyage ne se résume pas à « faire propre ».<br>Il répond à des <strong>protocoles précis</strong>, mobilise des <strong>produits adaptés</strong> à chaque zone et doit pouvoir être <strong>tracé</strong> et contrôlé.<br>Un détail négligé peut avoir des conséquences sur la sécurité des publics accueillis.</p>
-          <p class="kc-promise-text">Nous construisons avec vous un cahier des charges détaillé, formons des équipes dédiées à votre site, et assurons un suivi qualité régulier. <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-link">Demandez votre devis</a> après une visite gratuite de vos locaux.</p>
+  <!-- ─────────── 2. HERO ─────────── -->
+  <!-- IMAGE : couloir lumineux d’un établissement de santé entretenu par Kayli Clinn (photo déjà dans la médiathèque, à remplacer par un cliché réel) -->
+  <header class="kcl-hero" style="--hero:url('https://kayliclinn.fr/wp-content/uploads/2026/05/placeholder-etablissements-sensibles-hero.png')">
+    <div class="kcl-wrap kcl-hero-inner">
+      <div class="kcl-hero-text">
+        <p class="kcl-eyebrow">Établissements sensibles · Propreté récurrente · Île-de-France</p>
+        <h1>Un plan de nettoyage par zone, appliqué à l’identique et consultable à chaque passage.</h1>
+        <p class="kcl-lead">Établissements de santé, médico-sociaux, accueil de la petite enfance, enseignement et sites tertiaires à fort passage : nous entretenons vos locaux par contrat, avec des procédures écrites par zone, des produits choisis selon le public accueilli, une équipe dédiée et une traçabilité transmise sur demande.</p>
+        <div class="kcl-btns">
+          <a class="kcl-btn" href="/demande-de-devis/?presta=etablissements-sensibles" data-track="devis_click">Demander un devis <span class="kcl-arrow">→</span></a>
         </div>
-        <div class="kc-promise-points">
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Protocoles renforcés</strong><span>Procédures écrites adaptées à chaque zone et au public accueilli</span></div>
-          </div>
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Traçabilité documentée</strong><span>Suivi des passages et des opérations, transmis sur demande</span></div>
-          </div>
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Équipes formées</strong><span>Personnel dédié et sensibilisé aux exigences de votre secteur</span></div>
-          </div>
-          <div class="kc-promise-point">
-            <div class="kc-promise-point-icon"><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-            <div class="kc-promise-point-content"><strong>Discrétion & confidentialité</strong><span>Respect des lieux, des données et des personnes présentes</span></div>
-          </div>
-        </div>
+        <p class="kcl-reassure"><b>Visite gratuite avant tout devis</b> • <b>Plan de nettoyage par zone</b> • <b>Traçabilité transmise sur demande</b></p>
+      </div>
+      <p class="kcl-hero-tag">Dans un établissement sensible, la confiance se construit passage après passage.</p>
+    </div>
+  </header>
+
+  <!-- ─────────── 3. LA PRESTATION ─────────── -->
+  <section class="kcl-sec kcl-sec--paper">
+    <div class="kcl-wrap kcl-split kcl-rv">
+      <div>
+        <p class="kcl-eyebrow">La prestation</p>
+        <h2>Le bon protocole, dans la bonne zone.</h2>
+        <hr class="kcl-rule">
+        <p>Certains lieux accueillent des publics fragiles ou un passage intense : l’hygiène y devient un enjeu de sécurité et de réputation. Le nettoyage ne se résume pas à « faire propre » : il suit des procédures précises, mobilise des produits adaptés à chaque zone et doit pouvoir être tracé et contrôlé.</p>
+        <p>Toutes les surfaces ne se traitent pas de la même façon. Nous établissons un plan de nettoyage par zone : nature des opérations, fréquences, produits et matériel dédiés, ordre d’intervention pour éviter les contaminations croisées. <strong>Chaque agent suit la même procédure documentée, pour une qualité homogène d’un passage à l’autre, quel que soit l’intervenant.</strong></p>
+        <div class="kcl-meta"><span>Santé et cliniques</span><span>Médico-social et EHPAD</span><span>Petite enfance et crèches</span><span>Enseignement et formation</span><span>Tertiaire à fort passage</span><span>Autres sites sensibles</span></div>
+      </div>
+      <aside class="kcl-panel"><svg class="kcl-illus" viewBox="0 0 400 180" role="img" aria-label="Couloir d’établissement avec zones distinctes, porte de salle et plan de nettoyage affiché">
+  <path class="d" d="M18 152h364"/>
+  <path class="t" d="M40 44h110v108H40z"/>
+  <path class="f" d="M48 52h94v92H48z"/>
+  <path class="d" d="M95 52v92"/>
+  <path class="s" d="M84 98h6v6h-6zM100 98h6v6h-6z"/>
+  <path class="t" d="M180 56h70v60h-70z"/>
+  <path class="d" d="M190 70h50M190 84h36M190 98h44"/>
+  <path class="s" d="M184 66h4v4h-4zM184 80h4v4h-4zM184 94h4v4h-4z"/>
+  <path class="t" d="M280 152V80h80v72"/>
+  <path class="f" d="M288 88h64v56h-64z"/>
+  <path class="t" d="M300 116h40"/>
+  <path class="d" d="M40 166h320M40 162v8M360 162v8"/>
+</svg>
+        <h3>Votre situation ressemble à…</h3>
+        <div class="kcl-picks" data-picks role="group"><button class="kcl-pick" type="button" data-val="Cabinet médical, centre de soins ou clinique" aria-pressed="false">Santé et cliniques</button><button class="kcl-pick" type="button" data-val="EHPAD, foyer ou établissement médico-social" aria-pressed="false">EHPAD et médico-social</button><button class="kcl-pick" type="button" data-val="Crèche, micro-crèche ou halte-garderie" aria-pressed="false">Crèche</button><button class="kcl-pick" type="button" data-val="École, centre de formation ou établissement d’enseignement" aria-pressed="false">École et formation</button><button class="kcl-pick" type="button" data-val="Site tertiaire à fort passage" aria-pressed="false">Tertiaire à fort passage</button><button class="kcl-pick" type="button" data-val="Autre site sensible à décrire" aria-pressed="false">Autre site sensible</button></div>
+        <a class="kcl-btn kcl-pick-cta" data-track="devis_click" data-verbe="Demander un devis" href="/demande-de-devis/?presta=etablissements-sensibles"><span data-cta-txt>Demander un devis</span> <span class="kcl-arrow">→</span></a></aside>
+    </div>
+  </section>
+
+  <!-- ─────────── 4. LES PRESTATIONS ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Ce que couvre le contrat</p>
+        <h2>Chaque zone a ses opérations, ses produits et son matériel.</h2>
+      </div>
+      <div class="kcl-filtre kcl-rv" data-filtre><button class="kcl-f is-on" type="button" data-f="*">Tout voir</button><button class="kcl-f" type="button" data-f="0">À chaque passage</button><button class="kcl-f" type="button" data-f="1">Zones à exigence renforcée</button><button class="kcl-f" type="button" data-f="2">Organisation et traçabilité</button><span class="kcl-compte">9 prestations</span></div>
+      <div class="kcl-grid kcl-g3">
+        <p class="kcl-famtitre" data-fam="0">À chaque passage</p>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Couloir d’établissement lavé, portes de salles et circulations dégagées">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 158V50h220v108"/>
+<path class="d" d="M40 104h220M60 158V50M240 158V50"/>
+<path class="t" d="M80 80h30v50H80zM190 80h30v50h-30z"/>
+<path class="s" d="M102 104h4v4h-4zM194 104h4v4h-4z"/>
+<path class="f" d="M120 130h60v28h-60z"/>
+<path class="d" d="M140 130v28M160 130v28M120 144h60"/></svg></figure><div class="kcl-presta-body"><h3>Sols et circulations</h3><p>Couloirs, halls, escaliers et zones de passage : aspiration, lavage et traitement adaptés à chaque revêtement, avec un matériel dédié à la zone.</p><p class="kcl-presta-tags">Couloirs · Halls · Lavage</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Sols%20et%20circulations" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Sanitaires nettoyés et désinfectés, consommables réapprovisionnés">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M50 60h60v40H50z"/>
+<path class="t" d="M80 100v20M64 120h32"/>
+<path class="t" d="M70 44v16M62 44h16"/>
+<path class="f" d="M150 90h60v26h-60z"/>
+<path class="t" d="M150 90h60v26h-60zM160 116v42M200 116v42"/>
+<path class="t" d="M180 90V70"/>
+<path class="t" d="M236 70h30v70h-30z"/>
+<path class="d" d="M236 94h30M236 118h30"/>
+<path class="d" d="M40 158h60"/></svg></figure><div class="kcl-presta-body"><h3>Sanitaires</h3><p>Nettoyage et désinfection des WC, lavabos et robinetterie, réapprovisionnement des consommables, selon la fréquence définie pour chaque zone.</p><p class="kcl-presta-tags">Désinfection · Robinetterie · Consommables</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Sanitaires" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Poignée de porte, interrupteur et main courante désinfectés">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 30h80v128H40z"/>
+<path class="s" d="M98 90h16v6H98z"/>
+<path class="t" d="M150 50h40v40h-40z"/>
+<path class="f" d="M160 60h20v20h-20z"/>
+<path class="t" d="M150 120h110v8H150z"/>
+<path class="t" d="M170 128v30M240 128v30"/>
+<path class="t" d="M220 60l14-14M228 66l14-14"/></svg></figure><div class="kcl-presta-body"><h3>Points de contact et surfaces critiques</h3><p>Poignées, interrupteurs, mains courantes, boutons d’ascenseur et surfaces partagées : gestion définie dans le plan, fréquences renforcées là où le passage est intense.</p><p class="kcl-presta-tags">Poignées · Mains courantes · Fréquences renforcées</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Points%20de%20contact%20et%20surfaces%20critiques" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="0"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Salle d’attente ou salle de classe remise en ordre avec sièges et tables">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M44 112h22v46H44zM76 112h22v46H76zM108 112h22v46h-22z"/>
+<path class="d" d="M44 130h22M76 130h22M108 130h22"/>
+<path class="t" d="M170 100h90v8h-90z"/>
+<path class="t" d="M180 108v50M250 108v50"/>
+<path class="f" d="M180 40h70v40h-70z"/>
+<path class="t" d="M180 40h70v40h-70z"/>
+<path class="d" d="M190 54h40M190 66h26"/></svg></figure><div class="kcl-presta-body"><h3>Salles d’accueil, d’attente et de classe</h3><p>Espaces qui reçoivent le public : sièges, tables, surfaces et corbeilles, entretenus en dehors des temps de présence pour ne pas gêner l’accueil.</p><p class="kcl-presta-tags">Salles d’attente · Salles de classe · Accueil</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Salles%20d%E2%80%99accueil%2C%20d%E2%80%99attente%20et%20de%20classe" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <p class="kcl-famtitre" data-fam="1">Zones à exigence renforcée</p>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Salle de soins avec table d’examen et plan de travail désinfectés">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 100h120v10H40z"/>
+<path class="t" d="M50 110v48M150 110v48"/>
+<path class="f" d="M40 100h120v10H40z"/>
+<path class="d" d="M60 92h30v8H60z"/>
+<path class="t" d="M200 70h60v88h-60z"/>
+<path class="d" d="M200 94h60M200 118h60"/>
+<path class="s" d="M224 80h12v6h-12z"/>
+<path class="t" d="M170 130h20v28h-20z"/>
+<path class="d" d="M180 130v-14"/></svg></figure><div class="kcl-presta-body"><h3>Salles de soins et de consultation</h3><p>Cabinets médicaux, centres de soins, cliniques, laboratoires : surfaces et points de contact traités avec des produits adaptés et une procédure renforcée, écrite par zone.</p><p class="kcl-presta-tags">Cabinets · Centres de soins · Procédure renforcée</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Salles%20de%20soins%20et%20de%20consultation" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Espace de crèche avec tapis de sol, jeux et petit mobilier nettoyés">
+<path class="d" d="M20 158h260"/>
+<path class="f" d="M40 130h120v28H40z"/>
+<path class="t" d="M40 130h120v28H40z"/>
+<path class="t" d="M60 106h24v24H60zM100 92h30v38h-30z"/>
+<path class="d" d="M115 92v38"/>
+<path class="t" d="M190 114a16 16 0 1 0 32 0a16 16 0 1 0-32 0"/>
+<path class="t" d="M240 100h24v58h-24z"/>
+<path class="d" d="M240 120h24M240 140h24"/>
+<path class="s" d="M200 138h12v20h-12z"/></svg></figure><div class="kcl-presta-body"><h3>Espaces de la petite enfance</h3><p>Crèches, micro-crèches, haltes-garderies : sols, jeux et sanitaires nettoyés avec des produits compatibles avec la présence de jeunes enfants.</p><p class="kcl-presta-tags">Sols · Jeux · Produits compatibles</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Espaces%20de%20la%20petite%20enfance" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="1"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Espace de vie d’une résidence pour personnes âgées, avec lit, fauteuil et table">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M40 100h110v14H40z"/>
+<path class="f" d="M40 100h110v14H40z"/>
+<path class="t" d="M46 114v44M144 114v44M46 100V70M144 100V80"/>
+<path class="d" d="M56 92h30v8H56z"/>
+<path class="t" d="M180 110h40v48h-40z"/>
+<path class="t" d="M180 110V90h40v20"/>
+<path class="d" d="M180 130h40"/>
+<path class="t" d="M240 120h30v6h-30zM255 126v32"/></svg></figure><div class="kcl-presta-body"><h3>Espaces de vie des résidents</h3><p>Résidences pour personnes âgées, foyers, établissements accueillant des publics fragiles : une hygiène rigoureuse, dans le respect des résidents et des personnes présentes.</p><p class="kcl-presta-tags">EHPAD · Foyers · Respect des personnes</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Espaces%20de%20vie%20des%20r%C3%A9sidents" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <p class="kcl-famtitre" data-fam="2">Organisation et traçabilité</p>
+
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Plan de nettoyage affiché et fiche de poste cochée passage après passage">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M50 30h110v128H50z"/>
+<path class="d" d="M62 52h86M62 72h86M62 92h86M62 112h60"/>
+<path class="s" d="M62 46h6v6h-6zM62 66h6v6h-6zM62 86h6v6h-6z"/>
+<path class="t" d="M190 70h70v88h-70z"/>
+<path class="f" d="M196 76h58v30h-58z"/>
+<path class="d" d="M200 120h50M200 134h36"/>
+<path class="t" d="M206 88l6 6 12-12"/></svg></figure><div class="kcl-presta-body"><h3>Plan de nettoyage et fiches de poste</h3><p>Procédures écrites par type de zone, fréquences définies, fiches de poste et suivi des passages. Les éléments de traçabilité vous sont transmis sur demande, dans le cadre défini au contrat.</p><p class="kcl-presta-tags">Procédures écrites · Fiches de poste · Suivi des passages</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Plan%20de%20nettoyage%20et%20fiches%20de%20poste" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+
+        <article class="kcl-presta" data-fam="2"><figure><svg class="kcl-vis" viewBox="0 0 300 180" role="img" aria-label="Chariot de nettoyage avec matériel codé par zone et ordre d’intervention">
+<path class="d" d="M20 158h260"/>
+<path class="t" d="M50 80h120v60H50z"/>
+<path class="d" d="M50 110h120"/>
+<path class="t" d="M60 140a8 8 0 1 0 16 0a8 8 0 1 0-16 0M144 140a8 8 0 1 0 16 0a8 8 0 1 0-16 0"/>
+<path class="t" d="M160 80V50h20"/>
+<path class="f" d="M60 88h20v16H60z"/>
+<path class="s" d="M90 88h20v16H90z"/>
+<path class="t" d="M120 88h20v16h-20z"/>
+<path class="t" d="M210 60h50v98h-50z"/>
+<path class="d" d="M210 84h50M210 108h50M210 132h50"/>
+<path class="d" d="M218 70h12M218 94h12M218 118h12"/></svg></figure><div class="kcl-presta-body"><h3>Matériel codé par zone</h3><p>Distinction des secteurs selon leur niveau d’exigence, matériel et produits dédiés à chaque zone, ordre d’intervention défini pour limiter les risques croisés.</p><p class="kcl-presta-tags">Zones distinctes · Matériel dédié · Ordre d’intervention</p><a class="kcl-link" href="/demande-de-devis/?presta=etablissements-sensibles&poste=Mat%C3%A9riel%20cod%C3%A9%20par%20zone" data-track="devis_click">Demander un devis pour ce poste <span class="kcl-arrow">→</span></a></div></article>
+      </div>
+      <div class="kcl-panel kcl-panel--accent kcl-rv" style="margin-top:30px">
+        <h3>Une règle que nous ne contournons pas</h3>
+        <p style="margin:0">Aucun contrat n’est chiffré sans visite de votre site ni plan de nettoyage écrit par zone, et aucun prix n’est affiché ni réservable en ligne pour un établissement sensible. Nous n’annonçons pas non plus de norme, de label ou de certification que nous ne pouvons pas vous présenter par écrit : le détail des produits et des procédures figure dans le cahier des charges établi pour votre établissement.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- BANDEAU -->
-<section class="kc-banner">
-  <div class="kc-banner-content kc-fade">
-    <span class="eyebrow">Le nettoyage qui protège vos publics</span>
-    <h2>Un établissement sensible exige<br>une hygiène <em>de tous les instants</em></h2>
-    <p>Publics fragiles, fort passage, contraintes réglementaires&nbsp;:<br>la propreté y est un enjeu de sécurité et de réputation.<br>C'est ce niveau d'exigence, maintenu à chaque passage et documenté, qui fait la différence sur la durée.</p>
-    <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-btn kc-btn-primary" style="margin-top:28px">Réserver mon audit<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
-  </div>
-</section>
-
-<!-- 5 · EXIGENCES SPÉCIFIQUES -->
-<section class="kc-included">
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Exigences spécifiques</span>
-      <h2 class="section-title">Ce qui distingue le nettoyage <em>d'un site sensible</em></h2>
-      <p class="section-desc">Au-delà d'un entretien classique, ces environnements imposent une rigueur supplémentaire à chaque étape, du choix des produits au suivi des opérations.</p>
+  <!-- ─────────── 5. INQUIÉTUDES → RÉPONSES ─────────── -->
+  <section class="kcl-sec kcl-sec--inq">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Ce qui vous inquiète, et ce que nous en faisons</p>
+        <h2>Dans un établissement sensible, un détail négligé n’est pas un détail.</h2>
+        <p class="kcl-lead">Trois situations que les responsables d’établissements nous citent le plus souvent, et la manière dont nous les traitons.</p>
+      </div>
+      <div class="kcl-inq kcl-rv">
+        <article>
+          <h3>Un produit inadapté au public accueilli</h3>
+          <p>Jeunes enfants, personnes âgées ou fragiles : un produit mal choisi ou mal dosé peut avoir des conséquences sur la sécurité des personnes présentes.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Les produits sont choisis selon l’environnement et le public, utilisés conformément à leurs conditions d’emploi, et le détail figure dans le cahier des charges établi pour votre site.</p>
+        </article>
+        <article>
+          <h3>Un intervenant qui ne connaît pas les zones</h3>
+          <p>Un remplaçant non préparé, un ordre d’intervention inversé, et le risque de contamination croisée entre deux secteurs.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Une équipe dédiée, formée à votre site et à ses zones, un matériel codé par zone et la même procédure documentée pour chaque agent. Les remplacements sont anticipés pour éviter toute rupture.</p>
+        </article>
+        <article>
+          <h3>Ne rien pouvoir présenter en cas de contrôle</h3>
+          <p>Votre direction, vos familles ou un organisme de contrôle demandent ce qui a été fait, quand, et par qui.</p>
+          <p class="kcl-rep"><b>Notre réponse.</b> Un plan de nettoyage par zone, des fiches de poste et un suivi des passages, transmis sur demande dans le cadre défini au contrat. Des contrôles qualité documentés et un plan d’action en cas d’écart constaté.</p>
+        </article>
+      </div>
     </div>
-    <div class="kc-included-grid">
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h4>Protocoles d'hygiène renforcés</h4><p>Procédures écrites par type de zone, fréquences définies, gestion des points de contact et des surfaces critiques.
-      <!-- 👉 À COMPLÉTER : préciser le référentiel/protocole appliqué une fois validé (ne rien inventer). --></p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M10 2v6.3a1 1 0 0 1-.3.7l-5 5A2 2 0 0 0 6 17h12a2 2 0 0 0 1.4-3l-5-5a1 1 0 0 1-.4-.7V2"/><path d="M8.5 2h7"/></svg></div><h4>Produits adaptés</h4><p>Sélection de produits compatibles avec chaque environnement et chaque public, utilisés selon les dosages et procédures recommandés.
-      <!-- 👉 À COMPLÉTER : lister les gammes/produits retenus (détergents, désinfectants) après validation — ne pas inventer de norme. --></p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div><h4>Traçabilité des opérations</h4><p>Suivi des passages, fiches de poste, plan de nettoyage par zone. Les éléments de traçabilité vous sont transmis sur demande.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M3 3v18h18M7 14l4-4 3 3 5-6"/></svg></div><h4>Gestion des zones à risques</h4><p>Distinction des secteurs selon leur niveau d'exigence, matériel codé par zone et ordre d'intervention pour limiter les risques croisés.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h4>Respect des horaires & accès</h4><p>Interventions calées sur votre activité (avant ouverture, après fermeture, créneaux dédiés), procédures d'accès et badges respectées.</p></div>
-      <div class="kc-incl-card kc-fade"><div class="kc-incl-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h4>Confidentialité</h4><p>Personnel sensibilisé à la discrétion, respect des données et des personnes présentes, engagement de confidentialité possible au contrat.</p></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- SPLIT 1 · PROTOCOLES & PRODUITS -->
-<section class="kc-split">
-  <div class="kc-ets-wrap">
-    <div class="kc-split-grid">
-      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Protocole & produits adaptés</span></div>
-      <div class="kc-split-text kc-fade">
-        <span class="eyebrow">Méthode & produits</span>
-        <h2>Le bon protocole, <em>la bonne zone</em></h2>
-        <p>Toutes les surfaces ne se traitent pas de la même façon. Nous établissons un <strong>plan de nettoyage par zone</strong>&nbsp;: nature des opérations, fréquences, produits et matériel dédiés, ordre d'intervention pour éviter les contaminations croisées.</p>
-        <p>Les produits sont choisis selon l'environnement et le public, et utilisés conformément à leurs conditions d'emploi. Chaque agent suit la <strong>même procédure documentée</strong>, pour une qualité homogène d'un passage à l'autre.</p>
-        <ul class="kc-split-checks">
-          <li><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Plan de nettoyage</strong> détaillé par zone et par fréquence</span></li>
-          <li><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Matériel codé par zone</strong> pour limiter les risques croisés</span></li>
-          <li><svg class="kc-icon" width="18" height="18" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><strong>Produits adaptés</strong> au public et à l'environnement</span></li>
+  <!-- ─────────── 6. LA MÉTHODE ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">La méthode Kayli Clinn</p>
+        <h2>De la visite au contrôle, une méthode claire à chaque étape</h2>
+      </div>
+      <div class="kcl-etapes-s kcl-rv">
+        <div class="kcl-etape-s"><b>01 · Échange</b><h3>Analyse du besoin</h3><p>Type d’établissement, publics accueillis, zones et leur niveau d’exigence, horaires, procédures d’accès et confidentialité.</p></div>
+        <div class="kcl-etape-s"><b>02 · Visite</b><h3>Visite gratuite du site</h3><p>Nous venons sur place comprendre vos contraintes, vos zones et vos exigences, sans engagement.</p></div>
+        <div class="kcl-etape-s"><b>03 · Devis</b><h3>Plan de nettoyage et devis</h3><p>Plan par zone, fréquences, produits, procédures et créneaux d’intervention, puis devis détaillé, sans engagement.</p></div>
+        <div class="kcl-etape-s"><b>04 · Démarrage</b><h3>Contrat et formation au site</h3><p>Mise en place de l’équipe dédiée, formation au site, gestion des badges et des clés, engagement de confidentialité possible au contrat.</p></div>
+        <div class="kcl-etape-s"><b>05 · Passages</b><h3>Interventions sur créneaux dédiés</h3><p>En dehors des temps de présence ou sur créneaux dédiés, avec le matériel codé par zone et l’ordre d’intervention prévu au plan.</p></div>
+        <div class="kcl-etape-s"><b>06 · Contrôle</b><h3>Contrôles et traçabilité</h3><p>Visites de contrôle régulières, points avec votre référent, suivi des opérations et plan d’action en cas d’écart constaté.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 7. LE SUIVI ─────────── -->
+  <section class="kcl-sec kcl-sec--dark">
+    <div class="kcl-wrap">
+      <div class="kcl-split kcl-rv">
+      <div>
+        <p class="kcl-eyebrow">Le suivi Kayli Clinn</p>
+        <h2>Un partenariat dans la durée.</h2>
+        <p class="kcl-quote kcl-quote--wide">Notre rôle ne s’arrête pas au nettoyage : il englobe le suivi et la traçabilité.</p>
+        <p class="kcl-lead">Un établissement sensible ne se contente pas d’un prestataire ponctuel : il a besoin d’un partenaire stable, joignable et réactif. Nous mettons en place un interlocuteur dédié et des points réguliers pour ajuster le service à l’évolution de vos besoins. Les contrôles qualité, le suivi des opérations et la réactivité en cas d’imprévu font partie intégrante du contrat.</p>
+        <div class="kcl-btns">
+          <a class="kcl-btn" href="/realisations/">Voir nos réalisations <span class="kcl-arrow">→</span></a>
+        </div>
+      </div>
+      <div class="kcl-card">
+        <h3 style="margin-bottom:18px">Ce que vous obtenez sur la durée</h3>
+        <ul class="kcl-check">
+          <li>Un plan de nettoyage <strong style="color:#fff">écrit par zone</strong> et appliqué à l’identique</li>
+          <li>Un suivi des passages et des opérations, transmis sur demande</li>
+          <li>Des visites de contrôle régulières et un plan d’action en cas d’écart</li>
+          <li>Un interlocuteur dédié, et la continuité de service organisée en cas d’absence</li>
         </ul>
-        <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-btn kc-btn-primary" style="margin-top:26px">Demander mon devis<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
+        </div>
       </div>
+      <p class="kcl-note" style="margin:26px 0 0">Nos prestations sont réalisées par nos propres équipes, formées et assurées. <a href="/a-propos/">Qui nous sommes</a>.</p>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- 6 · NOTRE ORGANISATION -->
-<section class="kc-org">
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Notre organisation</span>
-      <h2 class="section-title">Des équipes <em>formées</em>, des contrôles réguliers</h2>
-      <p class="section-desc">La qualité tient autant à la méthode qu'aux personnes et au suivi.<br>Nous mettons en place une organisation stable, encadrée et contrôlée sur la durée.</p>
-    </div>
-    <div class="kc-org-grid">
-      <div class="kc-org-row kc-fade">
-        <div class="kc-org-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <div class="kc-org-info"><div class="kc-org-name">Équipes dédiées & formées</div><div class="kc-org-desc">Du personnel attitré à votre site, sensibilisé aux exigences de votre secteur et aux gestes spécifiques de l'hygiène en milieu sensible.</div></div>
+  <!-- ─────────── 8. LES TROIS FAÇONS D'OBTENIR UN PRIX ─────────── -->
+  <section class="kcl-sec kcl-sec--paper" id="prix">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-rv">
+        <p class="kcl-eyebrow">Obtenir un prix</p>
+        <h2>Trois façons d’obtenir un prix. Un seul niveau d’exigence.</h2>
+        <p class="kcl-lead">Le contrôle du résultat, l’équipe formée et l’interlocuteur unique sont identiques quelle que soit la porte d’entrée. Ce qui change, c’est la manière dont le prix est établi : prix ferme de la grille, devis après visite, ou premier échange par téléphone.</p>
       </div>
-      <div class="kc-org-row kc-fade">
-        <div class="kc-org-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <div class="kc-org-info"><div class="kc-org-name">Encadrement & contrôles qualité</div><div class="kc-org-desc">Visites de contrôle régulières, points réguliers avec votre référent et plan d'action en cas d'écart constaté.</div></div>
-      </div>
-      <div class="kc-org-row kc-fade">
-        <div class="kc-org-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
-        <div class="kc-org-info"><div class="kc-org-name">Cahier des charges & traçabilité</div><div class="kc-org-desc">Un référentiel écrit, des fiches de poste claires et un suivi des opérations consultable sur demande.</div></div>
-      </div>
-      <div class="kc-org-row kc-fade">
-        <div class="kc-org-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><path d="M20.5 14.5 16 10l-3 3 4.5 4.5a2.1 2.1 0 0 0 3-3zM13 13 7 7M9 5 5 9M3 3l4 4"/></svg></div>
-        <div class="kc-org-info"><div class="kc-org-name">Matériel & continuité de service</div><div class="kc-org-desc">Matériel entretenu, remplacement organisé des agents pour garantir la continuité, gestion des aléas sans rupture de service.</div></div>
-      </div>
-      <div class="kc-org-row kc-fade">
-        <div class="kc-org-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-        <div class="kc-org-info"><div class="kc-org-name">Accès, badges & confidentialité</div><div class="kc-org-desc">Respect de vos procédures d'accès, gestion des badges et des clés, engagement de discrétion sur les lieux et les personnes.</div></div>
-      </div>
-      <div class="kc-org-row kc-fade">
-        <div class="kc-org-icon"><svg class="kc-icon" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="kc-org-info"><div class="kc-org-name">Horaires sur mesure</div><div class="kc-org-desc">Interventions planifiées en dehors des temps de présence ou sur créneaux dédiés, sans perturber votre activité.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+      <div class="kcl-packs kcl-rv">
 
-<!-- SPLIT 2 · CONTRÔLE & SUIVI -->
-<section class="kc-split alt reverse">
-  <div class="kc-ets-wrap">
-    <div class="kc-split-grid">
-      <div class="kc-split-img kc-fade"><span class="kc-split-img-tag">Contrôle & suivi qualité</span></div>
-      <div class="kc-split-text kc-fade">
-        <span class="eyebrow">Suivi & confiance</span>
-        <h2>Un partenariat <em>dans la durée</em></h2>
-        <p>Un établissement sensible ne se contente pas d'un prestataire ponctuel&nbsp;: il a besoin d'un partenaire stable, joignable et réactif. Nous mettons en place un <strong>interlocuteur dédié</strong> et des points réguliers pour ajuster le service à l'évolution de vos besoins.</p>
-        <p>Les contrôles qualité, le suivi des opérations et la réactivité en cas d'imprévu font partie intégrante du contrat. <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-link">Obtenez votre devis</a> après une visite gratuite et un cahier des charges établi ensemble.</p>
-        <div class="kc-split-quote">Dans un établissement sensible, la confiance se construit passage après passage. Notre rôle ne s'arrête pas au nettoyage&nbsp;: il englobe le suivi et la traçabilité.</div>
-      </div>
-    </div>
-  </div>
-</section>
+        <!-- Forfait en ligne -->
+        <article class="kcl-pack">
+          <p class="kcl-pack-mention">Prix ferme, réservable en ligne</p>
+          <h3>Forfait — Prix de la grille</h3>
+          <p class="kcl-pack-profil">Pour les prestations standard des particuliers : turnover Airbnb, fin de bail ou déménagement, vitrerie résidentielle.</p>
+          <ul>
+            <li>Prix fixé selon la typologie du logement, affiché TTC</li>
+            <li>Options ajoutées ligne par ligne, avant de valider</li>
+            <li>Réservation du créneau en ligne, paiement sécurisé</li>
+            <li>Devis récapitulatif envoyé par e-mail</li>
+          </ul>
+          <p class="kcl-pack-benef">Vous connaissez le montant avant de réserver, sans appel ni visite.</p>
+          <a class="kcl-btn kcl-btn--ghost" href="/devis/" data-track="estimation_click" data-pack="forfait">Estimer et réserver en ligne</a>
+        </article>
 
-<!-- 7 · PROCESS -->
-<section class="kc-process">
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Notre méthode</span>
-      <h2 class="section-title">Cinq étapes, <em>de la visite au suivi</em></h2>
-      <p class="section-desc">Une mise en place structurée, pensée pour s'intégrer à votre fonctionnement et garantir une qualité constante dans le temps.</p>
-    </div>
-    <div class="kc-process-grid">
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">01</div><h4>Visite des locaux</h4><p>Nous venons sur site, gratuitement, pour comprendre vos contraintes, vos zones et vos exigences.</p><span class="kc-process-step-duration">Gratuite</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">02</div><h4>Cahier des charges</h4><p>Plan de nettoyage par zone, fréquences, produits, protocoles et créneaux d'intervention.</p><span class="kc-process-step-duration">Sur mesure</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">03</div><h4>Devis détaillé</h4><p>Une proposition claire et adaptée, sans engagement, ajustée à votre cahier des charges.</p><span class="kc-process-step-duration">Sur devis</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">04</div><h4>Contrat & démarrage</h4><p>Mise en place de l'équipe dédiée, formation au site et lancement des prestations.</p><span class="kc-process-step-duration">Planifié</span></div>
-      <div class="kc-process-step kc-fade"><div class="kc-process-num">05</div><h4>Suivi qualité</h4><p>Contrôles réguliers, traçabilité, points avec votre référent et ajustements continus.</p><span class="kc-process-step-duration">En continu</span></div>
-    </div>
-  </div>
-</section>
+        <!-- Visite gratuite -->
+        <article class="kcl-pack kcl-pack--reco">
+          <p class="kcl-pack-mention"><span class="kcl-pack-badge">Recommandé pour un établissement sensible</span></p>
+          <h3>Visite gratuite — Devis sur mesure</h3>
+          <p class="kcl-pack-profil">Pour les établissements sensibles, les bureaux, les copropriétés, les commerces et toute prestation qui dépend des lieux.</p>
+          <p class="kcl-pack-plus">Ce que comprend la visite :</p>
+          <ul>
+            <li>Relevé sur place des zones, de leur niveau d’exigence, des surfaces et des sanitaires</li>
+            <li>Échange sur vos publics, vos horaires, vos procédures d’accès et vos contraintes de confidentialité</li>
+            <li>Plan de nettoyage écrit, zone par zone</li>
+            <li>Devis détaillé, en HT pour les professionnels</li>
+            <li>Aucun engagement, aucun paiement pour la visite</li>
+          </ul>
+          <p class="kcl-pack-benef">Le prix repose sur ce que nous avons vu, pas sur une moyenne au mètre carré.</p>
+          <a class="kcl-btn" href="/reservation/?visite=etablissements-sensibles" data-track="visite_click" data-pack="visite">Réserver une visite gratuite <span class="kcl-arrow">→</span></a>
+        </article>
 
-<!-- 8 · POURQUOI NOUS -->
-<section class="kc-why">
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Pourquoi Kayli Clinn</span>
-      <h2 class="section-title">Ce qui nous différencie <em>sur les sites sensibles</em></h2>
-      <p class="section-desc">Les environnements exigeants demandent de la rigueur, de la régularité et de la transparence.<br>Nous avons bâti notre offre récurrente autour de ces trois piliers.</p>
-    </div>
-    <div class="kc-why-grid">
-      <div class="kc-why-card kc-fade">
-        <span class="kc-why-num">01 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h3>Rigueur des protocoles</h3>
-        <p>Des procédures écrites, des produits adaptés et une méthode appliquée à l'identique, quel que soit l'agent qui intervient.</p>
+        <!-- Demande de devis -->
+        <article class="kcl-pack">
+          <p class="kcl-pack-mention">Un premier échange, à votre rythme</p>
+          <h3>Demande de devis — Être rappelé</h3>
+          <p class="kcl-pack-profil">Pour décrire votre établissement et vos contraintes par écrit et être rappelé, ou pour plusieurs sites à organiser.</p>
+          <ul>
+            <li>Formulaire en quelques lignes, photos bienvenues</li>
+            <li>Rappel par votre interlocuteur Kayli Clinn</li>
+            <li>Proposition de visite si les lieux le demandent</li>
+            <li>Devis écrit avant toute intervention</li>
+          </ul>
+          <p class="kcl-pack-benef">Vous gardez la main sur le moment de l’échange et sur ce que vous partagez.</p>
+          <a class="kcl-btn kcl-btn--ghost" href="/demande-de-devis/?presta=etablissements-sensibles" data-track="devis_click" data-pack="devis">Demander un devis</a>
+        </article>
       </div>
-      <div class="kc-why-card kc-fade">
-        <span class="kc-why-num">02 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <h3>Régularité & fiabilité</h3>
-        <p>Équipes dédiées, continuité de service assurée, interlocuteur unique&nbsp;: un partenaire stable sur lequel s'appuyer.</p>
-      </div>
-      <div class="kc-why-card kc-fade">
-        <span class="kc-why-num">03 / 03</span>
-        <div class="kc-why-icon"><svg class="kc-icon" width="24" height="24" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
-        <h3>Traçabilité & transparence</h3>
-        <p>Suivi des opérations, contrôles qualité documentés et confidentialité respectée. Vous gardez la visibilité, en confiance.</p>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 9 · FAQ -->
-<section>
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Questions fréquentes</span>
-      <h2 class="section-title">Tout ce qu'il faut <em>savoir</em></h2>
-      <p class="section-desc">Les questions que se posent les responsables d'établissements sensibles avant de confier leur entretien.</p>
-    </div>
-    <div class="kc-faq-list">
-      <div class="kc-faq-item open kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Quels établissements prenez-vous en charge&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous intervenons sur les <strong>établissements de santé et cliniques</strong>, les structures <strong>médico-sociales et EHPAD</strong>, les lieux d'<strong>accueil de la petite enfance</strong> (crèches), les établissements d'<strong>enseignement</strong> et les sites <strong>tertiaires à fort passage</strong>. Si votre activité présente des contraintes particulières, parlons-en&nbsp;: nous construisons un protocole sur mesure.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Adaptez-vous vos horaires à notre activité&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content"><strong>Oui.</strong> Les interventions sont calées sur votre fonctionnement&nbsp;: <strong>avant l'ouverture, après la fermeture ou sur des créneaux dédiés</strong>, de façon à ne jamais perturber l'accueil de vos publics. Les modalités précises sont définies ensemble lors de l'établissement du cahier des charges.</div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Assurez-vous une traçabilité des opérations&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Oui. Nous mettons en place un <strong>plan de nettoyage par zone</strong>, des <strong>fiches de poste</strong> et un <strong>suivi des passages</strong>. Les éléments de traçabilité vous sont transmis sur demande, dans le cadre défini au contrat.
-        <!-- 👉 À COMPLÉTER : préciser les outils/supports de traçabilité réellement utilisés et toute certification éventuelle — ne rien inventer. --></div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Quels produits utilisez-vous&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous sélectionnons des <strong>produits adaptés</strong> à chaque environnement et à chaque public, utilisés selon leurs conditions d'emploi. Le détail des produits et procédures est précisé dans le cahier des charges établi pour votre site.
-        <!-- 👉 À COMPLÉTER : lister les gammes/produits et toute conformité revendiquée une fois validés (ne pas inventer de norme, label ou agrément). --></div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Vos équipes sont-elles formées et stables&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Nous attribuons des <strong>équipes dédiées</strong> à votre site, sensibilisées aux exigences de votre secteur. La <strong>continuité de service</strong> est organisée (remplacements anticipés) pour éviter toute rupture, et un <strong>encadrement</strong> assure le suivi.
-        <!-- 👉 À COMPLÉTER : préciser le contenu et le niveau de formation des agents une fois arrêtés. --></div></div>
-      </div>
-      <div class="kc-faq-item kc-fade">
-        <div class="kc-faq-q"><span class="kc-faq-q-text">Comment se passe la mise en place d'un contrat&nbsp;?</span><div class="kc-faq-toggle"><svg class="kc-icon" width="14" height="14" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-        <div class="kc-faq-a"><div class="kc-faq-a-content">Tout commence par une <strong>visite gratuite</strong> de vos locaux. Nous établissons ensuite un <strong>cahier des charges</strong> détaillé, puis un <strong>devis personnalisé sans engagement</strong>. Après validation, nous mettons en place l'équipe et démarrons, avec un <strong>suivi qualité</strong> régulier. <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-link">Demandez votre devis</a> pour lancer la démarche.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
+      <p class="kcl-tarif" style="text-align:center;margin-top:26px;max-width:92ch;margin-left:auto;margin-right:auto">Le nettoyage d’un établissement sensible est établi sur devis uniquement : le prix dépend des zones et de leur niveau d’exigence, des surfaces, des fréquences retenues par zone, des produits et des créneaux d’intervention. Aucun tarif n’est affiché ni réservable en ligne pour ce type de contrat : le montant définitif est établi après une visite gratuite de votre site et un cahier des charges établi ensemble. Montants hors taxes, clientèle professionnelle.</p>
 
-<!-- 10 · ZONES -->
-<section class="kc-zones">
-  <div class="kc-ets-wrap">
-    <div class="kc-ets-header kc-fade">
-      <span class="eyebrow">Zones d'intervention</span>
-      <h2 class="section-title">Présents partout en <em>Île&#8209;de&#8209;France</em></h2>
-      <p class="section-desc">Nos équipes interviennent dans vos établissements sur les huit départements franciliens.</p>
+      <div class="kcl-conseil">
+        <div>
+          <h3>Quel parcours choisir ?</h3>
+          <p>Pour un établissement sensible, la visite gratuite est le point de départ : elle permet de distinguer vos zones, de relever vos contraintes d’accès et de confidentialité, et de rédiger un plan de nettoyage que votre référent pourra relire. Si vous préférez décrire votre site par écrit avant tout déplacement, la demande de devis vous fait rappeler par votre interlocuteur. Les forfaits en ligne, eux, sont réservés aux logements des particuliers.</p>
+        </div>
+        <a class="kcl-btn" href="/demande-de-devis/?presta=etablissements-sensibles" data-track="devis_click">Être conseillé sur mon besoin <span class="kcl-arrow">→</span></a>
+      </div>
     </div>
-    <div class="kc-zones-list">
-      <div class="kc-zone kc-fade">75<span>Paris</span></div>
-      <div class="kc-zone kc-fade">77<span>Seine-et-Marne</span></div>
-      <div class="kc-zone kc-fade">78<span>Yvelines</span></div>
-      <div class="kc-zone kc-fade">91<span>Essonne</span></div>
-      <div class="kc-zone kc-fade">92<span>Hauts-de-Seine</span></div>
-      <div class="kc-zone kc-fade">93<span>Seine-Saint-Denis</span></div>
-      <div class="kc-zone kc-fade">94<span>Val-de-Marne</span></div>
-      <div class="kc-zone kc-fade">95<span>Val-d'Oise</span></div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- 11 · CTA FINAL -->
-<section class="kc-final-cta">
-  <div class="kc-final-cta-wrap kc-fade">
-    <span class="kc-final-cta-tag">Devis gratuit · Visite sur site</span>
-    <h2>Confiez l'hygiène de votre établissement<br>à un partenaire <em>de confiance</em></h2>
-    <p>Décrivez-nous votre site et vos contraintes&nbsp;:<br>nous organisons une visite gratuite, établissons votre cahier des charges et vous remettons un devis adapté.<br>Tarification sur devis, HT pour les professionnels.</p>
-    <div class="kc-final-ctas">
-      <a href="/demande-de-devis/?presta=etablissements-sensibles" class="kc-btn kc-btn-primary">Réserver mon audit<svg class="kc-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></a>
-      <a href="tel:+33670012061" class="kc-btn kc-btn-secondary">Nous appeler</a>
+  <!-- ─────────── 9. FAQ ─────────── -->
+  <section class="kcl-sec">
+    <div class="kcl-wrap">
+      <div class="kcl-head kcl-head--center kcl-rv">
+        <p class="kcl-eyebrow">Questions fréquentes</p>
+        <h2>Établissements sensibles : vos questions</h2>
+      </div>
+      <div class="kcl-faq kcl-rv">
+        <details><summary>Quels établissements prenez-vous en charge ?</summary><div class="kcl-faq-a"><p>Nous intervenons sur les établissements de santé et cliniques, les structures médico-sociales et EHPAD, les lieux d’accueil de la petite enfance (crèches), les établissements d’enseignement et les sites tertiaires à fort passage. Si votre activité présente des contraintes particulières, décrivez-nous votre site : nous construisons un plan de nettoyage adapté.</p></div></details>
+        <details><summary>Comment est calculé le prix ?</summary><div class="kcl-faq-a"><p>Le tarif dépend des zones et de leur niveau d’exigence, des surfaces, des fréquences retenues par zone, des produits et des créneaux d’intervention. C’est pourquoi nous travaillons exclusivement sur devis : aucun prix n’est affiché ni réservable en ligne. Le montant définitif est établi après une visite gratuite de votre site et figure au contrat (montants HT pour la clientèle professionnelle).</p></div></details>
+        <details><summary>Adaptez-vous vos horaires à notre activité ?</summary><div class="kcl-faq-a"><p>Oui. Les interventions sont calées sur votre fonctionnement : avant l’ouverture, après la fermeture ou sur des créneaux dédiés, de façon à ne jamais perturber l’accueil de vos publics. Les modalités précises sont définies ensemble lors de l’établissement du cahier des charges.</p></div></details>
+        <!-- 👉 À COMPLÉTER : préciser les outils/supports de traçabilité réellement utilisés et toute certification éventuelle — ne rien inventer. -->
+        <details><summary>Assurez-vous une traçabilité des opérations ?</summary><div class="kcl-faq-a"><p>Oui. Nous mettons en place un plan de nettoyage par zone, des fiches de poste et un suivi des passages. Les éléments de traçabilité vous sont transmis sur demande, dans le cadre défini au contrat.</p></div></details>
+        <!-- 👉 À COMPLÉTER : lister les gammes/produits et toute conformité revendiquée une fois validés (ne pas inventer de norme, label ou agrément). -->
+        <details><summary>Quels produits utilisez-vous ?</summary><div class="kcl-faq-a"><p>Nous sélectionnons des produits adaptés à chaque environnement et à chaque public, utilisés selon leurs conditions d’emploi. Le détail des produits et procédures est précisé dans le cahier des charges établi pour votre site.</p></div></details>
+        <!-- 👉 À COMPLÉTER : préciser le contenu et le niveau de formation des agents une fois arrêtés. -->
+        <details><summary>Vos équipes sont-elles formées et stables ?</summary><div class="kcl-faq-a"><p>Nous attribuons des équipes dédiées à votre site, sensibilisées aux exigences de votre secteur. La continuité de service est organisée (remplacements anticipés) pour éviter toute rupture, et un encadrement assure le suivi.</p></div></details>
+        <details><summary>Comment se passe la mise en place d’un contrat ?</summary><div class="kcl-faq-a"><p>Tout commence par une visite gratuite de vos locaux. Nous établissons ensuite un cahier des charges détaillé, puis un devis personnalisé sans engagement. Après validation, nous mettons en place l’équipe et démarrons, avec un suivi qualité régulier.</p></div></details>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- ─────────── 10. VISITE GRATUITE ─────────── -->
+  <section class="kcl-sec kcl-sec--tight">
+    <div class="kcl-wrap">
+      <div class="kcl-visite kcl-rv">
+        <div>
+          <p class="kcl-eyebrow">Avant de chiffrer</p>
+          <h2>Une visite gratuite de votre établissement avant tout devis</h2>
+          <p>Zones et niveau d’exigence, surfaces, sanitaires, publics accueillis, horaires, procédures d’accès : c’est ce relevé qui détermine le plan de nettoyage, les fréquences par zone et le budget. Sans engagement, aux heures qui vous conviennent.</p>
+        </div>
+        <a class="kcl-btn" href="/reservation/?visite=etablissements-sensibles" data-track="visite_click">Réserver une visite gratuite <span class="kcl-arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── 11. LIENS INTERNES ─────────── -->
+  <section class="kcl-sec kcl-sec--tight">
+    <div class="kcl-wrap">
+      <p class="kcl-eyebrow">Pour aller plus loin</p>
+      <div class="kcl-cross">
+        <a href="/entretien-de-bureaux/"><b>Entretien de bureaux</b><span>Locaux professionnels entretenus par contrat, aux horaires de votre activité.</span></a>
+        <a href="/parties-communes-immeubles/"><b>Parties communes et copropriétés</b><span>Halls, escaliers et locaux techniques, avec carnet de passage pour le syndic.</span></a>
+        <a href="/commerces-retail/"><b>Commerces et retail</b><span>Boutiques et surfaces de vente, avant ou après ouverture, sans gêner la clientèle.</span></a>
+        <a href="/nettoyage-fin-de-chantier/"><b>Fin de chantier</b><span>Après travaux dans votre établissement : dépoussiérage fin, traces de peinture et de plâtre.</span></a>
+        <a href="/decapage-cristallisation-sols/"><b>Décapage et cristallisation des sols</b><span>Sols de circulations remis à niveau en profondeur, hors temps de présence.</span></a>
+        <a href="/a-propos/"><b>Qui sommes-nous</b><span>Notre méthode, nos réalisations et nos informations légales.</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Balisage structuré : fil d’Ariane, service et FAQ.
+       Toute modification de la FAQ visible doit être répercutée ici. -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://kayliclinn.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "Prestations", "item": "https://kayliclinn.fr/prestations/"},
+        {"@type": "ListItem", "position": 3, "name": "Établissements sensibles", "item": "https://kayliclinn.fr/etablissements-sensibles/"}
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Nettoyage d’établissements sensibles",
+      "serviceType": "Nettoyage récurrent d’établissements de santé, médico-sociaux, de petite enfance, d’enseignement et de sites à fort passage",
+      "url": "https://kayliclinn.fr/etablissements-sensibles/",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Kayli Clinn",
+        "email": "contact@kayliclinn.fr",
+        "telephone": "+33670012061",
+        "url": "https://kayliclinn.fr",
+        "address": {"@type": "PostalAddress", "streetAddress": "60 rue François Ier", "addressLocality": "Paris", "postalCode": "75008", "addressCountry": "FR"}
+      },
+      "areaServed": [
+        {"@type": "AdministrativeArea", "name": "Paris"},
+        {"@type": "AdministrativeArea", "name": "Hauts-de-Seine"},
+        {"@type": "AdministrativeArea", "name": "Seine-Saint-Denis"},
+        {"@type": "AdministrativeArea", "name": "Val-de-Marne"},
+        {"@type": "AdministrativeArea", "name": "Seine-et-Marne"},
+        {"@type": "AdministrativeArea", "name": "Yvelines"},
+        {"@type": "AdministrativeArea", "name": "Essonne"},
+        {"@type": "AdministrativeArea", "name": "Val-d’Oise"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Quels établissements prenez-vous en charge ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous intervenons sur les établissements de santé et cliniques, les structures médico-sociales et EHPAD, les lieux d’accueil de la petite enfance (crèches), les établissements d’enseignement et les sites tertiaires à fort passage. Si votre activité présente des contraintes particulières, décrivez-nous votre site : nous construisons un plan de nettoyage adapté."}},
+        {"@type": "Question", "name": "Comment est calculé le prix ?", "acceptedAnswer": {"@type": "Answer", "text": "Le tarif dépend des zones et de leur niveau d’exigence, des surfaces, des fréquences retenues par zone, des produits et des créneaux d’intervention. C’est pourquoi nous travaillons exclusivement sur devis : aucun prix n’est affiché ni réservable en ligne. Le montant définitif est établi après une visite gratuite de votre site et figure au contrat (montants HT pour la clientèle professionnelle)."}},
+        {"@type": "Question", "name": "Adaptez-vous vos horaires à notre activité ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Les interventions sont calées sur votre fonctionnement : avant l’ouverture, après la fermeture ou sur des créneaux dédiés, de façon à ne jamais perturber l’accueil de vos publics. Les modalités précises sont définies ensemble lors de l’établissement du cahier des charges."}},
+        {"@type": "Question", "name": "Assurez-vous une traçabilité des opérations ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Nous mettons en place un plan de nettoyage par zone, des fiches de poste et un suivi des passages. Les éléments de traçabilité vous sont transmis sur demande, dans le cadre défini au contrat."}},
+        {"@type": "Question", "name": "Quels produits utilisez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous sélectionnons des produits adaptés à chaque environnement et à chaque public, utilisés selon leurs conditions d’emploi. Le détail des produits et procédures est précisé dans le cahier des charges établi pour votre site."}},
+        {"@type": "Question", "name": "Vos équipes sont-elles formées et stables ?", "acceptedAnswer": {"@type": "Answer", "text": "Nous attribuons des équipes dédiées à votre site, sensibilisées aux exigences de votre secteur. La continuité de service est organisée (remplacements anticipés) pour éviter toute rupture, et un encadrement assure le suivi."}},
+        {"@type": "Question", "name": "Comment se passe la mise en place d’un contrat ?", "acceptedAnswer": {"@type": "Answer", "text": "Tout commence par une visite gratuite de vos locaux. Nous établissons ensuite un cahier des charges détaillé, puis un devis personnalisé sans engagement. Après validation, nous mettons en place l’équipe et démarrons, avec un suivi qualité régulier."}}
+      ]
+    }
+  ]
+}
+  </script>
 
 </div>
 
 <script>
+/* Kayli Clinn — page prestation. JavaScript natif, sans dépendance.
+   Aucun contenu essentiel ne dépend de ce script : sans lui, toutes les
+   prestations restent visibles, le sélecteur reste un simple groupe de boutons
+   et les liens vers l'estimation et le devis fonctionnent. */
 (function(){
-  document.querySelectorAll('.kc-faq-q').forEach(function(q){
-    q.addEventListener('click', function(){
-      const item = q.parentElement;
-      const wasOpen = item.classList.contains('open');
-      q.closest('.kc-faq-list').querySelectorAll('.kc-faq-item').forEach(function(i){ i.classList.remove('open'); });
-      if(!wasOpen) item.classList.add('open');
+  var root = document.currentScript.parentNode.querySelector('.kcl') || document.querySelector('.kcl');
+  if(!root) return;
+  var sobre = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* 1. Filtre des prestations par famille */
+  root.querySelectorAll('[data-filtre]').forEach(function(barre){
+    var zone = barre.parentNode.querySelector('.kcl-grid') || root.querySelector('.kcl-grid');
+    if(!zone) return;
+    var cartes = zone.querySelectorAll('.kcl-presta[data-fam]');
+    var titres = zone.querySelectorAll('.kcl-famtitre');
+    var compte = barre.querySelector('.kcl-compte');
+    barre.addEventListener('click', function(e){
+      var b = e.target.closest('.kcl-f');
+      if(!b) return;
+      var f = b.dataset.f, n = 0;
+      barre.querySelectorAll('.kcl-f').forEach(function(x){
+        x.classList.toggle('is-on', x === b);
+        x.setAttribute('aria-pressed', x === b);
+      });
+      titres.forEach(function(t){ t.classList.toggle('is-off', f !== '*'); });
+      cartes.forEach(function(c){
+        var ok = (f === '*') || c.dataset.fam === f;
+        c.classList.toggle('is-off', !ok);
+        if(ok) n++;
+      });
+      if(compte) compte.textContent = n + (n > 1 ? ' prestations' : ' prestation');
     });
   });
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+
+  /* 2. Sélecteur « votre situation ressemble à… » */
+  root.querySelectorAll('[data-picks]').forEach(function(liste){
+    var cta = root.querySelector('.kcl-pick-cta');
+    var base = cta ? cta.getAttribute('href').split('&situation=')[0] : '';
+    liste.addEventListener('click', function(e){
+      var b = e.target.closest('.kcl-pick');
+      if(!b) return;
+      liste.querySelectorAll('.kcl-pick').forEach(function(x){
+        x.classList.toggle('is-on', x === b);
+        x.setAttribute('aria-pressed', x === b);
+      });
+      if(!cta) return;
+      cta.setAttribute('href', base + '&situation=' + encodeURIComponent(b.dataset.val || b.textContent.trim()));
+      var txt = cta.querySelector('[data-cta-txt]');
+      if(txt){
+        cta.classList.add('is-maj');
+        setTimeout(function(){
+          txt.textContent = (cta.dataset.verbe || 'Demander un devis') + ' : ' + b.textContent.trim();
+          cta.classList.remove('is-maj');
+        }, 180);
+      }
     });
-  }, {threshold: 0.1, rootMargin: '0px 0px -50px 0px'});
-  document.querySelectorAll('.kc-ets .kc-fade').forEach(el => observer.observe(el));
+  });
+
+  /* 3. Suivi de conversion — n'émet que si un dataLayer existe déjà */
+  root.addEventListener('click', function(e){
+    var a = e.target.closest('[data-track]');
+    if(!a) return;
+    if(!window.dataLayer || typeof window.dataLayer.push !== 'function') return;
+    try{ window.dataLayer.push({event:a.getAttribute('data-track'), page_name:'etablissements_sensibles'}); }catch(err){}
+  });
+
+  /* 4. Apparition discrète au défilement — purement décorative */
+  if(!sobre && 'IntersectionObserver' in window){
+    root.classList.add('kcl-anim');
+    var io = new IntersectionObserver(function(ents){
+      ents.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+      });
+    }, {rootMargin:'0px 0px -8% 0px', threshold:0.06});
+    root.querySelectorAll('.kcl-rv').forEach(function(el){ io.observe(el); });
+  }
 })();
 </script>
-<!-- Données structurées SEO — service Établissements sensibles (sur devis : AUCUNE clé "offers") -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Nettoyage d'établissements sensibles",
-  "serviceType": "Entretien récurrent d'établissements sensibles (santé, médico-social, petite enfance, enseignement, tertiaire)",
-  "description": "Nettoyage et entretien récurrent des établissements sensibles en Île-de-France : santé et cliniques, médico-social et EHPAD, petite enfance et crèches, enseignement, tertiaire à fort passage. Protocoles d'hygiène renforcés, produits adaptés, traçabilité des opérations, équipes formées et contrôles qualité, dans le respect des contraintes d'accès, d'horaires et de confidentialité. Prestation sur contrat pour professionnels, devis personnalisé après visite gratuite.",
-  "provider": {
-    "@type": "CleaningService",
-    "name": "Kayli Clinn",
-    "url": "https://kayliclinn.fr/",
-    "telephone": "+33670012061"
-  },
-  "areaServed": {"@type": "AdministrativeArea", "name": "Île-de-France"}
-}
-</script>
+
+<!-- ═══ FIN DU BLOC À COLLER DANS WORDPRESS ═══ -->
+</body>
+</html>
