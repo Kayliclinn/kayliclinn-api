@@ -13,6 +13,25 @@ thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
 | `reservation.html` | `/reservation/` | Calendrier kc-booking + paiement Stripe (forfaits) ou visite gratuite (audits) |
 | `tarification.xlsx` | — | Grille tarifaire source |
 
+## Gabarit éditorial (refonte de septembre 2026)
+
+Les pages **À propos** et **toutes les pages prestations** suivent désormais un
+même gabarit (préfixe CSS unique `.kcl`, Fraunces pour les titres, Inter pour le
+texte, Roboto pour les boutons, navy dominant et teal en accent) :
+
+fil d'Ariane → hero → la prestation et « votre situation ressemble à… » →
+ce que couvre la prestation (cartes illustrées au trait, filtre par famille) →
+inquiétudes et réponses → méthode en six étapes → suivi → trois façons
+d'obtenir un prix → FAQ → bande visite gratuite → liens internes → JSON-LD.
+
+Règles conservées : « Estimer et réserver en ligne » (→ `/devis/`) sur les
+forfaits, « Demander un devis » (→ `/demande-de-devis/?presta=<slug>`) et
+« Réserver une visite gratuite » (→ `/reservation/?visite=<slug>`) partout
+ailleurs. Aucun contenu n'est masqué par le script : sans JavaScript, la page
+reste intégralement lisible. La FAQ visible et le `FAQPage` du JSON-LD doivent
+rester identiques. Les mentions « 👉 À COMPLÉTER / À VALIDER » restent en
+commentaire HTML dans chaque fichier.
+
 ## Mise à jour d'une page
 
 1. Ouvrir la page dans WordPress → bloc « HTML personnalisé ».
