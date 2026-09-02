@@ -13,24 +13,29 @@ thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
 | `reservation.html` | `/reservation/` | Calendrier kc-booking + paiement Stripe (forfaits) ou visite gratuite (audits) |
 | `tarification.xlsx` | — | Grille tarifaire source |
 
-## Gabarit éditorial (refonte de septembre 2026)
+## Méthode hybride pour les pages prestations (brief de septembre 2026)
 
-Les pages **À propos** et **toutes les pages prestations** suivent désormais un
-même gabarit (préfixe CSS unique `.kcl`, Fraunces pour les titres, Inter pour le
-texte, Roboto pour les boutons, navy dominant et teal en accent) :
+Chaque page prestation est une **fusion** de deux versions :
 
-fil d'Ariane → hero → la prestation et « votre situation ressemble à… » →
-ce que couvre la prestation (cartes illustrées au trait, filtre par famille) →
-inquiétudes et réponses → méthode en six étapes → suivi → trois façons
-d'obtenir un prix → FAQ → bande visite gratuite → liens internes → JSON-LD.
+- **Version A** (préfixe `.kc-page`, design system officiel) : structure en
+  13 sections, variables couleur, bloc photos `--photo-*` en tête de fichier,
+  icônes SVG au trait, badge « Exemple » sur les témoignages, JSON-LD `Service`
+  sans prix, liens limités à `/demande-de-devis/?presta=<slug>` et `tel:`.
+- **Version B** (direction épurée, ex-préfixe `.kcl`, conservée dans
+  `site/direction-epuree/` comme source de textes) : typographie resserrée,
+  hiérarchie sobre, cartes plus nettes, meilleures accroches et textes.
 
-Règles conservées : « Estimer et réserver en ligne » (→ `/devis/`) sur les
-forfaits, « Demander un devis » (→ `/demande-de-devis/?presta=<slug>`) et
-« Réserver une visite gratuite » (→ `/reservation/?visite=<slug>`) partout
-ailleurs. Aucun contenu n'est masqué par le script : sans JavaScript, la page
-reste intégralement lisible. La FAQ visible et le `FAQPage` du JSON-LD doivent
-rester identiques. Les mentions « 👉 À COMPLÉTER / À VALIDER » restent en
-commentaire HTML dans chaque fichier.
+Hors périmètre par défaut (sauf demande explicite pour une page) : filtre de
+prestations, sélecteur « votre situation ressemble à… », bloc « trois façons
+d'obtenir un prix », liens croisés non vérifiés.
+
+**Page de référence hybride** : `commerces-retail.html`. Pages déjà conformes,
+à ne pas retoucher sans demande : fin de chantier, déménagement/état des lieux,
+turnover Airbnb (`prestation.html`), remise en état. Pages 3D nuisibles
+bloquées tant que la certification Certibiocide n'est pas obtenue.
+Une page à la fois, dans l'ordre validé avec la propriétaire.
+
+La page **À propos** (`a-propos.html`) reste sur le gabarit épuré `.kcl`.
 
 ## Mise à jour d'une page
 
