@@ -55,7 +55,6 @@
   --ink:#15202E; --muted:#5B6573; --faint:#8b94a1;
   --cream:#F8F9FB; --white:#FFFFFF;
   --line:rgba(13,35,64,0.10); --line-soft:rgba(13,35,64,0.055);
-  --amber:#D89B3C;
   --shadow-sm:0 2px 10px rgba(13,35,64,0.04);
   --shadow:0 16px 38px rgba(13,35,64,0.07);
   font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
@@ -66,8 +65,8 @@
 .kc-home *,.kc-home *::before,.kc-home *::after{box-sizing:border-box}
 .kc-home img{max-width:100%;display:block}
 .kc-home a{color:inherit;text-decoration:none}
-.kc-home p{margin:0}
-.kc-home ul{margin:0;padding:0;list-style:none}
+:where(.kc-home) p{margin:0}
+:where(.kc-home) ul{margin:0;padding:0;list-style:none}
 
 /* — rythme — */
 .kc-home section{padding:clamp(56px,7vw,88px) 6%}
@@ -112,7 +111,6 @@
 .kh-hero .kh-btn-secondary:hover{background:#fff;color:var(--navy);border-color:#fff}
 .kh-reassure{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:28px;font-size:14px;color:#d3dbe6}
 .kh-reassure b{color:#fff;font-weight:500}
-.kh-hero-tag{margin:36px 0 0;max-width:540px;font-size:15px;color:#fff;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-left:3px solid var(--teal);border-radius:0 14px 14px 0;padding:16px 24px}
 
 /* — 2 · bande de réassurance — */
 .kh-trust{background:var(--navy);padding:24px 6%}
@@ -142,7 +140,6 @@
    ════════════════════════════════════════════════════════ */
 .kh-principes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .kh-principe{background:var(--white);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:16px;padding:26px 24px}
-.kh-principe span{display:block;font-family:'Fraunces',serif;font-size:22px;color:var(--teal-deep);margin-bottom:12px;font-weight:600}
 .kh-principe h3{font-family:'Fraunces',serif;font-weight:600;font-size:18px;color:var(--navy);margin:0 0 10px;line-height:1.3;letter-spacing:-0.01em}
 .kh-principe p{font-size:14.5px;color:var(--muted);line-height:1.65}
 .kh-principes-more{margin-top:24px}
@@ -168,8 +165,7 @@
 .kh-packs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
 .kh-pack{display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:16px;padding:28px 26px}
 .kh-pack--reco{border:2px solid var(--teal);box-shadow:var(--shadow);padding:27px 25px}
-.kh-pack-mention{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-deep);font-weight:700;margin:0 0 12px;height:30px;display:flex;align-items:center}
-.kh-pack-badge{display:inline-block;background:var(--navy);color:#fff;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 14px;border-radius:999px;line-height:1.3}
+.kh-pack-mention{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-deep);font-weight:600;margin:0 0 12px}
 .kh-pack h3{font-family:'Fraunces',serif;font-weight:600;font-size:19px;color:var(--navy);margin:0 0 10px;line-height:1.25}
 .kh-pack-profil{font-size:14.5px;color:var(--muted);background:var(--cream);border-radius:10px;padding:12px 14px;margin-bottom:18px;line-height:1.55}
 .kh-pack--reco .kh-pack-profil{background:var(--teal-wash)}
@@ -195,10 +191,8 @@
 .kh-testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .kh-testi{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:26px 24px;position:relative}
 .kh-testi-badge{display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:10px}
-.kh-testi-stars{color:var(--amber);font-size:13px;letter-spacing:3px;margin-bottom:12px}
 .kh-testi-text{font-family:'Fraunces',serif;font-size:16px;color:var(--ink);line-height:1.6;margin-bottom:18px;font-style:italic}
-.kh-testi-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--line-soft)}
-.kh-testi-avatar{width:40px;height:40px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:600;font-size:13px;flex-shrink:0}
+.kh-testi-author{padding-top:14px;border-top:1px solid var(--line-soft)}
 .kh-testi-info strong{display:block;font-size:14px;font-weight:600;color:var(--navy)}
 .kh-testi-info span{font-size:12.5px;color:var(--faint);display:block;margin-top:2px}
 .kh-avis-cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
@@ -256,7 +250,6 @@
 @media(max-width:1040px){
   .kh-presta-grid,.kh-realis-grid,.kh-packs,.kh-principes,.kh-testi-grid{grid-template-columns:repeat(2,1fr)}
   .kh-packs{grid-template-columns:1fr}
-  .kh-pack-mention{height:auto;min-height:0}
 }
 @media(max-width:900px){
   .kh-final-grid{grid-template-columns:1fr;gap:32px}
@@ -272,7 +265,6 @@
   .kh-zones-list{grid-template-columns:repeat(2,1fr)}
   .kh-btn{width:100%;justify-content:center}
   .kh-hero-ctas,.kh-final-ctas{width:100%}
-  .kh-hero-tag{max-width:100%}
 }
 </style>
 
@@ -282,16 +274,15 @@
 <section class="kh-hero">
   <div class="kh-hero-wrap">
     <div class="kh-hero-content">
-      <span class="eyebrow">Société de nettoyage · Particuliers et professionnels · Île&#8209;de&#8209;France</span>
-      <h1 class="kh-h1">Du nettoyage bien fait, <em>vérifié avant de partir</em>.</h1>
-      <p class="kh-hero-sub">Kayli Clinn nettoie logements et locaux en Île&#8209;de&#8209;France. Prix ferme en ligne sur les forfaits, devis écrit après visite pour le reste.</p>
+      <span class="eyebrow">Kayli Clinn · Société de nettoyage · Île&#8209;de&#8209;France</span>
+      <h1 class="kh-h1">Un espace propre, <em>l’esprit tranquille</em>.</h1>
+      <p class="kh-hero-sub">Nous nettoyons logements et locaux en Île&#8209;de&#8209;France, et nous vérifions le résultat avant de partir. Prix ferme en ligne sur les forfaits, devis écrit après visite pour le reste.</p>
       <div class="kh-hero-ctas">
         <a href="/devis/" class="kh-btn kh-btn-primary">Obtenir mon estimation<svg class="kh-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a>
         <a href="/prestations/" class="kh-btn kh-btn-secondary">Voir nos prestations</a>
       </div>
-      <p class="kh-reassure"><b>Turnover Airbnb</b> · <b>Fin de bail</b> · <b>Vitres</b> · <b>Bureaux</b> · <b>Fin de chantier</b> · <b>Copropriétés</b></p>
+      <p class="kh-reassure"><b>Particuliers et professionnels</b> · <b>Les huit départements franciliens</b> · <b>Équipes formées et assurées</b></p>
     </div>
-    <p class="kh-hero-tag">Un espace propre, l’esprit tranquille.</p>
   </div>
 </section>
 
@@ -299,8 +290,7 @@
 <div class="kh-trust">
   <div class="kh-trust-wrap">
     <div class="kh-trust-item"><svg class="kh-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M21 12c0 5-3.5 7.5-9 9-5.5-1.5-9-4-9-9V5l9-3 9 3z"/></svg><span>RC Pro AXA · 5 M€</span></div>
-    <div class="kh-trust-item"><svg class="kh-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Équipes formées et assurées</span></div>
-    <div class="kh-trust-item"><svg class="kh-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Les huit départements franciliens</span></div>
+    <div class="kh-trust-item"><svg class="kh-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Interlocuteur unique</span></div>
     <div class="kh-trust-item"><svg class="kh-icon" width="19" height="19" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 2v4M16 2v4"/></svg><span>Prix ferme et réservation en ligne sur les forfaits</span></div>
     <div class="kh-trust-item"><svg class="kh-icon" width="19" height="19" viewBox="0 0 24 24"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>Résultat contrôlé avant de quitter les lieux</span></div>
   </div>
@@ -311,7 +301,7 @@
   <div class="kh-wrap">
     <div class="kh-head kh-fade">
       <span class="eyebrow">Nos prestations</span>
-      <h2 class="kh-h2">Six prestations, <em>un seul interlocuteur</em></h2>
+      <h2 class="kh-h2">Nos prestations, <em>un seul interlocuteur</em></h2>
       <p class="kh-desc">Forfaits à prix ferme pour les logements des particuliers, devis écrit après visite pour les locaux professionnels et les remises en état.</p>
     </div>
     <div class="kh-presta-grid">
@@ -355,9 +345,9 @@
       <p class="kh-desc">Le nettoyage n’a rien de compliqué. Ce qui compte, c’est ce qui l’entoure : le périmètre, le créneau, le contrôle.</p>
     </div>
     <div class="kh-principes">
-      <article class="kh-principe kh-fade"><span>01</span><h3>Le périmètre est écrit avant d’intervenir</h3><p>Ce qui est inclus, ce qui ne l’est pas, les options retenues : tout figure sur le devis. Rien ne se découvre à la facture.</p></article>
-      <article class="kh-principe kh-fade"><span>02</span><h3>Le résultat contrôlé avant de partir</h3><p>Points de contact, sanitaires, recoins, vitrages : un passage de contrôle sur place avant de rendre les lieux. Si un point ne convient pas, il est repris.</p></article>
-      <article class="kh-principe kh-fade"><span>03</span><h3>Une seule personne répond</h3><p>Un interlocuteur identifié du premier échange à la fin de l’intervention, et le même d’un passage à l’autre.</p></article>
+      <article class="kh-principe kh-fade"><h3>Le périmètre est écrit avant d’intervenir</h3><p>Ce qui est inclus, ce qui ne l’est pas, les options retenues : tout figure sur le devis. Rien ne se découvre à la facture.</p></article>
+      <article class="kh-principe kh-fade"><h3>Le résultat contrôlé avant de partir</h3><p>Points de contact, sanitaires, recoins, vitrages : un passage de contrôle sur place avant de rendre les lieux. Si un point ne convient pas, il est repris.</p></article>
+      <article class="kh-principe kh-fade"><h3>Une seule personne répond</h3><p>Un interlocuteur identifié du premier échange à la fin de l’intervention, et le même d’un passage à l’autre.</p></article>
     </div>
     <div class="kh-principes-more kh-fade"><a href="/a-propos/" class="kh-link">Qui nous sommes<svg class="kh-icon" width="16" height="16" viewBox="0 0 24 24"><path d="M5 12h14M13 5l7 7-7 7"/></svg></a></div>
   </div>
@@ -400,7 +390,7 @@
     </div>
     <div class="kh-packs">
       <article class="kh-pack kh-pack--reco kh-fade">
-        <p class="kh-pack-mention"><span class="kh-pack-badge">Pour les logements des particuliers</span></p>
+        <p class="kh-pack-mention">Pour les logements des particuliers</p>
         <h3>Forfait, prix de la grille</h3>
         <p class="kh-pack-profil">Turnover Airbnb, fin de bail ou déménagement, vitrerie résidentielle.</p>
         <ul>
@@ -471,9 +461,9 @@
     </div>
     <!-- 👉 Témoignages FICTIFS : badge « Exemple » obligatoire tant qu'ils ne sont pas remplacés par de vrais avis autorisés (DGCCRF). -->
     <div class="kh-testi-grid">
-      <div class="kh-testi kh-fade"><span class="kh-testi-badge">Exemple</span><div class="kh-testi-stars">★★★★★</div><p class="kh-testi-text">Le logement était prêt avant l’arrivée de mes voyageurs, lits faits et salle de bain impeccable. Je réserve en ligne en deux minutes.</p><div class="kh-testi-author"><div class="kh-testi-avatar">HL</div><div class="kh-testi-info"><strong>Exemple</strong><span>Hôte de location courte durée · Paris</span></div></div></div>
-      <div class="kh-testi kh-fade"><span class="kh-testi-badge">Exemple</span><div class="kh-testi-stars">★★★★★</div><p class="kh-testi-text">État des lieux de sortie sans remarque. Le four et les placards étaient inclus dans le forfait, comme annoncé sur le devis.</p><div class="kh-testi-author"><div class="kh-testi-avatar">LB</div><div class="kh-testi-info"><strong>Exemple</strong><span>Locataire en fin de bail · Val-de-Marne</span></div></div></div>
-      <div class="kh-testi kh-fade"><span class="kh-testi-badge">Exemple</span><div class="kh-testi-stars">★★★★★</div><p class="kh-testi-text">Équipe toujours la même, passage en soirée après la fermeture, et un seul interlocuteur pour nos deux sites.</p><div class="kh-testi-author"><div class="kh-testi-avatar">OM</div><div class="kh-testi-info"><strong>Exemple</strong><span>Office manager · Hauts-de-Seine</span></div></div></div>
+      <div class="kh-testi kh-fade"><span class="kh-testi-badge">Exemple</span><p class="kh-testi-text">Le logement était prêt avant l’arrivée de mes voyageurs, lits faits et salle de bain impeccable. Je réserve en ligne en deux minutes.</p><div class="kh-testi-author"><div class="kh-testi-info"><strong>Exemple</strong><span>Hôte de location courte durée · Paris</span></div></div></div>
+      <div class="kh-testi kh-fade"><span class="kh-testi-badge">Exemple</span><p class="kh-testi-text">État des lieux de sortie sans remarque. Le four et les placards étaient inclus dans le forfait, comme annoncé sur le devis.</p><div class="kh-testi-author"><div class="kh-testi-info"><strong>Exemple</strong><span>Locataire en fin de bail · Val-de-Marne</span></div></div></div>
+      <div class="kh-testi kh-fade"><span class="kh-testi-badge">Exemple</span><p class="kh-testi-text">Équipe toujours la même, passage en soirée après la fermeture, et un seul interlocuteur pour nos deux sites.</p><div class="kh-testi-author"><div class="kh-testi-info"><strong>Exemple</strong><span>Office manager · Hauts-de-Seine</span></div></div></div>
     </div>
     <div class="kh-avis-cta kh-fade">
       <p>Vous avez fait appel à nous ? Votre avis aide d’autres clients à choisir.</p>
