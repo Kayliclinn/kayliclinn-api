@@ -2160,16 +2160,6 @@
   <div class="kcw2-head">
     <div class="kcw2-eye">Pourquoi nous choisir</div>
     <h2 class="kcw2-title" id="kcw2-title">Une entreprise de nettoyage pensée pour <em>votre tranquillité</em></h2>
-    <p class="kcw2-sub">
-      Des délais clairs, des équipes contrôlées, des garanties vérifiables et une qualité documentée.<br>Vous savez qui intervient, quand, comment et avec quel niveau d’exigence.
-    </p>
-  </div>
-
-  <div class="kcw2-figs" aria-label="Kayli Clinn en chiffres">
-    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="75" data-suf="+">0+</span><span class="kcw2-fig-lab">Chantiers livrés</span></div>
-    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="8" data-suf="">0</span><span class="kcw2-fig-lab">Départements couverts</span></div>
-    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="24" data-suf="H">0H</span><span class="kcw2-fig-lab">Délai de devis</span></div>
-    <div class="kcw2-fig"><span class="kcw2-fig-num" data-to="100" data-suf="%">0%</span><span class="kcw2-fig-lab">Satisfait ou repassé</span></div>
   </div>
 
   <div class="kcw2-trustbar" aria-label="Garanties Kayli Clinn">
@@ -2376,7 +2366,7 @@
         return card(item, index + 1);
       }).join("");
 
-      track.innerHTML = html; /* grille fixe : plus de défilement automatique */
+      track.innerHTML = html + html;
 
       var wrapper = track.parentElement;
       var x = 0;
@@ -2411,7 +2401,7 @@
       }
 
       measure();
-      /* défilement automatique retiré */
+      animate();
 
       window.addEventListener("resize", measure);
 
@@ -3288,7 +3278,7 @@
 
   /* ── Titres de cartes : Fraunces 600, 18 px ── */
   .kh4-t, .kcp-t, .kr-t, .kcw2-ct, .kcav2-name{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:18px !important; letter-spacing:-0.01em !important; line-height:1.3 !important; color:#0D2340 !important; }
-  .kcw2-ct{ color:#fff !important; }
+  .kcw2-ct{ color:#fff !important; font-size:17px !important; margin-bottom:8px !important; }
   .kh4-p, .kcp-d, .kr-m, .kcw2-cx, .kcav2-txt, .kcfq-a-in, .ka-lab, .kczn2-lab{ font-size:14.5px !important; line-height:1.65 !important; }
   .kcfq-q-text{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:17px !important; }
   .kh4-trust li, .kcw2-pill, .kcct2-chip, .kcfq-filter, .kcfq-cat{ font-weight:600 !important; box-shadow:none !important; }
@@ -3334,13 +3324,21 @@
   .kr-after, .kr-before{ filter:none !important; }
   .kcw2{ background:#0D2340 !important; }
   .kcw2::before, .kcw2::after, .kcw2-card::before{ display:none !important; }
-  .kcw2-tw{ -webkit-mask-image:none !important; mask-image:none !important; overflow:visible !important; }
-  .kcw2-track{ display:grid !important; grid-template-columns:repeat(3,1fr) !important; width:auto !important; max-width:1240px; margin:0 auto; padding:0 24px !important; gap:20px !important; transform:none !important; }
-  .kcw2-card{ flex:none !important; min-height:0 !important; padding:26px 24px !important; border-radius:16px !important; backdrop-filter:none !important;
+  .kcw2{ padding-top:44px !important; padding-bottom:44px !important; }
+  .kcw2-head{ max-width:760px; }
+  .kcw2-title{ font-size:clamp(22px,2.2vw,28px) !important; margin-bottom:0 !important; }
+  .kcw2-trustbar{ margin-top:18px !important; }
+  .kcw2-pill{ padding:8px 13px !important; font-size:12.5px !important; }
+  .kcw2-tw{ margin-top:26px !important; cursor:grab; }
+  .kcw2-track{ gap:16px !important; padding:4px 24px !important; }
+  .kcw2-card{ flex:0 0 320px !important; min-height:0 !important; padding:20px 20px 18px !important; border-radius:14px !important; backdrop-filter:none !important;
     background:#14294a !important; border:1px solid rgba(255,255,255,.14) !important; box-shadow:none !important; }
+  .kcw2-cx{ font-size:14px !important; line-height:1.55 !important; }
+  .kcw2-card-foot{ padding-top:14px !important; font-size:11px !important; }
+  .kcw2-bottom{ margin-top:22px !important; }
   .kcw2-card:hover{ transform:none !important; border-color:rgba(127,211,209,.55) !important; box-shadow:none !important; }
-  .kcw2-ic{ box-shadow:none !important; background:rgba(15,167,165,.16) !important; border:0 !important; border-radius:11px !important; width:44px !important; height:44px !important; margin-bottom:18px !important; }
-  .kcw2-ic svg{ width:22px !important; height:22px !important; stroke:#7fd3d1 !important; }
+  .kcw2-ic{ box-shadow:none !important; background:rgba(15,167,165,.16) !important; border:0 !important; border-radius:10px !important; width:38px !important; height:38px !important; margin-bottom:14px !important; }
+  .kcw2-ic svg{ width:20px !important; height:20px !important; stroke:#7fd3d1 !important; }
   .kcw2-num{ display:none !important; }
   .kcw2-card-foot{ color:#7fd3d1 !important; font-weight:600 !important; letter-spacing:.12em !important; }
   .kcw2-card-foot::before{ box-shadow:none !important; background:#0FA7A5 !important; }
@@ -3378,9 +3376,8 @@
   .kczn2-map.reveal{ transform:translateY(16px) !important; }
   .kczn2-map.reveal.show{ transform:none !important; }
 
-  @media (max-width:900px){ .kcw2-track{ grid-template-columns:repeat(2,1fr) !important; } }
   @media (max-width:640px){
-    .kcw2-track{ grid-template-columns:1fr !important; }
+    .kcw2-card{ flex-basis:78vw !important; max-width:340px; }
     .kc-home .kh-title{ font-size:clamp(28px,7vw,36px) !important; }
     .kc-home .kh-hero{ padding:64px 0 52px !important; }
   }
