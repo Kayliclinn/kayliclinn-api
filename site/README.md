@@ -12,6 +12,8 @@ thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
 | `estimation.html` | `/devis/` | Tunnel d'estimation 3 parcours (forfait / pro / audit) |
 | `reservation.html` | `/reservation/` | Calendrier kc-booking + paiement Stripe (forfaits) ou visite gratuite (audits) |
 | `tarification.xlsx` | — | Grille tarifaire source |
+| `ANALYSE-LKH-REEL.md` | — | Analyse du site LKH en ligne (design, pages, estimateur, plan de mise en œuvre, questions ouvertes) |
+| `CHARTE-LKH.md` | — | Charte de référence, réécrite d'après le site LKH réel |
 
 ## Méthode hybride pour les pages prestations (brief de septembre 2026)
 
