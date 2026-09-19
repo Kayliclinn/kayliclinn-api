@@ -2722,26 +2722,13 @@
 .reveal.show{opacity:1;transform:none}
 @media(max-width:900px){.kcav2-grid{grid-template-columns:1fr;max-width:460px}.kcav2-cta{flex-direction:column;text-align:center;padding:34px 28px}.kcav2-cta-txt p{margin:0 auto}}
 </style>
-<section class="kcav2">
-  <div class="kcav2-head">
-    <div class="kcav2-eye reveal">Avis clients</div>
-    <h2 class="kcav2-title reveal">Ils nous ont fait confiance</h2>
-    <p class="kcav2-sub reveal">Quelques retours de nos clients particuliers et professionnels en Île&#8209;de&#8209;France.</p>
+<section class="kcav2" aria-labelledby="kcav2-title">
+  <div class="kcav2-head kcav2-head--center">
+    <div class="kcav2-eye reveal">Lire · Ce qu’on nous dit</div>
+    <h2 class="kcav2-title reveal">Ce qu’en disent <em>nos clients</em>.</h2>
+    <p class="kcav2-sub reveal">Ces trois témoignages sont des exemples de rédaction. Ils seront remplacés par de vrais avis clients autorisés.</p>
   </div>
   <div class="kcav2-grid" id="kcav2grid"></div>
-  <div class="kcav2-cta reveal">
-    <div class="kcav2-cta-txt">
-      <h3>Vous avez fait appel à nous&nbsp;?</h3>
-      <p>Partagez votre expérience, ça aide d'autres clients à nous faire confiance.</p>
-    </div>
-    <div class="kcav2-cta-btns">
-      <!-- 👉 LIEN AVIS GOOGLE : remplacez par votre vrai lien d'avis
-           (Fiche Google Business → Demander des avis → copier le lien g.page/r/…) -->
-      <a class="kcav2-bg" href="https://www.google.com/search?q=Kayli+Clinn+nettoyage+avis" target="_blank" rel="noopener" data-kc-event="accueil:externe:avis-google"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg> Laisser un avis Google</a>
-      <!-- 👉 LIEN CONTACT -->
-      <a class="kcav2-bw" href="/contact/" data-kc-event="accueil:lien:contact">Nous écrire</a>
-    </div>
-  </div>
 </section>
 <script>(function(){
   var star='<svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>';
@@ -2752,8 +2739,8 @@
   ];
   var g=document.getElementById('kcav2grid');
   /* Badge « Exemple » obligatoire tant que les avis ne sont pas de vrais avis clients autorisés (règle DGCCRF) */
-  var demoBadge='<span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:10px">Exemple</span>';
-  g.innerHTML=data.map(function(d){return '<div class="kcav2-card reveal"><span class="kcav2-quote">”</span>'+demoBadge+'<p class="kcav2-txt">'+d.q+'</p><div class="kcav2-foot"><div class="kcav2-av">'+d.i+'</div><div><p class="kcav2-name">'+d.n+'</p><p class="kcav2-role">'+d.r+'</p></div></div></div>';}).join('');
+  var demoBadge='<span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:10px;align-self:flex-start">Exemple</span>';
+  g.innerHTML=data.map(function(d){return '<figure class="kcav2-card reveal">'+demoBadge+'<blockquote class="kcav2-txt">'+d.q+'</blockquote><figcaption class="kcav2-foot"><span class="kcav2-name">'+d.n+'</span><span class="kcav2-role">'+d.r+'</span></figcaption></figure>';}).join('');
   var sec=document.querySelector('.kcav2');
   var done=false;
   function run(){if(done)return;done=true;document.querySelectorAll('.kcav2 .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('show');},i*110);});}
@@ -3135,27 +3122,16 @@
 .kcct2 .kcct2-chip svg{color:#19E3DF}
 @media(max-width:600px){.kcct2{padding:48px 18px 54px}.kcct2 a.kcct2-phone{font-size:22px}}
 </style>
-<section class="kcct2">
-  <div class="kcct2-glow"></div>
-  <div class="kcct2-glow2"></div>
+<section class="kcct2" aria-labelledby="kcct2-title">
   <div class="kcct2-inner">
-    <span class="kcct2-badge"><span class="dot"></span> Réponse sous 2&nbsp;h en jours ouvrés</span>
-    <h2>Besoin d'un <em>devis rapide</em>&nbsp;?</h2>
-    <p class="kcct2-sub">Recevez une estimation précise pour votre chantier en quelques clics. Devis sans engagement, intervention possible sous 48&nbsp;h en Île&#8209;de&#8209;France.</p>
+    <span class="kcct2-badge">Estimer · Réserver</span>
+    <h2 id="kcct2-title">Un prix ferme en ligne. <em>Un espace propre, l’esprit tranquille.</em></h2>
+    <p class="kcct2-sub">Estimez votre forfait en quelques minutes. Vous réservez votre créneau quand vous le décidez.</p>
     <div class="kcct2-btns">
-      <!-- 👉 LIEN BOUTON DEVIS : remplacez /devis/ par votre page de devis -->
-      <a class="kcct2-btn kcct2-btn-primary" href="/devis/" data-kc-event="accueil:cta:devis"><span class="sheen"></span>Demander mon devis →</a>
-      <!-- 👉 NUMÉRO URGENCE : remplacez +33670012061 -->
-      <a class="kcct2-btn kcct2-btn-ghost" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Urgence chantier</a>
+      <a class="kcct2-btn kcct2-btn-primary" href="/devis/" data-kc-event="accueil:cta:final">Estimer &amp; réserver en ligne →</a>
     </div>
-    <div class="kcct2-phone-label">Ou appelez-nous directement</div>
-    <!-- 👉 NUMÉRO TÉLÉPHONE : remplacez +33670012061 / 06 70 01 20 61 -->
-    <a class="kcct2-phone" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 70 01 20 61</a>
-    <div class="kcct2-trust">
-      <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Devis sous 24&nbsp;h</span>
-      <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>RC Pro AXA 5 M€</span>
-      <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Satisfait ou repassé</span>
-    </div>
+    <div class="kcct2-phone-label">Une question, un cas particulier ? Appelez-nous</div>
+    <a class="kcct2-phone" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 70 01 20 61</a>
   </div>
 </section>
 <!-- ════════════════════════════════════════════════════════
@@ -3426,7 +3402,7 @@
   .ka-section, .kcp-section, .kczn2, .kcfq-section{ background:#FFFFFF !important; }
   .kh4-section, .kcav2{ background:#F0FAFA !important; }
   .kr-section{ background:#F7F8FA !important; }
-  .kcw2, .kcct2{ background:#0D2340 !important; }
+  .kcw2{ background:#0D2340 !important; }
   /* Les cartes restent blanches sur les sections teintées */
   .kh4-card, .kcav2-card, .kcfq-item{ background:#FFFFFF !important; }
 
@@ -3549,7 +3525,6 @@
   .kcfq-cat{ border-radius:999px !important; background:#E6F5F5 !important; color:#076E6D !important; }
 
   /* ── Appel final ── */
-  .kcct2{ background:#0D2340 !important; }
   .kcct2:after, .kcct2-glow, .kcct2-glow2{ display:none !important; }
   .kcct2-badge{ background:transparent !important; border:0 !important; padding:0 !important; }
   .kcct2-badge .dot{ display:none !important; }
@@ -3688,4 +3663,28 @@
   .kh4-row--cond b{ font-weight:400; color:#6B7280; font-size:13.5px; text-align:right; max-width:22ch; }
 
 
+
+  /* ── Appel final : version claire (le pied de page est déjà navy) ── */
+  .kcct2{ background:#FFFFFF !important; padding:96px 24px !important; text-align:center; }
+  .kcct2-inner{ max-width:640px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:0; }
+  .kcct2-badge{ color:#0B8483 !important; margin-bottom:20px !important; }
+  .kcct2-badge::before{ background:#0FA7A5 !important; }
+  .kcct2 h2{ color:#0D2340 !important; max-width:22ch; margin:0 auto; }
+  .kcct2 h2 em{ color:#0B8483 !important; }
+  .kcct2-sub{ color:#6B7280 !important; max-width:52ch; margin:20px auto 0 !important; }
+  .kcct2-btns{ margin-top:32px !important; }
+  .kcct2 .kcct2-btn-primary{ background:#0B8483 !important; color:#fff !important; box-shadow:0 1px 0 #076E6D !important; }
+  .kcct2 .kcct2-btn-primary:hover{ background:#076E6D !important; }
+  .kcct2-phone-label{ margin-top:36px !important; font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-size:12.5px !important; font-weight:700 !important; letter-spacing:.08em !important; text-transform:uppercase !important; color:#6B7280 !important; }
+  .kcct2 a.kcct2-phone{ color:#0D2340 !important; margin-top:10px !important; display:inline-flex; align-items:center; gap:10px; }
+  .kcct2 a.kcct2-phone svg{ color:#0B8483 !important; }
+  .kcct2 a:focus-visible{ outline-color:#0B8483 !important; }
+
+  /* ── Avis : format du modèle, auteur en capitales mono ── */
+  .kcav2-head--center{ text-align:center; max-width:720px; margin:0 auto 34px; }
+  .kcav2-card{ display:flex; flex-direction:column; gap:16px; text-align:left; }
+  .kcav2-txt{ margin:0 !important; font-size:15.2px !important; line-height:1.6 !important; color:#4B5563 !important; }
+  .kcav2-foot{ display:flex; flex-direction:column; gap:2px; text-align:left; align-items:flex-start; border-top:1px solid #E5E7EB; padding-top:16px; margin-top:auto; }
+  .kcav2-name{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:15px !important; color:#0D2340 !important; text-align:left !important; }
+  .kcav2-role{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-size:11px !important; font-weight:400 !important; letter-spacing:.06em !important; text-transform:uppercase !important; color:#6B7280 !important; margin:0 !important; }
 </style>
