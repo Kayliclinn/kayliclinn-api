@@ -197,7 +197,7 @@ a.kcam-carte:hover{border-color:var(--kcam-accent);transform:translateY(-2px)}
         <div>
           <span class="kcam-num">03</span>
           <h3 class="kcam-h3">Vous choisissez un créneau</h3>
-          <p>Le calendrier ne montre que des créneaux réellement disponibles. Il croise les horaires de l’équipe, l’agenda des intervenants et les réservations déjà prises.</p>
+          <p>Le calendrier ne montre que des créneaux réellement disponibles. Il croise les horaires de travail déclarés de l’équipe et les réservations déjà prises.</p>
         </div>
         <div class="kcam-detail">
           <span class="kcam-lab">Disponibilités réelles</span>
@@ -221,11 +221,11 @@ a.kcam-carte:hover{border-color:var(--kcam-accent);transform:translateY(-2px)}
         <div>
           <span class="kcam-num">05</span>
           <h3 class="kcam-h3">Vous gardez un lien personnel</h3>
-          <p>Vous recevez un e-mail récapitulatif contenant un lien qui vous est propre. Il n’y a ni compte à créer, ni mot de passe à retenir.</p>
+          <p>Pour une visite gratuite, l’e-mail de confirmation arrive tout de suite avec un lien personnel. Pour un forfait, il arrive avec la confirmation, une fois l’acompte réglé.</p>
         </div>
         <div class="kcam-detail">
           <span class="kcam-lab">Ce que le lien permet</span>
-          <p>Consulter votre réservation, régler le solde s’il reste dû, ou annuler dans le délai prévu.</p>
+          <p>Consulter votre réservation, régler le solde s’il reste dû, ou annuler dans le délai prévu. Il n’y a ni compte à créer, ni mot de passe à retenir.</p>
         </div>
       </li>
     </ol>
@@ -237,7 +237,7 @@ a.kcam-carte:hover{border-color:var(--kcam-accent);transform:translateY(-2px)}
     <div class="kcam-head kcam-rv">
       <span class="kcam-eyebrow">Recevoir · Votre récapitulatif</span>
       <h2 class="kcam-h2" id="kcam-mail-t">Tout est écrit, <em>avant l’intervention</em>.</h2>
-      <p class="kcam-lede">L’e-mail de confirmation reprend les mêmes lignes pour tout le monde. Vous savez qui vient, quand, où, et combien.</p>
+      <p class="kcam-lede">L’e-mail de confirmation reprend toujours la prestation, la date et la durée estimée. Le reste s’ajoute selon votre réservation.</p>
     </div>
     <div class="kcam-mail kcam-rv">
       <div class="kcam-mail-tete">
@@ -251,10 +251,7 @@ a.kcam-carte:hover{border-color:var(--kcam-accent);transform:translateY(-2px)}
         <div><dt>Prestation</dt><dd>Turnover Airbnb · T2</dd></div>
         <div><dt>Date</dt><dd>Jour et heure du créneau choisi</dd></div>
         <div><dt>Durée estimée</dt><dd>Selon la prestation et la typologie</dd></div>
-        <div><dt>Intervenant</dt><dd>La personne qui se déplace</dd></div>
-        <div><dt>Adresse</dt><dd>Le lieu de l’intervention</dd></div>
-        <div><dt>Montant</dt><dd>Total TTC, calculé sur la grille</dd></div>
-        <div><dt>Acompte</dt><dd>30&nbsp;% réglés à la réservation, solde après la prestation</dd></div>
+        <div><dt>Selon la réservation</dt><dd>L’intervenant, l’adresse, le montant total TTC et l’acompte de 30&nbsp;% s’ajoutent quand ils s’appliquent. Une visite gratuite n’affiche ni montant ni acompte.</dd></div>
       </dl>
     </div>
   </div>
@@ -333,9 +330,9 @@ a.kcam-carte:hover{border-color:var(--kcam-accent);transform:translateY(-2px)}
     </div>
     <div class="kcam-faqs kcam-rv">
       <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:prix">Le prix affiché en ligne peut-il changer ?</summary><p>Pour un forfait, le prix est ferme et recalculé par nos serveurs avant l’encaissement. Pour la fin de chantier et les bureaux, il s’agit d’une fourchette indicative confirmée après la visite.</p></details>
-      <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:creneau">Les créneaux proposés sont-ils réellement libres ?</summary><p>Oui, le calendrier croise les horaires de l’équipe, l’agenda des intervenants et les réservations déjà prises. Si un créneau part pendant votre saisie, la page vous le signale.</p></details>
+      <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:creneau">Les créneaux proposés sont-ils réellement libres ?</summary><p>Oui, le calendrier croise les horaires de travail déclarés de l’équipe et les réservations déjà prises. Si un créneau part pendant votre saisie, la page vous le signale.</p></details>
       <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:acompte">Dois-je payer avant l’intervention ?</summary><p>Pour un forfait, un acompte de 30&nbsp;% est réglé à la réservation et le solde après la prestation. Pour une visite gratuite, il n’y a aucun paiement.</p></details>
-      <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:annuler">Puis-je modifier ou annuler ma réservation ?</summary><p>Votre e-mail contient un lien personnel qui permet de consulter votre réservation, de régler le solde ou d’annuler. Aucun compte ni mot de passe n’est nécessaire.</p></details>
+      <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:annuler">Puis-je modifier ou annuler ma réservation ?</summary><p>L’e-mail de confirmation contient un lien personnel qui permet de consulter votre réservation, de régler le solde ou d’annuler. Aucun compte ni mot de passe n’est nécessaire.</p></details>
       <details class="kcam-faq"><summary data-kc-event="accompagnement:faq:resultat">Et si un point ne me convient pas ?</summary><p>Vous nous le signalez et nous revenons le corriger. C’est notre engagement « satisfait ou repassé », détaillé sur notre page Qualité.</p></details>
     </div>
   </div>
