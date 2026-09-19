@@ -48,7 +48,7 @@ Formule : **total = (base + options) × (1 + majorations) + frais fixes**, acomp
 - **Retouches chirurgicales** : modifier le minimum, jamais de restructuration non demandée.
 - **Paiements** : montants recalculés côté serveur (`KC_Pricing`), signature des webhooks Stripe vérifiée, idempotence (jamais deux traitements d'un même événement), tests en mode test avant le live.
 - **Secrets** uniquement côté serveur (jamais dans un bloc HTML ni dans Git).
-- **Charte** : navy `#0D2340` dominant, teal `#0FA7A5` en accent seulement ; Montserrat/Inter/Roboto (+ Fraunces pages éditoriales) ; icônes SVG, jamais d'emoji ; **un préfixe CSS unique par bloc** WordPress.
+- **Charte** : `site/CHARTE-KC-v2.md` (19/09/2026) fait foi, avec `site/charte-kc-v2.html` comme référence de valeurs. Navy `#0D2340` dominant, teal `#0FA7A5` en accent seulement ; **Libre Baskerville / Inter / JetBrains Mono** (Fraunces, Montserrat et Roboto sont retirées) ; icônes SVG, jamais d'emoji ; **un préfixe CSS unique par bloc** WordPress ; deux fichiers par page (`.src.html` lisible + `.html` minifié).
 - **Commits en français**, un commit par fonctionnalité.
 - Témoignages fictifs : badge « Exemple » obligatoire tant qu'ils ne sont pas remplacés (DGCCRF).
 
