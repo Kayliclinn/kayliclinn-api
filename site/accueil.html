@@ -39,7 +39,7 @@
 
    ┌─ 4 · RÉALISATIONS AVANT/APRÈS (3 comparateurs) ────────
    │  Variables (panneau :root, tout en haut) — 6 photos à venir :
-   │   R1 Appartement Paris 11e (fin de chantier 72 m²)
+   │   R1 Appartement Paris 11e (fin de chantier 72&nbsp;m²)
    │      --r1-avant / --r1-apres
    │      ALT avant : « Appartement Paris 11e avant nettoyage
    │                    de fin de chantier — poussières et traces »
@@ -73,10 +73,6 @@
 
    🔗 Liens : /devis/ · /prestations/ · /a-propos/
    ════════════════════════════════════════════════════════ -->
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -131,9 +127,9 @@
 }
 .kc-home{
 
-  --kc-primary:#0FA7A5; --kc-primary-light:#19E3DF; --kc-navy:#16163F;
-  --kc-bg-soft:#F7F8FA; --kc-text:#5a647c; --kc-text-muted:#6b7488;
-  --kc-border:#ECEEF3; --kc-white:#fff;
+  --kc-primary:#0FA7A5; --kc-primary-light:#19E3DF; --kc-navy:#0D2340;
+  --kc-bg-soft:#F7F8FA; --kc-text:#4B5563; --kc-text-muted:#6B7280;
+  --kc-border:#E5E7EB; --kc-white:#fff;
   font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   color:var(--kc-navy);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
@@ -201,7 +197,7 @@
   text-align:center; display:flex; flex-direction:column; align-items:center;
 }
 .kc-home .kh-badge{
-  display:inline-flex; align-items:center; gap:10px; color:#cfeeee;
+  display:inline-flex; align-items:center; gap:10px; color:#E6F5F5;
   font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
   background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.14);
   backdrop-filter:blur(6px); padding:9px 16px; border-radius:999px;
@@ -349,11 +345,11 @@
       </p>
 
       <div class="kh-cta" aria-label="Actions principales">
-        <a class="kh-btn kh-btn-1" href="/devis/">
+        <a class="kh-btn kh-btn-1" href="/devis/" data-kc-event="accueil:cta:devis">
           <span>Estimation en ligne</span>
           <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
         </a>
-        <a class="kh-btn kh-btn-2" href="/prestations/">
+        <a class="kh-btn kh-btn-2" href="/prestations/" data-kc-event="accueil:cta:prestations">
           <span>Voir nos prestations</span>
         </a>
       </div>
@@ -388,11 +384,11 @@
         </ul>
 
         <div class="ka-actions ka-rev">
-          <a class="ka-btn" href="/devis/">
+          <a class="ka-btn" href="/devis/" data-kc-event="accueil:cta:devis">
             <span>Demander un devis gratuit</span>
             <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
           </a>
-          <a class="ka-link" href="/a-propos/">En savoir plus sur Kayli Clinn</a>
+          <a class="ka-link" href="/a-propos/" data-kc-event="accueil:lien:a-propos">En savoir plus sur Kayli Clinn</a>
         </div>
       </div>
 
@@ -516,19 +512,15 @@
    Fond blanc · bouton turquoise plein · typographie sobre.
    ════════════════════════════════════════════════════════ -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 <style id="kh4-style">
 .kh4-section{
   --ink:#0D2340;
   --teal:#0FA7A5;
-  --teal-ink:#0B7A78;
+  --teal-ink:#0B8483;
   --mint:#19E3DF;
   --bg:#FFFFFF;
-  --line:#E2E7EE;
-  --muted:#5a647c;
+  --line:#E5E7EB;
+  --muted:#4B5563;
   --shadow:0 24px 70px -34px rgba(13,35,64,.42);
   position:relative;
   isolation:isolate;
@@ -845,8 +837,8 @@
 
     <div class="kh4-cta kh4-rev">
       <div class="kh4-actions">
-        <a class="kh4-btn" href="/devis/">Estimer mon besoin<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="kh4-secondary" href="/contact/">Demander un conseil</a>
+        <a class="kh4-btn" href="/devis/" data-kc-event="accueil:cta:devis">Estimer mon besoin<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="kh4-secondary" href="/contact/" data-kc-event="accueil:lien:contact">Demander un conseil</a>
       </div>
       <span class="kh4-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>Devis gratuit, sans engagement — paiement sécurisé selon la prestation.</span>
     </div>
@@ -990,11 +982,11 @@
 .kcp-eyebrow:before{content:"—  "}
 .kcp-h2{font-size:clamp(28px,4vw,44px);line-height:1.12;font-weight:800;color:#0D2340;margin:0 0 18px}
 .kcp-h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.kcp-sub{font-size:17px;line-height:1.65;color:#5a647c;margin:0}
+.kcp-sub{font-size:17px;line-height:1.65;color:#4B5563;margin:0}
 .kcp-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 @media(max-width:1100px){.kcp-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.kcp-grid{grid-template-columns:1fr}}
-.kcp-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none;box-shadow:0 10px 30px -18px rgba(13,35,64,.25);border:1px solid #eef1f5;opacity:1;transform:none;transition:opacity .3s,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;animation:kcpIn .45s ease both}
+.kcp-card{position:relative;display:flex;flex-direction:column;background:#fff;border-radius:20px;overflow:hidden;text-decoration:none;box-shadow:0 10px 30px -18px rgba(13,35,64,.25);border:1px solid #F7F8FA;opacity:1;transform:none;transition:opacity .3s,transform .3s cubic-bezier(.22,1,.36,1),box-shadow .35s;animation:kcpIn .45s ease both}
 .kcp-card.in{opacity:1;transform:none}
 .kcp-card:hover{transform:translateY(-8px);box-shadow:0 26px 50px -22px rgba(13,35,64,.42)}
 .kcp-media{position:relative;height:200px;overflow:hidden}
@@ -1007,15 +999,15 @@
 @keyframes kcpBadge{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 .kcp-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
 .kcp-t{font-size:18px;font-weight:700;color:#0D2340;margin:0 0 8px;line-height:1.25}
-.kcp-d{font-size:13.5px;line-height:1.55;color:#6b7488;margin:0 0 16px;flex:1}
+.kcp-d{font-size:13.5px;line-height:1.55;color:#6B7280;margin:0 0 16px;flex:1}
 .kcp-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:8px}
 .kcp-price{display:flex;flex-direction:column}
 .kcp-amount{font-weight:800;color:#0FA7A5;font-size:15px}
-.kcp-tag{font-size:11px;color:#9aa3b5;margin-top:2px}
+.kcp-tag{font-size:11px;color:#6B7280;margin-top:2px}
 .kcp-go{display:inline-flex;align-items:center;gap:6px;color:#0D2340;font-weight:700;font-size:13px;transition:gap .25s,color .25s}
 .kcp-card:hover .kcp-go{color:#0FA7A5;gap:10px}
 .kcp-dots{display:flex;gap:5px;margin-top:14px}
-.kcp-dot{width:7px;height:7px;border-radius:50%;background:#dfe3ea;transition:background .3s,width .3s}
+.kcp-dot{width:7px;height:7px;border-radius:50%;background:#E5E7EB;transition:background .3s,width .3s}
 .kcp-dot.on{background:#0FA7A5;width:18px;border-radius:4px}
 .kcp-cta{text-align:center;margin-top:50px}
 .kcp-btn{display:inline-flex;align-items:center;gap:9px;background:#0FA7A5;color:#fff;font-weight:600;font-size:16px;padding:15px 30px;border-radius:11px;text-decoration:none;box-shadow:0 12px 30px rgba(15,167,165,.28);transition:transform .25s,box-shadow .25s}
@@ -1033,7 +1025,7 @@
   <div class="kcp-grid">
 
     <!-- 01 · Nettoyage fin de chantier (photos → variables --chantier-* en haut) -->
-    <a class="kcp-card" href="/nettoyage-fin-de-chantier/" data-i="0">
+    <a class="kcp-card" href="/nettoyage-fin-de-chantier/" data-i="0" data-kc-event="accueil:lien:fin-de-chantier">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1043,13 +1035,13 @@
       <div class="kcp-body">
         <h3 class="kcp-t">Nettoyage fin de chantier</h3>
         <p class="kcp-d">Élimination des poussières, traces de peinture et laitance de ciment. Livraison clé en main après vos travaux.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 4,50 €/m² HT</span><span class="kcp-tag">Prix après audit gratuit</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 4,50&nbsp;€/m² HT</span><span class="kcp-tag">Prix après audit gratuit</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
     <!-- 02 · Turnover Airbnb (photos → variables --airbnb-* en haut) -->
-    <a class="kcp-card" href="/turnover-airbnb/" data-i="1">
+    <a class="kcp-card" href="/turnover-airbnb/" data-i="1" data-kc-event="accueil:lien:airbnb">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1059,13 +1051,13 @@
       <div class="kcp-body">
         <h3 class="kcp-t">Turnover Airbnb</h3>
         <p class="kcp-d">Préparation complète entre deux locations, avec ménage, linge, contrôle qualité et réassort des consommables.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 55 €/rotation</span><span class="kcp-tag">Récurrent</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 55&nbsp;€/rotation</span><span class="kcp-tag">Récurrent</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
     <!-- 03 · Entretien de bureaux (photos → variables --bureaux-* en haut) -->
-    <a class="kcp-card" href="/entretien-de-bureaux/" data-i="2">
+    <a class="kcp-card" href="/entretien-de-bureaux/" data-i="2" data-kc-event="accueil:lien:bureaux">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1075,13 +1067,13 @@
       <div class="kcp-body">
         <h3 class="kcp-t">Entretien de bureaux</h3>
         <p class="kcp-d">Contrats récurrents pour entreprises, avec un nettoyage quotidien, hebdomadaire ou ponctuel selon vos besoins.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 2 €/m²/mois HT</span><span class="kcp-tag">Contrat</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 2&nbsp;€/m²/mois HT</span><span class="kcp-tag">Contrat</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
     <!-- 04 · Nettoyage déménagement (photos → variables --demenagement-* en haut) -->
-    <a class="kcp-card" href="/nettoyage-apres-demenagement-etat-des-lieux/" data-i="3">
+    <a class="kcp-card" href="/nettoyage-apres-demenagement-etat-des-lieux/" data-i="3" data-kc-event="accueil:lien:demenagement">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1091,13 +1083,13 @@
       <div class="kcp-body">
         <h3 class="kcp-t">Nettoyage déménagement</h3>
         <p class="kcp-d">Remise en état avant état des lieux, en sortie de bail comme à l'entrée d'un nouveau logement.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 160 €</span><span class="kcp-tag">Forfait tout inclus</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 160&nbsp;€</span><span class="kcp-tag">Forfait tout inclus</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
     <!-- 05 · Nettoyage de vitres (photos → variables --vitres-* en haut · 2 images) -->
-    <a class="kcp-card" href="/vitres-classiques/" data-i="4">
+    <a class="kcp-card" href="/vitres-classiques/" data-i="4" data-kc-event="accueil:lien:vitres">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1106,13 +1098,13 @@
       <div class="kcp-body">
         <h3 class="kcp-t">Nettoyage de vitres</h3>
         <p class="kcp-d">Vitres intérieures et extérieures sans traces, sur vitrines, baies vitrées et fenêtres en hauteur.</p>
-        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 70 €</span><span class="kcp-tag">Forfait TTC</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+        <div class="kcp-foot"><div class="kcp-price"><span class="kcp-amount">Dès 70&nbsp;€</span><span class="kcp-tag">Forfait TTC</span></div><span class="kcp-go">Découvrir <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
         <div class="kcp-dots"><span class="kcp-dot on"></span><span class="kcp-dot"></span></div>
       </div>
     </a>
 
     <!-- 06 · Remise en état (photos → variables --remise-* en haut) -->
-    <a class="kcp-card" href="/remise-en-etat/" data-i="5">
+    <a class="kcp-card" href="/remise-en-etat/" data-i="5" data-kc-event="accueil:lien:remise-en-etat">
       <div class="kcp-media">
         <div class="kcp-slide is-active"></div>
         <div class="kcp-slide"></div>
@@ -1131,7 +1123,7 @@
 
   <div class="kcp-cta">
     <!-- 🔗 LIEN : page toutes les prestations -->
-    <a class="kcp-btn" href="/prestations/">Voir toutes nos prestations →</a>
+    <a class="kcp-btn" href="/prestations/" data-kc-event="accueil:cta:prestations">Voir toutes nos prestations →</a>
   </div>
 </section>
 
@@ -1290,7 +1282,7 @@
 
   .kr-h2 {
     font-family:'Fraunces',Georgia,serif;
-    color: #16163F;
+    color: #0D2340;
     font-size: clamp(32px, 4vw, 52px);
     font-weight: 850;
     letter-spacing: -.045em;
@@ -1303,7 +1295,7 @@
   }
 
   .kr-sub {
-    color: #5a647c;
+    color: #4B5563;
     font-size: clamp(15.5px, 1.5vw, 17px);
     line-height: 1.78;
     margin: 0;
@@ -1333,7 +1325,7 @@
 
   .kr-proof-item strong {
     display: block;
-    color: #16163F;
+    color: #0D2340;
     font-family:'Fraunces',Georgia,serif;
     font-size: 22px;
     line-height: 1;
@@ -1342,7 +1334,7 @@
 
   .kr-proof-item span {
     display: block;
-    color: #6b7488;
+    color: #6B7280;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: .08em;
@@ -1358,7 +1350,7 @@
   .kr-card {
     position: relative;
     background: #fff;
-    border: 1px solid #ECEEF3;
+    border: 1px solid #E5E7EB;
     border-radius: 26px;
     overflow: hidden;
     opacity: 0;
@@ -1403,7 +1395,7 @@
     overflow: hidden;
     cursor: ew-resize;
     user-select: none;
-    background: #16163F;
+    background: #0D2340;
   }
 
   .kr-compare::after {
@@ -1531,7 +1523,7 @@
   .kr-cat {
     display: inline-flex;
     align-items: center;
-    color: #0a7a78;
+    color: #0B8483;
     background: rgba(15, 167, 165, .1);
     border: 1px solid rgba(15, 167, 165, .12);
     font-size: 10.5px;
@@ -1543,7 +1535,7 @@
   }
 
   .kr-time {
-    color: #8a92a6;
+    color: #6B7280;
     font-size: 12px;
     font-weight: 700;
     white-space: nowrap;
@@ -1551,7 +1543,7 @@
 
   .kr-t {
     font-family:'Fraunces',Georgia,serif;
-    color: #16163F;
+    color: #0D2340;
     font-size: 19px;
     font-weight:600;
     letter-spacing: -.02em;
@@ -1560,7 +1552,7 @@
   }
 
   .kr-m {
-    color: #6b7488;
+    color: #6B7280;
     font-size: 13.8px;
     line-height: 1.58;
     margin: 0;
@@ -1588,7 +1580,7 @@
     align-items: center;
     justify-content: center;
     gap: 11px;
-    background: #16163F;
+    background: #0D2340;
     color: #fff;
     font-weight: 800;
     font-size: 15px;
@@ -1616,13 +1608,13 @@
   }
 
   .kr-note {
-    color: #6b7488;
+    color: #6B7280;
     font-size: 13.5px;
     line-height: 1.45;
   }
 
   .kr-note strong {
-    color: #16163F;
+    color: #0D2340;
   }
 
   /* ════════════════ POURQUOI NOUS CHOISIR — PREMIUM TRUST CAROUSEL ════════════════ */
@@ -1631,7 +1623,7 @@
     background:
       radial-gradient(circle at 78% 4%, rgba(15, 167, 165, .24), transparent 28%),
       radial-gradient(circle at 14% 94%, rgba(25, 227, 223, .12), transparent 30%),
-      linear-gradient(160deg, #0B1130 0%, #0D1330 55%, #16163F 100%);
+      linear-gradient(160deg, #0D2340 0%, #0D2340 55%, #0D2340 100%);
     padding: clamp(76px, 7vw, 104px) 0 clamp(78px, 7vw, 108px);
     overflow: hidden;
     font-family: Inter, system-ui, sans-serif;
@@ -1713,7 +1705,7 @@
     max-width: 700px;
     margin: 0 auto;
     font-size: clamp(15.5px, 1.5vw, 17px);
-    color: #aab2cc;
+    color: rgba(255,255,255,.72);
     line-height: 1.75;
   }
 
@@ -1857,7 +1849,7 @@
     position: relative;
     font-size: 15.3px;
     line-height: 1.72;
-    color: #a7b0ca;
+    color: rgba(255,255,255,.72);
     margin: 0;
   }
 
@@ -1899,7 +1891,7 @@
   }
 
   .kcw2-hint {
-    color: #7f89a8;
+    color: #6B7280;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: .12em;
@@ -1935,7 +1927,7 @@
 
   .kcw2-btn:hover {
     background: #19E3DF;
-    color: #0B1130;
+    color: #0D2340;
     transform: translateY(-2px);
     box-shadow: 0 24px 48px -22px rgba(25, 227, 223, .8);
   }
@@ -2064,7 +2056,7 @@
           </div>
           <h3 class="kr-t">Appartement Paris 11e</h3>
           <p class="kr-dep">75 Paris</p>
-          <p class="kr-m">72 m² après rénovation complète. Poussières fines, vitrages, sanitaires, sols et finitions prêts pour la remise des clés.</p>
+          <p class="kr-m">72&nbsp;m² après rénovation complète. Poussières fines, vitrages, sanitaires, sols et finitions prêts pour la remise des clés.</p>
         </div>
       </article>
 
@@ -2089,13 +2081,13 @@
           </div>
           <h3 class="kr-t">Bureaux open-space La Défense</h3>
           <p class="kr-dep">92 Hauts-de-Seine</p>
-          <p class="kr-m">220 m² en livraison VEFA. Intervention coordonnée, zones de passage sécurisées et rendu net pour vos équipes.</p>
+          <p class="kr-m">220&nbsp;m² en livraison VEFA. Intervention coordonnée, zones de passage sécurisées et rendu net pour vos équipes.</p>
         </div>
       </article>
     </div>
 
     <div class="kr-cta kr-rev">
-      <a class="kr-btn" href="/realisations/">
+      <a class="kr-btn" href="/realisations/" data-kc-event="accueil:cta:realisations">
         Voir toutes nos réalisations
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M5 12h14M13 6l6 6-6 6"></path>
@@ -2128,7 +2120,7 @@
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="m9 12 2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle>
       </svg>
-      Devis clair sous 24 h
+      Devis clair sous 24&nbsp;h
     </span>
     <span class="kcw2-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -2149,7 +2141,7 @@
   </div>
 
   <div class="kcw2-bottom">
-    <a class="kcw2-btn" href="/devis/">
+    <a class="kcw2-btn" href="/devis/" data-kc-event="accueil:cta:devis">
       Demander un devis
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M5 12h14M13 6l6 6-6 6"></path>
@@ -2459,27 +2451,27 @@
 .kczn2-wrap{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;position:relative;z-index:2}
 .kczn2-eye{display:inline-flex;align-items:center;gap:10px;color:#0FA7A5;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
 .kczn2-eye:before{content:"";width:34px;height:2px;background:#0FA7A5;display:inline-block}
-.kczn2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 20px}
-.kczn2-p{font-size:16px;color:#5a647c;line-height:1.7;margin:0 0 26px;max-width:520px}
-.kczn2-sub{font-size:20px;font-weight:700;color:#16163F;margin:0 0 12px}
+.kczn2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#0D2340;line-height:1.15;margin:0 0 20px}
+.kczn2-p{font-size:16px;color:#4B5563;line-height:1.7;margin:0 0 26px;max-width:520px}
+.kczn2-sub{font-size:20px;font-weight:700;color:#0D2340;margin:0 0 12px}
 .kczn2-stats{display:flex;gap:14px;margin:34px 0 34px;flex-wrap:wrap}
 .kczn2-stat{flex:1;min-width:120px;border-left:3px solid #0FA7A5;padding:6px 0 6px 18px}
-.kczn2-num{font-size:36px;font-weight:800;color:#16163F;line-height:1;letter-spacing:-1px}
-.kczn2-lab{font-size:13.5px;color:#6b7488;margin-top:8px;line-height:1.35}
+.kczn2-num{font-size:36px;font-weight:800;color:#0D2340;line-height:1;letter-spacing:-1px}
+.kczn2-lab{font-size:13.5px;color:#6B7280;margin-top:8px;line-height:1.35}
 .kczn2-cta{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .kczn2-btn{display:inline-flex;align-items:center;gap:8px;background:#0FA7A5;color:#fff;font-weight:600;font-size:14px;padding:14px 22px;border-radius:11px;text-decoration:none;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;box-shadow:0 12px 26px -14px rgba(15,167,165,.6)}
 .kczn2-btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -12px rgba(15,167,165,.7)}
 .kczn2-btn:after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);display:none}
 @keyframes kcznsheen{0%,60%{left:-120%}80%,100%{left:160%}}
-.kczn2-tel{display:inline-flex;align-items:center;gap:8px;color:#0D2340;font-weight:600;font-size:14px;text-decoration:none;padding:14px 22px;border:1px solid #E7EAEF;border-radius:11px;background:#fff;transition:border-color .3s,box-shadow .3s,transform .3s}
+.kczn2-tel{display:inline-flex;align-items:center;gap:8px;color:#0D2340;font-weight:600;font-size:14px;text-decoration:none;padding:14px 22px;border:1px solid #E5E7EB;border-radius:11px;background:#fff;transition:border-color .3s,box-shadow .3s,transform .3s}
 .kczn2-tel:hover{border-color:#0FA7A5;box-shadow:0 8px 20px -10px rgba(15,167,165,.35);transform:translateY(-2px)}
 .kczn2-tel svg{width:18px;height:18px;stroke:#0FA7A5}
 .kczn2-map{position:relative}
 /* MODIF : carte sans fond vert — blanc pur, bord & ombre neutres */
-.kczn2-mapcard{position:relative;border-radius:28px;padding:22px;background:#fff;border:1px solid #ECEEF3;box-shadow:0 34px 80px -34px rgba(22,22,63,.30);overflow:hidden}
+.kczn2-mapcard{position:relative;border-radius:28px;padding:22px;background:#fff;border:1px solid #E5E7EB;box-shadow:0 34px 80px -34px rgba(22,22,63,.30);overflow:hidden}
 /* MODIF : auréoles turquoise de la carte (.kczn2-mapcard:before / :after) supprimées */
 /* MODIF : cadre de l'image neutralisé (ancien dégradé turquoise → gris très clair) */
-.kczn2-ring{position:relative;border-radius:22px;overflow:hidden;background:#F3F5F8;padding:6px;z-index:1}
+.kczn2-ring{position:relative;border-radius:22px;overflow:hidden;background:#F7F8FA;padding:6px;z-index:1}
 .kczn2-img{width:100%;display:block;border-radius:18px;transition:transform 7s ease;transform:scale(1.02)}
 .kczn2-mapcard:hover .kczn2-img{transform:scale(1.07)}
 /* MODIF : voile vert (.kczn2-imgveil) retiré — il était inutilisé dans le HTML */
@@ -2487,7 +2479,7 @@
 .kczn2-pin.on{opacity:1}
 @keyframes kcznpin{0%{box-shadow:0 0 0 0 rgba(15,167,165,.55)}70%{box-shadow:0 0 0 16px rgba(15,167,165,0)}100%{box-shadow:0 0 0 0 rgba(15,167,165,0)}}
 .kczn2-pin i{position:absolute;inset:3px;border-radius:50%;background:#fff}
-.kczn2-legend{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;color:#6b7488;font-size:13px;position:relative;z-index:1}
+.kczn2-legend{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;color:#6B7280;font-size:13px;position:relative;z-index:1}
 .kczn2-legend i{width:13px;height:13px;border-radius:4px;background:linear-gradient(135deg,#0FA7A5,#19E3DF);display:inline-block}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
 .reveal.show{opacity:1;transform:none}
@@ -2524,17 +2516,17 @@
       <h2 class="kczn2-title reveal">Présents partout en Île&#8209;de&#8209;France</h2>
       <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens.<br>Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
-      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb.<br>Quel que soit votre département, nous avons une équipe prête à intervenir sous 48 h.</p>
+      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb.<br>Quel que soit votre département, nous avons une équipe prête à intervenir sous 48&nbsp;h.</p>
       <div class="kczn2-stats reveal">
         <div class="kczn2-stat"><div class="kczn2-num" data-to="8">8</div><div class="kczn2-lab">Départements</div></div>
         <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">1 281</div><div class="kczn2-lab">Communes accessibles</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">48 h</div><div class="kczn2-lab">Délai max</div></div>
+        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">48&nbsp;h</div><div class="kczn2-lab">Délai max</div></div>
       </div>
       <div class="kczn2-cta reveal">
         <!-- 👉 BOUTON DEVIS -->
-        <a class="kczn2-btn" href="/devis/">Demander une intervention <span>→</span></a>
+        <a class="kczn2-btn" href="/devis/" data-kc-event="accueil:cta:devis">Demander une intervention <span>→</span></a>
         <!-- 👉 TÉLÉPHONE -->
-        <a class="kczn2-tel" href="tel:+33670012061"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg> 06 70 01 20 61</a>
+        <a class="kczn2-tel" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg> 06 70 01 20 61</a>
       </div>
     </div>
     <div class="kczn2-map reveal">
@@ -2551,7 +2543,7 @@
           <span class="kczn2-pin" data-dep="94" style="left:53%;top:48%"><i></i></span>
           <span class="kczn2-pin" data-dep="91" style="left:46%;top:56%"><i></i></span>
         </div>
-        <div class="kczn2-legend"><i></i> 8 départements couverts · intervention sous 48 h</div>
+        <div class="kczn2-legend"><i></i> 8 départements couverts · intervention sous 48&nbsp;h</div>
       </div>
     </div>
   </div>
@@ -2592,25 +2584,25 @@
 .kcav2-head{max-width:720px;margin:0 auto 34px;text-align:center;position:relative;z-index:2}
 .kcav2-eye{display:inline-flex;align-items:center;gap:10px;color:#0FA7A5;font-size:13px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
 .kcav2-eye:before,.kcav2-eye:after{content:"";width:30px;height:2px;background:#0FA7A5;display:inline-block}
-.kcav2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#16163F;line-height:1.15;margin:0 0 16px}
-.kcav2-sub{font-size:17px;color:#5a647c;line-height:1.65;margin:0}
+.kcav2-title{font-size:clamp(28px,3.4vw,42px);font-weight:800;color:#0D2340;line-height:1.15;margin:0 0 16px}
+.kcav2-sub{font-size:17px;color:#4B5563;line-height:1.65;margin:0}
 .kcav2-grid{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative;z-index:2}
-.kcav2-card{background:#fff;border:1px solid #eceef3;border-radius:24px;padding:34px 32px;position:relative;display:flex;flex-direction:column;box-shadow:0 24px 50px -34px rgba(22,22,63,.22);transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s}
+.kcav2-card{background:#fff;border:1px solid #E5E7EB;border-radius:24px;padding:34px 32px;position:relative;display:flex;flex-direction:column;box-shadow:0 24px 50px -34px rgba(22,22,63,.22);transition:transform .4s cubic-bezier(.2,.7,.3,1),box-shadow .4s}
 /* MODIF : ombre verte au survol neutralisée (→ navy) */
 .kcav2-card:hover{transform:translateY(-8px);box-shadow:0 32px 60px -28px rgba(22,22,63,.30)}
 .kcav2-quote{position:absolute;top:22px;right:30px;font-size:64px;line-height:1;color:rgba(15,167,165,.13);font-family:Georgia,serif;font-weight:700}
 .kcav2-stars{display:flex;gap:3px;margin-bottom:18px}
-.kcav2-stars svg{width:19px;height:19px;fill:#F5B638}
-.kcav2-txt{font-size:15.5px;line-height:1.7;color:#3c4360;margin:0 0 26px;position:relative;z-index:1;flex:1}
-.kcav2-foot{display:flex;align-items:center;gap:14px;border-top:1px solid #f0f2f6;padding-top:20px}
+.kcav2-stars svg{width:19px;height:19px;fill:#0B8483}
+.kcav2-txt{font-size:15.5px;line-height:1.7;color:#4B5563;margin:0 0 26px;position:relative;z-index:1;flex:1}
+.kcav2-foot{display:flex;align-items:center;gap:14px;border-top:1px solid #E5E7EB;padding-top:20px}
 .kcav2-av{width:50px;height:50px;border-radius:50%;background:linear-gradient(150deg,#0FA7A5,#19E3DF);color:#fff;font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 8px 18px -8px rgba(15,167,165,.6)}
-.kcav2-name{font-size:16px;font-weight:700;color:#16163F;margin:0}
-.kcav2-role{font-size:13px;color:#6b7488;margin:3px 0 0}
-.kcav2-cta{max-width:880px;margin:34px auto 0;background:linear-gradient(135deg,#0B1130,#16163F);border-radius:24px;padding:30px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;z-index:2;overflow:hidden}
+.kcav2-name{font-size:16px;font-weight:700;color:#0D2340;margin:0}
+.kcav2-role{font-size:13px;color:#6B7280;margin:3px 0 0}
+.kcav2-cta{max-width:880px;margin:34px auto 0;background:linear-gradient(135deg,#0D2340,#0D2340);border-radius:24px;padding:30px 40px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;position:relative;z-index:2;overflow:hidden}
 .kcav2-cta:before{content:"";position:absolute;top:-80px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(25,227,223,.22),transparent 70%);pointer-events:none}
 .kcav2-cta-txt{position:relative;z-index:1}
 .kcav2-cta-txt h3{font-size:21px;font-weight:700;color:#fff;margin:0 0 8px}
-.kcav2-cta-txt p{font-size:15px;color:#aab2cc;margin:0;max-width:420px;line-height:1.6}
+.kcav2-cta-txt p{font-size:15px;color:rgba(255,255,255,.72);margin:0;max-width:420px;line-height:1.6}
 .kcav2-cta-btns{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1}
 .kcav2-bg{display:inline-flex;align-items:center;gap:9px;background:#0FA7A5;color:#fff;font-weight:600;font-size:14px;padding:14px 22px;border-radius:11px;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 12px 26px -14px rgba(15,167,165,.7)}
 .kcav2-bg:hover{transform:translateY(-2px)}
@@ -2635,9 +2627,9 @@
     <div class="kcav2-cta-btns">
       <!-- 👉 LIEN AVIS GOOGLE : remplacez par votre vrai lien d'avis
            (Fiche Google Business → Demander des avis → copier le lien g.page/r/…) -->
-      <a class="kcav2-bg" href="https://www.google.com/search?q=Kayli+Clinn+nettoyage+avis" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg> Laisser un avis Google</a>
+      <a class="kcav2-bg" href="https://www.google.com/search?q=Kayli+Clinn+nettoyage+avis" target="_blank" rel="noopener" data-kc-event="accueil:externe:avis-google"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg> Laisser un avis Google</a>
       <!-- 👉 LIEN CONTACT -->
-      <a class="kcav2-bw" href="/contact/">Nous écrire</a>
+      <a class="kcav2-bw" href="/contact/" data-kc-event="accueil:lien:contact">Nous écrire</a>
     </div>
   </div>
 </section>
@@ -2672,18 +2664,14 @@
    🔗 "Nous écrire" : /contact/
    ════════════════════════════════════════════════════════ -->
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=Roboto:wght@500;600&display=swap" rel="stylesheet">
-
 <style>
 .kcfq-section{
   --kc-ink:#0D2340;
-  --kc-ink-soft:#5A6B82;
+  --kc-ink-soft:#4B5563;
   --kc-teal:#0FA7A5;
   --kc-teal-deep:#0B8483;
-  --kc-teal-tint:#EAF6F6;
-  --kc-line:#E7EAEF;
+  --kc-teal-tint:#E6F5F5;
+  --kc-line:#E5E7EB;
 
   background:#F7F8FA;
   padding:100px 5%;
@@ -2785,14 +2773,14 @@
     <div class="kcfq-head">
       <span class="kcfq-eyebrow">FAQ</span>
       <h2 class="kcfq-title">Vos questions, <span>nos réponses</span></h2>
-      <p class="kcfq-sub">Tout ce qu'il faut savoir avant de nous confier votre chantier. Une question absente&nbsp;? On répond sous 2 h en jours ouvrés.</p>
+      <p class="kcfq-sub">Tout ce qu'il faut savoir avant de nous confier votre chantier. Une question absente&nbsp;? On répond sous 2&nbsp;h en jours ouvrés.</p>
     </div>
 
     <div class="kcfq-filters">
-      <button class="kcfq-filter is-active" data-filter="general">Général</button>
-      <button class="kcfq-filter" data-filter="prix">Tarifs &amp; paiement</button>
-      <button class="kcfq-filter" data-filter="intervention">Intervention</button>
-      <button class="kcfq-filter" data-filter="all">Toutes les questions</button>
+      <button class="kcfq-filter is-active" data-filter="general" data-kc-event="accueil:filtre:general">Général</button>
+      <button class="kcfq-filter" data-filter="prix" data-kc-event="accueil:filtre:prix">Tarifs &amp; paiement</button>
+      <button class="kcfq-filter" data-filter="intervention" data-kc-event="accueil:filtre:intervention">Intervention</button>
+      <button class="kcfq-filter" data-filter="all" data-kc-event="accueil:filtre:all">Toutes les questions</button>
     </div>
 
     <div class="kcfq-list">
@@ -2806,9 +2794,9 @@
         <div class="kcfq-a"><div class="kcfq-a-in">
           <p><strong>Oui, absolument.</strong> Nos délais et majorations officiels&nbsp;:</p>
           <ul>
-            <li><strong>Standard</strong> — sous 48 h à 7 jours (tarif normal)</li>
-            <li><strong>Urgence</strong> — sous 48 h, selon disponibilités (+30 %)</li>
-            <li><strong>Dimanche et jours fériés</strong> — intervention possible (+25 %)</li>
+            <li><strong>Standard</strong> — sous 48&nbsp;h à 7 jours (tarif normal)</li>
+            <li><strong>Urgence</strong> — sous 48&nbsp;h, selon disponibilités (+30&nbsp;%)</li>
+            <li><strong>Dimanche et jours fériés</strong> — intervention possible (+25&nbsp;%)</li>
           </ul>
           <p>Pour les urgences, appelez directement le 06 70 01 20 61. Nous trouvons toujours une solution.</p>
         </div></div>
@@ -2823,14 +2811,14 @@
         <div class="kcfq-a"><div class="kcfq-a-in">
           <p>Notre tarification est <strong>transparente, issue d'une grille officielle</strong>. À titre indicatif (prix TTC pour les particuliers)&nbsp;:</p>
           <ul>
-            <li>Turnover Airbnb dès 55 € par rotation (forfait selon la typologie)</li>
-            <li>Fin de bail / déménagement dès 160 € — électroménager, vitres intérieures et placards inclus</li>
-            <li>Vitrerie résidentielle dès 70 €</li>
-            <li>Fin de chantier dès 4,50 €/m² HT (prix confirmé après audit gratuit ou photos)</li>
-            <li>Bureaux et locaux pro à partir de 2 €/m²/mois HT, sur devis après audit</li>
+            <li>Turnover Airbnb dès 55&nbsp;€ par rotation (forfait selon la typologie)</li>
+            <li>Fin de bail / déménagement dès 160&nbsp;€ — électroménager, vitres intérieures et placards inclus</li>
+            <li>Vitrerie résidentielle dès 70&nbsp;€</li>
+            <li>Fin de chantier dès 4,50&nbsp;€/m² HT (prix confirmé après audit gratuit ou photos)</li>
+            <li>Bureaux et locaux pro à partir de 2&nbsp;€/m²/mois HT, sur devis après audit</li>
             <li>Copropriétés, commerces, remises en état lourdes sur devis, avec visite gratuite</li>
           </ul>
-          <p>Pour un tarif précis en 2 minutes, utilisez notre <strong>simulateur en ligne</strong>. Les forfaits se réservent directement avec un acompte de 30 %. Pour le reste, visite gratuite et devis ferme sous 24 à 48 h.</p>
+          <p>Pour un tarif précis en 2 minutes, utilisez notre <strong>simulateur en ligne</strong>. Les forfaits se réservent directement avec un acompte de 30&nbsp;%. Pour le reste, visite gratuite et devis ferme sous 24 à 48&nbsp;h.</p>
         </div></div>
       </div>
 
@@ -2841,7 +2829,7 @@
           <div class="kcfq-toggle"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></div>
         </div>
         <div class="kcfq-a"><div class="kcfq-a-in">
-          <p>Pour les <strong>particuliers</strong>, l'estimation est immédiate via le simulateur en ligne, et vous recevez un devis ferme sous 24 h après réception des photos de votre chantier.</p>
+          <p>Pour les <strong>particuliers</strong>, l'estimation est immédiate via le simulateur en ligne, et vous recevez un devis ferme sous 24&nbsp;h après réception des photos de votre chantier.</p>
           <p>Pour les <strong>professionnels</strong> (BTP, syndics, agences, promoteurs), nous réalisons une visite technique gratuite et remettons un devis ferme sur place, signable immédiatement.</p>
         </div></div>
       </div>
@@ -2855,7 +2843,7 @@
         <div class="kcfq-a"><div class="kcfq-a-in">
           <p><strong>Oui, les deux profils</strong>, avec une offre adaptée à chacun&nbsp;:</p>
           <ul>
-            <li>Pour les <strong>particuliers</strong>, Airbnb, fin de bail et vitrerie se réservent en ligne à prix fixe TTC, avec un acompte de 30 % et le solde après prestation. Grands logements, maisons et cas spécifiques font l'objet d'une visite gratuite puis d'un devis ferme.</li>
+            <li>Pour les <strong>particuliers</strong>, Airbnb, fin de bail et vitrerie se réservent en ligne à prix fixe TTC, avec un acompte de 30&nbsp;% et le solde après prestation. Grands logements, maisons et cas spécifiques font l'objet d'une visite gratuite puis d'un devis ferme.</li>
             <li>Les <strong>professionnels</strong> (BTP, bureaux, agences immo, syndics, promoteurs VEFA) bénéficient d'une visite gratuite, d'une facturation à 30 jours fin de mois et de conditions négociables pour les contrats récurrents.</li>
           </ul>
         </div></div>
@@ -2913,7 +2901,7 @@
           <div class="kcfq-toggle"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></div>
         </div>
         <div class="kcfq-a"><div class="kcfq-a-in">
-          <p>Les <strong>particuliers</strong> règlent par carte bancaire en ligne (paiement sécurisé Stripe), par virement ou en espèces le jour de l'intervention. Acompte de 30 % à la réservation, solde après prestation.</p>
+          <p>Les <strong>particuliers</strong> règlent par carte bancaire en ligne (paiement sécurisé Stripe), par virement ou en espèces le jour de l'intervention. Acompte de 30&nbsp;% à la réservation, solde après prestation.</p>
           <p>Les <strong>professionnels</strong> sont facturés à 30 jours fin de mois, par virement. Aucun acompte pour les clients réguliers ou les entreprises avec un Kbis vérifiable.</p>
         </div></div>
       </div>
@@ -2937,7 +2925,7 @@
           <div class="kcfq-toggle"><svg viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></svg></div>
         </div>
         <div class="kcfq-a"><div class="kcfq-a-in">
-          <p>Notre engagement <strong>« Satisfait ou repassé »</strong> est sans condition. Si un détail vous gêne, signalez-le dans les <strong>48 h</strong> et nous revenons gratuitement reprendre ce qui doit l'être.</p>
+          <p>Notre engagement <strong>« Satisfait ou repassé »</strong> est sans condition. Si un détail vous gêne, signalez-le dans les <strong>48&nbsp;h</strong> et nous revenons gratuitement reprendre ce qui doit l'être.</p>
           <p>Un rapport photo est remis après chaque chantier — vous vérifiez la qualité du travail livré et nous transmettez vos remarques précises.</p>
         </div></div>
       </div>
@@ -2945,13 +2933,13 @@
     </div>
 
     <div class="kcfq-cta">
-      <p>Une autre question&nbsp;? Notre équipe répond sous 2 h en jours ouvrés.</p>
+      <p>Une autre question&nbsp;? Notre équipe répond sous 2&nbsp;h en jours ouvrés.</p>
       <div class="kcfq-cta-buttons">
-        <a href="tel:+33670012061" class="kcfq-btn kcfq-btn-primary">
+        <a href="tel:+33670012061" class="kcfq-btn kcfq-btn-primary" data-kc-event="accueil:contact:tel">
           <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           06 70 01 20 61
         </a>
-        <a href="https://kayliclinn.fr/contact/" class="kcfq-btn kcfq-btn-secondary">
+        <a href="https://kayliclinn.fr/contact/" class="kcfq-btn kcfq-btn-secondary" data-kc-event="accueil:externe:avis-google">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
           Nous écrire
         </a>
@@ -3008,7 +2996,7 @@
      2) "Nous écrire" : /contact/
      ════════════════════════════════════════════════════════ -->
 <style>
-.kcct2{position:relative;overflow:hidden;background:linear-gradient(180deg,#0B1130 0%,#0D1B3A 100%);padding:64px 24px 70px;font-family:'Inter',sans-serif;text-align:center}
+.kcct2{position:relative;overflow:hidden;background:linear-gradient(180deg,#0D2340 0%,#0D2340 100%);padding:64px 24px 70px;font-family:'Inter',sans-serif;text-align:center}
 .kcct2:after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:linear-gradient(90deg,transparent,rgba(25,227,223,.55),transparent)}
 .kcct2 .kcct2-glow{position:absolute;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(15,167,165,.16),transparent 70%);top:-150px;right:-100px;pointer-events:none}
 .kcct2 .kcct2-glow2{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(25,227,223,.08),transparent 70%);bottom:-140px;left:-100px;pointer-events:none}
@@ -3018,7 +3006,7 @@
 @keyframes kcctPulse{0%{box-shadow:0 0 0 0 rgba(25,227,223,.55)}70%{box-shadow:0 0 0 9px rgba(25,227,223,0)}100%{box-shadow:0 0 0 0 rgba(25,227,223,0)}}
 .kcct2 h2{font-size:clamp(26px,3.4vw,38px);line-height:1.12;font-weight:800;color:#fff;margin:0 0 14px}
 .kcct2 h2 em{font-style:normal;background:linear-gradient(90deg,#0FA7A5,#19E3DF);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.kcct2 .kcct2-sub{font-size:16px;line-height:1.6;color:#b4bdd2;max-width:500px;margin:0 auto 28px}
+.kcct2 .kcct2-sub{font-size:16px;line-height:1.6;color:rgba(255,255,255,.72);max-width:500px;margin:0 auto 28px}
 .kcct2 .kcct2-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
 .kcct2 .kcct2-btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;padding:13px 24px;border-radius:11px;text-decoration:none;transition:transform .25s,box-shadow .25s;position:relative;overflow:hidden}
 .kcct2 .kcct2-btn-primary{background:#0FA7A5;color:#fff;box-shadow:0 10px 26px rgba(15,167,165,.30)}
@@ -3028,12 +3016,12 @@
 .kcct2 .kcct2-btn-ghost{background:rgba(255,255,255,.04);color:#fff;border:1px solid rgba(255,255,255,.16)}
 .kcct2 .kcct2-btn-ghost:hover{transform:translateY(-3px);border-color:#19E3DF}
 .kcct2 .kcct2-btn-ghost svg{color:#19E3DF}
-.kcct2 .kcct2-phone-label{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#7d869e;font-weight:700;margin-bottom:6px}
+.kcct2 .kcct2-phone-label{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;color:#6B7280;font-weight:700;margin-bottom:6px}
 .kcct2 a.kcct2-phone{display:inline-flex;align-items:center;gap:9px;font-size:26px;font-weight:800;color:#fff;text-decoration:none;transition:color .25s}
 .kcct2 a.kcct2-phone:hover{color:#19E3DF}
 .kcct2 a.kcct2-phone svg{color:#19E3DF}
 .kcct2 .kcct2-trust{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
-.kcct2 .kcct2-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#dfe4ef;font-weight:600;font-size:13px;padding:9px 15px;border-radius:11px}
+.kcct2 .kcct2-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);color:#E5E7EB;font-weight:600;font-size:13px;padding:9px 15px;border-radius:11px}
 .kcct2 .kcct2-chip svg{color:#19E3DF}
 @media(max-width:600px){.kcct2{padding:48px 18px 54px}.kcct2 a.kcct2-phone{font-size:22px}}
 </style>
@@ -3041,20 +3029,20 @@
   <div class="kcct2-glow"></div>
   <div class="kcct2-glow2"></div>
   <div class="kcct2-inner">
-    <span class="kcct2-badge"><span class="dot"></span> Réponse sous 2 h en jours ouvrés</span>
+    <span class="kcct2-badge"><span class="dot"></span> Réponse sous 2&nbsp;h en jours ouvrés</span>
     <h2>Besoin d'un <em>devis rapide</em>&nbsp;?</h2>
-    <p class="kcct2-sub">Recevez une estimation précise pour votre chantier en quelques clics. Devis sans engagement, intervention possible sous 48 h en Île&#8209;de&#8209;France.</p>
+    <p class="kcct2-sub">Recevez une estimation précise pour votre chantier en quelques clics. Devis sans engagement, intervention possible sous 48&nbsp;h en Île&#8209;de&#8209;France.</p>
     <div class="kcct2-btns">
       <!-- 👉 LIEN BOUTON DEVIS : remplacez /devis/ par votre page de devis -->
-      <a class="kcct2-btn kcct2-btn-primary" href="/devis/"><span class="sheen"></span>Demander mon devis →</a>
+      <a class="kcct2-btn kcct2-btn-primary" href="/devis/" data-kc-event="accueil:cta:devis"><span class="sheen"></span>Demander mon devis →</a>
       <!-- 👉 NUMÉRO URGENCE : remplacez +33670012061 -->
-      <a class="kcct2-btn kcct2-btn-ghost" href="tel:+33670012061"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Urgence chantier</a>
+      <a class="kcct2-btn kcct2-btn-ghost" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Urgence chantier</a>
     </div>
     <div class="kcct2-phone-label">Ou appelez-nous directement</div>
     <!-- 👉 NUMÉRO TÉLÉPHONE : remplacez +33670012061 / 06 70 01 20 61 -->
-    <a class="kcct2-phone" href="tel:+33670012061"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 70 01 20 61</a>
+    <a class="kcct2-phone" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 70 01 20 61</a>
     <div class="kcct2-trust">
-      <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Devis sous 24 h</span>
+      <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Devis sous 24&nbsp;h</span>
       <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>RC Pro AXA 5 M€</span>
       <span class="kcct2-chip"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>Satisfait ou repassé</span>
     </div>
@@ -3316,7 +3304,9 @@
   .kcp-slide{ animation:none !important; transform:none !important; transition:none !important; }
   .kcp-dots, .kcp-badge{ display:none !important; }
   .kcp-amount{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-weight:400 !important; color:#0D2340 !important; font-size:14px !important; }
-  .kcp-shade{ background:#F7F8FA !important; }
+  .kcp-shade{ background:rgba(13,35,64,.28) !important; }
+  .kcp-num{ color:#fff !important; }
+  .kcp-h2 em{ white-space:nowrap !important; }
   .kr-section::before{ display:none !important; }
   .kr-proof{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; background:#fff !important; }
   .kr-tag, .kr-compare::after{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
