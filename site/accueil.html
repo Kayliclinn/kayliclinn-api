@@ -3215,167 +3215,220 @@
    (dégradés, halos, reflets, zooms, animations). Structure et sections
    inchangées. Supprimer ce bloc restaure l'état antérieur.
    ════════════════════════════════════════════════════════ -->
-<style id="kc-alignement">
-  /* ── Corps de texte et couleurs de la charte ── */
+<style id="kc-charte-v2">
+  /* ════════════════════════════════════════════════════════════════════
+     CHARTE KAYLI CLINN v2 (19/09/2026) — alignement de la page d'accueil
+     Typographie, écriture et retrait des effets décoratifs.
+     La mise en page, les sections et leur ordre ne changent pas.
+     Remplace le bloc « kc-alignement » de l'ancienne charte.
+     ════════════════════════════════════════════════════════════════════ */
+
+  /* ── Familles et couleurs ── */
   .kc-home, .kh4-section, .kcp-section, .kr-section, .kcw2, .kczn2, .kcav2, .kcfq-section, .kcct2{
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif !important;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif !important;
+    font-size:16px; line-height:1.6;
     -webkit-font-smoothing:antialiased;
   }
   .kc-home{ --kc-navy:#0D2340 !important; --kc-primary-light:#0FA7A5 !important; }
 
-  /* ── Rythme vertical : même respiration que les pages prestations ── */
-  .ka-section, .kh4-section, .kcp-section, .kr-section, .kcw2, .kczn2, .kcav2, .kcfq-section, .kcct2{
-    padding-top:clamp(56px,7vw,88px) !important;
-    padding-bottom:clamp(56px,7vw,88px) !important;
+  /* ── Rythme vertical : 96 px, 64 px sous 720 px ── */
+  .ka-section, .kh4-section, .kcp-section, .kr-section, .kczn2, .kcav2, .kcfq-section, .kcct2{
+    padding-top:96px !important; padding-bottom:96px !important;
   }
 
-  /* ── Hero : titre à la taille des autres pages, mise en page centrée conservée ── */
+  /* ── Hero : mise en page centrée conservée, effets retirés ── */
   .kc-home .kh-hero{ min-height:0 !important; padding:clamp(88px,11vh,124px) 0 clamp(64px,9vh,96px) !important; }
   .kc-home .kh-bg{ animation:none !important; transform:none !important; inset:0 !important; }
-  .kc-home .kh-veil{ background:linear-gradient(180deg,rgba(13,35,64,.82) 0%,rgba(13,35,64,.72) 60%,rgba(13,35,64,.86) 100%) !important; opacity:1 !important; }
+  .kc-home .kh-veil{ background:rgba(13,35,64,.82) !important; opacity:1 !important; }
   .kc-home .kh-grain, .kc-home .kh-beam, .kc-home .kh-glow, .kc-home .kh-scroll{ display:none !important; }
-  .kc-home .kh-badge{ background:transparent !important; border:0 !important; backdrop-filter:none !important; padding:0 !important;
-    font-size:11.5px !important; letter-spacing:.18em !important; font-weight:600 !important; color:#7fd3d1 !important; animation:none !important; opacity:1 !important; }
+  .kc-home .kh-badge{ background:transparent !important; border:0 !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; padding:0 !important;
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-size:12.5px !important; letter-spacing:.08em !important; font-weight:700 !important; text-transform:uppercase !important;
+    color:#19E3DF !important; animation:none !important; opacity:1 !important; }
   .kc-home .kh-dot{ display:none !important; }
-  .kc-home .kh-title{ font-family:'Fraunces',Georgia,serif !important; font-size:clamp(30px,3.8vw,48px) !important; font-weight:600 !important;
-    line-height:1.16 !important; letter-spacing:-0.01em !important; margin-top:14px !important; text-shadow:0 2px 24px rgba(0,0,0,.35) !important; max-width:24ch !important; text-wrap:balance; }
-  .kc-home .kh-title em{ font-style:italic; font-weight:500; color:#7fd3d1; }
-  .kc-home .kh-para{ font-size:17px !important; line-height:1.68 !important; font-weight:400 !important; max-width:60ch !important; margin-top:18px !important;
-    color:#e3e9f0 !important; text-shadow:none !important; animation:none !important; opacity:1 !important; }
+  .kc-home .kh-title{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important;
+    font-size:clamp(32px,4vw + 16px,56px) !important; font-weight:700 !important;
+    line-height:1.2 !important; letter-spacing:-0.01em !important; margin-top:14px !important;
+    text-shadow:none !important; max-width:22ch !important; text-wrap:balance; }
+  .kc-home .kh-title em{ font-style:normal !important; font-weight:700 !important; color:#19E3DF !important; }
+  .kc-home .kh-para{ font-size:17.6px !important; line-height:1.7 !important; font-weight:400 !important; max-width:52ch !important; margin-top:18px !important;
+    color:rgba(255,255,255,.72) !important; text-shadow:none !important; animation:none !important; opacity:1 !important; }
   .kc-home .kh-cta{ margin-top:30px !important; animation:none !important; opacity:1 !important; }
-  .kc-home .kh-proof{ margin-top:28px !important; font-size:14px !important; font-weight:500 !important; color:#d3dbe6 !important; animation:none !important; opacity:1 !important; }
-  .kc-home .kh-proof span::before{ background:#0FA7A5 !important; }
+  .kc-home .kh-proof{ margin-top:28px !important; font-size:13.8px !important; font-weight:400 !important; color:rgba(255,255,255,.72) !important; animation:none !important; opacity:1 !important; }
+  .kc-home .kh-proof span::before{ background:#19E3DF !important; }
 
-  /* ── Sur-titres de section : petites capitales espacées, teal foncé ── */
-  .ka-eyebrow, .kh4-eyebrow, .kcp-eyebrow, .kr-eyebrow, .kczn2-eye, .kcav2-eye, .kcfq-eyebrow{
-    font-size:11.5px !important; letter-spacing:.18em !important; font-weight:600 !important; text-transform:uppercase !important; color:#076b69 !important; margin-bottom:14px !important;
+  /* ── Sur-titres : JetBrains Mono 12,5 px, tiret teal de 18 px ── */
+  .ka-eyebrow, .kh4-eyebrow, .kcp-eyebrow, .kr-eyebrow, .kczn2-eye, .kcav2-eye, .kcfq-eyebrow, .kcw2-eye, .kcct2-badge{
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-size:12.5px !important; letter-spacing:.08em !important; font-weight:700 !important;
+    text-transform:uppercase !important; margin-bottom:20px !important;
   }
-  .kcw2-eye{ font-size:11.5px !important; letter-spacing:.18em !important; font-weight:600 !important; color:#7fd3d1 !important; margin-bottom:14px !important; }
-  .kcw2-eye::before, .kcw2-eye::after, .kczn2-eye:before, .kcav2-eye:before, .kcav2-eye:after, .kr-eyebrow::before, .kcfq-eyebrow::before{ height:1px !important; width:28px !important; background:#0FA7A5 !important; opacity:1 !important; }
-  .kcp-eyebrow:before{ content:"" !important; display:inline-block; width:28px; height:1px; background:#0FA7A5; vertical-align:middle; margin-right:12px; }
+  .ka-eyebrow, .kh4-eyebrow, .kcp-eyebrow, .kr-eyebrow, .kczn2-eye, .kcav2-eye, .kcfq-eyebrow{ color:#0B8483 !important; }
+  .kcw2-eye, .kcct2-badge{ color:#19E3DF !important; }
+  .kcw2-eye::before, .kcw2-eye::after, .kczn2-eye:before, .kcav2-eye:before, .kcav2-eye:after,
+  .kr-eyebrow::before, .kcfq-eyebrow::before{ height:1px !important; width:18px !important; background:#0FA7A5 !important; opacity:1 !important; }
+  .kcw2-eye::before, .kcw2-eye::after, .kcct2-badge::before{ background:#19E3DF !important; }
+  .kcw2-eye::after, .kcav2-eye:after{ display:none !important; }
+  .kcp-eyebrow:before{ content:"" !important; display:inline-block; width:18px; height:1px; background:#0FA7A5; vertical-align:middle; margin-right:10px; }
 
-  /* ── Titres de section : Fraunces 600, même échelle que les pages prestations ── */
+  /* ── Titres de section : Libre Baskerville 700 ── */
   .kc-home .ka-h2, .kh4-section .kh4-h2, .kcp-section .kcp-h2, .kr-section .kr-h2, .kcw2 .kcw2-title,
   .kczn2 .kczn2-title, .kcav2 .kcav2-title, .kcfq-section .kcfq-title, .kcct2 h2, .kcav2-cta-txt h3{
-    font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:clamp(24px,2.6vw,34px) !important;
-    line-height:1.16 !important; letter-spacing:-0.01em !important; margin-bottom:14px !important; text-wrap:balance;
+    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important;
+    font-size:clamp(24px,2vw + 16px,36px) !important;
+    line-height:1.2 !important; letter-spacing:-0.01em !important; margin-bottom:20px !important; text-wrap:balance;
   }
   .kc-home .ka-h2, .kh4-section .kh4-h2, .kcp-section .kcp-h2, .kr-section .kr-h2, .kczn2 .kczn2-title, .kcav2 .kcav2-title, .kcfq-section .kcfq-title{ color:#0D2340 !important; }
-  .kc-home .ka-h2 span, .kr-h2 span{ color:#076b69 !important; font-style:italic; font-weight:500; }
-  .kh4-h2 span, .kcp-h2 em, .kcfq-title span, .kcct2 h2 em, .kcw2-title em{
+  .kc-home .ka-h2 span, .kr-h2 span, .kh4-h2 span, .kcp-h2 em, .kcfq-title span, .kcct2 h2 em, .kcw2-title em{
     background:none !important; -webkit-background-clip:initial !important; background-clip:initial !important;
-    -webkit-text-fill-color:currentColor !important; font-style:italic !important; font-weight:500 !important; white-space:normal !important;
+    -webkit-text-fill-color:currentColor !important; font-style:normal !important; font-weight:700 !important; white-space:normal !important;
   }
-  .kh4-h2 span, .kcp-h2 em, .kcfq-title span{ color:#076b69 !important; }
-  .kcct2 h2 em, .kcw2-title em{ color:#7fd3d1 !important; }
-  .kczn2-sub{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:18px !important; color:#0D2340 !important; }
+  .kc-home .ka-h2 span, .kr-h2 span, .kh4-h2 span, .kcp-h2 em, .kcfq-title span{ color:#0B8483 !important; }
+  .kcct2 h2 em, .kcw2-title em{ color:#19E3DF !important; }
+  .kczn2-sub{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:18px !important; color:#0D2340 !important; }
 
-  /* ── Chapeaux et textes courants ── */
+  /* ── Chapeaux ── */
   .ka-p, .kh4-sub, .kcp-sub, .kr-sub, .kczn2-p, .kcav2-sub, .kcfq-sub, .kcct2-sub, .kcw2-sub{
-    font-size:16.5px !important; line-height:1.68 !important; font-weight:400 !important; max-width:66ch !important;
+    font-size:17.6px !important; line-height:1.7 !important; font-weight:400 !important; max-width:60ch !important;
   }
-  .ka-p, .kh4-sub, .kcp-sub, .kr-sub, .kczn2-p, .kcav2-sub, .kcfq-sub{ color:#5B6573 !important; }
+  .ka-p, .kh4-sub, .kcp-sub, .kr-sub, .kczn2-p, .kcav2-sub, .kcfq-sub{ color:#6B7280 !important; }
 
-  /* ── Titres de cartes : Fraunces 600, 18 px ── */
-  .kh4-t, .kcp-t, .kr-t, .kcw2-ct, .kcav2-name{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:18px !important; letter-spacing:-0.01em !important; line-height:1.3 !important; color:#0D2340 !important; }
-  .kcw2-ct{ color:#fff !important; font-size:17px !important; margin-bottom:8px !important; }
-  .kh4-p, .kcp-d, .kr-m, .kcw2-cx, .kcav2-txt, .kcfq-a-in, .ka-lab, .kczn2-lab{ font-size:14.5px !important; line-height:1.65 !important; }
-  .kcfq-q-text{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:17px !important; }
-  .kh4-trust li, .kcw2-pill, .kcct2-chip, .kcfq-filter, .kcfq-cat{ font-weight:600 !important; box-shadow:none !important; }
+  /* ── Titres et textes de cartes ── */
+  .kcp-t, .kr-t{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:22px !important; letter-spacing:-0.01em !important; line-height:1.2 !important; color:#0D2340 !important; }
+  .kh4-t, .kcav2-name{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:18px !important; letter-spacing:-0.01em !important; line-height:1.3 !important; color:#0D2340 !important; }
+  .kcw2-ct{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:17.6px !important; line-height:1.3 !important; color:#fff !important; margin-bottom:8px !important; }
+  .kh4-p, .kcp-d, .kr-m, .kcw2-cx, .kcav2-txt, .kcfq-a-in, .ka-lab, .kczn2-lab{ font-size:15px !important; line-height:1.6 !important; }
+  .kcav2-role, .kr-cat, .kcav2-txt{ color:#4B5563 !important; }
+  .kcfq-q-text{ font-family:Inter,system-ui,sans-serif !important; font-weight:600 !important; font-size:16px !important; color:#0D2340 !important; }
+  .kh4-trust li, .kcw2-pill, .kcct2-chip, .kcfq-filter, .kcfq-cat, .kcp-badge{ font-size:12.5px !important; font-weight:600 !important; box-shadow:none !important; }
 
-  /* ── Boutons : pilule, Inter 600 15 px, teal et navy de la charte, sans halo ── */
+  /* ── Boutons : rayon 10 px, Inter 600 14,7 px, teal foncé (contraste 4,5:1) ── */
   .kc-home .kh-btn, .kc-home .ka-btn, .kh4-btn, .kh4-secondary, .kcp-btn, .kr-btn, .kcw2-btn, .kczn2-btn, .kczn2-tel, .kcav2-bg, .kcav2-bw, .kcfq-btn, .kcct2-btn{
-    border-radius:999px !important; padding:14px 26px !important; min-height:0 !important; font-family:'Inter',sans-serif !important;
-    font-size:15px !important; font-weight:600 !important; letter-spacing:.01em !important; box-shadow:none !important; transform:none !important;
+    border-radius:10px !important; padding:13px 20px !important; min-height:0 !important;
+    font-family:Inter,system-ui,sans-serif !important;
+    font-size:14.7px !important; font-weight:600 !important; line-height:1 !important; letter-spacing:0 !important;
+    box-shadow:none !important; transform:none !important;
   }
   .kc-home .kh-btn-1, .kh4-btn, .kcp-btn, .kczn2-btn, .kcav2-bg, .kcfq-btn-primary, .kcct2-btn-primary, .kr-btn, .kcw2-btn, .kc-home .ka-btn{
-    background:#0FA7A5 !important; color:#fff !important; border:1px solid #0FA7A5 !important;
+    background:#0B8483 !important; color:#fff !important; border:1px solid transparent !important; box-shadow:0 1px 0 #076E6D !important;
   }
   .kc-home .kh-btn-1:hover, .kh4-btn:hover, .kcp-btn:hover, .kczn2-btn:hover, .kcav2-bg:hover, .kcfq-btn-primary:hover, .kcct2-btn-primary:hover, .kr-btn:hover, .kcw2-btn:hover, .kc-home .ka-btn:hover{
-    background:#0B8483 !important; border-color:#0B8483 !important; color:#fff !important; transform:translateY(-1px) !important;
+    background:#076E6D !important; border-color:transparent !important; color:#fff !important; transform:translateY(-1px) !important;
   }
-  .kh4-secondary, .kczn2-tel, .kcfq-btn-secondary{ background:transparent !important; color:#0D2340 !important; border:1px solid rgba(13,35,64,.14) !important; }
-  .kh4-secondary:hover, .kczn2-tel:hover, .kcfq-btn-secondary:hover{ border-color:#0FA7A5 !important; color:#0D2340 !important; }
-  .kc-home .kh-btn-2, .kcav2-bw, .kcct2-btn-ghost{ background:rgba(255,255,255,.06) !important; color:#fff !important; border:1px solid rgba(255,255,255,.32) !important; }
-  .kc-home .kh-btn-2:hover, .kcav2-bw:hover, .kcct2-btn-ghost:hover{ background:#fff !important; color:#0D2340 !important; border-color:#fff !important; }
+  .kh4-secondary, .kczn2-tel, .kcfq-btn-secondary{ background:transparent !important; color:#0D2340 !important; border:1px solid #0D2340 !important; }
+  .kh4-secondary:hover, .kczn2-tel:hover, .kcfq-btn-secondary:hover{ background:#0D2340 !important; color:#fff !important; border-color:#0D2340 !important; }
+  .kc-home .kh-btn-2, .kcav2-bw, .kcct2-btn-ghost{ background:rgba(255,255,255,.06) !important; color:#fff !important; border:1px solid rgba(255,255,255,.3) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  .kc-home .kh-btn-2:hover, .kcav2-bw:hover, .kcct2-btn-ghost:hover{ background:rgba(255,255,255,.06) !important; color:#fff !important; border-color:#fff !important; }
   .kc-home .kh-btn-1::after, .kczn2-btn:after, .kcct2 .sheen{ display:none !important; }
-  .kc-home .ka-link{ font-weight:600 !important; color:#076b69 !important; border-bottom-color:rgba(7,107,105,.35) !important; }
+  .kc-home .ka-link{ font-weight:600 !important; font-size:14.7px !important; color:#0B8483 !important; border-bottom-color:rgba(11,132,131,.35) !important; }
+  .kc-home a:focus-visible, .kc-home button:focus-visible, .kh4-section a:focus-visible, .kcp-section a:focus-visible,
+  .kr-section a:focus-visible, .kcw2 a:focus-visible, .kcw2 button:focus-visible, .kczn2 a:focus-visible,
+  .kcav2 a:focus-visible, .kcfq-section a:focus-visible, .kcfq-section button:focus-visible, .kcct2 a:focus-visible{
+    outline:2px solid #0B8483 !important; outline-offset:2px !important;
+  }
+  .kc-home .kh-hero a:focus-visible, .kcw2 a:focus-visible, .kcw2 button:focus-visible, .kcct2 a:focus-visible{ outline-color:#19E3DF !important; }
+
+  /* ── Cartes : coins 14 px, ombres de la charte ── */
+  .kh4-card, .kcp-card, .kr-card, .kr-proof, .kcav2-card, .kczn2-mapcard, .kcw2-figs, .kcav2-cta, .kh4-dot, .kc-home .ka-badge-float, .kcfq-item{
+    border-radius:14px !important;
+  }
+  .kh4-card, .kcp-card, .kr-card, .kcav2-card, .kczn2-mapcard{
+    box-shadow:0 1px 0 #E5E7EB, 0 24px 48px -28px rgba(13,35,64,.18) !important;
+  }
+  .kh4-step:hover .kh4-card, .kcp-card:hover, .kr-card:hover, .kr-card.kr-in:hover, .kcav2-card:hover{
+    transform:translateY(-2px) !important;
+    box-shadow:0 1px 0 #0FA7A5, 0 24px 56px -24px rgba(15,167,165,.28) !important;
+    border-color:#E5E7EB !important;
+  }
 
   /* ── Effets décoratifs retirés, section par section ── */
-  .kc-home .ka-img{ transform:none !important; box-shadow:0 16px 38px rgba(13,35,64,.07) !important; }
-  .kc-home .ka-badge-float{ box-shadow:none !important; border-radius:14px !important; }
+  .kc-home .ka-img{ transform:none !important; box-shadow:0 1px 0 #E5E7EB, 0 24px 48px -28px rgba(13,35,64,.18) !important; }
+  .kc-home .ka-badge-float{ box-shadow:none !important; }
   .kh4-comet, .kh4-progress{ display:none !important; }
-  .kh4-card{ box-shadow:none !important; border-radius:16px !important; }
-  .kh4-step:hover .kh4-card{ transform:translateY(-2px) !important; box-shadow:0 16px 38px rgba(13,35,64,.07) !important; border-color:rgba(15,167,165,.45) !important; }
-  .kh4-dot{ box-shadow:none !important; border-radius:14px !important; }
+  .kh4-dot{ box-shadow:none !important; }
   .kh4-dot::after{ display:none !important; }
   .kh4-step:hover .kh4-dot{ box-shadow:none !important; }
   .kh4-step .kh4-dot svg, .kh4-step.kh4-pulse .kh4-dot svg{ animation:none !important; }
-  .kcp-card{ animation:none !important; border-radius:16px !important; box-shadow:none !important; }
-  .kcp-card:hover{ transform:translateY(-2px) !important; box-shadow:0 16px 38px rgba(13,35,64,.07) !important; }
+  .kh4-num, .kcw2-num, .kcp-num{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-size:12.5px !important; font-weight:700 !important; letter-spacing:.14em !important; color:#0B8483 !important; text-shadow:none !important; }
+  .kcp-card{ animation:none !important; }
   .kcp-slide{ animation:none !important; transform:none !important; transition:none !important; }
   .kcp-dots, .kcp-badge{ display:none !important; }
-  .kcp-amount{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; color:#0D2340 !important; font-size:16px !important; }
-  .kr-section{ background:#F8F9FB !important; }
+  .kcp-amount{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-weight:400 !important; color:#0D2340 !important; font-size:14px !important; }
+  .kcp-shade{ background:#F7F8FA !important; }
+  .kr-section{ background:#F7F8FA !important; }
   .kr-section::before{ display:none !important; }
-  .kr-proof{ backdrop-filter:none !important; box-shadow:none !important; background:#fff !important; border-radius:16px !important; }
-  .kr-card{ border-radius:16px !important; box-shadow:none !important; }
-  .kr-card:hover, .kr-card.kr-in:hover{ transform:translateY(-2px) !important; box-shadow:0 16px 38px rgba(13,35,64,.07) !important; }
+  .kr-proof{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; background:#fff !important; }
+  .kr-tag, .kr-compare::after{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
   .kr-after, .kr-before{ filter:none !important; }
-  .kcw2{ background:#0D2340 !important; }
+
+  /* ── Pourquoi nous choisir : section deux fois moins haute, cartes en défilement ── */
+  .kcw2{ background:#0D2340 !important; padding-top:44px !important; padding-bottom:44px !important; }
   .kcw2::before, .kcw2::after, .kcw2-card::before{ display:none !important; }
-  .kcw2{ padding-top:44px !important; padding-bottom:44px !important; }
   .kcw2-head{ max-width:760px; }
-  .kcw2-title{ font-size:clamp(22px,2.2vw,28px) !important; margin-bottom:0 !important; }
+  .kcw2-title{ font-size:clamp(22px,2vw + 12px,28px) !important; margin-bottom:0 !important; }
   .kcw2-trustbar{ margin-top:18px !important; }
-  .kcw2-pill{ padding:8px 13px !important; font-size:12.5px !important; }
+  .kcw2-pill{ padding:8px 14px !important; font-size:13.8px !important; font-weight:400 !important; border-radius:999px !important;
+    background:rgba(255,255,255,.1) !important; border:1px solid rgba(255,255,255,.2) !important; backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
+  .kcw2-pill svg{ stroke:#19E3DF !important; }
   .kcw2-tw{ margin-top:26px !important; cursor:grab; }
   .kcw2-track{ gap:16px !important; padding:4px 24px !important; }
-  .kcw2-card{ flex:0 0 320px !important; min-height:0 !important; padding:20px 20px 18px !important; border-radius:14px !important; backdrop-filter:none !important;
-    background:#14294a !important; border:1px solid rgba(255,255,255,.14) !important; box-shadow:none !important; }
-  .kcw2-cx{ font-size:14px !important; line-height:1.55 !important; }
-  .kcw2-card-foot{ padding-top:14px !important; font-size:11px !important; }
+  .kcw2-card{ flex:0 0 320px !important; min-height:0 !important; padding:20px 20px 18px !important; border-radius:14px !important;
+    backdrop-filter:none !important; -webkit-backdrop-filter:none !important;
+    background:#1A3A5C !important; border:1px solid rgba(255,255,255,.14) !important; box-shadow:none !important; }
+  .kcw2-cx{ font-size:15px !important; line-height:1.6 !important; color:rgba(255,255,255,.72) !important; }
+  .kcw2-card-foot{ padding-top:14px !important; font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-size:11.5px !important; font-weight:400 !important; letter-spacing:.08em !important; color:#19E3DF !important; }
+  .kcw2-card-foot::before{ box-shadow:none !important; background:#19E3DF !important; }
   .kcw2-bottom{ margin-top:22px !important; }
-  .kcw2-card:hover{ transform:none !important; border-color:rgba(127,211,209,.55) !important; box-shadow:none !important; }
+  .kcw2-card:hover{ transform:none !important; border-color:rgba(25,227,223,.55) !important; box-shadow:none !important; }
   .kcw2-ic{ box-shadow:none !important; background:rgba(15,167,165,.16) !important; border:0 !important; border-radius:10px !important; width:38px !important; height:38px !important; margin-bottom:14px !important; }
-  .kcw2-ic svg{ width:20px !important; height:20px !important; stroke:#7fd3d1 !important; }
-  .kcw2-num{ display:none !important; }
-  .kcw2-card-foot{ color:#7fd3d1 !important; font-weight:600 !important; letter-spacing:.12em !important; }
-  .kcw2-card-foot::before{ box-shadow:none !important; background:#0FA7A5 !important; }
-  .kcw2-pill{ backdrop-filter:none !important; }
-  .kcw2-pill svg{ stroke:#7fd3d1 !important; }
-  .kcw2-figs{ border-radius:16px !important; }
-  .kcw2-fig-num{ font-weight:600 !important; font-size:clamp(28px,3vw,36px) !important; }
+  .kcw2-ic svg{ width:20px !important; height:20px !important; stroke:#19E3DF !important; }
+  .kcw2-fig-num{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:clamp(28px,3vw,36px) !important; }
+
+  /* ── Zone d'intervention ── */
   .kczn2{ background:#fff !important; }
-  .kczn2-mapcard{ box-shadow:none !important; border-radius:16px !important; }
+  .kczn2-mapcard{ box-shadow:none !important; }
   .kczn2-img{ transform:none !important; transition:none !important; }
   .kczn2-mapcard:hover .kczn2-img{ transform:none !important; }
   .kczn2-legend i{ background:#0FA7A5 !important; }
-  .kczn2-num{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:30px !important; color:#0D2340 !important; }
-  .kcav2{ background:#F8F9FB !important; }
-  .kcav2-card{ border-radius:16px !important; box-shadow:none !important; padding:26px 24px !important; }
-  .kcav2-card:hover{ transform:translateY(-2px) !important; box-shadow:0 16px 38px rgba(13,35,64,.07) !important; }
+  .kczn2-num{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:30px !important; color:#0D2340 !important; }
+
+  /* ── Avis ── */
+  .kcav2{ background:#F7F8FA !important; }
+  .kcav2-card{ padding:26px 24px !important; }
   .kcav2-quote{ display:none !important; }
   .kcav2-av{ background:#0D2340 !important; box-shadow:none !important; width:42px !important; height:42px !important; font-size:15px !important; }
-  .kcav2-cta{ background:#0D2340 !important; border-radius:16px !important; }
+  .kcav2-cta{ background:#0D2340 !important; }
   .kcav2-cta:before{ display:none !important; }
-  .kcfq-item{ border-radius:14px !important; }
+
+  /* ── FAQ ── */
+  .kcfq-item{ border-radius:10px !important; }
   .kcfq-item.is-open{ box-shadow:none !important; }
-  .kcfq-filter.is-active{ box-shadow:none !important; background:#0D2340 !important; border-color:#0D2340 !important; }
+  .kcfq-filter{ border-radius:10px !important; }
+  .kcfq-filter.is-active{ box-shadow:none !important; background:#0B8483 !important; border-color:#0B8483 !important; color:#fff !important; }
+  .kcfq-cat{ border-radius:999px !important; background:#E6F5F5 !important; color:#076E6D !important; }
+
+  /* ── Appel final ── */
   .kcct2{ background:#0D2340 !important; }
   .kcct2:after, .kcct2-glow, .kcct2-glow2{ display:none !important; }
-  .kcct2-badge{ background:transparent !important; border:0 !important; padding:0 !important; font-size:11.5px !important; letter-spacing:.18em !important; font-weight:600 !important; color:#7fd3d1 !important; }
+  .kcct2-badge{ background:transparent !important; border:0 !important; padding:0 !important; }
   .kcct2-badge .dot{ display:none !important; }
-  .kcct2 a.kcct2-phone{ font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important; font-size:24px !important; }
-  .kcct2 a.kcct2-phone svg, .kcct2-chip svg, .kcct2-btn-ghost svg{ color:#7fd3d1 !important; }
-  .kcct2-chip{ border-radius:999px !important; }
+  .kcct2 a.kcct2-phone{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:24px !important; }
+  .kcct2 a.kcct2-phone svg, .kcct2-chip svg, .kcct2-btn-ghost svg{ color:#19E3DF !important; }
+  .kcct2-chip{ border-radius:999px !important; background:rgba(255,255,255,.06) !important; border:1px solid rgba(255,255,255,.2) !important; }
 
-  /* ── Apparitions au défilement : conservées, plus discrètes ── */
+  /* ── Apparitions au défilement : conservées, discrètes ── */
   .kc-home .ka-rev, .kh4-rev, .kh4-step, .kr-card, .kr-cta, .reveal{ transform:translateY(16px); transition-duration:.7s !important; }
   .kc-home .ka-rev.ka-in, .kh4-rev.kh4-in, .kh4-step.kh4-in, .kr-card.kr-in, .kr-cta.kr-in, .reveal.show{ transform:none; }
   .kczn2-map.reveal{ transform:translateY(16px) !important; }
   .kczn2-map.reveal.show{ transform:none !important; }
 
+  @media (max-width:720px){
+    .ka-section, .kh4-section, .kcp-section, .kr-section, .kczn2, .kcav2, .kcfq-section, .kcct2{
+      padding-top:64px !important; padding-bottom:64px !important;
+    }
+  }
   @media (max-width:640px){
     .kcw2-card{ flex-basis:78vw !important; max-width:340px; }
     .kc-home .kh-title{ font-size:clamp(28px,7vw,36px) !important; }
