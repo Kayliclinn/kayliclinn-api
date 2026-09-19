@@ -42,7 +42,11 @@ def verifier(chemin):
     ok(not emo, "aucun emoji")
     ok(not re.search(r'\d (?:€|%|h\b|m²)', vis), "espaces insécables avant € % h m²")
     ok('&nbsp;' not in js, "aucune entité HTML dans le JavaScript")
-    ok(not re.search(r'[a-zé] : [A-Za-zÀ-ÿ]', vis), "aucune phrase à deux-points sans liste")
+    import html as _h
+    vis2 = _h.unescape(vis).replace('\u00a0', ' ')
+    dp = [m for m in re.findall(r'[a-zéèêàù] : ([A-Za-zÀ-ÿ][^.;]{0,60})', vis2)
+          if ',' not in m[:40] and '—' not in m and '–' not in m]
+    ok(not dp, "aucune phrase à deux-points sans liste" + (" — " + dp[0][:60] if dp else ""))
     secs = {re.search(r'class="([^"]+)"', t).group(1).split()[0]
             for t in re.findall(r'<section[^>]*class="[^"]+"[^>]*>', body) if re.search(r'class="([^"]+)"', t)}
     sombres = sorted(c for c in secs if re.search(r'\.' + re.escape(c) + r'\s*\{[^}]*background:\s*#0D2340', css))
