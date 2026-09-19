@@ -7,7 +7,8 @@ thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
 
 | Fichier | Page WordPress | Contenu |
 | --- | --- | --- |
-| `accueil.html` | Page d'accueil | Hero, services (prix grille officielle), réalisations, avis (badge « Exemple »), FAQ |
+| `accueil.html` | Page d'accueil | **En production, inchangée.** Hero, services (prix grille officielle), réalisations, avis (badge « Exemple »), FAQ |
+| `accueil-v2.src.html` | — | Proposition d'accueil au gabarit de la charte v2 (préfixe `kcac-`). **Non appliquée** : la page d'accueil en production ne change pas |
 | `prestation.html` | Gabarit prestation (ex. Turnover Airbnb) | 14 sections éditoriales, tarifs grille officielle |
 | `estimation.html` | `/devis/` | Tunnel d'estimation 3 parcours (forfait / pro / audit) |
 | `reservation.html` | `/reservation/` | Calendrier kc-booking + paiement Stripe (forfaits) ou visite gratuite (audits) |
