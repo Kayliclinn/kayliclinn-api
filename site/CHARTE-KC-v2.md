@@ -87,7 +87,7 @@ Trois familles, rôles fixes. Aucune autre police (Fraunces, Montserrat, Roboto 
 | Question d'étape (tunnel) | Libre Baskerville | `clamp(28px, 3vw, 40px)` | 700 | |
 | Texte courant | Inter | 16 px | 400 | interligne 1,6 |
 | Chapeau (`lede`) | Inter | 17,6 px | 400 | interligne 1,7, `max-width:60ch`, couleur `muted` |
-| Surtitre | JetBrains Mono | 12,5 px | 700 | capitales, `letter-spacing:.08em`, couleur `accent-2`, tiret `::before` 18×1 px `accent`, gap 10 px |
+| Surtitre | JetBrains Mono | 12,5 px | 700 | capitales, `letter-spacing:.08em`, couleur `accent-2`. **Sans tiret devant** (décision du 20/09/2026 : le tiret `::before` est retiré) |
 | Kicker de carte | JetBrains Mono | 11,5 px | 400 | capitales, `.08em` |
 | Numéro « 01 » | JetBrains Mono | 12,5 px | 700 | `.14em` |
 | Petit prix (« dès 55 € TTC ») | JetBrains Mono | 14 px | 400 | |

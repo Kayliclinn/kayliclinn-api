@@ -3645,4 +3645,16 @@
   .kczn2-dep{ display:flex; align-items:baseline; gap:8px; font-size:15px; color:#4B5563; padding-bottom:10px; border-bottom:1px solid #E5E7EB; }
   .kczn2-dep b{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; font-weight:700; color:#0B8483; }
   @media (min-width:520px){ .kczn2-deps{ grid-template-columns:repeat(4,1fr); } }
+
+  /* ── Surtitres sans tiret devant le texte ── */
+  .ka-eyebrow::before, .ka-eyebrow:before,
+  .kh4-eyebrow::before, .kh4-section .kh4-eyebrow::before,
+  .kcp-eyebrow::before, .kcp-eyebrow:before,
+  .kr-eyebrow::before, .kr-eyebrow:before,
+  .kczn2-eye::before, .kczn2-eye:before,
+  .kcav2-eye::before, .kcav2-eye:before, .kcav2-eye::after, .kcav2-eye:after,
+  .kcfq-eyebrow::before, .kcfq-eyebrow:before,
+  .kcw2-eye::before, .kcw2-eye::after,
+  .kcct2-badge::before, .kcct2-badge:before,
+  .kcsq-eye::before, .kcsq-eye:before{ display:none !important; content:none !important; }
 </style>
