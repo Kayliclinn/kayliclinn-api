@@ -10,8 +10,8 @@ RENAMES = [("noteForfait","F1"),("noteDevis","F2"),("cardCta","C"),("reduced","Q
 
 def min_css(css):
     css = re.sub(r'/\*.*?\*/', '', css, flags=re.S)
-    css = re.sub(r'\s+', ' ', css)
-    css = re.sub(r'\s*([{};:,>])\s*', r'\1', css)
+    css = re.sub(r'[ \t\r\n]+', ' ', css)
+    css = re.sub(r'[ \t\r\n]*([{};:,>])[ \t\r\n]*', r'\1', css)
     css = re.sub(r';}', '}', css)
     return css.strip()
 
@@ -38,7 +38,7 @@ def min_js(js):
 
 def min_html(h):
     h = re.sub(r'<!--(?!\[if).*?-->', '', h, flags=re.S)
-    h = re.sub(r'>\s+<', '><', h)
+    h = re.sub(r'>[ \t\r\n]+<', '><', h)
     h = re.sub(r'[ \t]*\n[ \t]*', '', h)
     return h.strip()
 
@@ -50,7 +50,7 @@ for m in re.finditer(r'<(style|script)(\s[^>]*)?>(.*?)</\1>', src, re.S):
     if tag == 'style':
         parts.append(('raw', '<style>%s</style>' % min_css(inner)))
     elif 'ld+json' in attrs:
-        parts.append(('raw', '<script%s>%s</script>' % (attrs, re.sub(r'\s*\n\s*', '', inner).strip())))
+        parts.append(('raw', '<script%s>%s</script>' % (attrs, re.sub(r'[ \t\r]*\n[ \t\r]*', '', inner).strip())))
     else:
         parts.append(('raw', '<script%s>%s</script>' % (attrs, min_js(inner))))
 parts.append(('html', src[pos:]))

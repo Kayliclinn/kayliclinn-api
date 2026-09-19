@@ -84,7 +84,7 @@
 .kcac-arr{display:inline-block;transition:transform .2s var(--kcac-ease)}
 .kcac-btn:hover .kcac-arr{transform:translateX(3px)}
 .kcac a:focus-visible,.kcac button:focus-visible,.kcac summary:focus-visible{outline:2px solid var(--kcac-accent-2);outline-offset:2px}
-.kcac-hero a:focus-visible,.kcac-hero button:focus-visible{outline-color:var(--kcac-mint)}
+.kcac-hero-txt a:focus-visible,.kcac-hero-txt button:focus-visible{outline-color:var(--kcac-mint)}
 .kcac-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 
 /* ─── Badges ─── */
@@ -103,7 +103,7 @@
 .kcac-hero .kcac-h1 em{color:var(--kcac-mint)}
 .kcac-hero .kcac-lede{color:var(--kcac-on-ink);max-width:52ch}
 .kcac-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
-.kcac-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:13.8px;font-weight:500;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
+.kcac-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;font-size:13.8px;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
 .kcac-pill svg{color:var(--kcac-mint);flex-shrink:0}
 @media (min-width:980px){
   .kcac-hero-in{grid-template-columns:1.15fr .85fr;align-items:end;gap:48px}
@@ -171,6 +171,7 @@
 .kcac-review figcaption{font-family:var(--kcac-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--kcac-muted);border-top:1px solid var(--kcac-rule);padding-top:14px}
 
 /* ─── Ils nous font confiance ─── */
+#kcac-confiance{display:none}
 .kcac-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0}
 .kcac-logo{display:flex;align-items:center;justify-content:center;padding:0 40px;min-height:96px}
 .kcac-logo + .kcac-logo{border-left:1px solid var(--kcac-rule)}
@@ -198,11 +199,11 @@
 .kcac-cta p{max-width:56ch;margin:20px auto 32px;color:var(--kcac-muted);font-size:16.8px}
 
 /* ─── Apparition au défilement ─── */
-.kcac-rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--kcac-ease),transform .7s var(--kcac-ease)}
-.kcac-rv.is-in{opacity:1;transform:none}
+.kcac.is-js .kcac-rv{opacity:0;transform:translateY(16px);transition:opacity .7s var(--kcac-ease),transform .7s var(--kcac-ease)}
+.kcac.is-js .kcac-rv.is-in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
   .kcac *,.kcac *::before,.kcac *::after{transition:none!important;animation:none!important}
-  .kcac-rv{opacity:1;transform:none}
+  .kcac.is-js .kcac-rv{opacity:1;transform:none}
 }
 </style>
 
@@ -250,7 +251,7 @@
   <div class="kcac-wrap">
     <div class="kcac-head kcac-rv">
       <span class="kcac-eyebrow">Réserver · En ligne</span>
-      <h2 class="kcac-h2">Deux forfaits qui se réservent <em>sans échange préalable</em>.</h2>
+      <h2 class="kcac-h2">Des forfaits qui se réservent <em>sans échange préalable</em>.</h2>
       <p class="kcac-lede">Le prix dépend de la typologie du logement, il est affiché avant la réservation et ne bouge plus.</p>
     </div>
     <div class="kcac-grid2">
@@ -305,7 +306,7 @@
       <div class="kcac-panel" role="tabpanel" id="kcac-pan3" aria-labelledby="kcac-et3" tabindex="0" hidden>
         <span class="kcac-step-n">03</span>
         <h3 class="kcac-h3">L’intervention</h3>
-        <p>Nous arrivons avec notre matériel et nos produits. Vous n’avez rien à prévoir, y compris dans un logement vide ou sans eau chaude.</p>
+        <p>Nous arrivons avec notre matériel et nos produits. Vous n’avez rien à prévoir, y compris dans un logement entièrement vide.</p>
       </div>
       <div class="kcac-panel" role="tabpanel" id="kcac-pan4" aria-labelledby="kcac-et4" tabindex="0" hidden>
         <span class="kcac-step-n">04</span>
@@ -493,13 +494,15 @@
   var root=document.querySelector('.kcac');
   if(!root) return;
   var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  /* L’apparition au défilement n’est armée que si le script tourne : sans lui, tout reste visible. */
+  root.classList.add('is-js');
 
   /* Carte forfait du hero : grille Turnover Airbnb (source KC_Pricing) */
   var sizes=root.querySelectorAll('#kcac-sizes .kcac-size');
   var amount=root.querySelector('#kcac-amount');
   var note=root.querySelector('#kcac-note');
   var cardCta=root.querySelector('#kcac-card-cta');
-  var noteForfait='Prix ferme. Acompte de 30&nbsp;% à la réservation, solde après la prestation.';
+  var noteForfait='Prix ferme. Acompte de 30\u00A0% à la réservation, solde après la prestation.';
   var noteDevis='Au-delà du T4, le prix est établi après une visite gratuite.';
   Array.prototype.forEach.call(sizes,function(b){
     b.addEventListener('click',function(){
@@ -540,7 +543,7 @@
         li.parentNode.removeChild(li);
       }
     });
-    if(!gardes){ secLogos.parentNode.removeChild(secLogos); }
+    if(gardes){ secLogos.style.display=''; }else{ secLogos.parentNode.removeChild(secLogos); }
   }
 
   /* Onglets : clic et flèches, aucun défilement automatique */
@@ -593,6 +596,6 @@
 {"@context":"https://schema.org","@type":"CleaningService","name":"Kayli Clinn","url":"https://kayliclinn.fr/","email":"contact@kayliclinn.fr","telephone":"+33670012061","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"60 rue François Ier","postalCode":"75008","addressLocality":"Paris","addressRegion":"Île-de-France","addressCountry":"FR"},"areaServed":[{"@type":"AdministrativeArea","name":"Paris (75)"},{"@type":"AdministrativeArea","name":"Seine-et-Marne (77)"},{"@type":"AdministrativeArea","name":"Yvelines (78)"},{"@type":"AdministrativeArea","name":"Essonne (91)"},{"@type":"AdministrativeArea","name":"Hauts-de-Seine (92)"},{"@type":"AdministrativeArea","name":"Seine-Saint-Denis (93)"},{"@type":"AdministrativeArea","name":"Val-de-Marne (94)"},{"@type":"AdministrativeArea","name":"Val-d’Oise (95)"}]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Couvrez-vous toute l’Île-de-France ?","acceptedAnswer":{"@type":"Answer","text":"Oui, les huit départements franciliens, de Paris (75) au Val-d’Oise (95). Pour les communes limitrophes, nous étudions chaque demande au cas par cas."}},{"@type":"Question","name":"Comment sont calculés vos tarifs ?","acceptedAnswer":{"@type":"Answer","text":"Les forfaits suivent une grille fixe, affichée avant la réservation — Turnover Airbnb dès 55&nbsp;€ TTC, fin de bail dès 160&nbsp;€ TTC. Le reste est chiffré après une visite gratuite."}},{"@type":"Question","name":"Dois-je fournir le matériel ou les produits ?","acceptedAnswer":{"@type":"Answer","text":"Non, nous arrivons avec notre matériel et nos produits professionnels. Vous n’avez rien à prévoir, y compris dans un logement entièrement vide."}},{"@type":"Question","name":"Comment se passe le paiement ?","acceptedAnswer":{"@type":"Answer","text":"Pour les forfaits, l’acompte de 30&nbsp;% est réglé en ligne à la réservation et le solde après la prestation. Les professionnels sont facturés à 30 jours fin de mois, par virement."}},{"@type":"Question","name":"Travaillez-vous avec les particuliers et les professionnels ?","acceptedAnswer":{"@type":"Answer","text":"Oui, les deux. Les particuliers réservent leurs forfaits en ligne à prix ferme, les professionnels passent par une visite gratuite puis un devis écrit."}},{"@type":"Question","name":"Intervenez-vous le week-end et les jours fériés ?","acceptedAnswer":{"@type":"Answer","text":"Oui, selon nos disponibilités. Une majoration s’applique le dimanche et les jours fériés, ainsi que pour une intervention urgente — elle est affichée avant la réservation."}}]}
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Couvrez-vous toute l’Île-de-France ?","acceptedAnswer":{"@type":"Answer","text":"Oui, les huit départements franciliens, de Paris (75) au Val-d’Oise (95). Pour les communes limitrophes, nous étudions chaque demande au cas par cas."}},{"@type":"Question","name":"Comment sont calculés vos tarifs ?","acceptedAnswer":{"@type":"Answer","text":"Les forfaits suivent une grille fixe, affichée avant la réservation — Turnover Airbnb dès 55 € TTC, fin de bail dès 160 € TTC. Le reste est chiffré après une visite gratuite."}},{"@type":"Question","name":"Dois-je fournir le matériel ou les produits ?","acceptedAnswer":{"@type":"Answer","text":"Non, nous arrivons avec notre matériel et nos produits professionnels. Vous n’avez rien à prévoir, y compris dans un logement entièrement vide."}},{"@type":"Question","name":"Comment se passe le paiement ?","acceptedAnswer":{"@type":"Answer","text":"Pour les forfaits, l’acompte de 30 % est réglé en ligne à la réservation et le solde après la prestation. Les professionnels sont facturés à 30 jours fin de mois, par virement."}},{"@type":"Question","name":"Travaillez-vous avec les particuliers et les professionnels ?","acceptedAnswer":{"@type":"Answer","text":"Oui, les deux. Les particuliers réservent leurs forfaits en ligne à prix ferme, les professionnels passent par une visite gratuite puis un devis écrit."}},{"@type":"Question","name":"Intervenez-vous le week-end et les jours fériés ?","acceptedAnswer":{"@type":"Answer","text":"Oui, selon nos disponibilités. Une majoration s’applique le dimanche et les jours fériés, ainsi que pour une intervention urgente — elle est affichée avant la réservation."}}]}
 </script>
 </div>
