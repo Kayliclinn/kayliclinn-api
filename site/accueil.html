@@ -122,6 +122,8 @@
   --r5-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r5-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R6 · T2 Saint-Mandé */
+  --photo-suivi-1:none;   /* suivi qualité, photo 1 · 4/3 · ~120 Ko */
+  --photo-suivi-2:none;   /* suivi qualité, photo 2 · 4/3 · ~120 Ko */
   --r6-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r6-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
 }
@@ -2128,21 +2130,39 @@
       <div class="kcsq-carte">
         <div class="kcsq-carte-tete">
           <div>
-            <strong>Contrôle de fin d’intervention</strong>
-            <span>Turnover Airbnb · Studio</span>
+            <strong>Turnover Airbnb · Studio</strong>
+            <span>Fiche d’intervention et contrôle final</span>
           </div>
-          <span class="kcsq-ex">Exemple</span>
+          <span class="kcsq-ex">Exemple de suivi</span>
         </div>
+
+        <div class="kcsq-bande">
+          <div><span class="kcsq-lab">Intervention</span><strong>En cours</strong></div>
+          <div><span class="kcsq-lab">Contrôle final</span><strong>Avant le départ</strong></div>
+          <div><span class="kcsq-lab">Photos</span><strong>Sur demande</strong></div>
+        </div>
+
         <div class="kcsq-carte-corps">
-          <span class="kcsq-lab">Points vérifiés avant le départ</span>
-          <ul class="kcsq-zones">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Cuisine et électroménager</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Salle d’eau et sanitaires</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Sols et plinthes</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Points de contact</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Poubelles et extérieurs</span></li>
-          </ul>
-          <p class="kcsq-note">Exemple de fiche. Les points contrôlés dépendent de la prestation, et les photos sont transmises sur demande.</p>
+          <div class="kcsq-deux">
+            <div>
+              <h3 class="kcsq-st">Points contrôlés</h3>
+              <ul class="kcsq-zones">
+              <li><i class="kcsq-pt kcsq-pt--ok" aria-hidden="true"></i><div><strong>Cuisine et électroménager</strong><span>Vérifiés</span></div></li>
+              <li><i class="kcsq-pt kcsq-pt--ok" aria-hidden="true"></i><div><strong>Salle d’eau et sanitaires</strong><span>Vérifiées</span></div></li>
+              <li><i class="kcsq-pt kcsq-pt--ok" aria-hidden="true"></i><div><strong>Sols et plinthes</strong><span>Vérifiés</span></div></li>
+              <li><i class="kcsq-pt kcsq-pt--cours" aria-hidden="true"></i><div><strong>Points de contact</strong><span>En cours</span></div></li>
+              <li><i class="kcsq-pt kcsq-pt--att" aria-hidden="true"></i><div><strong>Poubelles et extérieurs</strong><span>À vérifier</span></div></li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="kcsq-st">Après passage</h3>
+              <div class="kcsq-photos">
+                <span class="kcsq-photo" style="background-image:var(--photo-suivi-1)"></span>
+                <span class="kcsq-photo" style="background-image:var(--photo-suivi-2)"></span>
+              </div>
+              <p class="kcsq-note"><strong>Photos après passage.</strong> Transmises sur demande et selon la prestation, pour constater le travail à distance.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -3367,13 +3387,27 @@
   .kcsq-carte-tete span{ display:block; margin-top:4px; font-size:14px; color:#6B7280; }
   .kcsq-ex{ flex-shrink:0; padding:2px 8px; border-radius:999px; font-size:10.5px; font-weight:700;
     letter-spacing:.04em; text-transform:uppercase; background:rgba(245,158,11,.14); color:#8a5a06; }
-  .kcsq-carte-corps{ padding:20px 24px 24px; background:#F0FAFA; }
+  .kcsq-bande{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:18px 24px; background:#F0FAFA; border-bottom:1px solid #E5E7EB; }
+  .kcsq-bande strong{ display:block; margin-top:6px; font-size:15px; font-weight:600; color:#0D2340; line-height:1.3; }
+  .kcsq-carte-corps{ padding:22px 24px 24px; background:#fff; }
+  .kcsq-deux{ display:grid; gap:24px; }
+  .kcsq-st{ font-family:Inter,system-ui,sans-serif; font-size:15px; font-weight:600; color:#0D2340; margin:0 0 14px; }
   .kcsq-lab{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
     font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#0B8483; }
-  .kcsq-zones{ list-style:none; margin:16px 0 0; padding:0; display:flex; flex-direction:column; gap:12px; }
-  .kcsq-zones li{ display:flex; align-items:center; gap:10px; font-size:15px; color:#1F2937; }
-  .kcsq-zones svg{ width:18px; height:18px; flex-shrink:0; color:#0B8483; }
-  .kcsq-note{ margin:20px 0 0; font-size:13.5px; line-height:1.6; color:#6B7280; }
+  .kcsq-zones{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+  .kcsq-zones li{ display:flex; align-items:flex-start; gap:10px; }
+  .kcsq-zones strong{ display:block; font-size:14.5px; font-weight:600; color:#0D2340; line-height:1.35; }
+  .kcsq-zones span{ font-size:13.5px; color:#6B7280; }
+  .kcsq-pt{ flex:0 0 10px; width:10px; height:10px; margin-top:5px; border-radius:50%; }
+  .kcsq-pt--ok{ background:#0B8483; }
+  .kcsq-pt--cours{ background:#0FA7A5; box-shadow:0 0 0 3px #E6F5F5; }
+  .kcsq-pt--att{ background:#fff; border:1px solid #E5E7EB; }
+  .kcsq-photos{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .kcsq-photo{ display:block; aspect-ratio:4/3; border-radius:10px; background-color:#F0FAFA;
+    background-size:cover; background-position:center; background-repeat:no-repeat; border:1px solid #E5E7EB; }
+  .kcsq-note{ margin:14px 0 0; font-size:13.5px; line-height:1.6; color:#6B7280; }
+  .kcsq-note strong{ color:#0D2340; font-weight:600; }
+  @media (min-width:520px){ .kcsq-deux{ grid-template-columns:1fr 1fr; gap:28px; } }
 
   @media (min-width:980px){ .kcsq-grid{ grid-template-columns:1.15fr .85fr; gap:48px; } }
   @media (max-width:720px){ .kcsq{ padding:64px 0; } }
