@@ -2541,12 +2541,17 @@
       <h2 class="kczn2-title reveal">Présents partout en Île&#8209;de&#8209;France</h2>
       <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens.<br>Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
-      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb.<br>Quel que soit votre département, nous avons une équipe prête à intervenir sous 48&nbsp;h.</p>
-      <div class="kczn2-stats reveal">
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="8">8</div><div class="kczn2-lab">Départements</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="1281">1 281</div><div class="kczn2-lab">Communes accessibles</div></div>
-        <div class="kczn2-stat"><div class="kczn2-num" data-to="48" data-suf=" h">48&nbsp;h</div><div class="kczn2-lab">Délai max</div></div>
-      </div>
+      <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb.<br>Quel que soit votre département, nous avons une équipe qui connaît le terrain.</p>
+      <div class="kczn2-deps reveal" aria-label="Départements couverts">
+          <span class="kczn2-dep"><b>75</b> Paris</span>
+          <span class="kczn2-dep"><b>77</b> Seine-et-Marne</span>
+          <span class="kczn2-dep"><b>78</b> Yvelines</span>
+          <span class="kczn2-dep"><b>91</b> Essonne</span>
+          <span class="kczn2-dep"><b>92</b> Hauts-de-Seine</span>
+          <span class="kczn2-dep"><b>93</b> Seine-St-Denis</span>
+          <span class="kczn2-dep"><b>94</b> Val-de-Marne</span>
+          <span class="kczn2-dep"><b>95</b> Val-d’Oise</span>
+        </div>
       <div class="kczn2-cta reveal">
         <!-- 👉 BOUTON DEVIS -->
         <a class="kczn2-btn" href="/devis/" data-kc-event="accueil:cta:devis">Demander une intervention <span>→</span></a>
@@ -2568,7 +2573,7 @@
           <span class="kczn2-pin" data-dep="94" style="left:53%;top:48%"><i></i></span>
           <span class="kczn2-pin" data-dep="91" style="left:46%;top:56%"><i></i></span>
         </div>
-        <div class="kczn2-legend"><i></i> 8 départements couverts · intervention sous 48&nbsp;h</div>
+        <div class="kczn2-legend"><i></i> 8 départements couverts en Île-de-France</div>
       </div>
     </div>
   </div>
@@ -3634,4 +3639,10 @@
   @media (max-width:520px){
     .kcp-mosaic{ grid-template-columns:1fr; grid-auto-rows:170px; grid-template-areas:"feat" "b" "c" "d" "e" "f"; }
   }
+
+  /* ── Zone : liste des départements ── */
+  .kczn2-deps{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px 20px; margin:28px 0 32px; }
+  .kczn2-dep{ display:flex; align-items:baseline; gap:8px; font-size:15px; color:#4B5563; padding-bottom:10px; border-bottom:1px solid #E5E7EB; }
+  .kczn2-dep b{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; font-weight:700; color:#0B8483; }
+  @media (min-width:520px){ .kczn2-deps{ grid-template-columns:repeat(4,1fr); } }
 </style>
