@@ -10,7 +10,7 @@ def parts(s):
     body = re.sub(r'<script[^>]*>.*?</script>', '', re.sub(r'<style[^>]*>.*?</style>', '', s, flags=re.S), flags=re.S)
     body = re.sub(r'<!--.*?-->', '', body, flags=re.S)
     js = ''.join(re.findall(r'<script(?![^>]*ld\+json)[^>]*>(.*?)</script>', s, re.S))
-    vis = re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', body))
+    vis = re.sub(r'[ \t\r\n]+', ' ', re.sub(r'<[^>]+>', ' ', body))
     return css, body, js, vis
 
 def verifier(chemin):
