@@ -170,10 +170,11 @@ Dégradés teal (boutons, barres, fonds), effet verre (`backdrop-filter`), halos
 4. **Comment ça se passe** : 4 étapes en onglets (clic seulement) : Vous estimez en ligne / Vous réservez / L'intervention / Le contrôle.
 5. **Catalogue** : 4 familles de `prestations.html` en tuiles (pas 5).
 6. **Trois façons d'obtenir un prix** : 3 cartes de choix (Forfait / Visite gratuite / Être rappelé).
-7. **Avis** : section `kcav2` existante, badge `Exemple` sur chaque avis tant que non réels. Pas de logos clients.
-8. **Selon votre profil** : fond teinté, 4 onglets (Particulier, Hôte Airbnb, Syndic & bailleur, Entreprise & commerce), textes `Exemple`.
-9. **FAQ** : 6 `<details>`, reprendre les textes validés de `kcfq`, supprimer les 4 filtres.
-10. **CTA final** blanc : « Un prix ferme en ligne. *Un espace propre, l'esprit tranquille.* » + « Estimer & réserver en ligne → ».
+7. **Avis** : section `kcav2` existante, badge `Exemple` sur chaque avis tant que non réels.
+8. **Ils nous font confiance** (décidé le 19/09/2026, remplace « pas de logos clients ») : surtitre centré « Recevoir · Ils nous font confiance », logos alignés et séparés par un filet 1 px, en niveaux de gris (aucune couleur ajoutée). Un logo ne s'affiche qu'avec l'accord écrit du client. Les emplacements sont pilotés par les variables `--logo-1` à `--logo-4` et l'attribut `data-nom` ; un emplacement vide disparaît, et la section entière ne s'affiche pas tant qu'aucun client n'est renseigné. À défaut de logo, le nom de l'entreprise s'affiche en Libre Baskerville.
+9. **Selon votre profil** : fond teinté, 4 onglets (Particulier, Hôte Airbnb, Syndic & bailleur, Entreprise & commerce), textes `Exemple`.
+10. **FAQ** : 6 `<details>`, reprendre les textes validés de `kcfq`, supprimer les 4 filtres.
+11. **CTA final** blanc : « Un prix ferme en ligne. *Un espace propre, l'esprit tranquille.* » + « Estimer & réserver en ligne → ».
 
 À supprimer de l'accueil actuel : `ka-section`, `kcw2` (sombre), `kczn2`, `kcct2` (CTA sombre, « Réponse sous 2 h », « Urgence chantier »), bloc `#kc-alignement` et ses `!important`.
 
@@ -213,7 +214,7 @@ Pages dératisation, désinsectisation, punaises de lit : mention « avec nos pa
 | 7 | Niveau de service | **Décidé** | Existe dans le tunnel validé (« Suivi Confort », niveaux Essentiel / Confort / Premium). Sur le site : n'en parler qu'avec les libellés et montants du tunnel, sans rien ajouter |
 | 8 | Code de vérification par e-mail | **Décidé** | Non (nonce + champ piège + limite d'envois suffisent) |
 | 9 | Délais affichables | **Ouvert** | Aucun délai sur les pages. Seuls ceux déjà présents dans le tunnel validé restent dans le tunnel |
-| 10 | Photos, avis, logos, fiche entreprise | **Ouvert** | `[À fournir]`, avant/après masqué, avis avec badge `Exemple`, pas de logos |
+| 10 | Photos, avis, logos, fiche entreprise | **Ouvert** | `[À fournir]`, avant/après masqué, avis avec badge `Exemple`. Logos clients : bloc prévu depuis le 19/09/2026, masqué tant que les noms, les fichiers et les accords écrits ne sont pas fournis |
 | 11 | Baseline courte | **Ouvert** | Rien dans l'en-tête ; aucune baseline inventée |
 | 12 | Certibiocide | **Ouvert** | Pages 3D conservées, formule « avec nos partenaires spécialisés certifiés » uniquement ; aucune mention de certification propre à Kayli Clinn |
 | 13 | Garde-fous tarifaires (`CLAUDE.md`) | Hors périmètre | Ne pas toucher |

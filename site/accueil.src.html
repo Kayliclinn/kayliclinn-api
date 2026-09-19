@@ -12,6 +12,16 @@
   --photo-hero:none;
   --photo-airbnb:none;
   --photo-finbail:none;
+
+  /* Logos des clients qui ont donné leur accord écrit.
+     Renseigner l'URL de la Médiathèque : url("https://kayliclinn.fr/wp-content/uploads/…svg")
+     et le nom de l'entreprise dans l'attribut data-nom du même emplacement.
+     Un emplacement sans logo ni nom disparaît ; si les quatre sont vides,
+     la section entière ne s'affiche pas. */
+  --logo-1:none;
+  --logo-2:none;
+  --logo-3:none;
+  --logo-4:none;
 }
 
 /* ─── Jetons de la charte v2 ─── */
@@ -159,6 +169,19 @@
 .kcac-review{display:flex;flex-direction:column;gap:14px;padding:24px;background:var(--kcac-paper);border:1px solid var(--kcac-rule);border-radius:var(--kcac-r-lg);box-shadow:var(--kcac-shadow)}
 .kcac-review blockquote{margin:0;font-size:15.2px;line-height:1.6;color:var(--kcac-text-2)}
 .kcac-review figcaption{font-family:var(--kcac-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--kcac-muted);border-top:1px solid var(--kcac-rule);padding-top:14px}
+
+/* ─── Ils nous font confiance ─── */
+.kcac-logos{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0}
+.kcac-logo{display:flex;align-items:center;justify-content:center;padding:0 40px;min-height:96px}
+.kcac-logo + .kcac-logo{border-left:1px solid var(--kcac-rule)}
+.kcac-logo-img{display:block;width:190px;height:72px;background-size:contain;background-position:center;background-repeat:no-repeat;filter:grayscale(1);opacity:.8}
+.kcac-logo-txt{font-family:var(--kcac-serif);font-size:18px;font-weight:700;color:var(--kcac-ink);text-align:center}
+@media (max-width:720px){.kcac-logo{padding:0 24px;min-height:80px}.kcac-logo-img{width:140px;height:56px}}
+@media (max-width:520px){
+  .kcac-logos{flex-direction:column}
+  .kcac-logo{width:100%;padding:20px 0;min-height:0}
+  .kcac-logo + .kcac-logo{border-left:0;border-top:1px solid var(--kcac-rule)}
+}
 
 /* ─── FAQ ─── */
 .kcac-faqs{display:flex;flex-direction:column;gap:12px}
@@ -388,7 +411,23 @@
   </div>
 </section>
 
-<!-- ══ 7. Selon votre profil ══ -->
+<!-- ══ 7. Ils nous font confiance ══
+     Section masquée tant qu’aucun logo ni nom n’est renseigné en tête de bloc. -->
+<section class="kcac-sec" id="kcac-confiance" aria-labelledby="kcac-confiance-t">
+  <div class="kcac-wrap">
+    <div class="kcac-head kcac-head--center kcac-rv">
+      <span class="kcac-eyebrow" id="kcac-confiance-t">Recevoir · Ils nous font confiance</span>
+    </div>
+    <ul class="kcac-logos kcac-rv">
+      <li class="kcac-logo" data-nom=""><span class="kcac-logo-img" style="background-image:var(--logo-1)"></span></li>
+      <li class="kcac-logo" data-nom=""><span class="kcac-logo-img" style="background-image:var(--logo-2)"></span></li>
+      <li class="kcac-logo" data-nom=""><span class="kcac-logo-img" style="background-image:var(--logo-3)"></span></li>
+      <li class="kcac-logo" data-nom=""><span class="kcac-logo-img" style="background-image:var(--logo-4)"></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ 8. Selon votre profil ══ -->
 <section class="kcac-sec kcac-sec--tint">
   <div class="kcac-wrap">
     <div class="kcac-head kcac-rv">
@@ -422,7 +461,7 @@
   </div>
 </section>
 
-<!-- ══ 8. FAQ ══ -->
+<!-- ══ 9. FAQ ══ -->
 <section class="kcac-sec">
   <div class="kcac-narrow">
     <div class="kcac-head kcac-head--center kcac-rv">
@@ -440,7 +479,7 @@
   </div>
 </section>
 
-<!-- ══ 9. Appel final ══ -->
+<!-- ══ 10. Appel final ══ -->
 <section class="kcac-sec kcac-cta">
   <div class="kcac-wrap kcac-rv">
     <h2 class="kcac-h2">Un prix ferme en ligne. <em>Un espace propre, l’esprit tranquille.</em></h2>
@@ -480,6 +519,29 @@
       }
     });
   });
+
+  /* Logos clients : rien ne s'affiche tant que l'accord écrit n'est pas obtenu */
+  var secLogos=root.querySelector('#kcac-confiance');
+  if(secLogos){
+    var st=getComputedStyle(root), gardes=0;
+    Array.prototype.forEach.call(secLogos.querySelectorAll('.kcac-logo'),function(li,i){
+      var url=(st.getPropertyValue('--logo-'+(i+1))||'').trim();
+      var nom=(li.getAttribute('data-nom')||'').trim();
+      var img=li.querySelector('.kcac-logo-img');
+      if(url&&url!=='none'){
+        img.setAttribute('role','img');
+        img.setAttribute('aria-label',nom||'Logo client');
+        gardes++;
+      }else if(nom){
+        li.innerHTML='<span class="kcac-logo-txt"></span>';
+        li.firstChild.textContent=nom;
+        gardes++;
+      }else{
+        li.parentNode.removeChild(li);
+      }
+    });
+    if(!gardes){ secLogos.parentNode.removeChild(secLogos); }
+  }
 
   /* Onglets : clic et flèches, aucun défilement automatique */
   Array.prototype.forEach.call(root.querySelectorAll('[role="tablist"]'),function(list){
