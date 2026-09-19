@@ -12,6 +12,8 @@ thème). Tout le tunnel passe par les extensions WordPress (`kc-booking`,
 | `prestation.html` | Gabarit prestation (ex. Turnover Airbnb) | 14 sections éditoriales, tarifs grille officielle |
 | `estimation.html` | `/devis/` | Tunnel d'estimation 3 parcours (forfait / pro / audit) |
 | `reservation.html` | `/reservation/` | Calendrier kc-booking + paiement Stripe (forfaits) ou visite gratuite (audits) |
+| `accompagnement.src.html` + `accompagnement.html` | `/accompagnement/` | L'accompagnement : les cinq étapes du parcours, le récapitulatif, les engagements, la FAQ |
+| `pied-de-page.src.html` + `pied-de-page.html` | — | Pied de page du **thème**, jamais dans une page (charte §0.4) |
 | `tarification.xlsx` | — | Grille tarifaire source |
 | `CHARTE-KC-v2.md` | — | **Charte en vigueur** (19/09/2026). Remplace toute charte antérieure |
 | `charte-kc-v2.html` | — | Page de démonstration des composants (préfixe `kcds-`). Fait foi pour les valeurs |
