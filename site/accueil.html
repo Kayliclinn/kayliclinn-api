@@ -2034,26 +2034,12 @@
     <div class="kr-head">
       <div class="kr-copy">
         <span class="kr-eyebrow kr-rev">Nos réalisations</span>
-        <h2 class="kr-h2 kr-rev" id="kr-title">Des espaces livrés <span>impeccables</span>, sans compromis</h2>
+        <h2 class="kr-h2 kr-rev" id="kr-title">Nos interventions, <span>avant et après</span>.</h2>
         <p class="kr-sub kr-rev">
-          Avant une remise de clés, une livraison de chantier ou une rotation locative, nos équipes transforment vos espaces avec une exigence professionnelle visible dès le premier regard.
+          Deux exemples parmi nos interventions, faites glisser la poignée. Chaque chantier est photographié avant et après notre passage.
         </p>
       </div>
 
-      <div class="kr-proof kr-rev" aria-label="Indicateurs de confiance">
-        <div class="kr-proof-item">
-          <strong>48h</strong>
-          <span>Intervention</span>
-        </div>
-        <div class="kr-proof-item">
-          <strong>8</strong>
-          <span>Départements</span>
-        </div>
-        <div class="kr-proof-item">
-          <strong>100%</strong>
-          <span>Traçable</span>
-        </div>
-      </div>
     </div>
 
     <div class="kr-grid">
@@ -2075,9 +2061,9 @@
         <div class="kr-body">
           <div class="kr-meta">
             <span class="kr-cat">Fin de chantier</span>
-            <span class="kr-time">4 h</span>
           </div>
           <h3 class="kr-t">Appartement Paris 11e</h3>
+          <p class="kr-dep">75 Paris</p>
           <p class="kr-m">72 m² après rénovation complète. Poussières fines, vitrages, sanitaires, sols et finitions prêts pour la remise des clés.</p>
         </div>
       </article>
@@ -2100,35 +2086,10 @@
         <div class="kr-body">
           <div class="kr-meta">
             <span class="kr-cat">Pro / B2B</span>
-            <span class="kr-time">4 agents</span>
           </div>
           <h3 class="kr-t">Bureaux open-space La Défense</h3>
+          <p class="kr-dep">92 Hauts-de-Seine</p>
           <p class="kr-m">220 m² en livraison VEFA. Intervention coordonnée, zones de passage sécurisées et rendu net pour vos équipes.</p>
-        </div>
-      </article>
-
-      <!-- R6 · photos → variables --r6-avant / --r6-apres -->
-      <article class="kr-card" data-r="6" style="--ci:5">
-        <div class="kr-compare" data-kr aria-label="Comparaison avant après T2 Saint-Mandé">
-          <div class="kr-after"></div>
-          <div class="kr-before"></div>
-          <span class="kr-tag kr-tag-before">Avant</span>
-          <span class="kr-tag kr-tag-after">Après</span>
-          <div class="kr-line">
-            <div class="kr-handle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 7l-5 5 5 5M15 7l5 5-5 5"></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-        <div class="kr-body">
-          <div class="kr-meta">
-            <span class="kr-cat">Déménagement</span>
-            <span class="kr-time">2 h 30</span>
-          </div>
-          <h3 class="kr-t">T2 Saint-Mandé</h3>
-          <p class="kr-m">45 m² pour sortie de bail. Cuisine, salle d’eau, sols et traces d’usage traités pour maximiser la restitution.</p>
         </div>
       </article>
     </div>
@@ -3356,11 +3317,29 @@
   .kcp-dots, .kcp-badge{ display:none !important; }
   .kcp-amount{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-weight:400 !important; color:#0D2340 !important; font-size:14px !important; }
   .kcp-shade{ background:#F7F8FA !important; }
-  .kr-section{ background:#F7F8FA !important; }
   .kr-section::before{ display:none !important; }
   .kr-proof{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; box-shadow:none !important; background:#fff !important; }
   .kr-tag, .kr-compare::after{ backdrop-filter:none !important; -webkit-backdrop-filter:none !important; }
   .kr-after, .kr-before{ filter:none !important; }
+
+  /* ── Rythme des fonds : alternance sobre, aucune couleur hors palette ──
+     navy · blanc · teal pâle · blanc · gris froid · navy · blanc · teal pâle · blanc · navy */
+  .ka-section, .kcp-section, .kczn2, .kcfq-section{ background:#FFFFFF !important; }
+  .kh4-section, .kcav2{ background:#F0FAFA !important; }
+  .kr-section{ background:#F7F8FA !important; }
+  .kcw2, .kcct2{ background:#0D2340 !important; }
+  /* Les cartes restent blanches sur les sections teintées */
+  .kh4-card, .kcav2-card, .kcfq-item{ background:#FFFFFF !important; }
+
+  /* ── Réalisations : deux cartes, légende au format du modèle ── */
+  .kr-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:28px !important; }
+  .kr-meta{ margin-bottom:10px !important; }
+  .kr-cat{ background:none !important; border:0 !important; padding:0 !important;
+    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-size:11.5px !important; font-weight:700 !important; letter-spacing:.08em !important; color:#0B8483 !important; }
+  .kr-t{ margin-bottom:6px !important; }
+  .kr-dep{ font-size:15px !important; color:#6B7280 !important; margin:0 0 10px !important; }
+  @media (max-width:720px){ .kr-grid{ grid-template-columns:1fr !important; } }
 
   /* ── Pourquoi nous choisir : section deux fois moins haute, cartes en défilement ── */
   .kcw2{ background:#0D2340 !important; padding-top:44px !important; padding-bottom:44px !important; }
