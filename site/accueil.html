@@ -995,18 +995,6 @@
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initKh4);
   else initKh4();
 })();
-
-  (function(){
-    var sec=document.querySelector('.kh4-section');
-    if(!sec) return;
-    var st=getComputedStyle(document.documentElement);
-    Array.prototype.forEach.call(sec.querySelectorAll('.kh4-fig'),function(f){
-      var n=f.getAttribute('data-etape');
-      var v=(st.getPropertyValue('--photo-etape-'+n)||'').trim();
-      var media=f.querySelector('.kh4-fig-media');
-      if(media && (!v || v==='none')) media.setAttribute('hidden','');
-    });
-  })();
 </script>
 
 <noscript><style>.kh4-section .kh4-rev{opacity:1;transform:none}</style></noscript>
@@ -3642,7 +3630,7 @@
   .kh4-fig{ margin:0; border:1px solid var(--kh4-rule); border-radius:14px; overflow:hidden; background:var(--kh4-paper); }
   .kh4-fig-media{
     display:block;
-    aspect-ratio:16/10; border-bottom:1px solid var(--kh4-rule);
+    aspect-ratio:16/9; border-bottom:1px solid var(--kh4-rule);
     background-color:var(--kh4-soft); background-position:center; background-size:cover; background-repeat:no-repeat;
   }
   .kh4-fig[data-etape="1"] .kh4-fig-media{ background-image:var(--photo-etape-1,none); }
@@ -3698,6 +3686,6 @@
   }
   .kh4-row--cond{ align-items:flex-start; }
   .kh4-row--cond b{ font-weight:400; color:#6B7280; font-size:13.5px; text-align:right; max-width:22ch; }
-  .kh4-fig-media[hidden]{ display:none; }
+
 
 </style>
