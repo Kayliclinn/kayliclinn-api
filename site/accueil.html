@@ -1,78 +1,61 @@
-<!-- ════════════════════════════════════════════════════════
-   ACCUEIL KAYLI CLINN — PAGE COMPLÈTE
-   ════════════════════════════════════════════════════════
+<!-- ════════════════════════════════════════════════════════════════════
+   ACCUEIL KAYLI CLINN — bloc « HTML personnalisé »
+   Charte Kayli Clinn v2 · mise à jour du 19/09/2026
+   ════════════════════════════════════════════════════════════════════
 
-   📸 PANNEAU PHOTOS — TOUTES LES IMAGES DE LA PAGE SE MODIFIENT ICI
-   ──────────────────────────────────────────────────────────
-   Règle unique : remplacez UNIQUEMENT l'URL entre url('…').
-   Rien d'autre à toucher. Pour trouver chaque bloc de variables,
-   faites Ctrl+F sur le nom de la variable (les numéros de ligne
-   bougent, les noms de variables ne bougent jamais).
+   PANNEAU PHOTOS — toutes les images de la page se changent au même endroit.
+   Elles sont déclarées juste en dessous, dans le bloc :root du premier
+   <style>. Une ligne = une image. Vous ne remplacez que l'URL entre
+   url("…"), jamais le nom de la variable. Pour retrouver une image,
+   faites Ctrl+F sur le nom de sa variable.
 
-   ┌─ 1 · HERO (fond plein écran) ──────────────────────────
-   │  Variable .......... --photo-hero
-   │  Format conseillé .. paysage ~1920×1280 · < 300 Ko · WebP
-   │  ALT : « Agent de nettoyage professionnel Kayli Clinn en
-   │         intervention en Île-de-France »
-   └─────────────────────────────────────────────────────────
+   Il n'y a plus aucune URL écrite ailleurs dans la page.
 
-   ┌─ 2 · SECTION À PROPOS ─────────────────────────────────
-   │  Variable .......... --photo-about
-   │  Format conseillé .. portrait 5:4 ~1100×880 · < 250 Ko · WebP
-   │  ALT : « Équipe Kayli Clinn lors d'une prestation de
-   │         nettoyage haut de gamme »
-   └─────────────────────────────────────────────────────────
+   ── Ce que chaque variable affiche ─────────────────────────────────
 
-   ┌─ 3 · CARROUSEL PRESTATIONS (8 cartes × 2-3 photos) ────
-   │  Variables (panneau :root, tout en haut du fichier) :
-   │   01 Fin de chantier ... --chantier-1 / -2 / -3
-   │   02 Turnover Airbnb ... --airbnb-1 / -2 / -3
-   │   03 Bureaux ........... --bureaux-1 / -2 / -3
-   │   04 Déménagement ...... --demenagement-1 / -2 / -3
-   │   05 Vitres ............ --vitres-1 / -2   (2 photos)
-   │   06 Remise en état ..... --remise-1 / -2 / -3
-   │  Format conseillé .. paysage ~800×534 · < 150 Ko chacune
-   │  ALT type : « [Prestation] par Kayli Clinn — [contexte] »
-   │  ex. « Nettoyage de fin de chantier par Kayli Clinn —
-   │        dépoussiérage après rénovation »
-   └─────────────────────────────────────────────────────────
+   --photo-zone ........ carte de la zone d'intervention
+                         paysage 4:3 · ~1200×900 · WebP
 
-   ┌─ 4 · RÉALISATIONS AVANT/APRÈS (3 comparateurs) ────────
-   │  Variables (panneau :root, tout en haut) — 6 photos à venir :
-   │   R1 Appartement Paris 11e (fin de chantier 72&nbsp;m²)
-   │      --r1-avant / --r1-apres
-   │      ALT avant : « Appartement Paris 11e avant nettoyage
-   │                    de fin de chantier — poussières et traces »
-   │      ALT après : « Appartement Paris 11e livré impeccable
-   │                    par Kayli Clinn après fin de chantier »
-   │   R5 Bureaux open-space La Défense . --r5-avant / --r5-apres
-   │   R6 T2 Saint-Mandé ................ --r6-avant / --r6-apres
-   │  Format conseillé .. MÊME CADRAGE avant/après, paysage 4:3
-   │                      ~1200×900 · < 200 Ko · WebP
-   │  ⚠️ Actuellement les 12 URLs pointent vers Image6.webp
-   │     (placeholder) : le curseur ne montre aucune différence
-   │     tant que les vraies photos ne sont pas en place.
-   │  Lecteurs d'écran : déjà gérés (aria-label + rôle curseur
-   │     sur chaque comparateur) — rien à ajouter.
-   └─────────────────────────────────────────────────────────
+   --photo-hero ........ fond plein écran du hero
+                         paysage ~1920×1280 · moins de 300 Ko · WebP
 
-   ┌─ 5 · ZONE D'INTERVENTION (carte IDF) ──────────────────
-   │  Vraie balise <img> (Ctrl+F « kczn2-img ») : modifiez
-   │  directement src="…" et alt="…".
-   │  ALT actuel : « Carte de la zone d'intervention Kayli
-   │  Clinn en Île-de-France » — déjà bon pour le SEO.
-   └─────────────────────────────────────────────────────────
+   --photo-about ....... section « À propos », colonne de droite
+                         portrait 5:4 · ~1100×880 · moins de 250 Ko
 
-   ℹ️  RAPPEL SEO / ACCESSIBILITÉ
-   Les zones 1 à 4 sont des IMAGES DE FOND CSS :
-   • Google Images ........ ne les indexe pas (pas de signal SEO).
-   • Lecteurs d'écran ..... déjà gérés via role="img" + aria-label.
-   ➜ Chantier de fond possible : repasser ces fonds en vraies
-     <img> avec les ALT ci-dessus pour le référencement d'images.
-     Demandez-le avec les vraies photos, c'est le bon moment.
+   --photo-etape-1 à -5  vignettes des cinq onglets « Comment ça se passe »
+                         paysage 4:3 · ~800×600
+                         NON RENSEIGNÉES — la vignette reste masquée tant
+                         que la variable vaut none, la colonne montre alors
+                         l'illustration seule.
 
-   🔗 Liens : /devis/ · /prestations/ · /a-propos/
-   ════════════════════════════════════════════════════════ -->
+   --photo-suivi-1, -2 . deux photos de la fiche « Contrôle de fin
+                         d'intervention », section suivi qualité
+                         paysage 4:3 · ~600×450
+                         NON RENSEIGNÉES — les deux cadres restent vides.
+
+   Cartes prestations, trois photos par carte qui se succèdent :
+   --chantier-1/-2/-3 .. 01 Nettoyage fin de chantier
+   --airbnb-1/-2/-3 .... 02 Turnover Airbnb
+   --bureaux-1/-2/-3 ... 03 Entretien de bureaux
+   --demenagement-1/-2/-3  04 Nettoyage déménagement
+   --vitres-1/-2 ....... 05 Nettoyage de vitres (deux photos)
+   --remise-1/-2/-3 .... 06 Remise en état
+                         paysage ~800×534 · moins de 150 Ko chacune
+
+   Comparateurs avant/après, deux cartes :
+   --r1-avant / --r1-apres ... Appartement Paris 11e
+   --r5-avant / --r5-apres ... Bureaux open-space La Défense
+                         MÊME CADRAGE avant et après, sinon le curseur
+                         ne veut rien dire. Paysage 4:3 · ~1200×900
+                         ATTENTION : les quatre URL pointent aujourd'hui
+                         vers le même fichier Image6.webp. Le curseur ne
+                         montre donc aucune différence.
+
+   ── Polices ────────────────────────────────────────────────────────
+   Libre Baskerville, Inter et JetBrains Mono doivent être installées sur
+   le site. La charte interdit de les charger depuis Google (RGPD). Sans
+   elles, les titres s'affichent en Georgia.
+   ════════════════════════════════════════════════════════════════════ -->
 
 <style>
 :root{
@@ -81,6 +64,8 @@
      ░  Remplacez UNIQUEMENT l’URL entre url(...).  1 ligne = 1 image.   ░
      ░  Variables :root (globales) : valables pour toutes les sections.    ░
      ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ */
+  /* 0 · CARTE DE LA ZONE D’INTERVENTION */
+  --photo-zone: url("https://kayliclinn.fr/wp-content/uploads/2026/05/ChatGPT-Image-9-mai-2026-01_26_51.png");
   /* 1 · HERO (fond plein écran) */
   --photo-hero: url("https://kayliclinn.fr/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg");
   /* 2 · SECTION À PROPOS */
@@ -129,8 +114,6 @@
   --photo-etape-5:none;   /* comment ça se passe, étape 5 · 4/3 */
   --photo-suivi-1:none;   /* suivi qualité, photo 1 · 4/3 · ~120 Ko */
   --photo-suivi-2:none;   /* suivi qualité, photo 2 · 4/3 · ~120 Ko */
-  --r6-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
-  --r6-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
 }
 .kc-home{
 
@@ -1335,8 +1318,6 @@
   .kr-card[data-r="1"] .kr-after {background-image:var(--r1-apres)}
   .kr-card[data-r="5"] .kr-before{background-image:var(--r5-avant)}
   .kr-card[data-r="5"] .kr-after {background-image:var(--r5-apres)}
-  .kr-card[data-r="6"] .kr-before{background-image:var(--r6-avant)}
-  .kr-card[data-r="6"] .kr-after {background-image:var(--r6-apres)}
 
   /* ════════════════ NOS RÉALISATIONS — PREMIUM BEFORE / AFTER ════════════════ */
   .kr-section {
@@ -2674,7 +2655,7 @@
       <div class="kczn2-mapcard">
         <div class="kczn2-ring">
           <!-- 👉 IMAGE DE LA CARTE ÎLE-DE-FRANCE (changez l'URL ici si besoin · pensez à mettre à jour l'alt) -->
-          <img class="kczn2-img" src="https://kayliclinn.fr/wp-content/uploads/2026/05/ChatGPT-Image-9-mai-2026-01_26_51.png" alt="Carte de la zone d'intervention Kayli Clinn en Île-de-France" loading="lazy" decoding="async">
+          <span class="kczn2-img" role="img" aria-label="Carte de la zone d'intervention Kayli Clinn en Île-de-France"></span>
           <span class="kczn2-pin" data-dep="95" style="left:50%;top:29%"><i></i></span>
           <span class="kczn2-pin" data-dep="93" style="left:56%;top:35%"><i></i></span>
           <span class="kczn2-pin" data-dep="92" style="left:43%;top:41%"><i></i></span>
@@ -3559,7 +3540,7 @@
   /* ── Zone d'intervention ── */
   .kczn2{ background:#fff !important; }
   .kczn2-mapcard{ box-shadow:none !important; }
-  .kczn2-img{ transform:none !important; transition:none !important; }
+  .kczn2-img{ display:block !important; aspect-ratio:4/3; background-image:var(--photo-zone); background-size:cover; background-position:center; background-repeat:no-repeat; transform:none !important; transition:none !important; }
   .kczn2-mapcard:hover .kczn2-img{ transform:none !important; }
   .kczn2-legend i{ background:#0FA7A5 !important; }
   .kczn2-num{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:30px !important; color:#0D2340 !important; }
