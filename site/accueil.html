@@ -2647,7 +2647,21 @@
   /* Badge « Exemple » obligatoire tant que les avis ne sont pas de vrais avis clients autorisés (règle DGCCRF) */
   var demoBadge='<span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:10px;align-self:flex-start">Exemple</span>';
   var stars5='<div class="kcav2-stars" role="img" aria-label="Note de 5 sur 5">'+star+star+star+star+star+'</div>';
-  g.innerHTML=data.map(function(d){var head=d.real?stars5:demoBadge;return '<figure class="kcav2-card reveal">'+head+'<blockquote class="kcav2-txt">'+d.q+'</blockquote><figcaption class="kcav2-foot"><span class="kcav2-name">'+d.n+'</span><span class="kcav2-role">'+d.r+'</span></figcaption></figure>';}).join('');
+  g.innerHTML=data.map(function(d){
+    var head=d.real?stars5:demoBadge;
+    var long=d.q.length>220;
+    var txt='<blockquote class="kcav2-txt'+(long?' is-clamped':'')+'">'+d.q+'</blockquote>';
+    var more=long?'<button type="button" class="kcav2-more" aria-expanded="false" data-kc-event="accueil:avis:lire-suite">Lire la suite</button>':'';
+    return '<figure class="kcav2-card reveal">'+head+txt+more+'<figcaption class="kcav2-foot"><span class="kcav2-name">'+d.n+'</span><span class="kcav2-role">'+d.r+'</span></figcaption></figure>';
+  }).join('');
+  Array.prototype.forEach.call(g.querySelectorAll('.kcav2-more'),function(btn){
+    btn.addEventListener('click',function(){
+      var q=btn.previousElementSibling;
+      var open=q.classList.toggle('is-clamped')===false;
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.textContent=open?'Réduire':'Lire la suite';
+    });
+  });
   var sec=document.querySelector('.kcav2');
   var done=false;
   function run(){if(done)return;done=true;document.querySelectorAll('.kcav2 .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('show');},i*110);});}
@@ -3644,4 +3658,11 @@
   .kcav2-stars svg{ width:16px; height:16px; fill:#F5B638; }
 
   .kcav2-grid{ align-items:start; }
+
+  /* ── Avis long : troncature + « Lire la suite » ── */
+  .kcav2-txt.is-clamped{ display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden; }
+  .kcav2-more{ align-self:flex-start; margin-top:-4px; padding:0; background:none; border:0; cursor:pointer;
+    font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:#0B8483; }
+  .kcav2-more:hover{ color:#076E6D; text-decoration:underline; }
+  .kcav2-more:focus-visible{ outline:2px solid #0B8483; outline-offset:2px; }
 </style>
