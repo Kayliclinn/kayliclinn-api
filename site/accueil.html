@@ -108,11 +108,6 @@
   --r5-avant:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   --r5-apres:url('https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp');
   /* R6 · T2 Saint-Mandé */
-  --photo-etape-1:none;   /* comment ça se passe, étape 1 · 4/3 */
-  --photo-etape-2:none;   /* comment ça se passe, étape 2 · 4/3 */
-  --photo-etape-3:none;   /* comment ça se passe, étape 3 · 4/3 */
-  --photo-etape-4:none;   /* comment ça se passe, étape 4 · 4/3 */
-  --photo-etape-5:none;   /* comment ça se passe, étape 5 · 4/3 */
   --photo-suivi-1:none;   /* suivi qualité, photo 1 · 4/3 · ~120 Ko */
   --photo-suivi-2:none;   /* suivi qualité, photo 2 · 4/3 · ~120 Ko */
 }
@@ -2543,16 +2538,6 @@
       <p class="kczn2-p reveal">Nos équipes interviennent dans les 8 départements franciliens.<br>Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
       <h3 class="kczn2-sub reveal">Une équipe locale, où que vous soyez</h3>
       <p class="kczn2-p reveal">Particuliers, professionnels, syndics et hôtes Airbnb.<br>Quel que soit votre département, nous avons une équipe qui connaît le terrain.</p>
-      <div class="kczn2-deps reveal" aria-label="Départements couverts">
-          <span class="kczn2-dep"><b>75</b> Paris</span>
-          <span class="kczn2-dep"><b>77</b> Seine-et-Marne</span>
-          <span class="kczn2-dep"><b>78</b> Yvelines</span>
-          <span class="kczn2-dep"><b>91</b> Essonne</span>
-          <span class="kczn2-dep"><b>92</b> Hauts-de-Seine</span>
-          <span class="kczn2-dep"><b>93</b> Seine-St-Denis</span>
-          <span class="kczn2-dep"><b>94</b> Val-de-Marne</span>
-          <span class="kczn2-dep"><b>95</b> Val-d’Oise</span>
-        </div>
       <div class="kczn2-cta reveal">
         <!-- 👉 BOUTON DEVIS -->
         <a class="kczn2-btn" href="/devis/" data-kc-event="accueil:cta:devis">Demander une intervention <span>→</span></a>
@@ -3523,7 +3508,8 @@
   .kh4-meta{ font-family:var(--kh4-sans); font-size:12.5px; line-height:1.5; color:var(--kh4-muted); margin:0; }
 
   
-  .kh4-fig{ margin:0; border:1px solid var(--kh4-rule); border-radius:14px; overflow:hidden; background:var(--kh4-paper); }
+  .kh4-fig{ margin:0; border:1px solid var(--kh4-rule); border-radius:14px; overflow:hidden; background:var(--kh4-soft); }
+  .kh4-fig-media{ display:none !important; }
   .kh4-fig-media{
     display:block;
     aspect-ratio:16/9; border-bottom:1px solid var(--kh4-rule);
@@ -3640,12 +3626,6 @@
   @media (max-width:520px){
     .kcp-mosaic{ grid-template-columns:1fr; grid-auto-rows:170px; grid-template-areas:"feat" "b" "c" "d" "e" "f"; }
   }
-
-  /* ── Zone : liste des départements ── */
-  .kczn2-deps{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px 20px; margin:28px 0 32px; }
-  .kczn2-dep{ display:flex; align-items:baseline; gap:8px; font-size:15px; color:#4B5563; padding-bottom:10px; border-bottom:1px solid #E8E2D6; }
-  .kczn2-dep b{ font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; color:#0B8483; }
-  @media (min-width:520px){ .kczn2-deps{ grid-template-columns:repeat(4,1fr); } }
 
   /* ── Surtitres sans tiret devant le texte ── */
   .ka-eyebrow::before, .ka-eyebrow:before,
