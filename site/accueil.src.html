@@ -1,0 +1,580 @@
+<!-- ════════════════════════════════════════════════════════════════════
+   ACCUEIL kayliclinn.fr — bloc « HTML personnalisé »
+   Charte Kayli Clinn v2 · reconstruction propre du 20/09/2026 · préfixe kcac-
+   ════════════════════════════════════════════════════════════════════
+   PANNEAU PHOTOS — toutes les images se changent ici, dans le :root du
+   <style>. Une ligne = une image. On ne remplace que l'URL entre url("…").
+   Polices Fraunces + Inter chargées depuis Google Fonts juste en dessous.
+   ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<div class="kcac">
+<style>
+:root{
+  /* ── Photos de la page ── */
+  --photo-hero: url("https://kayliclinn.fr/wp-content/uploads/2026/02/pexels-tima-miroshnichenko-6196685.jpg");
+  --photo-about: url("https://kayliclinn.fr/wp-content/uploads/2026/05/pexels-nizam-344438805-19786710.jpg");
+  --photo-zone: url("https://kayliclinn.fr/wp-content/uploads/2026/05/ChatGPT-Image-9-mai-2026-01_26_51.png");
+  --airbnb-1: url(/wp-content/uploads/2026/02/pexels-karola-g-4239141.webp);
+  --chantier-1: url(/wp-content/uploads/2026/03/Image6.webp);
+  --bureaux-1: url(/wp-content/uploads/2026/02/nettoyagebureau.webp);
+  --demenagement-1: url(/wp-content/uploads/2026/03/istockphoto-1417833187-612x612-1.webp);
+  --vitres-1: url(/wp-content/uploads/2026/04/pexels-tima-miroshnichenko-6197120.jpg?fit=800%2C534&ssl=1);
+  --remise-1: url(/wp-content/uploads/2026/03/Image2.webp);
+  /* Réalisations : MÊME cadrage avant/après (aujourd'hui le même fichier partout) */
+  --r1-avant: url("https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp");
+  --r1-apres: url("https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp");
+  --r5-avant: url("https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp");
+  --r5-apres: url("https://kayliclinn.fr/wp-content/uploads/2026/03/Image6.webp");
+  --photo-suivi-1: none;
+  --photo-suivi-2: none;
+}
+.kcac{
+  --ink:#0D2340; --ink-2:#1A3A5C; --text:#1F2937; --muted:#6B7280;
+  --rule:#E8E2D6; --paper:#FFFFFF; --cream:#FAF7F1;
+  --accent:#0FA7A5; --accent-2:#0B8483; --accent-3:#076E6D; --soft:#F0FAFA; --mint:#19E3DF;
+  --on-ink:rgba(255,255,255,.74); --on-rule:rgba(255,255,255,.16);
+  --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  font-family:var(--sans); font-size:16px; line-height:1.6; color:var(--text); background:var(--cream);
+  -webkit-font-smoothing:antialiased;
+}
+.kcac *,.kcac *::before,.kcac *::after{box-sizing:border-box}
+.kcac p{margin:0}
+.kcac ul,.kcac ol{margin:0;padding:0;list-style:none}
+.kcac img{max-width:100%;display:block}
+.kcac a{text-decoration:none;color:inherit}
+
+/* ── Gabarit serré ── */
+.kcac-wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.kcac-narrow{max-width:760px;margin:0 auto;padding:0 24px}
+.kcac-sec{padding:72px 0}
+.kcac-sec--cream{background:var(--cream)}
+.kcac-sec--paper{background:var(--paper)}
+.kcac-sec--ink{background:var(--ink);color:var(--on-ink)}
+@media (max-width:720px){.kcac-sec{padding:56px 0}}
+
+/* ── Typographie ── */
+.kcac .kcac-h1,.kcac .kcac-h2,.kcac .kcac-h3{font-family:var(--serif);font-weight:600;color:var(--ink);margin:0;line-height:1.14}
+.kcac .kcac-h1{font-size:clamp(30px,3.4vw + 12px,48px);letter-spacing:-.01em;text-wrap:balance}
+.kcac .kcac-h2{font-size:clamp(24px,2vw + 12px,33px);letter-spacing:-.01em;text-wrap:balance}
+.kcac .kcac-h3{font-size:19px;line-height:1.25}
+.kcac .kcac-h1 em,.kcac .kcac-h2 em,.kcac .kcac-h3 em{font-style:italic;font-weight:500;color:var(--accent-2)}
+.kcac-sec--ink .kcac-h2,.kcac-sec--ink .kcac-h3{color:#fff}
+.kcac-sec--ink .kcac-h2 em{color:var(--mint)}
+.kcac-lede{font-size:17px;line-height:1.6;color:var(--muted);max-width:58ch}
+.kcac-sec--ink .kcac-lede{color:var(--on-ink)}
+.kcac-eye{display:inline-block;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}
+.kcac-sec--ink .kcac-eye{color:var(--mint)}
+.kcac-head{margin-bottom:36px}
+.kcac-head--center{text-align:center;max-width:640px;margin-left:auto;margin-right:auto}
+.kcac-head .kcac-lede{margin-top:14px}
+.kcac-head--center .kcac-lede{margin-left:auto;margin-right:auto}
+
+/* ── Boutons ── */
+.kcac-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;border:1px solid transparent;font-family:var(--sans);font-size:15px;font-weight:600;line-height:1;cursor:pointer;transition:background .15s var(--ease),color .15s var(--ease),border-color .15s var(--ease),transform .15s var(--ease)}
+.kcac-btn .a{transition:transform .2s var(--ease)}
+.kcac-btn:hover .a{transform:translateX(3px)}
+.kcac-btn--primary{background:var(--accent-2);color:#fff;box-shadow:0 1px 0 var(--accent-3)}
+.kcac-btn--primary:hover{background:var(--accent-3);transform:translateY(-1px)}
+.kcac-btn--ghost{background:transparent;color:var(--ink);border-color:var(--rule)}
+.kcac-btn--ghost:hover{border-color:var(--ink)}
+.kcac-btn--ondark{background:rgba(255,255,255,.06);color:#fff;border-color:rgba(255,255,255,.3)}
+.kcac-btn--ondark:hover{border-color:#fff}
+.kcac a:focus-visible,.kcac button:focus-visible,.kcac summary:focus-visible{outline:2px solid var(--accent-2);outline-offset:2px}
+.kcac-sec--ink a:focus-visible,.kcac-sec--ink button:focus-visible{outline-color:var(--mint)}
+.kcac-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.kcac-link{font-weight:600;color:var(--accent-2)}
+.kcac-link:hover{color:var(--accent-3)}
+
+.kcac-ex{display:inline-block;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:rgba(245,158,11,.14);color:#8a5a06;vertical-align:middle}
+
+/* ── 1. Hero ── */
+.kcac-hero{position:relative;background:var(--ink);color:var(--on-ink);overflow:hidden;text-align:center;padding:96px 0 80px}
+.kcac-hero .ph{position:absolute;inset:0;background-image:var(--photo-hero);background-size:cover;background-position:center}
+.kcac-hero .veil{position:absolute;inset:0;background:rgba(13,35,64,.82)}
+.kcac-hero .in{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:0 24px}
+.kcac-hero .kcac-eye{color:var(--mint)}
+.kcac-hero .kcac-h1{color:#fff;margin:0 auto;max-width:20ch}
+.kcac-hero .kcac-h1 em{color:var(--mint)}
+.kcac-hero .kcac-lede{color:var(--on-ink);margin:16px auto 0;max-width:56ch}
+.kcac-hero .kcac-row{justify-content:center;margin-top:26px}
+.kcac-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;margin-top:26px;font-size:14px;color:var(--on-ink)}
+.kcac-pills li{display:inline-flex;align-items:center;gap:8px}
+.kcac-pills li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--mint)}
+
+/* ── 2. À propos ── */
+.kcac-two{display:grid;gap:32px;align-items:center}
+@media (min-width:900px){.kcac-two{grid-template-columns:1.05fr .95fr;gap:48px}}
+.kcac-ap-txt p + p{margin-top:12px}
+.kcac-checks{margin-top:22px;display:flex;flex-direction:column;gap:10px}
+.kcac-checks li{display:flex;gap:10px;align-items:flex-start;font-weight:600;color:var(--ink);font-size:15px}
+.kcac-checks svg{width:18px;height:18px;flex:0 0 auto;margin-top:2px;color:var(--accent-2)}
+.kcac-ap-media{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:5/4;background:var(--soft) var(--photo-about) center/cover no-repeat;border:1px solid var(--rule)}
+.kcac-ap-badge{position:absolute;left:20px;bottom:20px;background:var(--ink);color:#fff;border-radius:12px;padding:14px 18px;text-align:center}
+.kcac-ap-badge span{display:block;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mint)}
+.kcac-ap-badge strong{font-family:var(--serif);font-size:26px;font-weight:600}
+
+/* ── 3. Comment ça se passe (onglets) ── */
+.kcac-tabs{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:18px}
+@media (min-width:560px){.kcac-tabs{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:900px){.kcac-tabs{grid-template-columns:repeat(5,1fr)}}
+.kcac-tab{position:relative;text-align:left;padding:12px 14px 14px;border-radius:10px;border:1px solid var(--rule);background:var(--paper);cursor:pointer;font-family:var(--sans);overflow:hidden;transition:border-color .15s var(--ease)}
+.kcac-tab:hover{border-color:var(--accent)}
+.kcac-tab[aria-selected="true"]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.kcac-tab-n{display:block;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2);margin-bottom:5px}
+.kcac-tab-t{display:block;font-size:15px;font-weight:600;color:var(--ink);line-height:1.2}
+.kcac-tab-bar{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--accent-2)}
+.kcac-tab[aria-selected="true"] .kcac-tab-bar{width:100%;transition:width var(--tabdur,5s) linear}
+.kcac-panel{display:none;border:1px solid var(--rule);border-radius:14px;background:var(--paper);padding:26px;grid-template-columns:1fr;gap:26px}
+.kcac-panel.on{display:grid}
+@media (min-width:820px){.kcac-panel{grid-template-columns:1fr 1fr;gap:40px;padding:30px 34px}}
+.kcac-panel .num{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent-2);display:block;margin-bottom:8px}
+.kcac-panel .kcac-h3{margin-bottom:8px}
+.kcac-panel p{color:var(--muted);font-size:15px}
+.kcac-recv{margin-top:16px;padding:14px 16px;background:var(--soft);border-radius:10px}
+.kcac-recv b{display:block;font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:5px}
+.kcac-recv p{color:var(--text);font-size:14.5px}
+.kcac-meta{margin-top:14px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.kcac-fiche{background:var(--soft);border-radius:12px;padding:20px}
+.kcac-fiche .fh{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}
+.kcac-fiche li{display:flex;align-items:flex-start;gap:9px;font-size:15px;color:var(--text);padding:7px 0}
+.kcac-fiche svg{width:17px;height:17px;flex:0 0 auto;margin-top:2px;color:var(--accent-2)}
+.kcac-tabcta{text-align:center;margin-top:26px}
+
+/* ── 4. Prestations (mosaïque) ── */
+.kcac-mosaic{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);grid-auto-rows:200px;grid-template-areas:"a a b" "a a c" "d e f"}
+.kcac-tile{position:relative;display:block;border-radius:14px;overflow:hidden;background:var(--soft);background-size:cover;background-position:center;color:#fff;transition:transform .25s var(--ease)}
+.kcac-tile:hover{transform:translateY(-2px)}
+.kcac-tile::before{content:"";position:absolute;inset:0;background:rgba(13,35,64,.42);transition:background .25s var(--ease)}
+.kcac-tile:hover::before{background:rgba(13,35,64,.32)}
+.kcac-tile .tb{position:absolute;left:0;bottom:0;padding:18px 20px;z-index:1}
+.kcac-tile .tt{display:block;font-family:var(--serif);font-weight:600;font-size:19px;line-height:1.2}
+.kcac-tile--big .tt{font-size:24px}
+.kcac-tile .tp{display:block;font-size:12.5px;color:var(--mint);margin-top:3px}
+.kcac-tile:nth-child(1){grid-area:a}.kcac-tile:nth-child(2){grid-area:b}.kcac-tile:nth-child(3){grid-area:c}
+.kcac-tile:nth-child(4){grid-area:d}.kcac-tile:nth-child(5){grid-area:e}.kcac-tile:nth-child(6){grid-area:f}
+@media (max-width:900px){.kcac-mosaic{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px;grid-template-areas:"a a" "b c" "d e" "f f"}}
+@media (max-width:520px){.kcac-mosaic{grid-template-columns:1fr;grid-auto-rows:160px;grid-template-areas:"a" "b" "c" "d" "e" "f"}}
+.kcac-center{text-align:center;margin-top:32px}
+
+/* ── 5. Réalisations (avant/après) ── */
+.kcac-grid2{display:grid;gap:24px}
+@media (min-width:720px){.kcac-grid2{grid-template-columns:1fr 1fr}}
+.kcac-ba{border:1px solid var(--rule);border-radius:14px;overflow:hidden;background:var(--paper)}
+.kcac-ba-img{position:relative;aspect-ratio:3/2;overflow:hidden;background:var(--ink)}
+.kcac-ba-img .av,.kcac-ba-img .ap{position:absolute;inset:0;background-size:cover;background-position:center}
+.kcac-ba-img .ap{clip-path:inset(0 0 0 var(--x,50%))}
+.kcac-ba-img input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize}
+.kcac-ba-img .line{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:#fff;pointer-events:none}
+.kcac-ba-img .tag{position:absolute;top:12px;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:rgba(13,35,64,.66);padding:4px 8px;border-radius:6px;pointer-events:none}
+.kcac-ba-img .tag.b{left:12px}.kcac-ba-img .tag.a{right:12px}
+.kcac-ba-body{padding:18px 20px}
+.kcac-ba-cat{font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2)}
+.kcac-ba-body h3{margin:6px 0 4px;font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink)}
+.kcac-ba-body p{color:var(--muted);font-size:14.5px}
+
+/* ── 6. Suivi qualité (sombre) ── */
+.kcac-engage{display:grid;gap:18px}
+@media (min-width:640px){.kcac-engage{grid-template-columns:1fr 1fr}}
+.kcac-pt{display:flex;gap:14px;align-items:flex-start}
+.kcac-pt .ic{flex:0 0 36px;width:36px;height:36px;border-radius:9px;background:rgba(15,167,165,.18);display:flex;align-items:center;justify-content:center;color:var(--mint)}
+.kcac-pt .ic svg{width:19px;height:19px}
+.kcac-pt strong{display:block;color:#fff;font-size:15.5px;font-weight:600;margin-bottom:3px}
+.kcac-pt p{color:var(--on-ink);font-size:14.5px;line-height:1.55}
+.kcac-card{background:var(--paper);border-radius:14px;overflow:hidden;color:var(--text)}
+.kcac-card-h{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:18px 22px;border-bottom:1px solid var(--rule)}
+.kcac-card-h strong{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--ink)}
+.kcac-card-h span{display:block;margin-top:3px;font-size:13.5px;color:var(--muted)}
+.kcac-band{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:16px 22px;background:var(--soft);border-bottom:1px solid var(--rule)}
+.kcac-band .l{font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent-2)}
+.kcac-band strong{display:block;margin-top:5px;font-size:14px;color:var(--ink)}
+.kcac-card-b{padding:20px 22px;display:grid;gap:22px}
+@media (min-width:520px){.kcac-card-b{grid-template-columns:1fr 1fr}}
+.kcac-st{font-family:var(--sans);font-size:14.5px;font-weight:600;color:var(--ink);margin:0 0 12px}
+.kcac-zones li{display:flex;gap:9px;align-items:flex-start;padding:5px 0}
+.kcac-zones .d{flex:0 0 9px;width:9px;height:9px;border-radius:50%;margin-top:5px;background:var(--accent-2)}
+.kcac-zones .d.c{background:var(--accent);box-shadow:0 0 0 3px var(--soft)}
+.kcac-zones .d.w{background:#fff;border:1px solid var(--rule)}
+.kcac-zones strong{display:block;font-size:14px;font-weight:600;color:var(--ink)}
+.kcac-zones span{font-size:13px;color:var(--muted)}
+.kcac-photos{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kcac-photos i{display:block;aspect-ratio:4/3;border-radius:8px;background:var(--soft);border:1px solid var(--rule);background-size:cover;background-position:center}
+.kcac-photos i:nth-child(1){background-image:var(--photo-suivi-1)}
+.kcac-photos i:nth-child(2){background-image:var(--photo-suivi-2)}
+.kcac-note{margin-top:12px;font-size:13px;color:var(--muted);line-height:1.5}
+.kcac-note strong{color:var(--ink);font-weight:600}
+
+/* ── 7. Zone ── */
+.kcac-zone-map{border-radius:14px;overflow:hidden;border:1px solid var(--rule);aspect-ratio:4/3;background:var(--paper) var(--photo-zone) center/cover no-repeat}
+
+/* ── 8. Avis ── */
+.kcac-grid3{display:grid;gap:20px;align-items:start}
+@media (min-width:720px){.kcac-grid3{grid-template-columns:repeat(3,1fr)}}
+.kcac-av{display:flex;flex-direction:column;gap:14px;padding:22px;background:var(--paper);border:1px solid var(--rule);border-radius:14px}
+.kcac-stars{display:flex;gap:3px}
+.kcac-stars svg{width:15px;height:15px;fill:#F5B638}
+.kcac-av blockquote{margin:0;font-size:14.5px;line-height:1.6;color:var(--text)}
+.kcac-av blockquote.clamp{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.kcac-more{align-self:flex-start;padding:0;background:none;border:0;cursor:pointer;font-family:var(--sans);font-size:14px;font-weight:600;color:var(--accent-2)}
+.kcac-more:hover{color:var(--accent-3);text-decoration:underline}
+.kcac-av figcaption{border-top:1px solid var(--rule);padding-top:14px;margin-top:auto}
+.kcac-av .n{display:block;font-family:var(--serif);font-weight:600;font-size:15px;color:var(--ink)}
+.kcac-av .r{display:block;margin-top:2px;font-family:var(--sans);font-size:11px;font-weight:400;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+
+/* ── 9. FAQ ── */
+.kcac-faqs{display:flex;flex-direction:column;gap:10px}
+.kcac-faq{background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:16px 20px}
+.kcac-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;font-weight:600;font-size:15.5px;color:var(--ink)}
+.kcac-faq summary::-webkit-details-marker{display:none}
+.kcac-faq summary::after{content:"+";color:var(--accent-2);font-weight:700}
+.kcac-faq[open] summary::after{content:"−"}
+.kcac-faq p{margin-top:10px;color:var(--muted);font-size:14.5px;line-height:1.6}
+
+/* ── 10. CTA final ── */
+.kcac-cta{text-align:center}
+.kcac-cta .kcac-h2{max-width:22ch;margin:0 auto}
+.kcac-cta p{max-width:52ch;margin:16px auto 26px;color:var(--muted)}
+.kcac-cta-tel{margin-top:30px;font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.kcac-tel{display:inline-flex;align-items:center;gap:9px;margin-top:8px;font-family:var(--serif);font-weight:600;font-size:22px;color:var(--ink)}
+.kcac-tel svg{width:19px;height:19px;color:var(--accent-2)}
+
+/* ── Apparition au défilement ── */
+.kcac-rv{opacity:0;transform:translateY(14px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.kcac-rv.in{opacity:1;transform:none}
+.kcac:not(.js) .kcac-rv{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.kcac *,.kcac *::before,.kcac *::after{transition:none!important;animation:none!important}.kcac-rv{opacity:1;transform:none}.kcac-tab[aria-selected="true"] .kcac-tab-bar{transition:none}}
+</style>
+
+<!-- ══ 1. Hero ══ -->
+<section class="kcac-hero">
+  <div class="ph" aria-hidden="true"></div><div class="veil" aria-hidden="true"></div>
+  <div class="in">
+    <span class="kcac-eye">Nettoyage professionnel · Île-de-France</span>
+    <h1 class="kcac-h1">Un espace propre, <em>l’esprit tranquille</em>.</h1>
+    <p class="kcac-lede">Nettoyage professionnel en Île-de-France pour vos bureaux, fins de chantier, locations Airbnb, déménagements et copropriétés. Demandez votre devis en quelques clics.</p>
+    <div class="kcac-row">
+      <a class="kcac-btn kcac-btn--primary" href="/devis/" data-kc-event="accueil:cta:estimer-hero">Estimation en ligne <span class="a">→</span></a>
+      <a class="kcac-btn kcac-btn--ondark" href="/prestations/" data-kc-event="accueil:cta:prestations-hero">Voir nos prestations</a>
+    </div>
+    <ul class="kcac-pills"><li>Réponse rapide</li><li>Particuliers &amp; professionnels</li><li>Intervention en Île-de-France</li></ul>
+  </div>
+</section>
+
+<!-- ══ 2. À propos ══ -->
+<section class="kcac-sec kcac-sec--cream" aria-labelledby="kcac-ap">
+  <div class="kcac-wrap kcac-two kcac-rv">
+    <div class="kcac-ap-txt">
+      <span class="kcac-eye">À propos de Kayli Clinn</span>
+      <h2 class="kcac-h2" id="kcac-ap">Une équipe fiable pour un nettoyage <em>professionnel</em>, sans stress.</h2>
+      <div style="margin-top:16px">
+        <p class="kcac-lede" style="max-width:none">Kayli Clinn accompagne particuliers, professionnels, syndics et hôtes Airbnb avec des prestations de nettoyage haut de gamme en Île-de-France.</p>
+        <p class="kcac-lede" style="max-width:none">Chaque intervention est adaptée à vos contraintes d’horaires, de type d’espace, d’urgence et de niveau d’exigence. Notre objectif est de vous livrer un espace propre, sain et prêt à l’usage.</p>
+      </div>
+      <ul class="kcac-checks">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Un devis clair pour une prestation adaptée à votre espace.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Une équipe discrète, organisée et attentive aux détails.</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Un résultat contrôlé, avec reprise possible si nécessaire.</li>
+      </ul>
+      <div class="kcac-row" style="margin-top:26px">
+        <a class="kcac-btn kcac-btn--primary" href="/devis/" data-kc-event="accueil:cta:devis-apropos">Demander un devis gratuit <span class="a">→</span></a>
+        <a class="kcac-link" href="/a-propos/" data-kc-event="accueil:lien:a-propos">En savoir plus sur Kayli Clinn</a>
+      </div>
+    </div>
+    <div class="kcac-ap-media" role="img" aria-label="Équipe Kayli Clinn en intervention">
+      <span class="kcac-ap-badge"><span>Depuis</span><strong>2024</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 3. Comment ça se passe ══ -->
+<section class="kcac-sec kcac-sec--paper" id="kcac-etapes" aria-labelledby="kcac-et-t">
+  <div class="kcac-wrap">
+    <div class="kcac-head kcac-head--center kcac-rv">
+      <span class="kcac-eye">Réserver · Comment ça se passe</span>
+      <h2 class="kcac-h2" id="kcac-et-t">Comment ça se passe, <em>étape par étape</em>.</h2>
+      <p class="kcac-lede">De la première question à la confirmation. Le prix des forfaits s’affiche avant tout paiement.</p>
+    </div>
+    <div class="kcac-rv">
+      <div class="kcac-tabs" role="tablist" aria-label="Les cinq étapes">
+        <button class="kcac-tab" role="tab" id="et1" aria-controls="pa1" aria-selected="true" tabindex="0" data-kc-event="accueil:onglet:etape-1"><span class="kcac-tab-n">Étape 01</span><span class="kcac-tab-t">Vous décrivez votre besoin</span><span class="kcac-tab-bar"></span></button>
+        <button class="kcac-tab" role="tab" id="et2" aria-controls="pa2" aria-selected="false" tabindex="-1" data-kc-event="accueil:onglet:etape-2"><span class="kcac-tab-n">Étape 02</span><span class="kcac-tab-t">Vous voyez votre prix</span><span class="kcac-tab-bar"></span></button>
+        <button class="kcac-tab" role="tab" id="et3" aria-controls="pa3" aria-selected="false" tabindex="-1" data-kc-event="accueil:onglet:etape-3"><span class="kcac-tab-n">Étape 03</span><span class="kcac-tab-t">Vous choisissez un créneau</span><span class="kcac-tab-bar"></span></button>
+        <button class="kcac-tab" role="tab" id="et4" aria-controls="pa4" aria-selected="false" tabindex="-1" data-kc-event="accueil:onglet:etape-4"><span class="kcac-tab-n">Étape 04</span><span class="kcac-tab-t">Vous validez en ligne</span><span class="kcac-tab-bar"></span></button>
+        <button class="kcac-tab" role="tab" id="et5" aria-controls="pa5" aria-selected="false" tabindex="-1" data-kc-event="accueil:onglet:etape-5"><span class="kcac-tab-n">Étape 05</span><span class="kcac-tab-t">Vous gardez la main</span><span class="kcac-tab-bar"></span></button>
+      </div>
+
+      <div class="kcac-panel on" role="tabpanel" id="pa1" aria-labelledby="et1" tabindex="0">
+        <div><span class="num">01</span><h3 class="kcac-h3">Vous répondez à quelques <em>questions</em>, sans jargon.</h3><p>La prestation, la typologie du logement, les options, la date et les conditions d’accès. Le parcours n’affiche que les écrans utiles à votre demande.</p><div class="kcac-recv"><b>Vous gardez</b><p>Votre saisie, conservée dans votre navigateur le temps de la visite — aucun compte à créer.</p></div><p class="kcac-meta">Page /devis/ · trois parcours</p></div>
+        <div class="kcac-fiche"><div class="fh">Les écrans du parcours</div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Prestation souhaitée</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Département d’intervention</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Typologie du logement</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Options et prestations complémentaires</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Vos coordonnées et l’adresse du bien</li>
+        </ul></div>
+      </div>
+      <div class="kcac-panel" role="tabpanel" id="pa2" aria-labelledby="et2" tabindex="0" hidden>
+        <div><span class="num">02</span><h3 class="kcac-h3">Le prix s’affiche <em>ligne par ligne</em>, avant tout paiement.</h3><p>Pour un forfait, c’est un prix ferme TTC issu de notre grille. Pour la fin de chantier, une estimation indicative. Les bureaux sont chiffrés sur devis.</p><div class="kcac-recv"><b>Vous recevez</b><p>Le détail de votre tarif à l’écran, et le récapitulatif par e-mail si vous le demandez.</p></div><p class="kcac-meta">Base, options, majorations, frais</p></div>
+        <div class="kcac-fiche"><div class="fh">Récapitulatif <span class="kcac-ex">Exemple</span></div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Turnover Airbnb — T2 · 75&nbsp;€</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Kit linge complet × 2 lits · 36&nbsp;€</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Total 111&nbsp;€ TTC · acompte 33,30&nbsp;€</li>
+        </ul><p class="kcac-note">Configuration donnée en exemple, aux montants de la grille en vigueur.</p></div>
+      </div>
+      <div class="kcac-panel" role="tabpanel" id="pa3" aria-labelledby="et3" tabindex="0" hidden>
+        <div><span class="num">03</span><h3 class="kcac-h3">Vous choisissez un créneau <em>réellement disponible</em>.</h3><p>Le calendrier ne propose que des créneaux tenables. Il croise les horaires de travail déclarés de l’équipe et les réservations déjà prises.</p><div class="kcac-recv"><b>Vous choisissez</b><p>La date et l’heure. Si le créneau part pendant votre saisie, la page vous le dit et recharge les disponibilités.</p></div><p class="kcac-meta">Créneaux par pas de 30 minutes</p></div>
+        <div class="kcac-fiche"><div class="fh">Ce qui est croisé</div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Les horaires de travail de l’équipe</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Les réservations déjà prises</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>= les créneaux affichés dans le calendrier</li>
+        </ul></div>
+      </div>
+      <div class="kcac-panel" role="tabpanel" id="pa4" aria-labelledby="et4" tabindex="0" hidden>
+        <div><span class="num">04</span><h3 class="kcac-h3">Vous réglez l’acompte, ou <em>rien du tout</em>.</h3><p>Pour un forfait, vous choisissez l’acompte de 30&nbsp;% ou le paiement total, par carte. Pour une visite gratuite, il n’y a rien à payer.</p><div class="kcac-recv"><b>Vous réglez</b><p>Un montant recalculé sur nos serveurs à partir de la grille. Ce qui s’affiche dans le navigateur ne peut pas le modifier.</p></div><p class="kcac-meta">Acompte de 30 % · paiement sécurisé</p></div>
+        <div class="kcac-fiche"><div class="fh">Mode de règlement</div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Acompte 30 % · solde après la prestation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Paiement total à la réservation</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pour une visite gratuite, cet écran ne s’affiche pas</li>
+        </ul></div>
+      </div>
+      <div class="kcac-panel" role="tabpanel" id="pa5" aria-labelledby="et5" tabindex="0" hidden>
+        <div><span class="num">05</span><h3 class="kcac-h3">Votre réservation reste <em>consultable</em>, depuis votre e-mail.</h3><p>L’e-mail de confirmation reprend toujours la prestation, la date et la durée estimée. Le reste s’ajoute selon votre réservation.</p><div class="kcac-recv"><b>Ce que le lien permet</b><p>Consulter votre réservation, régler le solde s’il reste dû, ou annuler dans le délai prévu.</p></div><p class="kcac-meta">Lien personnel, sans compte ni mot de passe</p></div>
+        <div class="kcac-fiche"><div class="fh">E-mail de confirmation</div><ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Prestation, date, durée estimée</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Selon la réservation : intervenant, adresse, montant</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Un lien « Gérer ma réservation »</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="kcac-tabcta kcac-rv">
+      <a class="kcac-btn kcac-btn--primary" href="/devis/" data-kc-event="accueil:cta:estimer-etapes">Estimer &amp; réserver en ligne <span class="a">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 4. Prestations ══ -->
+<section class="kcac-sec kcac-sec--cream" aria-labelledby="kcac-pr-t">
+  <div class="kcac-wrap">
+    <div class="kcac-head kcac-head--center kcac-rv">
+      <span class="kcac-eye">Nos prestations</span>
+      <h2 class="kcac-h2" id="kcac-pr-t">Nos prestations, <em>du forfait au sur-mesure</em>.</h2>
+      <p class="kcac-lede">Les forfaits se réservent en ligne à prix ferme. Le reste est chiffré après une visite gratuite.</p>
+    </div>
+    <div class="kcac-mosaic kcac-rv">
+      <a class="kcac-tile kcac-tile--big" href="/turnover-airbnb/" style="background-image:var(--airbnb-1)" data-kc-event="accueil:tuile:airbnb"><span class="tb"><span class="tt">Turnover Airbnb</span><span class="tp">dès 55&nbsp;€ TTC</span></span></a>
+      <a class="kcac-tile" href="/nettoyage-fin-de-chantier/" style="background-image:var(--chantier-1)" data-kc-event="accueil:tuile:fin-de-chantier"><span class="tb"><span class="tt">Nettoyage de fin de chantier</span><span class="tp">dès 4,50&nbsp;€/m² HT</span></span></a>
+      <a class="kcac-tile" href="/nettoyage-apres-demenagement-etat-des-lieux/" style="background-image:var(--demenagement-1)" data-kc-event="accueil:tuile:demenagement"><span class="tb"><span class="tt">Fin de bail &amp; déménagement</span><span class="tp">dès 160&nbsp;€ TTC</span></span></a>
+      <a class="kcac-tile" href="/entretien-de-bureaux/" style="background-image:var(--bureaux-1)" data-kc-event="accueil:tuile:bureaux"><span class="tb"><span class="tt">Entretien de bureaux</span><span class="tp">à partir de 2&nbsp;€/m²/mois HT</span></span></a>
+      <a class="kcac-tile" href="/vitres-classiques/" style="background-image:var(--vitres-1)" data-kc-event="accueil:tuile:vitres"><span class="tb"><span class="tt">Nettoyage de vitres</span><span class="tp">dès 70&nbsp;€ TTC</span></span></a>
+      <a class="kcac-tile" href="/remise-en-etat/" style="background-image:var(--remise-1)" data-kc-event="accueil:tuile:remise-en-etat"><span class="tb"><span class="tt">Remise en état</span><span class="tp">sur devis</span></span></a>
+    </div>
+    <div class="kcac-center kcac-rv"><a class="kcac-btn kcac-btn--ghost" href="/prestations/" data-kc-event="accueil:cta:prestations">Voir toutes nos prestations <span class="a">→</span></a></div>
+  </div>
+</section>
+
+<!-- ══ 5. Réalisations ══ -->
+<section class="kcac-sec kcac-sec--paper" aria-labelledby="kcac-re-t">
+  <div class="kcac-wrap">
+    <div class="kcac-head kcac-head--center kcac-rv">
+      <span class="kcac-eye">Nos réalisations</span>
+      <h2 class="kcac-h2" id="kcac-re-t">Nos interventions, <em>avant et après</em>.</h2>
+      <p class="kcac-lede">Faites glisser la poignée. Chaque chantier est photographié avant et après notre passage.</p>
+    </div>
+    <div class="kcac-grid2 kcac-rv">
+      <figure class="kcac-ba">
+        <div class="kcac-ba-img"><span class="av" style="background-image:var(--r1-avant)"></span><span class="ap" style="background-image:var(--r1-apres)"></span><span class="tag b">Avant</span><span class="tag a">Après</span><span class="line"></span><input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après — Appartement Paris 11e"></div>
+        <figcaption class="kcac-ba-body"><span class="kcac-ba-cat">Fin de chantier</span><h3>Appartement Paris 11<sup>e</sup></h3><p>72&nbsp;m² après rénovation. Poussières, vitrages, sanitaires et sols repris.</p></figcaption>
+      </figure>
+      <figure class="kcac-ba">
+        <div class="kcac-ba-img"><span class="av" style="background-image:var(--r5-avant)"></span><span class="ap" style="background-image:var(--r5-apres)"></span><span class="tag b">Avant</span><span class="tag a">Après</span><span class="line"></span><input type="range" min="0" max="100" value="50" aria-label="Comparer avant et après — Bureaux La Défense"></div>
+        <figcaption class="kcac-ba-body"><span class="kcac-ba-cat">Pro · B2B</span><h3>Bureaux open-space La Défense</h3><p>220&nbsp;m² en livraison. Zones de passage et points de contact.</p></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 6. Suivi qualité ══ -->
+<section class="kcac-sec kcac-sec--ink" aria-labelledby="kcac-sq-t">
+  <div class="kcac-wrap kcac-two kcac-rv">
+    <div>
+      <span class="kcac-eye">Suivre · Qualité et contrôle</span>
+      <h2 class="kcac-h2" id="kcac-sq-t">Vous n’avez pas à <em>repasser derrière nous</em>.</h2>
+      <p class="kcac-lede" style="margin-top:14px">Chaque intervention est vérifiée avant que l’équipe quitte les lieux. Si un point ne va pas, vous nous le signalez et nous revenons le corriger.</p>
+      <div class="kcac-engage" style="margin-top:26px">
+        <div class="kcac-pt"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><strong>Un contrôle avant de partir</strong><p>Une vérification des points clés est réalisée avant de quitter les lieux.</p></div></div>
+        <div class="kcac-pt"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2L8 5h8l1.5 2h2A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.5" r="3.2"/></svg></span><div><strong>Des photos sur demande</strong><p>Selon la prestation, des photos après passage vous permettent de constater le travail à distance.</p></div></div>
+        <div class="kcac-pt"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><div><strong>Un interlocuteur unique</strong><p>Un seul contact qui connaît votre dossier, sans standard impersonnel.</p></div></div>
+        <div class="kcac-pt"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg></span><div><strong>Satisfait ou repassé</strong><p>Un point qui n’est pas conforme nous est signalé, et nous revenons le corriger.</p></div></div>
+      </div>
+      <div class="kcac-row" style="margin-top:26px"><a class="kcac-btn kcac-btn--ondark" href="/devis/" data-kc-event="accueil:cta:devis-suivi">Demander un devis <span class="a">→</span></a></div>
+    </div>
+    <div class="kcac-card">
+      <div class="kcac-card-h"><div><strong>Turnover Airbnb · Studio</strong><span>Fiche d’intervention et contrôle final</span></div><span class="kcac-ex">Exemple de suivi</span></div>
+      <div class="kcac-band"><div><span class="l">Intervention</span><strong>En cours</strong></div><div><span class="l">Contrôle final</span><strong>Avant le départ</strong></div><div><span class="l">Photos</span><strong>Sur demande</strong></div></div>
+      <div class="kcac-card-b">
+        <div><h3 class="kcac-st">Points contrôlés</h3><ul class="kcac-zones">
+          <li><i class="d" aria-hidden="true"></i><div><strong>Cuisine et électroménager</strong><span>Vérifiés</span></div></li>
+          <li><i class="d" aria-hidden="true"></i><div><strong>Salle d’eau et sanitaires</strong><span>Vérifiées</span></div></li>
+          <li><i class="d" aria-hidden="true"></i><div><strong>Sols et plinthes</strong><span>Vérifiés</span></div></li>
+          <li><i class="d c" aria-hidden="true"></i><div><strong>Points de contact</strong><span>En cours</span></div></li>
+          <li><i class="d w" aria-hidden="true"></i><div><strong>Poubelles et extérieurs</strong><span>À vérifier</span></div></li>
+        </ul></div>
+        <div><h3 class="kcac-st">Après passage</h3><div class="kcac-photos"><i></i><i></i></div><p class="kcac-note"><strong>Photos après passage.</strong> Transmises sur demande et selon la prestation, pour constater le travail à distance.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 7. Zone ══ -->
+<section class="kcac-sec kcac-sec--cream" aria-labelledby="kcac-zo-t">
+  <div class="kcac-wrap kcac-two kcac-rv">
+    <div>
+      <span class="kcac-eye">Zone d’intervention</span>
+      <h2 class="kcac-h2" id="kcac-zo-t">Présents partout en Île-de-France.</h2>
+      <p class="kcac-lede" style="margin-top:14px">Nos équipes interviennent dans les huit départements franciliens. Connaissance locale du terrain, des accès, des règles de copropriété et des contraintes de chaque zone.</p>
+      <p class="kcac-lede" style="margin-top:12px">Particuliers, professionnels, syndics et hôtes Airbnb. Quel que soit votre département, nous avons une équipe qui connaît le terrain.</p>
+      <div class="kcac-row" style="margin-top:26px">
+        <a class="kcac-btn kcac-btn--primary" href="/devis/" data-kc-event="accueil:cta:devis-zone">Demander une intervention <span class="a">→</span></a>
+        <a class="kcac-tel" href="tel:+33670012061" data-kc-event="accueil:contact:tel" style="font-size:18px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>06 70 01 20 61</a>
+      </div>
+    </div>
+    <div class="kcac-zone-map" role="img" aria-label="Carte de la zone d’intervention en Île-de-France"></div>
+  </div>
+</section>
+
+<!-- ══ 8. Avis ══ -->
+<section class="kcac-sec kcac-sec--paper" aria-labelledby="kcac-av-t">
+  <div class="kcac-wrap">
+    <div class="kcac-head kcac-head--center kcac-rv">
+      <span class="kcac-eye">Lire · Ce qu’on nous dit</span>
+      <h2 class="kcac-h2" id="kcac-av-t">Ce qu’en disent <em>nos clients</em>.</h2>
+      <p class="kcac-lede">Un premier avis client vérifié, et deux exemples de rédaction en attendant les prochains.</p>
+    </div>
+    <div class="kcac-grid3 kcac-rv" id="kcac-avgrid"></div>
+  </div>
+</section>
+
+<!-- ══ 9. FAQ ══ -->
+<section class="kcac-sec kcac-sec--cream" aria-labelledby="kcac-fq-t">
+  <div class="kcac-narrow">
+    <div class="kcac-head kcac-head--center kcac-rv">
+      <span class="kcac-eye">FAQ</span>
+      <h2 class="kcac-h2" id="kcac-fq-t">Vos questions, nos réponses.</h2>
+    </div>
+    <div class="kcac-faqs kcac-rv">
+      <details class="kcac-faq"><summary data-kc-event="accueil:faq:zone">Couvrez-vous toute l’Île-de-France ?</summary><p>Oui, les huit départements franciliens, de Paris au Val-d’Oise. Pour les communes limitrophes, nous étudions chaque demande au cas par cas.</p></details>
+      <details class="kcac-faq"><summary data-kc-event="accueil:faq:tarifs">Comment sont calculés vos tarifs ?</summary><p>Les forfaits suivent une grille fixe, affichée avant la réservation. Le reste est chiffré après une visite gratuite, sur devis écrit.</p></details>
+      <details class="kcac-faq"><summary data-kc-event="accueil:faq:profils">Travaillez-vous avec les particuliers et les professionnels ?</summary><p>Oui, les deux. Les particuliers réservent leurs forfaits en ligne à prix ferme, les professionnels passent par une visite gratuite puis un devis écrit.</p></details>
+      <details class="kcac-faq"><summary data-kc-event="accueil:faq:materiel">Dois-je fournir le matériel ou les produits ?</summary><p>Non, nous arrivons avec notre matériel et nos produits professionnels. Vous n’avez rien à prévoir, y compris dans un logement vide.</p></details>
+      <details class="kcac-faq"><summary data-kc-event="accueil:faq:paiement">Comment se passe le paiement ?</summary><p>Pour les forfaits, un acompte de 30&nbsp;% est réglé en ligne à la réservation et le solde après la prestation. Les professionnels sont facturés par virement.</p></details>
+      <details class="kcac-faq"><summary data-kc-event="accueil:faq:weekend">Intervenez-vous le week-end et les jours fériés ?</summary><p>Oui, selon nos disponibilités. Une majoration s’applique le dimanche et les jours fériés, ainsi que pour une intervention urgente. Elle est affichée avant la réservation.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 10. Appel final ══ -->
+<section class="kcac-sec kcac-sec--paper kcac-cta">
+  <div class="kcac-wrap kcac-rv">
+    <span class="kcac-eye">Estimer · Réserver</span>
+    <h2 class="kcac-h2">Un prix ferme en ligne. <em>Un espace propre, l’esprit tranquille.</em></h2>
+    <p>Estimez votre forfait en quelques minutes. Vous réservez votre créneau quand vous le décidez.</p>
+    <a class="kcac-btn kcac-btn--primary" href="/devis/" data-kc-event="accueil:cta:final">Estimer &amp; réserver en ligne <span class="a">→</span></a>
+    <div class="kcac-cta-tel">Une question, un cas particulier ? Appelez-nous</div>
+    <a class="kcac-tel" href="tel:+33670012061" data-kc-event="accueil:contact:tel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.6A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.1-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2z"/></svg>06 70 01 20 61</a>
+  </div>
+</section>
+
+<script>
+(function(){
+  var root=document.querySelector('.kcac'); if(!root) return;
+  root.classList.add('js');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* Avis */
+  var star='<svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>';
+  var stars='<div class="kcac-stars" role="img" aria-label="Note de 5 sur 5">'+star+star+star+star+star+'</div>';
+  var ex='<span class="kcac-ex">Exemple</span>';
+  var avis=[
+    {q:"J’ai fait appel à Kayli Clinn après des travaux chez moi parce qu’il restait énormément de poussière et que j’avais besoin d’un vrai nettoyage en profondeur. Franchement, je suis très satisfaite du résultat. L’équipe a été ponctuelle, agréable et surtout très soigneuse. Ils ont pris le temps de bien faire les choses et ça faisait vraiment plaisir de retrouver le logement propre après leur passage. Bonne communication également du début à la fin. Je referai appel à eux sans hésiter.",n:"Tatiana Galina",r:"Particulier · Nettoyage après travaux",real:true},
+    {q:"Intervention impeccable après nos travaux. Tout était nickel, dans les délais annoncés, et le devis correspondait exactement à la facture. Je recommande sans hésiter.",n:"Marie L.",r:"Particulier · Paris 11e · Fin de chantier",real:false},
+    {q:"Réactifs et sérieux. Devis clair remis sur place, prestation soignée et facturation conforme. Une équipe sur laquelle on peut compter pour nos copropriétés.",n:"Thomas R.",r:"Syndic · Levallois · Entretien bureaux",real:false}
+  ];
+  var g=document.getElementById('kcac-avgrid');
+  if(g){
+    g.innerHTML=avis.map(function(d){
+      var long=d.q.length>220;
+      return '<figure class="kcac-av">'+(d.real?stars:ex)+
+        '<blockquote'+(long?' class="clamp"':'')+'>'+d.q+'</blockquote>'+
+        (long?'<button type="button" class="kcac-more" aria-expanded="false" data-kc-event="accueil:avis:lire-suite">Lire la suite</button>':'')+
+        '<figcaption><span class="n">'+d.n+'</span><span class="r">'+d.r+'</span></figcaption></figure>';
+    }).join('');
+    Array.prototype.forEach.call(g.querySelectorAll('.kcac-more'),function(b){
+      b.addEventListener('click',function(){
+        var q=b.previousElementSibling, open=q.classList.toggle('clamp')===false;
+        b.setAttribute('aria-expanded',open?'true':'false'); b.textContent=open?'Réduire':'Lire la suite';
+      });
+    });
+  }
+
+  /* Comparateurs avant/après */
+  Array.prototype.forEach.call(root.querySelectorAll('.kcac-ba-img'),function(box){
+    var input=box.querySelector('input');
+    function set(v){ box.style.setProperty('--x', v+'%'); }
+    if(input){ set(input.value); input.addEventListener('input',function(){ set(input.value); }); }
+  });
+
+  /* Onglets « Comment ça se passe » : défilement automatique + barre de progression */
+  var tablist=root.querySelector('[role="tablist"]');
+  if(tablist){
+    var tabs=Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var panels=tabs.map(function(t){return document.getElementById(t.getAttribute('aria-controls'));});
+    var cur=0, timer=null, DUR=5000, paused=false;
+    function show(i,focus){
+      tabs.forEach(function(t,k){
+        var on=k===i;
+        t.setAttribute('aria-selected',on?'true':'false'); t.tabIndex=on?0:-1;
+        if(panels[k]){ panels[k].classList.toggle('on',on); if(on){panels[k].removeAttribute('hidden');}else{panels[k].setAttribute('hidden','');} }
+        var bar=t.querySelector('.kcac-tab-bar');
+        if(bar){ bar.style.transition='none'; bar.style.width='0'; }
+      });
+      cur=i;
+      if(!reduce && !paused){
+        var bar=tabs[i].querySelector('.kcac-tab-bar');
+        if(bar){ /* relance l'animation de la barre */ void bar.offsetWidth; bar.style.transition='width '+DUR+'ms linear'; bar.style.width='100%'; }
+      }
+      if(focus) tabs[i].focus();
+    }
+    function next(){ show((cur+1)%tabs.length); }
+    function play(){ if(reduce||paused) return; clearInterval(timer); timer=setInterval(next,DUR); }
+    function stop(){ clearInterval(timer); }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){ show(i); play(); });
+      t.addEventListener('keydown',function(e){
+        var n=null;
+        if(e.key==='ArrowRight'||e.key==='ArrowDown') n=(i+1)%tabs.length;
+        else if(e.key==='ArrowLeft'||e.key==='ArrowUp') n=(i-1+tabs.length)%tabs.length;
+        else if(e.key==='Home') n=0; else if(e.key==='End') n=tabs.length-1;
+        if(n!==null){ e.preventDefault(); show(n,true); play(); }
+      });
+    });
+    var sec=tablist.closest('section');
+    sec.addEventListener('mouseenter',function(){ paused=true; stop(); var b=tabs[cur].querySelector('.kcac-tab-bar'); if(b){b.style.transition='none';} });
+    sec.addEventListener('mouseleave',function(){ paused=false; show(cur); play(); });
+    sec.addEventListener('focusin',function(){ paused=true; stop(); });
+    show(0); play();
+  }
+
+  /* Apparition au défilement */
+  var rv=root.querySelectorAll('.kcac-rv');
+  if(reduce||!('IntersectionObserver' in window)){ Array.prototype.forEach.call(rv,function(el){el.classList.add('in');}); }
+  else{
+    var io=new IntersectionObserver(function(en){ en.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }); },{rootMargin:'0px 0px -10% 0px',threshold:.08});
+    Array.prototype.forEach.call(rv,function(el){io.observe(el);});
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CleaningService","name":"Kayli Clinn","url":"https://kayliclinn.fr/","email":"contact@kayliclinn.fr","telephone":"+33670012061","priceRange":"€€","address":{"@type":"PostalAddress","streetAddress":"60 rue François Ier","postalCode":"75008","addressLocality":"Paris","addressRegion":"Île-de-France","addressCountry":"FR"},"areaServed":[{"@type":"AdministrativeArea","name":"Paris (75)"},{"@type":"AdministrativeArea","name":"Seine-et-Marne (77)"},{"@type":"AdministrativeArea","name":"Yvelines (78)"},{"@type":"AdministrativeArea","name":"Essonne (91)"},{"@type":"AdministrativeArea","name":"Hauts-de-Seine (92)"},{"@type":"AdministrativeArea","name":"Seine-Saint-Denis (93)"},{"@type":"AdministrativeArea","name":"Val-de-Marne (94)"},{"@type":"AdministrativeArea","name":"Val-d'Oise (95)"}]}
+</script>
+</div>
