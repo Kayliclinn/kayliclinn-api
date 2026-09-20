@@ -2647,21 +2647,22 @@
   <div class="kcav2-head kcav2-head--center">
     <div class="kcav2-eye reveal">Lire · Ce qu’on nous dit</div>
     <h2 class="kcav2-title reveal">Ce qu’en disent <em>nos clients</em>.</h2>
-    <p class="kcav2-sub reveal">Ces trois témoignages sont des exemples de rédaction. Ils seront remplacés par de vrais avis clients autorisés.</p>
+    <p class="kcav2-sub reveal">Un premier avis client vérifié, et deux exemples de rédaction en attendant les prochains.</p>
   </div>
   <div class="kcav2-grid" id="kcav2grid"></div>
 </section>
 <script>(function(){
   var star='<svg viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></svg>';
   var data=[
-    {q:"Intervention impeccable après nos travaux. Tout était nickel, dans les délais annoncés, et le devis correspondait exactement à la facture. Je recommande sans hésiter.",i:"M",n:"Marie L.",r:"Particulier · Paris 11e · Fin de chantier"},
-    {q:"Réactifs et sérieux. Devis clair remis sur place, prestation soignée et facturation conforme. Une équipe sur laquelle on peut compter pour nos copropriétés.",i:"T",n:"Thomas R.",r:"Syndic · Levallois · Entretien bureaux"},
-    {q:"Turnover Airbnb nickel à chaque rotation, avec linge propre, contrôle qualité et photos après passage. Mes voyageurs notent toujours la propreté. Un vrai gain de temps.",i:"S",n:"Sophie M.",r:"Hôte Airbnb · Paris 9e · Turnover"}
+    {q:"J’ai fait appel à Kayli Clinn après des travaux chez moi parce qu’il restait énormément de poussière et que j’avais besoin d’un vrai nettoyage en profondeur. Franchement, je suis très satisfaite du résultat. L’équipe a été ponctuelle, agréable et surtout très soigneuse. Ils ont pris le temps de bien faire les choses et ça faisait vraiment plaisir de retrouver le logement propre après leur passage. Bonne communication également du début à la fin. Je referai appel à eux sans hésiter.",n:"Tatiana Galina",r:"Particulier · Nettoyage après travaux",real:true},
+    {q:"Intervention impeccable après nos travaux. Tout était nickel, dans les délais annoncés, et le devis correspondait exactement à la facture. Je recommande sans hésiter.",n:"Marie L.",r:"Particulier · Paris 11e · Fin de chantier",real:false},
+    {q:"Réactifs et sérieux. Devis clair remis sur place, prestation soignée et facturation conforme. Une équipe sur laquelle on peut compter pour nos copropriétés.",n:"Thomas R.",r:"Syndic · Levallois · Entretien bureaux",real:false}
   ];
   var g=document.getElementById('kcav2grid');
   /* Badge « Exemple » obligatoire tant que les avis ne sont pas de vrais avis clients autorisés (règle DGCCRF) */
   var demoBadge='<span style="display:inline-block;background:#FFF4E6;color:#B25E09;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:100px;padding:3px 10px;margin-bottom:10px;align-self:flex-start">Exemple</span>';
-  g.innerHTML=data.map(function(d){return '<figure class="kcav2-card reveal">'+demoBadge+'<blockquote class="kcav2-txt">'+d.q+'</blockquote><figcaption class="kcav2-foot"><span class="kcav2-name">'+d.n+'</span><span class="kcav2-role">'+d.r+'</span></figcaption></figure>';}).join('');
+  var stars5='<div class="kcav2-stars" role="img" aria-label="Note de 5 sur 5">'+star+star+star+star+star+'</div>';
+  g.innerHTML=data.map(function(d){var head=d.real?stars5:demoBadge;return '<figure class="kcav2-card reveal">'+head+'<blockquote class="kcav2-txt">'+d.q+'</blockquote><figcaption class="kcav2-foot"><span class="kcav2-name">'+d.n+'</span><span class="kcav2-role">'+d.r+'</span></figcaption></figure>';}).join('');
   var sec=document.querySelector('.kcav2');
   var done=false;
   function run(){if(done)return;done=true;document.querySelectorAll('.kcav2 .reveal').forEach(function(el,i){setTimeout(function(){el.classList.add('show');},i*110);});}
@@ -3658,4 +3659,10 @@
   .kcw2-eye::before, .kcw2-eye::after,
   .kcct2-badge::before, .kcct2-badge:before,
   .kcsq-eye::before, .kcsq-eye:before{ display:none !important; content:none !important; }
+
+  /* ── Étoiles d'un avis réel (convention de note, doré) ── */
+  .kcav2-stars{ display:flex; gap:3px; align-self:flex-start; }
+  .kcav2-stars svg{ width:16px; height:16px; fill:#F5B638; }
+
+  .kcav2-grid{ align-items:start; }
 </style>

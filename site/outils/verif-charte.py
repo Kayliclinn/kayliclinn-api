@@ -3,7 +3,7 @@
 import re, sys, unicodedata
 
 PALETTE = {'#0D2340','#1A3A5C','#1F2937','#4B5563','#6B7280','#E5E7EB','#F3F4F6',
-           '#FFFFFF','#FFF','#F7F8FA','#0FA7A5','#0B8483','#076E6D','#F0FAFA','#E6F5F5','#19E3DF','#8A5A06'}  # #8A5A06 = badge « Exemple » (charte §4)
+           '#FFFFFF','#FFF','#F7F8FA','#0FA7A5','#0B8483','#076E6D','#F0FAFA','#E6F5F5','#19E3DF','#8A5A06','#F5B638'}  # #8A5A06 badge Exemple ; #F5B638 étoiles d'avis (convention de note)
 
 def parts(s):
     css = ''.join(re.findall(r'<style[^>]*>(.*?)</style>', s, re.S))
