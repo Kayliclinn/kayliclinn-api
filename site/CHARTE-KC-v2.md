@@ -1,5 +1,7 @@
 # Charte Kayli Clinn v2 — référence pour Claude Code
 
+> **Mise à jour du 20/09/2026 — polices.** Libre Baskerville et JetBrains Mono sont **abandonnées** : ce ne sont pas des polices système, et hors installation (page téléchargée en HTML, ou WordPress sans la bibliothèque de polices) le texte rendait mal. On revient à **Fraunces** (titres, une vraie police d'affichage qui ne s'écrase pas) et **Inter** (texte, surtitres, prix), **chargées depuis Google Fonts** en tête de chaque bloc pour un rendu correct partout. Les accents de titre sont en italique teal. Pour un site 100 % RGPD, héberger Fraunces et Inter dans la Médiathèque plutôt que via Google.
+
 Version du 19 septembre 2026. Remplace toute charte antérieure (Fraunces, Montserrat, Roboto, dégradés teal, effet verre).
 Fichier compagnon : `charte-kc-v2.html` (page de démonstration de tous les composants, préfixe `kcds-`). En cas de doute, ce fichier HTML fait foi pour les valeurs.
 
