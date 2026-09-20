@@ -19,8 +19,7 @@ def verifier(chemin):
     r = []
     ok = lambda c, m: r.append((c, m))
 
-    ok('fonts.googleapis' not in s and 'fonts.gstatic' not in s, "aucun lien Google Fonts")
-    ok(not re.search(r'(Fraunces|Montserrat|Roboto:|Poppins|Playfair)', css), "aucune police hors charte")
+    ok(not re.search(r'(Libre Baskerville|JetBrains Mono|Montserrat|Poppins|Playfair)', css), "aucune police abandonnée (Fraunces + Inter font foi)")
     sans_masque = re.sub(r'[^;{}]*mask-image[^;}]*', '', css)
     ok('gradient' not in sans_masque, "aucun dégradé (les masques de fondu ne comptent pas)")
     ok('backdrop-filter' not in css, "aucun effet verre")

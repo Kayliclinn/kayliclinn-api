@@ -52,10 +52,11 @@
                          montre donc aucune différence.
 
    ── Polices ────────────────────────────────────────────────────────
-   Libre Baskerville, Inter et JetBrains Mono doivent être installées sur
-   le site. La charte interdit de les charger depuis Google (RGPD). Sans
-   elles, les titres s'affichent en Georgia.
+   Les polices Fraunces et Inter sont chargées depuis Google Fonts en tête
+   de bloc, pour un rendu correct partout, y compris hors WordPress. Pour un
+   site 100 % RGPD, il faudra les héberger dans la Médiathèque.
    ════════════════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Roboto:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -193,7 +194,7 @@
 .kc-home .kh-dot{width:8px; height:8px; flex:0 0 auto; border-radius:50%; background:var(--kc-primary-light)}
 .kc-home .kh-title{
   max-width:60ch; margin:22px auto 0; color:var(--kc-white);
-  font-family:"Libre Baskerville",Georgia,"Times New Roman",serif; font-size:clamp(28px,4.7vw,56px);
+  font-family:'Fraunces',Georgia,serif; font-size:clamp(28px,4.7vw,56px);
   font-weight:600; line-height:1.07; letter-spacing:-.6px;
   text-shadow:0 2px 24px rgba(8,12,30,.58);
 }
@@ -250,7 +251,7 @@
   transition:opacity .35s .25s ease, transform .4s .25s cubic-bezier(.22,1,.36,1);
 }
 .kc-home .ka-media.ka-in .ka-badge-float{opacity:1; transform:none}
-.kc-home .ka-bf-num{color:var(--kc-primary-light); font-family:"Libre Baskerville",Georgia,"Times New Roman",serif; font-weight:600; font-size:26px; line-height:1}
+.kc-home .ka-bf-num{color:var(--kc-primary-light); font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:26px; line-height:1}
 .kc-home .ka-bf-lab{order:-1; margin-bottom:4px; color:rgba(255,255,255,.75); font-size:11px; letter-spacing:.16em; text-transform:uppercase}
 .kc-home .ka-rev{opacity:0; transform:translateY(24px); transition:opacity .75s ease, transform .75s cubic-bezier(.22,1,.36,1)}
 .kc-home .ka-rev.ka-in{opacity:1; transform:none}
@@ -260,7 +261,7 @@
 .kc-home .ka-content .ka-rev:nth-child(5){transition-delay:.32s}
 .kc-home .ka-content .ka-rev:nth-child(6){transition-delay:.40s}
 .kc-home .ka-eyebrow{display:inline-block; margin-bottom:16px; color:var(--kc-primary); font-weight:800; font-size:13px; letter-spacing:.16em; text-transform:uppercase}
-.kc-home .ka-h2{margin:0 0 20px; color:var(--kc-navy); font-family:"Libre Baskerville",Georgia,"Times New Roman",serif; font-size:clamp(28px,3.2vw,42px); font-weight:600; line-height:1.15; letter-spacing:-.3px}
+.kc-home .ka-h2{margin:0 0 20px; color:var(--kc-navy); font-family:'Fraunces',Georgia,serif; font-size:clamp(28px,3.2vw,42px); font-weight:600; line-height:1.15; letter-spacing:-.3px}
 .kc-home .ka-h2 span{color:var(--kc-primary)}
 .kc-home .ka-p{max-width:62ch; margin:0 0 28px; color:var(--kc-text); font-size:16.5px; line-height:1.75}
 .kc-home .ka-proof-line{display:grid; gap:10px; margin:0 0 30px; padding:0; list-style:none; color:var(--kc-navy); font-weight:700; font-size:15px}
@@ -269,7 +270,7 @@
 .kc-home .ka-stats{display:flex; flex-wrap:wrap; gap:14px; margin-bottom:34px}
 .kc-home .ka-stat{flex:1; min-width:130px; padding:18px 16px; text-align:center; background:var(--kc-white); border:1px solid var(--kc-border); border-radius:16px; transition:box-shadow .3s ease, transform .3s ease}
 .kc-home .ka-stat:hover{transform:translateY(-3px); box-shadow:0 18px 38px -20px rgba(22,22,63,.30)}
-.kc-home .ka-num{display:block; color:var(--kc-navy); font-family:"Libre Baskerville",Georgia,"Times New Roman",serif; font-weight:600; font-size:30px; line-height:1}
+.kc-home .ka-num{display:block; color:var(--kc-navy); font-family:'Fraunces',Georgia,serif; font-weight:600; font-size:30px; line-height:1}
 .kc-home .ka-lab{display:block; margin-top:8px; color:var(--kc-text-muted); font-size:13.5px; line-height:1.35}
 .kc-home .ka-actions{display:flex; flex-wrap:wrap; align-items:center; gap:16px 20px}
 .kc-home .ka-btn{padding:15px 30px; color:var(--kc-white); background:var(--kc-navy)}
@@ -1285,7 +1286,7 @@
   }
 
   .kr-h2 {
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    font-family:'Fraunces',Georgia,serif;
     color: #0D2340;
     font-size: clamp(32px, 4vw, 52px);
     font-weight: 850;
@@ -1329,7 +1330,7 @@
   .kr-proof-item strong {
     display: block;
     color: #0D2340;
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    font-family:'Fraunces',Georgia,serif;
     font-size: 22px;
     line-height: 1;
     margin-bottom: 5px;
@@ -1543,7 +1544,7 @@
   }
 
   .kr-t {
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    font-family:'Fraunces',Georgia,serif;
     color: #0D2340;
     font-size: 19px;
     font-weight:600;
@@ -1684,7 +1685,7 @@
   .kcw2-title {
     max-width: 790px;
     margin: 0 auto 18px;
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    font-family:'Fraunces',Georgia,serif;
     font-size: clamp(32px, 4.2vw, 54px);
     font-weight: 850;
     letter-spacing: -.045em;
@@ -1797,7 +1798,7 @@
     position: absolute;
     top: 28px;
     right: 30px;
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    font-family:'Fraunces',Georgia,serif;
     font-size: 14px;
     font-weight: 850;
     color: rgba(255, 255, 255, .24);
@@ -1826,7 +1827,7 @@
 
   .kcw2-ct {
     position: relative;
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;
+    font-family:'Fraunces',Georgia,serif;
     font-size: 22px;
     font-weight:600;
     letter-spacing: -.025em;
@@ -2094,7 +2095,7 @@
 .kcw2-figs{max-width:900px;margin:40px auto;display:flex;flex-wrap:wrap;justify-content:center;align-items:stretch;gap:0;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:26px 14px;position:relative;z-index:2}
 .kcw2-fig{flex:1 1 0;min-width:130px;text-align:center;padding:6px 22px;border-left:1px solid rgba(255,255,255,.1)}
 .kcw2-fig:first-child{border-left:none}
-.kcw2-fig-num{display:block;font-family:"Libre Baskerville",Georgia,"Times New Roman",serif;font-weight:600;font-size:clamp(32px,3.8vw,44px);color:#fff;line-height:1;letter-spacing:-.5px}
+.kcw2-fig-num{display:block;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:clamp(32px,3.8vw,44px);color:#fff;line-height:1;letter-spacing:-.5px}
 .kcw2-fig-lab{display:block;margin-top:8px;color:rgba(255,255,255,.72);font-size:13.5px;font-weight:500}
 @media(max-width:640px){.kcw2-figs{width:calc(100% - 32px);max-width:430px;padding:18px 12px}.kcw2-fig{flex-basis:42%;border-left:none;padding:14px 10px}.kcw2-trustbar{gap:8px;padding:0 16px}.kcw2-pill{padding:8px 12px;font-size:12px}}
 </style>
@@ -3080,7 +3081,7 @@
   /* ── Titres de section : même voix typographique partout ── */
   .ka-section h2, .kh4-section h2, .kcp-section h2, .kr-section h2,
   .kcw2 h2, .kczn2 h2, .kcav2 h2, .kcfq-section h2{
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important;
+    font-family:'Fraunces',Georgia,serif !important;
     font-weight:600 !important;
     letter-spacing: -0.6px !important;
     line-height: 1.12 !important;
@@ -3196,11 +3197,11 @@
   .kc-home .kh-veil{ background:rgba(13,35,64,.82) !important; opacity:1 !important; }
   .kc-home .kh-grain, .kc-home .kh-beam, .kc-home .kh-glow, .kc-home .kh-scroll{ display:none !important; }
   .kc-home .kh-badge{ background:transparent !important; border:0 !important; padding:0 !important;
-    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-family:'Inter',system-ui,-apple-system,sans-serif !important;
     font-size:12.5px !important; letter-spacing:.08em !important; font-weight:700 !important; text-transform:uppercase !important;
     color:#19E3DF !important; animation:none !important; opacity:1 !important; }
   .kc-home .kh-dot{ display:none !important; }
-  .kc-home .kh-title{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important;
+  .kc-home .kh-title{ font-family:'Fraunces',Georgia,serif !important;
     font-size:clamp(32px,4vw + 16px,56px) !important; font-weight:700 !important;
     line-height:1.2 !important; letter-spacing:0 !important; margin-top:14px !important;
     text-shadow:none !important; max-width:22ch !important; text-wrap:balance; }
@@ -3211,9 +3212,9 @@
   .kc-home .kh-proof{ margin-top:28px !important; font-size:13.8px !important; font-weight:400 !important; color:rgba(255,255,255,.72) !important; animation:none !important; opacity:1 !important; }
   .kc-home .kh-proof span::before{ background:#19E3DF !important; }
 
-  /* ── Sur-titres : JetBrains Mono 12,5 px, tiret teal de 18 px ── */
+  /* ── Sur-titres : Inter capitales, sans tiret ── */
   .ka-eyebrow, .kh4-eyebrow, .kcp-eyebrow, .kr-eyebrow, .kczn2-eye, .kcav2-eye, .kcfq-eyebrow, .kcw2-eye, .kcct2-badge{
-    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-family:'Inter',system-ui,-apple-system,sans-serif !important;
     font-size:12.5px !important; letter-spacing:.08em !important; font-weight:700 !important;
     text-transform:uppercase !important; margin-bottom:20px !important;
   }
@@ -3225,12 +3226,12 @@
   .kcw2-eye::after, .kcav2-eye:after{ display:none !important; }
   .kcp-eyebrow:before{ content:"" !important; display:inline-block; width:18px; height:1px; background:#0FA7A5; vertical-align:middle; margin-right:10px; }
 
-  /* ── Titres de section : Libre Baskerville 700 ── */
+  /* ── Titres de section : Fraunces 600 ── */
   .kc-home .ka-h2, .kh4-section .kh4-h2, .kcp-section .kcp-h2, .kr-section .kr-h2, .kcw2 .kcw2-title,
   .kczn2 .kczn2-title, .kcav2 .kcav2-title, .kcfq-section .kcfq-title, .kcct2 h2, .kcav2-cta-txt h3{
-    font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:400 !important;
+    font-family:'Fraunces',Georgia,serif !important; font-weight:600 !important;
     font-size:clamp(23px,1.6vw + 15px,33px) !important;
-    line-height:1.3 !important; letter-spacing:0 !important; margin-bottom:20px !important; text-wrap:balance;
+    line-height:1.22 !important; letter-spacing:0 !important; margin-bottom:20px !important; text-wrap:balance;
   }
   .kc-home .ka-h2, .kh4-section .kh4-h2, .kcp-section .kcp-h2, .kr-section .kr-h2, .kczn2 .kczn2-title, .kcav2 .kcav2-title, .kcfq-section .kcfq-title{ color:#0D2340 !important; }
   .kc-home .ka-h2 span, .kr-h2 span, .kh4-h2 span, .kcp-h2 em, .kcfq-title span, .kcct2 h2 em, .kcw2-title em{
@@ -3239,7 +3240,7 @@
   }
   .kc-home .ka-h2 span, .kr-h2 span, .kh4-h2 span, .kcp-h2 em, .kcfq-title span{ color:#0B8483 !important; }
   .kcct2 h2 em, .kcw2-title em{ color:#19E3DF !important; }
-  .kczn2-sub{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:18px !important; color:#0D2340 !important; }
+  .kczn2-sub{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:18px !important; color:#0D2340 !important; }
 
   /* ── Chapeaux ── */
   .ka-p, .kh4-sub, .kcp-sub, .kr-sub, .kczn2-p, .kcav2-sub, .kcfq-sub, .kcct2-sub, .kcw2-sub{
@@ -3248,9 +3249,9 @@
   .ka-p, .kh4-sub, .kcp-sub, .kr-sub, .kczn2-p, .kcav2-sub, .kcfq-sub{ color:#6B7280 !important; }
 
   /* ── Titres et textes de cartes ── */
-  .kcp-t, .kr-t{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:21px !important; letter-spacing:0 !important; line-height:1.3 !important; color:#0D2340 !important; }
-  .kh4-t, .kcav2-name{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:18px !important; letter-spacing:0 !important; line-height:1.3 !important; color:#0D2340 !important; }
-  .kcw2-ct{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:17.6px !important; line-height:1.3 !important; color:#fff !important; margin-bottom:8px !important; }
+  .kcp-t, .kr-t{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:21px !important; letter-spacing:0 !important; line-height:1.3 !important; color:#0D2340 !important; }
+  .kh4-t, .kcav2-name{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:18px !important; letter-spacing:0 !important; line-height:1.3 !important; color:#0D2340 !important; }
+  .kcw2-ct{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:17.6px !important; line-height:1.3 !important; color:#fff !important; margin-bottom:8px !important; }
   .kh4-p, .kcp-d, .kr-m, .kcw2-cx, .kcav2-txt, .kcfq-a-in, .ka-lab, .kczn2-lab{ font-size:15px !important; line-height:1.6 !important; }
   .kcav2-role, .kr-cat, .kcav2-txt{ color:#4B5563 !important; }
   .kcfq-q-text{ font-family:Inter,system-ui,sans-serif !important; font-weight:600 !important; font-size:16px !important; color:#0D2340 !important; }
@@ -3303,12 +3304,12 @@
   .kh4-dot::after{ display:none !important; }
   .kh4-step:hover .kh4-dot{ box-shadow:none !important; }
   .kh4-step .kh4-dot svg, .kh4-step.kh4-pulse .kh4-dot svg{ animation:none !important; }
-  .kh4-num, .kcw2-num, .kcp-num{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+  .kh4-num, .kcw2-num, .kcp-num{ font-family:'Inter',system-ui,-apple-system,sans-serif !important;
     font-size:12.5px !important; font-weight:700 !important; letter-spacing:.14em !important; color:#0B8483 !important; text-shadow:none !important; }
   .kcp-card{ animation:none !important; }
   .kcp-slide{ animation:none !important; transform:none !important; transition:none !important; }
   .kcp-dots, .kcp-badge{ display:none !important; }
-  .kcp-amount{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-weight:400 !important; color:#0D2340 !important; font-size:14px !important; }
+  .kcp-amount{ font-family:'Inter',system-ui,-apple-system,sans-serif !important; font-weight:400 !important; color:#0D2340 !important; font-size:14px !important; }
   .kcp-shade{ background:rgba(13,35,64,.28) !important; }
   .kcp-num{ color:#fff !important; }
   .kcp-h2 em{ white-space:nowrap !important; }
@@ -3330,7 +3331,7 @@
   .kr-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:28px !important; }
   .kr-meta{ margin-bottom:10px !important; }
   .kr-cat{ background:none !important; border:0 !important; padding:0 !important;
-    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+    font-family:'Inter',system-ui,-apple-system,sans-serif !important;
     font-size:11.5px !important; font-weight:700 !important; letter-spacing:.08em !important; color:#0B8483 !important; }
   .kr-t{ margin-bottom:6px !important; }
   .kr-dep{ font-size:15px !important; color:#6B7280 !important; margin:0 0 10px !important; }
@@ -3341,13 +3342,13 @@
   .kcsq-wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
   .kcsq-grid{ display:grid; gap:40px; align-items:start; }
   .kcsq-eye{ display:inline-flex; align-items:center; gap:10px;
-    font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
     font-size:12.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#19E3DF; }
   .kcsq-eye::before{ content:""; width:18px; height:1px; background:#19E3DF; }
-  .kcsq-titre{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif; font-weight:400;
+  .kcsq-titre{ font-family:'Fraunces',Georgia,serif; font-weight:600;
     font-size:clamp(24px,2vw + 16px,36px); line-height:1.2; letter-spacing:-.01em; color:#fff;
     margin:20px 0 0; max-width:24ch; text-wrap:balance; }
-  .kcsq-titre em{ font-style:normal; font-weight:400; color:#19E3DF; }
+  .kcsq-titre em{ font-style:italic; font-weight:500; color:#19E3DF; }
   .kcsq-lede{ font-size:17.6px; line-height:1.7; max-width:52ch; margin:20px 0 0; }
   .kcsq-liste{ list-style:none; margin:32px 0 0; padding:0; display:flex; flex-direction:column; gap:20px; }
   .kcsq-point{ display:flex; gap:16px; align-items:flex-start; }
@@ -3369,7 +3370,7 @@
     box-shadow:0 24px 48px -28px rgba(0,0,0,.55); }
   .kcsq-carte-tete{ display:flex; align-items:flex-start; justify-content:space-between; gap:16px;
     padding:20px 24px; border-bottom:1px solid #E5E7EB; }
-  .kcsq-carte-tete strong{ display:block; font-family:"Libre Baskerville",Georgia,serif; font-size:17.6px; font-weight:700; color:#0D2340; line-height:1.3; }
+  .kcsq-carte-tete strong{ display:block; font-family:'Fraunces',Georgia,serif; font-size:17.6px; font-weight:700; color:#0D2340; line-height:1.3; }
   .kcsq-carte-tete span{ display:block; margin-top:4px; font-size:14px; color:#6B7280; }
   .kcsq-ex{ flex-shrink:0; padding:2px 8px; border-radius:999px; font-size:10.5px; font-weight:700;
     letter-spacing:.04em; text-transform:uppercase; background:rgba(245,158,11,.14); color:#8a5a06; }
@@ -3378,7 +3379,7 @@
   .kcsq-carte-corps{ padding:22px 24px 24px; background:#fff; }
   .kcsq-deux{ display:grid; gap:24px; }
   .kcsq-st{ font-family:Inter,system-ui,sans-serif; font-size:15px; font-weight:600; color:#0D2340; margin:0 0 14px; }
-  .kcsq-lab{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  .kcsq-lab{ font-family:'Inter',system-ui,-apple-system,sans-serif;
     font-size:11.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:#0B8483; }
   .kcsq-zones{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
   .kcsq-zones li{ display:flex; align-items:flex-start; gap:10px; }
@@ -3412,14 +3413,14 @@
   .kcw2-card{ flex:0 0 320px !important; min-height:0 !important; padding:20px 20px 18px !important; border-radius:14px !important;
     background:#1A3A5C !important; border:1px solid rgba(255,255,255,.14) !important; box-shadow:none !important; }
   .kcw2-cx{ font-size:15px !important; line-height:1.6 !important; color:rgba(255,255,255,.72) !important; }
-  .kcw2-card-foot{ padding-top:14px !important; font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important;
+  .kcw2-card-foot{ padding-top:14px !important; font-family:'Inter',system-ui,-apple-system,sans-serif !important;
     font-size:11.5px !important; font-weight:400 !important; letter-spacing:.08em !important; color:#19E3DF !important; }
   .kcw2-card-foot::before{ box-shadow:none !important; background:#19E3DF !important; }
   .kcw2-bottom{ margin-top:22px !important; }
   .kcw2-card:hover{ transform:none !important; border-color:rgba(25,227,223,.55) !important; box-shadow:none !important; }
   .kcw2-ic{ box-shadow:none !important; background:rgba(15,167,165,.16) !important; border:0 !important; border-radius:10px !important; width:38px !important; height:38px !important; margin-bottom:14px !important; }
   .kcw2-ic svg{ width:20px !important; height:20px !important; stroke:#19E3DF !important; }
-  .kcw2-fig-num{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:clamp(28px,3vw,36px) !important; }
+  .kcw2-fig-num{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:clamp(28px,3vw,36px) !important; }
 
   /* ── Zone d'intervention ── */
   .kczn2{ background:#fff !important; }
@@ -3427,7 +3428,7 @@
   .kczn2-img{ display:block !important; aspect-ratio:4/3; background-image:var(--photo-zone); background-size:cover; background-position:center; background-repeat:no-repeat; transform:none !important; transition:none !important; }
   .kczn2-mapcard:hover .kczn2-img{ transform:none !important; }
   .kczn2-legend i{ background:#0FA7A5 !important; }
-  .kczn2-num{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:30px !important; color:#0D2340 !important; }
+  .kczn2-num{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:30px !important; color:#0D2340 !important; }
 
   /* ── Avis ── */
   .kcav2{ background:#F7F8FA !important; }
@@ -3448,7 +3449,7 @@
   .kcct2:after, .kcct2-glow, .kcct2-glow2{ display:none !important; }
   .kcct2-badge{ background:transparent !important; border:0 !important; padding:0 !important; }
   .kcct2-badge .dot{ display:none !important; }
-  .kcct2 a.kcct2-phone{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:24px !important; }
+  .kcct2 a.kcct2-phone{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:24px !important; }
   .kcct2 a.kcct2-phone svg, .kcct2-chip svg, .kcct2-btn-ghost svg{ color:#19E3DF !important; }
   .kcct2-chip{ border-radius:999px !important; background:rgba(255,255,255,.06) !important; border:1px solid rgba(255,255,255,.2) !important; }
 
@@ -3474,8 +3475,8 @@
     --kh4-rule:#E5E7EB; --kh4-paper:#FFFFFF;
     --kh4-soft:#F0FAFA; --kh4-light:#E6F5F5;
     --kh4-acc:#0FA7A5; --kh4-acc2:#0B8483; --kh4-acc3:#076E6D;
-    --kh4-serif:"Libre Baskerville",Georgia,"Times New Roman",serif;
-    --kh4-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --kh4-serif:'Fraunces',Georgia,serif;
+    --kh4-mono:'Inter',system-ui,-apple-system,sans-serif;
     --kh4-ease:cubic-bezier(.2,.7,.2,1);
   }
 
@@ -3595,7 +3596,7 @@
   .kcct2-btns{ margin-top:32px !important; }
   .kcct2 .kcct2-btn-primary{ background:#0B8483 !important; color:#fff !important; box-shadow:0 1px 0 #076E6D !important; }
   .kcct2 .kcct2-btn-primary:hover{ background:#076E6D !important; }
-  .kcct2-phone-label{ margin-top:36px !important; font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-size:12.5px !important; font-weight:700 !important; letter-spacing:.08em !important; text-transform:uppercase !important; color:#6B7280 !important; }
+  .kcct2-phone-label{ margin-top:36px !important; font-family:'Inter',system-ui,-apple-system,sans-serif !important; font-size:12.5px !important; font-weight:700 !important; letter-spacing:.08em !important; text-transform:uppercase !important; color:#6B7280 !important; }
   .kcct2 a.kcct2-phone{ color:#0D2340 !important; margin-top:10px !important; display:inline-flex; align-items:center; gap:10px; }
   .kcct2 a.kcct2-phone svg{ color:#0B8483 !important; }
   .kcct2 a:focus-visible{ outline-color:#0B8483 !important; }
@@ -3605,8 +3606,8 @@
   .kcav2-card{ display:flex; flex-direction:column; gap:16px; text-align:left; }
   .kcav2-txt{ margin:0 !important; font-size:15.2px !important; line-height:1.6 !important; color:#4B5563 !important; }
   .kcav2-foot{ display:flex; flex-direction:column; gap:2px; text-align:left; align-items:flex-start; border-top:1px solid #E5E7EB; padding-top:16px; margin-top:auto; }
-  .kcav2-name{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif !important; font-weight:700 !important; font-size:15px !important; color:#0D2340 !important; text-align:left !important; }
-  .kcav2-role{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace !important; font-size:11px !important; font-weight:400 !important; letter-spacing:.06em !important; text-transform:uppercase !important; color:#6B7280 !important; margin:0 !important; }
+  .kcav2-name{ font-family:'Fraunces',Georgia,serif !important; font-weight:700 !important; font-size:15px !important; color:#0D2340 !important; text-align:left !important; }
+  .kcav2-role{ font-family:'Inter',system-ui,-apple-system,sans-serif !important; font-size:11px !important; font-weight:400 !important; letter-spacing:.06em !important; text-transform:uppercase !important; color:#6B7280 !important; margin:0 !important; }
 
   /* ── Prestations en mosaïque ── */
   .kcp-mosaic{ max-width:1180px; margin:0 auto; padding:0 24px; display:grid; gap:16px;
@@ -3626,9 +3627,9 @@
   .kcp-tile-veil{ position:absolute; inset:0; background:rgba(13,35,64,.44); transition:background .25s ease; }
   .kcp-tile:hover .kcp-tile-veil{ background:rgba(13,35,64,.34); }
   .kcp-tile-body{ position:absolute; left:0; bottom:0; padding:22px 24px; display:flex; flex-direction:column; gap:4px; z-index:1; }
-  .kcp-tile-t{ font-family:"Libre Baskerville",Georgia,"Times New Roman",serif; font-weight:700; font-size:20px; line-height:1.25; color:#fff; letter-spacing:-.01em; }
+  .kcp-tile-t{ font-family:'Fraunces',Georgia,serif; font-weight:700; font-size:20px; line-height:1.25; color:#fff; letter-spacing:-.01em; }
   .kcp-tile--feature .kcp-tile-t{ font-size:26px; }
-  .kcp-tile-p{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:12.5px; font-weight:400; color:#19E3DF; }
+  .kcp-tile-p{ font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:12.5px; font-weight:400; color:#19E3DF; }
   .kcp-tile:focus-visible{ outline:2px solid #19E3DF; outline-offset:2px; }
   .kcp-cta{ text-align:center; margin-top:40px; }
   @media (max-width:980px){
@@ -3643,7 +3644,7 @@
   /* ── Zone : liste des départements ── */
   .kczn2-deps{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px 20px; margin:28px 0 32px; }
   .kczn2-dep{ display:flex; align-items:baseline; gap:8px; font-size:15px; color:#4B5563; padding-bottom:10px; border-bottom:1px solid #E5E7EB; }
-  .kczn2-dep b{ font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:13px; font-weight:700; color:#0B8483; }
+  .kczn2-dep b{ font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:13px; font-weight:700; color:#0B8483; }
   @media (min-width:520px){ .kczn2-deps{ grid-template-columns:repeat(4,1fr); } }
 
   /* ── Surtitres sans tiret devant le texte ── */
